@@ -19,7 +19,10 @@
 #include <linux/types.h>
 #include <linux/net.h>	  
 #include <linux/in.h>	   
-#include <net/sock.h>	   
+#include <net/sock.h>
+#include <net/ip.h>
+#include <net/tcp.h>
+
 
 #define DRIVER_AUTHOR "Joe Bayer <joeba@uio.no>" 
 #define DRIVER_DESC "Kernel module for a Interactive Traffic PEP"
@@ -52,9 +55,9 @@ void pep_accept_work_fn(struct work_struct* work)
             continue;
         }
 
-        printk(KENR_INFO "[PEP] New client connection accepted.\n");
+        printk(KERN_INFO "[PEP] New client connection accepted.\n");
 
-        release_sock(client_sock);
+        sock_release(client_sock);
     }
 
 }
