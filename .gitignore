@@ -1,0 +1,7 @@
+./experimental/.*
+./experimental/core.mod
+./experimental/core.mod.c
+./experimental/core.mod
+./experimental/modules.order
+./experimental/Module.symvers
+
