@@ -1,0 +1,9 @@
+\begin{thebibliography}{1}
+
+\bibitem{rfc8803}
+Olivier Bonaventure, Mohamed Boucadair, Sri Gundavelli, SungHoon Seo, and
+  Benjamin Hesmans.
+\newblock {0-RTT TCP Convert Protocol}.
+\newblock RFC 8803, July 2020.
+
+\end{thebibliography}
