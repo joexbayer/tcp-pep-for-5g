@@ -8,6 +8,11 @@ all:
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 
+logs:
+	sudo dmesg | grep "PEP"
+
 install:
-	rmmod $(MODULE)
-	insmod $(MODULE).ko
+	sudo insmod $(MODULE).ko
+
+uninstall:
+	sudo rmmod $(MODULE)
