@@ -43,7 +43,7 @@ void pep_accept_work(struct work_struct* work)
     struct socket* client_sock;
     int ret;
 
-    /* Main loop running til module is closed. */
+    /* Main loop running till module is closed. */
     while(atomic_read(&run))
     {
         ret = kernel_accept(server_sock, &client_sock, 0);
@@ -69,10 +69,19 @@ static void pre_accept_callback(struct sock* sk)
 {
     void (*ready)(struct sock *sk);
     struct sk_buff* skb = NULL;
+    struct iphdr *ip_header;
+    struct tcphdr *tcp_header;
 
     skb = skb_peek(&sk->sk_receive_queue);
+
+    ip_header = (struct iphdr *)ip_hdr(skb);
+    if(ip_header->protocol==IPPROTO_TCP)
+    {
+        tcp_header= (struct tcphdr *)tcp_hdr(skb);
+        /* Check syn packet with connection data? and connect to endpoint */
+        // CHECK BASED ON DATA SIZE?
+    }
     
-    /* Check syn packet and connect to endpoint */
 
     read_lock_bh(&sk->sk_callback_lock);
     ready = sk->sk_user_data;
@@ -131,7 +140,7 @@ static int __init init_core(void)
 }
 
 /**
- * @brief Exit fuction for kernel module.
+ * @brief Exit function for kernel module.
  * 
  */
 static void __exit exit_core(void)
