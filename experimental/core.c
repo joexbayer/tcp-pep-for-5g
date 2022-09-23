@@ -14,6 +14,7 @@
 #include <linux/sched.h>
 #include <linux/workqueue.h>
 #include <linux/slab.h>
+#include <linux/list.h>
 
 /* socket - net includes */
 #include <linux/types.h>
@@ -31,10 +32,13 @@
 struct pep_accept_work {
     struct work_struct task;
     struct socket* sock;
+    atomic_t run;
 };
 
 struct pep_tunnel {
     struct work_struct task;
+    struct list_head list;
+
     struct socket* lsock;
     struct socket* rsock;
 
@@ -44,9 +48,7 @@ struct pep_tunnel {
 };
 
 static struct pep_accept_work* conn;
-static atomic_t run = ATOMIC_INIT(1);
-
-static struct pep_tunnel tunnels[3];
+LIST_HEAD(pep_tunnel_list);
 
 /**
  * @brief Main work accepting new connections.
@@ -58,13 +60,14 @@ void pep_accept_work_fn(struct work_struct* work)
     struct pep_accept_work* conn = container_of(work, struct pep_accept_work, task);
     struct socket* server_sock = conn->sock;
     struct socket* client_sock;
+    struct pep_tunnel* iter;
 
     struct inet_sock *inet;
     int ret;
     size_t i;
 
     /* Main loop running till module is closed. */
-    while(atomic_read(&run))
+    while(atomic_read(&conn->run))
     {
         ret = kernel_accept(server_sock, &client_sock, 0);
         if(ret < 0){
@@ -78,19 +81,17 @@ void pep_accept_work_fn(struct work_struct* work)
         inet = inet_sk(client_sock->sk);
         u16 sport = ntohs(inet->inet_sport);
 
-        for (i = 0; i < 3; i++)
-        {
-            if(tunnels[i].sport == sport && atomic_get(&run))
-            {
-                tunnels[i].rsock = client_sock;
-                // RUN TUNNEL
+        list_for_each_entry(iter, &pep_tunnel_list, list) {
+            
+            if(iter->sport == sport){
+                iter->rsock = client_sock;
                 INIT_WORK(&tunnels[i]->task, pep_tunnel_work_fn);
                 schedule_work(&tunnels[i]->task);
-                continue;
+                break;
             }
         }
 
-        sock_release(client_sock);
+        //sock_release(client_sock);       
     }
 }
 
@@ -107,39 +108,35 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
 {
     struct socket* lsock;
     struct sockaddr_in laddr;
+    struct pep_tunnel* tunnel;
     int ret;
     size_t i;
 
-    for (i = 0; i < 3; i++) //REPLACE
-    {
-        if(atomic_read(&tunnels[i].run)){
-            
-            ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &lsock);
-            if(ret < 0) {
-                // we have a problem
-            }
-
-            laddr.sin_family = AF_INET;
-            laddr.sin_addr.s_addr = ip;
-            laddr.sin_port = (__force u16)htons(dport);
-            
-            ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
-            if(ret < 0) {
-                // we have a problem
-            }
-
-            printk(KERN_INFO "[PEP] Connection established to endpoint.");
-
-            tunnels[i].lsock = lsock;
-            atomic_set(&tunnels[i].run, 1);
-            tunnels[i].sport = sport;
-
-            return 0;
-        }
+    ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &lsock);
+    if(ret < 0) {
+        // we have a problem
     }
 
-    return -EPEP_SPACE;
+    laddr.sin_family = AF_INET;
+    laddr.sin_addr.s_addr = ip;
+    laddr.sin_port = (__force u16)htons(dport);
     
+    ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
+    if(ret < 0) {
+        // we have a problem
+    }
+
+    printk(KERN_INFO "[PEP] Connection established to endpoint.\n");
+    
+    tunnel = kmalloc(sizeof(struct pep_tunnel), GFP_KERNEL);
+    tunnel->lsock = lsock;
+    tunnel->run = ATOMIC_INIT(1);
+    tunnel->sport = sport;
+    INIT_LIST_HEAD(&tunnel->list);
+
+    list_add(&tunnel->list, &pep_tunnel_list);
+
+    return 0;
 }
 
 /**
@@ -199,13 +196,6 @@ static int __init init_core(void)
     int addr_len = sizeof(saddr);
     int ret = 0;
 
-    /* Set tunnels as not running. */
-    for (size_t i = 0; i < 3; i++)
-    {
-        tunnels[i].run = ATOMIC_INIT(0);
-    }
-    
-
     ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &sock);
     if(ret){
         printk(KERN_INFO "[PEP] Error creating socket\n");
@@ -231,6 +221,7 @@ static int __init init_core(void)
 
     conn = kzalloc(sizeof(struct pep_accept_work), GFP_ATOMIC);
     conn->sock = sock;
+    conn->run = ATOMIC_INIT(1);
 
     INIT_WORK(&conn->task, pep_accept_work_fn);
     schedule_work(&conn->task);
@@ -245,8 +236,7 @@ static int __init init_core(void)
  */
 static void __exit exit_core(void)
 {
-    atomic_set(&run, 0);
-
+    atomic_set(&conn->run, 0);
     sock_release(conn->sock);
     kfree(conn);
     printk(KERN_INFO "[PEP] exited.\n");
