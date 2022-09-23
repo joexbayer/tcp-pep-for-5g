@@ -17,12 +17,13 @@
 
 /* socket - net includes */
 #include <linux/types.h>
-#include <linux/net.h>	  
-#include <linux/in.h>	   
+#include <linux/net.h>
+#include <linux/in.h>
 #include <net/sock.h>
 #include <net/ip.h>
 #include <net/tcp.h>
 
+#include "pep_errors.h"
 
 #define DRIVER_AUTHOR "Joe Bayer <joeba@uio.no>" 
 #define DRIVER_DESC "Kernel module for a Interactive Traffic PEP"
@@ -31,8 +32,21 @@ struct pep_accept_work {
     struct work_struct task;
     struct socket* sock;
 };
+
+struct pep_tunnel {
+    struct work_struct task;
+    struct socket* lsock;
+    struct socket* rsock;
+
+    atomic_t run;
+
+    unsigned short sport;
+};
+
 static struct pep_accept_work* conn;
 static atomic_t run = ATOMIC_INIT(1);
+
+static struct pep_tunnel tunnels[3];
 
 /**
  * @brief Main work accepting new connections.
@@ -44,7 +58,10 @@ void pep_accept_work_fn(struct work_struct* work)
     struct pep_accept_work* conn = container_of(work, struct pep_accept_work, task);
     struct socket* server_sock = conn->sock;
     struct socket* client_sock;
+
+    struct inet_sock *inet;
     int ret;
+    size_t i;
 
     /* Main loop running till module is closed. */
     while(atomic_read(&run))
@@ -57,9 +74,72 @@ void pep_accept_work_fn(struct work_struct* work)
 
         printk(KERN_INFO "[PEP] New client connection accepted.\n");
 
+        /* Extract source port to match correct connection. */
+        inet = inet_sk(client_sock->sk);
+        u16 sport = ntohs(inet->inet_sport);
+
+        for (i = 0; i < 3; i++)
+        {
+            if(tunnels[i].sport == sport && atomic_get(&run))
+            {
+                tunnels[i].rsock = client_sock;
+                // RUN TUNNEL
+                INIT_WORK(&tunnels[i]->task, pep_tunnel_work_fn);
+                schedule_work(&tunnels[i]->task);
+                continue;
+            }
+        }
+
         sock_release(client_sock);
     }
+}
 
+void pep_tunnel_work_fn(struct work_struct* work)
+{
+    struct pep_tunnel* tunnel = container_of(work, struct pep_tunnel, task);
+
+    sock_release(tunnel->lsock);
+    sock_release(tunnel->rsock);
+    atomic_set(&tunnel->run, 0);
+}
+
+static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
+{
+    struct socket* lsock;
+    struct sockaddr_in laddr;
+    int ret;
+    size_t i;
+
+    for (i = 0; i < 3; i++) //REPLACE
+    {
+        if(atomic_read(&tunnels[i].run)){
+            
+            ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &lsock);
+            if(ret < 0) {
+                // we have a problem
+            }
+
+            laddr.sin_family = AF_INET;
+            laddr.sin_addr.s_addr = ip;
+            laddr.sin_port = (__force u16)htons(dport);
+            
+            ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
+            if(ret < 0) {
+                // we have a problem
+            }
+
+            printk(KERN_INFO "[PEP] Connection established to endpoint.");
+
+            tunnels[i].lsock = lsock;
+            atomic_set(&tunnels[i].run, 1);
+            tunnels[i].sport = sport;
+
+            return 0;
+        }
+    }
+
+    return -EPEP_SPACE;
+    
 }
 
 /**
@@ -74,15 +154,25 @@ static void pre_accept_callback(struct sock* sk)
     struct sk_buff* skb = NULL;
     struct iphdr *ip_header;
     struct tcphdr *tcp_header;
+    int ret;
 
     skb = skb_peek(&sk->sk_receive_queue);
 
     ip_header = (struct iphdr *)ip_hdr(skb);
-    if(ip_header->protocol==IPPROTO_TCP)
+    if(ip_header->protocol == IPPROTO_TCP)
     {
         tcp_header= (struct tcphdr *)tcp_hdr(skb);
         /* Check syn packet with connection data? and connect to endpoint */
         // CHECK BASED ON DATA SIZE?
+
+        /**
+         * Now, for the time being this will be a hardcoded connection to the server running on the same
+         * machine. 2130706433 = 127.0.0.1
+         */                         
+        ret = pep_new_tunnel_connection(htonl(2130706433), 8182, tcp_header->dest);
+        if(ret < 0){
+            // we have a problem.
+        }
     }
     
 
@@ -108,6 +198,13 @@ static int __init init_core(void)
     struct sockaddr_in saddr;
     int addr_len = sizeof(saddr);
     int ret = 0;
+
+    /* Set tunnels as not running. */
+    for (size_t i = 0; i < 3; i++)
+    {
+        tunnels[i].run = ATOMIC_INIT(0);
+    }
+    
 
     ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &sock);
     if(ret){

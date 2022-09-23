@@ -16,7 +16,7 @@ int main(void)
     bzero((char *)&s_ain, sizeof(s_ain));
     s_ain.sin_family = AF_INET;
     s_ain.sin_addr.s_addr = INADDR_ANY;
-    s_ain.sin_port = htons(1025);
+    s_ain.sin_port = htons(8182);
 
     if(bind(sd, (struct sockaddr *)&s_ain, sizeof(s_ain)) == -1) {
         return -1;
