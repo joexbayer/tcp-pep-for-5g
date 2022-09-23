@@ -36,7 +36,7 @@ static atomic_t run = ATOMIC_INIT(1);
  * 
  * @param work work_struct
  */
-void pep_accept_work(struct work_struct* work)
+void pep_accept_work_fn(struct work_struct* work)
 {
     struct pep_accept_work* conn = container_of(work, struct pep_accept_work, task);
     struct socket* server_sock = conn->sock;
@@ -132,7 +132,7 @@ static int __init init_core(void)
     conn = kzalloc(sizeof(struct pep_accept_work), GFP_ATOMIC);
     conn->sock = sock;
 
-    INIT_WORK(&conn->task, workqueue_test);
+    INIT_WORK(&conn->task, pep_accept_work_fn);
     schedule_work(&conn->task);
     
     printk(KERN_INFO "[PEP] Initilized!\n");
