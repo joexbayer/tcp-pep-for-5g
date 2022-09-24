@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  11 SEP 2022 19:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  24 SEP 2022 14:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -197,31 +197,57 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 -navn-eng.pdf> <./uio-fp-segl.pdf>]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 18.99994pt on input line 11.
- [1] (uio-master.bbl [1]) [2
+ [1] (uio-master.toc)
+\tf@toc=\write3
+\openout3 = `uio-master.toc'.
+
+ [1
 
 ]
-(uio-master.aux) ) 
+Chapter 1.
+[2
+
+]
+Chapter 2.
+[3
+
+]
+Chapter 3.
+[4
+
+]
+Chapter 4.
+[5
+
+]
+Chapter 5.
+(uio-master.bbl [6
+
+]) [7
+
+] (uio-master.aux) ) 
 Here is how much of TeX's memory you used:
- 2379 strings out of 478338
- 43912 string characters out of 2834776
- 330319 words of memory out of 3000000
- 20786 multiletter control sequences out of 15000+600000
- 490011 words of font info for 47 fonts, out of 8000000 for 9000
+ 2406 strings out of 478338
+ 44292 string characters out of 2834776
+ 331319 words of memory out of 3000000
+ 20802 multiletter control sequences out of 15000+600000
+ 493915 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  70i,10n,76p,328b,319s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc/d
-vips/cm-super/cm-super-t1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX
-/fonts/enc/dvips/base/8r.enc}<C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/Joe Bayer/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/Joe Bayer/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2488.pfb><C:/Users/Joe 
-Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1095.pfb><C
-:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a
-.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic
-/uhvr8a.pfb>
-Output written on uio-master.pdf (4 pages, 163133 bytes).
+{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc
+/dvips/cm-super/cm-super-t1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKT
+eX/fonts/enc/dvips/base/8r.enc}<C:/Users/Joe Bayer/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/cm-super/sfbx1095.pfb><C:/Users/Joe Bayer/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/Joe Bayer/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2074.pfb><C:/Users/Jo
+e Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2488.pfb>
+<C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/s
+frm1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/h
+elvetic/uhvb8a.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type
+1/urw/helvetic/uhvr8a.pfb>
+Output written on uio-master.pdf (9 pages, 190945 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

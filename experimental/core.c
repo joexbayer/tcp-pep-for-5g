@@ -35,7 +35,7 @@ struct pep_accept_work {
     atomic_t run;
 };
 
-struct pep_tunnel {
+struct pep_tunnel_work {
     struct work_struct task;
     struct list_head list;
 
@@ -60,7 +60,7 @@ void pep_accept_work_fn(struct work_struct* work)
     struct pep_accept_work* conn = container_of(work, struct pep_accept_work, task);
     struct socket* server_sock = conn->sock;
     struct socket* client_sock;
-    struct pep_tunnel* iter;
+    struct pep_tunnel_work* iter;
 
     struct inet_sock *inet;
     int ret;
@@ -97,7 +97,7 @@ void pep_accept_work_fn(struct work_struct* work)
 
 void pep_tunnel_work_fn(struct work_struct* work)
 {
-    struct pep_tunnel* tunnel = container_of(work, struct pep_tunnel, task);
+    struct pep_tunnel_work* tunnel = container_of(work, struct pep_tunnel_work, task);
 
     sock_release(tunnel->lsock);
     sock_release(tunnel->rsock);
@@ -108,7 +108,7 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
 {
     struct socket* lsock;
     struct sockaddr_in laddr;
-    struct pep_tunnel* tunnel;
+    struct pep_tunnel_work* tunnel;
     int ret;
     size_t i;
 
@@ -128,8 +128,9 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
 
     printk(KERN_INFO "[PEP] Connection established to endpoint.\n");
     
-    tunnel = kmalloc(sizeof(struct pep_tunnel), GFP_KERNEL);
+    tunnel = kmalloc(sizeof(struct pep_tunnel_work), GFP_KERNEL);
     tunnel->lsock = lsock;
+    tunnel->rsock = NULL;
     tunnel->run = ATOMIC_INIT(1);
     tunnel->sport = sport;
     INIT_LIST_HEAD(&tunnel->list);
@@ -236,6 +237,14 @@ static int __init init_core(void)
  */
 static void __exit exit_core(void)
 {
+    list_for_each_entry(iter, &pep_tunnel_list, list) {
+            
+        list_del(&iter->list);
+        sock_release(iter->lsock);
+        sock_release(iter->rsock);
+        kfree(iter);
+    }
+
     atomic_set(&conn->run, 0);
     sock_release(conn->sock);
     kfree(conn);
@@ -250,3 +259,43 @@ module_exit(exit_core);
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR(DRIVER_AUTHOR); /* Who wrote this module? */
 MODULE_DESCRIPTION(DRIVER_DESC); /* What does this module do */
+
+
+
+/*
+    SOCKET OPTIONS
+
+    TCP_CONGESTION
+
+    strcpy(buf, "reno");
+    len = strlen(buf);
+    if (setsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buf, len) != 0)
+    {
+        perror("setsockopt");
+        return -1;
+    }
+
+
+    SOCKET_BUFFER_SIZES
+    SO_RCVBUF
+    SO_SNDBUF
+    SO_RCVLOWAT
+
+    SO_LINGER?
+
+    The minimum size is 512 bytes and the maximum size is 1048576 bytes.
+    https://www.ibm.com/docs/en/ztpf/1.1.0.15?topic=apis-setsockopt-set-options-associated-socket
+
+    int         recvBuff = 3072;
+    setsockopt(sock, SOL_SOCKET, SO_RCVBUF, &recvBuff, sizeof(recvBuff)
+
+
+    QUESTIONS
+    Race condition with linked lists?
+
+
+    LINKS
+    https://linux-kernel-labs.github.io/refs/heads/master/labs/networking.html
+
+
+*/
