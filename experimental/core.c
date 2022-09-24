@@ -297,5 +297,7 @@ MODULE_DESCRIPTION(DRIVER_DESC); /* What does this module do */
     LINKS
     https://linux-kernel-labs.github.io/refs/heads/master/labs/networking.html
 
+    https://www.ietf.org/proceedings/45/I-D/draft-ietf-pilc-pep-00.txt
+    https://www.rfc-editor.org/rfc/rfc3135
 
 */
