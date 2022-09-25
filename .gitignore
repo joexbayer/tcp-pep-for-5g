@@ -1,7 +1,10 @@
-./experimental/.*
-./experimental/core.mod
-./experimental/core.mod.c
-./experimental/core.mod
-./experimental/modules.order
-./experimental/Module.symvers
+**/experimental/.*
+**/experimental/core.mod
+**/experimental/core.mod.c
+**/experimental/core.mod
+**/experimental/modules.order
+**/experimental/Module.symvers
+**/experimental/core.ko
+**/experimental/core.mod.o
+**/experimental/core.o
 

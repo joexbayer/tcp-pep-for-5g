@@ -43,10 +43,7 @@ struct pep_tunnel_work {
     struct list_head list;
 
     struct socket* lsock;
-    //void (*lready)(struct sock *sk);
-
     struct socket* rsock;
-    //void (*rready)(struct sock *sk);
 
     atomic_t run;
 
@@ -68,6 +65,7 @@ unsigned int inet_addr(char *str)
 struct pep_connect_work {
     struct work_struct task;
     u16 sport;
+    struct sk_buff* skb;
 };
 
 void pep_tunnel_work_fn(struct work_struct* work)
@@ -76,9 +74,29 @@ void pep_tunnel_work_fn(struct work_struct* work)
 
     printk(KERN_INFO "[PEP] Tunnel running!\n");
 
+    while (1)
+    {
+        /* code */
+    }
+    
+
     sock_release(tunnel->lsock);
     sock_release(tunnel->rsock);
     atomic_set(&tunnel->run, 0);
+}
+
+static struct pep_tunnel_work* pep_find_work(u16 sport)
+{
+    struct pep_tunnel_work* iter;
+    list_for_each_entry(iter, &pep_tunnel_list, list) {
+        
+        printk(KERN_INFO "[PEP] pep_find_work: searching for %d -> %d\n", iter->sport, sport);
+        if(iter->sport == sport){
+            return iter;
+        }
+    }
+
+    return NULL;
 }
 
 /**
@@ -95,8 +113,7 @@ void pep_accept_work_fn(struct work_struct* work)
 
     struct inet_sock *inet;
     int ret;
-    size_t i;
-    u16 sport;
+    u16 sport, dport;
     
     while(atomic_read(&conn->run))
     {
@@ -110,22 +127,19 @@ void pep_accept_work_fn(struct work_struct* work)
 
         /* Extract source port to match correct connection. */
         inet = inet_sk(client_sock->sk);
-        sport = ntohs(inet->inet_sport);
+        sport = inet->inet_dport;
 
-        printk(KERN_INFO "[PEP] Port -> %d\n", sport);
-
-        list_for_each_entry(iter, &pep_tunnel_list, list) {
-            
-            printk(KERN_INFO "[PEP] Tunnel Port -> %d\n", iter->sport);
-            if(iter->sport == sport){
-                iter->rsock = client_sock;
-                INIT_WORK(&iter->task, pep_tunnel_work_fn);
-                schedule_work(&iter->task);
-                break;
-            }
+        iter = pep_find_work(sport);
+        if(iter == NULL) {
+            printk(KERN_INFO "[PEP] pep_accept_work_fn: Could not find matching endpoint connection!\n");
+            sock_release(client_sock);
+            continue;
         }
 
-        //sock_release(client_sock);   
+        iter->rsock = client_sock;
+        INIT_WORK(&iter->task, pep_tunnel_work_fn);
+        schedule_work(&iter->task);
+        printk(KERN_INFO "[PEP] Tunnel is scheduled!\n");
     }    
 }
 
@@ -134,11 +148,9 @@ static void pep_new_tunnel_connection(struct work_struct* work)
     struct pep_connect_work* conn = container_of(work, struct pep_connect_work, task);
 
     struct socket* lsock;
-    struct sock* sk;
     struct sockaddr_in laddr;
     struct pep_tunnel_work* tunnel;
     int ret;
-    size_t i;
 
     ret = sock_create_kern(&init_net, AF_INET, SOCK_STREAM, IPPROTO_TCP, &lsock);
     if(ret < 0) {
@@ -166,6 +178,8 @@ static void pep_new_tunnel_connection(struct work_struct* work)
 
     list_add(&tunnel->list, &pep_tunnel_list);
 
+    netif_receive_skb(conn->skb);
+
     printk(KERN_INFO "[PEP] pep_new_tunnel_connection: Connection established to endpoint.\n");
     return;
 }
@@ -175,7 +189,7 @@ static unsigned int pep_nf_hook(void *priv, struct sk_buff *skb, const struct nf
     const struct iphdr *iph;
     const struct tcphdr *tcph;
     struct pep_connect_work* new_conn;
-    int ret;
+    struct pep_tunnel_work* tunnel;
 
     if (!skb)
         return NF_ACCEPT;
@@ -187,14 +201,19 @@ static unsigned int pep_nf_hook(void *priv, struct sk_buff *skb, const struct nf
         if (tcph->syn == 1 && tcph->ack == 0 && tcph->rst == 0 && tcph->dest == htons(8181) ) {
             printk(KERN_INFO "[PEP] SYN FOR SERVER\n");
 
+            tunnel = pep_find_work(tcph->source);
+            if(tunnel == NULL)
+            {
+                new_conn = kmalloc(sizeof(struct pep_connect_work), GFP_KERNEL);
+                new_conn->sport = tcph->source;
+                new_conn->skb = (skb) ? skb_copy(skb, GFP_ATOMIC) : NULL;
 
-            new_conn = kmalloc(sizeof(struct pep_connect_work), GFP_KERNEL);
-            new_conn->sport = tcph->source;
+                INIT_WORK(&new_conn->task, pep_new_tunnel_connection);
+                schedule_work(&new_conn->task);
 
-            INIT_WORK(&new_conn->task, pep_new_tunnel_connection);
-            schedule_work(&new_conn->task);
-
-            return NF_ACCEPT;
+                consume_skb(skb);
+                return NF_STOLEN;
+            }
         }
     }
 
@@ -262,7 +281,6 @@ static void __exit exit_core(void)
 {
     struct pep_tunnel_work* iter;
     list_for_each_entry(iter, &pep_tunnel_list, list) {
-            
         list_del(&iter->list);
         sock_release(iter->lsock);
         sock_release(iter->rsock);
