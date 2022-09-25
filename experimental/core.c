@@ -23,6 +23,9 @@
 #include <net/sock.h>
 #include <net/ip.h>
 #include <net/tcp.h>
+#include <linux/netfilter.h>
+#include <linux/netfilter_ipv4.h>
+
 
 #include "pep_errors.h"
 
@@ -53,7 +56,30 @@ struct pep_tunnel_work {
 static struct pep_accept_work* conn;
 LIST_HEAD(pep_tunnel_list);
 
-void pep_tunnel_work_fn(struct work_struct* work); // FIXME 
+unsigned int inet_addr(char *str)
+{
+    int a,b,c,d;
+    char arr[4];
+    sscanf(str,"%d.%d.%d.%d",&a,&b,&c,&d);
+    arr[0] = a; arr[1] = b; arr[2] = c; arr[3] = d;
+    return *(unsigned int*)arr;
+}
+
+struct pep_connect_work {
+    struct work_struct task;
+    u16 sport;
+};
+
+void pep_tunnel_work_fn(struct work_struct* work)
+{
+    struct pep_tunnel_work* tunnel = container_of(work, struct pep_tunnel_work, task);
+
+    printk(KERN_INFO "[PEP] Tunnel running!\n");
+
+    sock_release(tunnel->lsock);
+    sock_release(tunnel->rsock);
+    atomic_set(&tunnel->run, 0);
+}
 
 /**
  * @brief Main work accepting new connections.
@@ -71,54 +97,42 @@ void pep_accept_work_fn(struct work_struct* work)
     int ret;
     size_t i;
     u16 sport;
-
-    /* Main loop running till module is closed. */
+    
     while(atomic_read(&conn->run))
     {
         ret = kernel_accept(server_sock, &client_sock, SOCK_NONBLOCK);
         if(ret < 0){
-            //printk(KERN_INFO "[PEP] Error accepting new connection.\n");
+            //printk(KERN_INFO "[PEP] pep_accept_work_fn: Error accepting new connection!.\n");
             continue;
         }
 
-        printk(KERN_INFO "[PEP] New client connection accepted.\n");
+        printk(KERN_INFO "[PEP] pep_accept_work_fn: New client connection accepted.\n");
 
         /* Extract source port to match correct connection. */
         inet = inet_sk(client_sock->sk);
         sport = ntohs(inet->inet_sport);
 
-        continue;
+        printk(KERN_INFO "[PEP] Port -> %d\n", sport);
 
-        /*list_for_each_entry(iter, &pep_tunnel_list, list) {
+        list_for_each_entry(iter, &pep_tunnel_list, list) {
             
+            printk(KERN_INFO "[PEP] Tunnel Port -> %d\n", iter->sport);
             if(iter->sport == sport){
                 iter->rsock = client_sock;
                 INIT_WORK(&iter->task, pep_tunnel_work_fn);
                 schedule_work(&iter->task);
                 break;
             }
-        }*/
+        }
 
-        //sock_release(client_sock);       
-    }
+        //sock_release(client_sock);   
+    }    
 }
 
-void pep_tunnel_work_fn(struct work_struct* work)
+static void pep_new_tunnel_connection(struct work_struct* work)
 {
-    struct pep_tunnel_work* tunnel = container_of(work, struct pep_tunnel_work, task);
+    struct pep_connect_work* conn = container_of(work, struct pep_connect_work, task);
 
-    sock_release(tunnel->lsock);
-    sock_release(tunnel->rsock);
-    atomic_set(&tunnel->run, 0);
-}
-
-static void pep_connect_callback(struct sock* sk)
-{
-
-}
-
-static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
-{
     struct socket* lsock;
     struct sock* sk;
     struct sockaddr_in laddr;
@@ -126,112 +140,74 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
     int ret;
     size_t i;
 
-    ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &lsock);
+    ret = sock_create_kern(&init_net, AF_INET, SOCK_STREAM, IPPROTO_TCP, &lsock);
     if(ret < 0) {
-        // we have a problem
+        printk(KERN_INFO "[PEP] pep_new_tunnel_connection: Error creating new kern sock!\n");
+        return;
     }
 
-    printk(KERN_INFO "[PEP] Created a new endpoint socket.\n");
-
-    //sk = lsock->sk;
-
-    /* Overwrite data_ready pointer so we can intercept a packet before accept. 
-    write_lock_bh(&sk->sk_callback_lock);
-    sk->sk_user_data = sk->sk_data_ready; // Save ready function pointer
-    sk->sk_data_ready = pep_connect_callback; // Overwrite ready pointer
-    write_unlock_bh(&sk->sk_callback_lock);*/
-
+    printk(KERN_INFO "[PEP] pep_new_tunnel_connection: Created a new endpoint socket.\n");
 
     laddr.sin_family = AF_INET;
-    laddr.sin_addr.s_addr = ip;
-    laddr.sin_port = (__force u16)htons(dport);
-    
-    printk(KERN_INFO "[PEP] Created endpoint sockdaddr_in.\n");
+    laddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    laddr.sin_port = (__force u16)htons(8182);
 
-    //ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
+    ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
     if(ret < 0) {
         // we have a problem
     }
-
-    printk(KERN_INFO "[PEP] Connection established to endpoint.\n");
-
-    return 0;
 
     tunnel = kmalloc(sizeof(struct pep_tunnel_work), GFP_KERNEL);
     tunnel->lsock = lsock;
     tunnel->rsock = NULL;
     tunnel->run = ((atomic_t) { (1) });
-    tunnel->sport = sport;
+    tunnel->sport = conn->sport;
     INIT_LIST_HEAD(&tunnel->list);
 
     list_add(&tunnel->list, &pep_tunnel_list);
 
-    return 0;
-}
-
-/**
- * @brief Intercepts all packets that are about to be accepted
- * by the server socket. Should connect to endpoint before forwarding packet.
- * 
- * @param sk struct sock for accessing latest skb.
- */
-static void pep_accept_callback(struct sock* sk)
-{
-    void (*ready)(struct sock *sk);
-    struct sk_buff* skb = NULL;
-    struct iphdr *ip_header;
-    struct tcphdr *tcp_header;
-    int ret;
-
-    //lock_sock(sk);
-
-    //printk(KERN_INFO "[PEP] Peeking SKB\n");
-    skb = skb_peek(&sk->sk_receive_queue);
-    if(skb == NULL)
-    {
-      goto out;
-    }
-
-    printk(KERN_INFO "[PEP] Packet intercepted!\n");
-
-    goto out;
-
-    ip_header = (struct iphdr *)ip_hdr(skb);
-    if(ip_header->protocol == IPPROTO_TCP)
-    {
-        tcp_header= (struct tcphdr *)tcp_hdr(skb);
-
-        /* IF packet is a syn packet */
-        if(tcp_header->syn == 1 && tcp_header->ack == 0 && tcp_header->rst == 0) {
-            /**
-             * Now, for the time being this will be a hardcoded connection to the server running on the same
-             * machine. 2130706433 = 127.0.0.1
-             */
-            printk(KERN_INFO "\t[PEP] Intercepted syn packet!\n");
-            //ret = pep_new_tunnel_connection(htonl(2130706433), 8182, tcp_header->dest);
-            if(ret < 0){
-                // we have a problem.
-            }
-            goto out;
-        }
-
-        /* Check syn packet with connection data? and connect to endpoint */
-        // CHECK BASED ON DATA SIZE?
-    }
-    
-out:
-
-    //release_sock(sk);
-
-    read_lock_bh(&sk->sk_callback_lock);
-    ready = sk->sk_user_data;
-    read_unlock_bh(&sk->sk_callback_lock);
-    
-    if (ready)
-        ready(sk);
-
+    printk(KERN_INFO "[PEP] pep_new_tunnel_connection: Connection established to endpoint.\n");
     return;
 }
+
+static unsigned int pep_nf_hook(void *priv, struct sk_buff *skb, const struct nf_hook_state *state)
+{
+    const struct iphdr *iph;
+    const struct tcphdr *tcph;
+    struct pep_connect_work* new_conn;
+    int ret;
+
+    if (!skb)
+        return NF_ACCEPT;
+
+    iph = ip_hdr(skb);
+    if (iph->protocol == IPPROTO_TCP) {
+        tcph = tcp_hdr(skb);
+        /* Check for packets with ONLY SYN flag set */
+        if (tcph->syn == 1 && tcph->ack == 0 && tcph->rst == 0 && tcph->dest == htons(8181) ) {
+            printk(KERN_INFO "[PEP] SYN FOR SERVER\n");
+
+
+            new_conn = kmalloc(sizeof(struct pep_connect_work), GFP_KERNEL);
+            new_conn->sport = tcph->source;
+
+            INIT_WORK(&new_conn->task, pep_new_tunnel_connection);
+            schedule_work(&new_conn->task);
+
+            return NF_ACCEPT;
+        }
+    }
+
+    return NF_ACCEPT;
+}
+static const struct nf_hook_ops pep_nf_hook_ops[] = {
+        {
+                .hook     = pep_nf_hook,
+                .pf       = NFPROTO_IPV4,
+                .hooknum  = NF_INET_PRE_ROUTING,
+                .priority = -500,
+        },
+};
 
 /**
  * @brief init funcion for kernel module
@@ -248,17 +224,11 @@ static int __init init_core(void)
 
     ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &sock);
     if(ret){
-        printk(KERN_INFO "[PEP] Error creating socket\n");
+        printk(KERN_INFO "[PEP] init_core: Error creating socket\n");
     }
 
     sk = sock->sk;
     sk->sk_reuse = 1;
-
-    /* Overwrite data_ready pointer so we can intercept a packet before accept. */
-    write_lock_bh(&sk->sk_callback_lock);
-    sk->sk_user_data = sk->sk_data_ready; // Save ready function pointer
-    sk->sk_data_ready = pep_accept_callback; // Overwrite ready pointer
-    write_unlock_bh(&sk->sk_callback_lock);
 
     /* pep server connection info */
     saddr.sin_family = AF_INET;
@@ -273,10 +243,14 @@ static int __init init_core(void)
     conn->sock = sock;
     conn->run = ((atomic_t) { (1) });
 
+    nf_register_net_hooks(&init_net, pep_nf_hook_ops, ARRAY_SIZE(pep_nf_hook_ops));
+
     INIT_WORK(&conn->task, pep_accept_work_fn);
     schedule_work(&conn->task);
+
+
     
-    printk(KERN_INFO "[PEP] Initilized!\n");
+    printk(KERN_INFO "[PEP] init_core: Initilized!\n");
     return 0;
 }
 
@@ -298,7 +272,7 @@ static void __exit exit_core(void)
     atomic_set(&conn->run, 0);
     sock_release(conn->sock);
     kfree(conn);
-    printk(KERN_INFO "[PEP] exited.\n");
+    printk(KERN_INFO "[PEP] exit_core: exited.\n");
 }
 
 module_init(init_core);
