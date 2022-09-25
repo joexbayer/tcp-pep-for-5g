@@ -75,9 +75,9 @@ void pep_accept_work_fn(struct work_struct* work)
     /* Main loop running till module is closed. */
     while(atomic_read(&conn->run))
     {
-        ret = kernel_accept(server_sock, &client_sock, 0);
+        ret = kernel_accept(server_sock, &client_sock, SOCK_NONBLOCK);
         if(ret < 0){
-            printk(KERN_INFO "[PEP] Error accepting new connection.\n");
+            //printk(KERN_INFO "[PEP] Error accepting new connection.\n");
             continue;
         }
 
@@ -87,7 +87,9 @@ void pep_accept_work_fn(struct work_struct* work)
         inet = inet_sk(client_sock->sk);
         sport = ntohs(inet->inet_sport);
 
-        list_for_each_entry(iter, &pep_tunnel_list, list) {
+        continue;
+
+        /*list_for_each_entry(iter, &pep_tunnel_list, list) {
             
             if(iter->sport == sport){
                 iter->rsock = client_sock;
@@ -95,7 +97,7 @@ void pep_accept_work_fn(struct work_struct* work)
                 schedule_work(&iter->task);
                 break;
             }
-        }
+        }*/
 
         //sock_release(client_sock);       
     }
@@ -129,7 +131,9 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
         // we have a problem
     }
 
-    sk = lsock->sk;
+    printk(KERN_INFO "[PEP] Created a new endpoint socket.\n");
+
+    //sk = lsock->sk;
 
     /* Overwrite data_ready pointer so we can intercept a packet before accept. 
     write_lock_bh(&sk->sk_callback_lock);
@@ -142,13 +146,17 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
     laddr.sin_addr.s_addr = ip;
     laddr.sin_port = (__force u16)htons(dport);
     
-    ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
+    printk(KERN_INFO "[PEP] Created endpoint sockdaddr_in.\n");
+
+    //ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
     if(ret < 0) {
         // we have a problem
     }
 
     printk(KERN_INFO "[PEP] Connection established to endpoint.\n");
-    
+
+    return 0;
+
     tunnel = kmalloc(sizeof(struct pep_tunnel_work), GFP_KERNEL);
     tunnel->lsock = lsock;
     tunnel->rsock = NULL;
@@ -175,7 +183,18 @@ static void pep_accept_callback(struct sock* sk)
     struct tcphdr *tcp_header;
     int ret;
 
+    //lock_sock(sk);
+
+    //printk(KERN_INFO "[PEP] Peeking SKB\n");
     skb = skb_peek(&sk->sk_receive_queue);
+    if(skb == NULL)
+    {
+      goto out;
+    }
+
+    printk(KERN_INFO "[PEP] Packet intercepted!\n");
+
+    goto out;
 
     ip_header = (struct iphdr *)ip_hdr(skb);
     if(ip_header->protocol == IPPROTO_TCP)
@@ -187,8 +206,9 @@ static void pep_accept_callback(struct sock* sk)
             /**
              * Now, for the time being this will be a hardcoded connection to the server running on the same
              * machine. 2130706433 = 127.0.0.1
-             */                         
-            ret = pep_new_tunnel_connection(htonl(2130706433), 8182, tcp_header->dest);
+             */
+            printk(KERN_INFO "\t[PEP] Intercepted syn packet!\n");
+            //ret = pep_new_tunnel_connection(htonl(2130706433), 8182, tcp_header->dest);
             if(ret < 0){
                 // we have a problem.
             }
@@ -200,6 +220,8 @@ static void pep_accept_callback(struct sock* sk)
     }
     
 out:
+
+    //release_sock(sk);
 
     read_lock_bh(&sk->sk_callback_lock);
     ready = sk->sk_user_data;

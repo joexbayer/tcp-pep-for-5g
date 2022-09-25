@@ -13,6 +13,7 @@ logs:
 
 install:
 	sudo insmod $(MODULE).ko
+	dmesg -wH
 
 uninstall:
 	sudo rmmod $(MODULE)
