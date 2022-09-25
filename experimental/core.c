@@ -40,7 +40,10 @@ struct pep_tunnel_work {
     struct list_head list;
 
     struct socket* lsock;
+    void (*lready)(struct sock *sk);
+
     struct socket* rsock;
+    void (*rready)(struct sock *sk);
 
     atomic_t run;
 
@@ -104,9 +107,15 @@ void pep_tunnel_work_fn(struct work_struct* work)
     atomic_set(&tunnel->run, 0);
 }
 
+static void pep_connect_callback(struct sock* sk)
+{
+
+}
+
 static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
 {
     struct socket* lsock;
+    struct sock* sk;
     struct sockaddr_in laddr;
     struct pep_tunnel_work* tunnel;
     int ret;
@@ -116,6 +125,15 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
     if(ret < 0) {
         // we have a problem
     }
+
+    sk = lsock->sk;
+
+    /* Overwrite data_ready pointer so we can intercept a packet before accept. 
+    write_lock_bh(&sk->sk_callback_lock);
+    sk->sk_user_data = sk->sk_data_ready; // Save ready function pointer
+    sk->sk_data_ready = pep_connect_callback; // Overwrite ready pointer
+    write_unlock_bh(&sk->sk_callback_lock);*/
+
 
     laddr.sin_family = AF_INET;
     laddr.sin_addr.s_addr = ip;
@@ -142,11 +160,11 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
 
 /**
  * @brief Intercepts all packets that are about to be accepted
- * but the server socket. Should connect to endpoint before forwarding packet.
+ * by the server socket. Should connect to endpoint before forwarding packet.
  * 
  * @param sk struct sock for accessing latest skb.
  */
-static void pre_accept_callback(struct sock* sk)
+static void pep_accept_callback(struct sock* sk)
 {
     void (*ready)(struct sock *sk);
     struct sk_buff* skb = NULL;
@@ -160,19 +178,25 @@ static void pre_accept_callback(struct sock* sk)
     if(ip_header->protocol == IPPROTO_TCP)
     {
         tcp_header= (struct tcphdr *)tcp_hdr(skb);
+
+        /* IF packet is a syn packet */
+        if(tcp_header->syn == 1 && tcp_header->ack == 0 && tcp_header->rst == 0) {
+            /**
+             * Now, for the time being this will be a hardcoded connection to the server running on the same
+             * machine. 2130706433 = 127.0.0.1
+             */                         
+            ret = pep_new_tunnel_connection(htonl(2130706433), 8182, tcp_header->dest);
+            if(ret < 0){
+                // we have a problem.
+            }
+            goto out;
+        }
+
         /* Check syn packet with connection data? and connect to endpoint */
         // CHECK BASED ON DATA SIZE?
-
-        /**
-         * Now, for the time being this will be a hardcoded connection to the server running on the same
-         * machine. 2130706433 = 127.0.0.1
-         */                         
-        ret = pep_new_tunnel_connection(htonl(2130706433), 8182, tcp_header->dest);
-        if(ret < 0){
-            // we have a problem.
-        }
     }
     
+out:
 
     read_lock_bh(&sk->sk_callback_lock);
     ready = sk->sk_user_data;
@@ -208,7 +232,7 @@ static int __init init_core(void)
     /* Overwrite data_ready pointer so we can intercept a packet before accept. */
     write_lock_bh(&sk->sk_callback_lock);
     sk->sk_user_data = sk->sk_data_ready; // Save ready function pointer
-    sk->sk_data_ready = pre_accept_callback; // Overwrite ready pointer
+    sk->sk_data_ready = pep_accept_callback; // Overwrite ready pointer
     write_unlock_bh(&sk->sk_callback_lock);
 
     /* pep server connection info */
