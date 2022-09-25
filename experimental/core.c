@@ -47,11 +47,13 @@ struct pep_tunnel_work {
 
     atomic_t run;
 
-    unsigned short sport;
+    u16 sport;
 };
 
 static struct pep_accept_work* conn;
 LIST_HEAD(pep_tunnel_list);
+
+void pep_tunnel_work_fn(struct work_struct* work); // FIXME 
 
 /**
  * @brief Main work accepting new connections.
@@ -68,6 +70,7 @@ void pep_accept_work_fn(struct work_struct* work)
     struct inet_sock *inet;
     int ret;
     size_t i;
+    u16 sport;
 
     /* Main loop running till module is closed. */
     while(atomic_read(&conn->run))
@@ -82,14 +85,14 @@ void pep_accept_work_fn(struct work_struct* work)
 
         /* Extract source port to match correct connection. */
         inet = inet_sk(client_sock->sk);
-        u16 sport = ntohs(inet->inet_sport);
+        sport = ntohs(inet->inet_sport);
 
         list_for_each_entry(iter, &pep_tunnel_list, list) {
             
             if(iter->sport == sport){
                 iter->rsock = client_sock;
-                INIT_WORK(&tunnels[i]->task, pep_tunnel_work_fn);
-                schedule_work(&tunnels[i]->task);
+                INIT_WORK(&iter->task, pep_tunnel_work_fn);
+                schedule_work(&iter->task);
                 break;
             }
         }
@@ -149,7 +152,7 @@ static int pep_new_tunnel_connection(u32 ip, u16 dport, u16 sport)
     tunnel = kmalloc(sizeof(struct pep_tunnel_work), GFP_KERNEL);
     tunnel->lsock = lsock;
     tunnel->rsock = NULL;
-    tunnel->run = ATOMIC_INIT(1);
+    tunnel->run = ((atomic_t) { (1) });
     tunnel->sport = sport;
     INIT_LIST_HEAD(&tunnel->list);
 
@@ -246,7 +249,7 @@ static int __init init_core(void)
 
     conn = kzalloc(sizeof(struct pep_accept_work), GFP_ATOMIC);
     conn->sock = sock;
-    conn->run = ATOMIC_INIT(1);
+    conn->run = ((atomic_t) { (1) });
 
     INIT_WORK(&conn->task, pep_accept_work_fn);
     schedule_work(&conn->task);
@@ -261,6 +264,7 @@ static int __init init_core(void)
  */
 static void __exit exit_core(void)
 {
+    struct pep_tunnel_work* iter;
     list_for_each_entry(iter, &pep_tunnel_list, list) {
             
         list_del(&iter->list);
