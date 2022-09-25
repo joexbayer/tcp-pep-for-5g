@@ -40,10 +40,10 @@ struct pep_tunnel_work {
     struct list_head list;
 
     struct socket* lsock;
-    void (*lready)(struct sock *sk);
+    //void (*lready)(struct sock *sk);
 
     struct socket* rsock;
-    void (*rready)(struct sock *sk);
+    //void (*rready)(struct sock *sk);
 
     atomic_t run;
 
