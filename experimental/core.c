@@ -74,15 +74,15 @@ void pep_tunnel_work_fn(struct work_struct* work)
 
     printk(KERN_INFO "[PEP] Tunnel running!\n");
 
-    while (1)
+    while (atomic_read(&tunnel->run))
     {
         /* code */
     }
     
-
+    /* Each tunnel is responsible for cleaning up itself. */
     sock_release(tunnel->lsock);
     sock_release(tunnel->rsock);
-    atomic_set(&tunnel->run, 0);
+    kfree(tunnel);
 }
 
 static struct pep_tunnel_work* pep_find_work(u16 sport)
@@ -280,11 +280,11 @@ static int __init init_core(void)
 static void __exit exit_core(void)
 {
     struct pep_tunnel_work* iter;
+exit_loop:
     list_for_each_entry(iter, &pep_tunnel_list, list) {
         list_del(&iter->list);
-        sock_release(iter->lsock);
-        sock_release(iter->rsock);
-        kfree(iter);
+        atomic_set(&iter->run, 0);
+        goto exit_loop;
     }
 
     atomic_set(&conn->run, 0);
