@@ -140,7 +140,10 @@ void pep_accept_work_fn(struct work_struct* work)
         INIT_WORK(&iter->task, pep_tunnel_work_fn);
         schedule_work(&iter->task);
         printk(KERN_INFO "[PEP] Tunnel is scheduled!\n");
-    }    
+    }
+
+    sock_release(server_sock);
+    kfree(conn);
 }
 
 static void pep_new_tunnel_connection(struct work_struct* work)
@@ -166,7 +169,8 @@ static void pep_new_tunnel_connection(struct work_struct* work)
 
     ret = kernel_connect(lsock, (struct sockaddr*)&laddr, sizeof(laddr), 0);
     if(ret < 0) {
-        // we have a problem
+        printk(KERN_INFO "[PEP] pep_new_tunnel_connection: Unable to connect to endpoint!\n");
+        goto drop;
     }
 
     tunnel = kmalloc(sizeof(struct pep_tunnel_work), GFP_KERNEL);
@@ -181,6 +185,11 @@ static void pep_new_tunnel_connection(struct work_struct* work)
     netif_receive_skb(conn->skb);
 
     printk(KERN_INFO "[PEP] pep_new_tunnel_connection: Connection established to endpoint.\n");
+    return;
+
+drop:
+    kfree_skb(conn->skb);
+    sock_release(lsock);
     return;
 }
 
@@ -220,12 +229,12 @@ static unsigned int pep_nf_hook(void *priv, struct sk_buff *skb, const struct nf
     return NF_ACCEPT;
 }
 static const struct nf_hook_ops pep_nf_hook_ops[] = {
-        {
-                .hook     = pep_nf_hook,
-                .pf       = NFPROTO_IPV4,
-                .hooknum  = NF_INET_PRE_ROUTING,
-                .priority = -500,
-        },
+    {
+        .hook     = pep_nf_hook,
+        .pf       = NFPROTO_IPV4,
+        .hooknum  = NF_INET_PRE_ROUTING,
+        .priority = -500,
+    },
 };
 
 /**
@@ -266,9 +275,7 @@ static int __init init_core(void)
 
     INIT_WORK(&conn->task, pep_accept_work_fn);
     schedule_work(&conn->task);
-
-
-    
+ 
     printk(KERN_INFO "[PEP] init_core: Initilized!\n");
     return 0;
 }
@@ -288,8 +295,6 @@ exit_loop:
     }
 
     atomic_set(&conn->run, 0);
-    sock_release(conn->sock);
-    kfree(conn);
     printk(KERN_INFO "[PEP] exit_core: exited.\n");
 }
 
