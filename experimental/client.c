@@ -23,6 +23,11 @@ int main(int argc, char * argv[])
     }       
 
     printf("Connected.\n");
+
+    char* test = "PEP test string sent from client!!";
+
+    send(server, test, strlen(test), 0);
+
     close(server);
     return 0;
 }

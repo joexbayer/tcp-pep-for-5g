@@ -32,6 +32,8 @@
 #define DRIVER_AUTHOR "Joe Bayer <joeba@uio.no>" 
 #define DRIVER_DESC "Kernel module for a Interactive Traffic PEP"
 
+#define MAX_BUF_SIZE     1451 * 7
+
 struct pep_accept_work {
     struct work_struct task;
     struct socket* sock;
@@ -51,7 +53,47 @@ struct pep_tunnel_work {
 };
 
 static struct pep_accept_work* conn;
+struct workqueue_struct * my_workqueue;
 LIST_HEAD(pep_tunnel_list);
+
+int pep_tcp_receive(struct socket *sock)
+{
+    struct msghdr msg = {
+        .msg_flags = MSG_DONTWAIT,
+    };
+
+    struct kvec vec;
+    int rc = 0;
+
+    /* allocate buffer memory */
+    unsigned char *buffer = kzalloc(100, GFP_KERNEL);
+    if (!buffer) {
+        return -ENOMEM;
+    }
+
+    vec.iov_base = buffer;
+    vec.iov_len  = 100;
+
+read_again:
+    printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
+    rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
+    if (rc > 0)
+    {
+        printk(KERN_INFO "[PEP] From client: %s\n", buffer);
+        return rc;
+    }
+
+    printk(KERN_INFO "[PEP] From client: no data!\n");
+
+    if(rc == -EAGAIN || rc == -ERESTARTSYS)
+    {
+        goto read_again;
+    }
+
+    kfree(buffer);
+
+    return rc;
+}
 
 unsigned int inet_addr(char *str)
 {
@@ -71,13 +113,13 @@ struct pep_connect_work {
 void pep_tunnel_work_fn(struct work_struct* work)
 {
     struct pep_tunnel_work* tunnel = container_of(work, struct pep_tunnel_work, task);
-
+    int ret = 0;
     printk(KERN_INFO "[PEP] Tunnel running!\n");
 
-    while (atomic_read(&tunnel->run))
-    {
-        /* code */
-    }
+
+    ret = pep_tcp_receive(tunnel->rsock);
+
+    printk(KERN_INFO "[PEP] pep_tunnel_work_fn: received %d!\n", ret);
     
     /* Each tunnel is responsible for cleaning up itself. */
     sock_release(tunnel->lsock);
@@ -139,7 +181,10 @@ void pep_accept_work_fn(struct work_struct* work)
         iter->rsock = client_sock;
         INIT_WORK(&iter->task, pep_tunnel_work_fn);
         schedule_work(&iter->task);
+        //queue_work(my_workqueue, &iter->task);
+
         printk(KERN_INFO "[PEP] Tunnel is scheduled!\n");
+        break;
     }
 
     sock_release(server_sock);
@@ -183,6 +228,7 @@ static void pep_new_tunnel_connection(struct work_struct* work)
     list_add(&tunnel->list, &pep_tunnel_list);
 
     netif_receive_skb(conn->skb);
+    my_workqueue = create_workqueue("my_workqueue");
 
     printk(KERN_INFO "[PEP] pep_new_tunnel_connection: Connection established to endpoint.\n");
     return;
