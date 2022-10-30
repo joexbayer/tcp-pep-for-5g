@@ -118,8 +118,13 @@ void pep_tunnel_work_fn(struct work_struct* work)
 
 
     ret = pep_tcp_receive(tunnel->rsock);
-
     printk(KERN_INFO "[PEP] pep_tunnel_work_fn: received %d!\n", ret);
+    
+    ret = pep_tcp_receive(tunnel->rsock);
+    while(ret <= 0)
+        ret = pep_tcp_receive(tunnel->rsock);
+    printk(KERN_INFO "[PEP] pep_tunnel_work_fn: received %d!\n", ret);
+
     
     /* Each tunnel is responsible for cleaning up itself. */
     sock_release(tunnel->lsock);

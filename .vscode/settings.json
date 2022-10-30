@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "library.h": "c",
+        "tlv.h": "c"
+    }
+}

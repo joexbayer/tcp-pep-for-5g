@@ -1,8 +1,11 @@
-obj-m += coretfo.o
+obj-m += pepmodule.o
+pepmodule-objs := pepcore.o ../lib/src/tlv.o
 PWD := $(CURDIR)
-MODULE = coretfo
+MODULE = pepmodule
 
-all: opt
+ccflags-y += -DCONFIG_KMODULE -I../lib/include
+
+all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 clean:
@@ -17,6 +20,3 @@ install:
 
 uninstall:
 	sudo rmmod $(MODULE)
-
-opt:
-	sudo sysctl -w net.ipv4.tcp_fastopen=3
