@@ -18,6 +18,7 @@ custom_open old_open;
 static asmlinkage long my_open(const char __user *filename, int flags, umode_t mode)
 {
     pr_info("%s\n",__func__);
+    printk("[SYSINTER] Open called!\n");
         return old_open(filename, flags, mode);
 }
 
@@ -58,6 +59,7 @@ static int __init hello_init(void)
     disable_page_protection(); 
     sys_call_table[__NR_open] = (sys_call_ptr_t)my_open;
     disable_page_protection();
+    printk("[SYSINTER] init done\n");
 
     return 0;
 }
@@ -66,7 +68,8 @@ static void __exit hello_exit(void)
 {
     disable_page_protection();
     sys_call_table[__NR_open] = (sys_call_ptr_t)old_open;
-    enable_page_protection(); 
+    enable_page_protection();
+    printk("[SYSCALL] exit done\n");
 }
 
 module_init(hello_init);
