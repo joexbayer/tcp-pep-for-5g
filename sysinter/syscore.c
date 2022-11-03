@@ -1,76 +1,72 @@
-#include <linux/module.h>
-#include <linux/kallsyms.h>
+#include <linux/init.h>          // module_{init,exit}()
+#include <linux/module.h>        // THIS_MODULE, MODULE_VERSION, ...
+#include <linux/kernel.h>        // printk(), pr_*()
+#include <asm/special_insns.h>   // {read,write}_cr0()
+#include <asm/processor-flags.h> // X86_CR0_WP
+#include <asm/unistd.h>          // __NR_*
 
-MODULE_LICENSE("GPL");
-char *sym_name = "sys_call_table";
+#ifdef pr_fmt
+#undef pr_fmt
+#endif
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
-#include <linux/kprobes.h>
-static struct kprobe kp = {
-    .symbol_name = "kallsyms_lookup_name"
-};
+typedef long (*sys_call_ptr_t)(const struct pt_regs *);
 
-typedef asmlinkage long (*sys_call_ptr_t)(const struct pt_regs *);
-static sys_call_ptr_t *sys_call_table;
-typedef asmlinkage long (*custom_open) (const char __user *filename, int flags, umode_t mode);
+static sys_call_ptr_t *real_sys_call_table;
+static sys_call_ptr_t original_read;
 
-custom_open old_open;
+static unsigned long sys_call_table_addr;
+module_param(sys_call_table_addr, ulong, 0);
+MODULE_PARM_DESC(sys_call_table_addr, "Address of sys_call_table");
 
-static asmlinkage long my_open(const char __user *filename, int flags, umode_t mode)
+static void write_cr0_unsafe(unsigned long val)
 {
-    pr_info("%s\n",__func__);
-    printk("[SYSINTER] Open called!\n");
-        return old_open(filename, flags, mode);
+    asm volatile("mov %0,%%cr0": "+r" (val) : : "memory");
 }
 
-static void disable_page_protection(void) {
-
-    unsigned long value;
-    asm volatile("mov %%cr0,%0" : "=r" (value));
-    if (value & 0x00010000) {
-            value &= ~0x00010000;
-            asm volatile("mov %0,%%cr0": : "r" (value));
-    }
-}
-
-
-static void enable_page_protection(void) {
-
-    unsigned long value;
-    asm volatile("mov %%cr0,%0" : "=r" (value));
-    if (!(value & 0x00010000)) {
-            value |= 0x00010000;
-            asm volatile("mov %0,%%cr0": : "r" (value));
-    }
-}
-
-
-static int __init hello_init(void)
+static long myread(const struct pt_regs *regs)
 {
-    typedef unsigned long (*kallsyms_lookup_name_t)(const char *name);
-    kallsyms_lookup_name_t kallsyms_lookup_name;
-    register_kprobe(&kp);
-    kallsyms_lookup_name = (kallsyms_lookup_name_t) kp.addr;
-    unregister_kprobe(&kp);
+    pr_info("read(%ld, 0x%lx, %lx)\n", regs->di, regs->si, regs->dx);
+    return original_read(regs);
+}
 
+static int __init modinit(void)
+{
+    unsigned long old_cr0;
 
-    sys_call_table = (sys_call_ptr_t *)kallsyms_lookup_name(sym_name);
-    old_open = (custom_open)sys_call_table[__NR_open];
-    
-    disable_page_protection(); 
-    sys_call_table[__NR_open] = (sys_call_ptr_t)my_open;
-    disable_page_protection();
-    printk("[SYSINTER] init done\n");
+    real_sys_call_table = (typeof(real_sys_call_table))sys_call_table_addr;
 
+    pr_info("init\n");
+
+    old_cr0 = read_cr0();
+    write_cr0_unsafe(old_cr0 & ~(X86_CR0_WP));
+
+    original_read = real_sys_call_table[__NR_read];
+    real_sys_call_table[__NR_read] = myread;
+
+    write_cr0_unsafe(old_cr0);
+    pr_info("init done\n");
     return 0;
 }
 
-static void __exit hello_exit(void)
+static void __exit modexit(void)
 {
-    disable_page_protection();
-    sys_call_table[__NR_open] = (sys_call_ptr_t)old_open;
-    enable_page_protection();
-    printk("[SYSCALL] exit done\n");
+    unsigned long old_cr0;
+
+    pr_info("exit\n");
+    old_cr0 = read_cr0();
+    write_cr0_unsafe(old_cr0 & ~(X86_CR0_WP));
+
+    real_sys_call_table[__NR_read] = original_read;
+
+    write_cr0_unsafe(old_cr0);
+    pr_info("goodbye\n");
 }
 
-module_init(hello_init);
-module_exit(hello_exit);
+module_init(modinit);
+module_exit(modexit);
+
+MODULE_VERSION("0.1");
+MODULE_DESCRIPTION("Syscall intercepting loadable kernel module.");
+MODULE_AUTHOR("Joe Bayer");
+MODULE_LICENSE("GPL");

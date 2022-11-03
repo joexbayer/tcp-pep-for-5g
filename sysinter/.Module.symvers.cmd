@@ -1,1 +1,0 @@
-cmd_/home/joebayer/Documents/uio-master-joeba/sysinter/Module.symvers := sed 's/ko$$/o/' /home/joebayer/Documents/uio-master-joeba/sysinter/modules.order | scripts/mod/modpost  -a  -o /home/joebayer/Documents/uio-master-joeba/sysinter/Module.symvers -e -i Module.symvers  -N -T -
