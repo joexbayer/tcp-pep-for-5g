@@ -11,5 +11,5 @@ install:
 clean:
 	make -C lib/ clean
 	make -C kmodule/ clean
-	rm client
-	rm server
+	rm -f client
+	rm -f server

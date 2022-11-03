@@ -1,15 +1,15 @@
 #ifndef CONFIG_KMODULE
 
-    #include "tlv.h"
-    #include <stdio.h>
-    #include <string.h>
-    #define tlvprintf(f_, ...) printf((f_), ##__VA_ARGS__)
+#include "tlv.h"
+#include <stdio.h>
+#include <string.h>
+#define tlvprintf(f_, ...) printf((f_), ##__VA_ARGS__)
 
 #else
-    #include "../include/tlv.h"
-    #include <linux/module.h>
-    #include <linux/string.h>
-    #define tlvprintf(f_, ...) printk((f_), ##__VA_ARGS__)
+#include "../include/tlv.h"
+#include <linux/module.h>
+#include <linux/string.h>
+#define tlvprintf(f_, ...) printk((f_), ##__VA_ARGS__)
 
 #endif
 
@@ -41,13 +41,10 @@ int tlv_print(void* buffer)
     tlvprintf("********** TLV **********\n");
     tlvprintf("Header: \n");
     tlvprintf("\tVersion %d\n\tOptions: %d\n\tMagic 0x%x\n", header->version, header->len, header->magic);  
-
-    for (i = 0; i < header->len; i++)
+  
+    tlv_for_each(option, buffer)
     {
-        option += sizeof(struct tlv);
-
         tlvprintf("TLV Option\n");
-        option = (struct tlv*) tlv;
         tlvprintf("\tType %x\n\tLength: %d\n\tvalue %d\n", option->type, option->length, option->value);
         if(option->optional != 0)
             tlvprintf("\tOptional: %d\n", option->optional);
@@ -69,9 +66,6 @@ int tlv_add_option(void* buffer, unsigned char type, unsigned short value, unsig
 
     if(header->magic != __TLV_MAGIC)
         tlv_add_header(buffer);
-    
-    if(header->magic != __TLV_MAGIC)
-        return -1;
     
     tlv += sizeof(struct __tlv_header);
     tlv += sizeof(struct tlv)*header->len;

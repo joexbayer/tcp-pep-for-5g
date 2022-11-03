@@ -22,5 +22,6 @@ clean:
 	rm -f $(OBJ) $(OUTPUT) src/tlv.o
 
 tests:
+	make -C ./test/ clean
 	make -C ./test/
 	make -C ./test/ run-tests

@@ -12,7 +12,7 @@ extern "C"
 
 enum __tlv_types {
     TLV_INFO = 0x1,    // Info TLV
-    TLV_CONNECT = 0xA,    // Connect TLV
+    TLV_CONNECT = 0xA,    // Connect TLV          
     TLV_EXT_TCP = 0x14,   // Extended TCP header
     TLV_SUPP_EXT = 0x15,   // Supported TCP extension
     TLV_COOKIE = 0x16,   // Cookie TLV
@@ -31,11 +31,11 @@ struct tlv {
     unsigned short value;
     unsigned int optional;
 };
-static struct tlv* __next_tlv(void* buffer);
 
-#define for_each_tlv(option, buffer) for ((option) = buffer+(sizeof(struct __tlv_header)); \
-                                          (((unsigned long)option)-((unsigned long)buffer)) <= (((struct __tlv_header*)buffer)->len*(sizeof(struct tlv))) && ((struct __tlv_header*)buffer)->magic == __TLV_MAGIC; \
-                                            option = __next_tlv(option))
+#define tlv_for_each(option, buffer) \
+    for ((option) = buffer+(sizeof(struct __tlv_header)); \
+        (((unsigned long)option)-((unsigned long)buffer)) <= (((struct __tlv_header*)buffer)->len*(sizeof(struct tlv))) && ((struct __tlv_header*)buffer)->magic == __TLV_MAGIC; \
+         (option) = (struct tlv*) (((char*)option)+ sizeof(struct tlv)))
 
 #define tlv_size(options) (sizeof(struct __tlv_header)+(options*sizeof(struct tlv)))
 
