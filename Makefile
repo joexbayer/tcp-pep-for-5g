@@ -1,8 +1,16 @@
-all: clean
+.PHONY: lib module 
+
+all: clean lib module tools
+
+lib:
 	make -C lib/
+
+module:
 	make -C kmodule/
+
+tools:
 	gcc client.c lib/pep.so -o client
-	gcc server.c -o server
+	gcc server.c -o serv
 
 install:
 	make -C kmodule install
