@@ -39,6 +39,7 @@ struct tlv {
 
 #define tlv_size(options) (sizeof(struct __tlv_header)+(options*sizeof(struct tlv)))
 
+int inline tlv_validate(void* buffer);
 int tlv_add_header(void* buffer);
 int tlv_print(void* buffer);
 int tlv_add_option(void* buffer, unsigned char type, unsigned short value, unsigned int optional);

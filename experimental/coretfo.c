@@ -37,7 +37,7 @@ struct __tlv_header {
 };
 
 struct __tlv {
-    unsigned char type;
+  unsigned char type;
     unsigned char length;
     unsigned short value;
     unsigned int optional;

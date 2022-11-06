@@ -13,6 +13,11 @@
 
 #endif
 
+int inline tlv_valide(void* buffer)
+{
+  return ((struct __tlv_header*)buffer)->magic == __TLV_MAGIC;
+}
+
 int tlv_add_header(void* buffer)
 {
     char* tlv = (char*) buffer;
