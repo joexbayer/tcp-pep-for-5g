@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-#define LIBRARY_VERSION     "0.0.0"
+#define LIBRARY_VERSION     "0.0.1"
 #define __TLV_VERSION 1
 #define __TLV_MAGIC 0xbeef
 
@@ -32,6 +32,10 @@ struct tlv {
     unsigned int optional;
 };
 
+/**
+ * Macro for simple iterating over a TLV buffer.
+ * Only needs a struct tlv* to iterate and a valid TLV buffer.
+ */
 #define tlv_for_each(option, buffer) \
     for ((option) = buffer+(sizeof(struct __tlv_header)); \
         (((unsigned long)option)-((unsigned long)buffer)) <= (((struct __tlv_header*)buffer)->len*(sizeof(struct tlv))) && ((struct __tlv_header*)buffer)->magic == __TLV_MAGIC; \
@@ -39,6 +43,7 @@ struct tlv {
 
 #define tlv_size(options) (sizeof(struct __tlv_header)+(options*sizeof(struct tlv)))
 
+struct tlv* tlv_get_option(int type, void* buffer);
 int inline tlv_validate(void* buffer);
 int tlv_add_header(void* buffer);
 int tlv_print(void* buffer);
