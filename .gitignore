@@ -18,4 +18,7 @@
 **/kmodule/*.mod.o
 **/kmodule/*.o
 
+**/lib/src/*.mod
+**/lib/src/.*.cmd
+
 *.o
