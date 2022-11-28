@@ -18,6 +18,18 @@
 **/kmodule/*.mod.o
 **/kmodule/*.o
 
+**/sysinter/.*
+**/sysinter/*.mod
+**/sysinter/*.mod.c
+**/sysinter/*.mod
+**/sysinter/modules.order
+**/sysinter/Module.symvers
+**/sysinter/*.ko
+**/sysinter/*.mod.o
+**/sysinter/*.o
+
+**/lib/test/*.bin
+
 **/lib/src/*.mod
 **/lib/src/.*.cmd
 

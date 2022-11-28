@@ -30,7 +30,7 @@
  * @param buffer 
  * @return int 
  */
-int inline tlv_validate(void* buffer)
+int tlv_validate(void* buffer)
 {
   return ((struct __tlv_header*)buffer)->magic == __TLV_MAGIC;
 }
@@ -45,13 +45,13 @@ int inline tlv_validate(void* buffer)
  */
 struct tlv* tlv_get_option(int type, void* buffer)
 {
-    char* buffer = (char*) buffer;
+    char* tlv = (char*) buffer;
     struct tlv* option;
 
-    if(!tlv_validate(buffer))
+    if(!tlv_validate(tlv))
         return NULL;
 
-    tlv_for_each(option, buffer)
+    tlv_for_each(option, tlv)
         if(option->type == type)
             return option;
 
@@ -89,7 +89,6 @@ int tlv_print(void* buffer)
     char* tlv = (char*) buffer;
     struct __tlv_header* header = (struct __tlv_header*) tlv;
     struct tlv* option;
-    int i = 0;
     tlv += sizeof(struct __tlv_header);
 
     if(!tlv_validate(buffer))
@@ -98,7 +97,7 @@ int tlv_print(void* buffer)
     tlvprintf("********** TLV **********\n");
     tlvprintf("Header: \n");
     tlvprintf("\tVersion %d\n\tOptions: %d\n\tMagic 0x%x\n", header->version, header->len, header->magic);  
-  
+    
     tlv_for_each(option, buffer)
     {
         tlvprintf("TLV Option\n");
