@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{uiomasterfp}
+\usepackage{url}
 \author{Joe Bayer}
 \title{TCP PEP}
 \subtitle{Extension of a TCP Performance Enhancing Proxy to
@@ -16,20 +17,26 @@ Support Non-interactive Applications}
 
 \chapter{Background}
 
+\section{5G}
+Future of wireless communication.\\
+Millimeter frequency bands.
+Highly fluctuating bandwidth with wireless networks, especially with mmWave.\\
+
+
 \section{TCP/IP}
 
-Acknowledgments are a integral part of TCP. ...
-Used for both updating the sliding window and congestion control. SACKS, cumulative acks.
+Interactive traffic uses TCP? {source}
+End to end argument.
+TCP handshake..
+\subsection{Congestion control}
+Congestion controller domains (different congestion controllers.)~\cite{rfc5783}.
 
-\section{Congestion Control}
-
-\section{mmWave}
-Highly fluctuating bandwidth with wireless networks.
 \section{PEPs}
-
+More logic inside the networks.
 \section{0 RTT}
 
 0RTT Transport Converter ~\cite{rfc8803}.
+
 
 
 \chapter{Implementation | Design}
