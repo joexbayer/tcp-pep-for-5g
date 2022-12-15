@@ -113,7 +113,9 @@ static void pep_listen_data_ready(struct sock* sk)
         read_lock_bh(&sk->sk_callback_lock);
         ready = sk->sk_user_data;
 
-        printk(KERN_INFO "[PEP]: Packet received!\n");
+        struct sk_buff* skb = skb_peek(&sk->sk_receive_queue);
+
+        printk(KERN_INFO "[PEP]: Packet received! %d\n", skb == NULL);
 
         /* Queue accept work */
         if(sk->sk_state == TCP_LISTEN){
