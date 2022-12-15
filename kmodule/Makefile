@@ -10,11 +10,13 @@ all:
 
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	rm -f ../lib/src/.tlv.o.cmd
 
 logs:
 	sudo dmesg | grep "PEP"
 
 install:
+	sudo sysctl -w net.ipv4.tcp_fastopen=3
 	sudo insmod $(MODULE).ko
 	sudo dmesg -wH
 

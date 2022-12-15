@@ -10,7 +10,7 @@ module:
 
 tools:
 	gcc client.c lib/pep.so -o client
-	gcc server.c -o serv
+	gcc server.c -o server
 
 install:
 	make -C kmodule install
