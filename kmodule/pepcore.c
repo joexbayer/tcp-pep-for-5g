@@ -45,8 +45,8 @@ struct pep_tunnel {
 
 struct pep_state {
                 struct socket* server_socket;
-};
-struct pep_state server_state;
+} server_state;
+
 LIST_HEAD(pep_tunnels);
 struct work_struct task;
 
@@ -113,7 +113,9 @@ static void pep_listen_data_ready(struct sock* sk)
         read_lock_bh(&sk->sk_callback_lock);
         ready = sk->sk_user_data;
 
-        printk(KERN_INFO "[PEP]: Packet received!\n");
+        struct sk_buff* skb = skb_peek(&sk->sk_receive_queue);
+
+        printk(KERN_INFO "[PEP]: Packet received! %d\n", skb == NULL);
 
         /* Queue accept work */
         if(sk->sk_state == TCP_LISTEN){
@@ -181,8 +183,8 @@ static inline int pep_socket_options(struct socket* sock)
         qlenval = KERNEL_SOCKPTR(&qlen);
         delayval = KERNEL_SOCKPTR(&val);
 
-        sock_setsockopt(sock, SOL_TCP, TCP_FASTOPEN, qlenval, sizeof(qlen));
-        sock_setsockopt(sock, SOL_TCP, TCP_NODELAY, delayval, sizeof(val));
+        sock->ops->setsockopt(sock, SOL_TCP, TCP_FASTOPEN, qlenval, sizeof(qlen));
+        sock->ops->setsockopt(sock, SOL_TCP, TCP_NODELAY, delayval, sizeof(val));
 
         return 0;
 }
