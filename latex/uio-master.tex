@@ -9,7 +9,7 @@
 Support Non-interactive Applications}
 
 \begin{document}
-\uiomasterfp[program={Informatikk: programmering og systemarkitektur}, supervisor={Michael Welzl}]
+\uiomasterfp[program={Informatics: Programming and System Architecture}, supervisor={Michael Welzl}]
 
 \tableofcontents
 
@@ -18,28 +18,42 @@ Support Non-interactive Applications}
 \chapter{Background}
 
 \section{5G}
-Future of wireless communication.\\
-Millimeter frequency bands.\\
-Highly fluctuating bandwidth with wireless networks, especially with mmWave.\\
+\subsection{Future of wireless communication.}
+... highly increased bandwidth ... using Millimeter frequency bands ... at the cost of Highly fluctuating bandwidth with wireless networks, especially with mmWave.\\Line of sight blocking.
+
+\subsection{Buffer bloat. (Buffering)}
+Large buffers, create buffer bloat, which is detrimental for latency sensitive applications. Preferred to drop packets and keep buffers small to avoid timing sensitive packets such as SYN.
 
 Most focus has been on latency sensitive applications. This thesis will explore non interactive applications where latency is not that critical and more buffering is acceptable and desirable.
 
+\subsection{non interactive applications}
+Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths.
 
 \section{TCP/IP}
 
 Interactive traffic uses TCP? {source}
 End to end argument.
-TCP handshake..
-\subsection{Congestion control}
-Congestion controller domains (different congestion controllers.)~\cite{rfc5783}.
+TCP handshake, reduce RTTs but using TCP Fast Open.
+\subsection{TCP Fast Open}
+Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
+TCP Fast Open allows data being exchanged during the handshake. 
 
-\section{PEPs}
-More logic inside the networks.
-\section{0 RTT}
-
+\subsection{0 RTT}
+Allow "syn fowarding" with TCP Fast Open creating a 0RTT increase when connecting through a proxy.
 0RTT Transport Converter ~\cite{rfc8803}.
 
+\subsection{Congestion control}
+Congestion controller domains (different congestion controllers.)~\cite{rfc5783}.
+Wireless versus Wired networks, different congestion controllers needs.
 
+\section{PEPs}
+More logic inside the networks. Domain splitting and 0RTT. {cite Kristjon Ciko?}
+
+\section{Kernel Modules}
+LKM (Loadable Kernel Modules), "program" running inside the Linux kernel.
+Userspace vs Kernel.
+\subsection{System Calls}
+Reduce over head from userspace -> kernel system calls.
 
 \chapter{Implementation | Design}
 \chapter{Evaluation}

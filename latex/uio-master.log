@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  11 DEC 2022 12:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  30 DEC 2022 15:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -213,24 +213,19 @@ Chapter 1.
 
 ]
 Chapter 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--24
-
- []
-
 [3
 
-]
+] [4]
 Chapter 3.
-[4
-
-]
-Chapter 4.
 [5
 
 ]
+Chapter 4.
+[6
+
+]
 Chapter 5.
-(uio-master.bbl [6
+(uio-master.bbl [7
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
@@ -239,13 +234,13 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-[7
+[8
 
 ] (uio-master.aux) ) 
 Here is how much of TeX's memory you used:
  2517 strings out of 478338
  46775 string characters out of 2834776
- 332467 words of memory out of 3000000
+ 334469 words of memory out of 3000000
  20904 multiletter control sequences out of 15000+600000
  495769 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -263,9 +258,9 @@ c/cm-super/sfrm1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/cm-super/sftt1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/
 MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/Joe Bayer/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (9 pages, 234768 bytes).
+Output written on uio-master.pdf (10 pages, 245060 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
+ 88 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

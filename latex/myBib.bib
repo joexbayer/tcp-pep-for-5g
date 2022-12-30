@@ -28,6 +28,23 @@
   note = {\url{https://www.rfc-editor.org/info/rfc5783}},
 }
 
+@inproceedings{10.1145/2079296.2079317,
+author = {Radhakrishnan, Sivasankar and Cheng, Yuchung and Chu, Jerry and Jain, Arvind and Raghavan, Barath},
+title = {TCP Fast Open},
+year = {2011},
+isbn = {9781450310413},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2079296.2079317},
+doi = {10.1145/2079296.2079317},
+abstract = {Today's web services are dominated by TCP flows so short that they terminate a few round trips after handshaking; this handshake is a significant source of latency for such flows. In this paper we describe the design, implementation, and deployment of the TCP Fast Open protocol, a new mechanism that enables data exchange during TCP's initial handshake. In doing so, TCP Fast Open decreases application network latency by one full round-trip time, decreasing the delay experienced by such short TCP transfers.We address the security issues inherent in allowing data exchange during the three-way handshake, which we mitigate using a security token that verifies IP address ownership. We detail other fall-back defense mechanisms and address issues we faced with middleboxes, backwards compatibility for existing network stacks, and incremental deployment. Based on traffic analysis and network emulation, we show that TCP Fast Open would decrease HTTP transaction network latency by 15% and whole-page load time over 10% on average, and in some cases up to 40%.},
+booktitle = {Proceedings of the Seventh COnference on Emerging Networking EXperiments and Technologies},
+articleno = {21},
+numpages = {12},
+location = {Tokyo, Japan},
+series = {CoNEXT '11}
+}
+
 @article{10.1145/52325.52356,
 author = {Jacobson, V.},
 title = {Congestion Avoidance and Control},
