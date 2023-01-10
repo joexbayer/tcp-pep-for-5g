@@ -6,6 +6,12 @@ Olivier Bonaventure, Mohamed Boucadair, Sri Gundavelli, SungHoon Seo, and
 \newblock {0-RTT TCP Convert Protocol}.
 \newblock RFC 8803, July 2020.
 
+\bibitem{Eddy_2022}
+Wesley Eddy.
+\newblock Transmission control protocol (tcp).
+\newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
+  2022.
+
 \bibitem{rfc5783}
 M.~Welzl and W.~Eddy.
 \newblock Congestion control in the rfc series.

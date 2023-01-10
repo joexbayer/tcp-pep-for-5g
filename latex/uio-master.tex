@@ -42,22 +42,23 @@ Minneapolis and Chicago reported a high handover frequency
 due to frequent disruptions in mmWave connectivity''(cite A First Look at Commercial 5G Performance on Smartphones)
 
 \subsection{Buffer bloat. (Buffering)}
-Large buffers, create buffer bloat, which is detrimental for latency sensitive applications. Preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets.
+Large buffers, create buffer bloat, which is detrimental for latency sensitive applications. Generally its preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets.
 
-Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable.
+Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.
 
 \subsection{Non-Interactive Applications}
 Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths. Being able to have packets buffered for when the bandwidth is high will decrease delay times. (need citation or prove it myself?) 
 
-\section{TCP/IP}
-
+\section{TCP/IP (Move to top?}
+Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgments (ACKs) and re-transmissions. ~\cite{Eddy_2022}
 Interactive traffic uses TCP? {source}
-End to end argument.
-TCP handshake, reduce RTTs but using TCP Fast Open.
+End to end argument. Bad?
+TCP handshake, reduce RTTs but using TCP Fast Open. Mostly short flows (cite)
 \\
 End to End congestion controller not very suited for highly fluctuating bandwidth.(cite David Hayes?)
 
 \subsection{TCP Fast Open}
+A TCP connection can be configured with optional header extensions called TCP Options.
 Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
 TCP Fast Open allows data being exchanged during the handshake. 
 
@@ -72,6 +73,7 @@ But domain split congestion control is not able to adapt fast enough to large ch
 
 
 \section{PEPs}
+A performance enhancing proxy (PEP) is a connection splitting proxy designed to increase performance of applications using it. Already in use! (satelites, cite). Inherently increases performance? (cite)
 More logic inside the networks. Domain splitting and 0RTT. {cite Kristjon Ciko?}
 
 \section{Kernel Modules}
