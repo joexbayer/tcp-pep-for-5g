@@ -279,14 +279,6 @@ static unsigned int pep_nf_hook(void *priv, struct sk_buff *skb, const struct nf
 
     return NF_ACCEPT;
 }
-static const struct nf_hook_ops pep_nf_hook_ops[] = {
-    {
-        .hook     = pep_nf_hook,
-        .pf       = NFPROTO_IPV4,
-        .hooknum  = NF_INET_PRE_ROUTING,
-        .priority = -500,
-    },
-};
 
 /**
  * @brief init funcion for kernel module
