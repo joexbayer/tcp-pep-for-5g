@@ -1,6 +1,15 @@
 
 #include <pep/nf.h>
 
+
+/**
+ * @brief For utilizing TCP fastopen we want to potentially? read the packet from the syn. 
+ * Thereby creating a connection to the desired endpoint before the client connection is even fully established.
+ * 
+ * This might be unecessary and simply creating the endpoint connection after the client is established works faster. 
+ * @param skb 
+ * @return u32 
+ */
 u32 pep_syn_pkt(struct sk_buff* skb)
 {
         int len = skb->data_len;
