@@ -109,7 +109,7 @@ int pep_tcp_receive(struct socket *sock, u8 buffer, u32 size)
 	vec.iov_base = buffer;
 	vec.iov_len  = size;
 
-read_again:
+pep_tcp_receive_read_again:
 	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
 	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
 	if (rc > 0)
@@ -122,7 +122,7 @@ read_again:
 
 	if(rc == -EAGAIN || rc == -ERESTARTSYS)
 	{
-		goto read_again;
+		goto pep_tcp_receive_read_again;
 	}
 
 	return rc;
@@ -130,10 +130,10 @@ read_again:
 
 void pep_server_accept_work(struct work_struct *work)
 {
-        int rc = 1;
+        int rc = 0;
         struct socket* client = NULL;
 
-        while(rc > 0) {
+        while(rc == 0) {
                 rc = kernel_accept(server_state.server_socket, &client, O_NONBLOCK);
                 if(rc < 0)
                         return;
