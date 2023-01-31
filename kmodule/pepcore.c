@@ -14,7 +14,7 @@
 #include <linux/sched.h>
 #include <linux/workqueue.h>
 
-#include "include/common.h"
+#include <pep/common.h>
 
 #include <pep/server.h>
 #include <pep/errors.h>
@@ -33,6 +33,8 @@ struct pep_connection {
 struct pep_tunnel {
         struct pep_connection client;
         struct pep_connection endpoint;
+
+        struct work_struct* forward_work;
 
         int state;
 };
@@ -57,7 +59,29 @@ inline struct pep_tunnel* pep_new_tunnel()
         return (struct pep_tunnel*) kzalloc(sizeof(struct pep_tunnel), GFP_KERNEL);
 }
 
-struct socket* pep_connect_endpoint(u32 ip, u16 port)
+void pep_client_receive_work(struct work_struct *work)
+{
+        struct pep_tunnel* tun = container_of(work, struct pep_tunnel, forward_work);
+}
+
+void pep_endpoint_receive_work(struct work_struct *work)
+{
+        struct pep_tunnel* tun = container_of(work, struct pep_tunnel, forward_work);
+}
+
+static void pep_endpoint_data_ready(struct sock* sk)
+{
+
+        sock_def_readable(sk);
+}
+
+static void pep_client_data_ready(struct sock* sk)
+{
+        sock_def_readable(sk);
+}
+
+
+struct socket* pep_endpoint_connect(u32 ip, u16 port)
 {
         struct socket* sock = NULL;
         struct sock* sk = NULL;
@@ -67,17 +91,17 @@ struct socket* pep_connect_endpoint(u32 ip, u16 port)
 
         ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &sock);
         if(ret){
-                printk(KERN_INFO "[PEP] pep_connect_endpoint: Error creating socket\n");
+                printk(KERN_INFO "[PEP] pep_endpoint_connect: Error creating socket\n");
                 return NULL;
         }
 
         sk = sock->sk;
         sk->sk_reuse = 1;
-        
+
         /* use our own data ready function */
         write_lock_bh(&sk->sk_callback_lock);
         sk->sk_user_data = sk->sk_data_ready;
-        //sk->sk_data_ready = pep_listen_data_ready;
+        sk->sk_data_ready = &pep_endpoint_data_ready;
         write_unlock_bh(&sk->sk_callback_lock);
 
         /* Add tcp options? */
@@ -90,7 +114,7 @@ struct socket* pep_connect_endpoint(u32 ip, u16 port)
         ret = kernel_connect(sock, (struct sockaddr*)&daddr, addr_len, 0);
 	if (rc < 0) {
 		sock_release(sock);
-		printk(KERN_INFO "[PEP] pep_connect_endpoint: failed to connect to endpoint.\n");
+		printk(KERN_INFO "[PEP] pep_endpoint_connect: failed to connect to endpoint.\n");
                 return NULL;
 	}
 
@@ -128,9 +152,10 @@ pep_tcp_receive_read_again:
 	return rc;
 }
 
-void pep_server_accept_work(struct work_struct *work)
+void (struct work_struct *work)
 {
-        int rc = 0;
+        int rc = 1;
+        int ret;
         struct socket* client = NULL;
 
         while(rc == 0) {
@@ -138,6 +163,7 @@ void pep_server_accept_work(struct work_struct *work)
                 if(rc < 0)
                         return;
 
+                printk(KERN_INFO "[PEP] pep_server_accept_work: Accepted new connection!\n");
                 /* allocate buffer memory */
                 unsigned char *buffer = kzalloc(1500, GFP_KERNEL);
                 if (!buffer) {
@@ -145,8 +171,10 @@ void pep_server_accept_work(struct work_struct *work)
                         return;
                 }
 
-		pep_tcp_receive(client, buffer, 1500);
-                printk(KERN_INFO "[PEP]: Accepted new connection!\n");
+		ret = pep_tcp_receive(client, buffer, 1500);
+                if(ret <= 0)
+                        return;
+                        
                 
                 /* TODO: Create new tunnel with client and endpoint */
 
@@ -229,7 +257,7 @@ static int __init init_core(void)
 
         INIT_WORK(&server_state.accept_work, pep_server_accept_work);
 
-        ppe_nf_register();
+        //ppe_nf_register();
 
         printk("[PEP] Server has started.\n");
 

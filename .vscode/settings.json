@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "library.h": "c",
-        "tlv.h": "c"
-    }
+        "tlv.h": "c",
+        "module.h": "c",
+        "common.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

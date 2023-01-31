@@ -4,6 +4,7 @@
 #include <linux/types.h>
 #include <linux/net.h>
 #include <linux/in.h>
+#include <linux/sock.h>
 #include <net/sock.h>
 #include <net/ip.h>
 #include <net/tcp.h>
