@@ -18,12 +18,14 @@ Support Non-interactive Applications}
 \chapter{Background}
 
 \section{Future of wireless communication.}
-\subsection{5G}
 The future of wireless communication has seen a lot of improvements such as...
-... highly increased bandwidth ... using Millimeter frequency bands ... but at the cost of Highly fluctuating bandwidth with wireless networks, especially with mmWave.\\
+... highly increased bandwidth ... using Millimeter frequency bands ... but at the cost of Highly fluctuating bandwidth with wireless networks, especially with higher frequencies.\\ 
 
-\subsection{mmWave}s
-What is mmWave? Why? How?
+\subsection{5G Millimeter Wave}
+The emergence of 5G Millimeter wave communications has opened the doors for low latency networks with multiple gigabit bandwidth. This is achieved by using higher millimeter wave (mmWave) frequencies in the range of 30GHz to 300GHz, which as a lot of benefits. ~\cite{Agrawal_Sharma_2016} A wider spectrum of frequencies to choose from and higher data transfer are just some of the many benefits mmWave provides. But along side the benefits, mmWave has also introduced a lot of new challenges.
+
+mmWave utilizes higher frequencies can give increased bandwidth.
+
 A big problem with mmWave communication is Line of sight blocking (signal path blocking). This is were ...
 Even the human body can create enough blockage to drastically reduce the bandwidth. 
 
@@ -58,7 +60,7 @@ TCP handshake, reduce RTTs but using TCP Fast Open. Mostly short flows (cite)
 End to End congestion controller not very suited for highly fluctuating bandwidth.(cite David Hayes?)
 
 \subsection{TCP Fast Open}
-A TCP connection can be configured with optional header extensions called TCP Options.
+A TCP connection can be configured with optional header extensions called TCP Options. 
 Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
 TCP Fast Open allows data being exchanged during the handshake. 
 
