@@ -14,11 +14,11 @@
 #include <linux/sched.h>
 #include <linux/workqueue.h>
 
-#include <pep/common.h>
+#include "include/pep/common.h"
 
-#include <pep/server.h>
-#include <pep/errors.h>
-#include <pep/nf.h>
+#include "include/pep/server.h"
+#include "include/pep/errors.h"
+#include "include/pep/nf.h"
 
 #define DRIVER_AUTHOR "Joe Bayer <joeba@uio.no>" 
 #define DRIVER_DESC "Kernel module for a non-interactive Traffic PEP"
@@ -31,19 +31,20 @@ struct pep_connection {
 };
 
 struct pep_tunnel {
-        struct pep_connection client;
-        struct pep_connection endpoint;
+        struct pep_connection* client;
+        struct pep_connection* endpoint;
 
         struct work_struct* forward_work;
 
         int state;
 };
 
-struct pep_server server_state;
+struct pep_state server_state;
 
 /* Linked list over all tunnels */
 LIST_HEAD(pep_tunnels);
 
+struct pep_tunnel* pep_new_tunnel();
 
 struct pep_connection* pep_new_connection(struct socket* sock, unsigned int ip, unsigned short port)
 {
@@ -54,12 +55,12 @@ struct pep_connection* pep_new_connection(struct socket* sock, unsigned int ip, 
         return conn; 
 }
 
-inline struct pep_tunnel* pep_new_tunnel()
+struct pep_tunnel* pep_new_tunnel()
 {
         return (struct pep_tunnel*) kzalloc(sizeof(struct pep_tunnel), GFP_KERNEL);
 }
 
-int pep_tcp_receive(struct socket *sock, u8 buffer, u32 size)
+int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 {
 	struct msghdr msg = {
 		.msg_flags = MSG_DONTWAIT,
@@ -90,7 +91,7 @@ pep_tcp_receive_read_again:
 	return rc;
 }
 
-int pep_tcp_send(struct socket *sock, u8 buffer, u32 size)
+int pep_tcp_send(struct socket *sock, u8* buffer, u32 size)
 {
         struct msghdr msg = {
                 .msg_flags = MSG_DONTWAIT | MSG_NOSIGNAL,
@@ -132,9 +133,9 @@ void pep_endpoint_receive_work(struct work_struct *work)
                 return;
         }
 
-        ret = pep_tcp_receive(tun->endpoint, buffer, 1500);
-        likely(ret > 0){
-                ret = pep_tcp_send(tun->client, buffer, ret);
+        ret = pep_tcp_receive(tun->endpoint->sock, buffer, 1500);
+        if(ret > 0){
+                ret = pep_tcp_send(tun->client->sock, buffer, ret);
         }
 
 }
@@ -182,7 +183,7 @@ struct socket* pep_endpoint_connect(u32 ip, u16 port)
         daddr.sin_port = (__force u16)port;
 
         ret = kernel_connect(sock, (struct sockaddr*)&daddr, addr_len, 0);
-	if (rc < 0) {
+	if (ret < 0) {
 		sock_release(sock);
 		printk(KERN_INFO "[PEP] pep_endpoint_connect: failed to connect to endpoint.\n");
                 return NULL;
@@ -233,12 +234,12 @@ void pep_server_accept_work(struct work_struct *work)
                  */
 
                 /* Setup client and tunnel.. */
-                client_sk = sock->sk;
+                client_sk = client->sk;
                 client_sk->sk_reuse = 1;
 
                 /* use our own data ready function */
                 write_lock_bh(&client_sk->sk_callback_lock);
-                client_sk->sk_user_data = sk->sk_data_ready;
+                client_sk->sk_user_data = client_sk->sk_data_ready;
                 client_sk->sk_data_ready = &pep_client_data_ready;
                 write_unlock_bh(&client_sk->sk_callback_lock);
                         
@@ -259,7 +260,7 @@ static void pep_listen_data_ready(struct sock* sk)
 
         /* Queue accept work */
         if(sk->sk_state == TCP_LISTEN){
-                queue_work(server_state->accpet_wq, &server_state->accept_work)
+                queue_work(server_state.accept_wq, server_state.accept_work)
                 printk(KERN_INFO "[PEP]: START work\n");  
         }
 

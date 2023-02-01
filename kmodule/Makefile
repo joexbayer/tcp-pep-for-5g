@@ -3,7 +3,7 @@ pepmodule-objs := pepcore.o ../lib/src/tlv.o
 PWD := $(CURDIR)
 MODULE = pepmodule
 
-ccflags-y += -DCONFIG_KMODULE -I../lib/ -I/include/
+ccflags-y += -DCONFIG_KMODULE -I../lib/ -I./include/
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

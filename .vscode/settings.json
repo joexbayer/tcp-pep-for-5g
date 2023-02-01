@@ -3,7 +3,11 @@
         "library.h": "c",
         "tlv.h": "c",
         "module.h": "c",
-        "common.h": "c"
+        "common.h": "c",
+        "errors.h": "c",
+        "nf.h": "c",
+        "sched.h": "c",
+        "server.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
