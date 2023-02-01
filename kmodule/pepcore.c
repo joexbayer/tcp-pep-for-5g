@@ -250,25 +250,22 @@ void pep_server_accept_work(struct work_struct *work)
 
 static void pep_listen_data_ready(struct sock* sk)
 {
-        void (*ready)(struct sock *sk);
-
+        
+        struct sk_buff* skb = skb_peek(&sk->sk_receive_queue);
 
         read_lock_bh(&sk->sk_callback_lock);
-        ready = sk->sk_user_data;
-
-        struct sk_buff* skb = skb_peek(&sk->sk_receive_queue);
 
         printk(KERN_INFO "[PEP]: Packet received! %d\n", skb == NULL);
 
         /* Queue accept work */
         if(sk->sk_state == TCP_LISTEN){
-                queue_work(server->accpet_wq, &con->accept_work)
+                queue_work(server_state->accpet_wq, &server_state->accept_work)
                 printk(KERN_INFO "[PEP]: START work\n");  
         }
 
         read_unlock_bh(&sk->sk_callback_lock);
 
-        ready(sk);
+        sock_def_readable(sk);
 }
 
 static inline int pep_setsockopt(struct socket* sock, int option, int value)

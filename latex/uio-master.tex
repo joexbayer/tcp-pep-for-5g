@@ -46,6 +46,8 @@ due to frequent disruptions in mmWave connectivity''(cite A First Look at Commer
 \subsection{Buffer bloat. (Buffering)}
 Large buffers, create buffer bloat, which is detrimental for latency sensitive applications. Generally its preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets.
 
+{https://lwn.net/Articles/507065/}
+
 Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.
 
 \subsection{Non-Interactive Applications}
