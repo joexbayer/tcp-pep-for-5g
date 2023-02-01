@@ -34,7 +34,7 @@ struct pep_tunnel {
         struct pep_connection* client;
         struct pep_connection* endpoint;
 
-        struct work_struct* forward_work;
+        struct work_struct forward_work;
 
         int state;
 };
@@ -260,7 +260,7 @@ static void pep_listen_data_ready(struct sock* sk)
 
         /* Queue accept work */
         if(sk->sk_state == TCP_LISTEN){
-                queue_work(server_state.accept_wq, server_state.accept_work)
+                queue_work(server_state.accept_wq, &server_state.accept_work)
                 printk(KERN_INFO "[PEP]: START work\n");  
         }
 
