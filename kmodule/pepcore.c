@@ -41,10 +41,11 @@ struct pep_tunnel {
 
 struct pep_state server_state;
 
+
+void (*default_data_ready)(struct sock *sk);
+
 /* Linked list over all tunnels */
 LIST_HEAD(pep_tunnels);
-
-struct pep_tunnel* pep_new_tunnel();
 
 struct pep_connection* pep_new_connection(struct socket* sock, unsigned int ip, unsigned short port)
 {
@@ -55,7 +56,7 @@ struct pep_connection* pep_new_connection(struct socket* sock, unsigned int ip, 
         return conn; 
 }
 
-struct pep_tunnel* pep_new_tunnel()
+struct pep_tunnel* pep_new_tunnel(void)
 {
         return (struct pep_tunnel*) kzalloc(sizeof(struct pep_tunnel), GFP_KERNEL);
 }
@@ -143,12 +144,12 @@ void pep_endpoint_receive_work(struct work_struct *work)
 static void pep_endpoint_data_ready(struct sock* sk)
 {
 
-        sock_def_readable(sk);
+        default_data_ready(sk);
 }
 
 static void pep_client_data_ready(struct sock* sk)
 {
-        sock_def_readable(sk);
+        default_data_ready(sk);
 }
 
 
@@ -260,13 +261,13 @@ static void pep_listen_data_ready(struct sock* sk)
 
         /* Queue accept work */
         if(sk->sk_state == TCP_LISTEN){
-                queue_work(server_state.accept_wq, &server_state.accept_work)
+                queue_work(server_state.accept_wq, &server_state.accept_work);
                 printk(KERN_INFO "[PEP]: START work\n");  
         }
 
         read_unlock_bh(&sk->sk_callback_lock);
 
-        sock_def_readable(sk);
+        default_data_ready(sk);
 }
 
 static inline int pep_setsockopt(struct socket* sock, int option, int value)
@@ -297,6 +298,7 @@ static int __init init_core(void)
         
         /* use our own data ready function */
         write_lock_bh(&sk->sk_callback_lock);
+        default_data_ready = sk->sk_data_ready;
         sk->sk_user_data = sk->sk_data_ready;
         sk->sk_data_ready = pep_listen_data_ready;
         write_unlock_bh(&sk->sk_callback_lock);
@@ -318,7 +320,7 @@ static int __init init_core(void)
         server_state.forward_c2e_wq = alloc_workqueue("c2e_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
         server_state.forward_e2c_wq = alloc_workqueue("e2c_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
 
-        INIT_WORK(&server_state.accept_work, pep_server_accept_work);
+        INIT_WORK(&server_state.accept_work, &pep_server_accept_work);
 
         //ppe_nf_register();
 
