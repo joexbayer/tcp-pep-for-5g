@@ -19,14 +19,12 @@ Support Non-interactive Applications}
 
 \section{Future of wireless communication.}
 The future of wireless communication has seen a lot of improvements such as...
-... highly increased bandwidth ... using Millimeter frequency bands ... but at the cost of Highly fluctuating bandwidth with wireless networks, especially with higher frequencies.\\ 
+... highly increased bandwidth ... using Millimetre frequency bands ... but at the cost of Highly fluctuating bandwidth with wireless networks, especially with higher frequencies.\\ 
 
-\subsection{5G Millimeter Wave}
-The emergence of 5G Millimeter wave communications has opened the doors for low latency networks with multiple gigabit bandwidth. This is achieved by using higher millimeter wave (mmWave) frequencies in the range of 30GHz to 300GHz, which as a lot of benefits. ~\cite{Agrawal_Sharma_2016} A wider spectrum of frequencies to choose from and higher data transfer are just some of the many benefits mmWave provides. But along side the benefits, mmWave has also introduced a lot of new challenges.
+\subsection{5G Millimetre Wave}
+The emergence of 5G Millimeter wave communications has opened the doors for low latency networks with multiple gigabit bandwidth. This is achieved by using higher millimetre wave (mmWave) frequencies in the range of 30GHz to 300GHz, which as a lot of benefits. ~\cite{Agrawal_Sharma_2016} A wider spectrum of frequencies to choose from and higher data transfer are just some of the many benefits mmWave provides. But along side the benefits, mmWave has also introduced a lot of new challenges.\\\\
 
-mmWave utilizes higher frequencies can give increased bandwidth.
-
-A big problem with mmWave communication is Line of sight blocking (signal path blocking). This is were ...
+A big problem with millimetre wave communication is signal path blocking also called "Line of sight blocking" CITE. This is were ...
 Even the human body can create enough blockage to drastically reduce the bandwidth. 
 
 [Figure from mmwave paper showing bandwith fluctuations.]
@@ -44,9 +42,7 @@ Minneapolis and Chicago reported a high handover frequency
 due to frequent disruptions in mmWave connectivity''(cite A First Look at Commercial 5G Performance on Smartphones)
 
 \subsection{Buffer bloat. (Buffering)}
-Large buffers, create buffer bloat, which is detrimental for latency sensitive applications. Generally its preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets.
-
-{https://lwn.net/Articles/507065/}
+The buffer bloat problem occurs when the systems between the endpoints buffer so many packets that the latency drastically increases and the reliability of the network as a whole goes down.{https://lwn.net/Articles/507065/} The (AD HOC) crude but simple solution was to just decrease all buffer sizes. Although this works in most cases, its far from a optimal solution. The increased latency is detrimental for interactive (latency sensitive) applications. Generally its preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets.\\\\
 
 Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.
 
@@ -54,6 +50,7 @@ Most focus has been on (helping? Supporting?) latency sensitive applications lik
 Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths. Being able to have packets buffered for when the bandwidth is high will decrease delay times. (need citation or prove it myself?) 
 
 \section{TCP/IP (Move to top?}
+(Get inspired by intro of tcp transport converter)
 Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgments (ACKs) and re-transmissions. ~\cite{Eddy_2022}
 Interactive traffic uses TCP? {source}
 End to end argument. Bad?
@@ -82,7 +79,7 @@ More logic inside the networks. Domain splitting and 0RTT. {cite Kristjon Ciko?}
 
 \section{Kernel Modules}
 LKM (Loadable Kernel Modules), "program" running inside the Linux kernel.
-Userspace vs Kernel.
+Userspace vs Kernel. Reduce system call overhead.
 \subsection{System Calls}
 Reduce over head from userspace -> kernel system calls.
 

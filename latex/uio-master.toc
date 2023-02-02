@@ -1,12 +1,12 @@
 \contentsline {chapter}{\numberline {1}Intro}{2}{}%
 \contentsline {chapter}{\numberline {2}Background}{3}{}%
 \contentsline {section}{\numberline {2.1}Future of wireless communication.}{3}{}%
-\contentsline {subsection}{\numberline {2.1.1}5G Millimeter Wave}{3}{}%
+\contentsline {subsection}{\numberline {2.1.1}5G Millimetre Wave}{3}{}%
 \contentsline {subsection}{\numberline {2.1.2}Buffer bloat. (Buffering)}{4}{}%
 \contentsline {subsection}{\numberline {2.1.3}Non-Interactive Applications}{4}{}%
 \contentsline {section}{\numberline {2.2}TCP/IP (Move to top?}{4}{}%
-\contentsline {subsection}{\numberline {2.2.1}TCP Fast Open}{4}{}%
-\contentsline {subsection}{\numberline {2.2.2}0 RTT}{4}{}%
+\contentsline {subsection}{\numberline {2.2.1}TCP Fast Open}{5}{}%
+\contentsline {subsection}{\numberline {2.2.2}0 RTT}{5}{}%
 \contentsline {subsection}{\numberline {2.2.3}Congestion control}{5}{}%
 \contentsline {section}{\numberline {2.3}PEPs}{5}{}%
 \contentsline {section}{\numberline {2.4}Kernel Modules}{5}{}%
