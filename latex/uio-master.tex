@@ -68,6 +68,8 @@ Allow "syn fowarding" with TCP Fast Open creating a 0RTT increase when connectin
 0RTT Transport Converter ~\cite{rfc8803}.
 
 \subsection{Congestion control}
+What is congestion controll? SHORT INTRO
+Different algorithms (QUBIC, RENO, VEGAS, BBR).
 Congestion controller domains (different congestion controllers.)~\cite{rfc5783}.
 Wireless versus Wired networks, different congestion controllers needs.
 But domain split congestion control is not able to adapt fast enough to large changes in bandwidth. (cite David?)
@@ -84,6 +86,25 @@ Userspace vs Kernel. Reduce system call overhead.
 Reduce over head from userspace -> kernel system calls.
 
 \chapter{Implementation | Design}
+
+{Table of design decisions based on different PEP implementations compared to ours.}
+{0RTT, Transparent, Using TLV, Special ACKS, connection splitting.}\\
+\begin{tabular}{ |p{4cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
+ \hline
+ \multicolumn{5}{|c|}{Country List} \\
+ \hline
+ Implementation& 0Rtt &Connection Splitting &Special ACKs &Transparent\\
+ \hline
+ Afghanistan   & AF    &AFG&   004 & x\\
+ Aland Islands&   AX  & ALA   &248 & x\\
+ Albania &AL & ALB&  008 & x\\
+ Algeria    &DZ & DZA&  012& x \\
+ American Samoa&   AS  & ASM&016& x\\
+ Andorra& AD  & AND   &020& x\\
+ Angola& AO  & AGO&024& x\\
+ \hline
+\end{tabular}
+
 \chapter{Evaluation}
 \chapter{Conclusion}
 
