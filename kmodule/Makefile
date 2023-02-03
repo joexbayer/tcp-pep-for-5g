@@ -1,9 +1,9 @@
 obj-m += pepmodule.o
-pepmodule-objs := pepcore.o ../lib/src/tlv.o
+pepmodule-objs := pepcore.o ../lib/src/tlv.o tcp.o 
 PWD := $(CURDIR)
 MODULE = pepmodule
 
-ccflags-y += -DCONFIG_KMODULE -I../lib/ -I./include/
+ccflags-y += -DCONFIG_KMODULE -I$(src)/include/ -I$(src)/../lib/include/
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

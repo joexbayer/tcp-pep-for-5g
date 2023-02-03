@@ -11,6 +11,6 @@
 #include <linux/netfilter.h>
 #include <linux/netfilter_ipv4.h>   
 
-#include "../../../lib/include/tlv.h"
+#include <tlv.h>
 
 #endif /* C7C875A3_F654_4F90_A02F_1138DEFED801 */
