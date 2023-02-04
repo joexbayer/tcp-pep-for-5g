@@ -1,5 +1,5 @@
 obj-m += pepmodule.o
-pepmodule-objs := pepcore.o ../lib/src/tlv.o tcp.o 
+pepmodule-objs := pepcore.o ../lib/src/tlv.o tcp.o endpoint.o client.o pepserver.o common.o
 PWD := $(CURDIR)
 MODULE = pepmodule
 
