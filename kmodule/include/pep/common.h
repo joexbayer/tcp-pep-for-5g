@@ -13,6 +13,8 @@
 
 #include <linux/workqueue.h>
 
+#include <pep/server.h>
+
 #include <tlv.h>
 
 #define PEP_MAX_TCP_BUFFER_SIZE 1500
@@ -24,6 +26,8 @@ struct pep_connection {
 };
 
 struct pep_tunnel {
+        unsigned int id;
+
         struct pep_connection client;
         struct pep_connection endpoint;
 
@@ -31,6 +35,8 @@ struct pep_tunnel {
         struct work_struct e2c;
 
         struct list_head list;
+
+        struct pep_state* server;
 
         int state;
 };

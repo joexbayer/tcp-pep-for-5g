@@ -46,6 +46,10 @@ void pep_server_accept_work(struct work_struct *work)
 				if(ret <= 0)
 						return;
 				
+				printk(KERN_INFO "[PEP] pep_server_accept_work: Reached end of first checkpoint. \n");
+				sock_release(client);
+				return;
+				
 				/* Validate that the first packet sent has a valid tlv header. */
 				if(!tlv_validate(buffer)){
 						printk(KERN_INFO "[PEP] pep_server_accept_work: TLV validate error. \n");
@@ -55,8 +59,8 @@ void pep_server_accept_work(struct work_struct *work)
 
 				/* Get connect tlv options from tlv buffer */
 				tlv = tlv_get_option(TLV_CONNECT, buffer);
-				if(tlv == NULL || tlv->length == 6){
-						printk(KERN_INFO "[PEP] pep_server_accept_work: no CONNECT tlv option. \n");
+				if(tlv == NULL || tlv->length != 6){
+						printk(KERN_INFO "[PEP] pep_server_accept_work: invalid tlv option. \n");
 						sock_release(client);
 						return; 
 				}
@@ -73,6 +77,7 @@ void pep_server_accept_work(struct work_struct *work)
 				tunnel->client.sock = client;
 				tunnel->endpoint.sock = endpoint;
 				tunnel->state = 0;
+				tunnel->server = server;
 				INIT_WORK(&tunnel->c2e, &pep_client_receive_work);
 				INIT_WORK(&tunnel->e2c, &pep_endpoint_receive_work);
 
@@ -82,6 +87,10 @@ void pep_server_accept_work(struct work_struct *work)
 				
 				/* Add tunnel to linked list of all pep tunnels. */
 				list_add(&tunnel->list, &server->tunnels);
+				tunnel->id = server->total_tunnels;
+				server->total_tunnels++;
+
+				printk(KERN_INFO "[PEP] pep_server_accept_work: New tunnel %d was created.\n", tunnel->id);
 				/* Done? */
 				kfree(buffer);
 
@@ -92,6 +101,7 @@ void pep_server_accept_work(struct work_struct *work)
 
 void pep_listen_data_ready(struct sock* sk)
 {
+		printk(KERN_INFO "[PEP] pep_listen_data_ready: New connection request incomming!\n");
 		struct pep_state* server;
 		struct sk_buff* skb = skb_peek(&sk->sk_receive_queue);
 
@@ -99,12 +109,9 @@ void pep_listen_data_ready(struct sock* sk)
 
 		server = sk->sk_user_data;
 
-		printk(KERN_INFO "[PEP]: Packet received! %d\n", skb == NULL);
-
 		/* Queue accept work */
 		if(sk->sk_state == TCP_LISTEN){
 				queue_work(server->accept_wq, &server->accept_work);
-				printk(KERN_INFO "[PEP]: START work\n");  
 		}
 
 		read_unlock_bh(&sk->sk_callback_lock);
@@ -112,7 +119,14 @@ void pep_listen_data_ready(struct sock* sk)
 		default_data_ready(sk);
 }
 
-void pep_server_init(struct pep_state* server, u16 port)
+void pep_server_cleanup(struct pep_state* server)
+{
+	/* Destroy workqueues and sockets*/
+
+	/* cleanup all tunnels */
+}
+
+int pep_server_init(struct pep_state* server, u16 port)
 {
 		struct socket* sock = NULL;
 		struct sock* sk = NULL;
@@ -123,7 +137,7 @@ void pep_server_init(struct pep_state* server, u16 port)
 		ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &sock);
 		if(ret){
 				printk(KERN_INFO "[PEP] init_core: Error creating socket\n");
-				return;
+				return -EPEP_GENERIC;
 		}
 
 		sk = sock->sk;
@@ -133,7 +147,7 @@ void pep_server_init(struct pep_state* server, u16 port)
 		write_lock_bh(&sk->sk_callback_lock);
 		default_data_ready = sk->sk_data_ready;
 		sk->sk_user_data = server;
-		sk->sk_data_ready = pep_listen_data_ready;
+		sk->sk_data_ready = &pep_listen_data_ready;
 		write_unlock_bh(&sk->sk_callback_lock);
 
 		/* pep server connection info */
@@ -145,8 +159,16 @@ void pep_server_init(struct pep_state* server, u16 port)
 		pep_setsockopt(sock, TCP_NODELAY, 1);
 		
 		ret = kernel_bind(sock, (struct sockaddr*)&saddr, addr_len);
-		// CHECK ERROR
+		if(ret < 0){
+			printk(KERN_INFO "[PEP] init_core: Error binding socket\n");
+			return -EPEP_GENERIC;
+		}
+
 		ret = kernel_listen(sock, 5);
+		if(ret < 0){
+			printk(KERN_INFO "[PEP] init_core: Error listen socket\n");
+			return -EPEP_GENERIC;
+		}
 
 		server->server_socket = sock;
 		server->accept_wq = alloc_workqueue("accept_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
@@ -155,4 +177,7 @@ void pep_server_init(struct pep_state* server, u16 port)
 
 		INIT_WORK(&server->accept_work, &pep_server_accept_work);
 		INIT_LIST_HEAD(&server->tunnels);
+		server->total_tunnels = 0;
+
+		return 0;
 }

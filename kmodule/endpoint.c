@@ -5,6 +5,7 @@
 void pep_endpoint_receive_work(struct work_struct *work)
 {       
         int ret;
+        int ret_forward;
         struct pep_tunnel* tun = container_of(work, struct pep_tunnel, e2c);
 
         unsigned char *buffer = kzalloc(PEP_MAX_TCP_BUFFER_SIZE, GFP_KERNEL);
@@ -15,7 +16,8 @@ void pep_endpoint_receive_work(struct work_struct *work)
 
         ret = pep_tcp_receive(tun->endpoint.sock, buffer, PEP_MAX_TCP_BUFFER_SIZE);
         if(ret > 0){
-                ret = pep_tcp_send(tun->client.sock, buffer, ret);
+                ret_forward = pep_tcp_send(tun->client.sock, buffer, ret);
+                printk(KERN_INFO "[PEP] pep_endpoint_receive_work: Tunnel %d forwarded %d/%d bytes to client.\n", tun->id, ret, ret_forward);
         }
 
         kfree(buffer);
@@ -24,6 +26,10 @@ void pep_endpoint_receive_work(struct work_struct *work)
 
 void pep_endpoint_data_ready(struct sock* sk)
 {
+        struct pep_tunnel* tunnel = sk->sk_user_data;
+        
+        queue_work(tunnel->server->forward_e2c_wq, &tunnel->e2c);
+        /* TODO: check return value of  */
 
         default_data_ready(sk);
 }
@@ -49,6 +55,7 @@ struct socket* pep_endpoint_connect(u32 ip, u16 port)
         daddr.sin_addr.s_addr = ip;
         daddr.sin_port = (__force u16)port;
 
+        printk(KERN_INFO "[PEP] pep_endpoint_connect: Connecting to endpoint %d:%d\n", ip, port);
         ret = kernel_connect(sock, (struct sockaddr*)&daddr, addr_len, 0);
 	if (ret < 0) {
 		sock_release(sock);

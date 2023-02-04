@@ -35,7 +35,7 @@ int pep_connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen, int 
 
     bzero((char *)&new_addr, sizeof(new_addr));
     new_addr.sin_family = AF_INET;
-    new_addr.sin_addr.s_addr = inet_addr("10.142.10.142");
+    new_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     new_addr.sin_port = htons(8181);
 
     
@@ -43,7 +43,7 @@ int pep_connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen, int 
     tlv_add_header(data);
     tlv_add_option(data, TLV_CONNECT, original_addr->sin_port, original_addr->sin_addr.s_addr);
 
-    tlv_print(data);
+    //tlv_print(data);
 
     return sendto(sockfd, data, sample_tlv_size, MSG_FASTOPEN, (struct sockaddr *) &new_addr, sizeof(new_addr)); 
 }

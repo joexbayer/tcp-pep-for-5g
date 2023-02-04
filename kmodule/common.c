@@ -23,7 +23,7 @@ void pep_configue_sk(struct socket* sock, void (*data_ready)(struct sock*), stru
         sk = sock->sk;
         sk->sk_reuse = 1;
         write_lock_bh(&sk->sk_callback_lock);
-        sk->sk_user_data = tunnel; // TODO: set to tunnel
+        sk->sk_user_data = tunnel;
         sk->sk_data_ready = data_ready;
         write_unlock_bh(&sk->sk_callback_lock);
 }
