@@ -18,6 +18,13 @@ Wesley Eddy.
 \newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
   2022.
 
+\bibitem{mmwave_blocking}
+Cristian~García Ruiz, Antonio Pascual-Iserte, and Olga Muñoz.
+\newblock Analysis of blocking in mmwave cellular systems: Application to relay
+  positioning.
+\newblock {\em IEEE Transactions on Communications}, 69(2):1329–1342, Feb
+  2021.
+
 \bibitem{rfc5783}
 M.~Welzl and W.~Eddy.
 \newblock Congestion control in the rfc series.

@@ -1,48 +1,46 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99d (TeX Live 2021)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: uio-master.aux
-Reallocating 'name_of_file' (item size: 1) to 10 items.
-Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: myBib.bib
-You've used 4 entries,
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            529 strings with 4663 characters,
-and the built_in function-call counts, 1326 in all, are:
-= -- 133
-> -- 61
+            537 strings with 4881 characters,
+and the built_in function-call counts, 1715 in all, are:
+= -- 170
+> -- 79
 < -- 3
-+ -- 24
-- -- 20
-* -- 71
-:= -- 215
-add.period$ -- 13
-call.type$ -- 4
-change.case$ -- 22
++ -- 31
+- -- 26
+* -- 107
+:= -- 279
+add.period$ -- 16
+call.type$ -- 5
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 62
-empty$ -- 93
-format.name$ -- 20
-if$ -- 289
+cite$ -- 5
+duplicate$ -- 73
+empty$ -- 124
+format.name$ -- 26
+if$ -- 368
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 1
-newline$ -- 24
-num.names$ -- 8
-pop$ -- 27
+int.to.str$ -- 5
+missing$ -- 2
+newline$ -- 29
+num.names$ -- 10
+pop$ -- 31
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 23
 quote$ -- 0
-skip$ -- 59
+skip$ -- 66
 stack$ -- 0
-substring$ -- 42
-swap$ -- 28
+substring$ -- 80
+swap$ -- 29
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 20
 warning$ -- 0
-while$ -- 9
-width$ -- 5
-write$ -- 47
+while$ -- 12
+width$ -- 6
+write$ -- 58
