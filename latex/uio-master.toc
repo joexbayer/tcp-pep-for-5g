@@ -9,8 +9,9 @@
 \contentsline {subsection}{\numberline {2.2.2}0 RTT}{5}{}%
 \contentsline {subsection}{\numberline {2.2.3}Congestion control}{5}{}%
 \contentsline {section}{\numberline {2.3}PEPs}{5}{}%
+\contentsline {subsection}{\numberline {2.3.1}Transparent vs Non-Transparent}{5}{}%
 \contentsline {section}{\numberline {2.4}Kernel Modules}{5}{}%
-\contentsline {subsection}{\numberline {2.4.1}System Calls}{5}{}%
-\contentsline {chapter}{\numberline {3}Implementation | Design}{6}{}%
-\contentsline {chapter}{\numberline {4}Evaluation}{7}{}%
-\contentsline {chapter}{\numberline {5}Conclusion}{8}{}%
+\contentsline {subsection}{\numberline {2.4.1}System Calls}{6}{}%
+\contentsline {chapter}{\numberline {3}Implementation | Design}{7}{}%
+\contentsline {chapter}{\numberline {4}Evaluation}{8}{}%
+\contentsline {chapter}{\numberline {5}Conclusion}{9}{}%
