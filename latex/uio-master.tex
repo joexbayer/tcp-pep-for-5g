@@ -58,12 +58,14 @@ TCP handshake, reduce RTTs but using TCP Fast Open. Mostly short flows (cite)
 \\
 End to End congestion controller not very suited for highly fluctuating bandwidth.(cite David Hayes?)
 
+\subsection{3 Way handshake (0 RTT)}
+For TCP to establish a connection it uses a three-way handshake. First it sends a synchronization (SYN) packet to the desired endpoint. The endpoint answers with a acknowledgement and a synchronization packet of its own (SYN/ACK). And finally the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. If we introduce a proxy we will need two handshakes, one for the initial connection and one for the connection from he proxy to the endpoint.
+
 \subsection{TCP Fast Open}
 A TCP connection can be configured with optional header extensions called TCP Options. 
 Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
 TCP Fast Open allows data being exchanged during the handshake. 
 
-\subsection{0 RTT}
 Allow "syn fowarding" with TCP Fast Open creating a 0RTT increase when connecting through a proxy.
 0RTT Transport Converter ~\cite{rfc8803}.
 
