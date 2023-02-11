@@ -62,27 +62,24 @@ TCP handshake, reduce RTTs but using TCP Fast Open. Mostly short flows (cite)
 \\
 End to End congestion controller not very suited for highly fluctuating bandwidth.(cite David Hayes?)
 
-\subsection{Congestion control}
-)~\cite{welzl_congestion}.\\
-What is congestion controll? SHORT INTRO
-Different algorithms (QUBIC, RENO, VEGAS, BBR).
-Congestion controller domains (different congestion controllers.)~\cite{rfc5783}.
-Wireless versus Wired networks, different congestion controllers needs.
-But domain split congestion control is not able to adapt fast enough to large changes in bandwidth. (cite David?)
+\subsection{3 Way handshake (0 RTT)}
+For TCP to establish a connection it uses a three-way handshake. First it sends a synchronization (SYN) packet to the desired endpoint. The endpoint answers with a acknowledgement and a synchronization packet of its own (SYN/ACK). And finally the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. If we introduce a proxy we will need two handshakes, one for the initial connection and one for the connection from he proxy to the endpoint.
 
 \subsection{TCP Fast Open}
 A TCP connection can be configured with optional header extensions called TCP Options. 
 Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
 TCP Fast Open allows data being exchanged during the handshake. 
 
-\subsection{0 RTT}
 Allow "syn fowarding" with TCP Fast Open creating a 0RTT increase when connecting through a proxy.
 0RTT Transport Converter ~\cite{rfc8803}.
 
 
 \section{PEPs}
-A performance enhancing proxy (PEP) is a connection splitting proxy designed to increase performance of applications using it. Already in use! (satelites, cite). Inherently increases performance? (cite)
-More logic inside the networks. Domain splitting and 0RTT. {cite Kristjon Ciko?}
+A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. Already in use! (satelites, cite). Inherently increases performance? (cite)
+More logic inside the networks. Domain splitting and 0RTT.
+
+\subsection{Transparent vs Non-Transparent}
+A big discussion regarding PEPs has been if they should be transparent or non-transparent. Transparent PEPs are not visible to the applications that use it. They silently split the connections and spoof the IP-address of both the client and server~\cite{pep_dna}.. (SIDE EFFECTS). Non-Transparent PEPs on the other hand are explicitly chosen by either the client or the server, and the sender is aware of the proxy splitting the original connection. This approach can be seen as more ethical and "correct" (FIND BETTER WORDING), but modifications at the sender side become necessary to utilize the PEP.
 
 \section{Kernel Modules}
 LKM (Loadable Kernel Modules), "program" running inside the Linux kernel.
