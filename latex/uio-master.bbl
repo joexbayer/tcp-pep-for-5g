@@ -31,4 +31,10 @@ M.~Welzl and W.~Eddy.
 \newblock RFC 5783, RFC Editor, February 2010.
 \newblock \url{https://www.rfc-editor.org/info/rfc5783}.
 
+\bibitem{welzl_congestion}
+Michael Welzl.
+\newblock Network congestion control: Managing internet traffic.
+\newblock {\em Network Congestion Control: Managing Internet Traffic}, pages
+  1--263, 05 2006.
+
 \end{thebibliography}

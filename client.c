@@ -19,8 +19,9 @@ int main(int argc, char * argv[])
 
     bzero((char *)&s_in, sizeof(s_in));
     s_in.sin_family = AF_INET;
+    /* both ip and port are for actual endpoint. */
     s_in.sin_addr.s_addr = inet_addr("127.0.0.1");
-    s_in.sin_port = htons(8181);
+    s_in.sin_port = htons(8182);
 
     server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -32,9 +33,12 @@ int main(int argc, char * argv[])
     if(ret > 0)
         printf("Connected. %d\n", ret);
 
-    //char* test = "PEP test string sent from client!!";
+    char* test = "PEP test string sent from client!!";
 
-    //send(server, test, strlen(test), 0);
+    ret = send(server, test, strlen(test), 0);
+    {
+        printf("Success!\n");
+    }
 
     close(server);
     return 0;

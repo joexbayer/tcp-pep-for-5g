@@ -41,13 +41,17 @@ include millimeter wave (mmWave) links.'' (qoute mmwave paper)
 Minneapolis and Chicago reported a high handover frequency
 due to frequent disruptions in mmWave connectivity''(cite A First Look at Commercial 5G Performance on Smartphones)
 
-\subsection{Buffer bloat. (Buffering)}
+\subsection{Buffering}
+\subsubsection{Buffer bloat}
 The buffer bloat problem occurs when the systems between the endpoints buffer so many packets that the latency drastically increases and the reliability of the network as a whole goes down.{https://lwn.net/Articles/507065/} The (AD HOC) crude but simple solution was to just decrease all buffer sizes. Although this works in most cases, its far from a optimal solution. The increased latency is detrimental for interactive (latency sensitive) applications. Generally its preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets.\\\\
 
 Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.
 
+\subsubsection{FQ\_CODEL}
+Fair Queue
+
 \subsection{Non-Interactive Applications}
-Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths. Being able to have packets buffered for when the bandwidth is high will decrease delay times. (need citation or prove it myself?) 
+Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths. Being able to have packets buffered for when the bandwidth is high will decrease delay times. (need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays.
 
 \section{TCP/IP (Move to top?}
 (Get inspired by intro of tcp transport converter)
@@ -58,6 +62,14 @@ TCP handshake, reduce RTTs but using TCP Fast Open. Mostly short flows (cite)
 \\
 End to End congestion controller not very suited for highly fluctuating bandwidth.(cite David Hayes?)
 
+\subsection{Congestion control}
+)~\cite{welzl_congestion}.\\
+What is congestion controll? SHORT INTRO
+Different algorithms (QUBIC, RENO, VEGAS, BBR).
+Congestion controller domains (different congestion controllers.)~\cite{rfc5783}.
+Wireless versus Wired networks, different congestion controllers needs.
+But domain split congestion control is not able to adapt fast enough to large changes in bandwidth. (cite David?)
+
 \subsection{TCP Fast Open}
 A TCP connection can be configured with optional header extensions called TCP Options. 
 Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
@@ -66,13 +78,6 @@ TCP Fast Open allows data being exchanged during the handshake.
 \subsection{0 RTT}
 Allow "syn fowarding" with TCP Fast Open creating a 0RTT increase when connecting through a proxy.
 0RTT Transport Converter ~\cite{rfc8803}.
-
-\subsection{Congestion control}
-What is congestion controll? SHORT INTRO
-Different algorithms (QUBIC, RENO, VEGAS, BBR).
-Congestion controller domains (different congestion controllers.)~\cite{rfc5783}.
-Wireless versus Wired networks, different congestion controllers needs.
-But domain split congestion control is not able to adapt fast enough to large changes in bandwidth. (cite David?)
 
 
 \section{PEPs}

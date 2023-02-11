@@ -1,4 +1,5 @@
 #include <pep/common.h>
+#include <pep/tcp.h>
 
 void pep_client_receive_work(struct work_struct *work)
 {
@@ -12,6 +13,7 @@ void pep_client_receive_work(struct work_struct *work)
                 return;
         }
 
+        printk(KERN_INFO "[PEP] pep_client_receive_work: reading data from client in tunnel %d starting work.\n", tun->id);
         ret = pep_tcp_receive(tun->client.sock, buffer, PEP_MAX_TCP_BUFFER_SIZE);
         if(ret > 0){
                 ret_forward = pep_tcp_send(tun->endpoint.sock, buffer, ret);
@@ -23,10 +25,12 @@ void pep_client_receive_work(struct work_struct *work)
 
 void pep_client_data_ready(struct sock* sk)
 {
-       struct pep_tunnel* tunnel = sk->sk_user_data;
+        struct pep_tunnel* tunnel = sk->sk_user_data;
+
+        printk(KERN_INFO "[PEP] pep_client_data_ready: Incoming data from client in tunnel %d starting work.\n", tunnel->id);
         
-        queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e);
-        /* TODO: check return value of  */
+        if(!queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e))
+                printk(KERN_INFO "[PEP] pep_client_data_ready: Work already in queue. Tunnel %d\n", tunnel->id);
 
         default_data_ready(sk);
 }

@@ -14,6 +14,7 @@ void pep_endpoint_receive_work(struct work_struct *work)
                 return;
         }
 
+        printk(KERN_INFO "[PEP] pep_endpoint_receive_work: reading data from endpoint in tunnel %d starting work.\n", tun->id);
         ret = pep_tcp_receive(tun->endpoint.sock, buffer, PEP_MAX_TCP_BUFFER_SIZE);
         if(ret > 0){
                 ret_forward = pep_tcp_send(tun->client.sock, buffer, ret);
@@ -27,9 +28,11 @@ void pep_endpoint_receive_work(struct work_struct *work)
 void pep_endpoint_data_ready(struct sock* sk)
 {
         struct pep_tunnel* tunnel = sk->sk_user_data;
+
+        printk(KERN_INFO "[PEP] pep_endpoint_data_ready: Incoming data from endpoint in tunnel %d\n", tunnel->id);
         
-        queue_work(tunnel->server->forward_e2c_wq, &tunnel->e2c);
-        /* TODO: check return value of  */
+        if(!queue_work(tunnel->server->forward_e2c_wq, &tunnel->e2c))
+                printk(KERN_INFO "[PEP] pep_endpoint_data_ready: Work already in queue. Tunnel %d\n", tunnel->id);
 
         default_data_ready(sk);
 }

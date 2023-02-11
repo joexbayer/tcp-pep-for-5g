@@ -24,18 +24,12 @@
 #include <pep/client.h>
 
 #define DRIVER_AUTHOR "Joe Bayer <joeba@uio.no>" 
-#define DRIVER_DESC "Kernel module for a non-interactive Traffic PEP"
+#define DRIVER_DESC "Kernel module for a Traffic PEP"
 
 struct pep_state server_state;
 
-/* Linked list over all tunnels */
-LIST_HEAD(pep_tunnels);
-
 static int __init init_core(void)
 {
-        //ppe_nf_register();
-
-        printk("[PEP] Server has started.\n");
 
         pep_server_init(&server_state, 8181);
 

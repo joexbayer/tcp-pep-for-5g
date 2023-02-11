@@ -18,6 +18,8 @@ void pep_server_accept_work(struct work_struct *work)
 		struct pep_tunnel* tunnel;
 		struct tlv* tlv;
 
+		struct sock* sk;
+
 		struct pep_state* server = container_of(work, struct pep_state, accept_work);
 		unsigned char *buffer;
 
@@ -46,10 +48,6 @@ void pep_server_accept_work(struct work_struct *work)
 				if(ret <= 0)
 						return;
 				
-				printk(KERN_INFO "[PEP] pep_server_accept_work: Reached end of first checkpoint. \n");
-				sock_release(client);
-				return;
-				
 				/* Validate that the first packet sent has a valid tlv header. */
 				if(!tlv_validate(buffer)){
 						printk(KERN_INFO "[PEP] pep_server_accept_work: TLV validate error. \n");
@@ -71,6 +69,12 @@ void pep_server_accept_work(struct work_struct *work)
 				 * Both in correct byte order.
 				 */
 				endpoint = pep_endpoint_connect(tlv->optional, tlv->value);
+				if(NULL == endpoint)
+				{
+					printk(KERN_INFO "[PEP] pep_server_accept_work: Connection to endpoint failed.\n");
+					sock_release(client);
+					return; 
+				}
 
 				/* Setup new pep tunnel */
 				tunnel = pep_new_tunnel();
@@ -83,19 +87,20 @@ void pep_server_accept_work(struct work_struct *work)
 
 				/* Configure sockets | TCP Options? send - recb buf size */
 				pep_configue_sk(endpoint, &pep_endpoint_data_ready, tunnel);
-				pep_configue_sk(client, &pep_client_data_ready, tunnel);                        
-				
+				pep_configue_sk(client, &pep_client_data_ready, tunnel);
+
 				/* Add tunnel to linked list of all pep tunnels. */
 				list_add(&tunnel->list, &server->tunnels);
 				tunnel->id = server->total_tunnels;
 				server->total_tunnels++;
 
+				queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e);
+
 				printk(KERN_INFO "[PEP] pep_server_accept_work: New tunnel %d was created.\n", tunnel->id);
 				/* Done? */
 				kfree(buffer);
-
+				return;
 				break;
-
 		}
 }
 
@@ -178,6 +183,8 @@ int pep_server_init(struct pep_state* server, u16 port)
 		INIT_WORK(&server->accept_work, &pep_server_accept_work);
 		INIT_LIST_HEAD(&server->tunnels);
 		server->total_tunnels = 0;
+
+		printk("[PEP] Server has started.\n");
 
 		return 0;
 }

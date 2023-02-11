@@ -1,4 +1,5 @@
 #include <pep/common.h>
+#include <pep/client.h>
 
 void (*default_data_ready)(struct sock *sk);
 
@@ -24,6 +25,6 @@ void pep_configue_sk(struct socket* sock, void (*data_ready)(struct sock*), stru
         sk->sk_reuse = 1;
         write_lock_bh(&sk->sk_callback_lock);
         sk->sk_user_data = tunnel;
-        sk->sk_data_ready = data_ready;
+        sk->sk_data_ready = *data_ready;
         write_unlock_bh(&sk->sk_callback_lock);
 }
