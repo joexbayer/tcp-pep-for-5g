@@ -54,7 +54,7 @@ void pep_server_accept_work(struct work_struct *work)
 						sock_release(client);
 						return;
 				}
-
+				
 				/* Get connect tlv options from tlv buffer */
 				tlv = tlv_get_option(TLV_CONNECT, buffer);
 				if(tlv == NULL || tlv->length != 6){
@@ -93,6 +93,13 @@ void pep_server_accept_work(struct work_struct *work)
 				list_add(&tunnel->list, &server->tunnels);
 				tunnel->id = server->total_tunnels;
 				server->total_tunnels++;
+
+				/* check if more data than the initial TLV was sent.  */
+				if(ret > 12){
+					buffer += 12;
+					/* again: should probably be moved out to own work. */
+					pep_tcp_send(endpoint, buffer, ret-12);
+				}
 
 				queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e);
 

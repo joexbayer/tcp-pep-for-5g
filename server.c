@@ -42,7 +42,7 @@ int main(void)
         cd = accept(sd, (struct sockaddr *)&c_ain, &size);
         printf("Client Connected\n");
 
-        ret = recv(cd, buffer, 34, 0);
+        ret = recv(cd, buffer, 34, 0);  
         if(ret > 0)
             printf("Client: %s\n", buffer);
         
