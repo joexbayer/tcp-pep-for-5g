@@ -12,6 +12,11 @@ Olivier Bonaventure, Mohamed Boucadair, Sri Gundavelli, SungHoon Seo, and
 \newblock {0-RTT TCP Convert Protocol}.
 \newblock RFC 8803, July 2020.
 
+\bibitem{tcp_options}
+David Borman.
+\newblock {TCP Options and Maximum Segment Size (MSS)}.
+\newblock RFC 6691, July 2012.
+
 \bibitem{pep_dna}
 Kristjon Ciko, Michael Welzl, and Peyman Teymoori.
 \newblock Pep-dna: A performance enhancing proxy for deploying network
@@ -31,17 +36,5 @@ Cristian~García Ruiz, Antonio Pascual-Iserte, and Olga Muñoz.
   positioning.
 \newblock {\em IEEE Transactions on Communications}, 69(2):1329–1342, Feb
   2021.
-
-\bibitem{rfc5783}
-M.~Welzl and W.~Eddy.
-\newblock Congestion control in the rfc series.
-\newblock RFC 5783, RFC Editor, February 2010.
-\newblock \url{https://www.rfc-editor.org/info/rfc5783}.
-
-\bibitem{welzl_congestion}
-Michael Welzl.
-\newblock Network congestion control: Managing internet traffic.
-\newblock {\em Network Congestion Control: Managing Internet Traffic}, pages
-  1--263, 05 2006.
 
 \end{thebibliography}

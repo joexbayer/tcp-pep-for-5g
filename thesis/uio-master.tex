@@ -43,7 +43,7 @@ due to frequent disruptions in mmWave connectivity''(cite A First Look at Commer
 
 \subsection{Buffering}
 \subsubsection{Buffer bloat}
-The buffer bloat problem occurs when the systems between the endpoints buffer so many packets that the latency drastically increases and the reliability of the network as a whole goes down.{https://lwn.net/Articles/507065/} The (AD HOC) crude but simple solution was to just decrease all buffer sizes. Although this works in most cases, its far from a optimal solution. The increased latency is detrimental for interactive (latency sensitive) applications. Generally its preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets.\\\\
+The buffer bloat problem occurs when the systems between the endpoints buffer so many packets that the latency drastically increases and the reliability of the network as a whole goes down.{https://lwn.net/Articles/507065/} The increased latency is detrimental for interactive (latency sensitive) applications. Generally its preferred to drop packets and keep buffers small to avoid buffering time sensitive packets such as SYN packets. Although this works in most cases, its far from a optimal solution.\\\\
 
 Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.
 
@@ -62,11 +62,13 @@ TCP handshake, reduce RTTs but using TCP Fast Open. Mostly short flows (cite)
 \\
 End to End congestion controller not very suited for highly fluctuating bandwidth.(cite David Hayes?)
 
-\subsection{3 Way handshake (0 RTT)}
-For TCP to establish a connection it uses a three-way handshake. First it sends a synchronization (SYN) packet to the desired endpoint. The endpoint answers with a acknowledgement and a synchronization packet of its own (SYN/ACK). And finally the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. If we introduce a proxy we will need two handshakes, one for the initial connection and one for the connection from he proxy to the endpoint.
+.slow reactiveness of TCP~\cite{tcp_mmwave_proxy}.
 
-\subsection{TCP Fast Open}
-A TCP connection can be configured with optional header extensions called TCP Options. 
+\subsection{3 Way handshake (0 RTT)}
+For TCP to establish a connection it uses a three-way handshake. First it sends a synchronization (SYN) packet to the desired endpoint. The endpoint answers with a acknowledgement and a synchronization packet of its own (SYN/ACK). And finally the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. For short flows that terminate in just a few round trips the initial TCP handshake can be a bottleneck, which is made worse if the connection is using a proxy and has to exchange additional information. 
+
+\subsection{TCP Options}
+A TCP connection can be configured with optional header extensions called TCP Options~\cite{tcp_options}.. 
 Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
 TCP Fast Open allows data being exchanged during the handshake. 
 
@@ -75,7 +77,7 @@ Allow "syn fowarding" with TCP Fast Open creating a 0RTT increase when connectin
 
 
 \section{PEPs}
-A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. Already in use! (satelites, cite). Inherently increases performance? (cite)
+A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. Already in use! (satelites, radio access networks, cite). Inherently increases performance?~\cite{tcp_mmwave_proxy}.
 More logic inside the networks. Domain splitting and 0RTT.
 
 \subsection{Transparent vs Non-Transparent}
@@ -95,15 +97,15 @@ Reduce over head from userspace -> kernel system calls.
  \hline
  \multicolumn{5}{|c|}{Country List} \\
  \hline
- Implementation& 0Rtt &Connection Splitting &Special ACKs &Transparent\\
+ Implementation& 0RTT &Connection Splitting &Special ACKs &Transparent\\
  \hline
- Afghanistan   & AF    &AFG&   004 & x\\
- Aland Islands&   AX  & ALA   &248 & x\\
- Albania &AL & ALB&  008 & x\\
- Algeria    &DZ & DZA&  012& x \\
- American Samoa&   AS  & ASM&016& x\\
- Andorra& AD  & AND   &020& x\\
- Angola& AO  & AGO&024& x\\
+ milliProxy   & AF    &AFG&   004 & x\\
+ PEPDNA&   AX  & ALA   &248 & x\\
+ SnoopTCP &AL & ALB&  008 & x\\
+ Our PEP    &DZ & DZA&  012& x \\
+ Transport Converter &   AS  & ASM&016& x\\
+ ...& AD  & AND   &020& x\\
+ ...& AO  & AGO&024& x\\
  \hline
 \end{tabular}
 
