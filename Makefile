@@ -9,8 +9,8 @@ module:
 	make -C kmodule/
 
 tools:
-	gcc client.c lib/pep.so -o client
-	gcc server.c -o server
+	gcc tools/client.c lib/pep.so -o client
+	gcc tools/server.c -o server
 
 install:
 	make -C kmodule install

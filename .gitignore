@@ -35,5 +35,7 @@
 
 .DS_Store
 .idea
+client
+server
 
 *.o
