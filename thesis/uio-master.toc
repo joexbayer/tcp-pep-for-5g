@@ -6,7 +6,7 @@
 \contentsline {subsubsection}{Buffer bloat}{4}{}%
 \contentsline {subsubsection}{FQ\_CODEL}{4}{}%
 \contentsline {subsection}{\numberline {2.1.3}Non-Interactive Applications}{4}{}%
-\contentsline {section}{\numberline {2.2}TCP/IP (Move to top?}{4}{}%
+\contentsline {section}{\numberline {2.2}TCP/IP (Move to top?}{5}{}%
 \contentsline {subsection}{\numberline {2.2.1}3 Way handshake (0 RTT)}{5}{}%
 \contentsline {subsection}{\numberline {2.2.2}TCP Options}{5}{}%
 \contentsline {section}{\numberline {2.3}PEPs}{5}{}%

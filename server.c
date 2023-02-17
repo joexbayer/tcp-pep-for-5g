@@ -6,6 +6,7 @@
 
 #include <unistd.h>
 #include <sys/types.h>
+#include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <netdb.h>
 
@@ -17,6 +18,9 @@ int main(void)
     struct sockaddr_in s_ain, c_ain;    
     int qlen = 5;
     int ret;
+    char buffer[255];
+    struct tcp_info info;
+    socklen_t tcp_info_length = sizeof(info);
 
     sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -35,16 +39,22 @@ int main(void)
         return -1;
     }
 
-    char buffer[34];
-
     while(1) {
         size = sizeof(c_ain);
         cd = accept(sd, (struct sockaddr *)&c_ain, &size);
-        printf("Client Connected\n");
 
-        ret = recv(cd, buffer, 34, 0);  
-        if(ret > 0)
-            printf("Client: %s\n", buffer);
+        printf("Client Connected\n");
+        while (1)
+        {
+            ret = recv(cd, buffer, 255, 0);  
+            if(ret > 0){
+                getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
+                printf("Client: %s (rtt: %u microseconds)\n", buffer, info.tcpi_rtt);
+            }
+            else if (ret < 0)
+                break;
+        }
+        printf("Client Disconneced\n");
         
         close(cd);
     }
