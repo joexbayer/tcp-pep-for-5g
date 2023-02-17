@@ -33,4 +33,7 @@
 **/lib/src/*.mod
 **/lib/src/.*.cmd
 
+.DS_Store
+.idea
+
 *.o
