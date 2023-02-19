@@ -1,18 +1,19 @@
 \contentsline {chapter}{\numberline {1}Intro}{2}{}%
 \contentsline {chapter}{\numberline {2}Background}{3}{}%
-\contentsline {section}{\numberline {2.1}Future of wireless communication.}{3}{}%
-\contentsline {subsection}{\numberline {2.1.1}5G Millimetre Wave}{3}{}%
-\contentsline {subsection}{\numberline {2.1.2}Buffering}{4}{}%
-\contentsline {subsubsection}{Buffer bloat}{4}{}%
-\contentsline {subsubsection}{FQ\_CODEL}{4}{}%
-\contentsline {subsection}{\numberline {2.1.3}Non-Interactive Applications}{4}{}%
-\contentsline {section}{\numberline {2.2}TCP/IP (Move to top?}{5}{}%
-\contentsline {subsection}{\numberline {2.2.1}3 Way handshake (0 RTT)}{5}{}%
-\contentsline {subsection}{\numberline {2.2.2}TCP Options}{5}{}%
-\contentsline {section}{\numberline {2.3}PEPs}{5}{}%
-\contentsline {subsection}{\numberline {2.3.1}Transparent vs Non-Transparent}{5}{}%
+\contentsline {section}{\numberline {2.1}TCP/IP (Move to top?}{3}{}%
+\contentsline {subsection}{\numberline {2.1.1}3 Way handshake (0 RTT)}{4}{}%
+\contentsline {subsection}{\numberline {2.1.2}Congestion Control}{4}{}%
+\contentsline {subsection}{\numberline {2.1.3}TCP Options}{4}{}%
+\contentsline {section}{\numberline {2.2}Future of wireless communication.}{4}{}%
+\contentsline {subsection}{\numberline {2.2.1}5G Millimetre Wave}{4}{}%
+\contentsline {subsection}{\numberline {2.2.2}Buffering}{5}{}%
+\contentsline {subsubsection}{Buffer bloat}{5}{}%
+\contentsline {subsubsection}{Packet Scheduling}{6}{}%
+\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{6}{}%
+\contentsline {section}{\numberline {2.3}PEPs}{6}{}%
+\contentsline {subsection}{\numberline {2.3.1}Transparent vs Non-Transparent}{6}{}%
 \contentsline {section}{\numberline {2.4}Kernel Modules}{6}{}%
-\contentsline {subsection}{\numberline {2.4.1}System Calls}{6}{}%
-\contentsline {chapter}{\numberline {3}Implementation | Design}{7}{}%
-\contentsline {chapter}{\numberline {4}Evaluation}{8}{}%
-\contentsline {chapter}{\numberline {5}Conclusion}{9}{}%
+\contentsline {subsection}{\numberline {2.4.1}System Calls}{7}{}%
+\contentsline {chapter}{\numberline {3}Implementation | Design}{8}{}%
+\contentsline {chapter}{\numberline {4}Evaluation}{9}{}%
+\contentsline {chapter}{\numberline {5}Conclusion}{10}{}%

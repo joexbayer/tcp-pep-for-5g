@@ -30,6 +30,13 @@ Wesley Eddy.
 \newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
   2022.
 
+\bibitem{tcp_mmwave_proxy}
+Michele Polese, Marco Mezzavilla, Menglei Zhang, Jing Zhu, Sundeep Rangan,
+  Shivendra Panwar, and Michele Zorzi.
+\newblock milliproxy: A tcp proxy architecture for 5g mmwave cellular systems.
+\newblock In {\em 2017 51st Asilomar Conference on Signals, Systems, and
+  Computers}, pages 951--957, 2017.
+
 \bibitem{mmwave_blocking}
 Cristian~García Ruiz, Antonio Pascual-Iserte, and Olga Muñoz.
 \newblock Analysis of blocking in mmwave cellular systems: Application to relay
