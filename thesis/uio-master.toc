@@ -11,9 +11,10 @@
 \contentsline {subsubsection}{Packet Scheduling}{6}{}%
 \contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{7}{}%
 \contentsline {section}{\numberline {2.3}PEPs}{7}{}%
-\contentsline {subsection}{\numberline {2.3.1}Transparent vs Non-Transparent}{7}{}%
-\contentsline {section}{\numberline {2.4}Kernel Modules}{7}{}%
-\contentsline {subsection}{\numberline {2.4.1}System Calls}{7}{}%
-\contentsline {chapter}{\numberline {3}Implementation | Design}{8}{}%
-\contentsline {chapter}{\numberline {4}Evaluation}{9}{}%
-\contentsline {chapter}{\numberline {5}Conclusion}{10}{}%
+\contentsline {subsection}{\numberline {2.3.1}PEP for wireless communication}{7}{}%
+\contentsline {subsection}{\numberline {2.3.2}Transparent vs Non-Transparent}{7}{}%
+\contentsline {section}{\numberline {2.4}Kernel Modules}{8}{}%
+\contentsline {subsection}{\numberline {2.4.1}System Calls}{8}{}%
+\contentsline {chapter}{\numberline {3}Implementation | Design}{9}{}%
+\contentsline {chapter}{\numberline {4}Evaluation}{10}{}%
+\contentsline {chapter}{\numberline {5}Conclusion}{11}{}%

@@ -86,14 +86,31 @@ The increased bandwidth and low latency promises of new technology such as 5G ha
 Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.\\
 
 \subsubsection{Packet Scheduling}
-A method of reducing the effects off bufferbloat is packet scheduling. A system should not send more packets than the weakest link can handle {https://lwn.net/Articles/496509/}, this idea is built into TCP in the form of congestion control. However, when buffers grow to the point of causing bufferbloat, TCPs congestion control algorithms are unable to confidently determine a sending rate. Packet scheduling can solve this problem as it usually controls the size of the buffers. It makes sure queues can grow when needed, but keep the overall state of the buffers low. Packet scheduling has a lot more to offer than simple queue management, this will be explored later?
+A method of reducing the effects off bufferbloat is packet scheduling. A system should not send more packets than the weakest link can handle {https://lwn.net/Articles/496509/}, this idea is built into TCP in the form of congestion control. However, when buffers grow to the point of causing bufferbloat, TCPs congestion control algorithms are unable to confidently determine a sending rate. Packet scheduling can solve this problem as it usually controls the size of the buffers. It makes sure queues can grow when needed, but keep the overall state of the buffers low. Packet scheduling has a lot more to offer than simple queue management, this will be explored later?\\
+
+Proposed packet scheduling algorithms:
+\begin{itemize}
+  \item \textbf{FQ\_CoDel}: ...
+  \item \textbf{Placeholder}: ...
+\end{itemize}
 
 \subsection{Non-Interactive Applications}
 Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths. Being able to have packets buffered for when the bandwidth is high will decrease delay times. (need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays.
 
 \section{PEPs}
-A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. Already in use! (satelites, radio access networks, cite). Inherently increases performance?~\cite{tcp_mmwave_proxy}.
+A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it.
 More logic inside the networks. Domain splitting and 0RTT.
+
+\subsection{PEP for wireless communication}
+Performance enhancing proxies are already deployed and in use for a lot of wireless communication, especially satellites and radio access networks~\cite{tcp_mmwave_proxy}. They have an inherent performance increase just by splitting the connection between the wireless and wired domains. These PEPs are therefor often installed at the base stations. However they are unable to distinguish between interactive or non-interactive traffic, meaning their buffers need to be low and still suffer from fluctuating bandwidth problems.
+ Already in use! (satelites, radio access networks, cite). Inherently increases performance?~\cite{tcp_mmwave_proxy}.
+
+\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/drawio/pep_satellite.png}
+  	\caption{PEP installed to support Wireless traffic over satellite.}
+  	\label{fig:blockage}
+\end{figure}
 
 \subsection{Transparent vs Non-Transparent}
 A big discussion regarding PEPs has been if they should be transparent or non-transparent. Transparent PEPs are not visible to the applications that use it. They silently split the connections and spoof the IP-address of both the client and server~\cite{pep_dna}.. (SIDE EFFECTS). Non-Transparent PEPs on the other hand are explicitly chosen by either the client or the server, and the sender is aware of the proxy splitting the original connection. This approach can be seen as more ethical and "correct" (FIND BETTER WORDING), but modifications at the sender side become necessary to utilize the PEP.
