@@ -1,133 +1,127 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  19 FEB 2023 18:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  20 FEB 2023 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./uio-master.tex
-(uio-master.tex
-LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-07-04>
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
-Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
-File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+**uio-master.tex
+(./uio-master.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
-\c@part=\count185
-\c@chapter=\count186
-\c@section=\count187
-\c@subsection=\count188
-\c@subsubsection=\count189
-\c@paragraph=\count190
-\c@subparagraph=\count191
-\c@figure=\count192
-\c@table=\count193
+\c@part=\count179
+\c@chapter=\count180
+\c@section=\count181
+\c@subsection=\count182
+\c@subsubsection=\count183
+\c@paragraph=\count184
+\c@subparagraph=\count185
+\c@figure=\count186
+\c@table=\count187
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks16
-\inpenc@posthook=\toks17
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2020/08/01 v1.3d Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 )
-(uiomasterfp.sty
+(./uiomasterfp.sty
 Package: uiomasterfp 2022/07/27 v1.4 UiO master's thesis front page class
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
-Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.
-cfg
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: pdftex.def on input line 149.
+Package color Info: Driver file: pdftex.def on input line 147.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex
-.def
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex-dev/graphics\mathco
-lor.ltx))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \ESO@tempdima=\dimen139
 \ESO@tempdimb=\dimen140
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks18
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.s
-ty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.s
-ty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphi
-cs.cfg
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 )
 \Gin@req@height=\dimen141
 \Gin@req@width=\dimen142
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/xifthen\xifthen.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xifthen/xifthen.sty
 Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count194
-\calc@Bcount=\count195
+\calc@Acount=\count188
+\calc@Bcount=\count189
 \calc@Adimen=\dimen143
 \calc@Bdimen=\dimen144
 \calc@Askip=\skip49
 \calc@Bskip=\skip50
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count196
+\calc@Ccount=\count190
 \calc@Cskip=\skip51
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/ifmtarg\ifmtarg.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
 Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/type1cm\type1cm.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/type1cm/type1cm.sty
 Package: type1cm 2002/09/05 v0.04 BlueSky/Y&Y Type1 CM font definitions (DPC, p
 atched RF)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/cm-super\type1ec.st
-y
+(/usr/local/texlive/2021/texmf-dist/tex/latex/cm-super/type1ec.sty
 Package: type1ec 2002/09/07 v1.1 Type1 EC font definitions (for CM-Super fonts)
 
- (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmr.fd
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmr.fd
 File: t1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-\c@uiomfp@cur@year=\count197
-\c@uiomfp@cur@month=\count198
-\c@uiomfp@bind@w=\count199
+\c@uiomfp@cur@year=\count191
+\c@uiomfp@cur@month=\count192
+\c@uiomfp@bind@w=\count193
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend
--pdftex.def
-File: l3backend-pdftex.def 2022-07-01 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count266
-\l__pdf_internal_box=\box51
-) (uio-master.aux)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count194
+\l__pdf_internal_box=\box47
+)
+(./uio-master.aux)
 \openout1 = `uio-master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -145,35 +139,32 @@ LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pd
-f.mkii
+(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count267
+\scratchcounter=\count195
 \scratchdimen=\dimen145
-\scratchbox=\box52
-\nofMPsegments=\count268
-\nofMParguments=\count269
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count270
+\scratchbox=\box48
+\nofMPsegments=\count196
+\nofMParguments=\count197
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count198
 \MPscratchDim=\dimen146
-\MPnumerator=\count271
-\makeMPintoPDFobject=\count272
-\everyMPtoPDFconversion=\toks20
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstop
-df-base.sty
+\MPnumerator=\count199
+\makeMPintoPDFobject=\count266
+\everyMPtoPDFconversion=\toks19
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-s
-ys.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+(/usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 13
 .
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
+(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
@@ -194,14 +185,13 @@ Package pdftex.def Info: uio-fp-segl.pdf  used on input line 13.
 (pdftex.def)             Requested size: 67.43301pt x 67.43106pt.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 30.3999pt on input line 13.
+ [1
 
-[1
-
-{C:/Users/Joe Bayer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./uio-fp
--navn-eng.pdf> <./uio-fp-segl.pdf>]
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./uio-f
+p-navn-eng.pdf> <./uio-fp-segl.pdf>]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 18.99994pt on input line 13.
- [1] (uio-master.toc)
+ [1] (./uio-master.toc)
 \tf@toc=\write3
 \openout3 = `uio-master.toc'.
 
@@ -224,58 +214,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--24
 
  []
 
+<../diagrams/drawio/domains.png, id=27, 605.26125pt x 355.3275pt>
+File: ../diagrams/drawio/domains.png Graphic file (type png)
+<use ../diagrams/drawio/domains.png>
+Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 33.
+
+(pdftex.def)             Requested size: 393.41513pt x 230.96013pt.
+
+Overfull \hbox (33.41513pt too wide) in paragraph at lines 33--34
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 56--58
+Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+[4 <../diagrams/drawio/domains.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
-<../diagrams/graphs/tcp_mmwave_blockage.png, id=31, 258.9675pt x 92.345pt>
+<../diagrams/graphs/tcp_mmwave_blockage.png, id=39, 258.9675pt x 92.345pt>
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
-put line 65.
+put line 72.
 (pdftex.def)             Requested size: 323.70854pt x 115.43094pt.
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+[5 <../diagrams/graphs/tcp_mmwave_blockage.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
-[5 <../diagrams/graphs/tcp_mmwave_blockage.png>] [6] [7]
+[6] [7]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--108
+Underfull \hbox (badness 10000) in paragraph at lines 115--115
 []\T1/cmr/m/n/10.95 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--108
+Underfull \hbox (badness 10000) in paragraph at lines 115--115
 []\T1/cmr/m/n/10.95 Special
  []
 
 
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 108--109
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 115--116
 []\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 102--119
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 109--126
 [] 
  []
 
@@ -287,36 +291,35 @@ Chapter 4.
 
 ]
 Chapter 5.
-(uio-master.bbl [10
+(./uio-master.bbl [10
 
 ]) [11
 
-] (uio-master.aux) ) 
+] (./uio-master.aux) ) 
 Here is how much of TeX's memory you used:
- 2517 strings out of 478338
- 46164 string characters out of 2834776
- 340491 words of memory out of 3000000
- 20903 multiletter control sequences out of 15000+600000
- 496485 words of font info for 63 fonts, out of 8000000 for 9000
+ 2222 strings out of 478994
+ 35293 string characters out of 5858185
+ 323745 words of memory out of 5000000
+ 19666 multiletter control sequences out of 15000+600000
+ 430656 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,10n,76p,760b,319s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc
-/dvips/cm-super/cm-super-t1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKT
-eX/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{C:/Users/Joe Bayer/AppData/Local/
-Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/Joe Bayer/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/cm-super/sfbx1095.pfb><C:/Users/Joe Bayer/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/J
-oe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb
-><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/
-sfbx2074.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/cm-super/sfbx2488.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/font
-s/type1/public/cm-super/sfrm1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/Joe Bayer/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/Joe Bayer/App
-Data/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (13 pages, 275827 bytes).
+ 83i,10n,88p,758b,314s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-su
+per/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-supe
+r/cm-super-ts1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.
+enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pf
+b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/
+local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texli
+ve/2021/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on uio-master.pdf (13 pages, 377021 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

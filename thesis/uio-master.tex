@@ -18,7 +18,7 @@ Support Non-interactive Applications}
 
 \chapter{Background}
 
-\section{TCP/IP (Move to top?}
+\section{TCP/IP}
 (Get inspired by intro of tcp transport converter)
 Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgements and re-transmissions~\cite{Eddy_2022}. However, as the demands of the internet has changed, TCP has not. Even though TCP has changed with minor extensions over the years, such as increased initial windows or new options, the core ideas has stayed the same~\cite{rfc8803}. Concepts as the end-to-end argument still play a vital role in how TCP is used in the modern internet. Especially congestion control is suffering under the illusion that all logic should be placed on the endpoints, even if it spans multiple different domains (wireless / wired).\\
 
@@ -28,7 +28,14 @@ A networks topology and demands will vary a lot, especially between wired and wi
   \item \textbf{Wired Domain}: Steady bandwidth, low error rate, high throughput, Ethernet / fiber.
 \end{itemize}
 
-Each domain has different requirements that a single TCP connection cannot provide. 
+\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.65]{../diagrams/drawio/domains.png}
+  	\caption{5G bandwidth fluctuations from humans}
+  	\label{fig:domains}
+\end{figure}
+
+Each domain has different requirements that a single TCP connection cannot provide. Fig. \ref{fig:domains} shows the two domains and their differences.
 
 Interactive traffic uses TCP? {source}
 End to end argument. Bad?
@@ -79,7 +86,7 @@ The increased bandwidth and low latency promises of new technology such as 5G ha
 Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.\\
 
 \subsubsection{Packet Scheduling}
-A
+A method of reducing the effects off bufferbloat is packet scheduling. A system should not send more packets than the weakest link can handle {https://lwn.net/Articles/496509/}, this idea is built into TCP in the form of congestion control. However, when buffers grow to the point of causing bufferbloat, TCPs congestion control algorithms are unable to confidently determine a sending rate. Packet scheduling can solve this problem as it usually controls the size of the buffers. It makes sure queues can grow when needed, but keep the overall state of the buffers low. Packet scheduling has a lot more to offer than simple queue management, this will be explored later?
 
 \subsection{Non-Interactive Applications}
 Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths. Being able to have packets buffered for when the bandwidth is high will decrease delay times. (need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays.
