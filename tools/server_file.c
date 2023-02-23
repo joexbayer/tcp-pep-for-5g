@@ -47,11 +47,11 @@ int main(void)
     printf("Client Connected\n");
     while (1)
     {
-        ret = recv(cd, buffer, 255, 0);  
-        fwrite(buffer, 255, 1, thesis);
+        ret = recv(cd, buffer, 1001, 0);  
+        fwrite(buffer, 1001, 1, thesis);
         if(ret > 0){
             getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-            printf("Client: %s (rtt: %u microseconds)\n", buffer, info.tcpi_rtt);
+            printf("Client: %d (rtt: %u microseconds)\n", ret, info.tcpi_rtt);
         } else if (ret < 0){
             break;
         }

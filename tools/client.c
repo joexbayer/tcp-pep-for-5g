@@ -10,7 +10,7 @@
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 
-#include "lib/include/library.h"
+#include "../lib/include/library.h"
 
 
 #define IP "127.0.0.1"
@@ -18,6 +18,7 @@
 
 int setup_socket(char* ip, unsigned short port)
 {
+    int server;
     struct sockaddr_in s_in;
     bzero((char *)&s_in, sizeof(s_in));
     s_in.sin_family = AF_INET;
@@ -29,6 +30,19 @@ int setup_socket(char* ip, unsigned short port)
     //int flags = 1;
     //setsockopt(server, SOL_TCP, TCP_NODELAY, (void *)&flags, sizeof(flags));
 
+    #if 0
+        int ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+    #else
+        int ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
+    #endif
+
+    if(ret >= 0)
+        printf("Connected. %d\n", ret);
+    else {
+        printf("Unable to connect %d.\n", ret);
+        return -1;
+    }
+
     return server;
 }
 
@@ -39,19 +53,7 @@ int main(int argc, char * argv[])
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
 
-
-#if 0
-    //ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
-#else
-    ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
-#endif
-
-    if(ret >= 0)
-        printf("Connected. %d\n", ret);
-    else {
-        printf("Unable to connect %d.\n", ret);
-        return -1;
-    }
+    server = setup_socket(IP, PORT);
 
     /* Ping and print RTT */
     while(1)
