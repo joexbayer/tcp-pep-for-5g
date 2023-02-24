@@ -3,7 +3,7 @@
 
 void pep_client_receive_work(struct work_struct *work)
 {
-        int ret;
+        int ret = 1;
         int ret_forward;
         struct pep_tunnel* tun = container_of(work, struct pep_tunnel, c2e);
 
@@ -14,10 +14,12 @@ void pep_client_receive_work(struct work_struct *work)
         }
 
         printk(KERN_INFO "[PEP] pep_client_receive_work: reading data from client in tunnel %d starting work.\n", tun->id);
-        ret = pep_tcp_receive(tun->client.sock, buffer, PEP_MAX_TCP_BUFFER_SIZE);
-        if(ret > 0){
-                ret_forward = pep_tcp_send(tun->endpoint.sock, buffer, ret);
-                printk(KERN_INFO "[PEP] pep_client_receive_work: Tunnel %d forwarded %d/%d bytes to endpoint.\n", tun->id, ret, ret_forward);
+        while(ret > 0){
+                ret = pep_tcp_receive(tun->client.sock, buffer, PEP_MAX_TCP_BUFFER_SIZE);
+                if(ret > 0){
+                        ret_forward = pep_tcp_send(tun->endpoint.sock, buffer, ret);
+                        printk(KERN_INFO "[PEP] pep_client_receive_work: Tunnel %d forwarded %d/%d bytes to endpoint.\n", tun->id, ret, ret_forward);
+                }
         }
 
         kfree(buffer);

@@ -32,7 +32,7 @@ int setup_socket(char* ip, unsigned short port)
     //int flags = 1;
     //setsockopt(server, SOL_TCP, TCP_NODELAY, (void *)&flags, sizeof(flags));
 
-    #if 1
+    #if 0
         int ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
     #else
         int ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);

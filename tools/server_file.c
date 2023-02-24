@@ -19,10 +19,11 @@ int main(void)
     struct sockaddr_in s_ain, c_ain;    
     int qlen = 5;
     int ret;
-    char buffer[255];
+    char buffer[512];
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
     FILE* thesis = fopen("thesis.pdf", "w+");
+    int total_recv = 0;
 
     sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -45,18 +46,21 @@ int main(void)
     cd = accept(sd, (struct sockaddr *)&c_ain, &size);
 
     printf("Client Connected\n");
-    while (1)
+    while (1)   
     {
-        ret = recv(cd, buffer, 1001, 0);  
-        fwrite(buffer, 1001, 1, thesis);
+        ret = read(cd, buffer, 512);  
+        fwrite(buffer, 512, 1, thesis);
         if(ret > 0){
             getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-            printf("Client: %d (rtt: %u microseconds)\n", ret, info.tcpi_rtt);
+            total_recv += ret;
+            printf("Client: %d/%d (rtt: %u microseconds)\n", ret,total_recv, info.tcpi_rtt);
+            if(total_recv == 471439)    
+                break;
         } else if (ret < 0){
             break;
         }
     }
-    printf("Client Disconneced\n");
+    printf("Client Disconnected: %d bytes received.\n", total_recv);
     
     fclose(thesis);
     close(cd);

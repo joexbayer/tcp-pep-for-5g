@@ -24,6 +24,8 @@ void pep_server_accept_work(struct work_struct *work)
 		unsigned char *buffer;
 
 		int buffsize = 98304;
+		sockptr_t valuelen;
+        valuelen = KERNEL_SOCKPTR(&buffsize);
 
 		while(rc == 0) {
 				rc = kernel_accept(server->server_socket, &client, O_NONBLOCK);
@@ -92,11 +94,11 @@ void pep_server_accept_work(struct work_struct *work)
 				pep_configue_sk(client, &pep_client_data_ready, tunnel);
 
 				/* Configure snd & rev buffers, can use SO_RCVBUFFORCE and SO_SNDBUFFORCE to overwrite limit*/
-				sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUF, &buffsize, sizeof(buffsize));
-				sock_setsockopt(endpoint, SOL_SOCKET, SO_SNDBUF, &buffsize, sizeof(buffsize));
+				sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUF, valuelen, sizeof(buffsize));
+				sock_setsockopt(endpoint, SOL_SOCKET, SO_SNDBUF, valuelen, sizeof(buffsize));
 
-				sock_setsockopt(client, SOL_SOCKET, SO_SNDBUF, &buffsize, sizeof(buffsize));
-				sock_setsockopt(client, SOL_SOCKET, SO_RCVBUF, &buffsize, sizeof(buffsize));
+				sock_setsockopt(client, SOL_SOCKET, SO_SNDBUF, valuelen, sizeof(buffsize));
+				sock_setsockopt(client, SOL_SOCKET, SO_RCVBUF, valuelen, sizeof(buffsize));
 
 
 				/* Add tunnel to linked list of all pep tunnels. */
