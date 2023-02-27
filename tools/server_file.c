@@ -11,6 +11,8 @@
 #include <netdb.h>
 #include <stdlib.h>
 
+#define PORT 8183
+
 int main(void)
 {
     int sd, cd;
@@ -32,7 +34,7 @@ int main(void)
     bzero((char *)&s_ain, sizeof(s_ain));
     s_ain.sin_family = AF_INET;
     s_ain.sin_addr.s_addr = INADDR_ANY;
-    s_ain.sin_port = htons(8182);
+    s_ain.sin_port = htons(PORT);
 
     if(bind(sd, (struct sockaddr *)&s_ain, sizeof(s_ain)) == -1) {
         return -1;
@@ -45,7 +47,7 @@ int main(void)
     size = sizeof(c_ain);
     cd = accept(sd, (struct sockaddr *)&c_ain, &size);
 
-    printf("Client Connected\n");
+    printf("[FILE] Client Connected\n");
     while (1)   
     {
         ret = read(cd, buffer, 512);  
@@ -53,14 +55,14 @@ int main(void)
         if(ret > 0){
             getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
             total_recv += ret;
-            printf("Client: %d/%d (rtt: %u microseconds)\n", ret,total_recv, info.tcpi_rtt);
+            printf("[FILE] Client: %d/%d (rtt: %u microseconds)\n", ret,total_recv, info.tcpi_rtt);
             if(total_recv == 471439)    
                 break;
         } else if (ret < 0){
             break;
         }
     }
-    printf("Client Disconnected: %d bytes received.\n", total_recv);
+    printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
     
     fclose(thesis);
     close(cd);

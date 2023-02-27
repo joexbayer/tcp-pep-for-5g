@@ -16,7 +16,8 @@
 
 
 #define IP "127.0.0.1"
-#define PORT 8182
+#define PORT 8183
+#define MAX_BUFFER_SIZE 1001
 
 int setup_socket(char* ip, unsigned short port)
 {
@@ -50,31 +51,30 @@ int setup_socket(char* ip, unsigned short port)
 
 int main(int argc, char * argv[])
 {
-    int server;
-    int ret;
+    int server, ret, thesis_size, read;
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
+    /* Open big file. */
+    FILE* thesis = fopen("thesis/uio-master.pdf", "r");
+    char buffer[MAX_BUFFER_SIZE];
+
+    if(thesis == NULL){
+        printf("Could not open file\n");
+        return -1;
+    }
 
     server = setup_socket(IP, PORT);
 
-    /* Open big file. */
-    FILE* thesis = fopen("thesis/uio-master.pdf", "r");
-
     fseek(thesis, 0L, SEEK_END);
-    int thesis_size = ftell(thesis);
+    thesis_size = ftell(thesis);
     rewind(thesis);
 
     printf("sending file of size %d bytes\n", thesis_size);
-
-     #define MAX_BUFFER_SIZE 1001
-    char buffer[MAX_BUFFER_SIZE];
-    
     
     /* Ping and print RTT */
     while(thesis_size > 0)
     {
-
-        int read = fread(buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 1, thesis);
+        read = fread(buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 1, thesis);
         printf("reading %d bytes from file\n", MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE);
         ret = send(server, buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 0);
         printf("sending %d bytes to servers\n", ret);
@@ -83,7 +83,6 @@ int main(int argc, char * argv[])
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
         printf("rtt: %u microseconds\n", info.tcpi_rtt);
     }
-
 
     close(server);
     return 0;

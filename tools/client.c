@@ -18,7 +18,7 @@
 
 int setup_socket(char* ip, unsigned short port)
 {
-    int server;
+    int server, ret;
     struct sockaddr_in s_in;
     bzero((char *)&s_in, sizeof(s_in));
     s_in.sin_family = AF_INET;
@@ -31,9 +31,9 @@ int setup_socket(char* ip, unsigned short port)
     //setsockopt(server, SOL_TCP, TCP_NODELAY, (void *)&flags, sizeof(flags));
 
     #if 0
-        int ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+        ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
     #else
-        int ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
+        ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
     #endif
 
     if(ret >= 0)
@@ -52,13 +52,13 @@ int main(int argc, char * argv[])
     int ret;
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
+    char* test = "ping";
 
     server = setup_socket(IP, PORT);
 
     /* Ping and print RTT */
     while(1)
     {
-        char* test = "ping";
         ret = send(server, test, strlen(test), 0);
 
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);

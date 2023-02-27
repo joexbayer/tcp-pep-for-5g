@@ -4,6 +4,36 @@
 \usepackage{uiomasterfp}
 \usepackage{graphicx}
 \usepackage{url}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
 \author{Joe Bayer}
 \title{TCP PEP}
 \subtitle{Extension of a TCP Performance Enhancing Proxy to
@@ -122,6 +152,60 @@ Userspace vs Kernel. Reduce system call overhead.
 Reduce over head from userspace -> kernel system calls.
 
 \chapter{Implementation | Design}
+
+\begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
+int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
+{
+	struct msghdr msg = {
+		.msg_flags = MSG_DONTWAIT,
+	};
+
+	struct kvec vec;
+	int rc = 0;
+
+	vec.iov_base = buffer;
+	vec.iov_len  = size;
+
+	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
+pep_tcp_receive_read_again:
+	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
+	if (rc > 0)
+	{
+		tlv_print(buffer);
+		printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+		return rc;
+	}
+
+	if(rc == -EAGAIN || rc == -ERESTARTSYS)
+	{
+		goto pep_tcp_receive_read_again;
+	}
+
+	printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+	return rc;
+}
+\end{lstlisting}
+
+
+\section{PEP Connect}
+Since are PEP is explicitly addressed we need to change how we connect on the client side.
+The default approach is to use the \textbf{connect} function, our goal is to imitate this functions behavior, return code and parameters. By keeping our connect function as similar to the original we reduce the overhead of switching over to it. The only change to the original connect that we need is to specify type of traffic, interactive or non-interactive.
+\begin{lstlisting}[caption={PEP connection}, label={lst:pep_connect_use} ,language=C]
+int socket, ret;
+struct sockaddr_in s_in;
+bzero((char *)&s_in, sizeof(s_in));
+s_in.sin_family = AF_INET;
+s_in.sin_addr.s_addr = inet_addr(IP);
+s_in.sin_port = htons(PORT);
+
+socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
+\end{lstlisting}
+
+
+
 
 {Table of design decisions based on different PEP implementations compared to ours.}
 {0RTT, Transparent, Using TLV, Special ACKS, connection splitting.}\\
