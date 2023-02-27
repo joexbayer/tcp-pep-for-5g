@@ -85,6 +85,8 @@ void pep_server_accept_work(struct work_struct *work)
 				tunnel->client.sock = client;
 				tunnel->endpoint.sock = endpoint;
 				tunnel->state = 0;
+				tunnel->total_client = 0;
+				tunnel->total_endpoint = 0;
 				tunnel->server = server;	
 				INIT_WORK(&tunnel->c2e, &pep_client_receive_work);
 				INIT_WORK(&tunnel->e2c, &pep_endpoint_receive_work);

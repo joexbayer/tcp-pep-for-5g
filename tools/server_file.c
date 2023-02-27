@@ -56,8 +56,6 @@ int main(void)
             getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
             total_recv += ret;
             printf("[FILE] Client: %d/%d (rtt: %u microseconds)\n", ret,total_recv, info.tcpi_rtt);
-            if(total_recv == 471439)    
-                break;
         } else if (ret < 0){
             break;
         }

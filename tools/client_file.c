@@ -77,7 +77,7 @@ int main(int argc, char * argv[])
         read = fread(buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 1, thesis);
         printf("reading %d bytes from file\n", MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE);
         ret = send(server, buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 0);
-        printf("sending %d bytes to servers\n", ret);
+        printf("sending %d bytes to servers (%d left)\n", ret, thesis_size);
         thesis_size -= ret;
 
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);

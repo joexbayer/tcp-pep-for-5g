@@ -31,6 +31,9 @@ struct pep_tunnel {
         struct pep_connection client;
         struct pep_connection endpoint;
 
+        int total_client;
+        int total_endpoint;
+
         struct work_struct c2e;
         struct work_struct e2c;
 
