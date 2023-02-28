@@ -10,14 +10,15 @@
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.07, 0.04, 0.56}
 \definecolor{backcolour}{rgb}{1,1,1}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
+    keywordstyle=\color{blue},
     numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
+    stringstyle=\color{brown},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
@@ -28,7 +29,27 @@
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=2
+    tabsize=2,
+    morekeywords={ abstract, event, new, struct,
+        as, explicit, null, switch,
+        base, extern, object, this,
+        bool, false, operator, throw,
+        break, finally, out, true,
+        byte, fixed, override, try,
+        case, float, params, typeof,
+        catch, for, private, uint,
+        char, foreach, protected, ulong,
+        checked, goto, public, unchecked,
+        class, if, readonly, unsafe,
+        const, implicit, ref, ushort,
+        continue, in, return, using,
+        decimal, int, sbyte, virtual,
+        default, interface, sealed, volatile,
+        delegate, internal, short, void,
+        do, is, sizeof, while,
+        double, lock, stackalloc,
+        else, long, static,
+        enum, namespace, string, printk},
 }
 
 \lstset{style=mystyle}
@@ -54,7 +75,7 @@ Perhaps the most well known internet transport protocol is the Transmission Cont
 
 A networks topology and demands will vary a lot, especially between wired and wireless domains:
 \begin{itemize}
-  \item \textbf{Wireless Domain}: Fluctuating bandwidth, high error rate, blocking, radio signals.
+  \item \textbf{Wireless Domain}: A wireless communication domain refers to the transmission of data over a wireless medium without the use of physical connections such as wires or cables between devices. This domain covers a variety of technologies, including 3G, 4G, and 5G for mobile communication, Bluetooth and Wi-Fi for close-range communication, and satellite communication for worldwide communication.
   \item \textbf{Wired Domain}: Steady bandwidth, low error rate, high throughput, Ethernet / fiber.
 \end{itemize}
 
@@ -195,7 +216,7 @@ pep_tcp_receive_read_again:
 
 
 \section{PEP Connect}
-Since are PEP is explicitly addressed we need to change how we connect on the client side.
+Since our PEP is explicitly addressed we need to change how we connect on the client side.
 The default approach is to use the \textbf{connect} function, our goal is to imitate this functions behavior, return code and parameters. By keeping our connect function as similar to the original we reduce the overhead of switching over to it. The only change to the original connect that we need is to specify type of traffic, interactive or non-interactive.
 \begin{lstlisting}[caption={PEP connection}, label={lst:pep_connect_use} ,language=C]
 int socket, ret;

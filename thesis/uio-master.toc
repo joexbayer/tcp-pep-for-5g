@@ -3,16 +3,16 @@
 \contentsline {section}{\numberline {2.1}TCP/IP}{3}{}%
 \contentsline {subsection}{\numberline {2.1.1}3 Way handshake (0 RTT)}{4}{}%
 \contentsline {subsection}{\numberline {2.1.2}Congestion Control}{4}{}%
-\contentsline {subsection}{\numberline {2.1.3}TCP Options}{4}{}%
+\contentsline {subsection}{\numberline {2.1.3}TCP Options}{5}{}%
 \contentsline {section}{\numberline {2.2}Future of wireless communication.}{5}{}%
 \contentsline {subsection}{\numberline {2.2.1}5G Millimetre Wave}{5}{}%
 \contentsline {subsection}{\numberline {2.2.2}Buffering}{6}{}%
 \contentsline {subsubsection}{Buffer bloat}{6}{}%
-\contentsline {subsubsection}{Packet Scheduling}{6}{}%
+\contentsline {subsubsection}{Packet Scheduling}{7}{}%
 \contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{7}{}%
 \contentsline {section}{\numberline {2.3}PEPs}{7}{}%
 \contentsline {subsection}{\numberline {2.3.1}PEP for wireless communication}{7}{}%
-\contentsline {subsection}{\numberline {2.3.2}Transparent vs Non-Transparent}{7}{}%
+\contentsline {subsection}{\numberline {2.3.2}Transparent vs Non-Transparent}{8}{}%
 \contentsline {section}{\numberline {2.4}Kernel Modules}{8}{}%
 \contentsline {subsection}{\numberline {2.4.1}System Calls}{8}{}%
 \contentsline {chapter}{\numberline {3}Implementation | Design}{9}{}%
