@@ -17,6 +17,15 @@ int pep_setsockopt(struct socket* sock, int option, int value)
         return 0;
 }
 
+int pep_socket_is_disconnected(struct sock* sk)
+{
+        if (sk->sk_state == TCP_CLOSE || sk->sk_state == TCP_CLOSE_WAIT) {
+                return 1;
+        }
+
+        return 0;
+}
+
 void pep_configue_sk(struct socket* sock, void (*data_ready)(struct sock*), struct pep_tunnel* tunnel)
 {
         struct sock* sk;
