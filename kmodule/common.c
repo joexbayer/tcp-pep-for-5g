@@ -8,6 +8,16 @@ struct pep_tunnel* pep_new_tunnel(void)
         return (struct pep_tunnel*) kzalloc(sizeof(struct pep_tunnel), GFP_KERNEL);
 }
 
+void pep_tunnel_close(struct pep_tunnel* tunnel)
+{
+        // kernel_sock_shutdown(tunnel->client.sock);?
+        sock_release(tunnel->client.sock);
+        sock_release(tunnel->endpoint.sock);
+
+        printk(KERN_INFO "[PEP] pep_tunnel_disconnect: Closing tunnel %d.\n", tunnel->id);
+        
+}
+
 int pep_setsockopt(struct socket* sock, int option, int value)
 {
         sockptr_t valuelen;
@@ -17,9 +27,13 @@ int pep_setsockopt(struct socket* sock, int option, int value)
         return 0;
 }
 
-int pep_socket_is_disconnected(struct sock* sk)
+int pep_tunnel_is_disconnected(struct pep_tunnel* tunnel)
 {
-        if (sk->sk_state == TCP_CLOSE || sk->sk_state == TCP_CLOSE_WAIT) {
+        if (tunnel->client.sock->sk->sk_state == TCP_CLOSE || tunnel->client.sock->sk->sk_state == TCP_CLOSE_WAIT) {
+                return 1;
+        }
+
+        if (tunnel->endpoint.sock->sk->sk_state == TCP_CLOSE || tunnel->endpoint.sock->sk->sk_state == TCP_CLOSE_WAIT) {
                 return 1;
         }
 

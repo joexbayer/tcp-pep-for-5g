@@ -20,6 +20,10 @@ void pep_client_receive_work(struct work_struct *work)
                         ret_forward = pep_tcp_send(tun->endpoint.sock, buffer, ret);
                         tun->total_client += ret_forward;
                         printk(KERN_INFO "[PEP] pep_client_receive_work: Tunnel %d forwarded %d/%d (%d total)bytes to endpoint.\n", tun->id, ret, ret_forward, tun->total_client);
+                } else {
+                        if(pep_tunnel_is_disconnected(tun)){
+                                
+                        }
                 }
         }
 

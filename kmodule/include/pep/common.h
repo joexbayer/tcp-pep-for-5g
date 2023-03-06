@@ -50,4 +50,7 @@ struct pep_tunnel* pep_new_tunnel(void);
 int pep_setsockopt(struct socket* sock, int option, int value);
 void pep_configue_sk(struct socket* sock, void (*data_ready)(struct sock*), struct pep_tunnel* tunnel);
 
+int pep_tunnel_is_disconnected(struct pep_tunnel* tunnel);
+void pep_tunnel_close(struct pep_tunnel* tunnel);
+
 #endif /* C7C875A3_F654_4F90_A02F_1138DEFED801 */
