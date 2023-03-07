@@ -24,8 +24,13 @@ int main(void)
     char buffer[512];
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
-    FILE* thesis = fopen("thesis.pdf", "w+");
     int total_recv = 0;
+    FILE* thesis = fopen("thesis.pdf", "w+");
+
+    if(thesis == NULL){
+        printf("[FILE] Unable to open output file\n");
+        return -1;
+    }
 
     sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -56,7 +61,7 @@ int main(void)
             getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
             total_recv += ret;
             printf("[FILE] Client: %d/%d (rtt: %u microseconds)\n", ret,total_recv, info.tcpi_rtt);
-        } else if (ret < 0){
+        } else if (ret <= 0){
             break;
         }
     }

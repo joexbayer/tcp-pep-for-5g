@@ -18,10 +18,11 @@
 #define IP "127.0.0.1"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
+#define PEP 1 
 
 int setup_socket(char* ip, unsigned short port)
 {
-    int server;
+    int server, ret;
     struct sockaddr_in s_in;
     bzero((char *)&s_in, sizeof(s_in));
     s_in.sin_family = AF_INET;
@@ -30,22 +31,18 @@ int setup_socket(char* ip, unsigned short port)
 
     server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-    //int flags = 1;
-    //setsockopt(server, SOL_TCP, TCP_NODELAY, (void *)&flags, sizeof(flags));
+#if PEP
+        
+        ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
+#else
+        ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+#endif
 
-    #if 0
-        int ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
-    #else
-        int ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
-    #endif
-
-    if(ret >= 0)
-        printf("Connected. %d\n", ret);
-    else {
+    if(ret < 0){
         printf("Unable to connect %d.\n", ret);
         return -1;
     }
-
+    printf("Connected. %d\n", ret);
     return server;
 }
 

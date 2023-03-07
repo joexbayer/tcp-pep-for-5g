@@ -51,10 +51,11 @@ int main(void)
                 getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
                 printf("[ping] Client: %s (rtt: %u microseconds)\n", buffer, info.tcpi_rtt);
             }
-            else if (ret < 0)
+            else if (ret <= 0){
+                printf("[ping] Client Disconneced\n");
                 break;
+            }
         }
-        printf("[ping] Client Disconneced\n");
         
         close(cd);
     }

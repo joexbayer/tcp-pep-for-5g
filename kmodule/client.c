@@ -14,7 +14,7 @@ void pep_client_receive_work(struct work_struct *work)
         }
 
         printk(KERN_INFO "[PEP] pep_client_receive_work: reading data from client in tunnel %d starting work.\n", tun->id);
-        while(ret > 0){
+        while(ret > 0 && !pep_tunnel_is_disconnected(tun) && tun->client.sock != NULL){
                 ret = pep_tcp_receive(tun->client.sock, buffer, PEP_MAX_TCP_BUFFER_SIZE);
                 if(ret > 0){
                         ret_forward = pep_tcp_send(tun->endpoint.sock, buffer, ret);
@@ -22,7 +22,8 @@ void pep_client_receive_work(struct work_struct *work)
                         printk(KERN_INFO "[PEP] pep_client_receive_work: Tunnel %d forwarded %d/%d (%d total)bytes to endpoint.\n", tun->id, ret, ret_forward, tun->total_client);
                 } else {
                         if(pep_tunnel_is_disconnected(tun)){
-                                
+                                pep_tunnel_close(tun);
+                                return;
                         }
                 }
         }

@@ -10,12 +10,11 @@ struct pep_tunnel* pep_new_tunnel(void)
 
 void pep_tunnel_close(struct pep_tunnel* tunnel)
 {
-        // kernel_sock_shutdown(tunnel->client.sock);?
-        sock_release(tunnel->client.sock);
-        sock_release(tunnel->endpoint.sock);
-
         printk(KERN_INFO "[PEP] pep_tunnel_disconnect: Closing tunnel %d.\n", tunnel->id);
-        
+        kernel_sock_shutdown(tunnel->client.sock, SHUT_RDWR);
+        kernel_sock_shutdown(tunnel->endpoint.sock, SHUT_RDWR);
+        //sock_release(tunnel->client.sock);
+        //sock_release(tunnel->endpoint.sock);
 }
 
 int pep_setsockopt(struct socket* sock, int option, int value)

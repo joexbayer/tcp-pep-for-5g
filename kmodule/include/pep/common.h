@@ -19,6 +19,12 @@
 
 #define PEP_MAX_TCP_BUFFER_SIZE 1500
 
+enum pep_tunnel_states {
+        NEW,
+        RUNNING,
+        STOPPED
+};
+
 struct pep_connection {
         unsigned int ip;
         unsigned short port;

@@ -12,47 +12,50 @@
 
 #include "../lib/include/library.h"
 
-
 #define IP "127.0.0.1"
 #define PORT 8182
+#define PEP 1
+
+int server;
 
 int setup_socket(char* ip, unsigned short port)
 {
-    int server, ret;
+    int sd, ret;
     struct sockaddr_in s_in;
     bzero((char *)&s_in, sizeof(s_in));
+
     s_in.sin_family = AF_INET;
     s_in.sin_addr.s_addr = inet_addr(IP);
     s_in.sin_port = htons(PORT);
+    sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-    server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-    //int flags = 1;
-    //setsockopt(server, SOL_TCP, TCP_NODELAY, (void *)&flags, sizeof(flags));
-
-    #if 0
+#if PEP
+        ret = pep_connect(sd, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
+#else
         ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
-    #else
-        ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
-    #endif
+#endif
 
-    if(ret >= 0)
-        printf("Connected. %d\n", ret);
-    else {
+    if(ret < 0){
         printf("Unable to connect %d.\n", ret);
         return -1;
     }
 
-    return server;
+    printf("Connected. %d\n", ret);
+    return sd;
+}
+
+void intHandler(int dummy) {
+    close(server);
 }
 
 int main(int argc, char * argv[])
 {
-    int server;
     int ret;
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
     char* test = "ping";
+
+    signal(SIGINT, intHandler);
 
     server = setup_socket(IP, PORT);
 
@@ -67,8 +70,6 @@ int main(int argc, char * argv[])
         sleep(1);
     }
 
-
-    close(server);
     return 0;
 }
 
