@@ -4,7 +4,7 @@
 #include <pep/errors.h>
 #include <pep/tcp.h>
 
-enum pep_states = {
+enum pep_states  {
         PEP_SERVER_RUNNING,
         PEP_SERVER_STOPPED
 };
@@ -28,7 +28,7 @@ void pep_server_accept_work(struct work_struct *work)
 		struct pep_state* server = container_of(work, struct pep_state, accept_work);
 		unsigned char *buffer;
 
-		if(atomic_read(&server->state) != PEP_STATE_RUNNING)
+		if(atomic_read(&server->state) != PEP_SERVER_RUNNING)
 			return;
 
 		int buffsize = 98304;
@@ -135,7 +135,7 @@ void pep_server_accept_work(struct work_struct *work)
 
 void pep_server_clean(struct pep_state* server)
 {
-	atomic_set(&server->state, PEP_STATE_STOPPED);
+	atomic_set(&server->state, PEP_SERVER_STOPPED);
 	cancel_work_sync(&server->accept_work);
 
 	struct pep_tunnel* iter;
@@ -198,7 +198,7 @@ int pep_server_init(struct pep_state* server, u16 port)
 		sk = sock->sk;
 		sk->sk_reuse = 1;
 
-		server->state = ATOMIC_INIT(PEP_SERVER_RUNNING);
+		server->state = ((atomic_t){(PEP_SERVER_RUNNING)});
 		
 		/* use our own data ready function */
 		write_lock_bh(&sk->sk_callback_lock);
