@@ -10,6 +10,7 @@
 #include <net/tcp.h>
 #include <linux/netfilter.h>
 #include <linux/netfilter_ipv4.h> 
+#include <linux/atomic.h>
 
 #include <linux/workqueue.h>
 

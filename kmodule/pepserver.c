@@ -4,6 +4,11 @@
 #include <pep/errors.h>
 #include <pep/tcp.h>
 
+enum pep_states = {
+        PEP_SERVER_RUNNING,
+        PEP_SERVER_STOPPED
+};
+
 /**
  * @brief Responsible for accepting a new client and connection to the desired endpoint.
  * 
@@ -22,6 +27,9 @@ void pep_server_accept_work(struct work_struct *work)
 
 		struct pep_state* server = container_of(work, struct pep_state, accept_work);
 		unsigned char *buffer;
+
+		if(atomic_read(&server->state) != PEP_STATE_RUNNING)
+			return;
 
 		int buffsize = 98304;
 		sockptr_t valuelen;
@@ -125,6 +133,27 @@ void pep_server_accept_work(struct work_struct *work)
 		}
 }
 
+void pep_server_clean(struct pep_state* server)
+{
+	atomic_set(&server->state, PEP_STATE_STOPPED);
+	cancel_work_sync(&server->accept_work);
+
+	struct pep_tunnel* iter;
+	list_for_each_entry(iter, &server->tunnels, list) {
+        list_del(&iter->list);
+
+		cancel_work_sync(&iter->c2e);
+		cancel_work_sync(&iter->e2c);
+
+		sock_release(iter->client.sock);
+		sock_release(iter->endpoint.sock);
+
+		kfree(iter);
+    }
+
+	sock_release(server->server_socket);
+}
+
 void pep_listen_data_ready(struct sock* sk)
 {
 		printk(KERN_INFO "[PEP] pep_listen_data_ready: New connection request incomming!\n");
@@ -168,6 +197,8 @@ int pep_server_init(struct pep_state* server, u16 port)
 
 		sk = sock->sk;
 		sk->sk_reuse = 1;
+
+		server->state = ATOMIC_INIT(PEP_SERVER_RUNNING);
 		
 		/* use our own data ready function */
 		write_lock_bh(&sk->sk_callback_lock);

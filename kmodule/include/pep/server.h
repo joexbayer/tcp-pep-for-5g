@@ -5,6 +5,8 @@
 
 struct pep_state {
         struct socket* server_socket;
+
+        atomic_t state;
         
         struct workqueue_struct* accept_wq;
         struct workqueue_struct* forward_c2e_wq;
