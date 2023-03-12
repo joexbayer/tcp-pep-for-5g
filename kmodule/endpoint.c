@@ -14,7 +14,7 @@ void pep_endpoint_receive_work(struct work_struct *work)
                 return;
         }
 
-        while(ret > 0 && !pep_tunnel_is_disconnected(tun) && tun->endpoint.sock != NULL)
+        while(ret > 0 /* && !pep_tunnel_is_disconnected(tun) && tun->endpoint.sock != NULL */)
         {
                 printk(KERN_INFO "[PEP] pep_endpoint_receive_work: reading data from endpoint in tunnel %d starting work.\n", tun->id);
                 ret = pep_tcp_receive(tun->endpoint.sock, buffer, PEP_MAX_TCP_BUFFER_SIZE);

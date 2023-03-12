@@ -13,7 +13,7 @@ int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 	vec.iov_base = buffer;
 	vec.iov_len  = size;
 
-	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
+	//printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
 pep_tcp_receive_read_again:
 	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
 	if (rc > 0)
@@ -28,7 +28,7 @@ pep_tcp_receive_read_again:
 		goto pep_tcp_receive_read_again;
 	}
 
-	printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+	//printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
 	return rc;
 }
 

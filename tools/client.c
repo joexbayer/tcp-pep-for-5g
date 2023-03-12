@@ -9,6 +9,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
+#include <signal.h>
 
 #include "../lib/include/library.h"
 
@@ -46,6 +47,7 @@ int setup_socket(char* ip, unsigned short port)
 
 void intHandler(int dummy) {
     close(server);
+    exit(0);
 }
 
 int main(int argc, char * argv[])

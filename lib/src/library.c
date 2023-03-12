@@ -21,7 +21,17 @@
 #include "library.h"
 #include "tlv.h"
 
-
+/**
+ * @brief Attempts to establish a connection with a Performance Enhancing Proxy (PEP) server by wrapping the original
+ * socket address and port information in a TLV header and sending it to the PEP server's IP address
+ * and port using the provided socket file descriptor. The original socket address
+ * and port information is added as an option in the TLV header.
+ * @param sockfd The socket file descriptor.
+ * @param addr A pointer to the original socket address.
+ * @param addrlen The length of the original socket address.
+ * @param pep_option An optional flag for use with the PEP server.
+ * @return int Returns -1 on error or the number of bytes sent on success.
+ */
 int pep_connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen, int pep_option)
 {
     struct sockaddr_in new_addr;
