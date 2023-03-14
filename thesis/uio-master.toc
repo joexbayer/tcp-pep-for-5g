@@ -16,6 +16,8 @@
 \contentsline {section}{\numberline {2.4}Kernel Modules}{8}{}%
 \contentsline {subsection}{\numberline {2.4.1}System Calls}{8}{}%
 \contentsline {chapter}{\numberline {3}Implementation | Design}{9}{}%
-\contentsline {section}{\numberline {3.1}PEP Connect}{10}{}%
+\contentsline {section}{\numberline {3.1}TLVs}{10}{}%
+\contentsline {section}{\numberline {3.2}PEP}{10}{}%
+\contentsline {section}{\numberline {3.3}PEP Connect}{10}{}%
 \contentsline {chapter}{\numberline {4}Evaluation}{11}{}%
 \contentsline {chapter}{\numberline {5}Conclusion}{12}{}%
