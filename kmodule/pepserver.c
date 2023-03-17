@@ -197,7 +197,7 @@ int pep_server_init(struct pep_state* server, u16 port)
 
 		sk = sock->sk;
 		sk->sk_reuse = 1;
-
+3
 		server->state = ((atomic_t){(PEP_SERVER_RUNNING)});
 		
 		/* use our own data ready function */

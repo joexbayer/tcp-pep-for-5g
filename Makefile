@@ -1,6 +1,8 @@
 .PHONY: lib module tools 
 
-all: clean lib module tools
+all: lib module tools
+
+new: clean lib module tools
 
 lib:
 	make -C lib/
@@ -17,9 +19,13 @@ tools:
 install:
 	make -C kmodule install
 
+mininet:
+	sudo mn --custom ./topology.py --topo=mytopo -x
 
 clean:
 	make -C lib/ clean
 	make -C kmodule/ clean
 	rm -f client
 	rm -f server
+	rm -f client_file
+	rm -f server_file

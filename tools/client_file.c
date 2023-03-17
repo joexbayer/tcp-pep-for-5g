@@ -7,9 +7,7 @@
 #include <unistd.h> // for close
 #include <arpa/inet.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
 #include <netinet/tcp.h>
-
 #include <stdlib.h>
 
 #include "../lib/include/library.h"

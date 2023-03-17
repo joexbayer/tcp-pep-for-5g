@@ -27,4 +27,4 @@ class MyTopo( Topo ):
 " Very simple Topology for testing "
 topos = { 'mytopo': ( lambda: MyTopo() ) } 
 
-# sudo mn --custom .topology.py --topo=mytopo  
+# sudo mn --custom ./topology.py --topo=mytopo -x

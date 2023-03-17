@@ -7,13 +7,13 @@
 #include <unistd.h> // for close
 #include <arpa/inet.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <signal.h>
+#include <stdlib.h>
 
 #include "../lib/include/library.h"
 
-#define IP "127.0.0.1"
+#define IP "10.0.2.1"
 #define PORT 8182
 #define PEP 1
 
@@ -33,7 +33,7 @@ int setup_socket(char* ip, unsigned short port)
 #if PEP
         ret = pep_connect(sd, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
 #else
-        ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+        ret = connect(sd, (struct sockaddr*) &s_in, sizeof(s_in));
 #endif
 
     if(ret < 0){
