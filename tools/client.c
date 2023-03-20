@@ -13,9 +13,9 @@
 
 #include "../lib/include/library.h"
 
-#define IP "10.0.2.1"
+#define IP "192.168.2.22" /* IP of server */
 #define PORT 8182
-#define PEP 1
+#define USE_PEP 0
 
 int server;
 
@@ -30,7 +30,7 @@ int setup_socket(char* ip, unsigned short port)
     s_in.sin_port = htons(PORT);
     sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-#if PEP
+#if USE_PEP
         ret = pep_connect(sd, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
 #else
         ret = connect(sd, (struct sockaddr*) &s_in, sizeof(s_in));

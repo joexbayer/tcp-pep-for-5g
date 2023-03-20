@@ -21,6 +21,10 @@
 #include "library.h"
 #include "tlv.h"
 
+/* PEP IP/PORT from the perspective of the client */
+#define PEP_IP "192.168.1.1"
+#define PEP_PORT 8181
+
 /**
  * @brief Attempts to establish a connection with a Performance Enhancing Proxy (PEP) server by wrapping the original
  * socket address and port information in a TLV header and sending it to the PEP server's IP address
@@ -45,8 +49,8 @@ int pep_connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen, int 
 
     bzero((char *)&new_addr, sizeof(new_addr));
     new_addr.sin_family = AF_INET;
-    new_addr.sin_addr.s_addr = inet_addr("10.0.1.4");
-    new_addr.sin_port = htons(8181);
+    new_addr.sin_addr.s_addr = inet_addr(PEP_IP);
+    new_addr.sin_port = htons(PEP_PORT);
     
     char* data[sample_tlv_size];
     tlv_add_header(data);
