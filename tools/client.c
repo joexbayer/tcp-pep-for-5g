@@ -15,7 +15,7 @@
 
 #define IP "192.168.2.22" /* IP of server */
 #define PORT 8182
-#define USE_PEP 0
+#define USE_PEP 1
 
 int server;
 
@@ -67,7 +67,7 @@ int main(int argc, char * argv[])
         ret = send(server, test, strlen(test), 0);
 
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-        printf("rtt: %u microseconds\n", info.tcpi_rtt);
+        printf("rtt: %f ms\n", info.tcpi_rtt/1000);
 
         sleep(1);
     }

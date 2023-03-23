@@ -10,6 +10,8 @@
 #include <netinet/tcp.h>
 #include <netdb.h>
 #include <stdlib.h>
+#include <time.h>
+#include <sys/time.h>
 
 #define PORT 8183
 
@@ -53,19 +55,26 @@ int main(void)
     cd = accept(sd, (struct sockaddr *)&c_ain, &size);
 
     printf("[FILE] Client Connected\n");
+    struct timeval  tv1, tv2;
+    gettimeofday(&tv1, NULL);
     while (1)   
     {
         ret = read(cd, buffer, 512);  
         fwrite(buffer, 512, 1, thesis);
         if(ret > 0){
-            getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
+            //getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
             total_recv += ret;
-            printf("[FILE] Client: %d/%d (rtt: %u microseconds)\n", ret,total_recv, info.tcpi_rtt);
+            //printf("[FILE] Client: %d/%d (rtt: %f ms)\n", ret,total_recv, info.tcpi_rtt/1000);
         } else if (ret <= 0){
             break;
         }
     }
+    gettimeofday(&tv2, NULL);
     printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
+    printf ("Total time = %f seconds\n",
+         (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
+         (double) (tv2.tv_sec - tv1.tv_sec));
+
     
     fclose(thesis);
     close(cd);

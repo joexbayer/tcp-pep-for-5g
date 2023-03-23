@@ -20,14 +20,18 @@ void pep_client_receive_work(struct work_struct *work)
                 if(ret > 0){
                         ret_forward = pep_tcp_send(tun->endpoint.sock, buffer, ret);
                         tun->total_client += ret_forward;
-                        printk(KERN_INFO "[PEP] pep_client_receive_work: Tunnel %d forwarded %d/%d (%d total)bytes to endpoint.\n", tun->id, ret, ret_forward, tun->total_client);
+                        //printk(KERN_INFO "[PEP] pep_client_receive_work: Tunnel %d forwarded %d/%d (%d total)bytes to endpoint.\n", tun->id, ret, ret_forward, tun->total_client);
                 } else {
+                        printk(KERN_INFO "[PEP] pep_client_receive_work: pep_tcp_receive returned %d in tunnel %d.\n", ret, tun->id);
                         if(pep_tunnel_is_disconnected(tun)){
                                 pep_tunnel_close(tun);
                                 return;
                         }
                 }
         }
+
+        printk(KERN_INFO "[PEP] pep_client_receive_work: done reading data in tunnel %d.\n", tun->id);
+
 
         kfree(buffer);
 }
@@ -36,9 +40,9 @@ void pep_client_data_ready(struct sock* sk)
 {
         struct pep_tunnel* tunnel = sk->sk_user_data;
 
-        printk(KERN_INFO "[PEP] pep_client_data_ready: Incoming data from client in tunnel %d starting work.\n", tunnel->id);
+        //printk(KERN_INFO "[PEP] pep_client_data_ready: Incoming data from client in tunnel %d starting work.\n", tunnel->id);
         if(!queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e))
-                printk(KERN_INFO "[PEP] pep_client_data_ready: Work already in queue. Tunnel %d\n", tunnel->id);
+                ;//printk(KERN_INFO "[PEP] pep_client_data_ready: Work already in queue. Tunnel %d\n", tunnel->id);
 
         default_data_ready(sk);
 }

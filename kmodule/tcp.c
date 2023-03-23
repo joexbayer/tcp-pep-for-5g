@@ -19,7 +19,7 @@ pep_tcp_receive_read_again:
 	if (rc > 0)
 	{
 		tlv_print(buffer);
-		printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+		//printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
 		return rc;
 	}
 
@@ -46,7 +46,7 @@ pep_tcp_send_again:
         vec.iov_base = (char *)buffer + written;
 
         len = kernel_sendmsg(sock, &msg, &vec, left, left);
-        if((len == -ERESTARTSYS) && (len == -EAGAIN))
+        if((len == -ERESTARTSYS) || (len == -EAGAIN))
                 goto pep_tcp_send_again;
         if(len > 0)
         {
