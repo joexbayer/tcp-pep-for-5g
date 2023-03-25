@@ -41,7 +41,7 @@ int setup_socket(char* ip, unsigned short port)
 #endif
 
     if(ret < 0){
-        printf("Unable to connect %d.\n", ret);
+        printf("Unable to connect %d.\n", ret); 
         return -1;
     }
     printf("Connected. %d\n", ret);
@@ -69,6 +69,8 @@ int main(int argc, char * argv[])
     }
 
     server = setup_socket(IP, PORT);
+    if(server < 0)
+        return -1;
 
     fseek(thesis, 0L, SEEK_END);
     thesis_size = ftell(thesis);

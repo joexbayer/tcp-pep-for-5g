@@ -2,7 +2,7 @@
 
 Testing topology:
 
-(Client) 192.168.1.11 enps08 <------> enps08 192.168.1.1 (Router) 192.168.2.2 enps09 <------> enps08 192.168.2.22 (Server)
+(Client) 192.168.1.11 enp0s8 <------> enp0s8 192.168.1.1 (Router) 192.168.2.2 enp0s9 <---( delay )---> enp0s8 192.168.2.22 (Server)
 
 ## Config of router
 ### install
