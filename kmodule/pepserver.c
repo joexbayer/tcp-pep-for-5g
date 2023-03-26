@@ -66,6 +66,8 @@ void pep_server_accept_work(struct work_struct *work)
 						sock_release(client);
 						return;
 				}
+
+				tlv_print(buffer);
 				
 				/* Get connect tlv options from tlv buffer */
 				tlv = tlv_get_option(TLV_CONNECT, buffer);

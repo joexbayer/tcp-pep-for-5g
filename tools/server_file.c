@@ -14,6 +14,8 @@
 #include <sys/time.h>
 
 #define PORT 8183
+#define BUFFER_SIZE 512
+#define OUTPUT_FILE "test.out"
 
 int main(void)
 {
@@ -23,11 +25,12 @@ int main(void)
     struct sockaddr_in s_ain, c_ain;    
     int qlen = 5;
     int ret;
-    char buffer[512];
+    char buffer[BUFFER_SIZE];
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
     int total_recv = 0;
-    FILE* thesis = fopen("thesis.pdf", "w+");
+    struct timeval  tv1, tv2;
+    FILE* thesis = fopen(OUTPUT_FILE, "w+");
 
     if(thesis == NULL){
         printf("[FILE] Unable to open output file\n");
@@ -35,7 +38,6 @@ int main(void)
     }
 
     sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
     setsockopt(sd, SOL_TCP, TCP_FASTOPEN, &qlen, sizeof(qlen));
 
     bzero((char *)&s_ain, sizeof(s_ain));
@@ -43,24 +45,18 @@ int main(void)
     s_ain.sin_addr.s_addr = INADDR_ANY;
     s_ain.sin_port = htons(PORT);
 
-    if(bind(sd, (struct sockaddr *)&s_ain, sizeof(s_ain)) == -1) {
-        return -1;
-    }
-
-    if(listen(sd, 5) == -1) {
-        return -1;
-    }
+    if(bind(sd, (struct sockaddr *)&s_ain, sizeof(s_ain)) == -1) return -1;
+    if(listen(sd, 5) == -1) return -1;
 
     size = sizeof(c_ain);
     cd = accept(sd, (struct sockaddr *)&c_ain, &size);
 
     printf("[FILE] Client Connected\n");
-    struct timeval  tv1, tv2;
     gettimeofday(&tv1, NULL);
     while (1)   
     {
-        ret = read(cd, buffer, 512);  
-        fwrite(buffer, 512, 1, thesis);
+        ret = read(cd, buffer, BUFFER_SIZE);  
+        fwrite(buffer, BUFFER_SIZE, 1, thesis);
         if(ret > 0){
             //getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
             total_recv += ret;

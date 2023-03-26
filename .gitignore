@@ -40,4 +40,6 @@ server
 client_file
 server_file
 
+test.out
+
 *.o

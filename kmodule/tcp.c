@@ -18,7 +18,6 @@ pep_tcp_receive_read_again:
 	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
 	if (rc > 0)
 	{
-		tlv_print(buffer);
 		//printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
 		return rc;
 	}

@@ -18,26 +18,27 @@
 #define IP "192.168.2.22"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
-#define PEP 1
+#define PEP 0
+#define TEST_FILE "..."
 
 int server;
 
 int setup_socket(char* ip, unsigned short port)
 {
-    int server, ret;
+    int sd, ret;
     struct sockaddr_in s_in;
     bzero((char *)&s_in, sizeof(s_in));
     s_in.sin_family = AF_INET;
     s_in.sin_addr.s_addr = inet_addr(IP);
     s_in.sin_port = htons(PORT);
 
-    server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 #if PEP
         
-        ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
+        ret = pep_connect(sd, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
 #else
-        ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+        ret = connect(sd, (struct sockaddr*) &s_in, sizeof(s_in));
 #endif
 
     if(ret < 0){
@@ -45,7 +46,7 @@ int setup_socket(char* ip, unsigned short port)
         return -1;
     }
     printf("Connected. %d\n", ret);
-    return server;
+    return sd;
 }
 
 void intHandler(int dummy) {
@@ -57,10 +58,11 @@ int main(int argc, char * argv[])
 {
     int ret, thesis_size, read;
     struct tcp_info info;
+    struct timeval  tv1, tv2;
     socklen_t tcp_info_length = sizeof(info);
     signal(SIGINT, intHandler);
     /* Open big file. */
-    FILE* thesis = fopen("thesis/uio-master.pdf", "r");
+    FILE* thesis = fopen(TEST_FILE, "r");
     char buffer[MAX_BUFFER_SIZE];
 
     if(thesis == NULL){
@@ -77,7 +79,6 @@ int main(int argc, char * argv[])
     rewind(thesis);
 
     printf("sending file of size %d bytes\n", thesis_size);
-    struct timeval  tv1, tv2;
     gettimeofday(&tv1, NULL);
     /* Ping and print RTT */
     while(thesis_size > 0)
