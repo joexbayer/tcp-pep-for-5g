@@ -10,16 +10,16 @@ INTERVAL='0.0001'
 # Log file
 LOG_FILE="tcp-cwnd.dat"
 # Source IP
-SRC_IP="10.1.1.100"
+SRC_IP="192.168.1.11"
 # Destination IP
-DST_IP="10.2.2.100"
+DST_IP="192.168.2.22"
 # Destination Port
 DST_PORT="5001"
 SRC_PORT="33333"
 while true ; do
   BEFORE=$(date +%s.%N)
 
-  output=$(sudo ss -i '( dport == 5001 )' dst $DST_IP src $SRC_IP)
+  output=$(sudo ss -i '( dport == 5201 )' dst $DST_IP src $SRC_IP)
   cwnd=$(echo "$output" | grep -Po 'cwnd:\K.[0-9]*')
   if [ -z "$cwnd" ]; then
     cwnd="0"

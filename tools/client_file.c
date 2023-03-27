@@ -19,7 +19,7 @@
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
 #define PEP 0
-#define TEST_FILE "..."
+#define TEST_FILE "6mb.bin"
 
 int server;
 

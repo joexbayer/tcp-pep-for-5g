@@ -67,7 +67,7 @@ int main(int argc, char * argv[])
         ret = send(server, test, strlen(test), 0);
 
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-        printf("rtt: %f ms\n", info.tcpi_rtt/1000);
+        printf("rtt: %u ms\n", info.tcpi_rtt/1000);
 
         sleep(1);
     }

@@ -158,29 +158,18 @@ void pep_server_clean(struct pep_state* server)
 
 void pep_listen_data_ready(struct sock* sk)
 {
-		printk(KERN_INFO "[PEP] pep_listen_data_ready: New connection request incomming!\n");
-		struct pep_state* server;
-		struct sk_buff* skb = skb_peek(&sk->sk_receive_queue);
+	struct pep_state* server;
 
-		read_lock_bh(&sk->sk_callback_lock);
+	read_lock_bh(&sk->sk_callback_lock);
+	server = sk->sk_user_data;
 
-		server = sk->sk_user_data;
+	/* Queue accept work */
+	if(sk->sk_state == TCP_LISTEN){
+		queue_work(server->accept_wq, &server->accept_work);
+	}
+	read_unlock_bh(&sk->sk_callback_lock);
 
-		/* Queue accept work */
-		if(sk->sk_state == TCP_LISTEN){
-				queue_work(server->accept_wq, &server->accept_work);
-		}
-
-		read_unlock_bh(&sk->sk_callback_lock);
-
-		default_data_ready(sk);
-}
-
-void pep_server_cleanup(struct pep_state* server)
-{
-	/* Destroy workqueues and sockets*/
-
-	/* cleanup all tunnels */
+	default_data_ready(sk);
 }
 
 int pep_server_init(struct pep_state* server, u16 port)

@@ -42,4 +42,7 @@ server_file
 
 test.out
 
+tcp-cwnd.dat
+tcp-cwnd.dat.pdf
+
 *.o
