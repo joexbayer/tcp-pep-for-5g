@@ -1,4 +1,4 @@
-.PHONY: lib module tools 
+.PHONY: lib module tools server client pep
 
 all: lib module tools
 
@@ -18,6 +18,40 @@ tools:
 
 install:
 	make -C kmodule install
+
+vms:
+	VBoxManage list runningvms
+
+stopvms:
+	VBoxManage controlvm Client poweroff
+	VBoxManage controlvm Server poweroff
+	VBoxManage controlvm Router poweroff
+
+resetvms:
+	VBoxManage controlvm Client reset
+	VBoxManage controlvm Server reset
+	VBoxManage controlvm Router reset
+
+startvms:
+	VBoxManage startvm Client --type headless
+	VBoxManage startvm Server --type headless
+	VBoxManage startvm Router --type headless
+
+sshclient:
+	ssh joe@localhost -p 5555 -i ~/.ssh/.id_rsa_virt -o StrictHostKeyChecking=no 
+sshserver:
+	ssh joe@localhost -p 5556 -i ~/.ssh/.id_rsa_virt -o StrictHostKeyChecking=no 
+sshpep:
+	ssh joe@localhost -p 5557 -i ~/.ssh/.id_rsa_virt -o StrictHostKeyChecking=no
+
+
+server:
+	sh scripts/server.sh
+client:
+	sh scripts/client.sh
+pep:
+	sh scripts/pep.sh
+
 
 mininet:
 	sudo mn --custom ./topology.py --topo=mytopo -x

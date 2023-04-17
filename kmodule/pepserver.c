@@ -31,7 +31,7 @@ void pep_server_accept_work(struct work_struct *work)
 		if(atomic_read(&server->state) != PEP_SERVER_RUNNING)
 			return;
 
-		int buffsize = 98304;
+		int buffsize = 598304;
 		sockptr_t valuelen;
         valuelen = KERNEL_SOCKPTR(&buffsize);
 
@@ -106,11 +106,11 @@ void pep_server_accept_work(struct work_struct *work)
 				pep_configue_sk(client, &pep_client_data_ready, tunnel);
 
 				/* Configure snd & rev buffers, can use SO_RCVBUFFORCE and SO_SNDBUFFORCE to overwrite limit*/
-				sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUF, valuelen, sizeof(buffsize));
-				sock_setsockopt(endpoint, SOL_SOCKET, SO_SNDBUF, valuelen, sizeof(buffsize));
+				sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
+				sock_setsockopt(endpoint, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
 
-				sock_setsockopt(client, SOL_SOCKET, SO_SNDBUF, valuelen, sizeof(buffsize));
-				sock_setsockopt(client, SOL_SOCKET, SO_RCVBUF, valuelen, sizeof(buffsize));
+				sock_setsockopt(client, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
+				sock_setsockopt(client, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
 
 
 				/* Add tunnel to linked list of all pep tunnels. */
@@ -140,8 +140,8 @@ void pep_server_clean(struct pep_state* server)
 	atomic_set(&server->state, PEP_SERVER_STOPPED);
 	cancel_work_sync(&server->accept_work);
 
-	struct pep_tunnel* iter;
-	list_for_each_entry(iter, &server->tunnels, list) {
+	/*struct pep_tunnel* iter, temp;
+	list_for_each_entry_safe(iter, temp, &server->tunnels, list) {
         list_del(&iter->list);
 
 		cancel_work_sync(&iter->c2e);
@@ -151,7 +151,11 @@ void pep_server_clean(struct pep_state* server)
 		sock_release(iter->endpoint.sock);
 
 		kfree(iter);
-    }
+    }*/
+
+	destroy_workqueue(server->accept_wq);
+	destroy_workqueue(server->forward_c2e_wq);
+	destroy_workqueue(server->forward_e2c_wq);
 
 	sock_release(server->server_socket);
 }
