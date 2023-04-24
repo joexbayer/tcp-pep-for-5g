@@ -26,14 +26,25 @@ Inital testing topology:
         enable ip_forward
 
 ### Findings
-Using 100ms delay, 10mb hbt rate & 25000 bfifo rate on the link between pep and server,
-and 598304 recv / snd buffer sizes the client finishes sending the 6mb file in 7s, while the server after 10s.
+Using the default 20ms config between PEP and Receiver:
+Sender -----> PEP -- 20ms --> Receiver.
+NO PEP:
+Client: 8-11s
+Server: 9-12s
+PEP:
+Client: 3.8s
+Server: 5s
 
-Changing bfifo to 250000 mid transfer reduced the server time to 8s.
+Using default 20ms config between client -> router and router -> server:
+Sender -- 20ms --> PEP -- 20ms --> Receiver.
+NO PEP:
+Client: 5.3s
+Server: 5.6s
+PEP:
+Client: 5.0s, 5.1s
+Server: 5.4s, 5.5s
 
-Using 100ms delay, 10mb hbt rate & 25000 bfifo rate without PEP used 46s for client and 48s for server.
-With pep: 7s for client, 10s for server.
-
+Sender -- 20ms --> PEP -- 100ms --> Receiver. (hbt rate 10mb, bfifo 25000)
 
 ### SSH
     client:

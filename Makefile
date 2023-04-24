@@ -44,6 +44,21 @@ sshserver:
 sshpep:
 	ssh joe@localhost -p 5557 -i ~/.ssh/.id_rsa_virt -o StrictHostKeyChecking=no
 
+help:
+	@echo VMS:
+	@echo  - vms - list of all vms
+	@echo  - startvms - start all vms
+	@echo  - stopvms - stop all vms
+	@echo 
+	@echo SSH:
+	@echo  - sshclient - ssh into client
+	@echo  - sshserver - ssh into server
+	@echo  - sshpep -ssh into pep
+	@echo 
+	@echo Scripts:
+	@echo  - server - setup server
+	@echo  - client - setup client
+	@echo  - pep - setup pep
 
 server:
 	sh scripts/server.sh

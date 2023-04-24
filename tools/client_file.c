@@ -18,7 +18,7 @@
 #define IP "192.168.2.22"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
-#define PEP 0
+#define PEP 1
 #define TEST_FILE "6mb.bin"
 
 int server;
@@ -45,7 +45,7 @@ int setup_socket(char* ip, unsigned short port)
         printf("Unable to connect %d.\n", ret); 
         return -1;
     }
-    printf("Connected. %d\n", ret);
+    printf("Connected. %s\n", ret == 0 ? "[NO PEP]" : "[PEP]");
     return sd;
 }
 
