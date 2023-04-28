@@ -44,6 +44,9 @@ sshserver:
 sshpep:
 	ssh joe@localhost -p 5557 -i ~/.ssh/.id_rsa_virt -o StrictHostKeyChecking=no
 
+resetpep:
+	VBoxManage controlvm Router reset
+
 help:
 	@echo VMS:
 	@echo  - vms - list of all vms

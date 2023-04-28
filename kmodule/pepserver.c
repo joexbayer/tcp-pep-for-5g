@@ -31,7 +31,7 @@ void pep_server_accept_work(struct work_struct *work)
 		if(atomic_read(&server->state) != PEP_SERVER_RUNNING)
 			return;
 
-		int buffsize = 598304;
+		int buffsize = 32*1024*1024;
 		sockptr_t valuelen;
         valuelen = KERNEL_SOCKPTR(&buffsize);
 

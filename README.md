@@ -44,7 +44,38 @@ PEP:
 Client: 5.0s, 5.1s
 Server: 5.4s, 5.5s
 
-Sender -- 20ms --> PEP -- 100ms --> Receiver. (hbt rate 10mb, bfifo 25000)
+Sender -- 8ms (100mbs) --> PEP -- 20ms (10mbs) --> Receiver.
+6mb
+NO PEP
+Client: 5.4s
+Server: 5,6s
+
+WITH PEP:
+Client: 3.5s
+Server: 6.3s
+
+32mb
+NO PEP
+Client: 29s
+Server: 29s
+
+WITH PEP:
+Client: 50s
+Server: 52s
+
+200mb
+NO PEP:
+Client: 230
+Server: 230
+
+WITH PEP:
+Client: 303
+Server: 303
+
+#### IF the pep has enough buffe to store entire 32mb
+WITH PEP:
+Client: 4.8s
+Server: 28s
 
 ### SSH
     client:
