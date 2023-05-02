@@ -18,9 +18,12 @@
 #define IP "192.168.2.22"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
-#define PEP 1
-#define TEST_FILE "32mb.bin"
+#define PEP 0
+#define TEST_FILE "6mb.bin"
+#define LOG_FILE_NAME "logs/client.log"
+#define MS "100ms"
 
+static FILE* log_file;
 int server;
 
 int setup_socket(char* ip, unsigned short port)
@@ -56,17 +59,23 @@ void intHandler(int dummy) {
 
 int main(int argc, char * argv[])
 {
-    int ret, thesis_size, read;
+    int ret, thesis_size, to_send, read;
     struct tcp_info info;
     struct timeval  tv1, tv2;
     socklen_t tcp_info_length = sizeof(info);
     signal(SIGINT, intHandler);
+    char buffer[MAX_BUFFER_SIZE];
     /* Open big file. */
     FILE* thesis = fopen(TEST_FILE, "r");
-    char buffer[MAX_BUFFER_SIZE];
-
     if(thesis == NULL){
         printf("Could not open file\n");
+        return -1;
+    }
+
+    /* Logging */
+    log_file = fopen(LOG_FILE_NAME, "a");
+    if(log_file == NULL){
+        printf("Could not open log file!\n");
         return -1;
     }
 
@@ -76,6 +85,7 @@ int main(int argc, char * argv[])
 
     fseek(thesis, 0L, SEEK_END);
     thesis_size = ftell(thesis);
+    to_send = thesis_size;
     rewind(thesis);
 
     printf("sending file of size %d bytes\n", thesis_size);
@@ -88,17 +98,19 @@ int main(int argc, char * argv[])
         ret = send(server, buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 0);
         //printf("sending %d bytes to servers (%d left)\n", ret, thesis_size);
         thesis_size -= ret;
-
-        //ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-        //printf("rtt: %f ms\n", info.tcpi_rtt/1000);
     }
     gettimeofday(&tv2, NULL);
+
+    double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
     printf("Done\n");
     printf ("Total time = %f seconds\n",
-         (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
-         (double) (tv2.tv_sec - tv1.tv_sec));
+         total_time);
+        
+    fprintf(log_file, "LOG: %d - (%s) %fs\n", to_send, PEP ? "PEP" : "NOPEP", total_time);
 
     close(server);
+    fclose(thesis);
+    fclose(log_file);
     return 0;
 }
 

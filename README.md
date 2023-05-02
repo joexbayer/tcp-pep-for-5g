@@ -77,6 +77,19 @@ WITH PEP:
 Client: 4.8s
 Server: 28s
 
+
+Sender -- 100ms (100mbs) --> PEP -- 20ms (10mbs) --> Receiver.
+32mb no pep
+CLient: 79s
+Server 80s
+
+6mb no pep
+Client: 14.5s
+Server: 15s
+6mb pep
+Client: 9s
+Server 10s
+
 ### SSH
     client:
         ssh joe@localhost -p 5555 -i .ssh/.id_rsa_virt -o StrictHostKeyChecking=no "cd /media/sf_uio-master-joeba; CMDs"
