@@ -2,11 +2,16 @@
 
 Inital testing topology:
 ```
-  (Client)                                (Router)                              (Server)
-192.168.1.11                     192.168.1.1 - 192.168.2.2                    192.168.2.22
-   enp0s8 <---( 100ms delay) ---> enp0s8           enp0s9 <---( 20ms delay )---> enp0s8
-                    ?                                          10Mb htb rate
-                    ?                                           25000 Bfifo
+  (Sender)                              (Router / PEP)                           (Receiver)
+192.168.1.11                      192.168.1.1 - 192.168.2.2                    192.168.2.22
+   enp0s8 <---( 100ms delay ) ---> enp0s8           enp0s9 <---( 20ms delay )---> enp0s8
+               100Mb htb rate                                   10Mb htb rate
+                1,25k bfifo                                      0,025k Bfifo
+
+Rate change from:
+  1Mb -- 9s --> 10Mb -- 2s --> 50Mb
+  
+Note: 6Mb file can be transfered from Sender to PEP in 9s.
 ```
 ## Config of router
 ### install
@@ -26,6 +31,7 @@ Inital testing topology:
         enable ip_forward
 
 ### Findings
+```
 Using the default 20ms config between PEP and Receiver:
 Sender -----> PEP -- 20ms --> Receiver.
 NO PEP:
@@ -89,7 +95,7 @@ Server: 15s
 6mb pep
 Client: 9s
 Server 10s
-
+```
 ### SSH
     client:
         ssh joe@localhost -p 5555 -i .ssh/.id_rsa_virt -o StrictHostKeyChecking=no "cd /media/sf_uio-master-joeba; CMDs"
