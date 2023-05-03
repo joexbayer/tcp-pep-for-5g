@@ -121,12 +121,12 @@ The increased bandwidth and low latency promises of new technology such as 5G ha
 Most focus has been on (helping? Supporting?) latency sensitive applications like virtual reality or remote surgery to name a few. This thesis will explore non-interactive applications where latency is not that critical and more buffering is acceptable and most likely desirable. By splitting traffic into interactive and non-interactive we can improve the performance of both. By having very small buffers for interactive applications we avoid bufferbloat problems, while utilizing the benefits of big buffers for non-interactive applications.\\
 
 \subsubsection{Packet Scheduling}
-A method of reducing the effects off bufferbloat is packet scheduling. A system should not send more packets than the weakest link can handle {https://lwn.net/Articles/496509/}, this idea is built into TCP in the form of congestion control. However, when buffers grow to the point of causing bufferbloat, TCPs congestion control algorithms are unable to confidently determine a sending rate. Packet scheduling can solve this problem as it usually controls the size of the buffers. It makes sure queues can grow when needed, but keep the overall state of the buffers low. Packet scheduling has a lot more to offer than simple queue management, this will be explored later?\\
+A method of reducing the effects off bufferbloat is packet scheduling. A system should not send more packets than the weakest link can handle~\cite{https://lwn.net/Articles/496509/}, this idea is built into TCP in the form of congestion control. However, when buffers grow to the point of causing bufferbloat, TCPs congestion control algorithms are unable to confidently determine a sending rate. Packet scheduling can solve this problem as it usually controls the size of the buffers. It makes sure queues can grow when needed, but keep the overall state of the buffers low. Packet scheduling has a lot more to offer than simple queue management, this will be explored later?\\
 
 Proposed packet scheduling algorithms:
 \begin{itemize}
-  \item \textbf{FQ\_CoDel}: ...
-  \item \textbf{Placeholder}: ...
+  \item \textbf{FQ CoDel}: The Flow Queue Controlled Delay algorithm, FQ CoDel for short, was partly developed to deal with the bufferbloat problem. Its main goal is to reduce the impact of head-of-line blocking and give a fair share of bandwidth by mixing packets from multiple flows~\cite{fq_codel_rfc}. Internally FQ CoDel uses a FIFO queue, classifying packets into different flows to provide a fair share of bandwidth.
+  \item \textbf{HTB}: ...
 \end{itemize}
 
 \subsection{Non-Interactive Applications}
