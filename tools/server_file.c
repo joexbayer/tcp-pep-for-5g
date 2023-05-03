@@ -14,7 +14,7 @@
 #include <sys/time.h>
 
 #define PORT 8183
-#define BUFFER_SIZE 512
+#define BUFFER_SIZE 1024
 #define OUTPUT_FILE "test.out"
 #define LOG_FILE_NAME "logs/server.log"
 
