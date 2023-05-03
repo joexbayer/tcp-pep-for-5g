@@ -14,8 +14,11 @@
 #include <sys/time.h>
 
 #define PORT 8183
-#define BUFFER_SIZE 512
+#define BUFFER_SIZE 1024
 #define OUTPUT_FILE "test.out"
+#define LOG_FILE_NAME "logs/server.log"
+
+static FILE* log_file;
 
 int main(void)
 {
@@ -30,10 +33,17 @@ int main(void)
     socklen_t tcp_info_length = sizeof(info);
     int total_recv = 0;
     struct timeval  tv1, tv2;
-    FILE* thesis = fopen(OUTPUT_FILE, "w+");
 
+    FILE* thesis = fopen(OUTPUT_FILE, "w+");
     if(thesis == NULL){
         printf("[FILE] Unable to open output file\n");
+        return -1;
+    }
+
+    /* Logging */
+    log_file = fopen(LOG_FILE_NAME, "a");
+    if(log_file == NULL){
+        printf("Could not open log file!\n");
         return -1;
     }
 
@@ -67,9 +77,11 @@ int main(void)
     }
     gettimeofday(&tv2, NULL);
     printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
-    printf ("Total time = %f seconds\n",
-         (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
-         (double) (tv2.tv_sec - tv1.tv_sec));
+    
+    double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
+    printf ("Total time = %f seconds\n", total_time);
+
+    fprintf(log_file, "LOG: %d - (%s) %fs\n", total_recv, c_ain.sin_addr.s_addr == 184658112 ? "NOPEP" : "PEP", total_time);
 
     
     fclose(thesis);

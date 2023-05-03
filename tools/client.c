@@ -15,9 +15,12 @@
 
 #define IP "192.168.2.22" /* IP of server */
 #define PORT 8182
-#define USE_PEP 1
+#define USE_PEP 0
 
 int server;
+
+double total_rtts = 0;
+int total_pings = 0;
 
 int setup_socket(char* ip, unsigned short port)
 {
@@ -46,8 +49,11 @@ int setup_socket(char* ip, unsigned short port)
 }
 
 void intHandler(int dummy) {
+
+    printf("avg rtt: %f ms\n", (double)(total_rtts/total_pings));
     close(server);
     exit(0);
+
 }
 
 int main(int argc, char * argv[])
@@ -65,12 +71,22 @@ int main(int argc, char * argv[])
     while(1)
     {
         ret = send(server, test, strlen(test), 0);
+        if(ret <= 0){
+            printf("Error sending ping.\n");
+            break;
+        }
 
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
         printf("rtt: %u ms\n", info.tcpi_rtt/1000);
+        total_pings++;
+        total_rtts += info.tcpi_rtt/1000;
 
         sleep(1);
     }
+
+    printf("avg rtt: %f ms\n", (double)(total_rtts/total_pings));
+
+    close(server);
 
     return 0;
 }
