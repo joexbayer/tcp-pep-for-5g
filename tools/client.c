@@ -4,12 +4,14 @@
 #include <errno.h>
 #include <sys/socket.h>
 #include <netinet/in.h> 
-#include <unistd.h> // for close
+#include <unistd.h> /* for close */
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <netinet/tcp.h>
 #include <signal.h>
 #include <stdlib.h>
+
+#include <math.h>
 
 #include "../lib/include/library.h"
 
@@ -18,9 +20,12 @@
 #define USE_PEP 0
 
 int server;
+int mixed;
+int samples = 2000;
+int interval = 10;
 
-double total_rtts = 0;
-int total_pings = 0;
+static double rtts[2000];
+static int total_pings = 0;
 
 int setup_socket(char* ip, unsigned short port)
 {
@@ -48,12 +53,81 @@ int setup_socket(char* ip, unsigned short port)
     return sd;
 }
 
+double average_variation(double values[], int size) {
+    double sum = 0.0;
+    double mean = 0.0;
+    double absolute_differences[size];
+    double sum_of_differences = 0.0;
+    double average_variation = 0.0;
+    double highest = 0;
+    double lowest = 100000000;
+    int i;
+
+    /* Calculate the mean (average) of the values */
+    for (i = 0; i < size; i++) {
+        sum += values[i];
+
+        if(values[i] > highest)
+            highest = values[i];
+        
+        if(values[i] < lowest)
+            lowest = values[i];
+
+    }
+    mean = sum / size;
+
+    /* Find the absolute difference between each value and the mean */
+    for (i = 0; i < size; i++) {
+        absolute_differences[i] = fabs(values[i] - mean);
+    }
+
+    /* Sum up all the absolute differences */
+    for (i = 0; i < size; i++) {
+        sum_of_differences += absolute_differences[i];
+    }
+
+    /* Divide the sum of the differences by the total number of values */
+    average_variation = sum_of_differences / size;
+
+    printf("\navg rtt: %.2f ms, hi: %.2f ms, lo: %.2f, avg var: %.2f ms. %s\n",mean, highest, lowest, average_variation, mixed == 1 ? "(MIXED)" : "");
+    return average_variation;
+}
+
 void intHandler(int dummy) {
 
-    printf("avg rtt: %f ms\n", (double)(total_rtts/total_pings));
+    average_variation(rtts, total_pings);
     close(server);
     exit(0);
 
+}
+
+void parse_opts(int argc, char* argv[])
+{
+    int option;
+    while ((option = getopt(argc, argv, "ms:i:")) != -1) {
+        switch (option) {
+            case 'm':
+                mixed = 1;
+                break;
+            case 's':
+                samples = atoi(optarg);
+                printf("Samples set to %d\n", samples);
+                break;
+            case 'i':
+                interval = atoi(optarg);
+                printf("Interval set to %d\n", interval);
+                break;
+            case ':':
+                printf("Missing option: %c\n", optopt);
+                exit(-1);
+            case '?':
+                printf("Unknown option: %c\n", optopt);
+                break;
+            default:
+                // Should not reach here
+                break;
+        }
+    }
 }
 
 int main(int argc, char * argv[])
@@ -61,30 +135,36 @@ int main(int argc, char * argv[])
     int ret;
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
-    char* test = "ping";
+    char test[120];
+
+    parse_opts(argc, argv);
 
     signal(SIGINT, intHandler);
 
     server = setup_socket(IP, PORT);
 
+    printf("Running RTT test %dms interval, %d samples\n", interval, samples);
+
     /* Ping and print RTT */
     while(1)
     {
-        ret = send(server, test, strlen(test), 0);
+        ret = send(server, test, 120, 0);
         if(ret <= 0){
             printf("Error sending ping.\n");
             break;
         }
 
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-        printf("rtt: %u ms\n", info.tcpi_rtt/1000);
+        //printf("rtt: %u ms\n", info.tcpi_rtt/1000);
+        rtts[total_pings] = info.tcpi_rtt/1000;
         total_pings++;
-        total_rtts += info.tcpi_rtt/1000;
+        if(total_pings == samples)
+            break;
 
-        sleep(1);
+        usleep(interval*1000);
     }
 
-    printf("avg rtt: %f ms\n", (double)(total_rtts/total_pings));
+    average_variation(rtts, total_pings);
 
     close(server);
 

@@ -12,17 +12,43 @@
 #include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
+#include <time.h>
+#include <stdarg.h>
+
+#include <signal.h>
 
 #define PORT 8183
 #define BUFFER_SIZE 1024
 #define OUTPUT_FILE "test.out"
 #define LOG_FILE_NAME "logs/server.log"
 
+#define LOG(format, ...) do { \
+    char timestamp[20]; \
+    time_t currentTime = time(NULL); \
+    struct tm *localTime = localtime(&currentTime); \
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localTime); \
+    fprintf(log_file, "LOG [%s] ", timestamp); \
+    fprintf(log_file, format, ##__VA_ARGS__); \
+    printf("LOG [%s] ", timestamp); \
+    printf(format, ##__VA_ARGS__); \
+} while(0)
+
+typedef int socketfd_t;
+
 static FILE* log_file;
+FILE* thesis;
+socketfd_t sd, cd;
+
+void int_handlr(int dummy) {
+    close(sd);
+    close(cd);
+    fclose(log_file);
+    fclose(thesis);
+    exit(0);
+}
 
 int main(void)
 {
-    int sd, cd;
     socklen_t size;     
     unsigned char byte;
     struct sockaddr_in s_ain, c_ain;    
@@ -34,7 +60,10 @@ int main(void)
     int total_recv = 0;
     struct timeval  tv1, tv2;
 
-    FILE* thesis = fopen(OUTPUT_FILE, "w+");
+    signal(SIGINT, int_handlr);
+
+    /* Open file to write */
+    thesis = fopen(OUTPUT_FILE, "w+");
     if(thesis == NULL){
         printf("[FILE] Unable to open output file\n");
         return -1;
@@ -59,32 +88,39 @@ int main(void)
     if(listen(sd, 5) == -1) return -1;
 
     size = sizeof(c_ain);
-    cd = accept(sd, (struct sockaddr *)&c_ain, &size);
-
-    printf("[FILE] Client Connected\n");
-    gettimeofday(&tv1, NULL);
-    while (1)   
+    while (1)
     {
-        ret = read(cd, buffer, BUFFER_SIZE);  
-        fwrite(buffer, BUFFER_SIZE, 1, thesis);
-        if(ret > 0){
-            //getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-            total_recv += ret;
-            //printf("[FILE] Client: %d/%d (rtt: %f ms)\n", ret,total_recv, info.tcpi_rtt/1000);
-        } else if (ret <= 0){
-            break;
+        cd = accept(sd, (struct sockaddr *)&c_ain, &size);
+        total_recv = 0;
+        fseek(thesis, 0, SEEK_SET);
+
+        //printf("[FILE] Client Connected\n");
+        gettimeofday(&tv1, NULL);
+        while (1)   
+        {
+            ret = read(cd, buffer, BUFFER_SIZE);  
+            fwrite(buffer, BUFFER_SIZE, 1, thesis);
+            if(ret > 0){
+                //getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
+                total_recv += ret;
+                //printf("[FILE] Client: %d/%d (rtt: %f ms)\n", ret,total_recv, info.tcpi_rtt/1000);
+            } else if (ret <= 0){
+                break;
+            }
         }
+        gettimeofday(&tv2, NULL);
+        //printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
+        
+        double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
+
+        LOG("%.1fmb - %fs (%s)\n", (double)(total_recv/1024/1024), total_time, c_ain.sin_addr.s_addr == 184658112 ? "NOPEP" : "PEP");
     }
-    gettimeofday(&tv2, NULL);
-    printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
-    
-    double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
-    printf ("Total time = %f seconds\n", total_time);
-
-    fprintf(log_file, "LOG: %d - (%s) %fs\n", total_recv, c_ain.sin_addr.s_addr == 184658112 ? "NOPEP" : "PEP", total_time);
 
     
-    fclose(thesis);
-    close(cd);
     close(sd);
+    close(cd);
+    fclose(log_file);
+    fclose(thesis);
+
+    return 0;
 }

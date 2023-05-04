@@ -11,24 +11,61 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <sys/time.h>
+#include <time.h>
+#include <stdarg.h>
 
 #include "../lib/include/library.h"
-
 
 #define IP "192.168.2.22"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
-#define PEP 0
 #define TEST_FILE "6mb.bin"
 #define LOG_FILE_NAME "logs/client.log"
 #define MS "100ms"
 
-static FILE* log_file;
-int server;
+static int PEP = 0;
 
-int setup_socket(char* ip, unsigned short port)
+#define LOG(format, ...) do { \
+    char timestamp[20]; \
+    time_t currentTime = time(NULL); \
+    struct tm *localTime = localtime(&currentTime); \
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localTime); \
+    fprintf(log_file, "LOG [%s] ", timestamp); \
+    fprintf(log_file, format, ##__VA_ARGS__); \
+    printf("LOG [%s] ", timestamp); \
+    printf(format, ##__VA_ARGS__); \
+} while(0)
+
+typedef int socketfd_t;
+
+static FILE* log_file;
+FILE* thesis;
+socketfd_t server;
+
+void parse_opts(int argc, char* argv[])
 {
-    int sd, ret;
+    int option;
+    while ((option = getopt(argc, argv, "p")) != -1) {
+        switch (option) {
+            case 'p':
+                PEP = 1;
+                break;
+            case ':':
+                printf("Missing option: %c\n", optopt);
+                exit(-1);
+            case '?':
+                printf("Unknown option: %c\n", optopt);
+                break;
+            default:
+                // Should not reach here
+                break;
+        }
+    }
+}
+
+socketfd_t setup_socket(char* ip, unsigned short port)
+{
+    socketfd_t sd, ret;
     struct sockaddr_in s_in;
     bzero((char *)&s_in, sizeof(s_in));
     s_in.sin_family = AF_INET;
@@ -37,12 +74,11 @@ int setup_socket(char* ip, unsigned short port)
 
     sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-#if PEP
-        
+    if(PEP){
         ret = pep_connect(sd, (struct sockaddr*) &s_in, sizeof(s_in), PEP_NONINTERACTIVE);
-#else
+    } else {
         ret = connect(sd, (struct sockaddr*) &s_in, sizeof(s_in));
-#endif
+    }
 
     if(ret < 0){
         printf("Unable to connect %d.\n", ret); 
@@ -52,8 +88,10 @@ int setup_socket(char* ip, unsigned short port)
     return sd;
 }
 
-void intHandler(int dummy) {
+void int_handlr(int dummy) {
     close(server);
+    fclose(log_file);
+    fclose(thesis);
     exit(0);
 }
 
@@ -63,10 +101,14 @@ int main(int argc, char * argv[])
     struct tcp_info info;
     struct timeval  tv1, tv2;
     socklen_t tcp_info_length = sizeof(info);
-    signal(SIGINT, intHandler);
     char buffer[MAX_BUFFER_SIZE];
+
+    parse_opts(argc, argv);
+
+    signal(SIGINT, int_handlr);
+    
     /* Open big file. */
-    FILE* thesis = fopen(TEST_FILE, "r");
+    thesis = fopen(TEST_FILE, "r");
     if(thesis == NULL){
         printf("Could not open file\n");
         return -1;
@@ -79,18 +121,20 @@ int main(int argc, char * argv[])
         return -1;
     }
 
+    /* Server socket */
     server = setup_socket(IP, PORT);
     if(server < 0)
         return -1;
 
+    /* File size */
     fseek(thesis, 0L, SEEK_END);
     thesis_size = ftell(thesis);
     to_send = thesis_size;
     rewind(thesis);
 
-    printf("sending file of size %d bytes\n", thesis_size);
+    printf("Sending file of size %d bytes\n", thesis_size);
+    
     gettimeofday(&tv1, NULL);
-    /* Ping and print RTT */
     while(thesis_size > 0)
     {
         read = fread(buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 1, thesis);
@@ -102,11 +146,7 @@ int main(int argc, char * argv[])
     gettimeofday(&tv2, NULL);
 
     double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
-    printf("Done\n");
-    printf ("Total time = %f seconds\n",
-         total_time);
-        
-    fprintf(log_file, "LOG: %d - (%s) %fs\n", to_send, PEP ? "PEP" : "NOPEP", total_time);
+    LOG("%.1fmb %fs (%s)\n", (double)(to_send/1024/1024), total_time, PEP ? "PEP" : "NOPEP");
 
     close(server);
     fclose(thesis);
