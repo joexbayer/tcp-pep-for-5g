@@ -126,7 +126,7 @@ A method of reducing the effects off bufferbloat is packet scheduling. A system 
 Proposed packet scheduling algorithms:
 \begin{itemize}
   \item \textbf{FQ CoDel}: The Flow Queue Controlled Delay algorithm, FQ CoDel for short, was partly developed to deal with the bufferbloat problem. Its main goal is to reduce the impact of head-of-line blocking and give a fair share of bandwidth by mixing packets from multiple flows~\cite{fq_codel_rfc}. Internally FQ CoDel uses a FIFO queue, classifying packets into different flows to provide a fair share of bandwidth.
-  \item \textbf{HTB}: ...
+  \item \textbf{HTB}: Hierarchical Token Bucket is a queuing discipline based on assgining different classes a certain amount of bandwidth and sending rate. Because of its extensive bandwidth and delay mangement its a good option for testing, espeically in a virtual environment.
 \end{itemize}
 
 \subsection{Non-Interactive Applications}
@@ -147,7 +147,7 @@ Performance enhancing proxies are already deployed and in use for a lot of wirel
 \end{figure}
 
 \subsection{Transparent vs Non-Transparent}
-A big discussion regarding PEPs has been if they should be transparent or non-transparent. Transparent PEPs are not visible to the applications that use it. They silently split the connections and spoof the IP-address of both the client and server~\cite{pep_dna}.. (SIDE EFFECTS). Non-Transparent PEPs on the other hand are explicitly chosen by either the client or the server, and the sender is aware of the proxy splitting the original connection. This approach can be seen as more ethical and "correct" (FIND BETTER WORDING), but modifications at the sender side become necessary to utilize the PEP.
+A big discussion regarding PEPs has been if they should be transparent or non-transparent. Transparent PEPs are not visible to the applications that use it. They silently split the connections and spoof the IP-address of both the client and server~\cite{pep_dna}. This is prone to cause uninteded side effects, such as certain TCP options not being forwarded and security concerns. Non-Transparent PEPs on the other hand are explicitly chosen by either the client or the server, and the sender is aware of the proxy splitting the original connection. This approach can be seen as more ethical and "correct" (FIND BETTER WORDING), but modifications at the sender side become necessary to utilize the PEP.
 
 \section{Kernel Modules}
 LKM (Loadable Kernel Modules), "program" running inside the Linux kernel.
