@@ -10,6 +10,8 @@
 #include <netinet/tcp.h>
 #include <signal.h>
 #include <stdlib.h>
+#include <time.h>
+#include <stdarg.h>
 
 #include <math.h>
 
@@ -18,11 +20,27 @@
 #define IP "192.168.2.22" /* IP of server */
 #define PORT 8182
 #define USE_PEP 0
+#define LOG_FILE_NAME "logs/rtt.log"
+
+#define LOG(format, ...) do { \
+    char timestamp[20]; \
+    time_t currentTime = time(NULL); \
+    struct tm *localTime = localtime(&currentTime); \
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localTime); \
+    fprintf(log_file, "LOG [%s] ", timestamp); \
+    fprintf(log_file, format, ##__VA_ARGS__); \
+    printf("LOG [%s] ", timestamp); \
+    printf(format, ##__VA_ARGS__); \
+} while(0)
+
 
 int server;
 int mixed;
+int pep = 0;
 int samples = 2000;
 int interval = 10;
+int payload_size = 120;
+static FILE* log_file;
 
 static double rtts[2000];
 static int total_pings = 0;
@@ -89,7 +107,7 @@ double average_variation(double values[], int size) {
     /* Divide the sum of the differences by the total number of values */
     average_variation = sum_of_differences / size;
 
-    printf("\navg rtt: %.2f ms, hi: %.2f ms, lo: %.2f, avg var: %.2f ms. %s\n",mean, highest, lowest, average_variation, mixed == 1 ? "(MIXED)" : "");
+    LOG("avg rtt: %.2f ms, hi: %.2f ms, lo: %.2f, avg var: %.2f ms. %d samples, %d ms interval. %s %s\n",mean, highest, lowest, average_variation, samples, interval, mixed ? "(MIXED)" : "", pep ? "PEP" : "");
     return average_variation;
 }
 
@@ -104,18 +122,21 @@ void intHandler(int dummy) {
 void parse_opts(int argc, char* argv[])
 {
     int option;
-    while ((option = getopt(argc, argv, "ms:i:")) != -1) {
+    while ((option = getopt(argc, argv, "ms:i:p")) != -1) {
         switch (option) {
             case 'm':
                 mixed = 1;
                 break;
+            case 'p':
+                pep = 1;
+                break;
             case 's':
                 samples = atoi(optarg);
-                printf("Samples set to %d\n", samples);
+                //printf("Samples set to %d\n", samples);
                 break;
             case 'i':
                 interval = atoi(optarg);
-                printf("Interval set to %d\n", interval);
+                //printf("Interval set to %d\n", interval);
                 break;
             case ':':
                 printf("Missing option: %c\n", optopt);
@@ -139,16 +160,22 @@ int main(int argc, char * argv[])
 
     parse_opts(argc, argv);
 
+    log_file = fopen(LOG_FILE_NAME, "a");
+    if(log_file == NULL){
+        printf("Could not open log file!\n");
+        return -1;
+    }
+
     signal(SIGINT, intHandler);
 
     server = setup_socket(IP, PORT);
-
+    
     printf("Running RTT test %dms interval, %d samples\n", interval, samples);
 
     /* Ping and print RTT */
     while(1)
     {
-        ret = send(server, test, 120, 0);
+        ret = send(server, test, payload_size, 0);
         if(ret <= 0){
             printf("Error sending ping.\n");
             break;

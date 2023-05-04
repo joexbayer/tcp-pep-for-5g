@@ -114,6 +114,7 @@ int main(void)
         double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
 
         LOG("%.1fmb - %fs (%s)\n", (double)(total_recv/1024/1024), total_time, c_ain.sin_addr.s_addr == 184658112 ? "NOPEP" : "PEP");
+        fflush(log_file);
     }
 
     

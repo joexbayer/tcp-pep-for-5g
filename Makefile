@@ -1,6 +1,6 @@
 .PHONY: lib module tools server client pep
 
-all: lib module tools
+all: tools
 
 new: clean lib module tools
 
