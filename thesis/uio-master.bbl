@@ -30,6 +30,13 @@ Wesley Eddy.
 \newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
   2022.
 
+\bibitem{fq_codel_rfc}
+Toke Høiland-Jørgensen, Paul McKenney, dave.taht@gmail.com, Jim Gettys, and
+  Eric Dumazet.
+\newblock {\em The Flow Queue CoDel Packet Scheduler and Active Queue
+  Management Algorithm}.
+\newblock Number RFC 8290. Jan 2018.
+
 \bibitem{tcp_mmwave_proxy}
 Michele Polese, Marco Mezzavilla, Menglei Zhang, Jing Zhu, Sundeep Rangan,
   Shivendra Panwar, and Michele Zorzi.
