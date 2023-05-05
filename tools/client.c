@@ -11,6 +11,7 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <time.h>
+#include <errno.h>
 #include <stdarg.h>
 
 #include <math.h>
@@ -42,7 +43,7 @@ int interval = 10;
 int payload_size = 120;
 static FILE* log_file;
 
-static double rtts[2000];
+static double rtts[5000];
 static int total_pings = 0;
 
 int setup_socket(char* ip, unsigned short port)
@@ -177,10 +178,11 @@ int main(int argc, char * argv[])
     {
         ret = send(server, test, payload_size, 0);
         if(ret <= 0){
-            printf("Error sending ping.\n");
+            printf("Error sending ping %d.\n", ret);
+            printf("Oh dear, something went wrong with read()! %s\n", strerror(errno));
             break;
         }
-
+        
         ret = getsockopt(server, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
         //printf("rtt: %u ms\n", info.tcpi_rtt/1000);
         rtts[total_pings] = info.tcpi_rtt/1000;
@@ -188,7 +190,7 @@ int main(int argc, char * argv[])
         if(total_pings == samples)
             break;
 
-        usleep(interval*1000);
+        usleep(1000);
     }
 
     average_variation(rtts, total_pings);

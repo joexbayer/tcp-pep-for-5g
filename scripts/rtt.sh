@@ -5,8 +5,8 @@
 # Runs a mixed flow test
 #
 
-pep="-p"
+pep=""
 
-./client -m -s 1000 -i 10 $pep &
+./client_file $pep &
 sleep 2
-./client_file $pep;
+./client -m -s 5000 -i 1 $pep &

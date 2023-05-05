@@ -47,11 +47,7 @@ int main(void)
         while (1)
         {
             ret = recv(cd, buffer, 255, 0);  
-            if(ret > 0){
-                getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-                //printf("rtt: %u ms\n", info.tcpi_rtt/1000);
-            }
-            else if (ret <= 0){
+            if (ret <= 0){
                 printf("[RTT] finished.\n");
                 break;
             }

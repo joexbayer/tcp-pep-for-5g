@@ -19,7 +19,7 @@
 #define IP "192.168.2.22"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
-#define TEST_FILE "6mb.bin"
+#define TEST_FILE "64mb.bin"
 #define LOG_FILE_NAME "logs/client.log"
 #define MS "100ms"
 
