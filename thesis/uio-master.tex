@@ -50,7 +50,7 @@ Support Non-interactive Applications}
 
 \section{TCP/IP}
 (Get inspired by intro of tcp transport converter)
-Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgements and re-transmissions~\cite{Eddy_2022}. However, as the demands of the internet has changed, TCP has not. Even though TCP has changed with minor extensions over the years, such as increased initial windows or new options, the core ideas has stayed the same~\cite{rfc8803}. Concepts as the end-to-end argument still play a vital role in how TCP is used in the modern internet. Especially congestion control is suffering under the illusion that all logic should be placed on the endpoints, even if it spans multiple different domains (wireless / wired). The topology and demands of a network can vary, especially between wired and wireless domains.
+Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgements and re-transmissions~\cite{Eddy_2022}. However, as the demands of the internet has changed, TCP has not. Even though TCP has changed with minor extensions over the years, such as increased initial windows or new options, the core ideas have stayed the same~\cite{rfc8803}. Concepts as the end-to-end argument still play a vital role in how TCP is used in the modern internet. Especially congestion control is suffering under the illusion that all logic should be placed on the endpoints, even if it spans multiple different domains (wireless / wired). The topology and demands of a network can vary, especially between wired and wireless domains.
 \begin{itemize}
   \item \textbf{Wireless Domain}: A wireless communication domain refers to the transmission of data over a wireless medium without the use of physical connections such as wires or cables between devices. This domain covers a variety of technologies, including 3G, 4G, and 5G for mobile communication, Bluetooth and Wi-Fi for close-range communication, and satellite communication for worldwide communication.
   \item \textbf{Wired Domain}: Unlike a wireless domain, a wired domain provides a steady and reliable bandwidth with low error rates and high throughput. The use of Ethernet and Fiber are typical for wired networks, they enable the transmission of large amount of data over long distances and low signal noise. 
@@ -73,10 +73,14 @@ End to End congestion controller not very suited for highly fluctuating bandwidt
 
 .slow reactiveness of TCP~\cite{tcp_mmwave_proxy}.
 
-\subsection{3 Way handshake (0 RTT)}
-For TCP to establish a connection it uses a three-way handshake. First it sends a synchronization (SYN) packet to the desired endpoint. The endpoint answers with a acknowledgement and a synchronization packet of its own (SYN/ACK). And finally the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. For short flows that terminate in just a few round trips the initial TCP handshake can be a bottleneck, which is made worse if the connection is using a proxy and has to exchange additional information. 
-
 \subsection{Congestion Control}
+What is congestion?
+Congestion Control
+Why, how.
+Different algorithms
+https://datatracker.ietf.org/doc/draft-irtf-iccrg-welzl-congestion-control-open-research/08/
+
+Congestion occours in the internet when a network's resources, such as routers, are overloaded to the point that they diminish quality of the network. Packet loss and high delays are common issues acsociated to high congestion in the network. To solve the problem of congestion, a distributed algoirthm is used: Congestion Control. The main goals of congestion control is to maintain a stable network, while still utilizing the avaiable bandwidth shared among other flows.
 
 Different congestion control algorithms
 \begin{itemize}
@@ -84,6 +88,9 @@ Different congestion control algorithms
   \item \textbf{Vegas}: ...
   \item \textbf{...}: ...
 \end{itemize}
+
+\subsection{3 Way handshake (0 RTT)}
+For TCP to establish a connection it uses a three-way handshake. Initially, it transmits a synchronization (SYN) packet to the desired endpoint. The endpoint responds with a acknowledgement and a synchronization packet of its own (SYN/ACK). Finally, the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. For short flows that terminate in just a few round trips the initial TCP handshake can be a bottleneck, which is made worse if the connection is using a proxy and has to exchange additional information. 
 
 \subsection{TCP Options}
 A TCP connection can be configured with optional header extensions called TCP Options~\cite{tcp_options}.. 

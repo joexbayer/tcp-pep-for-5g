@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.4.27)  4 MAY 2023 13:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.4.27)  5 MAY 2023 14:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -274,13 +274,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3
 
-] [4 <../diagrams/drawio/domains.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 98--100
+]
+Overfull \hbox (11.26047pt too wide) in paragraph at lines 77--82
+\T1/cmr/m/n/10.95 https://datatracker.ietf.org/doc/draft-irtf-iccrg-welzl-conge
+stion-control-open-
+ []
+
+[4 <../diagrams/drawio/domains.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
@@ -288,40 +294,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--103
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
-put line 107.
+put line 114.
 (pdftex.def)             Requested size: 323.70854pt x 115.43094pt.
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-
-LaTeX Warning: Citation `https://lwn.net/Articles/496509/' on page 6 undefined 
-on input line 124.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
-[6 <../diagrams/graphs/tcp_mmwave_blockage.png>] [7]
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+[6 <../diagrams/graphs/tcp_mmwave_blockage.png>]
+
+LaTeX Warning: Citation `https://lwn.net/Articles/496509/' on page 7 undefined 
+on input line 131.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
+
+ []
+
+[7]
 <../diagrams/drawio/pep_satellite.png, id=51, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
-ne 144.
+ne 151.
 (pdftex.def)             Requested size: 350.30789pt x 171.64082pt.
- [8 <../diagrams/drawio/pep_satellite.png>]
+ [8 <../diagrams/drawio/pep_satellite.png>] [9]
 Chapter 3.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
@@ -330,41 +337,41 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-60.
+67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-) [9
+) [10
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
+Underfull \hbox (badness 10000) in paragraph at lines 230--230
 []\T1/cmr/m/n/10.95 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--223
+Underfull \hbox (badness 10000) in paragraph at lines 230--230
 []\T1/cmr/m/n/10.95 Special
  []
 
 
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 223--224
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 230--231
 []\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 217--234
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 224--241
 [] 
  []
 
-[10]
+[11]
 Chapter 4.
-[11
+[12
 
 ]
 Chapter 5.
-(./uio-master.bbl [12
+(./uio-master.bbl [13
 
-]) [13
+]) [14
 
 ] (./uio-master.aux)
 
@@ -381,7 +388,7 @@ Here is how much of TeX's memory you used:
  24845 multiletter control sequences out of 15000+600000
  540907 words of font info for 70 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 72i,10n,76p,851b,1240s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,10n,76p,852b,1240s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/joe/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk
 > </home/joe/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk>
  </home/joe/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> 
@@ -395,10 +402,10 @@ e/joe/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home
 are/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-di
 st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (15 pages, 445714 bytes).
+Output written on uio-master.pdf (16 pages, 446768 bytes).
 PDF statistics:
- 482 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 486 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
