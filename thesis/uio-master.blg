@@ -1,13 +1,16 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: uio-master.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: myBib.bib
+Warning--I didn't find a database entry for "https://lwn.net/Articles/496509/"
 Warning--there's a number but no series in fq_codel_rfc
 Warning--empty publisher in fq_codel_rfc
 You've used 8 entries,
             2118 wiz_defined-function locations,
-            552 strings with 5513 characters,
+            554 strings with 5577 characters,
 and the built_in function-call counts, 3039 in all, are:
 = -- 286
 > -- 157
@@ -46,4 +49,4 @@ warning$ -- 2
 while$ -- 22
 width$ -- 9
 write$ -- 87
-(There were 2 warnings)
+(There were 3 warnings)

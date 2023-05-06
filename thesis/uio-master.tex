@@ -74,19 +74,17 @@ End to End congestion controller not very suited for highly fluctuating bandwidt
 .slow reactiveness of TCP~\cite{tcp_mmwave_proxy}.
 
 \subsection{Congestion Control}
-What is congestion?
-Congestion Control
-Why, how.
-Different algorithms
 https://datatracker.ietf.org/doc/draft-irtf-iccrg-welzl-congestion-control-open-research/08/
 
-Congestion occours in the internet when a network's resources, such as routers, are overloaded to the point that they diminish quality of the network. Packet loss and high delays are common issues acsociated to high congestion in the network. To solve the problem of congestion, a distributed algoirthm is used: Congestion Control. The main goals of congestion control is to maintain a stable network, while still utilizing the avaiable bandwidth shared among other flows.
+Congestion occurs in the internet when a network's resources, such as routers, are overloaded to the point that they diminish quality of the network. Packet loss and high delays are common issues associated to high congestion in the network. To solve the problem of congestion, a distributed algorithm is used: Congestion Control. The main goals of congestion control is to maintain a stable network, while still utilizing the available bandwidth shared among other flows. This is achieved by additively increasing the sending rate, and multiplicatively reduce the sending rate when detecting congestion. Congestion can be detected by packet loss, but also by explicit notifications.\\
+
+Over time different variations of congestion controller have emerged. Although their goal is the same, reduce congestion in the network, their approaches vary. 
 
 Different congestion control algorithms
 \begin{itemize}
+  \item \textbf{New Reno}: ...
+  \item \textbf{New Vegas}: ...
   \item \textbf{Cubic}: ...
-  \item \textbf{Vegas}: ...
-  \item \textbf{...}: ...
 \end{itemize}
 
 \subsection{3 Way handshake (0 RTT)}
