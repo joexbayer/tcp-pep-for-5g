@@ -48,6 +48,8 @@ Support Non-interactive Applications}
 
 \chapter{Background}
 
+In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Mostly topics that are outside the common understanding of programming and networking are covered, especially details of certain congestion controllers and network protocols will be discussed. 
+
 \section{TCP/IP}
 (Get inspired by intro of tcp transport converter)
 Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgements and re-transmissions~\cite{Eddy_2022}. However, as the demands of the internet has changed, TCP has not. Even though TCP has changed with minor extensions over the years, such as increased initial windows or new options, the core ideas have stayed the same~\cite{rfc8803}. Concepts as the end-to-end argument still play a vital role in how TCP is used in the modern internet. Especially congestion control is suffering under the illusion that all logic should be placed on the endpoints, even if it spans multiple different domains (wireless / wired). The topology and demands of a network can vary, especially between wired and wireless domains.
@@ -76,13 +78,16 @@ End to End congestion controller not very suited for highly fluctuating bandwidt
 \subsection{Congestion Control}
 https://datatracker.ietf.org/doc/draft-irtf-iccrg-welzl-congestion-control-open-research/08/
 
-Congestion occurs in the internet when a network's resources, such as routers, are overloaded to the point that they diminish quality of the network. Packet loss and high delays are common issues associated to high congestion in the network. To solve the problem of congestion, a distributed algorithm is used: Congestion Control. The main goals of congestion control is to maintain a stable network, while still utilizing the available bandwidth shared among other flows. This is achieved by additively increasing the sending rate, and multiplicatively reduce the sending rate when detecting congestion. Congestion can be detected by packet loss, but also by explicit notifications.\\
+Congestion occurs in the internet when a network's resources, such as routers, are overloaded to the point that they diminish quality of the network. Packet loss and high delays are common issues associated to high congestion in the network. To solve the problem of congestion, a distributed algorithm is used: Congestion Control. The main goal of congestion control is to maintain a stable network, while still utilizing the available bandwidth shared among all flows. This is achieved by additively increasing the sending rate, and multiplicatively reducing the sending rate when detecting congestion. Congestion can be detected by packet loss, changes in delay, but also by explicit notifications.\\
+
+Explain slow start, etc?
+\\
 
 Over time different variations of congestion controller have emerged. Although their goal is the same, reduce congestion in the network, their approaches vary. 
 
 Different congestion control algorithms
 \begin{itemize}
-  \item \textbf{New Reno}: ...
+  \item \textbf{TCP Reno}: Reno embodies the traditional approach to congestion control. Slowly increasing the sending rate while the network is stable and drastically reducing it on packet loss. TCP Reno was designed for unstable and dynamic networks, where the rapid response rate is crucial to prevent network overloading. However, the slow start rate and aggressive reduction of the sending rate make it suboptimal for more stable networks, where packet loss is less frequent and predictable. Consequently, TCP Reno's reliance on packet loss may lead to unnecessary rate reductions and decreased network throughput.
   \item \textbf{New Vegas}: ...
   \item \textbf{Cubic}: ...
 \end{itemize}
@@ -154,7 +159,9 @@ Performance enhancing proxies are already deployed and in use for a lot of wirel
 \subsection{Transparent vs Non-Transparent}
 A big discussion regarding PEPs has been if they should be transparent or non-transparent. Transparent PEPs are not visible to the applications that use it. They silently split the connections and spoof the IP-address of both the client and server~\cite{pep_dna}. This is prone to cause uninteded side effects, such as certain TCP options not being forwarded and security concerns. Non-Transparent PEPs on the other hand are explicitly chosen by either the client or the server, and the sender is aware of the proxy splitting the original connection. This approach can be seen as more ethical and "correct" (FIND BETTER WORDING), but modifications at the sender side become necessary to utilize the PEP.
 
-\section{Kernel Modules}
+\section{Linux}
+
+\subsection{Kernel Modules}
 LKM (Loadable Kernel Modules), "program" running inside the Linux kernel.
 Userspace vs Kernel. Reduce system call overhead.
 \subsection{System Calls}
