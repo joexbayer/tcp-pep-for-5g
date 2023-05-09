@@ -88,7 +88,7 @@ Over time different variations of congestion controller have emerged. Although t
 Different congestion control algorithms
 \begin{itemize}
   \item \textbf{TCP Reno}: Reno embodies the traditional approach to congestion control. Slowly increasing the sending rate while the network is stable and drastically reducing it on packet loss. TCP Reno was designed for unstable and dynamic networks, where the rapid response rate is crucial to prevent network overloading. However, the slow start rate and aggressive reduction of the sending rate make it suboptimal for more stable networks, where packet loss is less frequent and predictable. Consequently, TCP Reno's reliance on packet loss may lead to unnecessary rate reductions and decreased network throughput.
-  \item \textbf{New Vegas}: ...
+  \item \textbf{New Vegas}: New Vegas is similar to TCP Reno is most aspects, the main difference is the use of delay to detect congestion instead of packet loss. This makes New Vegas able to react faster to congestion, however it also introduces some interesting side effects. If New Vegas competes with TCP Reno flows it will start reducing its sender rate before TCP Reno does, this leads to New Vegas losing out on possible bandwidth. 
   \item \textbf{Cubic}: ...
 \end{itemize}
 
