@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  9 MAY 2023 21:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  10 MAY 2023 19:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -311,12 +311,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 83--85
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 108--110
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
@@ -324,44 +324,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--113
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
-put line 117.
+put line 119.
 (pdftex.def)             Requested size: 323.70854pt x 115.43094pt.
-[6 <../diagrams/graphs/tcp_mmwave_blockage.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
 
 LaTeX Warning: Citation `https://lwn.net/Articles/496509/' on page 7 undefined 
-on input line 134.
+on input line 136.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
-[7]
-<../diagrams/drawio/pep_satellite.png, id=50, 700.6175pt x 343.2825pt>
+[7 <../diagrams/graphs/tcp_mmwave_blockage.png>] [8]
+<../diagrams/drawio/pep_satellite.png, id=53, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
-ne 154.
+ne 156.
 (pdftex.def)             Requested size: 350.30789pt x 171.64082pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8] [9 <../diagrams/drawio/pep_satellite.png>]
+ [9 <../diagrams/drawio/pep_satellite.png>] [10]
 Chapter 3.
 
 (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.s
@@ -373,41 +369,41 @@ y
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-72.
+74.
  (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-[10
+[11
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 235--235
+Underfull \hbox (badness 10000) in paragraph at lines 237--237
 []\T1/cmr/m/n/10.95 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--235
+Underfull \hbox (badness 10000) in paragraph at lines 237--237
 []\T1/cmr/m/n/10.95 Special
  []
 
 
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 235--236
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 237--238
 []\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 229--246
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 231--248
 [] 
  []
 
-[11]
+[12]
 Chapter 4.
-[12
+[13
 
 ]
 Chapter 5.
-(uio-master.bbl [13
+(uio-master.bbl [14
 
-]) [14
+]) [15
 
 ] (uio-master.aux)
 
@@ -420,7 +416,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4824 strings out of 478338
  78017 string characters out of 2834776
- 678755 words of memory out of 3000000
+ 678759 words of memory out of 3000000
  23174 multiletter control sequences out of 15000+600000
  498643 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -441,9 +437,9 @@ X/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/Joe Bayer/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/cm-super/sftt0900.pfb><C:/Users/Joe Bayer/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/Joe Bay
 er/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (16 pages, 563464 bytes).
+Output written on uio-master.pdf (17 pages, 560963 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
+ 131 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
