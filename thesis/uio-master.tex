@@ -97,14 +97,12 @@ In summary, the main differences between TCP Reno, New Vegas and Cubic are their
 \subsection{3 Way handshake (0 RTT)}
 For TCP to establish a connection it uses a three-way handshake. Initially, it transmits a synchronization (SYN) packet to the desired endpoint. The endpoint responds with a acknowledgement and a synchronization packet of its own (SYN/ACK). Finally, the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. For short flows that terminate in just a few round trips the initial TCP handshake can be a bottleneck, which is made worse if the connection is using a proxy and has to exchange additional information. 
 
-\subsection{TCP Options}
-A TCP connection can be configured with optional header extensions called TCP Options~\cite{tcp_options}.. 
-Short flows terminating in a few round-trips. Meaning the "bottleneck" is the required initial TCP handshake.\\
-TCP Fast Open allows data being exchanged during the handshake. 
+\subsection{TCP Options and Fast Open}
+A TCP connection can be configured with optional header extensions called TCP Options~\cite{tcp_options}. These options change the default behaviour of TCP or add new features. One such feature is TCP Fast Open, which allows data to be added to the initial synchronization packet. A typical use case could be adding a HTTP GET request, thereby saving an entire round trip. In general flows that terminate in a few round trips greatly benefit from this feature. The reason being, the bottleneck in such connections often lies within the initial TCP handshake. Therefore, by removing the extra round trip required to send the first data packet, a significant amount of time can be saved.\\
 
-Allow "syn fowarding" with TCP Fast Open creating a 0RTT increase when connecting through a proxy.
-0RTT Transport Converter ~\cite{rfc8803}.
+TCP Fast Open also has other benefits, such as establishing connections to proxies~\cite{rfc8803}. When you are trying to establish a connection through a proxy, you get the added delay of a second round trip sending the desired endpoint. This can be avoided by using TCP Fast Open to send the desired endpoint in the first synchronization packet to the proxy. "SYN forwarding" enables the users to establish a proxy connection without any added delays, however it does depend on the user's application to use TCP Fast Open.
 
+[PICTURE]
 
 \section{Future of wireless communication.}
 The future of wireless communication has seen a lot of improvements such as...
