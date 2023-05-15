@@ -140,7 +140,7 @@ Proposed packet scheduling algorithms:
 \end{itemize}
 
 \subsection{Non-Interactive Applications}
-Non-Interactive applications such as Web traffic, File transfers and Videos? can benefit from larger buffering, especially with fluctuating bandwidths. Being able to have packets buffered for when the bandwidth is high will decrease delay times. (need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays.
+Non-Interactive applications such as web traffic, file transfers and video streaming can benefit from larger buffering, especially with fluctuating bandwidths. This is because if we are able to buffer the packets closer to their final destination, we have them ready to be sent when the bandwidth changes. By buffering them we can decrease delay times and acheive faster total completation times for non-interactive traffic.(need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays that occur under normal buffering.
 
 \section{PEPs}
 A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. The idea behind the PEP is putting more logic inside the network,
