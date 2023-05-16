@@ -97,6 +97,13 @@ In summary, the main differences between TCP Reno, New Vegas and Cubic are their
 \subsection{3 Way handshake (0 RTT)}
 For TCP to establish a connection it uses a three-way handshake. Initially, it transmits a synchronization (SYN) packet to the desired endpoint. The endpoint responds with a acknowledgement and a synchronization packet of its own (SYN/ACK). Finally, the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. For short flows that terminate in just a few round trips the initial TCP handshake can be a bottleneck, which is made worse if the connection is using a proxy and has to exchange additional information. 
 
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.75]{../diagrams/drawio/tcphandshake.png}
+  	\caption{The TCP handshake procedure}
+  	\label{fig:tcphandshake}
+\end{figure}
+
 \subsection{TCP Options and Fast Open}
 A TCP connection can be configured with optional header extensions called TCP Options~\cite{tcp_options}. These options change the default behaviour of TCP or add new features. One such feature is TCP Fast Open, which allows data to be added to the initial synchronization packet. A typical use case could be adding a HTTP GET request, thereby saving an entire round trip. In general flows that terminate in a few round trips greatly benefit from this feature. The reason being, the bottleneck in such connections often lies within the initial TCP handshake. Therefore, by removing the extra round trip required to send the first data packet, a significant amount of time can be saved.\\
 
@@ -105,8 +112,7 @@ TCP Fast Open also has other benefits, such as establishing connections to proxi
 [PICTURE]
 
 \section{Future of wireless communication.}
-The future of wireless communication has seen a lot of improvements such as...
-... highly increased bandwidth ... using Millimetre frequency bands ... but at the cost of Highly fluctuating bandwidth with wireless networks, especially with higher frequencies.\\ 
+The future of wireless communication has seen a lot of improvements such as highly increased bandwidth achieved through advanced technologies like 5G and beyond. Millimetre frequency bands have opened up new possibilities for wireless communication. These higher frequency bands offer greater capacity and can accommodate more devices, however high frequencies come with a set of new challenges such as highly fluctuating bandwidths. This fluctuation can be influenced by various factors such as signal interference, obstacles in the signal path, and environmental conditions.
 
 \subsection{5G Millimetre Wave}
 The emergence of 5G Millimeter wave communications has opened the doors for low latency networks with multiple gigabit bandwidth. This is achieved by using higher millimetre wave (mmWave) frequencies in the range of 30GHz to 300GHz, which as a lot of benefits. ~\cite{Agrawal_Sharma_2016} A wider spectrum of frequencies to choose from and higher data transfer rates are just some of the many benefits mmWave provides. But along side the benefits, mmWave has also introduced a lot of new challenges.\\
