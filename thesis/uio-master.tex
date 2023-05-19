@@ -61,11 +61,11 @@ Perhaps the most well known internet transport protocol is the Transmission Cont
 \begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.65]{../diagrams/drawio/domains.png}
-  	\caption{5G bandwidth fluctuations from humans}
+  	\caption{Example of network domains}
   	\label{fig:domains}
 \end{figure}
 
-Each domain has different requirements that a single TCP connection cannot provide. Fig. \ref{fig:domains} shows the two domains and their differences.
+Each domain has different requirements that a single TCP connection cannot provide. Fig. \ref{fig:domains} shows the two domains and their characteristic differences.
 
 Interactive traffic uses TCP? {source}
 End to end argument. Bad?
@@ -148,11 +148,14 @@ Proposed packet scheduling algorithms:
 \subsection{Non-Interactive Applications}
 Non-Interactive applications such as web traffic, file transfers and video streaming can benefit from larger buffering, especially with fluctuating bandwidths. This is because if we are able to buffer the packets closer to their final destination, we have them ready to be sent when the bandwidth changes. By buffering them we can decrease delay times and acheive faster total completation times for non-interactive traffic.(need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays that occur under normal buffering.
 
-\section{PEPs}
-A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. The idea behind the PEP is putting more logic inside the network,
+\section{Proxy}
+What is a proxy, use cases, benefits, 
+
+\section{PEP}
+A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. The idea behind the PEP is putting more logic such as connection management, buffering, caching inside the network. As the name suggests, a PEP is designed to enchanche the performance, but can also introduce new features to a network. A example of a new feature is the multipath support the TCP Transport converter gives.~\cite{rfc8803}.
 
 \subsection{PEP for wireless communication}
-Performance enhancing proxies are already deployed and in use for a lot of wireless communication, especially satellites and radio access networks~\cite{tcp_mmwave_proxy}. They have an inherent performance increase just by splitting the connection between the wireless and wired domains. These PEPs are therefor often installed at the base stations. However they are unable to distinguish between interactive or non-interactive traffic, meaning their buffers need to be low and still suffer from fluctuating bandwidth problems.
+Performance enhancing proxies are already deployed and in use for a lot of wireless communication, especially satellites and radio access networks~\cite{tcp_mmwave_proxy}. They have an inherent performance increase just by splitting the connection between the wireless and wired domains. These PEP's are therefor often installed at the base stations. However they are unable to distinguish between interactive or non-interactive traffic, meaning their buffers need to be low and still suffer from fluctuating bandwidth problems.
  Already in use! (satelites, radio access networks, cite). Inherently increases performance?~\cite{tcp_mmwave_proxy}.
 
 \begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
