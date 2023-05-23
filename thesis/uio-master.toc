@@ -14,7 +14,7 @@
 \contentsline {section}{\numberline {2.4}PEP}{9}{}%
 \contentsline {subsection}{\numberline {2.4.1}PEP for wireless communication}{10}{}%
 \contentsline {subsection}{\numberline {2.4.2}Transparent vs Non-Transparent}{10}{}%
-\contentsline {section}{\numberline {2.5}Linux}{11}{}%
+\contentsline {section}{\numberline {2.5}Linux}{10}{}%
 \contentsline {subsection}{\numberline {2.5.1}Kernel Modules}{11}{}%
 \contentsline {subsection}{\numberline {2.5.2}System Calls}{11}{}%
 \contentsline {chapter}{\numberline {3}Implementation | Design}{12}{}%

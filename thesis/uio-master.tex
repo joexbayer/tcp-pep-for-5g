@@ -52,7 +52,7 @@ In this chapter we will present some of the required background knowledge to und
 
 \section{TCP/IP}
 (Get inspired by intro of tcp transport converter)
-Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgements and re-transmissions~\cite{Eddy_2022}. However, as the demands of the internet has changed, TCP has not. Even though TCP has changed with minor extensions over the years, such as increased initial windows or new options, the core ideas have stayed the same~\cite{rfc8803}. Concepts as the end-to-end argument still play a vital role in how TCP is used in the modern internet. Especially congestion control is suffering under the illusion that all logic should be placed on the endpoints, even if it spans multiple different domains (wireless / wired). The topology and demands of a network can vary, especially between wired and wireless domains.
+Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It provides reliable and in order delivery of packets using acknowledgements and re-transmissions~\cite{Eddy_2022}. However, as the demands of the internet has changed, TCP has not. Even though TCP has changed with minor extensions over the years, such as increased initial windows or new options, the core ideas have stayed the same~\cite{rfc8803}. Concepts as the end-to-end argument still play a vital role in how TCP is used in the modern internet. TCP is suffering under the illusion that all logic should be placed on the endpoints, even if it spans multiple different domains (wireless / wired). The topology and demands of a network can vary, especially between wired and wireless domains.
 \begin{itemize}
   \item \textbf{Wireless Domain}: A wireless communication domain refers to the transmission of data over a wireless medium without the use of physical connections such as wires or cables between devices. This domain covers a variety of technologies, including 3G, 4G, and 5G for mobile communication, Bluetooth and Wi-Fi for close-range communication, and satellite communication for worldwide communication.
   \item \textbf{Wired Domain}: Unlike a wireless domain, a wired domain provides a steady and reliable bandwidth with low error rates and high throughput. The use of Ethernet and Fiber are typical for wired networks, they enable the transmission of large amount of data over long distances and low signal noise. 
@@ -65,15 +65,7 @@ Perhaps the most well known internet transport protocol is the Transmission Cont
   	\label{fig:domains}
 \end{figure}
 
-Each domain has different requirements that a single TCP connection cannot provide. Fig. \ref{fig:domains} shows the two domains and their characteristic differences.
-
-Interactive traffic uses TCP? {source}
-End to end argument. Bad?
-TCP handshake, reduce RTTs but using TCP Fast Open. Mostly short flows (cite)
-\\
-End to End congestion controller not very suited for highly fluctuating bandwidth.(cite David Hayes?)
-
-.slow reactiveness of TCP~\cite{tcp_mmwave_proxy}.
+Each domain has different requirements that a single TCP connection cannot provide. Fig. \ref{fig:domains} shows the two domains and their characteristic differences. Usually, wireless domains experience a lot of changes in connectivity and bandwidths, while the wired domain usually is considered stable. This creates problems for the "modern" TCP which, because of the end to end argument, normally spans multiple domains. Especially congestion control has problems adapting to hight fluctuating bandwidth across long distances and multiple domains.
 
 \subsection{Congestion Control}
 https://datatracker.ietf.org/doc/draft-irtf-iccrg-welzl-congestion-control-open-research/08/
@@ -170,9 +162,11 @@ A big discussion regarding PEPs has been if they should be transparent or non-tr
 
 \section{Linux}
 
+Linux is the most famous open source kernel freely available for anyone to use and modify. Various implemenation, full controll, benefits of open source, used by most servers (google, microsof etc). Good developer environment.
+
 \subsection{Kernel Modules}
 LKM (Loadable Kernel Modules), "program" running inside the Linux kernel.
-Userspace vs Kernel. Reduce system call overhead.
+Userspace vs Kernel. Reduce system call overhead. Speed, (bad portability)
 \subsection{System Calls}
 Reduce over head from userspace -> kernel system calls.
 
