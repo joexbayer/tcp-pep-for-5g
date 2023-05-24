@@ -8,45 +8,45 @@ Database file #1: myBib.bib
 Warning--I didn't find a database entry for "https://lwn.net/Articles/496509/"
 Warning--there's a number but no series in fq_codel_rfc
 Warning--empty publisher in fq_codel_rfc
-You've used 8 entries,
+You've used 9 entries,
             2118 wiz_defined-function locations,
-            554 strings with 5577 characters,
-and the built_in function-call counts, 3039 in all, are:
-= -- 286
-> -- 157
-< -- 5
-+ -- 63
-- -- 54
-* -- 201
-:= -- 480
-add.period$ -- 25
-call.type$ -- 8
-change.case$ -- 50
+            560 strings with 5778 characters,
+and the built_in function-call counts, 3560 in all, are:
+= -- 338
+> -- 175
+< -- 7
++ -- 70
+- -- 60
+* -- 234
+:= -- 550
+add.period$ -- 28
+call.type$ -- 9
+change.case$ -- 56
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 125
-empty$ -- 229
-format.name$ -- 54
-if$ -- 660
+cite$ -- 11
+duplicate$ -- 150
+empty$ -- 273
+format.name$ -- 60
+if$ -- 783
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 6
-newline$ -- 43
-num.names$ -- 16
-pop$ -- 69
+int.to.str$ -- 9
+missing$ -- 7
+newline$ -- 48
+num.names$ -- 18
+pop$ -- 77
 preamble$ -- 1
-purify$ -- 43
+purify$ -- 48
 quote$ -- 0
-skip$ -- 106
+skip$ -- 130
 stack$ -- 0
-substring$ -- 136
-swap$ -- 49
-text.length$ -- 5
+substring$ -- 177
+swap$ -- 63
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 30
+type$ -- 34
 warning$ -- 2
-while$ -- 22
-width$ -- 9
-write$ -- 87
+while$ -- 26
+width$ -- 10
+write$ -- 99
 (There were 3 warnings)

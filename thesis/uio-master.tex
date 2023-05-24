@@ -141,9 +141,18 @@ Proposed packet scheduling algorithms:
 Non-Interactive applications such as web traffic, file transfers and video streaming can benefit from larger buffering, especially with fluctuating bandwidths. This is because if we are able to buffer the packets closer to their final destination, we have them ready to be sent when the bandwidth changes. By buffering them we can decrease delay times and acheive faster total completation times for non-interactive traffic.(need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays that occur under normal buffering.
 
 \section{Proxy}
-What is a proxy, use cases, benefits, 
+What is a proxy, use cases, benefits~\cite{nextgen_proxy_servers}.\\
 
-\section{PEP}
+Proxy servers play a big role in the modern internet, delivering benefits such as anonymity and increased performance. A common use case for a proxy is caching by keeping a copy of popular resources such as a websites. This reduces the latency of accessing the resource as long as the proxy is closer to the user than the original copy. Locality plays a important role in the total latency as any transmission will always be limited by the speed of light.\\
+
+A proxy can also be used for privacy similar to a Virtual Private Network (VPN). By redirecting network traffic through a proxy, the origin of the traffic appears to be the proxy server rather than the actual end-user. Hypertext Transfer Protocol (HTTP), a popular internet protocol used for accessing websites, has this functionality built in using HTTP tunnels and a special CONNECT method in its header.\\
+
+\begin{verbatim}
+CONNECT mn.uio.no/:22 HTTP/1.1
+Proxy-Authorization: Basic encoded-credentials
+\end{verbatim}
+
+\subsection{PEP}
 A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. The idea behind the PEP is putting more logic such as connection management, buffering, caching inside the network. As the name suggests, a PEP is designed to enchanche the performance, but can also introduce new features to a network. A example of a new feature is the multipath support the TCP Transport converter gives.~\cite{rfc8803}.
 
 \subsection{PEP for wireless communication}
