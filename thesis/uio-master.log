@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  24 MAY 2023 22:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  26 MAY 2023 21:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -184,20 +184,20 @@ LaTeX Warning: Label `fig:blockage' multiply defined.
 )
 \openout1 = `uio-master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
 
 (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pd
 f.mkii
@@ -225,44 +225,10 @@ ys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \c@lstlisting=\count281
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 43
-.
+ [1
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
-File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
-)
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 13.29996pt on input line 43.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 5.69998pt on input line 43.
-<uio-fp-navn-eng.pdf, id=1, 469.755pt x 123.46124pt>
-File: uio-fp-navn-eng.pdf Graphic file (type pdf)
-<use uio-fp-navn-eng.pdf>
-Package pdftex.def Info: uio-fp-navn-eng.pdf  used on input line 43.
-(pdftex.def)             Requested size: 138.56935pt x 36.41953pt.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 13.29996pt on input line 43.
-<uio-fp-segl.pdf, id=2, 232.87pt x 232.87pt>
-File: uio-fp-segl.pdf Graphic file (type pdf)
-<use uio-fp-segl.pdf>
-Package pdftex.def Info: uio-fp-segl.pdf  used on input line 43.
-(pdftex.def)             Requested size: 67.43301pt x 67.43106pt.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 30.3999pt on input line 43.
-
-
-Package xcolor Warning: Incompatible color definition on input line 43.
-
-
-Package xcolor Warning: Incompatible color definition on input line 43.
-
-[1
-
-{C:/Users/Joe Bayer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./uio-fp
--navn-eng.pdf> <./uio-fp-segl.pdf>]
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 18.99994pt on input line 43.
- [1] (uio-master.toc)
+{C:/Users/Joe Bayer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (uio-mas
+ter.toc)
 \tf@toc=\write3
 \openout3 = `uio-master.toc'.
 
@@ -270,110 +236,101 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 ]
 Chapter 1.
-[2
 
-]
-Chapter 2.
-
-Overfull \hbox (9.00964pt too wide) in paragraph at lines 54--56
+Overfull \hbox (9.00964pt too wide) in paragraph at lines 56--58
 \T1/cmr/m/n/10.95 known in-ter-net trans-port pro-to-col is the Trans-mis-sion 
 Con-trol Pro-to-col (TCP).
  []
 
-[3
+[2
 
 ]
-<../diagrams/drawio/domains.png, id=31, 605.26125pt x 355.3275pt>
+<../diagrams/drawio/domains.png, id=19, 605.26125pt x 355.3275pt>
 File: ../diagrams/drawio/domains.png Graphic file (type png)
 <use ../diagrams/drawio/domains.png>
-Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 63.
+Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 65.
 
 (pdftex.def)             Requested size: 393.41513pt x 230.96013pt.
 
-Overfull \hbox (33.41513pt too wide) in paragraph at lines 63--64
+Overfull \hbox (33.41513pt too wide) in paragraph at lines 65--66
  [][] 
  []
 
 
-Overfull \hbox (11.26047pt too wide) in paragraph at lines 71--72
+Overfull \hbox (11.26047pt too wide) in paragraph at lines 73--74
 \T1/cmr/m/n/10.95 https://datatracker.ietf.org/doc/draft-irtf-iccrg-welzl-conge
 stion-control-open-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
-[4 <../diagrams/drawio/domains.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 75--77
+[3 <../diagrams/drawio/domains.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 77--79
 
  []
 
 
-Overfull \hbox (70.40474pt too wide) in paragraph at lines 84--85
+Overfull \hbox (70.40474pt too wide) in paragraph at lines 86--87
 \T1/cmr/m/n/10.95 tra-di-tional con-ges-tion con-trollers like TCP Reno. https:
 //www.ietf.org/staging/draft-
  []
 
-[5]
-<../diagrams/drawio/tcphandshake.png, id=42, 489.32813pt x 309.155pt>
+[4]
+<../diagrams/drawio/tcphandshake.png, id=29, 489.32813pt x 309.155pt>
 File: ../diagrams/drawio/tcphandshake.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake.png  used on input lin
-e 94.
+e 96.
 (pdftex.def)             Requested size: 366.99518pt x 231.86568pt.
 
-Overfull \hbox (6.99518pt too wide) in paragraph at lines 94--95
+Overfull \hbox (6.99518pt too wide) in paragraph at lines 96--97
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
-[6 <../diagrams/drawio/tcphandshake.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+[5 <../diagrams/drawio/tcphandshake.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
-<../diagrams/graphs/tcp_mmwave_blockage.png, id=47, 258.9675pt x 92.345pt>
+<../diagrams/graphs/tcp_mmwave_blockage.png, id=34, 258.9675pt x 92.345pt>
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
-put line 115.
+put line 117.
 (pdftex.def)             Requested size: 323.70854pt x 115.43094pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
-
- []
-
-
-LaTeX Warning: Citation `https://lwn.net/Articles/496509/' on page 8 undefined 
-on input line 132.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
-
- []
-
-[8 <../diagrams/graphs/tcp_mmwave_blockage.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
 
 
+LaTeX Warning: Citation `https://lwn.net/Articles/496509/' on page 7 undefined 
+on input line 134.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+[7 <../diagrams/graphs/tcp_mmwave_blockage.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
@@ -383,64 +340,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--149
 
  []
 
-[9]
+[8]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 50.
  (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<../diagrams/drawio/pep_satellite.png, id=58, 700.6175pt x 343.2825pt>
+<../diagrams/drawio/pep_satellite.png, id=46, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
-ne 164.
+ne 163.
 (pdftex.def)             Requested size: 350.30789pt x 171.64082pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10] [11 <../diagrams/drawio/pep_satellite.png>]
-Chapter 3.
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.s
-ty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.st
-y
-File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) [12
+[9 <../diagrams/drawio/pep_satellite.png>] (uio-master.bbl [10]) [11
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 247--247
-[]\T1/cmr/m/n/10.95 Connection
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 247--247
-[]\T1/cmr/m/n/10.95 Special
- []
-
-
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 247--248
-[]\T1/cmr/m/n/10.95 Transparent| 
- []
-
-
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 241--258
-[] 
- []
-
-[13]
-Chapter 4.
-[14
-
-]
-Chapter 5.
-(uio-master.bbl [15
-
-]) [16
-
-] (uio-master.aux)
+(uio-master.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -449,34 +364,30 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4833 strings out of 478338
- 78315 string characters out of 2834776
- 678900 words of memory out of 3000000
- 23182 multiletter control sequences out of 15000+600000
- 498643 words of font info for 67 fonts, out of 8000000 for 9000
+ 4309 strings out of 478338
+ 72495 string characters out of 2834776
+ 368689 words of memory out of 3000000
+ 22674 multiletter control sequences out of 15000+600000
+ 483650 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,10n,76p,828b,1235s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 70i,8n,76p,828b,261s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm
 -super-t1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
-/cm-super/cm-super-ts1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fo
-nts/enc/dvips/base/8r.enc}<C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/cm-super/sfbx1095.pfb><C:/Users/Joe Bayer/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/Joe Bayer/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/Joe Bay
-er/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2074.pfb><C:/U
-sers/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx24
-88.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-
-super/sfrm0600.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/cm-super/sfrm1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/Joe Bayer/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/cm-super/sftt0900.pfb><C:/Users/Joe Bayer/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb><C:/Users/Jo
-e Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/U
-sers/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pf
-b>
-Output written on uio-master.pdf (18 pages, 615016 bytes).
+/cm-super/cm-super-ts1.enc}<C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/cm-super/sfbx1095.pfb><C:/Users/Joe Bayer/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/Joe Bayer/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/Joe Ba
+yer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2074.pfb><C:/
+Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2
+488.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm
+-super/sfrm1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/cm-super/sfrm1200.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/Joe Bayer/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/Joe Bayer/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on uio-master.pdf (12 pages, 476823 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
+ 105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

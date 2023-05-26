@@ -35,18 +35,20 @@
 
 
 \author{Joe Bayer}
-\title{TCP PEP}
-\subtitle{TCP Performance Enhancing Proxy to
-Support Non-interactive Applications}
+%\title{TCP PEP}
+%\subtitle{TCP Performance Enhancing Proxy to Support Non-interactive Applications}
+\title{Master Essay}
+\subtitle{Background of my Master Essay}
 
 \begin{document}
-\uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
 
+\maketitle
+% \uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
 \tableofcontents
 
-\chapter{Intro}
+%\chapter{Intro}
 
-\chapter{Background}
+\chapter{Essay}
 
 In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Mostly topics that are outside the common understanding of programming and networking are covered, especially details of certain congestion controllers and network protocols will be discussed. 
 
@@ -141,9 +143,7 @@ Proposed packet scheduling algorithms:
 Non-Interactive applications such as web traffic, file transfers and video streaming can benefit from larger buffering, especially with fluctuating bandwidths. This is because if we are able to buffer the packets closer to their final destination, we have them ready to be sent when the bandwidth changes. By buffering them we can decrease delay times and acheive faster total completation times for non-interactive traffic.(need citation or prove it myself?). At the same time, interactive applications will not suffer under large queue delays that occur under normal buffering.
 
 \section{Proxy}
-What is a proxy, use cases, benefits~\cite{nextgen_proxy_servers}.\\
-
-Proxy servers play a big role in the modern internet, delivering benefits such as anonymity and increased performance. A common use case for a proxy is caching by keeping a copy of popular resources such as a websites. This reduces the latency of accessing the resource as long as the proxy is closer to the user than the original copy. Locality plays a important role in the total latency as any transmission will always be limited by the speed of light.\\
+Proxy servers play a big role in the modern internet, delivering benefits such as anonymity and increased performance~\cite{nextgen_proxy_servers}. A common use case for a proxy is caching by keeping a copy of popular resources such as a websites. This reduces the latency of accessing the resource as long as the proxy is closer to the user than the original copy. Locality plays a important role in the total latency as any transmission will always be limited by the speed of light.\\
 
 A proxy can also be used for privacy similar to a Virtual Private Network (VPN). By redirecting network traffic through a proxy, the origin of the traffic appears to be the proxy server rather than the actual end-user. Hypertext Transfer Protocol (HTTP), a popular internet protocol used for accessing websites, has this functionality built in using HTTP tunnels and a special CONNECT method in its header.\\
 
@@ -153,11 +153,10 @@ Proxy-Authorization: Basic encoded-credentials
 \end{verbatim}
 
 \subsection{PEP}
-A performance enhancing proxy (PEP) is a (connection splitting) proxy designed to increase performance of applications using it. The idea behind the PEP is putting more logic such as connection management, buffering, caching inside the network. As the name suggests, a PEP is designed to enchanche the performance, but can also introduce new features to a network. A example of a new feature is the multipath support the TCP Transport converter gives.~\cite{rfc8803}.
+A performance enhancing proxy (PEP) is a connection splitting proxy designed to increase performance of applications using it. The idea behind the PEP is putting more logic such as connection management, buffering, caching inside the network. As the name suggests, a PEP is designed to enchanche the performance, but can also introduce new features to a network. A example of a new feature is the multipath support the TCP Transport converter gives.~\cite{rfc8803}.
 
 \subsection{PEP for wireless communication}
-Performance enhancing proxies are already deployed and in use for a lot of wireless communication, especially satellites and radio access networks~\cite{tcp_mmwave_proxy}. They have an inherent performance increase just by splitting the connection between the wireless and wired domains. These PEP's are therefor often installed at the base stations. However they are unable to distinguish between interactive or non-interactive traffic, meaning their buffers need to be low and still suffer from fluctuating bandwidth problems.
- Already in use! (satelites, radio access networks, cite). Inherently increases performance?~\cite{tcp_mmwave_proxy}.
+Performance enhancing proxies are already deployed and in use for a lot of wireless communication, especially satellites and radio access networks~\cite{tcp_mmwave_proxy}. They have an inherent performance increase just by splitting the connection between the wireless and wired domains. These PEP's are therefore often installed at the base stations. However they are unable to distinguish between interactive or non-interactive traffic, meaning their buffers need to be low and still suffer from fluctuating bandwidth problems.
 
 \begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -167,11 +166,11 @@ Performance enhancing proxies are already deployed and in use for a lot of wirel
 \end{figure}
 
 \subsection{Transparent vs Non-Transparent}
-A big discussion regarding PEPs has been if they should be transparent or non-transparent. Transparent PEPs are not visible to the applications that use it. They silently split the connections and spoof the IP-address of both the client and server~\cite{pep_dna}. This is prone to cause uninteded side effects, such as certain TCP options not being forwarded and security concerns. Non-Transparent PEPs on the other hand are explicitly chosen by either the client or the server, and the sender is aware of the proxy splitting the original connection. This approach can be seen as more ethical and "correct" (FIND BETTER WORDING), but modifications at the sender side become necessary to utilize the PEP.
+A big discussion regarding PEPs has been if they should be transparent or non-transparent. Transparent PEPs are not visible to the applications that use it. They silently split the connections and spoof the IP-address of both the client and server~\cite{pep_dna}. This is prone to cause uninteded side effects, such as certain TCP options not being forwarded and security concerns. Non-Transparent PEPs on the other hand are explicitly chosen by either the client or the server, and the sender is aware of the proxy splitting the original connection. This approach can be seen as more ethical and potentially remove some of the sigma associated with PEPs, this however requires modifications at the sender side utilize the PEP.
 
 \section{Linux}
 
-Linux is the most famous open source kernel freely available for anyone to use and modify. Various implemenation, full controll, benefits of open source, used by most servers (google, microsof etc). Good developer environment.
+Linux is the most famous open source kernel freely available for anyone to use and modify. Because of the open source nature of Linux, there have been many various operating system implementation based on the Linux kernel. Ubuntu, Fedora or Manjaro are just some of the most famous Linux based operating systems out there. For developers, Linux is the perfect platform to experiment and test their new innovations. You are able to modify and recompile the kernel itself on the fly, and then test the solution on a live operating system. Linux supports most standards and is used by most major corporations such as Facebook, Amazon, Netflix and Google.
 
 \subsection{Kernel Modules}
 LKM (Loadable Kernel Modules), "program" running inside the Linux kernel.
@@ -179,85 +178,85 @@ Userspace vs Kernel. Reduce system call overhead. Speed, (bad portability)
 \subsection{System Calls}
 Reduce over head from userspace -> kernel system calls.
 
-\chapter{Implementation | Design}
-
-\begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
-int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
-{
-	struct msghdr msg = {
-		.msg_flags = MSG_DONTWAIT,
-	};
-
-	struct kvec vec;
-	int rc = 0;
-
-	vec.iov_base = buffer;
-	vec.iov_len  = size;
-
-	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
-pep_tcp_receive_read_again:
-	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
-	if (rc > 0)
-	{
-		tlv_print(buffer);
-		printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
-		return rc;
-	}
-
-	if(rc == -EAGAIN || rc == -ERESTARTSYS)
-	{
-		goto pep_tcp_receive_read_again;
-	}
-
-	printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
-	return rc;
-}
-\end{lstlisting}
-
-\section{TLVs}
-
-\section{PEP}
-
-\section{PEP Connect}
-Since are PEP is explicitly addressed we need to change how we connect on the client side.
-The default approach is to use the \textbf{connect} function, our goal is to imitate this functions behavior, return code and parameters. By keeping our connect function as similar to the original we reduce the overhead of switching over to it. The only change to the original connect that we need is to specify type of traffic, interactive or non-interactive.
-\begin{lstlisting}[caption={PEP connection}, label={lst:pep_connect_use} ,language=C]
-int socket, ret;
-struct sockaddr_in s_in;
-bzero((char *)&s_in, sizeof(s_in));
-s_in.sin_family = AF_INET;
-s_in.sin_addr.s_addr = inet_addr(IP);
-s_in.sin_port = htons(PORT);
-
-socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
-ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
-\end{lstlisting}
-
-
-
-
-{Table of design decisions based on different PEP implementations compared to ours.}
-{0RTT, Transparent, Using TLV, Special ACKS, connection splitting.}\\
-\begin{tabular}{ |p{4cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
- \hline
- \multicolumn{5}{|c|}{PEP List} \\
- \hline
- Implementation& 0RTT &Connection Splitting &Special ACKs &Transparent\\
- \hline
- milliProxy   & AF    &AFG&   004 & x\\
- PEPDNA&   AX  & ALA   &248 & x\\
- SnoopTCP &AL & ALB&  008 & x\\
- Our PEP    &DZ & DZA&  012& x \\
- Transport Converter &   AS  & ASM&016& x\\
- ...& AD  & AND   &020& x\\
- ...& AO  & AGO&024& x\\
- \hline
-\end{tabular}
-
-\chapter{Evaluation}
-\chapter{Conclusion}
+%\chapter{Implementation | Design}
+%
+%\begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
+%int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
+%{
+%	struct msghdr msg = {
+%		.msg_flags = MSG_DONTWAIT,
+%	};
+%
+%	struct kvec vec;
+%	int rc = 0;
+%
+%	vec.iov_base = buffer;
+%	vec.iov_len  = size;
+%
+%	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
+%pep_tcp_receive_read_again:
+%	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
+%	if (rc > 0)
+%	{
+%		tlv_print(buffer);
+%		printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+%		return rc;
+%	}
+%
+%	if(rc == -EAGAIN || rc == -ERESTARTSYS)
+%	{
+%		goto pep_tcp_receive_read_again;
+%	}
+%
+%	printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+%	return rc;
+%}
+%\end{lstlisting}
+%
+%\section{TLVs}
+%
+%\section{PEP}
+%
+%\section{PEP Connect}
+%Since are PEP is explicitly addressed we need to change how we connect on the client side.
+%The default approach is to use the \textbf{connect} function, our goal is to imitate this functions behavior, return code and parameters. By keeping our connect function as similar to the original we reduce the overhead of switching over to it. The only change to the original connect that we need is to specify type of traffic, interactive or non-interactive.
+%\begin{lstlisting}[caption={PEP connection}, label={lst:pep_connect_use} ,language=C]
+%int socket, ret;
+%struct sockaddr_in s_in;
+%bzero((char *)&s_in, sizeof(s_in));
+%s_in.sin_family = AF_INET;
+%s_in.sin_addr.s_addr = inet_addr(IP);
+%s_in.sin_port = htons(PORT);
+%
+%socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+%
+%ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+%ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
+%\end{lstlisting}
+%
+%
+%
+%
+%{Table of design decisions based on different PEP implementations compared to ours.}
+%{0RTT, Transparent, Using TLV, Special ACKS, connection splitting.}\\
+%\begin{tabular}{ |p{4cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
+% \hline
+% \multicolumn{5}{|c|}{PEP List} \\
+% \hline
+% Implementation& 0RTT &Connection Splitting &Special ACKs &Transparent\\
+% \hline
+% milliProxy   & AF    &AFG&   004 & x\\
+% PEPDNA&   AX  & ALA   &248 & x\\
+% SnoopTCP &AL & ALB&  008 & x\\
+% Our PEP    &DZ & DZA&  012& x \\
+% Transport Converter &   AS  & ASM&016& x\\
+% ...& AD  & AND   &020& x\\
+% ...& AO  & AGO&024& x\\
+% \hline
+%\end{tabular}
+%
+%\chapter{Evaluation}
+%\chapter{Conclusion}
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
