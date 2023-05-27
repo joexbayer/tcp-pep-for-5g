@@ -70,6 +70,14 @@ client:
 pep:
 	sh scripts/pep.sh
 
+ultra_plots:
+	python3 ultra_ping/analysis/latency_measurement_graphs.py  ultra_ping/udp_packetn_latency_pairs
+
+ultra_client:
+	python2 ultra_ping/echo.py --client 192.168.2.22 --n_packets 10000
+
+ultra_server:
+	python3 ultra_ping/echo.py --server
 
 mininet:
 	sudo mn --custom ./topology.py --topo=mytopo -x
