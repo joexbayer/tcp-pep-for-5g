@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  27 MAY 2023 20:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  29 MAY 2023 21:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -236,33 +236,38 @@ ter.toc)
 
 ]
 Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+
+ []
+
 [2
 
 ]
 <../diagrams/drawio/domains.png, id=19, 605.26125pt x 355.3275pt>
 File: ../diagrams/drawio/domains.png Graphic file (type png)
 <use ../diagrams/drawio/domains.png>
-Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 64.
+Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 66.
 
 (pdftex.def)             Requested size: 393.41513pt x 230.96013pt.
 
-Overfull \hbox (33.41513pt too wide) in paragraph at lines 64--65
+Overfull \hbox (33.41513pt too wide) in paragraph at lines 66--67
  [][] 
  []
 
 
-Overfull \hbox (11.26047pt too wide) in paragraph at lines 72--73
+Overfull \hbox (11.26047pt too wide) in paragraph at lines 74--75
 \T1/cmr/m/n/10.95 https://datatracker.ietf.org/doc/draft-irtf-iccrg-welzl-conge
 stion-control-open-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
 [3 <../diagrams/drawio/domains.png>]
-Overfull \hbox (17.77121pt too wide) in paragraph at lines 81--82
+Overfull \hbox (17.77121pt too wide) in paragraph at lines 83--84
 \T1/cmr/m/n/10.95 con-ges-tion con-trollers like TCP Reno. https://www.ietf.org
 /staging/draft-
  []
@@ -272,20 +277,20 @@ Overfull \hbox (17.77121pt too wide) in paragraph at lines 81--82
 File: ../diagrams/drawio/tcphandshake.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake.png  used on input lin
-e 91.
+e 93.
 (pdftex.def)             Requested size: 366.99518pt x 231.86568pt.
 
-Overfull \hbox (6.99518pt too wide) in paragraph at lines 91--92
+Overfull \hbox (6.99518pt too wide) in paragraph at lines 93--94
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
 [5 <../diagrams/drawio/tcphandshake.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
@@ -293,45 +298,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--106
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
-put line 110.
+put line 112.
 (pdftex.def)             Requested size: 323.70854pt x 115.43094pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 124--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--127
 
  []
 
 
 LaTeX Warning: Citation `https://lwn.net/Articles/496509/' on page 7 undefined 
-on input line 127.
+on input line 129.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 [7 <../diagrams/graphs/tcp_mmwave_blockage.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
 [8]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-43.
+45.
  (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
@@ -339,12 +344,33 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
-ne 156.
+ne 158.
 (pdftex.def)             Requested size: 350.30789pt x 171.64082pt.
-[9 <../diagrams/drawio/pep_satellite.png>] (uio-master.bbl [10]) [11
+[9 <../diagrams/drawio/pep_satellite.png>]
+Overfull \hbox (5.0861pt too wide) in paragraph at lines 171--172
+\T1/cmr/m/n/10.95 Thing that makes Linux truly ex-ten-si-ble are Load-able Ker-
+nel Mod-ules (LKM).
+ []
 
-]
-(uio-master.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+
+Overfull \hbox (1.87946pt too wide) in paragraph at lines 173--174
+[]\T1/cmr/m/n/10.95 Congestion con-trollers and packet sched-ulers are also usu
+-ally im-ple-mented
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+
+ []
+
+[10] (uio-master.bbl [11]) [12
+
+] (uio-master.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -359,7 +385,7 @@ Here is how much of TeX's memory you used:
  22674 multiletter control sequences out of 15000+600000
  483650 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,8n,76p,816b,261s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 70i,8n,76p,766b,261s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm
 -super-t1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
 /cm-super/cm-super-ts1.enc}<C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fo
@@ -374,9 +400,9 @@ e1/public/cm-super/sfrm1200.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/Joe Bayer/AppData/Local/P
 rograms/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/Joe Bayer/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on uio-master.pdf (12 pages, 476712 bytes).
+Output written on uio-master.pdf (13 pages, 477928 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
+ 109 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
