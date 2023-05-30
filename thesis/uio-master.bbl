@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Agrawal_Sharma_2016}
 S.~K. Agrawal and Kapil Sharma.
@@ -56,5 +56,17 @@ W.~V. Wathsala, Buddhika Siddhisena, and Ajantha~S. Athukorale.
 \newblock Next generation proxy servers.
 \newblock In {\em 2008 10th International Conference on Advanced Communication
   Technology}, volume~3, pages 2183--2187, 2008.
+
+\bibitem{welzl_congestion}
+Michael Welzl.
+\newblock Network congestion control: Managing internet traffic.
+\newblock {\em Network Congestion Control: Managing Internet Traffic}, pages
+  1--263, 05 2006.
+
+\bibitem{rfc6077}
+Michael Welzl, Dimitri Papadimitriou, Bob Briscoe, Michael Scharf, and Michael
+  Welzl.
+\newblock {Open Research Issues in Internet Congestion Control}.
+\newblock RFC 6077, February 2011.
 
 \end{thebibliography}
