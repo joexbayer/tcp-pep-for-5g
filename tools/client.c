@@ -18,7 +18,7 @@
 
 #include "../lib/include/library.h"
 
-#define IP "192.168.2.22" /* IP of server */
+#define IP "172.16.11.254" /* IP of server */
 #define PORT 8182
 #define USE_PEP 0
 #define LOG_FILE_NAME "logs/rtt.log"

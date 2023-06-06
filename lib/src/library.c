@@ -22,7 +22,7 @@
 #include "tlv.h"
 
 /* PEP IP/PORT from the perspective of the client */
-#define PEP_IP "192.168.1.1"
+#define PEP_IP "172.16.10.254"
 #define PEP_PORT 8181
 
 /**

@@ -16,7 +16,7 @@
 
 #include "../lib/include/library.h"
 
-#define IP "192.168.2.22"
+#define IP "172.16.11.5"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1001
 #define TEST_FILE "32mb.bin"

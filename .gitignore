@@ -40,6 +40,8 @@ server
 client_file
 server_file
 
+lib/pep.so
+
 test.out
 
 tcp-cwnd.dat

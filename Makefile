@@ -74,7 +74,7 @@ ultra_plots:
 	python3 ultra_ping/analysis/latency_measurement_graphs.py --cutoff_time_ms 160 udp_packetn_latency_pairs
 
 ultra_client:
-	python2 ultra_ping/echo.py --client 192.168.2.22 --n_packets 250
+	python2 ultra_ping/echo.py --client 172.16.11.5 --n_packets 250
 
 ultra_server:
 	python3 ultra_ping/echo.py --server
