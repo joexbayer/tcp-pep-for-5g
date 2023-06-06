@@ -48,4 +48,4 @@ tcp-cwnd.dat
 tcp-cwnd.dat.pdf
 
 *.o
-*.bin
+
