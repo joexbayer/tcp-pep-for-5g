@@ -39,7 +39,9 @@ static int __init init_core(void)
 
 static void __exit exit_core(void)
 {
-        //sock_release(server_state.server_socket);
+        if(server_state.server_socket != NULL){
+                sock_release(server_state.server_socket);
+        }
 }   
 
 module_init(init_core);
