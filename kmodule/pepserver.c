@@ -28,12 +28,12 @@ void pep_server_accept_work(struct work_struct *work)
 		struct pep_state* server = container_of(work, struct pep_state, accept_work);
 		unsigned char *buffer;
 
-		if(atomic_read(&server->state) != PEP_SERVER_RUNNING)
-			return;
-
 		int buffsize = 64*1024*1024;
 		sockptr_t valuelen;
         valuelen = KERNEL_SOCKPTR(&buffsize);
+
+		if(atomic_read(&server->state) != PEP_SERVER_RUNNING)
+			return;
 
 		while(rc == 0) {
 				rc = kernel_accept(server->server_socket, &client, O_NONBLOCK);
@@ -97,7 +97,8 @@ void pep_server_accept_work(struct work_struct *work)
 				tunnel->state = 0;
 				tunnel->total_client = 0;
 				tunnel->total_endpoint = 0;
-				tunnel->server = server;	
+				tunnel->server = server;
+				tunnel->recv_callbacks = 0;
 				INIT_WORK(&tunnel->c2e, &pep_client_receive_work);
 				INIT_WORK(&tunnel->e2c, &pep_endpoint_receive_work);
 
@@ -106,17 +107,21 @@ void pep_server_accept_work(struct work_struct *work)
 				pep_configue_sk(client, &pep_client_data_ready, tunnel);
 
 				/* Configure snd & rev buffers, can use SO_RCVBUFFORCE and SO_SNDBUFFORCE to overwrite limit*/
-				sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
-				sock_setsockopt(endpoint, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
+				//sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
+				//sock_setsockopt(endpoint, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
 
-				sock_setsockopt(client, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
-				sock_setsockopt(client, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
+				ret = sock_setsockopt(client, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
+				if(ret < 0) printk(KERN_INFO "[PEP]: Error setting SNDBUF on tunnel %d!\n", tunnel->id);
+				ret = sock_setsockopt(client, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
+				if(ret < 0) printk(KERN_INFO "[PEP]: Error setting RECBUF on tunnel %d!\n", tunnel->id);
 
 
 				/* Add tunnel to linked list of all pep tunnels. */
 				list_add(&tunnel->list, &server->tunnels);
 				tunnel->id = server->total_tunnels;
 				server->total_tunnels++;
+
+				printk(KERN_INFO "[PEP] pep_server_accept_work: New tunnel %d was created.\n", tunnel->id);
 
 				/* check if more data than the initial TLV was sent.  */
 				if(ret > 12){
@@ -125,11 +130,10 @@ void pep_server_accept_work(struct work_struct *work)
 					pep_tcp_send(endpoint, buffer, ret-12);
 				}
 
-				queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e);
-
-				printk(KERN_INFO "[PEP] pep_server_accept_work: New tunnel %d was created.\n", tunnel->id);
 				/* Done? */
 				kfree(buffer);
+
+				queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e);
 				return;
 				break;
 		}
