@@ -52,6 +52,9 @@ struct socket* pep_endpoint_connect(u32 ip, u16 port)
         struct sockaddr_in daddr;
         int addr_len = sizeof(daddr);
         int ret = 0;
+        int buffsize = 64*1024*1024;
+	sockptr_t valuelen;
+        valuelen = KERNEL_SOCKPTR(&buffsize);
 
         ret = sock_create_kern(&init_net, PF_INET, SOCK_STREAM, IPPROTO_TCP, &sock);
         if(ret){
@@ -65,6 +68,11 @@ struct socket* pep_endpoint_connect(u32 ip, u16 port)
         daddr.sin_family = AF_INET;
         daddr.sin_addr.s_addr = ip;
         daddr.sin_port = (__force u16)port;
+
+        ret = sock_setsockopt(sock, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
+        if(ret < 0) printk(KERN_INFO "[PEP]: Error setting RECBUF while connecting to endpoint!\n");
+	ret = sock_setsockopt(sock, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
+        if(ret < 0) printk(KERN_INFO "[PEP]: Error setting SNDBUF while connecting to endpoint!\n");
 
         printk(KERN_INFO "[PEP] pep_endpoint_connect: Connecting to endpoint %d:%d\n", ip, port);
         ret = kernel_connect(sock, (struct sockaddr*)&daddr, addr_len, 0);

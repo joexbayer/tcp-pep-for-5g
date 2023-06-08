@@ -4,7 +4,7 @@
 int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 {
 	struct msghdr msg = {
-		.msg_flags = MSG_DONTWAIT,
+		.msg_flags = MSG_WAITALL,
 	};
 
 	struct kvec vec;
@@ -15,7 +15,7 @@ int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 
 	//printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
 pep_tcp_receive_read_again:
-	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
+	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_WAITALL);
 	if (rc > 0)
 	{
 		//printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
@@ -34,7 +34,7 @@ pep_tcp_receive_read_again:
 int pep_tcp_send(struct socket *sock, u8* buffer, u32 size)
 {
         struct msghdr msg = {
-                .msg_flags = MSG_DONTWAIT | MSG_NOSIGNAL,
+                .msg_flags = /*MSG_DONTWAIT | */MSG_NOSIGNAL,
         };
         struct kvec vec;
         int len, written = 0, left = size;

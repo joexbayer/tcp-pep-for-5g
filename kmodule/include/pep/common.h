@@ -49,6 +49,10 @@ struct pep_tunnel {
         struct pep_state* server;
 
         int state;
+
+        int recv_callbacks;
+        int packets_fowarded;
+
 };
 
 extern void (*default_data_ready)(struct sock *sk);
