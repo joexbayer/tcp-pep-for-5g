@@ -15,7 +15,7 @@ int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 
 	//printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
 pep_tcp_receive_read_again:
-	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, /*MSG_WAITALL*/)0;
+	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, /*MSG_WAITALL*/0);
 	if (rc > 0)
 	{
 		//printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
