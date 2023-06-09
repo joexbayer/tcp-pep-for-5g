@@ -4,7 +4,7 @@
 int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 {
 	struct msghdr msg = {
-		.msg_flags = MSG_WAITALL,
+		.msg_flags = /* MSG_WAITALL */0,
 	};
 
 	struct kvec vec;
@@ -15,7 +15,7 @@ int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 
 	//printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
 pep_tcp_receive_read_again:
-	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_WAITALL);
+	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, /*MSG_WAITALL*/0);
 	if (rc > 0)
 	{
 		//printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
@@ -45,14 +45,16 @@ pep_tcp_send_again:
         vec.iov_base = (char *)buffer + written;
 
         len = kernel_sendmsg(sock, &msg, &vec, left, left);
-        if((len == -ERESTARTSYS) || (len == -EAGAIN))
-                goto pep_tcp_send_again;
-        if(len > 0)
-        {
-                written += len;
-                left -= len;
-                if(left)
-                        goto pep_tcp_send_again;
+        if((len == -ERESTARTSYS) || (len == -EAGAIN)){
+            goto pep_tcp_send_again;
+		}
+        
+		if(len > 0){
+			written += len;
+			left -= len;
+			if(left){
+				goto pep_tcp_send_again;
+			}
         }
         return written ? written : len;
 }
