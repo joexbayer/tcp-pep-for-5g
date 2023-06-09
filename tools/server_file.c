@@ -110,6 +110,7 @@ int main(void)
         }
         gettimeofday(&tv2, NULL);
         //printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
+        close(cd);
         
         double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
 
