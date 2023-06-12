@@ -3,8 +3,8 @@
 Inital testing topology:
 ```
   (Sender)                              (Router / PEP)                           (Receiver)
-192.168.1.11                      192.168.1.1 - 192.168.2.2                    192.168.2.22
-   enp0s8 <---( 100ms delay ) ---> enp0s8           enp0s9 <---( 20ms delay )---> enp0s8
+172.16.10.4                     172.16.10.254 - 172.16.11.254                    172.16.11.5
+   enp36s0 <---( 100ms delay ) ---> enp36s0           enp24s0 <---( 20ms delay )---> enp36s0
                100Mb htb rate                                   10Mb htb rate
                 1,25k bfifo                                      0,025k Bfifo
 
