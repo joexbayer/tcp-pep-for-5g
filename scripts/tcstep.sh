@@ -4,9 +4,13 @@
 #
 # Running a Step function test.
 #
-sh scripts/tcconfig20ms.sh; 
 sudo echo "Starting";
-sleep 9; echo "Step 1";
-sh scripts/tcconfig20ms1.sh; 
-sleep 2; echo "Step 2";
-sh scripts/tcconfig20ms2.sh;
+ssh router "sudo tc class change dev enp24s0 parent 1: classid 11 htb rate 10mbit";
+ssh pc13 "time make -C ~/uio-master-joeba/ ultra_client" &
+sudo echo "Ultra ping";
+sleep 5;
+#ssh pc04 "cd uio-master-joeba; ./client_file" &
+sudo echo "TCP started";
+sleep 5;
+ssh router "sudo tc class change dev enp24s0 parent 1: classid 11 htb rate 50mbit";
+sudo echo "Done";
