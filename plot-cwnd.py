@@ -11,7 +11,7 @@ def plot_tcp_cwnd(pdf_dir=''):
     for host in [ '.hylia' ]:
 
         # Load the data from the CSV file
-        filename='tcp-cwnd.dat'
+        filename='tcp_file_fqcodel.dat'
         data = pd.read_csv(filename, header=None, sep=',',
                            names=['timestamp',
                                   'source_ip',
