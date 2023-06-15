@@ -14,6 +14,7 @@
 #include <sys/time.h>
 #include <time.h>
 #include <stdarg.h>
+#include <pthread.h>
 
 #include <signal.h>
 
@@ -47,6 +48,36 @@ void int_handlr(int dummy) {
     exit(0);
 }
 
+void *connection_handler(void *socket_desc)
+{
+    int sock = *(int*)socket_desc;
+    struct timeval  tv1, tv2;
+    char buffer[BUFFER_SIZE];
+    int ret, total_recv = 0;
+
+    gettimeofday(&tv1, NULL);
+    while (1)   
+    {
+        ret = read(sock, buffer, BUFFER_SIZE);
+        if(ret > 0){
+            //getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
+            total_recv += ret;
+            //printf("[FILE] Client: %d/%d (rtt: %f ms)\n", ret,total_recv, info.tcpi_rtt/1000);
+        } else if (ret <= 0){
+            break;
+        }
+    }
+    gettimeofday(&tv2, NULL);
+    //printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
+    close(sock);
+    
+    double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
+
+    LOG("%.1fmb - %fs\n", (double)(total_recv/1024/1024), total_time);
+    fflush(log_file);
+}
+
+
 int main(void)
 {
     socklen_t size;     
@@ -54,11 +85,10 @@ int main(void)
     struct sockaddr_in s_ain, c_ain;    
     int qlen = 5;
     int ret;
-    char buffer[BUFFER_SIZE];
     struct tcp_info info;
     socklen_t tcp_info_length = sizeof(info);
     int total_recv = 0;
-    struct timeval  tv1, tv2;
+    pthread_t thread_id;
 
     signal(SIGINT, int_handlr);
 
@@ -94,28 +124,11 @@ int main(void)
         total_recv = 0;
         fseek(thesis, 0, SEEK_SET);
 
-        //printf("[FILE] Client Connected\n");
-        gettimeofday(&tv1, NULL);
-        while (1)   
+        if( pthread_create( &thread_id , NULL ,  connection_handler , (void*) &cd) < 0)
         {
-            ret = read(cd, buffer, BUFFER_SIZE);  
-            fwrite(buffer, BUFFER_SIZE, 1, thesis);
-            if(ret > 0){
-                //getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
-                total_recv += ret;
-                //printf("[FILE] Client: %d/%d (rtt: %f ms)\n", ret,total_recv, info.tcpi_rtt/1000);
-            } else if (ret <= 0){
-                break;
-            }
+            perror("could not create thread");
+            exit(1);
         }
-        gettimeofday(&tv2, NULL);
-        //printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
-        close(cd);
-        
-        double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
-
-        LOG("%.1fmb - %fs (%s)\n", (double)(total_recv/1024/1024), total_time, c_ain.sin_addr.s_addr == 184658112 ? "NOPEP" : "PEP");
-        fflush(log_file);
     }
 
     
