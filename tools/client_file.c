@@ -18,7 +18,7 @@
 
 #define IP "172.16.11.5"
 #define PORT 8183
-#define MAX_BUFFER_SIZE 1001
+#define MAX_BUFFER_SIZE 1500
 #define TEST_FILE "32mb.bin"
 #define LOG_FILE_NAME "logs/client.log"
 #define MS "100ms"
@@ -128,7 +128,8 @@ int main(int argc, char * argv[])
 
     /* File size */
     fseek(thesis, 0L, SEEK_END);
-    thesis_size = ftell(thesis);
+    //thesis_size = ftell(thesis);
+    thesis_size = 32*1024*1024;
     to_send = thesis_size;
     rewind(thesis);
 
@@ -137,7 +138,7 @@ int main(int argc, char * argv[])
     gettimeofday(&tv1, NULL);
     while(thesis_size > 0)
     {
-        read = fread(buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 1, thesis);
+        //ret = fread(buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 1, thesis);
         //printf("reading %d bytes from file\n", MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE);
         ret = send(server, buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 0);
         //printf("sending %d bytes to servers (%d left)\n", ret, thesis_size);

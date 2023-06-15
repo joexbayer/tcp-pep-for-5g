@@ -134,7 +134,7 @@ void pep_server_accept_work(struct work_struct *work)
 				kfree(buffer);
 
 				queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e);
-				return;
+				continue;
 				break;
 		}
 }

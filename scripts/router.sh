@@ -26,7 +26,7 @@ sudo ip link set dev enp36s0 txqueuelen 100
 # FQ_CODEL / PFIFO ROUTER
 sudo tc qdisc del dev enp24s0 root;
 sudo tc qdisc add dev enp24s0 root handle 1: htb default 11;
-sudo tc class add dev enp24s0 parent 1: classid 11 htb rate 10mbit;
+sudo tc class add dev enp24s0 parent 1: classid 11 htb rate 25mbit;
 sudo tc qdisc add dev enp24s0 parent 1:11 fq_codel limit 100;
 
 # PRIO ROUTER
@@ -70,3 +70,8 @@ sudo iptables -D OUTPUT -t mangle -p tcp --dport 8181 -j TOS --set-tos Maximize-
 sudo iptables -D OUTPUT -t mangle -p tcp --dport 8183 -j TOS --set-tos Maximize-Throughput;
 sudo iptables -D OUTPUT -t mangle -p tcp --sport 8181 -j TOS --set-tos Maximize-Throughput;
 sudo iptables -D OUTPUT -t mangle -p tcp --sport 8183 -j TOS --set-tos Maximize-Throughput;
+
+
+#IPERF
+bash tcpss2.sh flow1.dat 3 172.16.11.254 33333 172.16.11.5 5001 &
+iperf -c pc05 -B 172.16.11.254:33333 & iperf -c pc05 -B 172.16.11.254:33334 & iperf -c pc05 -B 172.16.11.254:33335;

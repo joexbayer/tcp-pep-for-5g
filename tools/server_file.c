@@ -82,7 +82,7 @@ int main(void)
 {
     socklen_t size;     
     unsigned char byte;
-    struct sockaddr_in s_ain, c_ain;    
+    struct sockaddr_in s_ain;    
     int qlen = 5;
     int ret;
     struct tcp_info info;
@@ -117,12 +117,12 @@ int main(void)
     if(bind(sd, (struct sockaddr *)&s_ain, sizeof(s_ain)) == -1) return -1;
     if(listen(sd, 5) == -1) return -1;
 
-    size = sizeof(c_ain);
     while (1)
     {
-        cd = accept(sd, (struct sockaddr *)&c_ain, &size);
+        struct sockaddr_in c_ain;   
+        size = sizeof(c_ain);
+        int cd = accept(sd, (struct sockaddr *)&c_ain, &size);
         total_recv = 0;
-        fseek(thesis, 0, SEEK_SET);
 
         if( pthread_create( &thread_id , NULL ,  connection_handler , (void*) &cd) < 0)
         {
