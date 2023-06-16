@@ -11,7 +11,7 @@ def plot_tcp_cwnd(pdf_dir=''):
     for host in [ '.hylia' ]:
 
         # Load the data from the CSV file
-        filename='flowrouter.dat'
+        filename='flow2.dat'
         data = pd.read_csv(filename, header=None, sep=',',
                            names=['timestamp',
                                   'source_ip',
@@ -37,6 +37,8 @@ def plot_tcp_cwnd(pdf_dir=''):
         # Remove rows with NaN values
         # flows.dropna(inplace=True)
 
+        
+
         # Plot the data for all flows in one graph
         ax = flows.plot(linewidth=2, fontsize=20)
         ax.set_xlabel('Time (s)', fontsize=20)
@@ -45,7 +47,7 @@ def plot_tcp_cwnd(pdf_dir=''):
         ax.grid(True, which='major', lw=0.65, ls='--', dashes=(3, 7), zorder=70)
 
         # Set the legend outside the graph
-        ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.2), ncol=2)
+        ax.legend(labels=["Flow 1", "Flow 2", "Flow 3"], fontsize="20")
 
         # plt.locator_params(axis='x', nbins=11)
 

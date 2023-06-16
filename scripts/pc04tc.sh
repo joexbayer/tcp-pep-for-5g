@@ -9,8 +9,8 @@ sudo tc qdisc add dev enp36s0 parent 2:10 handle 11: bfifo limit 25000;
 
 sudo tc qdisc del dev enp36s0 root;
 sudo tc qdisc add dev enp36s0 root handle 1: htb default 11;
-sudo tc class add dev enp36s0 parent 1: classid 11 htb rate 50mbit;
-sudo tc qdisc add dev enp36s0 parent 1:11 fq_codel limit 100;
+sudo tc class add dev enp36s0 parent 1: classid 11 htb rate 100mbit;
+sudo tc qdisc add dev enp36s0 parent 1:11 fq_codel interval 150;
 
 
 # IPERF

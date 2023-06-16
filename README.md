@@ -105,5 +105,40 @@ Server 10s
         ssh joe@localhost -p 5557 -i .ssh/.id_rsa_virt -o StrictHostKeyChecking=no "cd /media/sf_uio-master-joeba; CMDs"
         
 
+## TODO
+Bandwidth change default
+Same host 6 flows vs Different host 6 flows.
+
+10x10 pep and without
+
+### Test 1
+100mbit
+15mbit -> 70mbit at 18s
+file transfer at 5s
+20 packets per second.
+
+End times:
+BFIFO: 24.6
+E2E TCP: 29
+PEP TCP: 19.3
+
+### Test 2
+6 flows TCP PEP (shared)
+LOG [2023-06-16 18:16:13] 32.0mb - 111.592872s
+LOG [2023-06-16 18:16:14] 32.0mb - 112.510670s
+LOG [2023-06-16 18:16:14] 32.0mb - 112.819391s
+LOG [2023-06-16 18:16:14] 32.0mb - 112.887379s
+LOG [2023-06-16 18:16:14] 32.0mb - 113.045915s
+LOG [2023-06-16 18:16:14] 32.0mb - 113.026711s
+
+6 flow TCP PEP (seperate)
+LOG [2023-06-16 18:08:30] 32.0mb - 112.558434s
+LOG [2023-06-16 18:08:30] 32.0mb - 112.810743s
+LOG [2023-06-16 18:08:30] 32.0mb - 112.812472s
+LOG [2023-06-16 18:08:30] 32.0mb - 112.811861s
+LOG [2023-06-16 18:08:30] 32.0mb - 113.057965s
+LOG [2023-06-16 18:08:30] 32.0mb - 113.081419s
+
+
 #### Public key
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDvSXOoDuLKw0ioTIW9tdQpUK0r4KGRgkmZkhwDm7kUGgGtmMjbQo81A74kA7na9ueexbSV/482ZmZcosg3Nwe+isjUINCBCFSXvmhqovv/ynnhn+kBTF03Bxpqciq4LNYViubLj3SnrCle6HU4aoDOx0L3MNyCVInaQTualeLKloA4ZKo/fv7kbzWXAKvClNH6v6axtQl58wfIt1ABEROcl0myY22D0Mn6yQCm28qqb5mqstVGWjTVxJPhfjtVp9NVXyz9ZPfnca/Tdbj/XRdZDtE3fsxaKAUdPs+VRwqNSAzkXH40Wz1t1dUMK/ahxZ5SCZkyBtqq4qE8e/A0SwUfuixH48Z2uVOjPNkNy0s+tu9NJjenLzLIFczRU4K8Il8U3roUsE7/m0mHqld74M/Ti3/U4SmKgcK9p28XR7LOJmY3sdRwt4THxOuQa3J6xJZkPAiE+3Oq3qME6mp2s08/pB55NY+6v3pXY/xVOSCkbkQU1CHA4YylZfT9kYbwwd8= joe@regolith
