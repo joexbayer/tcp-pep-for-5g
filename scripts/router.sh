@@ -26,7 +26,7 @@ sudo ip link set dev enp36s0 txqueuelen 100
 # FQ_CODEL / PFIFO ROUTER
 sudo tc qdisc del dev enp24s0 root;
 sudo tc qdisc add dev enp24s0 root handle 1: htb default 11;
-sudo tc class add dev enp24s0 parent 1: classid 11 htb rate 25mbit;
+sudo tc class add dev enp24s0 parent 1: classid 11 htb rate 15mbit;
 sudo tc qdisc add dev enp24s0 parent 1:11 fq_codel interval 150;
 
 # PRIO ROUTER
