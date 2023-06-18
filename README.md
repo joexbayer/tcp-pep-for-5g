@@ -139,6 +139,16 @@ LOG [2023-06-16 18:08:30] 32.0mb - 112.811861s
 LOG [2023-06-16 18:08:30] 32.0mb - 113.057965s
 LOG [2023-06-16 18:08:30] 32.0mb - 113.081419s
 
+###
+1 - 2 flows, 550
+3 flows, 700
+4 flows, 800
+5 - 6 flows, 900
+7 flows, 1120
+8 flows, 1200
+9 flows 1300
+4 flows 1400
+
 
 #### Public key
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDvSXOoDuLKw0ioTIW9tdQpUK0r4KGRgkmZkhwDm7kUGgGtmMjbQo81A74kA7na9ueexbSV/482ZmZcosg3Nwe+isjUINCBCFSXvmhqovv/ynnhn+kBTF03Bxpqciq4LNYViubLj3SnrCle6HU4aoDOx0L3MNyCVInaQTualeLKloA4ZKo/fv7kbzWXAKvClNH6v6axtQl58wfIt1ABEROcl0myY22D0Mn6yQCm28qqb5mqstVGWjTVxJPhfjtVp9NVXyz9ZPfnca/Tdbj/XRdZDtE3fsxaKAUdPs+VRwqNSAzkXH40Wz1t1dUMK/ahxZ5SCZkyBtqq4qE8e/A0SwUfuixH48Z2uVOjPNkNy0s+tu9NJjenLzLIFczRU4K8Il8U3roUsE7/m0mHqld74M/Ti3/U4SmKgcK9p28XR7LOJmY3sdRwt4THxOuQa3J6xJZkPAiE+3Oq3qME6mp2s08/pB55NY+6v3pXY/xVOSCkbkQU1CHA4YylZfT9kYbwwd8= joe@regolith
