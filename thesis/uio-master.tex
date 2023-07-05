@@ -35,18 +35,17 @@
 
 
 \author{Joe Bayer}
-%\title{TCP PEP}
-%\subtitle{TCP Performance Enhancing Proxy to Support Non-interactive Applications}
+\title{TCP PEP}
+\subtitle{TCP Performance Enhancing Proxy to Support Non-interactive Applications}
 \title{Master Essay}
-\subtitle{Background of my Master Essay}
+%\subtitle{Background of my Master Essay}
 
 \begin{document}
 
-\maketitle
-% \uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
+ \uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
 \tableofcontents
 
-%\chapter{Intro}
+\chapter{Intro}
 
 \chapter{Essay}
 
@@ -172,85 +171,115 @@ Congestion controllers and packet schedulers are also usually implemented as ker
 
 However, the using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel panic, which usually requires a complete system restart to fix.
 
-%\chapter{Implementation | Design}
-%
-%\begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
-%int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
-%{
-%	struct msghdr msg = {
-%		.msg_flags = MSG_DONTWAIT,
-%	};
-%
-%	struct kvec vec;
-%	int rc = 0;
-%
-%	vec.iov_base = buffer;
-%	vec.iov_len  = size;
-%
-%	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
-%pep_tcp_receive_read_again:
-%	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
-%	if (rc > 0)
-%	{
-%		tlv_print(buffer);
-%		printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
-%		return rc;
-%	}
-%
-%	if(rc == -EAGAIN || rc == -ERESTARTSYS)
-%	{
-%		goto pep_tcp_receive_read_again;
-%	}
-%
-%	printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
-%	return rc;
-%}
-%\end{lstlisting}
-%
-%\section{TLVs}
-%
-%\section{PEP}
-%
-%\section{PEP Connect}
-%Since are PEP is explicitly addressed we need to change how we connect on the client side.
-%The default approach is to use the \textbf{connect} function, our goal is to imitate this functions behavior, return code and parameters. By keeping our connect function as similar to the original we reduce the overhead of switching over to it. The only change to the original connect that we need is to specify type of traffic, interactive or non-interactive.
-%\begin{lstlisting}[caption={PEP connection}, label={lst:pep_connect_use} ,language=C]
-%int socket, ret;
-%struct sockaddr_in s_in;
-%bzero((char *)&s_in, sizeof(s_in));
-%s_in.sin_family = AF_INET;
-%s_in.sin_addr.s_addr = inet_addr(IP);
-%s_in.sin_port = htons(PORT);
-%
-%socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-%
-%ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
-%ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
-%\end{lstlisting}
-%
-%
-%
-%
-%{Table of design decisions based on different PEP implementations compared to ours.}
-%{0RTT, Transparent, Using TLV, Special ACKS, connection splitting.}\\
-%\begin{tabular}{ |p{4cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
-% \hline
-% \multicolumn{5}{|c|}{PEP List} \\
-% \hline
-% Implementation& 0RTT &Connection Splitting &Special ACKs &Transparent\\
-% \hline
-% milliProxy   & AF    &AFG&   004 & x\\
-% PEPDNA&   AX  & ALA   &248 & x\\
-% SnoopTCP &AL & ALB&  008 & x\\
-% Our PEP    &DZ & DZA&  012& x \\
-% Transport Converter &   AS  & ASM&016& x\\
-% ...& AD  & AND   &020& x\\
-% ...& AO  & AGO&024& x\\
-% \hline
-%\end{tabular}
-%
-%\chapter{Evaluation}
-%\chapter{Conclusion}
+\chapter{Implementation | Design}
+
+\begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
+int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
+{
+	struct msghdr msg = {
+		.msg_flags = MSG_DONTWAIT,
+	};
+
+	struct kvec vec;
+	int rc = 0;
+
+	vec.iov_base = buffer;
+	vec.iov_len  = size;
+
+	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
+pep_tcp_receive_read_again:
+	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
+	if (rc > 0)
+	{
+		tlv_print(buffer);
+		printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+		return rc;
+	}
+
+	if(rc == -EAGAIN || rc == -ERESTARTSYS)
+	{
+		goto pep_tcp_receive_read_again;
+	}
+
+	printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
+	return rc;
+}
+\end{lstlisting}
+
+\section{TLVs}
+
+\section{PEP}
+
+\section{PEP Connect}
+Since are PEP is explicitly addressed we need to change how we connect on the client side.
+The default approach is to use the \textbf{connect} function, our goal is to imitate this functions behavior, return code and parameters. By keeping our connect function as similar to the original we reduce the overhead of switching over to it. The only change to the original connect that we need is to specify type of traffic, interactive or non-interactive.
+\begin{lstlisting}[caption={PEP connection}, label={lst:pep_connect_use} ,language=C]
+int socket, ret;
+struct sockaddr_in s_in;
+bzero((char *)&s_in, sizeof(s_in));
+s_in.sin_family = AF_INET;
+s_in.sin_addr.s_addr = inet_addr(IP);
+s_in.sin_port = htons(PORT);
+
+socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
+ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
+\end{lstlisting}
+
+
+
+
+{Table of design decisions based on different PEP implementations compared to ours.}
+{0RTT, Transparent, Using TLV, Special ACKS, connection splitting.}\\
+\begin{tabular}{ |p{4cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
+ \hline
+ \multicolumn{5}{|c|}{PEP List} \\
+ \hline
+ Implementation& 0RTT &Connection Splitting &Special ACKs &Transparent\\
+ \hline
+ milliProxy   & AF    &AFG&   004 & x\\
+ PEPDNA&   AX  & ALA   &248 & x\\
+ SnoopTCP &AL & ALB&  008 & x\\
+ Our PEP    &DZ & DZA&  012& x \\
+ Transport Converter &   AS  & ASM&016& x\\
+ ...& AD  & AND   &020& x\\
+ ...& AO  & AGO&024& x\\
+ \hline
+\end{tabular}
+
+\chapter{Evaluation}
+
+\section{Initial Testbed configuration}
+
+\section{The Spike}
+
+\subsection{Scheduling Algorithms}
+
+\paragraph{FIFO}
+s
+\paragraph{FQ CoDel}
+s
+\paragraph{PFIFO}
+s
+
+\subsection{Interactive vs PEP}
+Our first experiment consists of having a interactive flow (100 byte UDP packets at 2kBps) competing with a file transfer, one default end to end and one through our PEP. Highlighting some of the initial differences between an end to end connection and a PEP.\\
+
+
+\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/graphs/initial_udp_latency_timeseries.pdf}
+  	\caption{Interactive UDP traffic}
+  	\label{fig:blockage}
+\end{figure}
+
+\subsection{10x10 tests}
+To further evaluate the PEP we conducted an experiment where we have 1-10 flows competing end to end versus through our PEP.
+
+\subsection{Spike}
+
+\chapter{Conclusion}
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
