@@ -271,8 +271,14 @@ Our first experiment consists of having a interactive flow (100 byte UDP packets
 	\centering
 	\includegraphics[scale=0.50]{../diagrams/graphs/initial_udp_latency_timeseries.pdf}
   	\caption{Interactive UDP traffic}
-  	\label{fig:blockage}
+  	\label{fig:inital_test}
 \end{figure}
+
+\subsection{PEP vs E2E tests}
+The first test consists of evaluating our PEP against a default TCP end to end (E2E) connection, while also highlighting the difference a packet scheduler can make. Fig. \ref{fig:inital_test} shows the results, the red lines represent important events in the timeline.
+The first represents the start of a file transfer, the second shows a bandwidth change from 10mbit to 75mbit, while the last line shows when the file transfer finished.
+
+% FIGURE OF THE TEST SETUP
 
 \subsection{10x10 tests}
 To further evaluate the PEP we conducted an experiment where we have 1-10 flows competing end to end versus through our PEP.

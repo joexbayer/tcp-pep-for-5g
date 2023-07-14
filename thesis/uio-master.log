@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  5 JUL 2023 10:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  14 JUL 2023 10:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,6 +422,10 @@ Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+LaTeX Warning: Reference `fig:inital_test' on page 14 undefined on input line 2
+78.
+
 [14
 
 ] [15 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>]
@@ -432,14 +436,17 @@ Chapter 5.
 
 ]) [18] (./uio-master.aux)
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4505 strings out of 478994
- 66069 string characters out of 5858185
+ 4506 strings out of 478994
+ 66086 string characters out of 5858185
  663943 words of memory out of 5000000
- 21915 multiletter control sequences out of 15000+600000
+ 21916 multiletter control sequences out of 15000+600000
  432814 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,10n,88p,777b,1242s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -458,7 +465,7 @@ ist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dis
 t/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/
 fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
 ype1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (20 pages, 618197 bytes).
+Output written on uio-master.pdf (20 pages, 618972 bytes).
 PDF statistics:
  174 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream

@@ -28,6 +28,7 @@
 \contentsline {paragraph}{FQ CoDel}{14}{}%
 \contentsline {paragraph}{PFIFO}{14}{}%
 \contentsline {subsection}{\numberline {4.2.2}Interactive vs PEP}{14}{}%
-\contentsline {subsection}{\numberline {4.2.3}10x10 tests}{14}{}%
-\contentsline {subsection}{\numberline {4.2.4}Spike}{14}{}%
+\contentsline {subsection}{\numberline {4.2.3}PEP vs E2E tests}{14}{}%
+\contentsline {subsection}{\numberline {4.2.4}10x10 tests}{15}{}%
+\contentsline {subsection}{\numberline {4.2.5}Spike}{15}{}%
 \contentsline {chapter}{\numberline {5}Conclusion}{16}{}%
