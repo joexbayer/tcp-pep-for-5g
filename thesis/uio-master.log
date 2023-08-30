@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  14 JUL 2023 10:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  25 AUG 2023 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -168,9 +168,6 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 
 LaTeX Warning: Label `fig:blockage' multiply defined.
 
-
-LaTeX Warning: Label `fig:blockage' multiply defined.
-
 )
 \openout1 = `uio-master.aux'.
 
@@ -248,15 +245,15 @@ Package xcolor Warning: Incompatible color definition on input line 45.
 p-navn-eng.pdf> <./uio-fp-segl.pdf>]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 18.99994pt on input line 45.
- [1] (./uio-master.toc)
+ [1] (./uio-master.toc [1
+
+])
 \tf@toc=\write3
 \openout3 = `uio-master.toc'.
 
- [1
-
-]
+ [2]
 Chapter 1.
-[2
+[3
 
 ]
 Chapter 2.
@@ -265,10 +262,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--56
 
  []
 
-[3
+[4
 
 ]
-<../diagrams/drawio/domains.png, id=32, 605.26125pt x 355.3275pt>
+<../diagrams/drawio/domains.png, id=35, 605.26125pt x 355.3275pt>
 File: ../diagrams/drawio/domains.png Graphic file (type png)
 <use ../diagrams/drawio/domains.png>
 Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 65.
@@ -284,8 +281,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
-[4 <../diagrams/drawio/domains.png>]
-<../diagrams/drawio/tcphandshake.png, id=39, 489.32813pt x 309.155pt>
+[5 <../diagrams/drawio/domains.png>]
+<../diagrams/drawio/tcphandshake.png, id=43, 489.32813pt x 309.155pt>
 File: ../diagrams/drawio/tcphandshake.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake.png  used on input lin
@@ -296,23 +293,23 @@ Overfull \hbox (6.99518pt too wide) in paragraph at lines 90--91
  [][] 
  []
 
-[5]
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
-[6 <../diagrams/drawio/tcphandshake.png>]
+[7 <../diagrams/drawio/tcphandshake.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
-<../diagrams/graphs/tcp_mmwave_blockage.png, id=48, 258.9675pt x 92.345pt>
+<../diagrams/graphs/tcp_mmwave_blockage.png, id=51, 258.9675pt x 92.345pt>
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
 put line 109.
 (pdftex.def)             Requested size: 323.70854pt x 115.43094pt.
-[7 <../diagrams/graphs/tcp_mmwave_blockage.png>]
+[8 <../diagrams/graphs/tcp_mmwave_blockage.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
@@ -332,7 +329,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
-[8]
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
@@ -346,14 +343,14 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 42.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [9]
-<../diagrams/drawio/pep_satellite.png, id=60, 700.6175pt x 343.2825pt>
+) [10]
+<../diagrams/drawio/pep_satellite.png, id=63, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
 ne 155.
 (pdftex.def)             Requested size: 350.30789pt x 171.64082pt.
- [10 <../diagrams/drawio/pep_satellite.png>]
+ [11 <../diagrams/drawio/pep_satellite.png>]
 Overfull \hbox (5.0861pt too wide) in paragraph at lines 168--169
 \T1/cmr/m/n/10.95 Thing that makes Linux truly ex-ten-si-ble are Load-able Ker-
 nel Mod-ules (LKM).
@@ -375,79 +372,79 @@ Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-[11]
+[12]
 Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
+[]\T1/cmr/m/n/10.95 Connection
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
+[]\T1/cmr/m/n/10.95 Special
+ []
+
+
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 195--196
+[]\T1/cmr/m/n/10.95 Transparent| 
+ []
+
+
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 189--206
+[] 
+ []
+
+[13
+
+] [14]
+Chapter 4.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) [12
+) [15
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 239--239
-[]\T1/cmr/m/n/10.95 Connection
- []
+[16]
+Chapter 5.
+[17
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 239--239
-[]\T1/cmr/m/n/10.95 Special
- []
-
-
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 239--240
-[]\T1/cmr/m/n/10.95 Transparent| 
- []
-
-
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 233--250
-[] 
- []
-
-[13]
-Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 267--268
+]
+Underfull \hbox (badness 10000) in paragraph at lines 294--295
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=77, 443.95862pt x 31
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=92, 443.95862pt x 31
 9.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 272.
+ used on input line 299.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 305--307
 
+ []
 
-LaTeX Warning: Reference `fig:inital_test' on page 14 undefined on input line 2
-78.
+[18 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [19]
+Chapter 6.
+(./uio-master.bbl [20
 
-[14
+] [21
 
-] [15 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>]
-Chapter 5.
-(./uio-master.bbl [16
-
-] [17
-
-]) [18] (./uio-master.aux)
-
-LaTeX Warning: There were undefined references.
-
+]) [22] (./uio-master.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4506 strings out of 478994
- 66086 string characters out of 5858185
- 663943 words of memory out of 5000000
- 21916 multiletter control sequences out of 15000+600000
- 432814 words of font info for 66 fonts, out of 8000000 for 9000
+ 4516 strings out of 478994
+ 66189 string characters out of 5858185
+ 664066 words of memory out of 5000000
+ 21922 multiletter control sequences out of 15000+600000
+ 434938 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,10n,88p,777b,1242s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -459,16 +456,18 @@ e/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/
 21/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2021
 /texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf
--dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dis
-t/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/
-fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
-ype1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (20 pages, 618972 bytes).
+mf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
+nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
+s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
+/urw/helvetic/uhvr8a.pfb>
+Output written on uio-master.pdf (24 pages, 648927 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 195 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

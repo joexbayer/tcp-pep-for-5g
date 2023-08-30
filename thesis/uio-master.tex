@@ -37,7 +37,7 @@
 \author{Joe Bayer}
 \title{TCP PEP}
 \subtitle{TCP Performance Enhancing Proxy to Support Non-interactive Applications}
-\title{Master Essay}
+\title{TCP PEP}
 %\subtitle{Background of my Master Essay}
 
 \begin{document}
@@ -171,7 +171,63 @@ Congestion controllers and packet schedulers are also usually implemented as ker
 
 However, the using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel panic, which usually requires a complete system restart to fix.
 
-\chapter{Implementation | Design}
+\chapter{Design}
+A good design for the PEP is crucial as it both needs to be robust, fast and reliable. Not all of the goals are equally achievable, an other aspects need to be considered such as cross platform compatibility. The overarching goal is to improve the completion times of the non-interactive traffic while avoiding to disturb the interactive flows.  In this chapter we will explore the different ways of achieving our goals and compare them to each other. 
+
+\section{Connection Splitting}
+A Performance enhancing proxy does not inherently need to be connection splitting. Based on where on the network stack its implemented it could buffer and process packets without terminating the end to end connection. A PEP could simply listen to traffic and manipulate the traffic, or simply send ACKs early.
+\footnote{Picture of a PEP only sending ACKs}
+\\
+There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can also split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the domains, lets the PEP choose different congestion controllers based on the technology and topology of each domain.
+
+\subsection{Connection Establishment}
+The connection process to the PEP, and later on the endpoint, is established
+
+\section{Programming Language}
+Considerations for choosing programming language, speed, python, java, C, C++, rust?
+
+\section{Transparent vs Non-Transparent}
+Pros and Cons,
+"Ethical" problem? Application dont know about the connection splitting, PEP "lying".
+More possibilities when applications chose / know about the existence of a PEP.
+
+
+\section{Kernel Module Vs. Userspace Application}
+A major design decision is whether to write the PEP as a user-space program or a kernel module.
+
+\\\\
+
+Syscall speed loss, MacOS kernel extension. Userspace application has benefit of being cross platform.
+Linux kernel module.
+
+\section{Scheduling Algorithms}
+The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible.
+
+
+
+\section{Summary}
+
+{Table of design decisions based on different PEP implementations compared to ours.}
+{0RTT, Transparent, TLVs, Special ACKS, connection splitting.}\\
+\begin{tabular}{ |p{4cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
+ \hline
+ \multicolumn{5}{|c|}{PEP List} \\
+ \hline
+ Implementation& 0RTT &Connection Splitting &Special ACKs &Transparent\\
+ \hline
+ milliProxy   & AF    &AFG&   004 & x\\
+ PEPDNA&   AX  & ALA   &248 & x\\
+ SnoopTCP &AL & ALB&  008 & x\\
+ Our PEP    &DZ & DZA&  012& x \\
+ Transport Converter &   AS  & ASM&016& x\\
+ ...& AD  & AND   &020& x\\
+ ...& AO  & AGO&024& x\\
+ \hline
+\end{tabular}
+
+\chapter{Implementation}
+
+\section{Kernel Module}
 
 \begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
 int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
@@ -206,7 +262,7 @@ pep_tcp_receive_read_again:
 }
 \end{lstlisting}
 
-\section{TLVs}
+\section{TLV Library}
 
 \section{PEP}
 
@@ -228,40 +284,32 @@ ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIV
 \end{lstlisting}
 
 
-
-
-{Table of design decisions based on different PEP implementations compared to ours.}
-{0RTT, Transparent, Using TLV, Special ACKS, connection splitting.}\\
-\begin{tabular}{ |p{4cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}| }
- \hline
- \multicolumn{5}{|c|}{PEP List} \\
- \hline
- Implementation& 0RTT &Connection Splitting &Special ACKs &Transparent\\
- \hline
- milliProxy   & AF    &AFG&   004 & x\\
- PEPDNA&   AX  & ALA   &248 & x\\
- SnoopTCP &AL & ALB&  008 & x\\
- Our PEP    &DZ & DZA&  012& x \\
- Transport Converter &   AS  & ASM&016& x\\
- ...& AD  & AND   &020& x\\
- ...& AO  & AGO&024& x\\
- \hline
-\end{tabular}
-
 \chapter{Evaluation}
 
-\section{Initial Testbed configuration}
+\section{Initial configuration}
 
-\section{The Spike}
+Sender --> Receiver --> Receiver
+\\
+Data being pushed from Sender to receiver, file size, speed, delay.
+\subsection{Traffic Control Options}s
+Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter etc. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments. 
+\\
+fq codel does not allow the configuration of delay, this means we have to configure the delay on the path of the ACKS?
+We have to configure the delay on sender facing interface cards. 
+\footnote{Picture of testbed setup} 
 
 \subsection{Scheduling Algorithms}
+The choice of scheduling algorithm is very important for our test scenarios. As it will greatly affect the results of our tests, we will compare some against each other. The main goal is to highlight the effect and find the optimal algorithms for our PEP.
 
 \paragraph{FIFO}
-s
-\paragraph{FQ CoDel}
-s
+In our test case FIFO will have the effect of creating up a queue at our PEP. This is detrimental for the interactive UDP flow as it will be stuck in the queue, building up delay. This behavior can be explained by the fact that the non-interactive flow has a much higher sending rate than the interactive flow, thereby quickly filling the finite queue with non-interactive packets.
+
+\paragraph{FQ CoDel: IMPORTANT}
+FQ CoDel has a solution for this problem by providing a fair queuing mechanism. 
 \paragraph{PFIFO}
-s
+Another alternative is Priority FIFO (PFIFO). As the name suggests it combines the concepts of a basic FIFO queue with priorities. This can reduce delay
+
+
 
 \subsection{Interactive vs PEP}
 Our first experiment consists of having a interactive flow (100 byte UDP packets at 2kBps) competing with a file transfer, one default end to end and one through our PEP. Highlighting some of the initial differences between an end to end connection and a PEP.\\
@@ -276,16 +324,22 @@ Our first experiment consists of having a interactive flow (100 byte UDP packets
 
 \subsection{PEP vs E2E tests}
 The first test consists of evaluating our PEP against a default TCP end to end (E2E) connection, while also highlighting the difference a packet scheduler can make. Fig. \ref{fig:inital_test} shows the results, the red lines represent important events in the timeline.
-The first represents the start of a file transfer, the second shows a bandwidth change from 10mbit to 75mbit, while the last line shows when the file transfer finished.
+The first line represents the start of a file transfer, the second shows a bandwidth change from 10mbit to 75mbit, while the last line shows when the file transfer finished.\\ 
+
+The first timeline shows an end to end TCP transfer using a FIFO queue, in this case BFIFO.\\ 
+On the second timeline we see the behavior of an end to end connection using FQ CoDel. {MORE}
+The last timeline shows the PEP using FQ CoDel. Looking at the graph we can see two important differences between the default end to end TCP and the PEP. Firstly, the PEP has higher latency fluctuations than the E2E connection, shown by the blue liens on the graph. 
 
 % FIGURE OF THE TEST SETUP
 
 \subsection{10x10 tests}
-To further evaluate the PEP we conducted an experiment where we have 1-10 flows competing end to end versus through our PEP.
+To further evaluate the PEP we conducted an experiment where we have 1-10 flows competing, once using the PEP and once end to end. The goal is to see how competing flows affect the behavior of or PEP
 
 \subsection{Spike}
 
 \chapter{Conclusion}
+
+\section{Future Work}
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
