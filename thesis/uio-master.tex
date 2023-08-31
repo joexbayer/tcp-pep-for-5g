@@ -179,9 +179,22 @@ A Performance enhancing proxy does not inherently need to be connection splittin
 \footnote{Picture of a PEP only sending ACKs}
 \\
 There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can also split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the domains, lets the PEP choose different congestion controllers based on the technology and topology of each domain.
+\\
+The connection process to the PEP, and later on the endpoint, is established by informing the PEP of which endpoint the client wants to connect. This can be achived by a variety of ways. Somehow the need to attach additional information to the default connection process of TCP. We do not want the overhead of needing an entire addiontal round trip just to pass this information. Addiontailly, the client needs to "chose" the PEP, without altering the default socket connection scheme. There are a few different ways of achieving this, which be will dicussed below.
 
-\subsection{Connection Establishment}
-The connection process to the PEP, and later on the endpoint, is established
+\subsection{Connection Establishment}  
+The idea is to attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional RTT.
+
+\subsubsection{TCP Options}
+Since TCP Options can be attached to a TCP connection, a possiblity would be to add a new TCP Option which would specify the endpoint. This TCP Option would need to be added by a kernel module, as it is not possible to to add custom TCP Options from userspace. This leads to another problem, mainly how to specify from userspace that we wish to use the PEP.\\
+
+A possible option would be a socket option, using setsockopt. This however requires changes to the kernel, which raises the bar for adaptability. Another choice would be always attaching the TCP Options on connection addressed to a certain port such as 80/443. This however takes away the choice from the application, and makes it systemwide instead.
+
+\subsubsection{TCP Fast Open}
+Another options us using the exisitng TCP Fast Open option which can attach data to the inital TCP handshake.
+
+\subsection{Choosing the PEP}
+The next challange is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite alot of their code. 
 
 \section{Programming Language}
 Considerations for choosing programming language, speed, python, java, C, C++, rust?
@@ -194,8 +207,6 @@ More possibilities when applications chose / know about the existence of a PEP.
 
 \section{Kernel Module Vs. Userspace Application}
 A major design decision is whether to write the PEP as a user-space program or a kernel module.
-
-\\\\
 
 Syscall speed loss, MacOS kernel extension. Userspace application has benefit of being cross platform.
 Linux kernel module.
