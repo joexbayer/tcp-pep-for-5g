@@ -47,7 +47,7 @@
 
 \chapter{Intro}
 
-\chapter{Essay}
+\chapter{Background}
 
 In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader. 
 
@@ -165,9 +165,9 @@ A big discussion regarding PEPs has been if they should be transparent or non-tr
 Linux is the most famous open source kernel freely available for anyone to use and modify. Because of the open source nature of Linux, there have been many various operating system implementation based on the Linux kernel. Ubuntu, Fedora or Manjaro are just some of the most famous Linux based operating systems out there. For developers, Linux is the perfect platform to experiment and test their new innovations. You are able to modify and recompile the kernel itself on the fly, and then test the solution on a live operating system. Linux supports most standards and is used by most major corporations such as Facebook, Amazon, Netflix and Google.
 
 \subsection{Kernel Modules}
-Thing that makes Linux truly extensible are Loadable Kernel Modules (LKM). Kernel modules are programmes that can be loaded at runtime into the kernel and run with kernel privileges. Running with kernel privileges has a lot of benefits such as having access to internal structures and kernel symbols. Most drivers in the Linux kernel are written as kernel modules as they need access to the system internals.\\
+Thing that makes Linux truly extensible are Loadable Kernel Modules (LKM). Kernel modules are programs that can be loaded at runtime into the kernel and run with kernel privileges. Running with kernel privileges has a lot of benefits such as having access to internal structures and kernel symbols. Most drivers in the Linux kernel are written as kernel modules as they need access to the system internals.\\
 
-Congestion controllers and packet schedulers are also usually implemented as kernel modules. That is because Linux exposes a struct with function pointers that can be overwritten by a module. Making the kernel call the new functions instead. Because kernel modules run as part of the kernel they do not need to use system call to do basic I/O as using sockets. Removing the overhead of system calls makes the kernel modules run much faster than default userspace programs.\\
+Congestion controllers and packet schedulers are also usually implemented as kernel modules. That is because Linux exposes a struct with function pointers that can be overwritten by a module. Making the kernel call the new functions instead. Because kernel modules run as part of the kernel they do not need to use system call to do basic I/O as using sockets. Removing the overhead of system calls makes the kernel modules run much faster than default user space programs.\\
 
 However, the using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel panic, which usually requires a complete system restart to fix.
 
@@ -176,25 +176,27 @@ A good design for the PEP is crucial as it both needs to be robust, fast and rel
 
 \section{Connection Splitting}
 A Performance enhancing proxy does not inherently need to be connection splitting. Based on where on the network stack its implemented it could buffer and process packets without terminating the end to end connection. A PEP could simply listen to traffic and manipulate the traffic, or simply send ACKs early.
-\footnote{Picture of a PEP only sending ACKs}
+\footnote{Picture of a PEP only sending ACKs}\\
 \\
-There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can also split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the domains, lets the PEP choose different congestion controllers based on the technology and topology of each domain.
+There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can also split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the domains, lets the PEP choose different congestion controllers based on the technology and topology of each domain.\\
 \\
-The connection process to the PEP, and later on the endpoint, is established by informing the PEP of which endpoint the client wants to connect. This can be achived by a variety of ways. Somehow the need to attach additional information to the default connection process of TCP. We do not want the overhead of needing an entire addiontal round trip just to pass this information. Addiontailly, the client needs to "chose" the PEP, without altering the default socket connection scheme. There are a few different ways of achieving this, which be will dicussed below.
+The connection process to the PEP, and later on the endpoint, is established by informing the PEP of which endpoint the client wants to connect. This can be achieved by a variety of ways. Somehow the need to attach additional information to the default connection process of TCP. We do not want the overhead of needing an entire additional round trip just to pass this information. Additionally, the client needs to "chose" the PEP, without altering the default socket connection scheme. There are a few different ways of achieving this, which be will discussed below.
 
 \subsection{Connection Establishment}  
 The idea is to attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional RTT.
 
 \subsubsection{TCP Options}
-Since TCP Options can be attached to a TCP connection, a possiblity would be to add a new TCP Option which would specify the endpoint. This TCP Option would need to be added by a kernel module, as it is not possible to to add custom TCP Options from userspace. This leads to another problem, mainly how to specify from userspace that we wish to use the PEP.\\
+Since TCP Options can be attached to a TCP connection, a possibility would be to add a new TCP Option which would specify the endpoint. This TCP Option would need to be added by a kernel module, as it is not possible to to add custom TCP Options from user space. This leads to another problem, mainly how to specify from user space that we wish to use the PEP.\\
 
-A possible option would be a socket option, using setsockopt. This however requires changes to the kernel, which raises the bar for adaptability. Another choice would be always attaching the TCP Options on connection addressed to a certain port such as 80/443. This however takes away the choice from the application, and makes it systemwide instead.
+A possible option would be a socket option, using setsockopt. This however requires changes to the kernel, which raises the bar for adaptability. Another choice would be always attaching the TCP Options on connection addressed to a certain port such as 80/443. This however takes away the choice from the application, and makes it system wide instead.\\
+
+Finally, another significant problem is that unknown TCP Options are often seen as a threat. Firewalls may drop the packets, or the options might be stripped by intermediate nodes. This creates a challenge for the implementation and usability of the PEP. If the packets may be dropped because of our custom TCP options, then the PEP will only work in certain networks and scenarios. Although we only design a proof of concept, this is a trade off that is unlikely to pay off in the end.
 
 \subsubsection{TCP Fast Open}
-Another options us using the exisitng TCP Fast Open option which can attach data to the inital TCP handshake.
+Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake.
 
 \subsection{Choosing the PEP}
-The next challange is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite alot of their code. 
+The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite alot of their code. 
 
 \section{Programming Language}
 Considerations for choosing programming language, speed, python, java, C, C++, rust?
