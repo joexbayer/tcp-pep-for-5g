@@ -174,6 +174,18 @@ However, the using Linux kernel modules has the drawback that the program is bou
 \chapter{Design}
 A good design for the PEP is crucial as it both needs to be robust, fast and reliable. Not all of the goals are equally achievable, an other aspects need to be considered such as cross platform compatibility. The overarching goal is to improve the completion times of the non-interactive traffic while avoiding to disturb the interactive flows.  In this chapter we will explore the different ways of achieving our goals and compare them to each other. 
 
+\section{Justification for designing a PEP}
+~\cite{tcp_extendable}
+
+\section{Programming Language}
+Considerations for choosing programming language, speed, python, java, C, C++, rust?
+
+\section{Kernel Module Vs. Userspace Application}
+A major design decision is whether to write the PEP as a user-space program or a kernel module.
+
+Syscall speed loss, MacOS kernel extension. Userspace application has benefit of being cross platform.
+Linux kernel module.
+
 \section{Connection Splitting}
 A Performance enhancing proxy does not inherently need to be connection splitting. Based on where on the network stack its implemented it could buffer and process packets without terminating the end to end connection. A PEP could simply listen to traffic and manipulate the traffic, or simply send ACKs early.
 \footnote{Picture of a PEP only sending ACKs}\\
@@ -190,28 +202,20 @@ Since TCP Options can be attached to a TCP connection, a possibility would be to
 
 A possible option would be a socket option, using setsockopt. This however requires changes to the kernel, which raises the bar for adaptability. Another choice would be always attaching the TCP Options on connection addressed to a certain port such as 80/443. This however takes away the choice from the application, and makes it system wide instead.\\
 
-Finally, another significant problem is that unknown TCP Options are often seen as a threat. Firewalls may drop the packets, or the options might be stripped by intermediate nodes. This creates a challenge for the implementation and usability of the PEP. If the packets may be dropped because of our custom TCP options, then the PEP will only work in certain networks and scenarios. Although we only design a proof of concept, this is a trade off that is unlikely to pay off in the end.
+Finally, another significant problem is that unknown TCP Options are often seen as a threat. Firewalls may drop the packets, or the options might be stripped by intermediate nodes.~\cite{middlebox_interactions} This creates a challenge for the implementation and usability of the PEP. If the packets may be dropped because of our custom TCP options, then the PEP will only work in certain networks and scenarios. Although we only design a proof of concept, this is a trade off that is unlikely to pay off in the end.~\cite{tcp_extendable}
+\footnote{Directly quote the middlebox interaction paper section 4.4?}
 
 \subsubsection{TCP Fast Open}
-Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake.
+Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the background chapter, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint.
 
 \subsection{Choosing the PEP}
 The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite alot of their code. 
-
-\section{Programming Language}
-Considerations for choosing programming language, speed, python, java, C, C++, rust?
 
 \section{Transparent vs Non-Transparent}
 Pros and Cons,
 "Ethical" problem? Application dont know about the connection splitting, PEP "lying".
 More possibilities when applications chose / know about the existence of a PEP.
 
-
-\section{Kernel Module Vs. Userspace Application}
-A major design decision is whether to write the PEP as a user-space program or a kernel module.
-
-Syscall speed loss, MacOS kernel extension. Userspace application has benefit of being cross platform.
-Linux kernel module.
 
 \section{Scheduling Algorithms}
 The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible.

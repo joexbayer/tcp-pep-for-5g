@@ -1,5 +1,5 @@
 \contentsline {chapter}{\numberline {1}Intro}{3}{}%
-\contentsline {chapter}{\numberline {2}Essay}{4}{}%
+\contentsline {chapter}{\numberline {2}Background}{4}{}%
 \contentsline {section}{\numberline {2.1}TCP/IP}{4}{}%
 \contentsline {subsection}{\numberline {2.1.1}Congestion Control}{5}{}%
 \contentsline {subsection}{\numberline {2.1.2}3 Way handshake (0 RTT)}{6}{}%
@@ -17,16 +17,17 @@
 \contentsline {section}{\numberline {2.4}Linux}{12}{}%
 \contentsline {subsection}{\numberline {2.4.1}Kernel Modules}{12}{}%
 \contentsline {chapter}{\numberline {3}Design}{13}{}%
-\contentsline {section}{\numberline {3.1}Connection Splitting}{13}{}%
-\contentsline {subsection}{\numberline {3.1.1}Connection Establishment}{14}{}%
+\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{13}{}%
+\contentsline {section}{\numberline {3.2}Connection Splitting}{13}{}%
+\contentsline {subsection}{\numberline {3.2.1}Connection Establishment}{14}{}%
 \contentsline {subsubsection}{TCP Options}{14}{}%
 \contentsline {subsubsection}{TCP Fast Open}{14}{}%
-\contentsline {subsection}{\numberline {3.1.2}Choosing the PEP}{14}{}%
-\contentsline {section}{\numberline {3.2}Programming Language}{14}{}%
-\contentsline {section}{\numberline {3.3}Transparent vs Non-Transparent}{14}{}%
-\contentsline {section}{\numberline {3.4}Kernel Module Vs. Userspace Application}{15}{}%
-\contentsline {section}{\numberline {3.5}Scheduling Algorithms}{15}{}%
-\contentsline {section}{\numberline {3.6}Summary}{15}{}%
+\contentsline {subsection}{\numberline {3.2.2}Choosing the PEP}{14}{}%
+\contentsline {section}{\numberline {3.3}Programming Language}{15}{}%
+\contentsline {section}{\numberline {3.4}Transparent vs Non-Transparent}{15}{}%
+\contentsline {section}{\numberline {3.5}Kernel Module Vs. Userspace Application}{15}{}%
+\contentsline {section}{\numberline {3.6}Scheduling Algorithms}{15}{}%
+\contentsline {section}{\numberline {3.7}Summary}{15}{}%
 \contentsline {chapter}{\numberline {4}Implementation}{16}{}%
 \contentsline {section}{\numberline {4.1}Kernel Module}{16}{}%
 \contentsline {section}{\numberline {4.2}TLV Library}{17}{}%
