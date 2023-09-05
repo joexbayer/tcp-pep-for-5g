@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  4 SEP 2023 12:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  5 SEP 2023 15:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -379,43 +379,34 @@ LaTeX Warning: Citation `tcp_extendable' on page 13 undefined on input line 178
 .
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--187
+Underfull \hbox (badness 10000) in paragraph at lines 190--196
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--187
+Underfull \hbox (badness 10000) in paragraph at lines 190--196
 
  []
 
 [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
 
 LaTeX Warning: Citation `middlebox_interactions' on page 14 undefined on input 
-line 196.
+line 205.
 
 
-LaTeX Warning: Citation `tcp_extendable' on page 14 undefined on input line 196
+LaTeX Warning: Citation `tcp_extendable' on page 14 undefined on input line 205
 .
-
-! Undefined control sequence.
-l.200 ...l TCP handshake. As discussed in \autoref
-                                                  {chap:background)
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 [14]
 Underfull \hbox (badness 10000) in paragraph at lines 233--233
@@ -437,26 +428,26 @@ Overfull \hbox (43.43303pt too wide) in paragraph at lines 227--244
 [] 
  []
 
-[15]
+[15] [16]
 Chapter 4.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) [16
+) [17
 
 ]
-[17]
+[18]
 Chapter 5.
-[18
+[19
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=95, 443.95862pt x 31
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=98, 443.95862pt x 31
 9.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
@@ -469,53 +460,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--345
 
  []
 
-[19 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [20]
+[20 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [21]
 Chapter 6.
-(./uio-master.bbl [21
+(./uio-master.bbl [22
 
-] [22
+] [23
 
-]) [23] (./uio-master.aux)
+]) [24] (./uio-master.aux)
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
- )
-(\end occurred inside a group at level 1)
-
-### simple group (level 1) entered at line 200 ({)
-### bottom level 
+ ) 
 Here is how much of TeX's memory you used:
  4516 strings out of 478994
  66189 string characters out of 5858185
- 664270 words of memory out of 5000000
+ 664102 words of memory out of 5000000
  21922 multiletter control sequences out of 15000+600000
  434938 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,10n,88p,777b,1270s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm
--super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-s
-uper-ts1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/
-local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/lo
-cal/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-di
-st/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (25 pages, 651345 bytes).
+ 83i,10n,88p,777b,1242s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{
+/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
+nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
+s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
+/urw/helvetic/uhvr8a.pfb>
+Output written on uio-master.pdf (26 pages, 669032 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
+ 202 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

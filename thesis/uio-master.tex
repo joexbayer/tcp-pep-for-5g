@@ -186,6 +186,13 @@ A major design decision is whether to write the PEP as a user-space program or a
 Syscall speed loss, MacOS kernel extension. Userspace application has benefit of being cross platform.
 Linux kernel module.
 
+
+\section{Transparent vs Non-Transparent}
+Pros and Cons,
+"Ethical" problem? Application dont know about the connection splitting, PEP "lying".
+More possibilities when applications chose / know about the existence of a PEP.
+PEP needs to be on the path. Transparent PEP does not need to care because its always on the path.
+
 \section{Connection Splitting}
 A Performance enhancing proxy does not inherently need to be connection splitting. Based on where on the network stack its implemented it could buffer and process packets without terminating the end to end connection. A PEP could simply listen to traffic and manipulate the traffic, or simply send ACKs early.
 \footnote{Picture of a PEP only sending ACKs}\\
@@ -193,6 +200,7 @@ A Performance enhancing proxy does not inherently need to be connection splittin
 There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can also split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the domains, lets the PEP choose different congestion controllers based on the technology and topology of each domain.\\
 \\
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of which endpoint the client wants to connect. This can be achieved by a variety of ways. Somehow the need to attach additional information to the default connection process of TCP. We do not want the overhead of needing an entire additional round trip just to pass this information. Additionally, the client needs to "chose" the PEP, without altering the default socket connection scheme. There are a few different ways of achieving this, which be will discussed below.
+
 
 \subsection{Connection Establishment}  
 The idea is to attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional RTT.
@@ -209,12 +217,7 @@ Finally, another significant problem is that unknown TCP Options are often seen 
 Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the background chapter, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint.
 
 \subsection{Choosing the PEP}
-The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite alot of their code. 
-
-\section{Transparent vs Non-Transparent}
-Pros and Cons,
-"Ethical" problem? Application dont know about the connection splitting, PEP "lying".
-More possibilities when applications chose / know about the existence of a PEP.
+The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite a lot of their code. An important prerequisite for the PEP to work is that the PEP is on the shortest path to the chosen endpoint. This can be difficult for an application to be aware of, which leads us to another option. \footnote{How do I solve this? An application does not know the path? So an application cant choose PEP, it cant be systemwide as not all connection will have the same path. Although: if its at the access point, all connections will actually go through the it.}
 
 
 \section{Scheduling Algorithms}
