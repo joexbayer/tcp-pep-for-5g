@@ -20,14 +20,14 @@
 \contentsline {section}{\numberline {3.1}Justification for designing a PEP}{13}{}%
 \contentsline {section}{\numberline {3.2}Programming Language}{13}{}%
 \contentsline {section}{\numberline {3.3}Kernel Module Vs. Userspace Application}{13}{}%
-\contentsline {section}{\numberline {3.4}Connection Splitting}{13}{}%
-\contentsline {subsection}{\numberline {3.4.1}Connection Establishment}{14}{}%
-\contentsline {subsubsection}{TCP Options}{14}{}%
+\contentsline {section}{\numberline {3.4}Transparent vs Non-Transparent}{14}{}%
+\contentsline {section}{\numberline {3.5}Connection Splitting}{14}{}%
+\contentsline {subsection}{\numberline {3.5.1}Connection Establishment}{14}{}%
+\contentsline {subsubsection}{TCP Options}{15}{}%
 \contentsline {subsubsection}{TCP Fast Open}{15}{}%
-\contentsline {subsection}{\numberline {3.4.2}Choosing the PEP}{15}{}%
-\contentsline {section}{\numberline {3.5}Transparent vs Non-Transparent}{15}{}%
+\contentsline {subsection}{\numberline {3.5.2}Choosing the PEP}{15}{}%
 \contentsline {section}{\numberline {3.6}Scheduling Algorithms}{15}{}%
-\contentsline {section}{\numberline {3.7}Summary}{15}{}%
+\contentsline {section}{\numberline {3.7}Summary}{16}{}%
 \contentsline {chapter}{\numberline {4}Implementation}{17}{}%
 \contentsline {section}{\numberline {4.1}Kernel Module}{17}{}%
 \contentsline {section}{\numberline {4.2}TLV Library}{18}{}%

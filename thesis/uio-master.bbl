@@ -30,12 +30,25 @@ Wesley Eddy.
 \newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
   2022.
 
+\bibitem{tcp_extendable}
+Michio Honda, Yoshifumi Nishida, Costin Raiciu, Adam Greenhalgh, Mark Handley,
+  and Hideyuki Tokuda.
+\newblock Is it still possible to extend tcp?
+\newblock In {\em Proceedings of the 2011 ACM SIGCOMM conference on Internet
+  measurement conference}, page 181–194, Berlin Germany, Nov 2011. ACM.
+
 \bibitem{fq_codel_rfc}
 Toke Høiland-Jørgensen, Paul McKenney, dave.taht@gmail.com, Jim Gettys, and
   Eric Dumazet.
 \newblock {\em The Flow Queue CoDel Packet Scheduler and Active Queue
   Management Algorithm}.
 \newblock Number RFC 8290. Jan 2018.
+
+\bibitem{middlebox_interactions}
+Alberto Medina, Mark Allman, and Sally Floyd.
+\newblock Measuring interactions between transport protocols and middleboxes.
+\newblock In {\em Proceedings of the 4th ACM SIGCOMM conference on Internet
+  measurement}, page 336–341, Taormina Sicily, Italy, Oct 2004. ACM.
 
 \bibitem{tcp_mmwave_proxy}
 Michele Polese, Marco Mezzavilla, Menglei Zhang, Jing Zhu, Sundeep Rangan,
