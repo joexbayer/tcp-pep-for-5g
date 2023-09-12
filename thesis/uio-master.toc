@@ -1,48 +1,48 @@
-\contentsline {chapter}{\numberline {1}Intro}{3}{}%
-\contentsline {chapter}{\numberline {2}Background}{4}{}%
-\contentsline {section}{\numberline {2.1}TCP/IP}{4}{}%
-\contentsline {subsection}{\numberline {2.1.1}Congestion Control}{5}{}%
-\contentsline {subsection}{\numberline {2.1.2}3 Way handshake (0 RTT)}{6}{}%
-\contentsline {subsection}{\numberline {2.1.3}TCP Options and Fast Open}{7}{}%
-\contentsline {section}{\numberline {2.2}Future of wireless communication.}{8}{}%
-\contentsline {subsection}{\numberline {2.2.1}5G Millimetre Wave}{8}{}%
-\contentsline {subsection}{\numberline {2.2.2}Buffering}{9}{}%
-\contentsline {subsubsection}{Buffer bloat}{9}{}%
-\contentsline {subsubsection}{Packet Scheduling}{9}{}%
-\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{10}{}%
-\contentsline {section}{\numberline {2.3}Proxy}{10}{}%
-\contentsline {subsection}{\numberline {2.3.1}PEP}{11}{}%
-\contentsline {subsection}{\numberline {2.3.2}PEP for wireless communication}{11}{}%
-\contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{11}{}%
-\contentsline {section}{\numberline {2.4}Linux}{12}{}%
-\contentsline {subsection}{\numberline {2.4.1}Kernel Modules}{12}{}%
-\contentsline {chapter}{\numberline {3}Design}{13}{}%
-\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{13}{}%
-\contentsline {section}{\numberline {3.2}Programming Language}{13}{}%
-\contentsline {section}{\numberline {3.3}Kernel Module Vs. Userspace Application}{13}{}%
-\contentsline {section}{\numberline {3.4}Transparent vs Non-Transparent}{14}{}%
-\contentsline {section}{\numberline {3.5}Connection Splitting}{14}{}%
-\contentsline {subsection}{\numberline {3.5.1}Connection Establishment}{14}{}%
-\contentsline {subsubsection}{TCP Options}{15}{}%
-\contentsline {subsubsection}{TCP Fast Open}{15}{}%
-\contentsline {subsection}{\numberline {3.5.2}Choosing the PEP}{15}{}%
-\contentsline {section}{\numberline {3.6}Scheduling Algorithms}{15}{}%
-\contentsline {section}{\numberline {3.7}Summary}{16}{}%
-\contentsline {chapter}{\numberline {4}Implementation}{17}{}%
-\contentsline {section}{\numberline {4.1}Kernel Module}{17}{}%
-\contentsline {section}{\numberline {4.2}TLV Library}{18}{}%
-\contentsline {section}{\numberline {4.3}PEP}{18}{}%
-\contentsline {section}{\numberline {4.4}PEP Connect}{18}{}%
-\contentsline {chapter}{\numberline {5}Evaluation}{19}{}%
-\contentsline {section}{\numberline {5.1}Initial configuration}{19}{}%
-\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{19}{}%
-\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{19}{}%
-\contentsline {paragraph}{FIFO}{19}{}%
-\contentsline {paragraph}{FQ CoDel: IMPORTANT}{20}{}%
-\contentsline {paragraph}{PFIFO}{20}{}%
-\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{20}{}%
-\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{20}{}%
-\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{21}{}%
-\contentsline {subsection}{\numberline {5.1.6}Spike}{21}{}%
-\contentsline {chapter}{\numberline {6}Conclusion}{22}{}%
-\contentsline {section}{\numberline {6.1}Future Work}{22}{}%
+\contentsline {chapter}{\numberline {1}Intro}{4}{}%
+\contentsline {chapter}{\numberline {2}Background}{5}{}%
+\contentsline {section}{\numberline {2.1}TCP/IP}{5}{}%
+\contentsline {subsection}{\numberline {2.1.1}Congestion Control}{6}{}%
+\contentsline {subsection}{\numberline {2.1.2}3 Way handshake (0 RTT)}{7}{}%
+\contentsline {subsection}{\numberline {2.1.3}TCP Options and Fast Open}{8}{}%
+\contentsline {section}{\numberline {2.2}Future of wireless communication.}{9}{}%
+\contentsline {subsection}{\numberline {2.2.1}5G Millimetre Wave}{9}{}%
+\contentsline {subsection}{\numberline {2.2.2}Buffering}{10}{}%
+\contentsline {subsubsection}{Buffer bloat}{10}{}%
+\contentsline {subsubsection}{Packet Scheduling}{10}{}%
+\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{11}{}%
+\contentsline {section}{\numberline {2.3}Proxy}{11}{}%
+\contentsline {subsection}{\numberline {2.3.1}PEP}{12}{}%
+\contentsline {subsection}{\numberline {2.3.2}PEP for wireless communication}{12}{}%
+\contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{12}{}%
+\contentsline {section}{\numberline {2.4}Linux}{13}{}%
+\contentsline {subsection}{\numberline {2.4.1}Kernel Modules}{13}{}%
+\contentsline {chapter}{\numberline {3}Design}{14}{}%
+\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{14}{}%
+\contentsline {section}{\numberline {3.2}Programming Language}{14}{}%
+\contentsline {subsection}{\numberline {3.2.1}Kernel Module Vs. Userspace Application}{14}{}%
+\contentsline {section}{\numberline {3.3}Transparent vs Non-Transparent}{15}{}%
+\contentsline {section}{\numberline {3.4}Connection Splitting}{15}{}%
+\contentsline {subsection}{\numberline {3.4.1}Connection Establishment}{15}{}%
+\contentsline {subsubsection}{TCP Options}{16}{}%
+\contentsline {subsubsection}{TCP Fast Open}{16}{}%
+\contentsline {subsection}{\numberline {3.4.2}Choosing the PEP}{16}{}%
+\contentsline {section}{\numberline {3.5}Scheduling Algorithms}{16}{}%
+\contentsline {section}{\numberline {3.6}Summary}{17}{}%
+\contentsline {chapter}{\numberline {4}Implementation}{18}{}%
+\contentsline {section}{\numberline {4.1}Kernel Module}{18}{}%
+\contentsline {section}{\numberline {4.2}TLV Library}{19}{}%
+\contentsline {section}{\numberline {4.3}PEP}{19}{}%
+\contentsline {section}{\numberline {4.4}PEP Connect}{19}{}%
+\contentsline {chapter}{\numberline {5}Evaluation}{20}{}%
+\contentsline {section}{\numberline {5.1}Initial configuration}{20}{}%
+\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{20}{}%
+\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{20}{}%
+\contentsline {paragraph}{FIFO}{20}{}%
+\contentsline {paragraph}{FQ CoDel: IMPORTANT}{21}{}%
+\contentsline {paragraph}{PFIFO}{21}{}%
+\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{21}{}%
+\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{21}{}%
+\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{22}{}%
+\contentsline {subsection}{\numberline {5.1.6}Spike}{22}{}%
+\contentsline {chapter}{\numberline {6}Conclusion}{23}{}%
+\contentsline {section}{\numberline {6.1}Future Work}{23}{}%

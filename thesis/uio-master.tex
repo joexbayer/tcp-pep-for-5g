@@ -45,6 +45,8 @@
  \uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
 \tableofcontents
 
+\listoffigures
+
 \chapter{Intro}
 
 \chapter{Background}
@@ -180,7 +182,9 @@ A good design for the PEP is crucial as it both needs to be robust, fast and rel
 \section{Programming Language}
 Considerations for choosing programming language, speed, python, java, C, C++, rust?
 
-The PEP is supposed to enhance the performance of the applications using it, this means that speed is of paramount importance. Although it is possible programming languages like Python are simply not fast enough, even Java could become a bottleneck while running in the JVM. The languages best suited for speed performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
+The PEP is supposed to enhance the performance of the applications using it, this means that rate at which it can forward packets at is of paramount importance. Therefore, the choice of programming language is important. 
+
+Although it is possible, programming languages like Python are simply not fast enough, even Java could become a bottleneck while running in the JVM. The languages best suited for speed performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
 
 \subsection{Kernel Module Vs. Userspace Application}
 A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules mainly are written in C, although Rust has now also been slowly adopted.
