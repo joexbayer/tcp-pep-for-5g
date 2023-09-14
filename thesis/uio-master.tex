@@ -182,7 +182,7 @@ A good design for the PEP is crucial as it both needs to be robust, fast and rel
 \section{Programming Language}
 Considerations for choosing programming language, speed, python, java, C, C++, rust?
 
-The PEP is supposed to enhance the performance of the applications using it, this means that rate at which it can forward packets at is of paramount importance. Therefore, the choice of programming language is important. 
+The PEP is supposed to enhance the performance of the applications using it, this means that rate at which it can forward packets at is of paramount importance. Therefore, the choice of programming language is vital to the effectiveness of the PEP.
 
 Although it is possible, programming languages like Python are simply not fast enough, even Java could become a bottleneck while running in the JVM. The languages best suited for speed performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
 
@@ -200,10 +200,10 @@ More possibilities when applications chose / know about the existence of a PEP.
 PEP needs to be on the path. Transparent PEP does not need to care because its always on the path.
 
 \section{Connection Splitting}
-A Performance enhancing proxy does not inherently need to be connection splitting. Based on where on the network stack its implemented it could buffer and process packets without terminating the end to end connection. A PEP could simply listen to traffic and manipulate the traffic, or simply send ACKs early.
-\footnote{Picture of a PEP only sending ACKs}\\
+A performance enhancing proxy does not inherently need to be connection splitting. Depending on its implementation within the network stack, a PEP can buffer and process packets without requiring the termination of the end-to-end connection. A PEP could passively monitor or manipulate the traffic, or or even preemptively transmit ACKs.
+\footnote{Picture of a PEP only sending ACKs, perhaps PEP DNA?}\\
 \\
-There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can also split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the domains, lets the PEP choose different congestion controllers based on the technology and topology of each domain.\\
+There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can additionally split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the connection into their different domains, enables the PEP to choose different congestion controllers based on the technology and topology of each domain.\\
 \\
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of which endpoint the client wants to connect. This can be achieved by a variety of ways. Somehow the need to attach additional information to the default connection process of TCP. We do not want the overhead of needing an entire additional round trip just to pass this information. Additionally, the client needs to "chose" the PEP, without altering the default socket connection scheme. There are a few different ways of achieving this, which be will discussed below.
 
