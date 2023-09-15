@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  12 SEP 2023 14:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  15 SEP 2023 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -384,37 +384,37 @@ Chapter 3.
 [14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 201--207
+Underfull \hbox (badness 10000) in paragraph at lines 203--209
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--207
+Underfull \hbox (badness 10000) in paragraph at lines 203--209
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--215
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 215--217
 
  []
 
-[15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 239--239
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
 []\T1/cmr/m/n/10.95 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--239
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
 []\T1/cmr/m/n/10.95 Special
  []
 
 
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 239--240
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 241--242
 []\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 233--250
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 235--252
 [] 
  []
 
@@ -433,7 +433,7 @@ Chapter 5.
 [20
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
@@ -443,10 +443,10 @@ File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 343.
+ used on input line 345.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 349--351
+Underfull \hbox (badness 10000) in paragraph at lines 351--353
 
  []
 
@@ -486,7 +486,7 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (27 pages, 671452 bytes).
+Output written on uio-master.pdf (27 pages, 675650 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  118 compressed objects within 2 object streams

@@ -26,7 +26,7 @@
 \contentsline {subsubsection}{TCP Options}{16}{}%
 \contentsline {subsubsection}{TCP Fast Open}{16}{}%
 \contentsline {subsection}{\numberline {3.4.2}Choosing the PEP}{16}{}%
-\contentsline {section}{\numberline {3.5}Scheduling Algorithms}{16}{}%
+\contentsline {section}{\numberline {3.5}Scheduling Algorithms}{17}{}%
 \contentsline {section}{\numberline {3.6}Summary}{17}{}%
 \contentsline {chapter}{\numberline {4}Implementation}{18}{}%
 \contentsline {section}{\numberline {4.1}Kernel Module}{18}{}%
