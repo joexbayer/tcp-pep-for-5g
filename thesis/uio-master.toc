@@ -19,13 +19,15 @@
 \contentsline {chapter}{\numberline {3}Design}{14}{}%
 \contentsline {section}{\numberline {3.1}Justification for designing a PEP}{14}{}%
 \contentsline {section}{\numberline {3.2}Programming Language}{14}{}%
-\contentsline {subsection}{\numberline {3.2.1}Kernel Module Vs. Userspace Application}{14}{}%
+\contentsline {subsection}{\numberline {3.2.1}Kernel Module Vs. Userspace Application}{15}{}%
 \contentsline {section}{\numberline {3.3}Transparent vs Non-Transparent}{15}{}%
+\contentsline {subsection}{\numberline {3.3.1}Transparent}{15}{}%
+\contentsline {subsection}{\numberline {3.3.2}Non-Transparent}{15}{}%
 \contentsline {section}{\numberline {3.4}Connection Splitting}{15}{}%
-\contentsline {subsection}{\numberline {3.4.1}Connection Establishment}{15}{}%
+\contentsline {subsection}{\numberline {3.4.1}Connection Establishment}{16}{}%
 \contentsline {subsubsection}{TCP Options}{16}{}%
-\contentsline {subsubsection}{TCP Fast Open}{16}{}%
-\contentsline {subsection}{\numberline {3.4.2}Choosing the PEP}{16}{}%
+\contentsline {subsubsection}{TCP Fast Open}{17}{}%
+\contentsline {subsection}{\numberline {3.4.2}Choosing the PEP}{17}{}%
 \contentsline {section}{\numberline {3.5}Scheduling Algorithms}{17}{}%
 \contentsline {section}{\numberline {3.6}Summary}{17}{}%
 \contentsline {chapter}{\numberline {4}Implementation}{18}{}%

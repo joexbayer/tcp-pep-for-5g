@@ -177,6 +177,13 @@ However, the using Linux kernel modules has the drawback that the program is bou
 A good design for the PEP is crucial as it both needs to be robust, fast and reliable. Not all of the goals are equally achievable, an other aspects need to be considered such as cross platform compatibility. The overarching goal is to improve the completion times of the non-interactive traffic while avoiding to disturb the interactive flows.  In this chapter we will explore the different ways of achieving our goals and compare them to each other. 
 
 \section{Justification for designing a PEP}
+
+The ossification of networks, particularly TCP, has been a longstanding issue.\footnote{Cite this} Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Especially, altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle boxes. A PEP is such a middle box, it can enhance the performance without changing TCP itself.\\
+
+The development of PEPs have seen a lot of resistance over the years because of the end-to-end argument, keeping logic at the endpoints.
+
+The potential of PEPs has not been fully utilized. More research is required to truly understand the vast range of applications they could be suited for, and the specific challenges they might address. 
+
 ~\cite{tcp_extendable}
 
 \section{Programming Language}
@@ -198,6 +205,10 @@ Pros and Cons,
 "Ethical" problem? Application don't know about the connection splitting, PEP "lying".
 More possibilities when applications chose / know about the existence of a PEP.
 PEP needs to be on the path. Transparent PEP does not need to care because its always on the path.
+
+\subsection{Transparent}
+
+\subsection{Non-Transparent}
 
 \section{Connection Splitting}
 A performance enhancing proxy does not inherently need to be connection splitting. Depending on its implementation within the network stack, a PEP can buffer and process packets without requiring the termination of the end-to-end connection. A PEP could passively monitor or manipulate the traffic, or or even preemptively transmit ACKs.
