@@ -201,14 +201,18 @@ Linux kernel module.
 
 
 \section{Transparent vs Non-Transparent}
-Pros and Cons,
-"Ethical" problem? Application don't know about the connection splitting, PEP "lying".
-More possibilities when applications chose / know about the existence of a PEP.
-PEP needs to be on the path. Transparent PEP does not need to care because its always on the path.
+Transparent and Non-Transparent PEPs differ in their visibility and interaction with applications. The choice between these two options all have their own set of advantages and challenges. These include ethical concerns regarding transparency, potential issues associated with unaware applications, and considerations for deployment.
 
 \subsection{Transparent}
+Transparent PEPs offer an advantage in deployment as they can be introduced without any changes on the client or server end. This ensures that even legacy applications can benefit from the PEP. Also, by nature, the PEP will always be on path of the original connection. However, when unknown middle boxes interfere with a connection, unintended side effects, such as losing TCP Options, become more likely. Furthermore, without knowledge of the PEP, applications cannot modify their behavior, which limits their extensibility.\footnote{Talk more about ethical concerns?}
 
 \subsection{Non-Transparent}
+Since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to potential performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them.
+Deployment, however, becomes more problematic as for the PEP to be efficient it needs to be on the shortest path which is no longer guaranteed.
+
+\subsection{Conclusion?}
+Since the goal is to increase the efficiency of a certain kind of application, non-interactive, it will be important that the PEP can adapt. Which leads us to an non-transparent PEP.
+We will create a non-transparent PEP:
 
 \section{Connection Splitting}
 A performance enhancing proxy does not inherently need to be connection splitting. Depending on its implementation within the network stack, a PEP can buffer and process packets without requiring the termination of the end-to-end connection. A PEP could passively monitor or manipulate the traffic, or or even preemptively transmit ACKs.
@@ -233,7 +237,7 @@ Finally, another significant problem is that unknown TCP Options are often seen 
 Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the background chapter, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.
 
 \subsection{Choosing the PEP}
-The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite a lot of their code. An important prerequisite for the PEP to work is that the PEP is on the shortest path to the chosen endpoint. This can be difficult for an application to be aware of, which leads us to another option. \footnote{How do I solve this? An application does not know the path? So an application cant choose PEP, it can not be system wide as not all connections will have the same path. Although: if its at the access point, all connections will actually go through the it.}
+The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite a lot of their code. An important prerequisite for the PEP to work is that the PEP is on the shortest path to the chosen endpoint. This can be difficult for an application to be aware of, which leads us to another option. \footnote{How do I solve this? An application does not know the path? So an application cant choose PEP, it can not be system wide as not all connections will have the same path. Although: if its at the access point, all connections will actually go through the it. Discussed in the non-transparent part of design.}
 
 
 \section{Scheduling Algorithms}

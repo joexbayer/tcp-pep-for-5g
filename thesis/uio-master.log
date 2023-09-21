@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  19 SEP 2023 11:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  21 SEP 2023 09:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -388,80 +388,80 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
 [14
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 212--218
+] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 218--224
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--218
+Underfull \hbox (badness 10000) in paragraph at lines 218--224
 
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 224--226
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--232
 
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 250--250
+[16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 256--256
 []\T1/cmr/m/n/10.95 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--250
+Underfull \hbox (badness 10000) in paragraph at lines 256--256
 []\T1/cmr/m/n/10.95 Special
  []
 
 
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 250--251
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 256--257
 []\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 244--261
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 250--267
 [] 
  []
 
-[17]
+[18]
 Chapter 4.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) [18
+) [19
 
 ]
-[19]
+[20]
 Chapter 5.
-[20
+[21
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=101, 443.95862pt x 3
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=104, 443.95862pt x 3
 19.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 354.
+ used on input line 360.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--362
+Underfull \hbox (badness 10000) in paragraph at lines 366--368
 
  []
 
-[21 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [22]
+[22 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [23]
 Chapter 6.
-(./uio-master.bbl [23
+(./uio-master.bbl [24
 
-] [24
+] [25
 
-]) [25] (./uio-master.aux)
+]) [26] (./uio-master.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -491,10 +491,10 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (27 pages, 676769 bytes).
+Output written on uio-master.pdf (28 pages, 678744 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
+ 208 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
