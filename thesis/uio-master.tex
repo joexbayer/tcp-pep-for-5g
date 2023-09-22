@@ -187,17 +187,15 @@ The potential of PEPs has not been fully utilized. More research is required to 
 ~\cite{tcp_extendable}
 
 \section{Programming Language}
-Considerations for choosing programming language, speed, python, java, C, C++, rust?
-
-The PEP is supposed to enhance the performance of the applications using it, this means that rate at which it can forward packets at is of paramount importance. Therefore, the choice of programming language is vital to the effectiveness of the PEP.
-
-Although it is possible, programming languages like Python are simply not fast enough, even Java could become a bottleneck while running in the JVM. The languages best suited for speed performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
+A PEP aims to boost the performance of applications that use it. The speed at which they can process and forward packets is critical. Therefor, the programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
 
 \subsection{Kernel Module Vs. Userspace Application}
-A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules mainly are written in C, although Rust has now also been slowly adopted.
+A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules mainly are written in C, although Rust has now also been slowly adopted. Making system calls (syscalls) can introduce some performance overhead, which is a consideration when looking at user-space programs. In contrast, MacOS offers the kernel extension framework for tasks that require deep system integration, though it comes with its own set of challenges and constraints.
 
-Syscall speed loss, MacOS kernel extension. Userspace application has benefit of being cross platform.
-Linux kernel module.
+Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. On the other hand, a Linux kernel module runs within the kernel space, eliminating the need for syscalls and often offering better performance. However, it's tightly bound to the Linux environment, which might limit its applicability in diverse systems.
+
+\subsection{Conclusion?}
+
 
 
 \section{Transparent vs Non-Transparent}
