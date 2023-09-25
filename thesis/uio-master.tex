@@ -186,7 +186,9 @@ The potential of PEPs has not been fully utilized. More research is required to 
 
 ~\cite{tcp_extendable}
 
-\section{Programming Language}
+\section{PEP Programming}
+
+\subsection{Choosing the Programming Language}
 A PEP aims to boost the performance of applications that use it. The speed at which they can process and forward packets is critical. Therefor, the programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
 
 \subsection{Kernel Module Vs. Userspace Application}
@@ -194,11 +196,10 @@ A major design decision is whether to write the PEP as a user-space program or a
 
 Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. On the other hand, a Linux kernel module runs within the kernel space, eliminating the need for syscalls and often offering better performance. However, it's tightly bound to the Linux environment, which might limit its applicability in diverse systems.
 
-\subsection{Conclusion?}
+\subsection{Optimal Choices for PEP Performance}
+Because of the efficiency and possibility of kernel modules, C offers the optimal performance for a PEP. This combination leverages C's high-speed capabilities and the direct kernel integration, minimizing overheads and maximizing efficiency. This choice binds us to the Linux kernel, but this is a small price to pay for salvation.\footnote{Find a actually good way to say this. :) Also! Future work could be comparing to a userspace application? }
 
-
-
-\section{Transparent vs Non-Transparent}
+\section{PEP Transparency}
 Transparent and Non-Transparent PEPs differ in their visibility and interaction with applications. The choice between these two options all have their own set of advantages and challenges. These include ethical concerns regarding transparency, potential issues associated with unaware applications, and considerations for deployment.
 
 \subsection{Transparent}
@@ -208,11 +209,13 @@ Transparent PEPs offer an advantage in deployment as they can be introduced with
 Since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to potential performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them.
 Deployment, however, becomes more problematic as for the PEP to be efficient it needs to be on the shortest path which is no longer guaranteed.
 
-\subsection{Conclusion?}
-Since the goal is to increase the efficiency of a certain kind of application, non-interactive, it will be important that the PEP can adapt. Which leads us to an non-transparent PEP.
-We will create a non-transparent PEP:
+\subsection{Choosing a Non-Transparent PEP}
+Although transparent PEPs are more common, the goals the TCP PEP aligns more with an non-transparent PEP. The possibilities and potential a non-transparent PEP has is worth breaking the standards.\footnote{This entire sub section should be rewritten, but point stands}
+Since the goal is to increase the efficiency of a certain kind of application, non-interactive, it will be important that the PEP can adapt.
 
-\section{Connection Splitting}
+\section{Connection Handling in PEP}
+
+\subsection{Connection Splitting}
 A performance enhancing proxy does not inherently need to be connection splitting. Depending on its implementation within the network stack, a PEP can buffer and process packets without requiring the termination of the end-to-end connection. A PEP could passively monitor or manipulate the traffic, or or even preemptively transmit ACKs.
 \footnote{Picture of a PEP only sending ACKs, perhaps PEP DNA?}\\
 \\
@@ -224,15 +227,32 @@ The connection process to the PEP, and later on the endpoint, is established by 
 \subsection{Connection Establishment}  
 The idea is to attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional round trip time. Because of the ossified nature of TCP, changing the protocol itself is not an option. The realistic approach is reusing existing TCP functionality to append the desired data. Fortunately, only a small amount of data, less than the usual MTU, is needed to inform the PEP of the endpoint.
 
-\subsubsection{TCP Options}
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.75]{../diagrams/drawio/tcphandshake_primitiv.png}
+  	\caption{The TCP handshake procedure across PEP}
+  	\label{fig:tcphandshake_primitiv}
+\end{figure}
+
+\paragraph{TCP Options}
 Since TCP Options can be attached to a TCP connection, a possibility would be to add a new TCP Option which would specify the endpoint. This TCP Option would need to be added by a kernel module, as it is not possible to to add custom TCP Options from user space. This leads to another problem, mainly how to specify from user space that we wish to use the PEP.\\
 A possible option would be a socket option, using setsockopt. This however requires changes to the kernel, which raises the bar for adaptability. Another choice would be always attaching the TCP Options on connection addressed to a certain port such as 80/443. This however takes away the choice from the application, and makes it system wide instead.\\
 
 Finally, another significant problem is that unknown TCP Options are often seen as a threat. Firewalls may drop the packets, or the options might be stripped by intermediate nodes.~\cite{middlebox_interactions} This creates a challenge for the implementation and usability of the PEP. If the packets may be dropped because of our custom TCP options, then the PEP will only work in certain networks and scenarios. Although we only design a proof of concept, this is a trade off that is unlikely to pay off in the end.~\cite{tcp_extendable}
 \footnote{Directly quote the middlebox interaction paper section 4.4?}
 
-\subsubsection{TCP Fast Open}
-Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the background chapter, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.
+\paragraph{TCP Fast Open}
+Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the background chapter, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.\\
+
+The most sustainable choice will be TCP Fast Open, adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended.\footnote{Rephrase last sentence.}
+
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.75]{../diagrams/drawio/tcphandshake_optimal.png}
+  	\caption{Optimal handshake across PEP (0 RTT)}
+  	\label{fig:tcphandshake_optimal}
+\end{figure}
+
 
 \subsection{Choosing the PEP}
 The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite a lot of their code. An important prerequisite for the PEP to work is that the PEP is on the shortest path to the chosen endpoint. This can be difficult for an application to be aware of, which leads us to another option. \footnote{How do I solve this? An application does not know the path? So an application cant choose PEP, it can not be system wide as not all connections will have the same path. Although: if its at the access point, all connections will actually go through the it. Discussed in the non-transparent part of design.}
