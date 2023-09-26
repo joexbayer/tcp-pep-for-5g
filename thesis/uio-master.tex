@@ -174,22 +174,26 @@ Congestion controllers and packet schedulers are also usually implemented as ker
 However, the using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel panic, which usually requires a complete system restart to fix.
 
 \chapter{Design}
-A good design for the PEP is crucial as it both needs to be robust, fast and reliable. Not all of the goals are equally achievable, an other aspects need to be considered such as cross platform compatibility. The overarching goal is to improve the completion times of the non-interactive traffic while avoiding to disturb the interactive flows.  In this chapter we will explore the different ways of achieving our goals and compare them to each other. 
+A good design for the PEP is crucial as it both needs to be robust, fast and reliable. Not all of the goals are equally achievable, an other aspects need to be considered such as cross platform compatibility. The overarching goal is to improve the completion times of the non-interactive traffic while avoiding to disturb the interactive flows.\\
+
+The second key design aspect focuses on 5G. A goal of the PEP is to better utilize the fluctuating bandwidth, this will influence many aspects such as the placement strategy. This contributes to the overarching goal of making the best use of the new 5G technology.\\
+
+In this chapter we will explore the different ways of achieving our goals and compare them to each other. 
 
 \section{Justification for designing a PEP}
 
 The ossification of networks, particularly TCP, has been a longstanding issue.\footnote{Cite this} Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Especially, altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle boxes. A PEP is such a middle box, it can enhance the performance without changing TCP itself.\\
 
-The development of PEPs have seen a lot of resistance over the years because of the end-to-end argument: keeping logic at the endpoints.
+The development of PEPs have seen a lot of resistance over the years because of the end-to-end argument: keeping logic at the endpoints.\\
 
-The potential of PEPs has not been fully utilized. More research is required to truly understand the vast range of applications they could be suited for, and the specific challenges they might address. 
+.\footnote{PEPs with 5G, different "domains" works better than normal PEPs}
 
 ~\cite{tcp_extendable}
 
 \section{PEP Programming}
 
 \subsection{Choosing the Programming Language}
-A PEP aims to boost the performance of applications that use it. The speed at which they can process and forward packets is critical. Therefor, the programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
+A PEP aims to boost the performance of applications that use it. The speed at which they can process and forward packets is critical. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. Therefor, the programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
 
 \subsection{Kernel Module Vs. Userspace Application}
 A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules mainly are written in C, although Rust has now also been slowly adopted. Making system calls (syscalls) can introduce some performance overhead, which is a consideration when looking at user-space programs. In contrast, MacOS offers the kernel extension framework for tasks that require deep system integration, though it comes with its own set of challenges and constraints.
@@ -223,6 +227,8 @@ There are multiple benefits and disadvantages with using a connection splitting 
 \\
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of the desired endpoint of the client. This can be achieved by a variety of ways where the goal is to attach additional information to the default connection process of TCP. Preferably, we do not want the overhead of needing an entire additional round trip just to pass this information. Additionally, the client needs to select the PEP, without altering the default socket connection scheme. There are a few different ways of achieving this, which be will discussed below.
 
+\subsection{PEP Selection}
+The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite a lot of their code. An important prerequisite for the PEP to work is that the PEP is on the shortest path to the chosen endpoint. This can be difficult for an application to be aware of, which leads us to another option. \footnote{How do I solve this? An application does not know the path? So an application cant choose PEP, it can not be system wide as not all connections will have the same path. Although: if its at the access point, all connections will actually go through the it. Discussed in the non-transparent part of design.}
 
 \subsection{Connection Establishment}  
 The idea is to attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional round trip time. Because of the ossified nature of TCP, changing the protocol itself is not an option. The realistic approach is reusing existing TCP functionality to append the desired data. Fortunately, only a small amount of data, less than the usual MTU, is needed to inform the PEP of the endpoint.
@@ -244,6 +250,7 @@ Finally, another significant problem is that unknown TCP Options are often seen 
 \paragraph{TCP Fast Open}
 Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the background chapter, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.\\
 
+\paragraph{Optimal Choice}
 The most sustainable choice will be TCP Fast Open, adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended.\footnote{Rephrase last sentence.}
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
@@ -252,11 +259,6 @@ The most sustainable choice will be TCP Fast Open, adding new TCP Options is sim
   	\caption{Optimal handshake across PEP (0 RTT)}
   	\label{fig:tcphandshake_optimal}
 \end{figure}
-
-
-\subsection{Choosing the PEP}
-The next challenge is how does a client choose a PEP. We do not want to change the normal socket based scheme of creating a connection, as old applications would need to rewrite a lot of their code. An important prerequisite for the PEP to work is that the PEP is on the shortest path to the chosen endpoint. This can be difficult for an application to be aware of, which leads us to another option. \footnote{How do I solve this? An application does not know the path? So an application cant choose PEP, it can not be system wide as not all connections will have the same path. Although: if its at the access point, all connections will actually go through the it. Discussed in the non-transparent part of design.}
-
 
 \section{Scheduling Algorithms}
 The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible. The impact will be shown in the Evaluation chapter.
