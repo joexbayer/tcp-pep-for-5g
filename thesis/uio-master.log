@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  26 SEP 2023 09:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  28 SEP 2023 15:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -167,12 +167,6 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 (./uio-master.aux
 
 LaTeX Warning: Label `fig:blockage' multiply defined.
-
-
-LaTeX Warning: Label `fig:tcphandshake' multiply defined.
-
-
-LaTeX Warning: Label `fig:tcphandshake' multiply defined.
 
 )
 \openout1 = `uio-master.aux'.
@@ -388,78 +382,97 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--173
 [13]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
 [14
 
-] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 219--225
+]
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--225
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
-[16]
-<../diagrams/drawio/tcphandshake_primitiv.png, id=87, 503.8825pt x 298.11375pt>
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 223--229
 
-File: ../diagrams/drawio/tcphandshake_primitiv.png Graphic file (type png)
-<use ../diagrams/drawio/tcphandshake_primitiv.png>
-Package pdftex.def Info: ../diagrams/drawio/tcphandshake_primitiv.png  used on 
-input line 232.
-(pdftex.def)             Requested size: 377.91095pt x 223.58476pt.
-
-Overfull \hbox (17.91095pt too wide) in paragraph at lines 232--233
- [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--240
+Underfull \hbox (badness 10000) in paragraph at lines 223--229
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+<../diagrams/drawio/tcphandshake_primitiv.png, id=91, 503.8825pt x 298.11375pt>
 
- []
+File: ../diagrams/drawio/tcphandshake_primitiv.png Graphic file (type png)
+<use ../diagrams/drawio/tcphandshake_primitiv.png>
+Package pdftex.def Info: ../diagrams/drawio/tcphandshake_primitiv.png  used on 
+input line 238.
+(pdftex.def)             Requested size: 377.91095pt x 223.58476pt.
 
-[18 <../diagrams/drawio/tcphandshake_primitiv.png>]
-<../diagrams/drawio/tcphandshake_optimal.png, id=96, 487.8225pt x 191.71625pt>
-File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
-<use ../diagrams/drawio/tcphandshake_optimal.png>
-Package pdftex.def Info: ../diagrams/drawio/tcphandshake_optimal.png  used on i
-nput line 251.
-(pdftex.def)             Requested size: 365.86597pt x 143.78682pt.
-
-Overfull \hbox (5.86597pt too wide) in paragraph at lines 251--252
+Overfull \hbox (17.91095pt too wide) in paragraph at lines 238--239
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--274
+Underfull \hbox (badness 10000) in paragraph at lines 244--246
+
+ []
+
+[18 <../diagrams/drawio/tcphandshake_primitiv.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
+
+ []
+
+<../diagrams/drawio/tcphandshake_optimal.png, id=96, 487.8225pt x 191.71625pt>
+File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
+<use ../diagrams/drawio/tcphandshake_optimal.png>
+Package pdftex.def Info: ../diagrams/drawio/tcphandshake_optimal.png  used on i
+nput line 258.
+(pdftex.def)             Requested size: 365.86597pt x 143.78682pt.
+
+Overfull \hbox (5.86597pt too wide) in paragraph at lines 258--259
+ [][] 
+ []
+
+[19 <../diagrams/drawio/tcphandshake_optimal.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 276--276
 []\T1/cmr/m/n/10.95 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--274
+Underfull \hbox (badness 10000) in paragraph at lines 276--276
 []\T1/cmr/m/n/10.95 Special
  []
 
 
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 274--275
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 276--277
 []\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 268--285
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 270--287
 [] 
  []
 
-[19 <../diagrams/drawio/tcphandshake_optimal.png>] [20]
+[20]
 Chapter 4.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
@@ -474,7 +487,7 @@ Chapter 5.
 [23
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 375--376
 
  []
 
@@ -484,10 +497,10 @@ File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 378.
+ used on input line 380.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--386
+Underfull \hbox (badness 10000) in paragraph at lines 386--388
 
  []
 
@@ -505,7 +518,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4537 strings out of 478994
  66858 string characters out of 5858185
- 664305 words of memory out of 5000000
+ 664319 words of memory out of 5000000
  21938 multiletter control sequences out of 15000+600000
  434938 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -527,7 +540,7 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (30 pages, 721412 bytes).
+Output written on uio-master.pdf (30 pages, 723468 bytes).
 PDF statistics:
  218 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams

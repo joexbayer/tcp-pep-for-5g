@@ -184,9 +184,9 @@ In this chapter we will explore the different ways of achieving our goals and co
 
 The ossification of networks, particularly TCP, has been a longstanding issue.\footnote{Cite this} Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Especially, altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle boxes. A PEP is such a middle box, it can enhance the performance without changing TCP itself.\\
 
-The development of PEPs have seen a lot of resistance over the years because of the end-to-end argument: keeping logic at the endpoints.\\
+Using a PEP in combination with 5G has additional benefits. Default TCP with 5G needs to cover both the stable network and the fluctuating wireless domain. However, with a PEP we are able to split the domains and perform optimizations, such as congestion control, tailored to each specific domain. Achieving the same optimization by modifying TCP would be a endless close to impossible with the tight integration of end to end congestion control.\\ \footnote{PEPs with 5G, different "domains" works better than normal PEPs}
 
-.\footnote{PEPs with 5G, different "domains" works better than normal PEPs}
+The development of PEPs have seen a lot of resistance over the years because of the end-to-end argument: keeping logic at the endpoints.\\
 
 ~\cite{tcp_extendable}
 
@@ -195,8 +195,11 @@ The development of PEPs have seen a lot of resistance over the years because of 
 \subsection{Choosing the Programming Language}
 A PEP aims to boost the performance of applications that use it. The speed at which they can process and forward packets is critical. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. Therefor, the programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems, Rust has an additional aspect as it supports compile-time checking for race conditions.
 
+
+\paragraph{The C Programming Language}
+
 \subsection{Kernel Module Vs. Userspace Application}
-A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules mainly are written in C, although Rust has now also been slowly adopted. Making system calls (syscalls) can introduce some performance overhead, which is a consideration when looking at user-space programs. In contrast, MacOS offers the kernel extension framework for tasks that require deep system integration, though it comes with its own set of challenges and constraints.
+A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules mainly are written in C, although Rust has now also been slowly adopted. Making system calls (syscalls) can introduce some performance overhead, which is a consideration when looking at user-space programs. In contrast, MacOS offers the kernel extension framework for tasks that require deep system integration, though it comes with its own set of challenges and constraints.\\
 
 Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. On the other hand, a Linux kernel module runs within the kernel space, eliminating the need for syscalls and often offering better performance. However, it's tightly bound to the Linux environment, which might limit its applicability in diverse systems.
 

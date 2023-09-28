@@ -21,17 +21,18 @@
 \contentsline {section}{\numberline {3.2}PEP Programming}{15}{}%
 \contentsline {subsection}{\numberline {3.2.1}Choosing the Programming Language}{15}{}%
 \contentsline {subsection}{\numberline {3.2.2}Kernel Module Vs. Userspace Application}{15}{}%
-\contentsline {subsection}{\numberline {3.2.3}Optimal Choices for PEP Performance}{15}{}%
+\contentsline {subsection}{\numberline {3.2.3}Optimal Choices for PEP Performance}{16}{}%
 \contentsline {section}{\numberline {3.3}PEP Transparency}{16}{}%
 \contentsline {subsection}{\numberline {3.3.1}Transparent}{16}{}%
 \contentsline {subsection}{\numberline {3.3.2}Non-Transparent}{16}{}%
 \contentsline {subsection}{\numberline {3.3.3}Choosing a Non-Transparent PEP}{16}{}%
 \contentsline {section}{\numberline {3.4}Connection Handling in PEP}{17}{}%
 \contentsline {subsection}{\numberline {3.4.1}Connection Splitting}{17}{}%
-\contentsline {subsection}{\numberline {3.4.2}Connection Establishment}{17}{}%
-\contentsline {paragraph}{TCP Options}{17}{}%
-\contentsline {paragraph}{TCP Fast Open}{18}{}%
-\contentsline {subsection}{\numberline {3.4.3}Choosing the PEP}{19}{}%
+\contentsline {subsection}{\numberline {3.4.2}PEP Selection}{17}{}%
+\contentsline {subsection}{\numberline {3.4.3}Connection Establishment}{18}{}%
+\contentsline {paragraph}{TCP Options}{18}{}%
+\contentsline {paragraph}{TCP Fast Open}{19}{}%
+\contentsline {paragraph}{Optimal Choice}{19}{}%
 \contentsline {section}{\numberline {3.5}Scheduling Algorithms}{19}{}%
 \contentsline {section}{\numberline {3.6}Summary}{20}{}%
 \contentsline {chapter}{\numberline {4}Implementation}{21}{}%
