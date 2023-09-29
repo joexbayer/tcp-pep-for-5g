@@ -7,45 +7,45 @@ The style file: plain.bst
 Database file #1: myBib.bib
 Warning--there's a number but no series in fq_codel_rfc
 Warning--empty publisher in fq_codel_rfc
-You've used 13 entries,
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            586 strings with 6494 characters,
-and the built_in function-call counts, 5352 in all, are:
-= -- 524
-> -- 261
+            592 strings with 6637 characters,
+and the built_in function-call counts, 5613 in all, are:
+= -- 548
+> -- 274
 < -- 10
-+ -- 104
-- -- 90
-* -- 339
-:= -- 813
-add.period$ -- 42
-call.type$ -- 13
-change.case$ -- 83
++ -- 110
+- -- 94
+* -- 353
+:= -- 858
+add.period$ -- 45
+call.type$ -- 14
+change.case$ -- 88
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 239
-empty$ -- 395
-format.name$ -- 90
-if$ -- 1196
+cite$ -- 16
+duplicate$ -- 251
+empty$ -- 417
+format.name$ -- 94
+if$ -- 1251
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 10
-newline$ -- 68
-num.names$ -- 26
-pop$ -- 114
+int.to.str$ -- 14
+missing$ -- 12
+newline$ -- 73
+num.names$ -- 28
+pop$ -- 122
 preamble$ -- 1
-purify$ -- 71
+purify$ -- 75
 quote$ -- 0
-skip$ -- 213
+skip$ -- 220
 stack$ -- 0
-substring$ -- 251
-swap$ -- 110
+substring$ -- 257
+swap$ -- 111
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 50
+type$ -- 52
 warning$ -- 2
-while$ -- 38
-width$ -- 15
-write$ -- 146
+while$ -- 40
+width$ -- 16
+write$ -- 157
 (There were 2 warnings)

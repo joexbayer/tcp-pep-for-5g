@@ -44,6 +44,11 @@ Toke Høiland-Jørgensen, Paul McKenney, dave.taht@gmail.com, Jim Gettys, and
   Management Algorithm}.
 \newblock Number RFC 8290. Jan 2018.
 
+\bibitem{c_programming_language}
+Brian~W. Kernighan and Dennis~M. Ritchie.
+\newblock {\em The C Programming Language}.
+\newblock Prentice Hall Professional Technical Reference, 2nd edition, 1988.
+
 \bibitem{middlebox_interactions}
 Alberto Medina, Mark Allman, and Sally Floyd.
 \newblock Measuring interactions between transport protocols and middleboxes.
