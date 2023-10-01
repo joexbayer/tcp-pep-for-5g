@@ -292,6 +292,10 @@ The ability to configure and utilize different scheduling algorithms is importan
 
 \section{Kernel Module}
 
+\subsection{Linux Version & Distribution}
+
+\subsection{Implications}
+
 \begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
 int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
 {
@@ -327,7 +331,15 @@ pep_tcp_receive_read_again:
 
 \section{TLV Library}
 
+\subsection{Shared Libraries}
+
 \section{PEP}
+
+\subsection{Architecture}
+
+\subsection{Kernel Sockets}
+
+\subsection{Client Sockets}
 
 \section{PEP Connect}
 Since are PEP is explicitly addressed we need to change how we connect on the client side.
@@ -345,6 +357,13 @@ socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
 ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
 \end{lstlisting}
+
+\section{PEP Connections}
+
+\subsection{Threads Vs. Callbacks}
+
+\section{Memory}
+
 
 
 \chapter{Evaluation}

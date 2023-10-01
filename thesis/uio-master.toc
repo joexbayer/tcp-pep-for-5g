@@ -38,9 +38,16 @@
 \contentsline {section}{\numberline {3.6}Summary}{20}{}%
 \contentsline {chapter}{\numberline {4}Implementation}{21}{}%
 \contentsline {section}{\numberline {4.1}Kernel Module}{21}{}%
+\contentsline {subsection}{\numberline {4.1.1}Linux Version}{21}{}%
 \contentsline {section}{\numberline {4.2}TLV Library}{22}{}%
 \contentsline {section}{\numberline {4.3}PEP}{22}{}%
+\contentsline {subsection}{\numberline {4.3.1}Architecture}{22}{}%
+\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{22}{}%
+\contentsline {subsection}{\numberline {4.3.3}Client Sockets}{22}{}%
 \contentsline {section}{\numberline {4.4}PEP Connect}{22}{}%
+\contentsline {section}{\numberline {4.5}PEP Connections}{22}{}%
+\contentsline {subsection}{\numberline {4.5.1}Threads Vs. Callbacks}{22}{}%
+\contentsline {section}{\numberline {4.6}Memory}{22}{}%
 \contentsline {chapter}{\numberline {5}Evaluation}{23}{}%
 \contentsline {section}{\numberline {5.1}Initial configuration}{23}{}%
 \contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{23}{}%
