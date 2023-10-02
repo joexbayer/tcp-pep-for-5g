@@ -38,7 +38,6 @@
 \title{TCP PEP}
 \subtitle{TCP Performance Enhancing Proxy to Support Non-interactive Applications}
 \title{TCP PEP}
-%\subtitle{Background of my Master Essay}
 
 \begin{document}
 
@@ -289,10 +288,14 @@ The ability to configure and utilize different scheduling algorithms is importan
 \end{tabular}
 
 \chapter{Implementation}
+This chapter will explore implementation of the TCP PEP, following up on the design choices mentioned in the previous chapter. The development of the PEP will give a deeper understanding of the underlying mechanisms and how they aim to better utilize the 5G bandwidth. All aspects from kernel modules, PEP architectures and additional libraries will be covered.
 
 \section{Kernel Module}
+As mentioned in the design chapter, the PEP will be written as a kernel module instead of a normal user-space program. Running and creating a kernel module requires more initial preparation than the a normal application. Firstly, the biggest change is that our PEP will now be a run as a module inside the Linux kernel instead of as a application in its own virtual environment. Injecting a module into the Linux kernel is very different from simply running a binary.\\
 
-\subsection{Linux Version & Distribution}
+A Linux kernel module is loaded and unloaded with the help of two functions that need to be define.
+
+\subsection{Linux Version and Distribution}
 
 \subsection{Implications}
 
