@@ -1,13 +1,13 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{6}{}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{8}{}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans}}{9}{}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{12}{}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{6}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{8}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans}}{9}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{12}{figure.2.4}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The TCP handshake procedure across PEP}}{18}{}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{20}{}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The TCP handshake procedure across PEP}}{19}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{20}{figure.3.2}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic}}{25}{}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic}}{28}{figure.5.1}%
 \addvspace {10\p@ }

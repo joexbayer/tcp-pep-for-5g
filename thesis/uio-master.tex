@@ -6,6 +6,30 @@
 \usepackage{url}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{adjustbox}
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+
+\tcbuselibrary{listings}
+
+
+\newtcblisting[auto counter, number within=section]{autonumlstlisting}[2][]{
+  listing only,
+  %breakable,
+  title=Listing \thetcbcounter: #2,
+  arc=2mm,
+  colback=white,
+  boxrule=1pt,
+  top=5mm,
+  bottom=5mm,
+  left=5mm,
+  right=5mm,
+  #1, % This allows further options to be passed when using the environment
+  listing options={language=C}
+}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -43,6 +67,7 @@
 
  \uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
 \tableofcontents
+
 
 \listoffigures
 
@@ -197,6 +222,17 @@ A PEP aims to boost the performance of applications that use it. The speed at wh
 \paragraph{The C Programming Language}
 C has been the optimal language for high performance systems since its creation in 1972.~\cite{c_programming_language} It was originally created for UNIX when it needed a higher level language, and now is the main programming language behind most operating systems such as Linux, Mac and Windows. Being very close to its predecessor, assembly, and compiled to a binary, makes it one of the fastest languages we have to date. Heap memory management is explicitly done by the programming with no support for garbage collection. The unsafe memory management is one of the main challenges when programming in C, which however can be a benefit because a runtime garbage collection usually results in performance loss.
 
+\begin{autonumlstlisting}[label=lst:hello_world]{Default C program.}
+#include <stdio.h>
+
+int main(void)
+{
+	printf("Hello World!");
+	return 0;
+}
+
+\end{autonumlstlisting}
+
 \subsection{Kernel Module Vs. Userspace Application}
 A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules mainly are written in C, although Rust has now also been slowly adopted.\footnote{fill inn more} Making system calls (syscalls) can introduce some performance overhead, which is a consideration when looking at user-space programs. In contrast, MacOS offers the kernel extension framework for tasks that require deep system integration, though it comes with its own set of challenges and constraints.\\
 
@@ -293,7 +329,72 @@ This chapter will explore implementation of the TCP PEP, following up on the des
 \section{Kernel Module}
 As mentioned in the design chapter, the PEP will be written as a kernel module instead of a normal user-space program. Running and creating a kernel module requires more initial preparation than the a normal application. Firstly, the biggest change is that our PEP will now be a run as a module inside the Linux kernel instead of as a application in its own virtual environment. Injecting a module into the Linux kernel is very different from simply running a binary.\\
 
-A Linux kernel module is loaded and unloaded with the help of two functions that need to be define.
+A Linux kernel module is loaded and unloaded with the help of two functions that need to be defined:\\
+
+\begin{autonumlstlisting}[label=lst:module_example]{The basic kernel module setup code.}
+/* Needed by all kernel modules */
+#include <linux/module.h> 
+#include <linux/kernel.h>
+#include <linux/init.h>
+
+/* entry function */
+static int __init onload(void) {
+    return 0;
+}
+
+/* exit function */
+static void __exit onunload(void) {
+    
+}
+
+module_init(onload);
+module_exit(onunload);
+\end{autonumlstlisting}
+
+Listing \ref{lst:module_example} shows a basic kernel module skeleton, defining and exporting the functions onload() and onunload(). The name of the functions bear no meaning, the important parts are the macros \verb|__init|, \verb|module_init| and the corresponding exit macros\cite{lkm}. When a kernel module is loaded the function declared with \verb|__init| is called. Normally a application would terminate when it returns from its \verb|main| function. Kernel modules however remain "loaded" when returning from the initialization function. This brings us to a new paradigm when programming, instead of having a running program, we install hooks and callbacks which change the default behavior of the kernel. A callback architecture can be less resource intensive as we do not need threads polling for data.\\
+
+A kernel module is loaded by first compiling it into a .ko file and then loading with the \verb|insmod| shell command:
+\begin{verbatim}
+$ insmod <module_name>.ko
+$ rmmod <module_name>.ko
+\end{verbatim}
+The \verb|rmmod| is used to unload a kernel. 
+
+\subsection{Kernel Hooks}
+The Linux kernel exposes many function tables and callbacks which designate what functions to call at certain events. Most drivers and congestion controllers are setup in this manner. A predefined struct is allocated and populated with custom functions, and installed with an existing kernel function.
+
+\begin{autonumlstlisting}[label=lst:hook_example]{Example of a TCP congestion controller module}
+
+static void my_init(struct sock* sk);
+static u32 my_ssthresh(struct sock* sk);
+...
+
+static struct tcp_congestion_ops mycc __read_mostly = {
+  .init           = my_init,
+  .ssthresh       = my_ssthresh,
+  .cong_avoid     = ...,
+  .set_state      = ...,
+  .undo_cwnd      = ...,
+  .pkts_acked     = ...,
+  .owner          = THIS_MODULE,
+  .name           = "tuner",
+};
+
+/* entry function */
+static int __init onload(void) {
+    return tcp_register_congestion_control(&mycc);
+}
+
+/* exit function */
+static void __exit onunload(void) {
+    tcp_unregister_congestion_control(&mycc);
+}
+
+module_init(onload);
+module_exit(onunload);
+\end{autonumlstlisting}
+In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is setup, in the context of a kernel module. This allows run-time modification of kernel behavior, and is a programming paradigm\footnote{Is it a paradigm?} which will be useful to use when implementing the PEP.
+
 
 \subsection{Linux Version and Distribution}
 

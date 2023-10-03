@@ -1,0 +1,28 @@
+
+static void my_init(struct sock* sk);
+static u32 my_ssthresh(struct sock* sk);
+...
+
+static struct tcp_congestion_ops mycc __read_mostly = {
+  .init           = my_init,
+  .ssthresh       = my_ssthresh,
+  .cong_avoid     = ...,
+  .set_state      = ...,
+  .undo_cwnd      = ...,
+  .pkts_acked     = ...,
+  .owner          = THIS_MODULE,
+  .name           = "tuner",
+};
+
+/* entry function */
+static int __init onload(void) {
+    return tcp_register_congestion_control(&mycc);
+}
+
+/* exit function */
+static void __exit onunload(void) {
+    tcp_unregister_congestion_control(&mycc);
+}
+
+module_init(onload);
+module_exit(onunload);
