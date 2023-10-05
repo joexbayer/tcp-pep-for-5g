@@ -434,16 +434,32 @@ pep_tcp_receive_read_again:
 \end{lstlisting}
 
 \section{TLV Library}
+Regarding the addressing and endpoint selection of the PEP by the client, a custom shared library is a good choice.
+\footnote{Rewrite this.} The goal is to keep the client code as simple and close to its original state as possible, but still be able to communicate the endpoint, potential options and meta-data to the PEP. Additionally, to be able to send this information we use TCP Fast Open which has a similar connection setup as default sockets do.\\
+
+[EXAMPLE]\\
+
+A good choice for sending options and meta-data is in the form of TLVs, formally known as Type–length–value options.
+The idea is that all options can be defined by a Type, Length and Value. The type defines the type of an option, what types exists and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification.
 
 \subsection{Shared Libraries}
+The TLV
+
+
+\subsection{TLV Options}
+Connect
+Type 
+Error
 
 \section{PEP}
 
 \subsection{Architecture}
 
 \subsection{Kernel Sockets}
+socket struct, user\_data, data\_ready callback
 
-\subsection{Client Sockets}
+\subsection{Client Sockets - Endpoint Sockets}
+How forwarding works.
 
 \section{PEP Connect}
 Since are PEP is explicitly addressed we need to change how we connect on the client side.
