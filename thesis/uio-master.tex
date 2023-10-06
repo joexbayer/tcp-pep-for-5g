@@ -434,22 +434,36 @@ pep_tcp_receive_read_again:
 \end{lstlisting}
 
 \section{TLV Library}
-Regarding the addressing and endpoint selection of the PEP by the client, a custom shared library is a good choice.
-\footnote{Rewrite this.} The goal is to keep the client code as simple and close to its original state as possible, but still be able to communicate the endpoint, potential options and meta-data to the PEP. Additionally, to be able to send this information we use TCP Fast Open which has a similar connection setup as default sockets do.\\
+Regarding the endpoint addressing and selection by the client, a custom shared library is a good choice.
+\footnote{Rewrite this.} The goal is to keep the client code as simple and close to its original state as possible, but still be able to communicate the endpoint, potential options and meta-data to the PEP. Additionally, we want to send this information by using TCP Fast Open which has a similar connection routine as default sockets do.\\
 
-[EXAMPLE]\\
+\paragraph{Important socket system calls}
+\begin{verbatim}
+int connect(int sockfd, const struct sockaddr *addr,
+                   socklen_t addrlen);
+ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,
+               const struct sockaddr *dest_addr, socklen_t addrlen);
+\end{verbatim}
+
+Normally a socket would first create, connect and then send data using the \verb|send| system call. The creation of a socket is the same for both default and TCP Fast Open. Which leaves us with connection as the main problem, the way we connect to a host using TCP Fast Open is by skipping \verb|connect| and instantly jump to \verb|sendto|. \verb|sendto| has a flag option which allows the configuration of how messages are sent, and if we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
+
+\subsection{Function: pep\_connect}
+This means we can simply replace the original connect, with an custom implementation \verb|pep_connect|.
 
 A good choice for sending options and meta-data is in the form of TLVs, formally known as Type–length–value options.
 The idea is that all options can be defined by a Type, Length and Value. The type defines the type of an option, what types exists and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification.
 
-\subsection{Shared Libraries}
-The TLV
-
+\paragraph{Problems using TFO}
+When using TCP Fast Open ... instant return with no confirmation of a successful connection. 
 
 \subsection{TLV Options}
 Connect
 Type 
 Error
+
+\subsection{Shared Libraries}
+The TLV
 
 \section{PEP}
 

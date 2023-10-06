@@ -24,6 +24,11 @@ Kristjon Ciko, Michael Welzl, and Peyman Teymoori.
 \newblock In {\em 2021 IEEE 29th International Conference on Network Protocols
   (ICNP)}, pages 1--6, 2021.
 
+\bibitem{lkm}
+J.-M. De~Goyeneche and E.A.F. De~Sousa.
+\newblock Loadable kernel modules.
+\newblock {\em IEEE Software}, 16(1):65--71, 1999.
+
 \bibitem{Eddy_2022}
 Wesley Eddy.
 \newblock Transmission control protocol (tcp).
