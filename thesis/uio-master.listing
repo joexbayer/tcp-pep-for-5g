@@ -1,28 +1,27 @@
+int pep_connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen, int pep_option)
+{
+    struct sockaddr_in new_addr;
+    struct sockaddr_in* original_addr;
+    int sample_tlv_size = 12;
 
-static void my_init(struct sock* sk);
-static u32 my_ssthresh(struct sock* sk);
-...
+    if(addrlen != sizeof(*original_addr))
+        return -1; // TODO: Better error?
 
-static struct tcp_congestion_ops mycc __read_mostly = {
-  .init           = my_init,
-  .ssthresh       = my_ssthresh,
-  .cong_avoid     = ...,
-  .set_state      = ...,
-  .undo_cwnd      = ...,
-  .pkts_acked     = ...,
-  .owner          = THIS_MODULE,
-  .name           = "tuner",
-};
+    original_addr = (struct sockaddr_in*) addr;
 
-/* entry function */
-static int __init onload(void) {
-    return tcp_register_congestion_control(&mycc);
+    bzero((char *)&new_addr, sizeof(new_addr));
+    new_addr.sin_family = AF_INET;
+    new_addr.sin_addr.s_addr = inet_addr(PEP_IP);
+    new_addr.sin_port = htons(PEP_PORT);
+
+    char* data[sample_tlv_size];
+    tlv_add_header(data);
+    tlv_add_option(
+    		data,
+    		TLV_CONNECT,
+    		original_addr->sin_port,
+    		original_addr->sin_addr.s_addr
+    	);
+
+    return sendto(sockfd, data, sample_tlv_size, MSG_FASTOPEN, (struct sockaddr *) &new_addr, sizeof(new_addr));
 }
-
-/* exit function */
-static void __exit onunload(void) {
-    tcp_unregister_congestion_control(&mycc);
-}
-
-module_init(onload);
-module_exit(onunload);

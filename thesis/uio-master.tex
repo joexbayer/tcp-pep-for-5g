@@ -449,8 +449,44 @@ ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,
 Normally a socket would first create, connect and then send data using the \verb|send| system call. The creation of a socket is the same for both default and TCP Fast Open. Which leaves us with connection as the main problem, the way we connect to a host using TCP Fast Open is by skipping \verb|connect| and instantly jump to \verb|sendto|. \verb|sendto| has a flag option which allows the configuration of how messages are sent, and if we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
 
 \subsection{Function: pep\_connect}
-This means we can simply replace the original connect, with an custom implementation \verb|pep_connect|.
+This means we can simply replace the original connect, with an custom implementation \verb|pep_connect|. The original \verb|connect| and \verb|sendto| have a lot of parameters in common, specifically the \verb|const struct sockaddr| which is used to identify an endpoint. In the context of the PEP, this would identify the final endpoint to which the client wants to connect. The goal of the PEP connect function is to replace the \verb|sockaddr| given by the client with one that identifies the PEP, but still forward the original \verb|sockaddr| to the PEP to esatblish the proxy connection.
 
+\paragraph{The custom connect function signature}
+\begin{verbatim}
+int pep_connect(int fd, const struct sockaddr*, socklen_t, int flags	);
+\end{verbatim}
+
+\begin{autonumlstlisting}[label=lst:pep_connect_impl]{Implementation of PEP connect}
+int pep_connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen, int pep_option)
+{
+    struct sockaddr_in new_addr;
+    struct sockaddr_in* original_addr;
+    int sample_tlv_size = 12;
+
+    if(addrlen != sizeof(*original_addr))
+        return -1; // TODO: Better error?
+    
+    original_addr = (struct sockaddr_in*) addr;
+
+    bzero((char *)&new_addr, sizeof(new_addr));
+    new_addr.sin_family = AF_INET;
+    new_addr.sin_addr.s_addr = inet_addr(PEP_IP);
+    new_addr.sin_port = htons(PEP_PORT);
+    
+    char* data[sample_tlv_size];
+    tlv_add_header(data);
+    tlv_add_option(
+    		data,
+    		TLV_CONNECT,
+    		original_addr->sin_port,
+    		original_addr->sin_addr.s_addr
+    	);
+
+    return sendto(sockfd, data, sample_tlv_size, MSG_FASTOPEN, (struct sockaddr *) &new_addr, sizeof(new_addr)); 
+}
+\end{autonumlstlisting}
+
+\subsection{TLV}
 A good choice for sending options and meta-data is in the form of TLVs, formally known as Type–length–value options.
 The idea is that all options can be defined by a Type, Length and Value. The type defines the type of an option, what types exists and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification.
 
@@ -461,6 +497,17 @@ When using TCP Fast Open ... instant return with no confirmation of a successful
 Connect
 Type 
 Error
+
+\begin{verbatim}
+enum __tlv_types {
+    TLV_INFO = 0x1,    	  // Info TLV
+    TLV_CONNECT = 0xA,    // Connect TLV          
+    TLV_EXT_TCP = 0x14,   // Extended TCP header
+    TLV_SUPP_EXT = 0x15,  // Supported TCP extension
+    TLV_COOKIE = 0x16,   // Cookie TLV
+    TLV_ERROR = 0x1E    // Error TLV
+};
+\end{verbatim}
 
 \subsection{Shared Libraries}
 The TLV
