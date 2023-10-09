@@ -361,7 +361,7 @@ $ rmmod <module_name>.ko
 The \verb|rmmod| is used to unload a kernel. 
 
 \subsection{Kernel Hooks}
-The Linux kernel exposes many function tables and callbacks which designate what functions to call at certain events. Most drivers and congestion controllers are setup in this manner. A predefined struct is allocated and populated with custom functions, and installed with an existing kernel function.
+The Linux kernel exposes many function tables and callbacks which designate what functions to call at certain events. Most drivers and congestion controllers are implemented in this manner. A predefined struct is allocated and populated with custom functions, and installed with an existing kernel function.
 
 \begin{autonumlstlisting}[label=lst:hook_example]{Example of a TCP congestion controller module}
 
@@ -393,7 +393,7 @@ static void __exit onunload(void) {
 module_init(onload);
 module_exit(onunload);
 \end{autonumlstlisting}
-In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is setup, in the context of a kernel module. This allows run-time modification of kernel behavior, and is a programming paradigm\footnote{Is it a paradigm?} which will be useful to use when implementing the PEP.
+In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is implemented, in the context of a kernel module. This allows run-time modification of kernel behaviour, and is a programming paradigm\footnote{Is it a paradigm?} which will be useful to use when implementing the PEP.
 
 
 \subsection{Linux Version and Distribution}
@@ -509,8 +509,8 @@ enum __tlv_types {
 };
 \end{verbatim}
 
-\subsection{Shared Libraries}
-The TLV
+\subsection{Shared Library}
+The PEP TLVs are implemented as a shared library which is both used by the PEP itself and applications. The applications will use the library to create TLVs connecting to the PEP, while the PEP uses the library to validate and read the TLV options.\footnote{More about how to create shared libraries, include files etc. How to bind lib to application.}
 
 \section{PEP}
 
@@ -586,10 +586,10 @@ Our first experiment consists of having a interactive flow (100 byte UDP packets
 \end{figure}
 
 \subsection{PEP vs E2E tests}
-The first test consists of evaluating our PEP against a default TCP end to end (E2E) connection, while also highlighting the difference a packet scheduler can make. Fig. \ref{fig:inital_test} shows the results, the red lines represent important events in the timeline.
+The first test consists of evaluating our PEP against a default TCP end to end (E2E) connection, while also highlighting the difference a packet scheduler can make. Fig. \ref{fig:inital_test} shows the results, the red lines represent important events in the time-line.
 The first line represents the start of a file transfer, the second shows a bandwidth change from 10mbit to 75mbit, while the last line shows when the file transfer finished.\\ 
 
-The first timeline shows an end to end TCP transfer using a FIFO queue, in this case BFIFO.\\ 
+The first time-line shows an end to end TCP transfer using a FIFO queue, in this case BFIFO.\\ 
 On the second timeline we see the behavior of an end to end connection using FQ CoDel. {MORE}
 The last timeline shows the PEP using FQ CoDel. Looking at the graph we can see two important differences between the default end to end TCP and the PEP. Firstly, the PEP has higher latency fluctuations than the E2E connection, shown by the blue liens on the graph. 
 
