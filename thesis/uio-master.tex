@@ -256,10 +256,11 @@ Although transparent PEPs are more common, the goals the TCP PEP aligns more wit
 Since the goal is to increase the efficiency of a certain kind of application, non-interactive, it will be important that the PEP can adapt.
 
 \section{Connection Handling in PEP}
+The way the PEP manages connections primarily determines its functionality.\cite{rfc3135_pep}\footnote{Use this citation for when discussing what type of pep (layer)}
 
 \subsection{Connection Splitting}
 A performance enhancing proxy does not inherently need to be connection splitting. Depending on its implementation within the network stack, a PEP can buffer and process packets without requiring the termination of the end-to-end connection. A PEP could passively monitor or manipulate the traffic, or or even preemptively transmit ACKs.
-\footnote{Picture of a PEP only sending ACKs, perhaps PEP DNA?}\\
+\footnote{Picture of a PEP only sending ACKs}\\
 \\
 There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy can additionally split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the connection into their different domains, enables the PEP to select an appropriate congestion controllers based on the technology and topology of each domain.\\
 \\
@@ -540,7 +541,7 @@ struct tlv {
 In our design, TLVs are structured as a continuous buffer, consisting of a TLV header followed by subsequent options.  This header provides details on the version, the number of options, and a unique magic number for validation. The \verb|type| spans 1 byte, which means we limit ourselves to 255 possible types. The current implementation only uses 6, which means we have enough space for future extensions. The \verb|length| variable is mainly used to indicate an optional data segment called \verb|optional|. The size of the default value is 2 bytes with an additional option of size 4 bytes. All together the struct uses 8 bytes or 64 bits, which mostly comes from the fact we need atleast 6 bytes for the IP address and port alone. 
 
 \paragraph{Problems using TFO}
-When using TCP Fast Open ... instant return with no confirmation of a successful connection. 
+When using TCP Fast Open ... instant return with no confirmation of a successful connection. \footnote{Lots to add here...}
 
 \subsection{TLV Options}
 The options of the TLVs define the functionalities a PEP can provide, for our PEP we only need 6 options. The basic \verb|info| and \verb|error| options are included alongside some information about the TCP connection such as extended headers. The most important type is \verb|connect|, it specifies a port and IP address and is used to communicate the endpoint to the PEP. A TLV message can include as many options as a client wants.
@@ -557,7 +558,7 @@ enum __tlv_types {
 \end{verbatim}
 
 \subsection{Shared Library}
-The PEP TLVs are implemented as a shared library which is both used by the PEP itself and applications. The applications will use the library to create TLVs connecting to the PEP, while the PEP uses the library to validate and read the TLV options. 
+The PEP TLVs are implemented as a shared library which is both used by the PEP itself and applications. The applications will use the library to create TLVs for connecting to the PEP, while the PEP uses the library to validate and read the TLV options. 
 A shared library can be created by passing the \verb|-shared| flag to the linker.
 
 \footnote{More about how to create shared libraries, include files etc. How to bind lib to application.}
@@ -567,39 +568,37 @@ $ gcc file.c <path>/<lib>.so -o file.o
 \end{verbatim}
 
 \section{PEP}
+Brief description of the PEP internals, sockets, queues, forwading, hooks.
 
 \subsection{Architecture}
+Module, PEP server, tunnnels, clients, endpoints.
+Flow chart
 
 \subsection{Kernel Sockets}
+Benefit of using kernel moduels -> direct access to socket struct instead of an fd.
 socket struct, user\_data, data\_ready callback
+Code snippets
 
 \subsection{Client Sockets - Endpoint Sockets}
 How forwarding works.
+code snippets
 
-\section{PEP Connect}
-Since are PEP is explicitly addressed we need to change how we connect on the client side.
-The default approach is to use the \textbf{connect} function, our goal is to imitate this functions behavior, return code and parameters. By keeping our connect function as similar to the original we reduce the overhead of switching over to it. The only change to the original connect that we need is to specify type of traffic, interactive or non-interactive.
-\begin{lstlisting}[caption={PEP connection}, label={lst:pep_connect_use} ,language=C]
-int socket, ret;
-struct sockaddr_in s_in;
-bzero((char *)&s_in, sizeof(s_in));
-s_in.sin_family = AF_INET;
-s_in.sin_addr.s_addr = inet_addr(IP);
-s_in.sin_port = htons(PORT);
+\subsection{Using Netfilter}
+Forwarding using Netfilters, why we dont want this.
 
-socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+\subsection{PEP Connections}
+How handling of multiple connections work
+Freeing?
+Closing?
 
-ret = connect(server, (struct sockaddr*) &s_in, sizeof(s_in));
-ret = pep_connect(server, (struct sockaddr*) &s_in, sizeof(s_in), PEP_INTERACTIVE);
-\end{lstlisting}
-
-\section{PEP Connections}
+\subsection{Userspace?}
+Could this be implemented in user-space?
 
 \subsection{Threads Vs. Callbacks}
+Small discussion around that?
 
 \section{Memory}
-
-
+Memory Managment in C, why its important, how we deal with it.
 
 \chapter{Evaluation}
 
