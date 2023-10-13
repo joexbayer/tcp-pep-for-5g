@@ -35,6 +35,12 @@ Wesley Eddy.
 \newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
   2022.
 
+\bibitem{rfc3135_pep}
+Jim Griner, John Border, Markku Kojo, Zach~D. Shelby, and Gabriel Montenegro.
+\newblock {Performance Enhancing Proxies Intended to Mitigate Link-Related
+  Degradations}.
+\newblock RFC 3135, June 2001.
+
 \bibitem{tcp_extendable}
 Michio Honda, Yoshifumi Nishida, Costin Raiciu, Adam Greenhalgh, Mark Handley,
   and Hideyuki Tokuda.

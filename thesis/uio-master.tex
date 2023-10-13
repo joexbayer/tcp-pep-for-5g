@@ -570,9 +570,53 @@ $ gcc file.c <path>/<lib>.so -o file.o
 \section{PEP}
 Brief description of the PEP internals, sockets, queues, forwading, hooks.
 
+
 \subsection{Architecture}
-Module, PEP server, tunnnels, clients, endpoints.
-Flow chart
+The PEPs architecture is mainly based on a main server and multiple socket tunnels. The main server acts as the entry point of the PEP, clients will connect to the main server which will in turn connect to the endpoint. The server consists of a \verb|pep_state| which holds the server socket, work queues and a list of tunnels. The server socket accepts new clients and reads their TLV header, if no header is present the connection will be closed. After successfully reading the TLV, a new socket is created and a connection is attempted to the endpoint specified by the TLVs.\\
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{PEP Tunnel Structure}
+\begin{verbatim}
+struct pep_state {
+        atomic_t state;
+        struct socket* server_socket;
+        struct workqueue_struct* accept_wq;
+        struct workqueue_struct* forward_c2e_wq;
+        struct workqueue_struct* forward_e2c_wq;
+        struct work_struct accept_work;
+        struct list_head tunnels;
+        unsigned int total_tunnels;
+};
+\end{verbatim}
+\end{minipage}
+
+\paragraph{Tunnels}
+After the endpoint connection is established, the PEP will create a \verb|tunnel|. A \verb|tunnel| consists of 2 sockets, where data is transferred between them. Additionally to the sockets, a \verb|tunnel| also holds the information about the sockets and the proxy connection, this includes total amount of data transferred.\\
+
+\noindent\begin{minipage}{\linewidth}
+\paragraph{PEP Tunnel Structure}
+\begin{verbatim}
+struct pep_tunnel {
+        unsigned int id;
+        struct pep_connection client;
+        struct pep_connection endpoint;
+        int total_client;
+        int total_endpoint;
+        struct work_struct c2e;
+        struct work_struct e2c;
+        struct list_head list;
+        struct pep_state* server;
+        int state;
+        int recv_callbacks;
+        int packets_fowarded;
+};
+\end{verbatim}
+\end{minipage}
+
+[PICTURE OF ARCHITECTURE]\\
+
+\subsection{Work Queues}
+Major implementation choice over "active" threads.
 
 \subsection{Kernel Sockets}
 Benefit of using kernel moduels -> direct access to socket struct instead of an fd.

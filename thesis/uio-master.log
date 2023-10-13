@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  11 OCT 2023 18:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  13 OCT 2023 21:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -998,14 +998,14 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.29996pt on input line 68.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 5.69998pt on input line 68.
-<uio-fp-navn-eng.pdf, id=282, 469.755pt x 123.46124pt>
+<uio-fp-navn-eng.pdf, id=290, 469.755pt x 123.46124pt>
 File: uio-fp-navn-eng.pdf Graphic file (type pdf)
 <use uio-fp-navn-eng.pdf>
 Package pdftex.def Info: uio-fp-navn-eng.pdf  used on input line 68.
 (pdftex.def)             Requested size: 138.56935pt x 36.41953pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.29996pt on input line 68.
-<uio-fp-segl.pdf, id=283, 232.87pt x 232.87pt>
+<uio-fp-segl.pdf, id=291, 232.87pt x 232.87pt>
 File: uio-fp-segl.pdf Graphic file (type pdf)
 <use uio-fp-segl.pdf>
 Package pdftex.def Info: uio-fp-segl.pdf  used on input line 68.
@@ -1054,7 +1054,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--82
 [5
 
 ]
-<../diagrams/drawio/domains.png, id=404, 605.26125pt x 355.3275pt>
+<../diagrams/drawio/domains.png, id=414, 605.26125pt x 355.3275pt>
 File: ../diagrams/drawio/domains.png Graphic file (type png)
 <use ../diagrams/drawio/domains.png>
 Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 91.
@@ -1071,7 +1071,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--100
  []
 
 [6 <../diagrams/drawio/domains.png>]
-<../diagrams/drawio/tcphandshake.png, id=417, 489.32813pt x 309.155pt>
+<../diagrams/drawio/tcphandshake.png, id=427, 489.32813pt x 309.155pt>
 File: ../diagrams/drawio/tcphandshake.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake.png  used on input lin
@@ -1092,7 +1092,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 130--131
 
  []
 
-<../diagrams/graphs/tcp_mmwave_blockage.png, id=432, 258.9675pt x 92.345pt>
+<../diagrams/graphs/tcp_mmwave_blockage.png, id=442, 258.9675pt x 92.345pt>
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
@@ -1134,7 +1134,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 [11]
-<../diagrams/drawio/pep_satellite.png, id=458, 700.6175pt x 343.2825pt>
+<../diagrams/drawio/pep_satellite.png, id=468, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
@@ -1203,80 +1203,86 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--238
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 261--267
+Overfull \hbox (17.47714pt too wide) in paragraph at lines 259--260
+\T1/cmr/m/n/10.95 The way the PEP man-ages con-nec-tions pri-mar-ily de-ter-min
+es its functionality.[[]][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--267
+Underfull \hbox (badness 10000) in paragraph at lines 262--268
 
  []
 
 [17]
-<../diagrams/drawio/tcphandshake_primitiv.png, id=520, 503.8825pt x 298.11375pt
+<../diagrams/drawio/tcphandshake_primitiv.png, id=534, 503.8825pt x 298.11375pt
 >
 File: ../diagrams/drawio/tcphandshake_primitiv.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_primitiv.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake_primitiv.png  used on 
-input line 276.
+input line 277.
 (pdftex.def)             Requested size: 377.91095pt x 223.58476pt.
 
-Overfull \hbox (17.91095pt too wide) in paragraph at lines 276--277
+Overfull \hbox (17.91095pt too wide) in paragraph at lines 277--278
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
+Underfull \hbox (badness 10000) in paragraph at lines 283--285
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 289--290
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
 
 [19 <../diagrams/drawio/tcphandshake_primitiv.png>]
-<../diagrams/drawio/tcphandshake_optimal.png, id=540, 487.8225pt x 191.71625pt>
+<../diagrams/drawio/tcphandshake_optimal.png, id=554, 487.8225pt x 191.71625pt>
 
 File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_optimal.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake_optimal.png  used on i
-nput line 296.
+nput line 297.
 (pdftex.def)             Requested size: 365.86597pt x 143.78682pt.
 
-Overfull \hbox (5.86597pt too wide) in paragraph at lines 296--297
+Overfull \hbox (5.86597pt too wide) in paragraph at lines 297--298
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--314
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 []\T1/cmr/m/n/10.95 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--314
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 []\T1/cmr/m/n/10.95 Special
  []
 
 
-Overfull \hbox (0.62038pt too wide) in paragraph at lines 314--315
+Overfull \hbox (0.62038pt too wide) in paragraph at lines 315--316
 []\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Overfull \hbox (43.43303pt too wide) in paragraph at lines 308--325
+Overfull \hbox (43.43303pt too wide) in paragraph at lines 309--326
 [] 
  []
 
 [20 <../diagrams/drawio/tcphandshake_optimal.png>] [21]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--331
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
@@ -1285,7 +1291,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 332--333
 (uio-master.listing) [22
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
@@ -1293,77 +1299,92 @@ Underfull \hbox (badness 10000) in paragraph at lines 354--355
 
 (uio-master.listing) [23]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 403.
+nput line 404.
  [24]
-Underfull \hbox (badness 10000) in paragraph at lines 437--439
+Underfull \hbox (badness 10000) in paragraph at lines 438--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 440--441
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 442--467
+Underfull \hbox (badness 10000) in paragraph at lines 443--468
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--471
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--473
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 518--520
+Underfull \hbox (badness 10000) in paragraph at lines 519--521
 
  []
 
-[27] [28] [29]
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 575--576
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 594--595
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 616--617
+
+ []
+
+[29] [30]
 Chapter 5.
-[30
+[31
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 632--633
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=703, 443.95862pt x 3
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=714, 443.95862pt x 3
 19.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 637.
+ used on input line 680.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 643--645
+Underfull \hbox (badness 10000) in paragraph at lines 686--688
 
  []
 
-[31 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [32]
+[32 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [33]
 Chapter 6.
-(uio-master.bbl [33
+(uio-master.bbl [34
 
-] [34
+] [35
 
-]) [35] (uio-master.aux)
+]) [36] (uio-master.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `uio-master.out' has not changed.
-(rerunfilecheck)             Checksum: 821F78D7B845B2D66B9AEF73A359CDCA;8767.
+(rerunfilecheck)             Checksum: 4E05E4470F7CE7218C0CDA2636D9833E;9033.
  ) 
 Here is how much of TeX's memory you used:
- 30784 strings out of 478338
- 631670 string characters out of 2834776
- 1224091 words of memory out of 3000000
- 48414 multiletter control sequences out of 15000+600000
+ 30740 strings out of 478338
+ 631101 string characters out of 2834776
+ 1224043 words of memory out of 3000000
+ 48373 multiletter control sequences out of 15000+600000
  500773 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,10n,99p,895b,2094s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1387,9 +1408,9 @@ e Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt0900.pfb>
 ftt1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/h
 elvetic/uhvb8a.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type
 1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (37 pages, 877969 bytes).
+Output written on uio-master.pdf (38 pages, 881276 bytes).
 PDF statistics:
- 885 PDF objects out of 1000 (max. 8388607)
- 251 named destinations out of 1000 (max. 500000)
- 682 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 896 PDF objects out of 1000 (max. 8388607)
+ 248 named destinations out of 1000 (max. 500000)
+ 698 words of extra memory for PDF output out of 10000 (max. 10000000)
 
