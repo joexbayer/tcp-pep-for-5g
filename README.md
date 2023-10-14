@@ -14,7 +14,10 @@ Rate change from:
 Note: 6Mb file can be transfered from Sender to PEP in 9s.
 ```
 
+## todo:
+Write about 5g in Design chapter 
 test a 100/100 vs 10/120 flow
+
 
 ## Config of router
 ### install
