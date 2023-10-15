@@ -11,6 +11,8 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{cleveref}
+\usepackage{caption}
+
 
 
 \tcbuselibrary{listings}
@@ -575,7 +577,6 @@ Brief description of the PEP internals, sockets, queues, forwading, hooks.
 The PEPs architecture is mainly based on a main server and multiple socket tunnels. The main server acts as the entry point of the PEP, clients will connect to the main server which will in turn connect to the endpoint. The server consists of a \verb|pep_state| which holds the server socket, work queues and a list of tunnels. The server socket accepts new clients and reads their TLV header, if no header is present the connection will be closed. After successfully reading the TLV, a new socket is created and a connection is attempted to the endpoint specified by the TLVs.\\
 
 \noindent\begin{minipage}{\linewidth}
-\paragraph{PEP Tunnel Structure}
 \begin{verbatim}
 struct pep_state {
         atomic_t state;
@@ -588,6 +589,8 @@ struct pep_state {
         unsigned int total_tunnels;
 };
 \end{verbatim}
+\captionof{figure}{PEP State Structure Code}
+\label{fig:pep_state_structure}
 \end{minipage}
 
 \paragraph{Tunnels}
@@ -616,6 +619,18 @@ struct pep_tunnel {
 [PICTURE OF ARCHITECTURE]\\
 
 \subsection{Work Queues}
+To handle multiple concurrent events, the PEP uses \verb|work queues|. A work in the Linux kernel is a way of handling kernel threads. They allow for a more reactive approach to threads, as a work can be queued on demand and execute simple tasks. A work is usually queued into a \verb|work queue|. Each \verb|work queue| represents a task and works which are enqueued will wait in the queue till they can be run. A task is defined as a function, to which context can be added through a \verb|work| parameter.\\
+
+As described in the PEP Tunnel Structure (see above struct \ref{fig:pep_state_structure}), the PEP has 3 main work queues:
+\begin{verbatim}
+struct workqueue_struct* accept_wq;
+struct workqueue_struct* forward_c2e_wq;
+struct workqueue_struct* forward_e2c_wq;
+\end{verbatim}
+
+
+Different work queues in the PEP...
+[PICTURE PERHAPS?]
 Major implementation choice over "active" threads.
 
 \subsection{Kernel Sockets}
