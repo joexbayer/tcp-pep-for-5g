@@ -622,13 +622,16 @@ struct pep_tunnel {
 Normally an application would interact with a socket descriptors when sending and receiving data. However, inside the kernel we have access to the actual socket structure. This gives us full access to all functionality and meta-data a socket can offer, such as \verb|sk_buff| queues, callbacks and statistics like \verb|sk_drops|. An \verb|sk_buff|, which stands for socket buffer, is the kernel struct that holds the information about a packet. It includes both the header and data of a packet and is created when the kernel receives a packet. After that it is routed to the corresponding socket.
 
 \paragraph{Socket Callbacks}
-Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever... \\
+Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever a \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any interactions on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function.\\
 
+\paragraph{Socket User Data}
+Kernel sockets let modules attach extra information to an instance of socket structure. ... \\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
 struct sock {
     atomic_t		sk_drops;
+    void* sk_user_data;
     ...
     struct sk_buff_head	sk_error_queue;
     struct sk_buff_head	sk_receive_queue;
