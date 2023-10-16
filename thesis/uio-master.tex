@@ -579,14 +579,14 @@ The PEPs architecture is mainly based on a main server and multiple socket tunne
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
 struct pep_state {
-        atomic_t state;
-        struct socket* server_socket;
-        struct workqueue_struct* accept_wq;
-        struct workqueue_struct* forward_c2e_wq;
-        struct workqueue_struct* forward_e2c_wq;
-        struct work_struct accept_work;
-        struct list_head tunnels;
-        unsigned int total_tunnels;
+    atomic_t state;
+    struct socket* server_socket;
+    struct workqueue_struct* accept_wq;
+    struct workqueue_struct* forward_c2e_wq;
+    struct workqueue_struct* forward_e2c_wq;
+    struct work_struct accept_work;
+    struct list_head tunnels;
+    unsigned int total_tunnels;
 };
 \end{verbatim}
 \captionof{figure}{PEP State Structure Code}
@@ -618,6 +618,36 @@ struct pep_tunnel {
 
 [PICTURE OF ARCHITECTURE]\\
 
+\subsection{Kernel Sockets}
+Normally an application would interact with a socket descriptors when sending and receiving data. However, inside the kernel we have access to the actual socket structure. This gives us full access to all functionality and meta-data a socket can offer, such as \verb|sk_buff| queues, callbacks and statistics like \verb|sk_drops|. An \verb|sk_buff|, which stands for socket buffer, is the kernel struct that holds the information about a packet. It includes both the header and data of a packet and is created when the kernel receives a packet. After that it is routed to the corresponding socket.
+
+\paragraph{Socket Callbacks}
+Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever... \\
+
+
+\noindent\begin{minipage}{\linewidth}
+\begin{verbatim}
+struct sock {
+    atomic_t		sk_drops;
+    ...
+    struct sk_buff_head	sk_error_queue;
+    struct sk_buff_head	sk_receive_queue;
+    ...
+    void	 (*sk_state_change)(struct sock *sk);
+    void	 (*sk_data_ready)(struct sock *sk);
+    void (*sk_write_space)(struct sock *sk);
+    void (*sk_error_report)(struct sock *sk);
+    ...
+};
+\end{verbatim}
+\captionof{figure}{Kernel Sock Structure}
+\label{fig:kern_sock}
+\end{minipage}
+
+Benefit of using kernel moduels -> direct access to socket struct instead of an fd.
+socket struct, user\_data, data\_ready callback
+Code snippets
+
 \subsection{Work Queues}
 To handle multiple concurrent events, the PEP uses \verb|work queues|. A work in the Linux kernel is a way of handling kernel threads. They allow for a more reactive approach to threads, as a work can be queued on demand and execute simple tasks. A work is usually queued into a \verb|work queue|. Each \verb|work queue| represents a task and works which are enqueued will wait in the queue till they can be run. A task is defined as a function, to which context can be added through a \verb|work| parameter.\\
 
@@ -628,15 +658,13 @@ struct workqueue_struct* forward_c2e_wq;
 struct workqueue_struct* forward_e2c_wq;
 \end{verbatim}
 
+\paragraph{Accept Work Queue}
+The main work queue for the server is the accept work queue.
+
 
 Different work queues in the PEP...
 [PICTURE PERHAPS?]
 Major implementation choice over "active" threads.
-
-\subsection{Kernel Sockets}
-Benefit of using kernel moduels -> direct access to socket struct instead of an fd.
-socket struct, user\_data, data\_ready callback
-Code snippets
 
 \subsection{Client Sockets - Endpoint Sockets}
 How forwarding works.

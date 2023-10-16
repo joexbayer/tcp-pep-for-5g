@@ -55,21 +55,23 @@
 \contentsline {subsection}{\numberline {4.3.1}Architecture}{29}{subsection.4.3.1}%
 \contentsline {paragraph}{Tunnels}{29}{section*.20}%
 \contentsline {paragraph}{PEP Tunnel Structure}{29}{section*.21}%
-\contentsline {subsection}{\numberline {4.3.2}Work Queues}{30}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Kernel Sockets}{30}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Client Sockets - Endpoint Sockets}{30}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}Using Netfilter}{30}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}PEP Connections}{30}{subsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.3.7}Userspace?}{30}{subsection.4.3.7}%
-\contentsline {subsection}{\numberline {4.3.8}Threads Vs. Callbacks}{30}{subsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{30}{subsection.4.3.2}%
+\contentsline {paragraph}{Socket Callbacks}{30}{section*.22}%
+\contentsline {subsection}{\numberline {4.3.3}Work Queues}{30}{subsection.4.3.3}%
+\contentsline {paragraph}{Accept Work Queue}{31}{section*.23}%
+\contentsline {subsection}{\numberline {4.3.4}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}Using Netfilter}{31}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}PEP Connections}{31}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Userspace?}{31}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}Threads Vs. Callbacks}{31}{subsection.4.3.8}%
 \contentsline {section}{\numberline {4.4}Memory}{31}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Evaluation}{32}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Initial configuration}{32}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{32}{subsection.5.1.1}%
 \contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{32}{subsection.5.1.2}%
-\contentsline {paragraph}{FIFO}{32}{section*.22}%
-\contentsline {paragraph}{FQ CoDel: IMPORTANT}{33}{section*.23}%
-\contentsline {paragraph}{PFIFO}{33}{section*.24}%
+\contentsline {paragraph}{FIFO}{32}{section*.24}%
+\contentsline {paragraph}{FQ CoDel: IMPORTANT}{33}{section*.25}%
+\contentsline {paragraph}{PFIFO}{33}{section*.26}%
 \contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{33}{subsection.5.1.3}%
 \contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{33}{subsection.5.1.4}%
 \contentsline {subsection}{\numberline {5.1.5}10x10 tests}{34}{subsection.5.1.5}%
