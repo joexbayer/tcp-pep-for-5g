@@ -15,23 +15,25 @@
 
 
 
+
 \tcbuselibrary{listings}
 
 
-\newtcblisting[auto counter, number within=section]{autonumlstlisting}[2][]{
+\newtcblisting[auto counter, number within=section, list inside=lol]{autonumlstlisting}[2][]{
   listing only,
-  %breakable,
   title=Listing \thetcbcounter: #2,
   arc=2mm,
   colback=white,
   boxrule=1pt,
-  top=5mm,
-  bottom=5mm,
+  top=2mm,
+  bottom=2mm,
   left=5mm,
-  right=5mm,
-  #1, % This allows further options to be passed when using the environment
+  right=2mm,
+  #1, 
   listing options={language=C}
 }
+
+
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -72,6 +74,7 @@
 
 
 \listoffigures
+\tcblistof[\section*]{lol}{List of Listings}
 
 \chapter{Intro}
 
@@ -619,25 +622,21 @@ struct pep_tunnel {
 [PICTURE OF ARCHITECTURE]\\
 
 \subsection{Kernel Sockets}
-Normally an application would interact with a socket descriptors when sending and receiving data. However, inside the kernel we have access to the actual socket structure. This gives us full access to all functionality and meta-data a socket can offer, such as \verb|sk_buff| queues, callbacks and statistics like \verb|sk_drops|. An \verb|sk_buff|, which stands for socket buffer, is the kernel struct that holds the information about a packet. It includes both the header and data of a packet and is created when the kernel receives a packet. After that it is routed to the corresponding socket.
-
-\paragraph{Socket Callbacks}
-Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever a \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any interactions on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function.\\
-
-\paragraph{Socket User Data}
-Kernel sockets let modules attach extra information to an instance of socket structure. ... \\
+Normally an application would interact with a socket descriptors when sending and receiving data. However, inside the kernel we have access to the actual sock and socket structures. This gives us full access to all functionality and meta-data a socket can offer, such as \verb|sk_buff| queues, callbacks and statistics like \verb|sk_drops|. An \verb|sk_buff|, which stands for socket buffer, is the kernel struct that holds the information about a packet. It includes both the header and data of a packet and is created when the kernel receives a packet. After that it is routed to the corresponding socket.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
 struct sock {
-    atomic_t		sk_drops;
+    atomic_t sk_drops;
     void* sk_user_data;
     ...
     struct sk_buff_head	sk_error_queue;
     struct sk_buff_head	sk_receive_queue;
     ...
-    void	 (*sk_state_change)(struct sock *sk);
-    void	 (*sk_data_ready)(struct sock *sk);
+    struct socket *sk_socket;
+    ...
+    void (*sk_state_change)(struct sock *sk);
+    void (*sk_data_ready)(struct sock *sk);
     void (*sk_write_space)(struct sock *sk);
     void (*sk_error_report)(struct sock *sk);
     ...
@@ -647,12 +646,42 @@ struct sock {
 \label{fig:kern_sock}
 \end{minipage}
 
+\paragraph{Socket Operations}
+
+\paragraph{Socket Callbacks}
+Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever a \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any interactions on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function. All callbacks take themselves as a parameters, thereby giving access to the socket state. \\
+
+\paragraph{Socket User Data}
+Kernel sockets allow modules to add extra information to a specific socket. The pointer \verb|sk_user_data| can be used to point to any data defined by a module. This in combination with the callbacks is a powerful tool for customizing socket behavior. This allows us to add additional state information to the socket.
+
 Benefit of using kernel moduels -> direct access to socket struct instead of an fd.
 socket struct, user\_data, data\_ready callback
 Code snippets
 
 \subsection{Work Queues}
-To handle multiple concurrent events, the PEP uses \verb|work queues|. A work in the Linux kernel is a way of handling kernel threads. They allow for a more reactive approach to threads, as a work can be queued on demand and execute simple tasks. A work is usually queued into a \verb|work queue|. Each \verb|work queue| represents a task and works which are enqueued will wait in the queue till they can be run. A task is defined as a function, to which context can be added through a \verb|work| parameter.\\
+To handle multiple concurrent events, the PEP uses \verb|work queues|. A work in the Linux kernel is a way of handling kernel threads. They allow for a more reactive approach to threads, as a work can be queued on demand and execute simple tasks. A work is usually queued into a \verb|work queue|. Each \verb|work queue| represents a task and works which are queued will wait in the queue till they can be run. A task is defined as a function, to which context can be added through a \verb|work| parameter.\\
+
+\noindent\begin{minipage}{\linewidth}
+\begin{verbatim}
+struct work_struct {
+    atomic_long_t data;
+    struct list_head entry;
+    work_func_t func;
+#ifdef CONFIG_LOCKDEP
+    struct lockdep_map lockdep_map;
+#endif
+};
+\end{verbatim}
+\captionof{figure}{Work struct from Linux - workqueue.h}
+\label{fig:work_struct}
+\end{minipage}
+
+\paragraph{Works}
+A work is defined by \verb|work_struct| (see Figure \ref{fig:work_struct}) which holds information associated with the work, most importantly the \verb|work_func_t func|. \verb|func| must be a pointer to a function which takes a \verb|struct work_struct| as parameter. This is the function which will be called when a work is scheduled. The work structure should be created by the user and not be allocated on the stack as external services need access to it. Normally the work structure will be part of another structure as it is in Figure \ref{fig:pep_state_structure}.
+
+
+\subsection{Work State problem}
+Since we do not have a "main" thread for each connection, and we want to avoid "global" variables, we do not have a stack state, all events are "async" and will not have access to our PEP states as we only get sock structs.\\
 
 As described in the PEP Tunnel Structure (see above struct \ref{fig:pep_state_structure}), the PEP has 3 main work queues:
 \begin{verbatim}
@@ -662,8 +691,30 @@ struct workqueue_struct* forward_e2c_wq;
 \end{verbatim}
 
 \paragraph{Accept Work Queue}
-The main work queue for the server is the accept work queue.
+The main work queue for the server is the accept work queue. When a client attempts a connection to the PEP server we want to receive that notification and queue a accept work. This is an alternative to have a thread blocking on accept. The notification can be achieved by replacing the \verb|sk_data_ready| with a custom function which checks the TCP state and queues a accept work.\\
 
+\begin{autonumlstlisting}[label=lst:pep_accept_callback]{Accept callback function}
+void pep_listen_data_ready(struct sock* sk)
+{
+	struct pep_state* server;
+
+	read_lock_bh(&sk->sk_callback_lock);
+	server = sk->sk_user_data;
+
+	/* Queue accept work */
+	if(sk->sk_state == TCP_LISTEN){
+		queue_work(server->accept_wq, &server->accept_work);
+	}
+	read_unlock_bh(&sk->sk_callback_lock);
+
+	default_data_ready(sk);
+}
+\end{autonumlstlisting}
+
+The function \verb|pep_listen_data_ready| (see Listing \ref{lst:pep_accept_callback}) outlines the process to set up accept works. We retrieve the PEP server state from the socket \verb|sk_user_data| variable, afterwards we check the socket state for \verb|TCP_LISTEN| which indicates that the socket is ready to accept a connection. If the socket has the correct state we queue the \verb|accept_work| on the \verb|accept_wq| work queue, which is part of the PEP server.
+
+\paragraph{Packet Forwarding Queues}
+The main work queue for the server is the accept work queue.
 
 Different work queues in the PEP...
 [PICTURE PERHAPS?]

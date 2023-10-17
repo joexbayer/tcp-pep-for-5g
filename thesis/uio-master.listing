@@ -1,28 +1,15 @@
+void pep_listen_data_ready(struct sock* sk)
+{
+	struct pep_state* server;
 
-static void my_init(struct sock* sk);
-static u32 my_ssthresh(struct sock* sk);
-...
+	read_lock_bh(&sk->sk_callback_lock);
+	server = sk->sk_user_data;
 
-static struct tcp_congestion_ops mycc __read_mostly = {
-  .init           = my_init,
-  .ssthresh       = my_ssthresh,
-  .cong_avoid     = ...,
-  .set_state      = ...,
-  .undo_cwnd      = ...,
-  .pkts_acked     = ...,
-  .owner          = THIS_MODULE,
-  .name           = "tuner",
-};
+	/* Queue accept work */
+	if(sk->sk_state == TCP_LISTEN){
+		queue_work(server->accept_wq, &server->accept_work);
+	}
+	read_unlock_bh(&sk->sk_callback_lock);
 
-/* entry function */
-static int __init onload(void) {
-    return tcp_register_congestion_control(&mycc);
+	default_data_ready(sk);
 }
-
-/* exit function */
-static void __exit onunload(void) {
-    tcp_unregister_congestion_control(&mycc);
-}
-
-module_init(onload);
-module_exit(onunload);
