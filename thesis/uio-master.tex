@@ -76,7 +76,13 @@
 \listoffigures
 \tcblistof[\section*]{lol}{List of Listings}
 
+\begin{abstract}
+   ...
+\end{abstract}
+
 \chapter{Intro}
+
+\section{Motivation}
 
 \chapter{Background}
 
@@ -201,6 +207,8 @@ Thing that makes Linux truly extensible are Loadable Kernel Modules (LKM). Kerne
 Congestion controllers and packet schedulers are also usually implemented as kernel modules. That is because Linux exposes a struct with function pointers that can be overwritten by a module. Making the kernel call the new functions instead. Because kernel modules run as part of the kernel they do not need to use system call to do basic I/O as using sockets. Removing the overhead of system calls makes the kernel modules run much faster than default user space programs.\\
 
 However, the using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel panic, which usually requires a complete system restart to fix.
+
+\section{Related Work}
 
 \chapter{Design}
 A good design for the PEP is crucial as it both needs to be robust, fast and reliable. Not all of the goals are equally achievable, an other aspects need to be considered such as cross platform compatibility. The overarching goal is to improve the completion times of the non-interactive traffic while avoiding to disturb the interactive flows.\\
@@ -681,6 +689,11 @@ A work is defined by \verb|work_struct| (see Figure \ref{fig:work_struct}) which
 
 
 \subsection{Work State problem}
+Initiating a Work poses a challenge: how to effectively track a state. In this context, 'state' refers to the status of a PEP tunnel, the sockets to utilize, and a reference to the server. A simple approach is to store the PEP server in a global variable. However, not only is this poor coding practice, but it also doesn't address the socket issue. A function that transfers between two sockets must be aware of the specific sockets to use. The work alone doesn't provide this context.\\
+
+To solve this issue we can make use of a macro which Linux provides. \verb|containerof| is a macro that retrieves a reference to the parent structure of any given struct. This in combination with the fact that we do get the original work struct as a parameter.
+
+
 Since we do not have a "main" thread for each connection, and we want to avoid "global" variables, we do not have a stack state, all events are "async" and will not have access to our PEP states as we only get sock structs.\\
 
 As described in the PEP Tunnel Structure (see above struct \ref{fig:pep_state_structure}), the PEP has 3 main work queues:
