@@ -2,10 +2,13 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -17,6 +20,7 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Intro}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}\protected@file@percent }
 \citation{Eddy_2022}
 \citation{rfc8803}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Background}{2}{chapter.2}\protected@file@percent }
@@ -115,7 +119,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Implications}{21}{subsection.4.1.3}\protected@file@percent }
 \newlabel{lst:pep_tcp_receive}{{4.1}{21}{kernel\_recvmsg wrapper for receiving for TCP msgs}{lstlisting.4.1}{}}
 \newlabel{lst:pep_tcp_receive@cref}{{[listing][1][4]4.1}{[1][21][]21}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}{\ignorespaces kernel\_recvmsg wrapper for receiving for TCP msgs}}{21}{lstlisting.4.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}kernel\_recvmsg wrapper for receiving for TCP msgs}{21}{lstlisting.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}TLV Library}{22}{section.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Important socket system calls}{23}{section*.16}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{23}{subsection.4.2.1}\protected@file@percent }
@@ -145,40 +149,49 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{28}{figure.4.3}\protected@file@percent }
 \newlabel{fig:work_struct}{{4.3}{28}{Work struct from Linux - workqueue.h\relax }{figure.4.3}{}}
 \newlabel{fig:work_struct@cref}{{[figure][3][4]4.3}{[1][28][]28}}
-\@writefile{toc}{\contentsline {paragraph}{Works}{28}{section*.26}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Work State problem}{28}{subsection.4.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Accept Work Queue}{29}{section*.27}\protected@file@percent }
-\newlabel{lst:pep_accept_callback}{{4.3.1}{29}{Accept Work Queue}{tcb@cnt@autonumlstlisting.4.3.1}{}}
-\newlabel{lst:pep_accept_callback@cref}{{[tcb@cnt@autonumlstlisting][1][4,3]4.3.1}{[1][29][]29}}
-\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.1}{\ignorespaces Listing 4.3.1: Accept callback function}}{29}{tcb@cnt@autonumlstlisting.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Works}{28}{subsection.4.3.4}\protected@file@percent }
+\newlabel{lst:work_init}{{4.3.1}{29}{Works}{tcb@cnt@autonumlstlisting.4.3.1}{}}
+\newlabel{lst:work_init@cref}{{[tcb@cnt@autonumlstlisting][1][4,3]4.3.1}{[1][28][]29}}
+\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.1}{\ignorespaces Listing 4.3.1: Work initialization example}}{29}{tcb@cnt@autonumlstlisting.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Work State problem}{29}{section*.26}\protected@file@percent }
+\newlabel{lst:work_containerof}{{4.3.2}{29}{Work State problem}{tcb@cnt@autonumlstlisting.4.3.2}{}}
+\newlabel{lst:work_containerof@cref}{{[tcb@cnt@autonumlstlisting][2][4,3]4.3.2}{[1][29][]29}}
+\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.2}{\ignorespaces Listing 4.3.2: Work using containerof example}}{29}{tcb@cnt@autonumlstlisting.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Accept Work Queue}{30}{section*.27}\protected@file@percent }
+\newlabel{lst:pep_accept_callback}{{4.3.3}{30}{Accept Work Queue}{tcb@cnt@autonumlstlisting.4.3.3}{}}
+\newlabel{lst:pep_accept_callback@cref}{{[tcb@cnt@autonumlstlisting][3][4,3]4.3.3}{[1][30][]30}}
+\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.3}{\ignorespaces Listing 4.3.3: Accept callback function}}{30}{tcb@cnt@autonumlstlisting.4.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Packet Forwarding Queues}{30}{section*.28}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Client Sockets - Endpoint Sockets}{30}{subsection.4.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}Using Netfilter}{30}{subsection.4.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}PEP Connections}{30}{subsection.4.3.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.8}Userspace?}{30}{subsection.4.3.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.9}Threads Vs. Callbacks}{30}{subsection.4.3.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Memory}{30}{section.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Evaluation}{31}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.5}\protected@file@percent }
+\newlabel{lst:pep_forward}{{4.3.4}{31}{Client Sockets - Endpoint Sockets}{tcb@cnt@autonumlstlisting.4.3.4}{}}
+\newlabel{lst:pep_forward@cref}{{[tcb@cnt@autonumlstlisting][4][4,3]4.3.4}{[1][30][]31}}
+\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.4}{\ignorespaces Listing 4.3.4: Forwarding Function}}{31}{tcb@cnt@autonumlstlisting.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}Using Netfilter}{31}{subsection.4.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}PEP Connections}{31}{subsection.4.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.8}Userspace?}{31}{subsection.4.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.9}Threads Vs. Callbacks}{31}{subsection.4.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Memory}{32}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Evaluation}{33}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Initial configuration}{31}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{31}{subsection.5.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{31}{subsection.5.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{FIFO}{31}{section*.29}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{FQ CoDel: IMPORTANT}{32}{section*.30}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{PFIFO}{32}{section*.31}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{32}{subsection.5.1.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic\relax }}{32}{figure.caption.32}\protected@file@percent }
-\newlabel{fig:inital_test}{{5.1}{32}{Interactive UDP traffic\relax }{figure.caption.32}{}}
-\newlabel{fig:inital_test@cref}{{[figure][1][5]5.1}{[1][32][]32}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{32}{subsection.5.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{33}{subsection.5.1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.6}Spike}{33}{subsection.5.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Initial configuration}{33}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{33}{subsection.5.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{33}{subsection.5.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{FIFO}{33}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{FQ CoDel: IMPORTANT}{34}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{PFIFO}{34}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{34}{subsection.5.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic\relax }}{34}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:inital_test}{{5.1}{34}{Interactive UDP traffic\relax }{figure.caption.32}{}}
+\newlabel{fig:inital_test@cref}{{[figure][1][5]5.1}{[1][34][]34}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{34}{subsection.5.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{35}{subsection.5.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.6}Spike}{35}{subsection.5.1.6}\protected@file@percent }
 \bibdata{myBib.bib}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion}{34}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion}{36}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Future Work}{34}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Future Work}{36}{section.6.1}\protected@file@percent }
 \bibcite{Agrawal_Sharma_2016}{1}
 \bibcite{rfc8803}{2}
 \bibcite{tcp_options}{3}
@@ -196,4 +209,4 @@
 \bibcite{welzl_congestion}{15}
 \bibcite{rfc6077}{16}
 \bibstyle{plain}
-\gdef \@abspage@last{42}
+\gdef \@abspage@last{44}

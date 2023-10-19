@@ -1,15 +1,26 @@
-void pep_listen_data_ready(struct sock* sk)
+void pep_client_receive_work(struct work_struct *work)
 {
-	struct pep_state* server;
+	int ret = 1;
+	int ret_forward;
+	struct pep_tunnel* tun = container_of(work, struct pep_tunnel, c2e);
 
-	read_lock_bh(&sk->sk_callback_lock);
-	server = sk->sk_user_data;
-
-	/* Queue accept work */
-	if(sk->sk_state == TCP_LISTEN){
-		queue_work(server->accept_wq, &server->accept_work);
+	unsigned char *buffer = kzalloc(PEP_MAX_TCP_BUFFER_SIZE, GFP_KERNEL);
+	if (!buffer) {
+		printk(KERN_INFO "[PEP] pep_endpoint_receive_work: out of memory \n");
+		return;
 	}
-	read_unlock_bh(&sk->sk_callback_lock);
 
-	default_data_ready(sk);
+	while(ret > 0){
+		ret = pep_tcp_receive(tun->client.sock, ...);
+		if(ret > 0){
+			ret_forward = pep_tcp_send(tun->endpoint.sock, ...);
+			tun->total_client += ret_forward;
+			tun->packets_fowarded++;
+		} else {
+			if(pep_tunnel_is_disconnected(tun)){
+				pep_tunnel_close(tun);
+				return;
+			}
+		}
+	kfree(buffer);
 }

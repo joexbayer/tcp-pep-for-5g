@@ -684,17 +684,41 @@ struct work_struct {
 \label{fig:work_struct}
 \end{minipage}
 
-\paragraph{Works}
-A work is defined by \verb|work_struct| (see Figure \ref{fig:work_struct}) which holds information associated with the work, most importantly the \verb|work_func_t func|. \verb|func| must be a pointer to a function which takes a \verb|struct work_struct| as parameter. This is the function which will be called when a work is scheduled. The work structure should be created by the user and not be allocated on the stack as external services need access to it. Normally the work structure will be part of another structure as it is in Figure \ref{fig:pep_state_structure}.
+\subsection{Works}
+A work is defined by \verb|work_struct| (see Figure \ref{fig:work_struct}) which holds information associated with the work, most importantly the \verb|work_func_t func|. \verb|func| must be a pointer to a function which takes a \verb|struct work_struct| as parameter. This is the function which will be called when a work is scheduled. The work structure should be created by the user and not be allocated on the stack as external services need access to it. Normally the work structure will be part of another structure as it is in Figure \ref{fig:pep_state_structure}.\\
 
 
-\subsection{Work State problem}
+\begin{autonumlstlisting}[label=lst:work_init]{Work initialization example}
+void my_work_handler(struct work_struct *work);
+
+struct work_struct my_work;
+struct workqueue_struct * my_workqueue;
+
+my_workqueue = create_singlethread_workqueue("my_workqueue");
+INIT_WORK(&my_work, my_work_handler);
+
+queue_work(my_workqueue, &my_work);
+\end{autonumlstlisting}
+
+\paragraph{Work State problem}
 Initiating a Work poses a challenge: how to effectively track a state. In this context, 'state' refers to the status of a PEP tunnel, the sockets to utilize, and a reference to the server. A simple approach is to store the PEP server in a global variable. However, not only is this poor coding practice, but it also doesn't address the socket issue. A function that transfers between two sockets must be aware of the specific sockets to use. The work alone doesn't provide this context.\\
 
-To solve this issue we can make use of a macro which Linux provides. \verb|containerof| is a macro that retrieves a reference to the parent structure of any given struct. This in combination with the fact that we do get the original work struct as a parameter.
+To solve this issue we can make use of a macro which Linux provides. \verb|containerof| is a macro that retrieves a reference to the parent structure of any given struct. This in combination with the fact that we do get the original work struct as a parameter.\\
 
+\begin{autonumlstlisting}[label=lst:work_containerof]{Work using containerof example}
+struct my_device_data {
+    struct work_struct my_work;
+    // ...
+};
 
-Since we do not have a "main" thread for each connection, and we want to avoid "global" variables, we do not have a stack state, all events are "async" and will not have access to our PEP states as we only get sock structs.\\
+void my_work_handler(struct work_struct *work)
+{
+   struct my_device_data * my_data;
+
+   my_data = container_of(work, struct my_device_data,  my_work);
+   // ...
+}
+\end{autonumlstlisting}
 
 As described in the PEP Tunnel Structure (see above struct \ref{fig:pep_state_structure}), the PEP has 3 main work queues:
 \begin{verbatim}
@@ -727,15 +751,38 @@ void pep_listen_data_ready(struct sock* sk)
 The function \verb|pep_listen_data_ready| (see Listing \ref{lst:pep_accept_callback}) outlines the process to set up accept works. We retrieve the PEP server state from the socket \verb|sk_user_data| variable, afterwards we check the socket state for \verb|TCP_LISTEN| which indicates that the socket is ready to accept a connection. If the socket has the correct state we queue the \verb|accept_work| on the \verb|accept_wq| work queue, which is part of the PEP server.
 
 \paragraph{Packet Forwarding Queues}
-The main work queue for the server is the accept work queue.
+The second two work queues handle forwarding of packets, one for each direction. The reason we use two separate work and work queues because the function has to identify which socket it should read from and which one it should send to within the tunnel socket pair. \\
 
-Different work queues in the PEP...
 [PICTURE PERHAPS?]
-Major implementation choice over "active" threads.
 
 \subsection{Client Sockets - Endpoint Sockets}
-How forwarding works.
-code snippets
+\begin{autonumlstlisting}[label=lst:pep_forward]{Forwarding Function (Simplified)}
+void pep_client_receive_work(struct work_struct *work)
+{
+	int ret = 1;
+	int ret_forward;
+	struct pep_tunnel* tun = container_of(work, struct pep_tunnel, c2e);
+
+	unsigned char *buffer = kzalloc(...);
+	if (!buffer) {
+		return;
+	}
+
+	while(ret > 0){
+		ret = pep_tcp_receive(tun->client.sock, ...);
+		if(ret > 0){
+			ret_forward = pep_tcp_send(tun->endpoint.sock, ...);
+			tun->total_client += ret_forward;
+			tun->packets_fowarded++;
+		} else {
+			if(pep_tunnel_is_disconnected(tun)){
+				pep_tunnel_close(tun);
+				return;
+			}
+		}
+	kfree(buffer);
+}
+\end{autonumlstlisting}
 
 \subsection{Using Netfilter}
 Forwarding using Netfilters, why we dont want this.

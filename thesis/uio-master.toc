@@ -1,4 +1,5 @@
 \contentsline {chapter}{\numberline {1}Intro}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
 \contentsline {chapter}{\numberline {2}Background}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}TCP/IP}{2}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Congestion Control}{3}{subsection.2.1.1}%
@@ -61,26 +62,26 @@
 \contentsline {paragraph}{Socket Callbacks}{27}{section*.24}%
 \contentsline {paragraph}{Socket User Data}{27}{section*.25}%
 \contentsline {subsection}{\numberline {4.3.3}Work Queues}{28}{subsection.4.3.3}%
-\contentsline {paragraph}{Works}{28}{section*.26}%
-\contentsline {subsection}{\numberline {4.3.4}Work State problem}{28}{subsection.4.3.4}%
-\contentsline {paragraph}{Accept Work Queue}{29}{section*.27}%
+\contentsline {subsection}{\numberline {4.3.4}Works}{28}{subsection.4.3.4}%
+\contentsline {paragraph}{Work State problem}{29}{section*.26}%
+\contentsline {paragraph}{Accept Work Queue}{30}{section*.27}%
 \contentsline {paragraph}{Packet Forwarding Queues}{30}{section*.28}%
-\contentsline {subsection}{\numberline {4.3.5}Client Sockets - Endpoint Sockets}{30}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}Using Netfilter}{30}{subsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.3.7}PEP Connections}{30}{subsection.4.3.7}%
-\contentsline {subsection}{\numberline {4.3.8}Userspace?}{30}{subsection.4.3.8}%
-\contentsline {subsection}{\numberline {4.3.9}Threads Vs. Callbacks}{30}{subsection.4.3.9}%
-\contentsline {section}{\numberline {4.4}Memory}{30}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Evaluation}{31}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Initial configuration}{31}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{31}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{31}{subsection.5.1.2}%
-\contentsline {paragraph}{FIFO}{31}{section*.29}%
-\contentsline {paragraph}{FQ CoDel: IMPORTANT}{32}{section*.30}%
-\contentsline {paragraph}{PFIFO}{32}{section*.31}%
-\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{32}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{32}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{33}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}Spike}{33}{subsection.5.1.6}%
-\contentsline {chapter}{\numberline {6}Conclusion}{34}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Future Work}{34}{section.6.1}%
+\contentsline {subsection}{\numberline {4.3.5}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Using Netfilter}{31}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}PEP Connections}{31}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}Userspace?}{31}{subsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.3.9}Threads Vs. Callbacks}{31}{subsection.4.3.9}%
+\contentsline {section}{\numberline {4.4}Memory}{32}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Evaluation}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Initial configuration}{33}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{33}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{33}{subsection.5.1.2}%
+\contentsline {paragraph}{FIFO}{33}{section*.29}%
+\contentsline {paragraph}{FQ CoDel: IMPORTANT}{34}{section*.30}%
+\contentsline {paragraph}{PFIFO}{34}{section*.31}%
+\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{34}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{34}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{35}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Spike}{35}{subsection.5.1.6}%
+\contentsline {chapter}{\numberline {6}Conclusion}{36}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Future Work}{36}{section.6.1}%
