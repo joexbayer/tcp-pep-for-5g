@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  19 OCT 2023 15:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  20 OCT 2023 11:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1366,20 +1366,20 @@ Chapter 5.
 [33
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 833--834
+Underfull \hbox (badness 10000) in paragraph at lines 832--833
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=851, 443.95862pt x 3
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=850, 443.95862pt x 3
 19.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 838.
+ used on input line 837.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 844--846
+Underfull \hbox (badness 10000) in paragraph at lines 843--845
 
  []
 
@@ -1397,10 +1397,10 @@ Package rerunfilecheck Info: File `uio-master.out' has not changed.
 (rerunfilecheck)             Checksum: B8CD8FE88731286E11DE727240026B97;9343.
  ) 
 Here is how much of TeX's memory you used:
- 30969 strings out of 478994
- 612191 string characters out of 5858185
+ 30965 strings out of 478994
+ 612109 string characters out of 5858185
  1246667 words of memory out of 5000000
- 47549 multiletter control sequences out of 15000+600000
+ 47546 multiletter control sequences out of 15000+600000
  434944 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,10n,117p,893b,1974s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1421,10 +1421,10 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (44 pages, 793853 bytes).
+Output written on uio-master.pdf (44 pages, 792764 bytes).
 PDF statistics:
- 1038 PDF objects out of 1200 (max. 8388607)
- 899 compressed objects within 9 object streams
- 332 named destinations out of 1000 (max. 500000)
+ 1037 PDF objects out of 1200 (max. 8388607)
+ 898 compressed objects within 9 object streams
+ 331 named destinations out of 1000 (max. 500000)
  722 words of extra memory for PDF output out of 10000 (max. 10000000)
 

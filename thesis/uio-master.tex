@@ -755,7 +755,13 @@ The second two work queues handle forwarding of packets, one for each direction.
 
 [PICTURE PERHAPS?]
 
+\subsection{Kernel TCP receive and send.}
+The kernel uses the message functions \verb|recvmsg| and \verb|sendmsg| for reading and sending via sockets.
+These functions have some overhead which will clutter the code, therefore two helper function will be used instead. \verb|pep_tcp_receive.|
+
 \subsection{Client Sockets - Endpoint Sockets}
+The two main forwarding functions are responsible for reading packets from a socket and forward to the correct receiving socket. In the kernel there 
+
 \begin{autonumlstlisting}[label=lst:pep_forward]{Forwarding Function (Simplified)}
 void pep_client_receive_work(struct work_struct *work)
 {

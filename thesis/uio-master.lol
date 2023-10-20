@@ -5,4 +5,4 @@
 \contentsline {tcolorbox}{\numberline {4.3.1}{\ignorespaces Listing 4.3.1: Work initialization example}}{29}{tcb@cnt@autonumlstlisting.4.3.1}%
 \contentsline {tcolorbox}{\numberline {4.3.2}{\ignorespaces Listing 4.3.2: Work using containerof example}}{29}{tcb@cnt@autonumlstlisting.4.3.2}%
 \contentsline {tcolorbox}{\numberline {4.3.3}{\ignorespaces Listing 4.3.3: Accept callback function}}{30}{tcb@cnt@autonumlstlisting.4.3.3}%
-\contentsline {tcolorbox}{\numberline {4.3.4}{\ignorespaces Listing 4.3.4: Forwarding Function}}{31}{tcb@cnt@autonumlstlisting.4.3.4}%
+\contentsline {tcolorbox}{\numberline {4.3.4}{\ignorespaces Listing 4.3.4: Forwarding Function (Simplified)}}{31}{tcb@cnt@autonumlstlisting.4.3.4}%
