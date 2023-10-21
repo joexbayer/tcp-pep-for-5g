@@ -750,19 +750,37 @@ void pep_listen_data_ready(struct sock* sk)
 
 The function \verb|pep_listen_data_ready| (see Listing \ref{lst:pep_accept_callback}) outlines the process to set up accept works. We retrieve the PEP server state from the socket \verb|sk_user_data| variable, afterwards we check the socket state for \verb|TCP_LISTEN| which indicates that the socket is ready to accept a connection. If the socket has the correct state we queue the \verb|accept_work| on the \verb|accept_wq| work queue, which is part of the PEP server.
 
-\paragraph{Packet Forwarding Queues}
+\paragraph{Packet Forwarding Queues}\label{sec:forward_queues}
 The second two work queues handle forwarding of packets, one for each direction. The reason we use two separate work and work queues because the function has to identify which socket it should read from and which one it should send to within the tunnel socket pair. \\
 
 [PICTURE PERHAPS?]
 
-\subsection{Kernel TCP receive and send.}
-The kernel uses the message functions \verb|recvmsg| and \verb|sendmsg| for reading and sending via sockets.
-These functions have some overhead which will clutter the code, therefore two helper function will be used instead. \verb|pep_tcp_receive.|
+\begin{autonumlstlisting}[label=lst:pep_forward_callback]{Forwarding callback function}
+void pep_client_data_ready(struct sock* sk)
+{
+	struct pep_tunnel* tunnel = sk->sk_user_data;
+	tunnel->recv_callbacks++;
+        
+	queue_work(tunnel->server->forward_c2e_wq, &tunnel->c2e);
+        
+	default_data_ready(sk);
+}
+\end{autonumlstlisting}
+
+\subsection{Kernel TCP receive and send}
+In the kernel, the message functions \verb|recvmsg| and \verb|sendmsg| are used for reading from and sending data to sockets. However, these functions bring some overhead that can lead to code clutter. To reduce this, two helper functions will be utilized instead, \verb|pep_tcp_receive| and \verb|pep_tcp_send|. These functions mimic the usage of the \verb|send| and \verb|recv| system calls, while abstracting away the complexity of the message functions.\footnote{Add these functions as apendix code?}
+
+\begin{verbatim}
+int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size);
+int pep_tcp_send(struct socket *sock, u8* buffer, u32 size);
+\end{verbatim}
+
+The custom functions only take in the socket, buffer and size of buffer as parameters. These functions also abstract away certain error handling which are common in the kernel space such as \verb|EAGAIN| and \verb|ERESTARTSYS|, both of which indicate to retry a function.
 
 \subsection{Client Sockets - Endpoint Sockets}
-The two main forwarding functions are responsible for reading packets from a socket and forward to the correct receiving socket. In the kernel there 
+As discussed in Section \ref{sec:forward_queues}, there are two functions responsible for fowarding packets. After queuing a forwarding work from a callback, the corresponding function is executed.
 
-\begin{autonumlstlisting}[label=lst:pep_forward]{Forwarding Function (Simplified)}
+\begin{autonumlstlisting}[label=lst:pep_forward]{Client Forwarding Function (Simplified)}
 void pep_client_receive_work(struct work_struct *work)
 {
 	int ret = 1;
@@ -790,6 +808,9 @@ void pep_client_receive_work(struct work_struct *work)
 }
 \end{autonumlstlisting}
 
+Listing \ref{lst:pep_forward} shows the function that forwards data from the client to a endpoint. ...
+
+
 \subsection{Using Netfilter}
 Forwarding using Netfilters, why we dont want this.
 
@@ -814,7 +835,7 @@ Memory Managment in C, why its important, how we deal with it.
 Sender --> Receiver --> Receiver
 \\
 Data being pushed from Sender to receiver, file size, speed, delay.
-\subsection{Traffic Control Options}s
+\subsection{Traffic Control Options}
 Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter etc. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments. 
 \\
 fq codel does not allow the configuration of delay, this means we have to configure the delay on the path of the ACKS?

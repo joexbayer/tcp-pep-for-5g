@@ -66,11 +66,12 @@
 \contentsline {paragraph}{Work State problem}{29}{section*.26}%
 \contentsline {paragraph}{Accept Work Queue}{30}{section*.27}%
 \contentsline {paragraph}{Packet Forwarding Queues}{30}{section*.28}%
-\contentsline {subsection}{\numberline {4.3.5}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}Using Netfilter}{31}{subsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.3.7}PEP Connections}{31}{subsection.4.3.7}%
-\contentsline {subsection}{\numberline {4.3.8}Userspace?}{31}{subsection.4.3.8}%
-\contentsline {subsection}{\numberline {4.3.9}Threads Vs. Callbacks}{31}{subsection.4.3.9}%
+\contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{31}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Using Netfilter}{32}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}PEP Connections}{32}{subsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.3.9}Userspace?}{32}{subsection.4.3.9}%
+\contentsline {subsection}{\numberline {4.3.10}Threads Vs. Callbacks}{32}{subsection.4.3.10}%
 \contentsline {section}{\numberline {4.4}Memory}{32}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Evaluation}{33}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Initial configuration}{33}{section.5.1}%

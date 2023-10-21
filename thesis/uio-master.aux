@@ -2,13 +2,10 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
-\global\let\oldcontentsline\contentsline
-\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
-\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -119,7 +116,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Implications}{21}{subsection.4.1.3}\protected@file@percent }
 \newlabel{lst:pep_tcp_receive}{{4.1}{21}{kernel\_recvmsg wrapper for receiving for TCP msgs}{lstlisting.4.1}{}}
 \newlabel{lst:pep_tcp_receive@cref}{{[listing][1][4]4.1}{[1][21][]21}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}kernel\_recvmsg wrapper for receiving for TCP msgs}{21}{lstlisting.4.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}{\ignorespaces kernel\_recvmsg wrapper for receiving for TCP msgs}}{21}{lstlisting.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}TLV Library}{22}{section.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Important socket system calls}{23}{section*.16}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{23}{subsection.4.2.1}\protected@file@percent }
@@ -161,15 +158,21 @@
 \newlabel{lst:pep_accept_callback}{{4.3.3}{30}{Accept Work Queue}{tcb@cnt@autonumlstlisting.4.3.3}{}}
 \newlabel{lst:pep_accept_callback@cref}{{[tcb@cnt@autonumlstlisting][3][4,3]4.3.3}{[1][30][]30}}
 \@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.3}{\ignorespaces Listing 4.3.3: Accept callback function}}{30}{tcb@cnt@autonumlstlisting.4.3.3}\protected@file@percent }
+\newlabel{sec:forward_queues}{{4.3.4}{30}{Packet Forwarding Queues}{section*.28}{}}
+\newlabel{sec:forward_queues@cref}{{[subsection][4][4,3]4.3.4}{[1][30][]30}}
 \@writefile{toc}{\contentsline {paragraph}{Packet Forwarding Queues}{30}{section*.28}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.5}\protected@file@percent }
-\newlabel{lst:pep_forward}{{4.3.4}{31}{Client Sockets - Endpoint Sockets}{tcb@cnt@autonumlstlisting.4.3.4}{}}
-\newlabel{lst:pep_forward@cref}{{[tcb@cnt@autonumlstlisting][4][4,3]4.3.4}{[1][30][]31}}
-\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.4}{\ignorespaces Listing 4.3.4: Forwarding Function (Simplified)}}{31}{tcb@cnt@autonumlstlisting.4.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}Using Netfilter}{31}{subsection.4.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}PEP Connections}{31}{subsection.4.3.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.8}Userspace?}{31}{subsection.4.3.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.9}Threads Vs. Callbacks}{31}{subsection.4.3.9}\protected@file@percent }
+\newlabel{lst:pep_forward_callback}{{4.3.4}{31}{Packet Forwarding Queues}{tcb@cnt@autonumlstlisting.4.3.4}{}}
+\newlabel{lst:pep_forward_callback@cref}{{[tcb@cnt@autonumlstlisting][4][4,3]4.3.4}{[1][30][]31}}
+\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.4}{\ignorespaces Listing 4.3.4: Forwarding callback function}}{31}{tcb@cnt@autonumlstlisting.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{31}{subsection.4.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.6}\protected@file@percent }
+\newlabel{lst:pep_forward}{{4.3.5}{32}{Client Sockets - Endpoint Sockets}{tcb@cnt@autonumlstlisting.4.3.5}{}}
+\newlabel{lst:pep_forward@cref}{{[tcb@cnt@autonumlstlisting][5][4,3]4.3.5}{[1][31][]32}}
+\@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.5}{\ignorespaces Listing 4.3.5: Forwarding Function (Simplified)}}{32}{tcb@cnt@autonumlstlisting.4.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}Using Netfilter}{32}{subsection.4.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.8}PEP Connections}{32}{subsection.4.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.9}Userspace?}{32}{subsection.4.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.10}Threads Vs. Callbacks}{32}{subsection.4.3.10}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Memory}{32}{section.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Evaluation}{33}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
