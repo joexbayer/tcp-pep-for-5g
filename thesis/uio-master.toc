@@ -70,19 +70,20 @@
 \contentsline {subsection}{\numberline {4.3.6}Client Sockets - Endpoint Sockets}{31}{subsection.4.3.6}%
 \contentsline {subsection}{\numberline {4.3.7}Using Netfilter}{32}{subsection.4.3.7}%
 \contentsline {subsection}{\numberline {4.3.8}PEP Connections}{32}{subsection.4.3.8}%
-\contentsline {subsection}{\numberline {4.3.9}Userspace?}{32}{subsection.4.3.9}%
-\contentsline {subsection}{\numberline {4.3.10}Threads Vs. Callbacks}{32}{subsection.4.3.10}%
-\contentsline {section}{\numberline {4.4}Memory}{32}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Evaluation}{33}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Initial configuration}{33}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{33}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{33}{subsection.5.1.2}%
-\contentsline {paragraph}{FIFO}{33}{section*.29}%
-\contentsline {paragraph}{FQ CoDel: IMPORTANT}{34}{section*.30}%
-\contentsline {paragraph}{PFIFO}{34}{section*.31}%
-\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{34}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{34}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{35}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}Spike}{35}{subsection.5.1.6}%
-\contentsline {chapter}{\numberline {6}Conclusion}{36}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Future Work}{36}{section.6.1}%
+\contentsline {subsection}{\numberline {4.3.9}Userspace?}{33}{subsection.4.3.9}%
+\contentsline {subsection}{\numberline {4.3.10}Threads Vs. Callbacks}{33}{subsection.4.3.10}%
+\contentsline {subsection}{\numberline {4.3.11}Configuration}{33}{subsection.4.3.11}%
+\contentsline {section}{\numberline {4.4}Memory}{33}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Evaluation}{34}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Initial configuration}{34}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{34}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{34}{subsection.5.1.2}%
+\contentsline {paragraph}{FIFO}{34}{section*.29}%
+\contentsline {paragraph}{FQ CoDel: IMPORTANT}{35}{section*.30}%
+\contentsline {paragraph}{PFIFO}{35}{section*.31}%
+\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{35}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{35}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{36}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Spike}{36}{subsection.5.1.6}%
+\contentsline {chapter}{\numberline {6}Conclusion}{37}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Future Work}{37}{section.6.1}%

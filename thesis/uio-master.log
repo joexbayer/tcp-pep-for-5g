@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.6.1)  21 OCT 2023 19:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.6.1)  22 OCT 2023 15:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1339,44 +1339,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 754--755
 (./uio-master.listing) [30]
 \openout8 = `uio-master.listing'.
 
- (./uio-master.listing) [31] [32]
-Chapter 5.
-[33
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 856--857
+ (./uio-master.listing) [31]
+Underfull \hbox (badness 10000) in paragraph at lines 811--812
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=870, 443.95862pt x 3
+[32] [33]
+Chapter 5.
+[34
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 863--864
+
+ []
+
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=876, 443.95862pt x 3
 19.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 861.
+ used on input line 868.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 867--869
+Underfull \hbox (badness 10000) in paragraph at lines 874--876
 
  []
 
-[34 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [35]
+[35 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [36]
 Chapter 6.
-(./uio-master.bbl [36
+(./uio-master.bbl [37
 
-] [37
+] [38
 
-]) [38] (./uio-master.aux)
+]) [39] (./uio-master.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `uio-master.out' has not changed.
-(rerunfilecheck)             Checksum: 317A80881AE792FF1AAD0AEE87AC2BDF;9553.
+
+Package rerunfilecheck Warning: File `uio-master.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `uio-master.out':
+(rerunfilecheck)             Before: 317A80881AE792FF1AAD0AEE87AC2BDF;9553
+(rerunfilecheck)             After:  4854DF584DA431CAEA8274CA0CD22C67;9681.
  ) 
 Here is how much of TeX's memory you used:
- 32218 strings out of 478008
- 647654 string characters out of 5839803
+ 32220 strings out of 478008
+ 647678 string characters out of 5839803
  2014330 words of memory out of 5000000
  51454 multiletter control sequences out of 15000+600000
  543037 words of font info for 76 fonts, out of 8000000 for 9000
@@ -1398,10 +1409,10 @@ e/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk>{/usr/share
 /texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (44 pages, 669436 bytes).
+Output written on uio-master.pdf (45 pages, 670818 bytes).
 PDF statistics:
- 1627 PDF objects out of 1728 (max. 8388607)
- 932 compressed objects within 10 object streams
- 344 named destinations out of 1000 (max. 500000)
+ 1634 PDF objects out of 1728 (max. 8388607)
+ 937 compressed objects within 10 object streams
+ 346 named destinations out of 1000 (max. 500000)
  730 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -209,6 +209,8 @@ Congestion controllers and packet schedulers are also usually implemented as ker
 However, the using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel panic, which usually requires a complete system restart to fix.
 
 \section{Related Work}
+PEPDNA? 0RTT transport converter?
+
 
 \chapter{Design}
 A good design for the PEP is crucial as it both needs to be robust, fast and reliable. Not all of the goals are equally achievable, an other aspects need to be considered such as cross platform compatibility. The overarching goal is to improve the completion times of the non-interactive traffic while avoiding to disturb the interactive flows.\\
@@ -777,6 +779,12 @@ int pep_tcp_send(struct socket *sock, u8* buffer, u32 size);
 
 The custom functions only take in the socket, buffer and size of buffer as parameters. These functions also abstract away certain error handling which are common in the kernel space such as \verb|EAGAIN| and \verb|ERESTARTSYS|, both of which indicate to retry a function.
 
+\subsection{Accept and Endpoint connection}
+The accept work will call the \verb|pep_server_accept_work| which is responsible for creating a new tunnel and connection to the desired endpoint. First the server state is fetched by using \verb|container_of|, after which we assert that the server is in a operational state. Next, the kernel will accept a new connection in a non-blocking fashion as we know there is a incomming connection request.\\
+
+After sucessfully accepting the client we immediately allocate a buffer and read from the client. We expect it to send a TLV with TCP Fast Open, so we use the TLV library to validate and read the TLV options. Note that even if TCP Fast Open should fail the connection can still be established at the cost of the additional round trip times. Specifically we look for the \verb|TLV_CONNECT| option, which will be used to connect to the endpoint.\\
+
+
 \subsection{Client Sockets - Endpoint Sockets}
 As discussed in Section \ref{sec:forward_queues}, there are two functions responsible for fowarding packets. After queuing a forwarding work from a callback, the corresponding function is executed.
 
@@ -808,22 +816,26 @@ void pep_client_receive_work(struct work_struct *work)
 }
 \end{autonumlstlisting}
 
-Listing \ref{lst:pep_forward} shows the function that forwards data from the client to a endpoint. ...
+Listing \ref{lst:pep_forward} shows the function that forwards data from the client to a endpoint. First we retrieve the tunnel state by using \verb|container_of|, this gives us the sockets which triggered the original callback. After that, a buffer is allocated and data is read from a socket and forwarded. This function will run while there is data to send, the reason is that it is more effect to read all the data that is avaiable than to wait for a callback and work queue to trigger.\\
 
-
-\subsection{Using Netfilter}
-Forwarding using Netfilters, why we dont want this.
+If a socket returns 0 or less we check if the connection is closed, that is because the closing of a connection will trigger the same callback. However, when a socket is closed it will return 0 or an appropriate error code. (How shutdown is done, RW, WR, etc)
 
 \subsection{PEP Connections}
-How handling of multiple connections work
-Freeing?
-Closing?
+By design the PEP is able to handle multiple connections at once. Each socket pair has its own work structure for each communication direction. This means, each work structure can run in parallel, in both directions. Each tunnel (socket pair) is added to a linked list in the server state. Meaning we have access to them incase we need to prematurely terminate the connections. This will avoid any memory leaks since we manage the memory for the tunnels.\\
 
 \subsection{Userspace?}
 Could this be implemented in user-space?
 
 \subsection{Threads Vs. Callbacks}
 Small discussion around that?
+
+\subsection{System Configurations}
+The PEP will require some configuration outside of the kernel module itself. TCP fast open as to be enabled... Socket buffer sizes.
+
+
+\subsection{Using Netfilter}
+Forwarding using Netfilters, why we dont want this.
+
 
 \section{Memory}
 Memory Managment in C, why its important, how we deal with it.
