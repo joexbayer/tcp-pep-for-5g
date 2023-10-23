@@ -1,16 +1,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans\relax }}{6}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{9}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans}}{6}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{9}{figure.caption.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The TCP handshake procedure across PEP\relax }}{17}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{18}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The TCP handshake procedure across PEP}}{17}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{18}{figure.caption.15}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces PEP State Structure Code\relax }}{26}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Kernel Sock Structure\relax }}{27}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{28}{figure.4.3}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces PEP State Structure Code}}{26}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Kernel Sock Structure}}{27}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Work struct from Linux - workqueue.h}}{28}{figure.4.3}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic\relax }}{35}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic}}{37}{figure.caption.32}%
 \addvspace {10\p@ }

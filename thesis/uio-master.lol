@@ -6,4 +6,5 @@
 \contentsline {tcolorbox}{\numberline {4.3.2}{\ignorespaces Listing 4.3.2: Work using containerof example}}{29}{tcb@cnt@autonumlstlisting.4.3.2}%
 \contentsline {tcolorbox}{\numberline {4.3.3}{\ignorespaces Listing 4.3.3: Accept callback function}}{30}{tcb@cnt@autonumlstlisting.4.3.3}%
 \contentsline {tcolorbox}{\numberline {4.3.4}{\ignorespaces Listing 4.3.4: Forwarding callback function}}{31}{tcb@cnt@autonumlstlisting.4.3.4}%
-\contentsline {tcolorbox}{\numberline {4.3.5}{\ignorespaces Listing 4.3.5: Client Forwarding Function (Simplified)}}{32}{tcb@cnt@autonumlstlisting.4.3.5}%
+\contentsline {tcolorbox}{\numberline {4.3.5}{\ignorespaces Listing 4.3.5: PEP server initialization (Simplified)}}{32}{tcb@cnt@autonumlstlisting.4.3.5}%
+\contentsline {tcolorbox}{\numberline {4.3.6}{\ignorespaces Listing 4.3.6: Client Forwarding Function (Simplified)}}{34}{tcb@cnt@autonumlstlisting.4.3.6}%
