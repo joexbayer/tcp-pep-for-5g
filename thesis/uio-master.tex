@@ -580,8 +580,8 @@ A shared library can be created by passing the \verb|-shared| flag to the linker
 $ gcc file.c <path>/<lib>.so -o file.o
 \end{verbatim}
 
-\section{PEP}
-Brief description of the PEP internals, sockets, queues, forwading, hooks.
+\section{PEP - Internals}
+The internals of the PEP will consists of many important components. Importantly we have the sockets, socket pairs (tunnels) and deferred works. The PEP itself will need to keep track of its state and the state of all its tunnels, additionally we need to keep track of all running tasks. Since out code will be a kernel module and running 'inside' the kernel, we will have access to a lot of existing infrastructure which normally is only accessible by the kernel. 
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering

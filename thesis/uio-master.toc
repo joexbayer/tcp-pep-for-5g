@@ -53,9 +53,9 @@
 \contentsline {paragraph}{Problems using TFO}{25}{section*.20}%
 \contentsline {subsection}{\numberline {4.2.3}TLV Options}{25}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Shared Library}{25}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}PEP}{25}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Architecture}{25}{subsection.4.3.1}%
-\contentsline {paragraph}{Tunnels}{26}{section*.22}%
+\contentsline {section}{\numberline {4.3}PEP - Internals}{25}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Architecture}{26}{subsection.4.3.1}%
+\contentsline {paragraph}{Tunnels}{27}{section*.22}%
 \contentsline {paragraph}{PEP Tunnel Structure}{27}{section*.23}%
 \contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{27}{subsection.4.3.2}%
 \contentsline {paragraph}{Socket Operations}{28}{section*.24}%
