@@ -3,8 +3,28 @@
 
 #include <pep/common.h>
 
+/* default server operators */
+struct pep_state_ops {
+        int (*init)(struct pep_state* server, u16 port);
+        int (*start)(struct pep_state* server);
+        int (*stop)(struct pep_state* server);
+};
+
+/* default server work operators */
+struct pep_state_work_ops {
+        /* work for accepting new connections */
+        void (*accept)(struct work_struct *work);
+        /* work for forwarding data from client to endpoint */
+        void (*forward_c2e)(struct work_struct *work);
+        /* work for forwarding data from endpoint to client */
+        void (*forward_e2c)(struct work_struct *work);
+};
+
 struct pep_state {
         struct socket* server_socket;
+
+        struct pep_state_ops ops;
+        struct pep_state_work_ops work_ops;
 
         atomic_t state;
         
@@ -17,6 +37,9 @@ struct pep_state {
         struct list_head tunnels;
         unsigned int total_tunnels;
 };
+
+struct pep_state* pep_new_server(void);
+void pep_server_clean(struct pep_state* server);
 
 void pep_server_accept_work(struct work_struct *work);
 void pep_listen_data_ready(struct sock* sk);

@@ -26,12 +26,13 @@
 #define DRIVER_AUTHOR "Joe Bayer <joeba@uio.no>" 
 #define DRIVER_DESC "Kernel module for a Traffic PEP"
 
-struct pep_state server_state;
+struct pep_state* server;
 
 static int __init init_core(void)
 {
+        server = pep_new_server();
 
-        pep_server_init(&server_state, 8181);
+        server->ops->init(server, 8181);
 
         return 0; /* Module loaded successfully. */
 }
@@ -39,9 +40,7 @@ static int __init init_core(void)
 
 static void __exit exit_core(void)
 {
-        if(server_state.server_socket != NULL){
-                sock_release(server_state.server_socket);
-        }
+        pep_server_clean(server);
 }   
 
 module_init(init_core);

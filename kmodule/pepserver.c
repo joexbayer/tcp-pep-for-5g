@@ -4,13 +4,48 @@
 #include <pep/errors.h>
 #include <pep/tcp.h>
 
-enum pep_states  {
-        PEP_SERVER_RUNNING,
-        PEP_SERVER_STOPPED
+
+typedef enum pep_states  {
+		PEP_SERVER_UNINITIALIZED = 0,
+        PEP_SERVER_RUNNING =  1 << 0,
+        PEP_SERVER_STOPPED = 1 << 1
+} pep_state_t;
+
+/* default server operators */
+static struct pep_state_ops default_server_ops = {
+		.init = &pep_server_init,
+		.start = NULL,
+		.stop = &pep_server_clean
+};
+
+/* default work callback functions */
+static struct pep_state_work_ops default_server_work_ops = {
+		.accept = pep_server_accept_work,
+		.forward_c2e = pep_client_receive_work,
+		.forward_e2c = pep_endpoint_receive_work
 };
 
 /**
- * @brief Responsible for accepting a new client and connection to the desired endpoint.
+ * @brief Create a new server object.
+ * Sets the default operators and work functions.
+ * @return struct pep_state* 
+ */
+struct pep_state* pep_new_server(void)
+{
+		struct pep_state* server = kzalloc(sizeof(struct pep_state), GFP_KERNEL);
+		if(!server){
+				printk(KERN_INFO "[PEP] pep_new_server: out of memory \n");
+				return NULL;
+		}
+
+		server->ops = default_server_ops;
+		server->work_ops = default_server_work_ops;
+
+		return server;
+}
+
+/**
+ * @brief Accept new connections and create new tunnels.
  * 
  * @param work 
  */
@@ -162,6 +197,8 @@ void pep_server_clean(struct pep_state* server)
 	destroy_workqueue(server->forward_e2c_wq);
 
 	sock_release(server->server_socket);
+
+	kfree(server);
 }
 
 void pep_listen_data_ready(struct sock* sk)

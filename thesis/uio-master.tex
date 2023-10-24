@@ -317,8 +317,6 @@ The most sustainable choice will be TCP Fast Open, adding new TCP Options is sim
 \section{Scheduling Algorithms}
 The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible. The impact will be shown in the Evaluation chapter.
 
-
-
 \section{Summary}
 
 {Table of design decisions based on different PEP implementations compared to ours.}
@@ -585,6 +583,12 @@ $ gcc file.c <path>/<lib>.so -o file.o
 \section{PEP}
 Brief description of the PEP internals, sockets, queues, forwading, hooks.
 
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.35]{../diagrams/drawio/pep_architecture.png}
+  	\caption{The architecture of the PEP}
+  	\label{fig:pep_architecture}
+\end{figure}
 
 \subsection{Architecture}
 The PEPs architecture is mainly based on a main server and multiple socket tunnels. The main server acts as the entry point of the PEP, clients will connect to the main server which will in turn connect to the endpoint. The server consists of a \verb|pep_state| which holds the server socket, work queues and a list of tunnels. The server socket accepts new clients and reads their TLV header, if no header is present the connection will be closed. After successfully reading the TLV, a new socket is created and a connection is attempted to the endpoint specified by the TLVs.\\
@@ -779,8 +783,10 @@ int pep_tcp_send(struct socket *sock, u8* buffer, u32 size);
 
 The custom functions only take in the socket, buffer and size of buffer as parameters. These functions also abstract away certain error handling which are common in the kernel space such as \verb|EAGAIN| and \verb|ERESTARTSYS|, both of which indicate to retry a function.
 
+\section{PEP - Server}
+
 \subsection{Server initialization}
-Server state initialization consist of creating and configuring the main server socket and work queues. The server is responsible for accepting client and creating pep tunnels. Additionally, it holds the work queues for all the PEPs functionality. Socket configuration consists of replacing the \verb|sk_data_ready| data callback, setting \verb|sk_user_data| to the server itself and using \verb|setsockopt| to set both \verb|TCP_FASTOPEN| and \verb|TCP_NODELAY|.
+Server state initialization consist of creating and configuring the main server socket and work queues. The server is responsible for accepting client and creating pep tunnels. Additionally, it holds the work queues for all the PEPs functionality. Socket configuration consists of replacing the \verb|sk_data_ready| data callback, setting \verb|sk_user_data| to the server itself and using \verb|setsockopt| to set both \verb|TCP_FASTOPEN| and \verb|TCP_NODELAY|. \verb|TCP_NODELAY| is set to avoid socket latency by 'waiting' for larger frames.
 
 \begin{autonumlstlisting}[label=lst:pep_server_init]{PEP server initialization (Simplified)}
 int pep_server_init(struct pep_state* server, u16 port)
@@ -822,13 +828,68 @@ int pep_server_init(struct pep_state* server, u16 port)
 	return 0;
 }
 \end{autonumlstlisting}
-Line 20 in Listing \ref{lst:pep_server_init} configures the \verb|sk_data_ready| callback to the before mentioned \verb|pep_listen_data_ready|, when overwriting the \verb|sk_data_ready| we need to make sure we hold the socket \verb|sk_callback_lock| to avoid any race conditions which is done in line 17 and 21. The accept and forward work queues are allocated and created with \verb|WQ_HIGHPRI| and \verb|WQ_UNBOUND| ...
+
+Line 20 in Listing \ref{lst:pep_server_init} configures the \verb|sk_data_ready| callback to the before mentioned \verb|pep_listen_data_ready|, when overwriting the \verb|sk_data_ready| we need to make sure we hold the socket \verb|sk_callback_lock| to avoid any race conditions which is done in line 17 and 21. The accept and forward work queues are allocated and created with \verb|WQ_HIGHPRI| and \verb|WQ_UNBOUND|.\\
+
+\noindent\begin{minipage}{\linewidth}
+\begin{verbatim}
+WQ_HIGHPRI
+    Work items of a highpri wq are queued
+    to the highpri worker-pool of the target cpu.
+
+WQ_UNBOUND
+    Work items queued to an unbound wq are served
+    by the special worker-pools which host workers
+    which are not bound to any specific CPU.
+\end{verbatim}
+\captionof{figure}{https://docs.kernel.org/core-api/workqueue.html}
+%\label{fig:work_struct}
+\end{minipage}\\
+
+The reason for both \verb|WQ_HIGHPRI| and \verb|WQ_UNBOUND| is to avoid any added latency by work queuing, especially if there are a lot of other works being queued. Work queues are used by the kernel for any deferred work, which means that there might be competition for both CPU and scheduling. The before mentioned flags assure that the PEP work's are prioritized.\\
+
+Left out from Listing \ref{lst:pep_server_init} is the creating of the accept work itself. It uses the \verb|INIT_WORK| macro (shown in \ref{lst:work_init}) with the \verb|pep_listen_data_ready| function. After that the server is configured and ready for accept callbacks.
 
 \subsection{Accept and Endpoint connection}
 The accept work will call the \verb|pep_server_accept_work| which is responsible for creating a new tunnel and connection to the desired endpoint. First the server state is fetched by using \verb|container_of|, after which we assert that the server is in a operational state. Next, the kernel will accept a new connection in a non-blocking fashion as we know there is a incoming connection request.\\
 
+\begin{autonumlstlisting}[label=lst:pep_server_accept]{PEP server accept function (Simplified)}
+int pep_server_accept_work(struct work_struct *work)
+{
+    struct pep_state* server = container_of(work, struct pep_state, accept_work);
+
+    rc = kernel_accept(server->server_socket, ...);
+    
+    ... read data from socket ...
+
+    /* Validate tlv header. */
+    if(!tlv_validate(buffer)){
+        return;
+    }
+    
+    /* Get connect tlv options from tlv buffer */
+    tlv = tlv_get_option(TLV_CONNECT, buffer);
+    if(tlv == NULL || tlv->length != 6){
+        sock_release(client);
+        return; 
+    }
+
+    endpoint = pep_endpoint_connect(tlv->optional, tlv->value);
+    if(NULL == endpoint){
+        sock_release(client);
+        return; 
+    }
+    
+    ... configure sockets and tunnel ...
+    
+    return 0;
+}
+\end{autonumlstlisting}
+
+
 After successfully accepting the client we immediately allocate a buffer and read from the client. We expect it to send a TLV with TCP Fast Open, so we use the TLV library to validate and read the TLV options. Note that even if TCP Fast Open should fail the connection can still be established at the cost of the additional round trip times. Specifically we look for the \verb|TLV_CONNECT| option, which will be used to connect to the endpoint.\\
 
+\section{PEP - Clients}
 
 \subsection{Client Sockets - Endpoint Sockets}
 As discussed in Section \ref{sec:forward_queues}, there are two functions responsible for forwarding packets. After queuing a forwarding work from a callback, the corresponding function is executed.
@@ -868,14 +929,55 @@ If a socket returns 0 or less we check if the connection is closed, that is beca
 \subsection{PEP Connections}
 By design the PEP is able to handle multiple connections at once. Each socket pair has its own work structure for each communication direction. This means, each work structure can run in parallel, in both directions. Each tunnel (socket pair) is added to a linked list in the server state. Meaning we have access to them in case we need to prematurely terminate the connections. This will avoid any memory leaks since we manage the memory for the tunnels.\\
 
+\subsection{Module Customization}
+PEP ops and PEP work ops.\\\\
+\noindent\begin{minipage}{\linewidth}
+\begin{verbatim}
+struct pep_state_work_ops {
+    void (*accept)(struct work_struct *work);
+    void (*forward_c2e)(struct work_struct *work);
+    void (*forward_e2c)(struct work_struct *work);
+};
+\end{verbatim}
+\captionof{figure}{Work operation table}
+%\label{fig:work_struct}
+\end{minipage}\\
+
+\subsection{System Configurations}
+The PEP will require some configuration outside of the kernel module itself. Linux uses \verb|sysctl| for system configuration. Most importantly we want to enable TCP Fast Open and IP forwarding, IP forwarding will allow the Linux machine to act as a router and forward packets, which is important as the PEP will handle all other traffic as well. Both these options are under \verb|net.ipv4| ...\\
+
+\begin{verbatim}
+$ sysctl -w net.ipv4.tcp_fastopen=3
+$ sysctl -w net.ipv4.ip_forward=1 
+\end{verbatim}
+
+\paragraph{Buffer sizes}
+The PEP works by buffering as much data as possible on the sockets themselves. This way we avoid buffering interactive traffic that simply passes by. The size of a socket's buffer can be configured with \verb|setsockopt|, however this is not reliable and has to be done for each socket. Instead we can configure the socket buffer sizes system-wide. Under \verb|net.core.| there exists configurations for overall receive buffer sizes: \verb|rmem_max| and \verb|wmem_max|. There also exists the same for the default variables \verb|rmem_default| and \verb|wmem_default|.\\
+
+\begin{verbatim}
+$ sudo sysctl -w net.core.rmem_max=<size>;
+$ sudo sysctl -w net.core.wmem_max=<size>;
+$ sudo sysctl -w net.core.rmem_default=<size>;
+$ sudo sysctl -w net.core.wmem_default=<size>;
+\end{verbatim}
+
+Additionally, under \verb|net.ipv4| there are options to configure the amount of memory in bytes a socket can buffer for both total, read and write. Each contains three numbers: the minimum, default, and maximum values.
+
+% [https://wiki.linuxfoundation.org/networking/tcp_memory_documentation]
+
+\begin{verbatim}
+$ sudo sysctl -w net.ipv4.tcp_rmem='<min size> <size> < max size>';
+$ sudo sysctl -w net.ipv4.tcp_wmem='<min size> <size> < max size>';
+$ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max size>';
+\end{verbatim}
+
+
+
 \subsection{Userspace?}
 Could this be implemented in user-space?
 
 \subsection{Threads Vs. Callbacks}
 Small discussion around that?
-
-\subsection{System Configurations}
-The PEP will require some configuration outside of the kernel module itself. TCP fast open as to be enabled... Socket buffer sizes.
 
 
 \subsection{Using Netfilter}
@@ -944,4 +1046,4 @@ To further evaluate the PEP we conducted an experiment where we have 1-10 flows 
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
-\end{document}s
+\end{document}
