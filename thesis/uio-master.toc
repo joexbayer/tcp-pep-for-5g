@@ -37,59 +37,63 @@
 \contentsline {paragraph}{TCP Fast Open}{17}{section*.13}%
 \contentsline {paragraph}{Optimal Choice}{17}{section*.14}%
 \contentsline {section}{\numberline {3.5}Scheduling Algorithms}{18}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Summary}{18}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Implementation}{19}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Kernel Module}{19}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Kernel Hooks}{20}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Linux Version and Distribution}{21}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Implications}{21}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}TLV Library}{22}{section.4.2}%
-\contentsline {paragraph}{Important socket system calls}{23}{section*.16}%
-\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{23}{subsection.4.2.1}%
-\contentsline {paragraph}{The custom connect function signature}{24}{section*.17}%
-\contentsline {subsection}{\numberline {4.2.2}TLV}{24}{subsection.4.2.2}%
-\contentsline {paragraph}{TLV structures}{24}{section*.18}%
-\contentsline {paragraph}{TLV Implementation}{24}{section*.19}%
-\contentsline {paragraph}{Problems using TFO}{25}{section*.20}%
-\contentsline {subsection}{\numberline {4.2.3}TLV Options}{25}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Shared Library}{25}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}PEP - Internals}{25}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Architecture}{26}{subsection.4.3.1}%
-\contentsline {paragraph}{Tunnels}{27}{section*.22}%
-\contentsline {paragraph}{PEP Tunnel Structure}{27}{section*.23}%
-\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{27}{subsection.4.3.2}%
-\contentsline {paragraph}{Socket Operations}{28}{section*.24}%
-\contentsline {paragraph}{Socket Callbacks}{28}{section*.25}%
-\contentsline {paragraph}{Socket User Data}{28}{section*.26}%
-\contentsline {subsection}{\numberline {4.3.3}Work Queues}{28}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Works}{29}{subsection.4.3.4}%
-\contentsline {paragraph}{Work State problem}{29}{section*.27}%
-\contentsline {paragraph}{Accept Work Queue}{30}{section*.28}%
-\contentsline {paragraph}{Packet Forwarding Queues}{31}{section*.29}%
-\contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{32}{subsection.4.3.5}%
-\contentsline {section}{\numberline {4.4}PEP - Server}{32}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Server initialization}{32}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Accept and Endpoint connection}{34}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}PEP - Clients}{35}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Client Sockets - Endpoint Sockets}{35}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}PEP Connections}{36}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Module Customization}{37}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}System Configurations}{37}{subsection.4.5.4}%
-\contentsline {paragraph}{Buffer sizes}{37}{section*.30}%
-\contentsline {subsection}{\numberline {4.5.5}Userspace?}{38}{subsection.4.5.5}%
-\contentsline {subsection}{\numberline {4.5.6}Threads Vs. Callbacks}{38}{subsection.4.5.6}%
-\contentsline {subsection}{\numberline {4.5.7}Using Netfilter}{38}{subsection.4.5.7}%
-\contentsline {section}{\numberline {4.6}Memory}{38}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Evaluation}{39}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Initial configuration}{39}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{39}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{39}{subsection.5.1.2}%
-\contentsline {paragraph}{FIFO}{39}{section*.31}%
-\contentsline {paragraph}{FQ CoDel: IMPORTANT}{40}{section*.32}%
-\contentsline {paragraph}{PFIFO}{40}{section*.33}%
-\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{40}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{40}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{41}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}Spike}{41}{subsection.5.1.6}%
-\contentsline {chapter}{\numberline {6}Conclusion}{42}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Future Work}{42}{section.6.1}%
+\contentsline {section}{\numberline {3.6}Buffering}{18}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Socket buffers}{18}{subsection.3.6.1}%
+\contentsline {section}{\numberline {3.7}Summary}{19}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Implementation}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kernel Module}{20}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Kernel Hooks}{21}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Linux Version and Distribution}{22}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Implications}{22}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}TLV Library}{23}{section.4.2}%
+\contentsline {paragraph}{Important socket system calls}{24}{section*.16}%
+\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{24}{subsection.4.2.1}%
+\contentsline {paragraph}{The custom connect function signature}{25}{section*.17}%
+\contentsline {subsection}{\numberline {4.2.2}TLV}{25}{subsection.4.2.2}%
+\contentsline {paragraph}{TLV structures}{25}{section*.18}%
+\contentsline {paragraph}{TLV Implementation}{25}{section*.19}%
+\contentsline {paragraph}{Problems using TFO}{26}{section*.20}%
+\contentsline {subsection}{\numberline {4.2.3}TLV Options}{26}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Shared Library}{26}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}PEP - Internals}{26}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Architecture}{27}{subsection.4.3.1}%
+\contentsline {paragraph}{Tunnels}{28}{section*.22}%
+\contentsline {paragraph}{PEP Tunnel Structure}{28}{section*.23}%
+\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{29}{subsection.4.3.2}%
+\contentsline {paragraph}{Socket Operations}{29}{section*.24}%
+\contentsline {paragraph}{Socket Callbacks}{29}{section*.25}%
+\contentsline {paragraph}{Socket User Data}{29}{section*.26}%
+\contentsline {subsection}{\numberline {4.3.3}Work Queues}{30}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Works}{30}{subsection.4.3.4}%
+\contentsline {paragraph}{Work State problem}{31}{section*.27}%
+\contentsline {paragraph}{Accept Work Queue}{32}{section*.28}%
+\contentsline {paragraph}{Packet Forwarding Queues}{32}{section*.29}%
+\contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{33}{subsection.4.3.5}%
+\contentsline {section}{\numberline {4.4}PEP - Server}{33}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Creation}{33}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Server initialization}{33}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Accept and Endpoint connection}{35}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Multiple Servers}{36}{subsection.4.4.4}%
+\contentsline {section}{\numberline {4.5}PEP - Clients}{37}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Client Sockets - Endpoint Sockets}{37}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}PEP Connections}{38}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Module Customization}{38}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}System Configurations}{39}{subsection.4.5.4}%
+\contentsline {paragraph}{Buffer sizes}{39}{section*.30}%
+\contentsline {subsection}{\numberline {4.5.5}Userspace?}{40}{subsection.4.5.5}%
+\contentsline {subsection}{\numberline {4.5.6}Threads Vs. Callbacks}{40}{subsection.4.5.6}%
+\contentsline {subsection}{\numberline {4.5.7}Using Netfilter}{40}{subsection.4.5.7}%
+\contentsline {section}{\numberline {4.6}Memory}{40}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Evaluation}{41}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Initial configuration}{41}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Traffic Control Options}{41}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Scheduling Algorithms}{41}{subsection.5.1.2}%
+\contentsline {paragraph}{FIFO}{41}{section*.31}%
+\contentsline {paragraph}{FQ CoDel: IMPORTANT}{42}{section*.32}%
+\contentsline {paragraph}{PFIFO}{42}{section*.33}%
+\contentsline {subsection}{\numberline {5.1.3}Interactive vs PEP}{42}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}PEP vs E2E tests}{42}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}10x10 tests}{43}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Spike}{43}{subsection.5.1.6}%
+\contentsline {chapter}{\numberline {6}Conclusion}{44}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Future Work}{44}{section.6.1}%

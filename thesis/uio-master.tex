@@ -318,9 +318,10 @@ The most sustainable choice will be TCP Fast Open, adding new TCP Options is sim
 The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible. The impact will be shown in the Evaluation chapter.
 
 \section{Buffering}
-The size of a 'internet buffer' has been a long and heated discussion. Normally the context of buffers in the networks revolves around NIC buffers or routing buffers. These buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. Since the PEP is connection splitting we can utilize a different buffer, the socket buffers.\\
+The size of a 'network buffer' has been a long and heated discussion. Normally the context of buffers in the network, revolves around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. Since the PEP is connection splitting we can utilize a different buffer, the socket buffers.\\
 
-Socket buffer do not affect traffic which flows through the host machine.
+\subsection{Socket buffers}
+A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each indiviudal read / write buffer can configured for the best performance.
 
 \section{Summary}
 
@@ -602,6 +603,10 @@ The PEPs architecture is mainly based on a main server and multiple socket tunne
 \begin{verbatim}
 struct pep_state {
     atomic_t state;
+    
+    struct pep_state_ops* ops;
+    struct pep_state_work_ops* work_ops;
+    
     struct socket* server_socket;
     struct workqueue_struct* accept_wq;
     struct workqueue_struct* forward_c2e_wq;
@@ -790,6 +795,8 @@ The custom functions only take in the socket, buffer and size of buffer as param
 
 \section{PEP - Server}
 
+\subsection{Creation}
+
 \subsection{Server initialization}
 Server state initialization consist of creating and configuring the main server socket and work queues. The server is responsible for accepting client and creating pep tunnels. Additionally, it holds the work queues for all the PEPs functionality. Socket configuration consists of replacing the \verb|sk_data_ready| data callback, setting \verb|sk_user_data| to the server itself and using \verb|setsockopt| to set both \verb|TCP_FASTOPEN| and \verb|TCP_NODELAY|. \verb|TCP_NODELAY| is set to avoid socket latency by 'waiting' for larger frames.
 
@@ -813,7 +820,7 @@ int pep_server_init(struct pep_state* server, u16 port)
 	/* use our own data ready function */
 	write_lock_bh(&sk->sk_callback_lock);
 	sk->sk_user_data = server;
-	sk->sk_data_ready = &pep_listen_data_ready;
+	sk->sk_data_ready = server->callbacks->server_data_ready;
 	write_unlock_bh(&sk->sk_callback_lock);
 
 	/* pep server connection info */
@@ -894,6 +901,9 @@ int pep_server_accept_work(struct work_struct *work)
 
 After successfully accepting the client we immediately allocate a buffer and read from the client. We expect it to send a TLV with TCP Fast Open, so we use the TLV library to validate and read the TLV options. Note that even if TCP Fast Open should fail the connection can still be established at the cost of the additional round trip times. Specifically we look for the \verb|TLV_CONNECT| option, which will be used to connect to the endpoint.\\
 
+\subsection{Multiple Servers}
+Because of the callback nature of the PEP we can create multiple servers on the same host machine. By not having a 'global' server in the kernel module, we are able to potentially create as many servers as we want\footnote{Should I use "we want"?}. The programmer only has to keep track of the server pointers, while the implementation of the server keeps track of the states and correct callback handling through the works. This means that each server may use the same callback function, but the state will vary.
+
 \section{PEP - Clients}
 
 \subsection{Client Sockets - Endpoint Sockets}
@@ -935,7 +945,8 @@ If a socket returns 0 or less we check if the connection is closed, that is beca
 By design the PEP is able to handle multiple connections at once. Each socket pair has its own work structure for each communication direction. This means, each work structure can run in parallel, in both directions. Each tunnel (socket pair) is added to a linked list in the server state. Meaning we have access to them in case we need to prematurely terminate the connections. This will avoid any memory leaks since we manage the memory for the tunnels.\\
 
 \subsection{Module Customization}
-PEP ops and PEP work ops.\\\\
+The PEP will follow a similiar approach as congestion control when it comes to how the PEP is configured. The basic accept and forward functions will be defined by a table, which can be created by any future model. Each server has a pointer to this table, which it uses when creating works. This mimics the way we configure socket callbacks and makes each PEP server more customizable. Each individual PEP server can have different forward functions, or keep the orignal ones.\\\\
+
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
 struct pep_state_work_ops {
@@ -945,6 +956,22 @@ struct pep_state_work_ops {
 };
 \end{verbatim}
 \captionof{figure}{Work operation table}
+%\label{fig:work_struct}
+\end{minipage}\\
+
+The work function table in combination with the fact that the PEP supports multiple servers, means that each indiviudal server can be configured different without needing to change any of the original code. Simply creating a new \verb|struct pep_state_work_ops| and supplying new work functions is enough:\\
+
+[EXAMPLE CODE]\footnote{Talk about callback table too}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{verbatim}
+struct pep_socket_callbacks {
+    void (*server_data_ready)(struct sock* sk);
+    void (*client_data_ready)(struct sock* sk);
+    void (*endpoint_data_ready)(struct sock* sk);
+};
+\end{verbatim}
+\captionof{figure}{Callback function table}
 %\label{fig:work_struct}
 \end{minipage}\\
 
@@ -966,7 +993,7 @@ $ sudo sysctl -w net.core.rmem_default=<size>;
 $ sudo sysctl -w net.core.wmem_default=<size>;
 \end{verbatim}
 
-Additionally, under \verb|net.ipv4| there are options to configure the amount of memory in bytes a socket can buffer for both total, read and write. Each contains three numbers: the minimum, default, and maximum values.
+Additionally, under \verb|net.ipv4| there are options to configure the amount of memory in bytes a TCP socket can buffer for both total, read and write. Each contains three numbers: the minimum, default, and maximum values.
 
 % [https://wiki.linuxfoundation.org/networking/tcp_memory_documentation]
 
@@ -975,8 +1002,6 @@ $ sudo sysctl -w net.ipv4.tcp_rmem='<min size> <size> < max size>';
 $ sudo sysctl -w net.ipv4.tcp_wmem='<min size> <size> < max size>';
 $ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max size>';
 \end{verbatim}
-
-
 
 \subsection{Userspace?}
 Could this be implemented in user-space?
@@ -993,7 +1018,7 @@ Forwarding using Netfilters, why we dont want this.
 Memory Management in C, why its important, how we deal with it.
 
 \chapter{Evaluation}
-
+The evaluation of the PEP wil
 \section{Initial configuration}
 
 Sender --> Receiver --> Receiver

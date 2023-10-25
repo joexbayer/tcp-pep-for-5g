@@ -3,14 +3,17 @@
 
 #include <pep/common.h>
 
-/* default server operators */
+/* forward declaration */
+struct pep_state;
+
+/* server operators */
 struct pep_state_ops {
         int (*init)(struct pep_state* server, u16 port);
         int (*start)(struct pep_state* server);
-        int (*stop)(struct pep_state* server);
+        void (*stop)(struct pep_state* server);
 };
 
-/* default server work operators */
+/* server work operators */
 struct pep_state_work_ops {
         /* work for accepting new connections */
         void (*accept)(struct work_struct *work);
@@ -20,11 +23,19 @@ struct pep_state_work_ops {
         void (*forward_e2c)(struct work_struct *work);
 };
 
+/* server callbacks */
+struct pep_socket_callbacks {
+        void (*server_data_ready)(struct sock* sk);
+        void (*client_data_ready)(struct sock* sk);
+        void (*endpoint_data_ready)(struct sock* sk);
+};
+
 struct pep_state {
         struct socket* server_socket;
 
-        struct pep_state_ops ops;
-        struct pep_state_work_ops work_ops;
+        struct pep_state_ops* ops;
+        struct pep_state_work_ops* work_ops;
+        struct pep_socket_callbacks* callbacks;
 
         atomic_t state;
         
@@ -40,6 +51,8 @@ struct pep_state {
 
 struct pep_state* pep_new_server(void);
 void pep_server_clean(struct pep_state* server);
+
+int pep_config_server(struct pep_state* server, struct pep_state_work_ops* work_ops);
 
 void pep_server_accept_work(struct work_struct *work);
 void pep_listen_data_ready(struct sock* sk);

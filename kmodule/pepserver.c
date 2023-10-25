@@ -20,9 +20,15 @@ static struct pep_state_ops default_server_ops = {
 
 /* default work callback functions */
 static struct pep_state_work_ops default_server_work_ops = {
-		.accept = pep_server_accept_work,
-		.forward_c2e = pep_client_receive_work,
-		.forward_e2c = pep_endpoint_receive_work
+		.accept = &pep_server_accept_work,
+		.forward_c2e = &pep_client_receive_work,
+		.forward_e2c = &pep_endpoint_receive_work
+};
+
+static struct pep_socket_callbacks default_server_callbacks = {
+		.server_data_ready = &pep_client_data_ready,
+		.client_data_ready = &pep_client_data_ready,
+		.endpoint_data_ready = &pep_endpoint_data_ready
 };
 
 /**
@@ -38,10 +44,34 @@ struct pep_state* pep_new_server(void)
 				return NULL;
 		}
 
-		server->ops = default_server_ops;
-		server->work_ops = default_server_work_ops;
+		server->ops = &default_server_ops;
+		server->work_ops = &default_server_work_ops;
+		server->callbacks = &default_server_callbacks;
 
 		return server;
+}
+
+/**
+ * @brief Configure the server with custom work functions.
+ * Attaches new work functions to the server object.
+ * Will check if a function is NULL and use the default function instead.
+ * @param server 
+ * @param work_ops 
+ * @return int 
+ */
+int pep_config_server(struct pep_state* server, struct pep_state_work_ops* work_ops)
+{
+		if(!server || !work_ops)
+				return -EPEP_GENERIC;
+
+		if(work_ops->accept)
+				server->work_ops->accept = work_ops->accept;
+		if(work_ops->forward_c2e)
+				server->work_ops->forward_c2e = work_ops->forward_c2e;
+		if(work_ops->forward_e2c)
+				server->work_ops->forward_e2c = work_ops->forward_e2c;
+
+		return 0;
 }
 
 /**
@@ -134,12 +164,12 @@ void pep_server_accept_work(struct work_struct *work)
 				tunnel->total_endpoint = 0;
 				tunnel->server = server;
 				tunnel->recv_callbacks = 0;
-				INIT_WORK(&tunnel->c2e, &pep_client_receive_work);
-				INIT_WORK(&tunnel->e2c, &pep_endpoint_receive_work);
+				INIT_WORK(&tunnel->c2e, server->work_ops->forward_c2e);
+				INIT_WORK(&tunnel->e2c, server->work_ops->forward_e2c);
 
 				/* Configure sockets | TCP Options? send - recb buf size */
-				pep_configue_sk(endpoint, &pep_endpoint_data_ready, tunnel);
-				pep_configue_sk(client, &pep_client_data_ready, tunnel);
+				pep_configue_sk(endpoint, server->callbacks->endpoint_data_ready, tunnel);
+				pep_configue_sk(client, server->callbacks->client_data_ready, tunnel);
 
 				/* Configure snd & rev buffers, can use SO_RCVBUFFORCE and SO_SNDBUFFORCE to overwrite limit*/
 				//sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
@@ -239,7 +269,7 @@ int pep_server_init(struct pep_state* server, u16 port)
 		write_lock_bh(&sk->sk_callback_lock);
 		default_data_ready = sk->sk_data_ready;
 		sk->sk_user_data = server;
-		sk->sk_data_ready = &pep_listen_data_ready;
+		sk->sk_data_ready = server->callbacks->server_data_ready;
 		write_unlock_bh(&sk->sk_callback_lock);
 
 		/* pep server connection info */
@@ -267,7 +297,7 @@ int pep_server_init(struct pep_state* server, u16 port)
 		server->forward_c2e_wq = alloc_workqueue("c2e_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
 		server->forward_e2c_wq = alloc_workqueue("e2c_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
 
-		INIT_WORK(&server->accept_work, &pep_server_accept_work);
+		INIT_WORK(&server->accept_work, socket->work_ops->accept);
 		INIT_LIST_HEAD(&server->tunnels);
 		server->total_tunnels = 0;
 
