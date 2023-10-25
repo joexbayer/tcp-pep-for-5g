@@ -317,6 +317,11 @@ The most sustainable choice will be TCP Fast Open, adding new TCP Options is sim
 \section{Scheduling Algorithms}
 The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible. The impact will be shown in the Evaluation chapter.
 
+\section{Buffering}
+The size of a 'internet buffer' has been a long and heated discussion. Normally the context of buffers in the networks revolves around NIC buffers or routing buffers. These buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. Since the PEP is connection splitting we can utilize a different buffer, the socket buffers.\\
+
+Socket buffer do not affect traffic which flows through the host machine.
+
 \section{Summary}
 
 {Table of design decisions based on different PEP implementations compared to ours.}
@@ -952,7 +957,7 @@ $ sysctl -w net.ipv4.ip_forward=1
 \end{verbatim}
 
 \paragraph{Buffer sizes}
-The PEP works by buffering as much data as possible on the sockets themselves. This way we avoid buffering interactive traffic that simply passes by. The size of a socket's buffer can be configured with \verb|setsockopt|, however this is not reliable and has to be done for each socket. Instead we can configure the socket buffer sizes system-wide. Under \verb|net.core.| there exists configurations for overall receive buffer sizes: \verb|rmem_max| and \verb|wmem_max|. There also exists the same for the default variables \verb|rmem_default| and \verb|wmem_default|.\\
+The PEP works by buffering as much data as possible on the sockets themselves. This way we avoid buffering interactive traffic that simply passes by. The size of a socket's buffer can be configured with \verb|setsockopt|, however this is not reliable and has to be done for each socket. Instead we can configure the socket buffer sizes system-wide. Under \verb|net.core| there exists configurations for overall receive buffer sizes: \verb|rmem_max| and \verb|wmem_max|. There also exists the same for the default variables \verb|rmem_default| and \verb|wmem_default|.\\
 
 \begin{verbatim}
 $ sudo sysctl -w net.core.rmem_max=<size>;
