@@ -259,7 +259,7 @@ Because of the efficiency and possibilities of kernel modules, C offers the opti
 % This is a overaching design choice, not a implementation specific. 
 % So the text will be more about WHY
 \section{PEP Transparency}
-Transparent and Non-Transparent PEPs differ in their visibility and interaction with applications. 
+The choice on transparency directly influences the deployment, adaptability, and overall interaction of the PEP with applications. We can tailor the PEP design to best suit the targeted application environment, ensuring optimized performance and adaptability. This section will discuss the design considerations, with a focus on Non-Transparent PEPs and their use in 5G networks.
 
 \subsection{Transparent}
 Transparent PEPs provide a deployment advantage since they can be integrated without altering the client or server. This means even older applications can gain from the PEP. Moreover, the PEP will inherently be on the same path as the original connection, which is a prerequisite for a PEP. But, if unknown middle boxes interfere with a connection, issues like lost TCP Options might occur. Additionally, if applications are not aware of the PEP, they can not adjust their behavior, restricting their future adaptability.
