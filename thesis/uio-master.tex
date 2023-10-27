@@ -91,7 +91,7 @@
 
 \chapter{Background}
 
-In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader. 
+In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on _  topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader. 
 
 \section{TCP/IP}
 Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It is known for providing reliable and in-order delivery of packets using acknowledgments and re-transmissions~\cite{Eddy_2022}. It was first introduced in 1974, but is still one of the most used internet protocols. However, as the demands of the internet have changed, TCP has not. Though TCP has been updated with minor extensions over the years, such as an increased initial window or new options, the core ideas have stayed the same~\cite{rfc8803}.\\
@@ -189,7 +189,7 @@ Proxy-Authorization: Basic encoded-credentials
 \end{verbatim}
 
 \subsection{PEP}\footnote{Include that they need to be on path to be "fast"}
-A performance enhancing proxy (PEP) is a proxy designed to increase the performance of applications using it, typically by influencing the behavior of TCP. The idea behind the PEP is putting more logic such as connection management, buffering, caching inside the network. As the name suggests, a PEP is designed to enhance the performance, but can also introduce new features to a network. An example of a new feature is the multipath support the TCP Transport converter gives~\cite{rfc8803}.
+A performance enhancing proxy (PEP) is a proxy designed to increase the performance of applications using it, typically by influencing the behavior of TCP. The idea behind the PEP is putting more logic, such as connection management, buffering, caching inside the network. As the name suggests, a PEP is designed to enhance the performance, but can also introduce new features to a network. An example of a new feature is the multipath support the TCP Transport converter gives~\cite{rfc8803}.
 
 \subsection{PEP for wireless communication}
 Performance enhancing proxies are already deployed and in use for a lot of wireless communication, especially satellites and radio access networks~\cite{tcp_mmwave_proxy}. They have an inherent performance increase just by splitting the connection between the wireless and wired domains. These PEPs are therefore often installed at the base stations. However they are unable to distinguish between interactive or non-interactive traffic, meaning their buffers need to be small to avoid bufferbloat and hence why still suffer from fluctuating bandwidth problems.\footnote{Confusing sentence?} Alternatively, a PEP with a large buffer can compensate for fluctuating bandwidth, but will introduce delay for interactive traffic.
@@ -227,7 +227,6 @@ A good design for the PEP is crucial as it needs to be robust, fast and reliable
 The ossification of networks and particularly TCP, have been long-standing issues~\cite{tcp_extendable}. Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle-boxes. A PEP is such a middle-box, as it can enhance the performance without introducing changes to TCP itself.\\
 
 Using a PEP in combination with 5G has additional benefits. Default TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by base station\footnote{Is it a basestation?}. However, with a PEP we are able to split the domains and perform optimizations, such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\ \footnote{PEPs with 5G, different "domains" works better than normal PEPs}
-
 
 \section{PEP Programming}
 
@@ -268,24 +267,27 @@ Transparent PEPs provide a deployment advantage since they can be integrated wit
 Since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to additional performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them. Deployment becomes more problematic as for the PEP to be efficient it needs to be on the shortest path which is no longer guaranteed.
 
 \subsection{Choosing a Non-Transparent PEP}
-This thesis will explore a non-transparent PEP because of the benefits of future adaptability and the client being aware of the PEP itself. Because our PEP is designed for 5Gs fluctuating bandwidth we can guarantee that the PEP is on the path. All traffic from a client will pass through the 5G base station? which means if we place the PEP at the base station, it will always be on path.
+This thesis will utilize a non-transparent PEP because of the benefits of future adaptability and the client being aware of the PEP itself. Because our PEP is designed for 5Gs fluctuating bandwidth, we can guarantee that the PEP is on the path. All traffic from a client will pass through the 5G base station? which means if we place the PEP at the base station, it will always be on path. \footnote{Are there more benefits?}\\
 
 % This section will talk about using sockets for connection splitting, how the pep is addressed and the endpointed 
 % conveyed to the PEP. 
 \section{Connection handling}
-The way the PEP manages connections primarily determines its functionality \cite{rfc3135_pep}. All connections are handled by sockets because of their ability to be easily configured and we intend to split the connection. This introduces challenges concerning how the PEP is addressed and utilized by a client. Additionally, the desired endpoint needs to be conveyed to the PEP. 
+All connections are handled by sockets because of their ability to be easily configured and because we intend to split the connections. This introduces challenges concerning how the PEP is addressed and utilized by a client. Additionally, the desired endpoint needs to be conveyed to the PEP. 
 
 \subsection{Connection Splitting} WHAT AND WHY
 % Talks about splitting domains
 There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy will additionally split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the connection into their different domains, enables the PEP to select an appropriate congestion controllers based on the technology and topology of each domain.\\
 
+% This describes WHAT and why
+The PEP is designed as a connection splitting PEP at the boundary of an unstable network with fluctuating bandwidth. By splitting the connection at this point we can buffer packets, usually closer to the user, and have them ready for high bandwidth phases. 
+
 \subsection{PEP Selection}
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of the desired endpoint of the client. This can be achieved by a variety of ways where the goal is to attach additional information to the default connection process of TCP. Preferably, we do not want the overhead of needing an entire additional round trip just to pass this information. Figure \ref{fig:tcphandshake_primitiv} visualizes the RTT overhead of sending this information (in red) to the PEP before application data can be sent.\\
 
-We want do not change the normal socket based scheme of creating a connection, as old applications would need to rewrite a lot of their code to adapt a new scheme. By providing a library for the client we can easy the challenges of integrating the PEP into existing environments. The library will provide a single function which mimics the default connection scheme. Implementation details are discussed in Chapter 4.
+We do not want to change the normal socket based scheme of creating a connection either, as old applications would need to rewrite a lot of their code to adapt a new scheme. By providing a library for the client we can easy the challenges of integrating the PEP into existing environments. The library will provide a single function which mimics the default connection scheme. Implementation details are discussed in Chapter 4.
 
 \subsection{Connection Establishment}  
-The PEP will attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional round trip time. Because of the ossified nature of TCP~\cite{tcp_extendable}, changing the protocol itself is not an option. The realistic approach is reusing existing TCP functionality to append the desired data. Only a small amount of data, less than the usual Maximal Transmission Unit (MTU), is needed to inform the PEP of the endpoint.
+The PEP will attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional round trip time. Because of the ossified nature of TCP~\cite{tcp_extendable}, changing the protocol itself is not an option. The realistic approach is reusing existing TCP functionality to append the desired data. Only a small amount of data, less than the usual Maximal Transmission Unit (MTU), is needed to inform the PEP of the endpoint. \\
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -295,17 +297,18 @@ The PEP will attach data to the initial TCP handshake, this way we can inform th
 \end{figure}
 
 \paragraph{TCP Options}
-Since TCP Options can be attached to a TCP connection, a possibility would be to add a new TCP Option which would specify the endpoint. This TCP Option would need to be added by a kernel module, as it is not possible to to add custom TCP Options from user space. This leads to another problem, mainly how to specify from user space that we wish to use the PEP.\\
+Since TCP Options can be attached to a TCP connection, a possibility would be to add a new TCP Option which would specify the endpoint. This TCP Option would need to be added by a kernel module, as it is not possible to to add custom TCP Options from user-space. This leads to another problem, mainly how to specify from user-space that we wish to use the PEP.\\
+
 A possible option would be a socket option, using setsockopt. This however requires changes to the kernel, which raises the bar for adaptability. Another choice would be always attaching the TCP Options on connection addressed to a certain port such as 80/443. This however takes away the choice from the application, and makes it system wide instead.\\
 
 Finally, another significant problem is that unknown TCP Options are often seen as a threat. Firewalls may drop the packets, or the options might be stripped by intermediate nodes.~\cite{middlebox_interactions} This creates a challenge for the implementation and usability of the PEP. If the packets may be dropped because of our custom TCP options, then the PEP will only work in certain networks and scenarios. Although we only design a proof of concept, this is a trade off that is unlikely to pay off in the end.~\cite{tcp_extendable}
 \footnote{Directly quote the middlebox interaction paper section 4.4?}
 
 \paragraph{TCP Fast Open}
-Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the background chapter, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.\\
+Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the Chapter 2, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.\\
 
 \paragraph{Optimal Choice}
-The most sustainable choice will be TCP Fast Open, adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended.\footnote{Rephrase last sentence.}
+The most sustainable choice is TCP Fast Open, as adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended in the future.\footnote{Rephrase last sentence.}
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -314,11 +317,13 @@ The most sustainable choice will be TCP Fast Open, adding new TCP Options is sim
   	\label{fig:tcphandshake_optimal}
 \end{figure}
 
+Figure \ref{fig:tcphandshake_optimal} shows the concept of the added data to the TCP handshake, reducing the idle time visualized in Figure \ref{fig:tcphandshake_primitiv}. 
+
 \section{AQM \& Scheduling Algorithms}
 The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible. The impact will be shown in the Evaluation chapter.
 
 \section{Buffering}
-The size of a 'network buffer' has been a long and heated discussion. Normally the context of buffers in the network, revolves around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. Since the PEP is connection splitting we can utilize a different buffer, the socket buffers.\\
+Normally the context of buffers in the network, revolves around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. Since the PEP is connection splitting we can utilize a different buffer, the socket buffers.\\
 
 \subsection{Socket buffers}
 A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each indiviudal read / write buffer can configured for the best performance.
