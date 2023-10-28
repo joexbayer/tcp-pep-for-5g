@@ -18,28 +18,26 @@
 \contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{9}{subsection.2.3.3}%
 \contentsline {section}{\numberline {2.4}Linux}{10}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Kernel Modules}{10}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}C Programming Language}{11}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Related Work}{11}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Design}{12}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Justification for designing a PEP}{12}{section.3.1}%
-\contentsline {section}{\numberline {3.2}PEP Programming}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Technical Design choices }{13}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Programming Language}{13}{subsection.3.2.1}%
-\contentsline {paragraph}{The C Programming Language}{13}{section*.11}%
 \contentsline {subsection}{\numberline {3.2.2}Kernel Module Vs. Userspace Application}{13}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Optimal Choices for PEP Performance}{14}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}PEP Transparency}{14}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Transparent}{14}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Non-Transparent}{14}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Choosing a Non-Transparent PEP}{15}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Connection handling}{15}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Connection Splitting}{15}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}PEP Selection}{15}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Connection Establishment}{16}{subsection.3.4.3}%
-\contentsline {paragraph}{TCP Options}{16}{section*.13}%
-\contentsline {paragraph}{TCP Fast Open}{17}{section*.14}%
-\contentsline {paragraph}{Optimal Choice}{17}{section*.15}%
-\contentsline {section}{\numberline {3.5}AQM \& Scheduling Algorithms}{18}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Buffering}{18}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Socket buffers}{18}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.2.3}Connection Splitting using Sockets}{14}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}PEP Selection}{14}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Connection Establishment}{15}{subsection.3.2.5}%
+\contentsline {paragraph}{TCP Options}{15}{section*.13}%
+\contentsline {paragraph}{TCP Fast Open}{16}{section*.14}%
+\contentsline {paragraph}{Optimal Choice}{16}{section*.15}%
+\contentsline {section}{\numberline {3.3}PEP Transparency}{17}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Transparent}{17}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Non-Transparent}{17}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}AQM \& Scheduling Algorithms}{17}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Buffering}{17}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Socket buffers}{18}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}Security}{18}{section.3.6}%
 \contentsline {section}{\numberline {3.7}Summary}{18}{section.3.7}%
 \contentsline {chapter}{\numberline {4}Implementation}{19}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Kernel Module}{19}{section.4.1}%

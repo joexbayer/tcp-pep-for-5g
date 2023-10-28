@@ -5,8 +5,9 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans\relax }}{7}{figure.caption.6}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The TCP handshake procedure across PEP\relax }}{16}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network\relax }}{12}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The TCP handshake procedure across PEP\relax }}{15}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{16}{figure.caption.16}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP\relax }}{26}{figure.caption.22}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code\relax }}{27}{figure.4.2}%

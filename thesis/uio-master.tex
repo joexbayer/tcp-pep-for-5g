@@ -91,7 +91,7 @@
 
 \chapter{Background}
 
-In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on _  topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader. 
+In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader.\\
 
 \section{TCP/IP}
 Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It is known for providing reliable and in-order delivery of packets using acknowledgments and re-transmissions~\cite{Eddy_2022}. It was first introduced in 1974, but is still one of the most used internet protocols. However, as the demands of the internet have changed, TCP has not. Though TCP has been updated with minor extensions over the years, such as an increased initial window or new options, the core ideas have stayed the same~\cite{rfc8803}.\\
@@ -215,25 +215,7 @@ Congestion controllers and packet schedulers are also usually implemented as ker
 
 However, using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel fail ("panic"), which usually requires a complete system restart to fix.
 
-\section{Related Work}
-PEPDNA? 0RTT transport converter?
-
-% This chapter explores the design desgins that later will be implemented by chapter 4.
-\chapter{Design} WHAT AND WHY
-A good design for the PEP is crucial as it needs to be robust, fast and reliable. The overarching goal is to improve the completion times of non-interactive traffic while avoiding to disturb the interactive flows that are passing through. We will achieve this by splitting network domains and better utilize the fluctuating bandwidths, especially in the context of 5G. 
-
-\section{Justification for designing a PEP}
-
-The ossification of networks and particularly TCP, have been long-standing issues~\cite{tcp_extendable}. Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle-boxes. A PEP is such a middle-box, as it can enhance the performance without introducing changes to TCP itself.\\
-
-Using a PEP in combination with 5G has additional benefits. Default TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by base station\footnote{Is it a basestation?}. However, with a PEP we are able to split the domains and perform optimizations, such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\ \footnote{PEPs with 5G, different "domains" works better than normal PEPs}
-
-\section{PEP Programming}
-
-\subsection{Programming Language}
-The speed at which a PEP they can both process and forward packets is crucial. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. Therefore, the programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM with JIT and garbage collection, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems.
-
-\paragraph{The C Programming Language}\footnote{Put this in the background chapter}
+\subsection{C Programming Language}
 C has been the optimal language for high performance systems since its creation in 1972.~\cite{c_programming_language} It was originally created for UNIX when it needed a higher level language, and now is the main programming language behind most operating systems such as Linux, Mac and Windows. Being very close to its predecessor, assembly, and compiled to a binary, makes it one of the fastest languages we have to date. Heap memory management is explicitly done by the programmer with no support for garbage collection. The unsafe memory management is one of the main challenges when programming in C, which however can be a benefit because a runtime garbage collection usually results in performance loss.
 
 \begin{autonumlstlisting}[label=lst:hello_world]{Default C program.}
@@ -247,44 +229,52 @@ int main(void)
 
 \end{autonumlstlisting}
 
+\section{Related Work}
+PEPDNA? 0RTT transport converter?
+
+% This chapter explores the design desgins that later will be implemented by chapter 4.
+% Briefly outline the design goals of the PEP
+% High-Level Architecture
+\chapter{Design} %WHAT AND WHYs
+In this thesis we design a non-transparent connection splitting PEP at the boundary of an unstable network with fluctuating bandwidth, typically at 5G base-stations. By splitting the connection at this point we can buffer packets, usually closer to the user, and have them ready for high bandwidth phases. Where the overarching goal is to improve the completion times of non-interactive traffic while avoiding to disturb the interactive flows that are passing through. A good design for the PEP is crucial as it needs to be robust, fast and reliable. \\
+
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.45]{../diagrams/drawio/simple_pep_design.png}
+  	\caption{PEP within a network}
+  	\label{fig:simple_pep_design}
+\end{figure}
+
+Figure \ref{fig:simple_pep_design} is a simplification of the PEP within a network, highlighting its interaction with other components, such as the client and endpoint. 
+
+\section{Justification for designing a PEP}
+The ossification of networks and particularly TCP, have been long-standing issues~\cite{tcp_extendable}. Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle-boxes. A PEP is such a middle-box, as it can enhance the performance without introducing changes to TCP itself.\\
+
+Using a PEP in combination with 5G has additional benefits. Default TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by base station\footnote{Is it a basestation?}. However, with a PEP we are able to split the domains and perform optimizations, such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\ \footnote{PEPs with 5G, different "domains" works better than normal PEPs}
+
+\section{Technical Design choices }
+
+In this section, we discuss the core design decisions tailored to optimize the PEPs performance.
+ The speed at which a PEP can both process and forward packets is crucial. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. The design choice presented in this section focus on the performance of the PEP. Because of these high performance requirements the PEP is written in C as a Linux kernel module. 
+
+\subsection{Programming Language}
+The programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM with JIT and garbage collection, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems. The reason for choosing C is its bare metal approach and integration into the Linux kernel with kernel modules.
+
 \subsection{Kernel Module Vs. Userspace Application}
-A major design decision is whether to write the PEP as a user-space program or a kernel module. This will also influence the choice of programming languages, because kernel modules are mainly written in C, although Rust has now also been slowly adopted.\footnote{Need citation?} Making system calls (syscalls\footnote{Section about system calls?}) can introduce some performance overhead, which is a consideration when looking at user-space programs. In contrast, MacOS offers the kernel extension framework for tasks that require deep system integration, though it comes with its own set of challenges and constraints.\footnote{Citiation?}\\
+When sending data over the network, all calls to receive and send data has to go through the kernels internal network stack. These calls are usually in the form of system calls when running as a userspace application. Making system calls (syscalls\footnote{Section about system calls?}) can introduce a lot performance overhead in the form of a context switch to kernel space and copying data back and fourth from user-space to kernel-space. A kernel module will be able to directly access the kernel functions, eliminating the overhead of system calls and the restricted access of userspace applications to the network stack.\\
 
-Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. On the other hand, a Linux kernel module runs within the kernel space, eliminating the need for syscalls and copying data between kernel and user-space.  However, kernel modules are tightly bound to the Linux environment, which might limit its applicability in diverse systems.
+Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. In contrast, kernel modules are tightly bound to the Linux environment, which might limit its usability to Linux hosts. This however is not a big problem as most servers are Linux hosts. [CITE]
 
-\subsection{Optimal Choices for PEP Performance}
-Because of the efficiency and possibilities of kernel modules, C offers the optimal performance for the PEP. This combination leverages C's high-speed capabilities and the direct kernel integration, minimizing overheads and maximizing efficiency. This choice binds us to the Linux kernel, but this is a small price to pay for salvation.\footnote{Find a actually good way to say this. :) Also! Future work could be comparing to a user-space application? }
+\subsection{Connection Splitting using Sockets}% WHAT AND WHY
+% Talks about splitting domains 
+A connection splitting proxy has the benefit of additionally splitting the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the connection into their different domains, enables the PEP adapt to the domains and to select an appropriate congestion controllers based on the technology and topology of each domain.\\
 
-% This is a overaching design choice, not a implementation specific. 
-% So the text will be more about WHY
-\section{PEP Transparency}
-The choice on transparency directly influences the deployment, adaptability, and overall interaction of the PEP with applications. We can tailor the PEP design to best suit the targeted application environment, ensuring optimized performance and adaptability. This section will discuss the design considerations, with a focus on Non-Transparent PEPs and their use in 5G networks.
-
-\subsection{Transparent}
-Transparent PEPs provide a deployment advantage since they can be integrated without altering the client or server. This means even older applications can gain from the PEP. Moreover, the PEP will inherently be on the same path as the original connection, which is a prerequisite for a PEP. But, if unknown middle boxes interfere with a connection, issues like lost TCP Options might occur. Additionally, if applications are not aware of the PEP, they can not adjust their behavior, restricting their future adaptability.
-
-\subsection{Non-Transparent}
-Since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to additional performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them. Deployment becomes more problematic as for the PEP to be efficient it needs to be on the shortest path which is no longer guaranteed.
-
-\subsection{Choosing a Non-Transparent PEP}
-This thesis will utilize a non-transparent PEP because of the benefits of future adaptability and the client being aware of the PEP itself. Because our PEP is designed for 5Gs fluctuating bandwidth, we can guarantee that the PEP is on the path. All traffic from a client will pass through the 5G base station? which means if we place the PEP at the base station, it will always be on path. \footnote{Are there more benefits?}\\
-
-% This section will talk about using sockets for connection splitting, how the pep is addressed and the endpointed 
-% conveyed to the PEP. 
-\section{Connection handling}
-All connections are handled by sockets because of their ability to be easily configured and because we intend to split the connections. This introduces challenges concerning how the PEP is addressed and utilized by a client. Additionally, the desired endpoint needs to be conveyed to the PEP. 
-
-\subsection{Connection Splitting} WHAT AND WHY
-% Talks about splitting domains
-There are multiple benefits and disadvantages with using a connection splitting PEP. Firstly, a connection splitting proxy will additionally split the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the connection into their different domains, enables the PEP to select an appropriate congestion controllers based on the technology and topology of each domain.\\
-
-% This describes WHAT and why
-The PEP is designed as a connection splitting PEP at the boundary of an unstable network with fluctuating bandwidth. By splitting the connection at this point we can buffer packets, usually closer to the user, and have them ready for high bandwidth phases. 
+The PEP uses sockets to establish and split the connection between the client and the endpoint. Sockets provide a standardized way for programs to send and receive data over a network. They act as communication points, allowing for data exchange between them. For the PEPs purpose, sockets are ideal because they are configurable and come with dedicated buffers. This makes it easier to split and manage connections efficiently. Additionally, sockets are widely supported, ensuring compatibility and ease of integration with various network configurations and protocols.
 
 \subsection{PEP Selection}
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of the desired endpoint of the client. This can be achieved by a variety of ways where the goal is to attach additional information to the default connection process of TCP. Preferably, we do not want the overhead of needing an entire additional round trip just to pass this information. Figure \ref{fig:tcphandshake_primitiv} visualizes the RTT overhead of sending this information (in red) to the PEP before application data can be sent.\\
 
-We do not want to change the normal socket based scheme of creating a connection either, as old applications would need to rewrite a lot of their code to adapt a new scheme. By providing a library for the client we can easy the challenges of integrating the PEP into existing environments. The library will provide a single function which mimics the default connection scheme. Implementation details are discussed in Chapter 4.
+Additionally, we do not want to change the normal socket based scheme of creating a connection either, as old applications would need to rewrite a lot of their code to adapt a new scheme. By providing a library for the client we can easy the challenges of integrating the PEP into existing environments. The library will provide a single function which mimics the default connection scheme. Implementation details are discussed in Chapter 4.
 
 \subsection{Connection Establishment}  
 The PEP will attach data to the initial TCP handshake, this way we can inform the PEP of the endpoint without needing to send it with an additional round trip time. Because of the ossified nature of TCP~\cite{tcp_extendable}, changing the protocol itself is not an option. The realistic approach is reusing existing TCP functionality to append the desired data. Only a small amount of data, less than the usual Maximal Transmission Unit (MTU), is needed to inform the PEP of the endpoint. \\
@@ -319,6 +309,22 @@ The most sustainable choice is TCP Fast Open, as adding new TCP Options is simpl
 
 Figure \ref{fig:tcphandshake_optimal} shows the concept of the added data to the TCP handshake, reducing the idle time visualized in Figure \ref{fig:tcphandshake_primitiv}. 
 
+%\subsection{Optimal Choices for PEP Performance}
+%Because of the efficiency and possibilities of kernel modules, C offers the optimal performance for the %PEP. This combination leverages C's high-speed capabilities and the direct kernel integration, %minimizing overheads and maximizing efficiency. This choice binds us to the Linux kernel, but this is a %small price to pay for salvation.\footnote{Find a actually good way to say this. :) Also! Future work %could be comparing to a user-space application? }
+
+% This is a overaching design choice, not a implementation specific. 
+% So the text will be more about WHY
+\section{PEP Transparency}
+This thesis will utilize a non-transparent PEP because of the benefits of future adaptability and the client being aware of the PEP itself. 
+
+\subsection{Transparent}
+Transparent PEPs provide a deployment advantage since they can be integrated without altering the client or server. This means even older applications can utilize the PEP. Moreover, the PEP will inherently be on the same path as the original connection, which is a prerequisite for a PEP. But, if unknown middle boxes interfere with a connection, issues like lost TCP Options might occur. Additionally, if applications are not aware of the PEP, they can not adjust their behavior, restricting their future adaptability.
+
+\subsection{Non-Transparent}
+Since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to additional performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them. Deployment becomes more problematic as for the PEP to be efficient it needs to be on the shortest path which is no longer guaranteed.
+% This section will talk about using sockets for connection splitting, how the pep is addressed and the endpointed 
+% conveyed to the PEP. 
+
 \section{AQM \& Scheduling Algorithms}
 The ability to configure and utilize different scheduling algorithms is important for the success of the PEP. This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible. The impact will be shown in the Evaluation chapter.
 
@@ -326,7 +332,9 @@ The ability to configure and utilize different scheduling algorithms is importan
 Normally the context of buffers in the network, revolves around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. Since the PEP is connection splitting we can utilize a different buffer, the socket buffers.\\
 
 \subsection{Socket buffers}
-A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each indiviudal read / write buffer can configured for the best performance.
+A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each individual read / write buffer can configured for the best performance.
+
+\section{Security}
 
 \section{Summary}
 
