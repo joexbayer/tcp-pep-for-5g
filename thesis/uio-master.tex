@@ -260,7 +260,6 @@ The ossification of networks and particularly TCP, have been long-standing issue
 Using a PEP in combination with 5G has additional benefits. Default TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by base station\footnote{Is it a basestation?}. However, with a PEP we are able to split the domains and perform optimizations, such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\ \footnote{PEPs with 5G, different "domains" works better than normal PEPs}
 
 \section{Technical Design choices }
-
 In this section, we discuss the core design decisions to optimize the PEPs performance.
  The speed at which a PEP can both process and forward packets is crucial. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. The design choices presented in this section focus on the performance of the PEP. Because of these high performance requirements the PEP is written in C as a Linux kernel module. 
 
@@ -375,6 +374,10 @@ Transport Converter & AS & ASM & 016 & x \\
 \caption{Table of design decisions based on different PEP implementations compared to ours.}
 \end{table}
 
+% TRL TCP https://ieeexplore.ieee.org/abstract/document/4623710?casa_token=nB8IUC46VVQAAAAA:q9PoGtpzLJDUCfrjMzeAi9DG7VKQoSQVmogIdidf-ydVmt7e2ZtL5O1859WLVM6a_wXn_IZijFM
+
+% HTTPPEP https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=137fd719d5aa77145b38397bbd5effb6de3ee1c9 
+
 
 \chapter{Implementation}
 This chapter will explore implementation of the TCP PEP, following up on the design choices mentioned in the previous chapter. The development of the PEP will give a deeper understanding of the underlying mechanisms and how they aim to better utilize the 5G bandwidth. All aspects from kernel modules, PEP architectures and additional libraries will be covered.
@@ -450,6 +453,7 @@ In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion contro
 
 
 \subsection{Linux Version and Distribution}
+The kernel module was developed using Linux Kernel 5.15, older version of Linux might encounter problems as the kernel functions change a lot.
 
 \subsection{Implications}
 
