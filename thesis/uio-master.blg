@@ -5,47 +5,48 @@ Reallocating 'name_of_file' (item size: 1) to 10 items.
 Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: myBib.bib
+Warning--to sort, need author or key in ibm_doc
 Warning--there's a number but no series in fq_codel_rfc
 Warning--empty publisher in fq_codel_rfc
-You've used 16 entries,
+You've used 18 entries,
             2118 wiz_defined-function locations,
-            605 strings with 6916 characters,
-and the built_in function-call counts, 6257 in all, are:
-= -- 607
-> -- 315
+            612 strings with 7037 characters,
+and the built_in function-call counts, 6631 in all, are:
+= -- 641
+> -- 324
 < -- 10
-+ -- 126
-- -- 108
-* -- 401
-:= -- 969
-add.period$ -- 51
-call.type$ -- 16
-change.case$ -- 101
++ -- 131
+- -- 110
+* -- 429
+:= -- 1028
+add.period$ -- 55
+call.type$ -- 18
+change.case$ -- 107
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 269
-empty$ -- 464
-format.name$ -- 108
-if$ -- 1383
+cite$ -- 21
+duplicate$ -- 289
+empty$ -- 501
+format.name$ -- 110
+if$ -- 1461
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 13
-newline$ -- 83
-num.names$ -- 32
-pop$ -- 137
+int.to.str$ -- 18
+missing$ -- 15
+newline$ -- 91
+num.names$ -- 34
+pop$ -- 143
 preamble$ -- 1
-purify$ -- 86
+purify$ -- 91
 quote$ -- 0
-skip$ -- 235
+skip$ -- 252
 stack$ -- 0
-substring$ -- 282
-swap$ -- 113
+substring$ -- 293
+swap$ -- 115
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
-warning$ -- 2
-while$ -- 45
-width$ -- 18
-write$ -- 178
-(There were 2 warnings)
+type$ -- 68
+warning$ -- 3
+while$ -- 47
+width$ -- 20
+write$ -- 195
+(There were 3 warnings)

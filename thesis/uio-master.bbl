@@ -1,5 +1,8 @@
 \begin{thebibliography}{10}
 
+\bibitem{ibm_doc}
+August 2021.
+
 \bibitem{Agrawal_Sharma_2016}
 S.~K. Agrawal and Kapil Sharma.
 \newblock 5g millimeter wave (mmwave) communications.
@@ -16,6 +19,11 @@ Olivier Bonaventure, Mohamed Boucadair, Sri Gundavelli, SungHoon Seo, and
 David Borman.
 \newblock {TCP Options and Maximum Segment Size (MSS)}.
 \newblock RFC 6691, July 2012.
+
+\bibitem{aqm_survey}
+Gwyn Chatranon, Miguel~A. Labrador, and Sujata Banerjee.
+\newblock A survey of tcp-friendly router-based aqm schemes.
+\newblock {\em Computer Communications}, 27(15), September 2004.
 
 \bibitem{pep_dna}
 Kristjon Ciko, Michael Welzl, and Peyman Teymoori.
@@ -34,12 +42,6 @@ Wesley Eddy.
 \newblock Transmission control protocol (tcp).
 \newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
   2022.
-
-\bibitem{rfc3135_pep}
-Jim Griner, John Border, Markku Kojo, Zach~D. Shelby, and Gabriel Montenegro.
-\newblock {Performance Enhancing Proxies Intended to Mitigate Link-Related
-  Degradations}.
-\newblock RFC 3135, June 2001.
 
 \bibitem{tcp_extendable}
 Michio Honda, Yoshifumi Nishida, Costin Raiciu, Adam Greenhalgh, Mark Handley,
@@ -79,6 +81,12 @@ Cristian~García Ruiz, Antonio Pascual-Iserte, and Olga Muñoz.
   positioning.
 \newblock {\em IEEE Transactions on Communications}, 69(2):1329–1342, Feb
   2021.
+
+\bibitem{aqm}
+Seungwan Ryu, Christopher Rump, and Chunming Qiao.
+\newblock Advances in active queue management (aqm) based tcp congestion
+  control.
+\newblock {\em Telecommunication Systems}, 25(3/4), March 2004.
 
 \bibitem{nextgen_proxy_servers}
 W.~V. Wathsala, Buddhika Siddhisena, and Ajantha~S. Athukorale.

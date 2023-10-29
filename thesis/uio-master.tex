@@ -348,8 +348,7 @@ The ability to configure and utilize different scheduling algorithms is importan
 This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as windows or MacOS, will be extremely difficult or even impossible. The impact will be shown in the Evaluation chapter.
 
 \section{Security}
-...\\
-The PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP is not able to read encrypted that or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint. As only the PEPs connection will be seen by the endpoint.
+The PEP needs to assure that traffic flowing through the PEP not gets compromised. This, however, will not be a big concern as the PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP is not able to read encrypted that or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint. As only the PEPs connection will be seen by the endpoint.
 
 \section{Summary}
 In this chapter we have designed a high performance connection splitting PEP tailored for fluctuating bandwidth. We made choice to keep it non-transparent to assure future adaptability and client configuration. Using sockets and their buffers we avoid bufferbloat and to not disrupt the interactive traffic. Finally, we use AQM and scheduling to avoid unnecessary delays on the outgoing links.\\
