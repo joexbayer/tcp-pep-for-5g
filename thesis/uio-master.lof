@@ -1,21 +1,22 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{3}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans}}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans\relax }}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network}}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The TCP handshake procedure across PEP}}{16}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network\relax }}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The TCP handshake procedure across PEP\relax }}{16}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Deployment of a PEP at a base station\relax }}{19}{figure.caption.17}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP}}{28}{figure.caption.23}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code}}{29}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure}}{30}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Work struct from Linux - workqueue.h}}{31}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html}}{36}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Work operation table}}{39}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Callback function table}}{40}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP\relax }}{29}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code\relax }}{30}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure\relax }}{31}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{32}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{37}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Work operation table\relax }}{40}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Callback function table\relax }}{41}{figure.4.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic}}{43}{figure.caption.36}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic\relax }}{44}{figure.caption.37}%
 \addvspace {10\p@ }

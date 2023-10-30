@@ -248,7 +248,7 @@ In this thesis we design a non-transparent connection splitting PEP at the bound
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.45]{../diagrams/drawio/simple_pep_design.png}
-  	\caption{PEP within a network}
+  	\caption{PEP within a network (Simplified)}
   	\label{fig:simple_pep_design}
 \end{figure}
 
@@ -305,6 +305,9 @@ Finally, another significant problem is that unknown TCP Options are often seen 
 \paragraph{TCP Fast Open}
 Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the Chapter 2, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.\\
 
+\paragraph{Failure fallback}
+If TCP fast Open isnt supported / doesnt work.
+
 \paragraph{Optimal Choice}
 The most sustainable choice is TCP Fast Open, as adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended in the future.\footnote{Rephrase last sentence.}
 
@@ -322,22 +325,31 @@ Figure \ref{fig:tcphandshake_optimal} shows the concept of the added data to the
 
 % This is a overaching design choice, not a implementation specific. 
 % So the text will be more about WHY
-\section{PEP Deployment (Transparency)}
+\section{Deployment (Transparency)}
 The deployment of the PEP is an important design aspect. In this context, deployment references the physical location of the PEP. The main factor which affects deployment is the transparency, Chapter 2 quickly discussed the differences between the two approaches. This section will discuss the differences in the context of our PEP, especially in combination with wireless networks.
 
-\subsection{Transparent PEPs}
+\subsection{Transparent PEP}
 Transparent PEPs provide a deployment advantage since they can be integrated without altering the client or server. This means even older applications can utilize the PEP. Moreover, the PEP will inherently be on the same path as the original connection, which is a prerequisite for a PEP. But, if unknown middle boxes interfere with a connection, issues like lost TCP Options might occur. Additionally, if applications are not aware of the PEP, they can not adjust their behavior, restricting their future adaptability.
 
-\subsection{Non Transparent PEPs}
+\subsection{Non Transparent PEP}
 In contrast, with non-transparent PEP the deployment is more difficult. When a client needs to explicitly choose the PEP, it also needs to know that the PEP is on the path to the desired endpoint.
 Normally this would be a extremely difficult to achieve. But, because the PEP is designed to be deployed at the base stations of wireless networks, such as 5G, we can assure that all traffic will pass through it. This eliminates the deployment problem of non-transparent PEPs.\\
 
+
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.55]{../diagrams/drawio/deployment.png}
+  	\caption{Deployment of a PEP at a base station}
+  	\label{fig:pep_deployment}
+\end{figure}
+
+
 Additionally, since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to additional performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them.\\
 
-This thesis will utilize a non-transparent PEP because of the benefits of future adaptability and the client being aware of the PEP. 
+This thesis will utilize a non-transparent PEP located at a base station. Mostly for the benefits of future adaptability and the client being aware of the PEP. Being located at the base station assures that the PEP will be on path...
 
 \section{Buffering}
-Buffering is a core feature of the PEP. As mentioned before, the goal is to buffer non-interactive traffic packets at the PEP. Normally the context of buffers in the network, revolves around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. However, since the PEP is using sockets and splitting the connection, we can utilize a different buffer: the socket buffers.
+Buffering is a core feature of the PEP. As mentioned before, the goal is to buffer non-interactive traffic packets at the PEP. Normally the context of buffers in the network, revolve around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. However, since the PEP is using sockets and splitting the connection, we can utilize a different buffer: the socket buffers.
 
 \subsection{Socket buffers}
 A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each individual read / write buffer can configured for the best performance.
