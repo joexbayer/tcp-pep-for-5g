@@ -281,7 +281,22 @@ Each socket connection can be configured to use a certain congestion controller,
 
 \paragraph{Bandwidth utilization}
 Better bandwidth utilization when splititnf connections.\\
-[PICTURE]
+
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.45]{../diagrams/drawio/bandwidth_bad.png}
+  	\caption{Example of poor bandwidth utilization.}
+  	\label{fig:pep_bandwidth_bad}
+\end{figure}
+
+
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.45]{../diagrams/drawio/bandwidth_good.png}
+  	\caption{Example of good bandwidth utilization.}
+  	\label{fig:pep_bandwidth_good}
+\end{figure}
+
 
 \subsection{PEP Selection}
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of the desired endpoint of the client. This can be achieved by a variety of ways where the goal is to attach additional information to the default connection process of TCP. Preferably, we do not want the overhead of needing an entire additional round trip just to pass this information. Figure \ref{fig:tcphandshake_primitiv} visualizes the RTT overhead of sending this information (in red) to the PEP before application data can be sent.\\
