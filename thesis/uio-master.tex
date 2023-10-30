@@ -279,6 +279,10 @@ A connection splitting proxy has the benefit of additionally splitting the conne
 
 Each socket connection can be configured to use a certain congestion controller, unrelated to the system wide default. Which would be impossible with a single end to end connection. In addition to configuring the congestion controller, a socket can also add TCP options, such as TCP Fast Open, to a connection.
 
+\paragraph{Bandwidth utilization}
+Better bandwidth utilization when splititnf connections.\\
+[PICTURE]
+
 \subsection{PEP Selection}
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of the desired endpoint of the client. This can be achieved by a variety of ways where the goal is to attach additional information to the default connection process of TCP. Preferably, we do not want the overhead of needing an entire additional round trip just to pass this information. Figure \ref{fig:tcphandshake_primitiv} visualizes the RTT overhead of sending this information (in red) to the PEP before application data can be sent.\\
 
