@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  31 OCT 2023 15:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  31 OCT 2023 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1301,7 +1301,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
-<../diagrams/drawio/tcphandshake_optimal.png, id=712, 487.8225pt x 191.71625pt>
+<../diagrams/drawio/tcphandshake_optimal.png, id=713, 487.8225pt x 191.71625pt>
 
 File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_optimal.png>
@@ -1329,12 +1329,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 392--393
 
  []
 
-[20]
+[20 <../diagrams/drawio/deployment.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[21 <../diagrams/drawio/deployment.png>]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
@@ -1354,10 +1354,7 @@ Overfull \hbox (10.81436pt too wide) in paragraph at lines 429--429
  []|\T1/cmr/m/n/10.95 Transparent| 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[22] [23]
+[22]
 Chapter 4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 442--443
@@ -1371,7 +1368,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 444--445
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [24
+(./uio-master.listing) [23
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 466--467
@@ -1380,7 +1377,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 466--467
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [25] [26]
+(./uio-master.listing) [24] [25]
 Underfull \hbox (badness 10000) in paragraph at lines 550--552
 
  []
@@ -1390,7 +1387,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 553--554
 
  []
 
-[27]
+[26]
 Underfull \hbox (badness 10000) in paragraph at lines 555--580
 
  []
@@ -1405,13 +1402,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 585--586
 
  []
 
-[28]
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 631--633
 
  []
 
-[29] [30]
-<../diagrams/drawio/pep_architecture.png, id=873, 1063.975pt x 681.54625pt>
+[28] [29]
+<../diagrams/drawio/pep_architecture.png, id=869, 1063.975pt x 681.54625pt>
 File: ../diagrams/drawio/pep_architecture.png Graphic file (type png)
 <use ../diagrams/drawio/pep_architecture.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_architecture.png  used on input
@@ -1432,7 +1429,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 712.
 See the caption package documentation for explanation.
 
-[31 <../diagrams/drawio/pep_architecture.png>]
+[30 <../diagrams/drawio/pep_architecture.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 717--718
 
  []
@@ -1447,7 +1444,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 742--743
 
  []
 
-[32]
+[31]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 762.
@@ -1465,7 +1462,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 769--770
 
  []
 
-[33]
+[32]
 Underfull \hbox (badness 10000) in paragraph at lines 779--780
 
  []
@@ -1482,7 +1479,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 797--798
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [34]
+(./uio-master.listing) [33]
 Underfull \hbox (badness 10000) in paragraph at lines 813--814
 
  []
@@ -1494,7 +1491,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 815--816
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [35]
+(./uio-master.listing) [34]
 Underfull \hbox (badness 10000) in paragraph at lines 840--841
 
  []
@@ -1508,7 +1505,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 863--864
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [36]
+(./uio-master.listing) [35]
 Overfull \hbox (1.21783pt too wide) in paragraph at lines 894--895
 []\T1/cmr/m/n/10.95 data call-back, set-ting [][]\T1/cmtt/m/n/10.95 sk_user_dat
 a []\T1/cmr/m/n/10.95 to the server it-self and us-ing [][]\T1/cmtt/m/n/10.95 s
@@ -1517,7 +1514,7 @@ etsockopt
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [37]
+(./uio-master.listing) [36]
 Overfull \hbox (10.784pt too wide) in paragraph at lines 937--938
 \T1/cmr/m/n/10.95 fore men-tioned [][]\T1/cmtt/m/n/10.95 pep_listen_data_ready[
 ]\T1/cmr/m/n/10.95 , when over-writ-ing the [][]\T1/cmtt/m/n/10.95 sk_data_read
@@ -1529,7 +1526,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 937--938
 
  []
 
-[38]
+[37]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 950.
@@ -1552,12 +1549,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 959--960
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [39]
+(./uio-master.listing) [38]
 Underfull \hbox (badness 10000) in paragraph at lines 995--996
 
  []
 
-[40]
+[39]
 \openout4 = `uio-master.listing'.
 
  (./uio-master.listing)
@@ -1565,7 +1562,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1033--1034
 
  []
 
-[41]
+[40]
 Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
 
  []
@@ -1595,7 +1592,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1055--1056
 
  []
 
-[42]
+[41]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 1067.
@@ -1640,16 +1637,16 @@ Overfull \hbox (13.45248pt too wide) in paragraph at lines 1096--1096
  size>';[] 
  []
 
-[43] [44]
+[42] [43]
 Chapter 5.
-[45
+[44
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 1141--1142
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=1111, 443.95862pt x 
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=1107, 443.95862pt x 
 319.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
@@ -1662,13 +1659,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1152--1154
 
  []
 
-[46 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [47]
+[45 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [46]
 Chapter 6.
-(./uio-master.bbl [48
+(./uio-master.bbl [47
 
-] [49
+] [48
 
-]) [50] (./uio-master.aux)
+]) [49] (./uio-master.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1679,8 +1676,8 @@ Package rerunfilecheck Info: File `uio-master.out' has not changed.
 (rerunfilecheck)             Checksum: AC689D0111BC888CBE69A7D19ABB6AC6;10938.
  ) 
 Here is how much of TeX's memory you used:
- 31434 strings out of 478994
- 619873 string characters out of 5858185
+ 31433 strings out of 478994
+ 619866 string characters out of 5858185
  1248918 words of memory out of 5000000
  47870 multiletter control sequences out of 15000+600000
  434944 words of font info for 72 fonts, out of 8000000 for 9000
@@ -1703,10 +1700,10 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (58 pages, 1239431 bytes).
+Output written on uio-master.pdf (57 pages, 1239084 bytes).
 PDF statistics:
- 1323 PDF objects out of 1440 (max. 8388607)
- 1155 compressed objects within 12 object streams
- 456 named destinations out of 1000 (max. 500000)
+ 1319 PDF objects out of 1440 (max. 8388607)
+ 1152 compressed objects within 12 object streams
+ 455 named destinations out of 1000 (max. 500000)
  840 words of extra memory for PDF output out of 10000 (max. 10000000)
 
