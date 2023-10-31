@@ -1,24 +1,25 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{3}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans}}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans\relax }}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)}}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of poor bandwidth utilization.}}{16}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of good bandwidth utilization.}}{16}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces The TCP handshake procedure across PEP}}{17}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{18}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Deployment of a PEP at a base station}}{19}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)\relax }}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of poor bandwidth utilization.\relax }}{16}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of good bandwidth utilization.\relax }}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Split connection with bandwidth and delay.\relax }}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The TCP handshake procedure across PEP\relax }}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{19}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Deployment of a PEP at a base station\relax }}{21}{figure.caption.22}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP}}{29}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code}}{30}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure}}{31}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Work struct from Linux - workqueue.h}}{32}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html}}{37}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Work operation table}}{40}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Callback function table}}{41}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP\relax }}{31}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code\relax }}{32}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure\relax }}{33}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{34}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{39}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Work operation table\relax }}{42}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Callback function table\relax }}{43}{figure.4.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic}}{44}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic\relax }}{46}{figure.caption.42}%
 \addvspace {10\p@ }

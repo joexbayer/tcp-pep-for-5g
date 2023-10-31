@@ -159,7 +159,7 @@ A big problem with millimetre wave communication is signal path blocking, also c
   	\label{fig:blockage}
 \end{figure}
 
-Fluctuating bandwidths lead to unstable TCP connections with a worst case of losing packets. Current TCP congestion controllers such as CUBIC, Reno or Vegas struggle when reacting to sudden changes. They are simply not able to utilize the high bandwidth when it is available. Increasing the aggressiveness of a congestion controller is not an option either, as it would disrupt the internet. A possible solution could be to buffer packets at the 5G base stations, having the data ready for when the bandwidth is high. This however creates a new problem: "bufferbloat".
+Fluctuating bandwidths lead to unstable TCP connections with a worst case of losing packets. Current TCP congestion controllers such as CUBIC, Reno or Vegas struggle when reacting to sudden changes.\cite{bandwidth_changes} They are simply not able to utilize the high bandwidth when it is available. Increasing the aggressiveness of a congestion controller is not an option either, as it would disrupt the internet. A possible solution could be to buffer packets at the 5G base stations, having the data ready for when the bandwidth is high. This however creates a new problem: "bufferbloat".
 
 
 \subsection{Buffering}
@@ -237,7 +237,7 @@ int main(void)
 \end{autonumlstlisting}
 
 \section{Related Work}
-PEPDNA? 0RTT transport converter?
+PEPDNA? 0RTT transport converter?\cite{bandwidth_changes}
 
 % This chapter explores the design desgins that later will be implemented by chapter 4.
 % Briefly outline the design goals of the PEP
@@ -259,7 +259,7 @@ The ossification of networks and particularly TCP, have been long-standing issue
 
 Using a PEP in combination with 5G has additional benefits. Default TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by base station\footnote{Is it a basestation?}. However, with a PEP we are able to split the domains and perform optimizations, such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\ \footnote{PEPs with 5G, different "domains" works better than normal PEPs}
 
-\section{Technical Design choices }
+\section{Performance}
 In this section, we discuss the core design decisions to optimize the PEPs performance.
  The speed at which a PEP can both process and forward packets is crucial. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. The design choices presented in this section focus on the performance of the PEP. Because of these high performance requirements the PEP is written in C as a Linux kernel module. 
 
@@ -279,18 +279,19 @@ A connection splitting proxy has the benefit of additionally splitting the conne
 
 Each socket connection can be configured to use a certain congestion controller, unrelated to the system wide default. Which would be impossible with a single end to end connection. In addition to configuring the congestion controller, a socket can also add TCP options, such as TCP Fast Open, to a connection.
 
-\paragraph{Bandwidth utilization}
-Better bandwidth utilization when splititnf connections.\\
+\subsection{Bandwidth utilization}
+Another great benefit of connection splitting is potentially better bandwidth utilization. When using congestion control: the total bandwidth is usually determined by the lowest bandwidth on the path\cite{top_down}. This is done to prevent overwhelming the link with the lowest bandwidth, as doing so would lead to congestion along the network path. Figure \ref{fig:pep_bandwidth_bad} shows a theoretical path between host A and host D, there are two links with high bandwidth, 60 Mbps and 75 Mbps. But because of the last link between C and D, the total bandwidth between A and D is 15 Mbps. This leads to a 25\% bandwidth utilization of link AB and 20\% utilization of link BC.\\
 
-\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.45]{../diagrams/drawio/bandwidth_bad.png}
   	\caption{Example of poor bandwidth utilization.}
   	\label{fig:pep_bandwidth_bad}
 \end{figure}
 
+Figure \ref{fig:pep_bandwidth_good} shows the same path as Figure \ref{fig:pep_bandwidth_bad}, however there is a connection splitting PEP at C. In that scenario we get two total bandwidths, one for each connection. The first connection between A and C has a total bandwidth of 60 Mbps, while the connection between C and D remains at 15 Mbps. Looking at the bandwidth utilization we now have 100\% utilization on link AB, 80\% utilization at BC. Which is a major improvement from the original 25\% and 20\% utilization.
 
-\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.45]{../diagrams/drawio/bandwidth_good.png}
   	\caption{Example of good bandwidth utilization.}
@@ -298,6 +299,34 @@ Better bandwidth utilization when splititnf connections.\\
 \end{figure}
 
 
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Link & Without PEP & With PEP \\
+\midrule
+AB & 25\% & 100\%\\
+BC & 20\% & 80\% \\
+CD & 100\% & 100\% \\
+\bottomrule
+\end{tabularx}
+\caption{Table showing bandwidth utilization with and without a PEP.}
+\label{tab:pep_bandwidth_table}
+\end{table}
+
+
+\paragraph{Delay}
+Table \ref{tab:pep_bandwidth_table} gives an overview of the bandwidth improvements. However, even with the improvement of bandwidth utilization, we did not improve the end to end throughput from A to D as it is still limited by link CD. A important component is missing: Delay. Looking at the topology of Figure \ref{fig:pep_bandwidth_good}, we can assume an inherent lower delay between C and D, because of locality, than between A and D. If we now introduce a fluctuating bandwidth on the link CD the lower delay between C and D means the congestion controller can react faster.\\
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.6]{../diagrams/drawio/bandwidth_delay.png}
+  	\caption{Split connection with bandwidth and delay.}
+  	\label{fig:pep_bandwidth_delay}
+\end{figure}
+
+Figure \ref{fig:pep_bandwidth_delay} introduces delay to the topology. Without the PEP we would have a end to end connection with 15 Mbps and 110 ms delay (220 ms RTT). Assuming the connection between CD is highly fluctuating, between 15 Mbps and 60 Mbps, the time the TCP congestion controller has to react is 220 ms per RTT, the RTT of the connection between A and D. If, however, we split the connection at C, the time would be reduced to 20 ms, the RTT between C and D. This means the congestion controller, between C and D, can react 1000\% faster with a split connection. Thereby, better utilizing the fluctuating bandwidth.
+ 
 \subsection{PEP Selection}
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of the desired endpoint of the client. This can be achieved by a variety of ways where the goal is to attach additional information to the default connection process of TCP. Preferably, we do not want the overhead of needing an entire additional round trip just to pass this information. Figure \ref{fig:tcphandshake_primitiv} visualizes the RTT overhead of sending this information (in red) to the PEP before application data can be sent.\\
 
@@ -322,13 +351,10 @@ Finally, another significant problem is that unknown TCP Options are often seen 
 \footnote{Directly quote the middlebox interaction paper section 4.4?}
 
 \paragraph{TCP Fast Open}
-Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the Chapter 2, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine.\\
-
-\paragraph{Failure fallback}
-If TCP fast Open isnt supported / doesnt work.
+Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the Chapter 2, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine. TCP Fast Open is also fault tolerant. Should either the PEP or the client not support TCP Fast Open, the meta-data will still be sent with the cost of an additional RTT. 
 
 \paragraph{Optimal Choice}
-The most sustainable choice is TCP Fast Open, as adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended in the future.\footnote{Rephrase last sentence.}
+The most sustainable choice is TCP Fast Open, as adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended in the future.\footnote{Rephrase last sentence.}\\
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -371,7 +397,7 @@ This thesis will utilize a non-transparent PEP located at a base station. Mostly
 Buffering is a core feature of the PEP. As mentioned before, the goal is to buffer non-interactive traffic packets at the PEP. Normally the context of buffers in the network, revolve around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. However, since the PEP is using sockets and splitting the connection, we can utilize a different buffer: the socket buffers.
 
 \subsection{Socket buffers}
-A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each individual read / write buffer can configured for the best performance.
+A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each individual read and write buffer can configured for the best performance.
 
 \section{AQM \& Scheduling}
 The ability to configure and utilize different scheduling algorithms is important for the success of the  PEP. When buffering a lot of packets at the PEP we might clog up the sending queues of the host machine. This would result in high delays for the interactive traffic who has to share these queues with our buffered non-interactive data. To avoid this we utilize FQ\_CoDEL, as it assures a fair ...\\
@@ -392,11 +418,11 @@ The table below compares our PEP to existing solutions. ...\\
 \toprule
 Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent \\
 \midrule
-milliProxy & AF & AFG & 004 & x \\
-PEPDNA & AX & ALA & 248 & x \\
-SnoopTCP & AL & ALB & 008 & x \\
-Our PEP & DZ & DZA & 012 & x \\
-Transport Converter & AS & ASM & 016 & x \\
+\textbf{milliProxy} & AF & AFG & 004 & x \\
+\textbf{PEPDNA} & AX & ALA & 248 & x \\
+\textbf{SnoopTCP} & AL & ALB & 008 & x \\
+\textbf{Our PEP} & DZ & DZA & 012 & x \\
+\textbf{Transport Converter} & AS & ASM & 016 & x \\
 ... & AD & AND & 020 & x \\
 ... & AO & AGO & 024 & x \\
 \bottomrule

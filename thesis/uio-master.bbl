@@ -62,6 +62,11 @@ Brian~W. Kernighan and Dennis~M. Ritchie.
 \newblock {\em The C Programming Language}.
 \newblock Prentice Hall Professional Technical Reference, 2nd edition, 1988.
 
+\bibitem{top_down}
+James~F. Kurose and Keith~W. Ross.
+\newblock {\em Computer networking: a top-down approach}.
+\newblock Pearson, Boston, seventh edition edition, 2017.
+
 \bibitem{middlebox_interactions}
 Alberto Medina, Mark Allman, and Sally Floyd.
 \newblock Measuring interactions between transport protocols and middleboxes.
