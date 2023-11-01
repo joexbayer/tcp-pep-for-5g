@@ -93,7 +93,7 @@ void pep_server_accept_work(struct work_struct *work)
 		struct pep_state* server = container_of(work, struct pep_state, accept_work);
 		unsigned char *buffer;
 
-		int buffsize = 64*1024*1024;
+		int buffsize = PEP_DEFAULT_SOCKET_BUFFER_SIZE;
 		sockptr_t valuelen;
         valuelen = KERNEL_SOCKPTR(&buffsize);
 
@@ -101,7 +101,7 @@ void pep_server_accept_work(struct work_struct *work)
 			return;
 
 		while(rc == 0) {
-				rc = kernel_accept(server->server_socket, &client, O_NONBLOCK);
+				rc = kernel_accept(server->socket, &client, O_NONBLOCK);
 				if(rc < 0)
 						return;
 
@@ -120,7 +120,6 @@ void pep_server_accept_work(struct work_struct *work)
 				 * 
 				 * But work queueing could also become a overhead.
 				 */
-
 				ret = pep_tcp_receive(client, buffer, PEP_MAX_TCP_BUFFER_SIZE);
 				if(ret <= 0)
 						return;
@@ -129,6 +128,7 @@ void pep_server_accept_work(struct work_struct *work)
 				if(!tlv_validate(buffer)){
 						printk(KERN_INFO "[PEP] pep_server_accept_work: TLV validate error. \n");
 						sock_release(client);
+						kfree(buffer);
 						return;
 				}
 
@@ -139,6 +139,7 @@ void pep_server_accept_work(struct work_struct *work)
 				if(tlv == NULL || tlv->length != 6){
 						printk(KERN_INFO "[PEP] pep_server_accept_work: invalid tlv option. \n");
 						sock_release(client);
+						kfree(buffer);
 						return; 
 				}
 
@@ -152,11 +153,20 @@ void pep_server_accept_work(struct work_struct *work)
 				{
 					printk(KERN_INFO "[PEP] pep_server_accept_work: Connection to endpoint failed.\n");
 					sock_release(client);
+					kfree(buffer);
 					return; 
 				}
 
 				/* Setup new pep tunnel */
 				tunnel = pep_new_tunnel();
+				if(NULL == tunnel){
+					printk(KERN_INFO "[PEP] pep_server_accept_work: Failed to create new tunnel.\n");
+					sock_release(client);
+					sock_release(endpoint);
+					kfree(buffer);
+					return; 
+				}
+				
 				tunnel->client.sock = client;
 				tunnel->endpoint.sock = endpoint;
 				tunnel->state = 0;
@@ -171,6 +181,13 @@ void pep_server_accept_work(struct work_struct *work)
 				pep_configue_sk(endpoint, server->callbacks->endpoint_data_ready, tunnel);
 				pep_configue_sk(client, server->callbacks->client_data_ready, tunnel);
 
+				/* Get buffer size tlv options from tlv buffer */
+				tlv = tlv_get_option(TLV_BUFFER_SIZE, buffer);
+				if(tlv != NULL && tlv->length == 6){
+					/* Overwrite buffer size based on user specification */
+					buffsize = tlv->optional;
+				}
+
 				/* Configure snd & rev buffers, can use SO_RCVBUFFORCE and SO_SNDBUFFORCE to overwrite limit*/
 				//sock_setsockopt(endpoint, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
 				//sock_setsockopt(endpoint, SOL_SOCKET, SO_SNDBUFFORCE, valuelen, sizeof(buffsize));
@@ -180,7 +197,6 @@ void pep_server_accept_work(struct work_struct *work)
 				ret = sock_setsockopt(client, SOL_SOCKET, SO_RCVBUFFORCE, valuelen, sizeof(buffsize));
 				if(ret < 0) printk(KERN_INFO "[PEP]: Error setting RECBUF on tunnel %d!\n", tunnel->id);
 
-
 				/* Add tunnel to linked list of all pep tunnels. */
 				list_add(&tunnel->list, &server->tunnels);
 				tunnel->id = server->total_tunnels;
@@ -189,10 +205,9 @@ void pep_server_accept_work(struct work_struct *work)
 				printk(KERN_INFO "[PEP] pep_server_accept_work: New tunnel %d was created.\n", tunnel->id);
 
 				/* check if more data than the initial TLV was sent.  */
-				if(ret > 12){
-					buffer += 12;
+				if(ret > 20){
 					/* again: should probably be moved out to own work. */
-					pep_tcp_send(endpoint, buffer, ret-12);
+					pep_tcp_send(endpoint, buffer+20, ret-20);
 				}
 
 				/* Done? */
@@ -226,7 +241,7 @@ void pep_server_clean(struct pep_state* server)
 	destroy_workqueue(server->forward_c2e_wq);
 	destroy_workqueue(server->forward_e2c_wq);
 
-	sock_release(server->server_socket);
+	sock_release(server->socket);
 
 	kfree(server);
 }
@@ -280,24 +295,24 @@ int pep_server_init(struct pep_state* server, u16 port)
 		pep_setsockopt(sock, TCP_FASTOPEN, 5);
 		pep_setsockopt(sock, TCP_NODELAY, 1);
 		
-		ret = kernel_bind(sock, (struct sockaddr*)&saddr, addr_len);
+		ret = sock->ops->bind(sock, (struct sockaddr*)&saddr, addr_len);
 		if(ret < 0){
 			printk(KERN_INFO "[PEP] init_core: Error binding socket\n");
 			return -EPEP_GENERIC;
 		}
 
-		ret = kernel_listen(sock, 5);
+		ret = sock->ops->listen(sock, 5);
 		if(ret < 0){
 			printk(KERN_INFO "[PEP] init_core: Error listen socket\n");
 			return -EPEP_GENERIC;
 		}
 
-		server->server_socket = sock;
+		server->socket = sock;
 		server->accept_wq = alloc_workqueue("accept_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
 		server->forward_c2e_wq = alloc_workqueue("c2e_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
 		server->forward_e2c_wq = alloc_workqueue("e2c_wq", WQ_HIGHPRI|WQ_UNBOUND, 0);
 
-		INIT_WORK(&server->accept_work, socket->work_ops->accept);
+		INIT_WORK(&server->accept_work, server->work_ops->accept);
 		INIT_LIST_HEAD(&server->tunnels);
 		server->total_tunnels = 0;
 

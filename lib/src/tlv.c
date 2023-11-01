@@ -32,7 +32,8 @@
  */
 int tlv_validate(void* buffer)
 {
-  return ((struct __tlv_header*)buffer)->magic == __TLV_MAGIC;
+    if(buffer == NULL) return 0;
+    return ((struct __tlv_header*)buffer)->magic == __TLV_MAGIC;
 }
 
 
@@ -48,8 +49,8 @@ struct tlv* tlv_get_option(int type, void* buffer)
     char* tlv = (char*) buffer;
     struct tlv* option;
 
-    if(!tlv_validate(tlv))
-        return NULL;
+    if(buffer == NULL) return NULL;
+    if(!tlv_validate(tlv)) return NULL;
 
     tlv_for_each(option, tlv)
         if(option->type == type)

@@ -12,11 +12,13 @@ extern "C"
 
 enum __tlv_types {
     TLV_INFO = 0x1,    // Info TLV
-    TLV_CONNECT = 0xA,    // Connect TLV          
+    TLV_CONNECT = 0xA,    // Connect TLV
+    TLV_BUFFER_SIZE = 0xB,    // Buffer size TLV          
     TLV_EXT_TCP = 0x14,   // Extended TCP header
     TLV_SUPP_EXT = 0x15,   // Supported TCP extension
     TLV_COOKIE = 0x16,   // Cookie TLV
     TLV_ERROR = 0x1E    // Error TLV
+
 };
 
 struct __tlv_header {

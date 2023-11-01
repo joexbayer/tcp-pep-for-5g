@@ -31,7 +31,7 @@ struct pep_socket_callbacks {
 };
 
 struct pep_state {
-        struct socket* server_socket;
+        struct socket* socket;
 
         struct pep_state_ops* ops;
         struct pep_state_work_ops* work_ops;

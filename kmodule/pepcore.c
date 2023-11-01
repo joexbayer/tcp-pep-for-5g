@@ -30,9 +30,18 @@ struct pep_state* server;
 
 static int __init init_core(void)
 {
-        server = pep_new_server();
+        int ret;
 
-        server->ops->init(server, 8181);
+        server = pep_new_server();
+        if (!server) {
+                return -ENOMEM;
+        }
+
+        ret = server->ops->init(server, 8181);
+        if(ret < 0){
+                printk(KERN_INFO "[PEP] init_core: failed to initialize server\n");
+                return ret;
+        }
 
         return 0; /* Module loaded successfully. */
 }

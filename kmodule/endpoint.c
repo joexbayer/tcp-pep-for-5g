@@ -50,6 +50,7 @@ struct socket* pep_endpoint_connect(u32 ip, u16 port)
         struct socket* sock = NULL;
         struct sock* sk = NULL;
         struct sockaddr_in daddr;
+        
         int addr_len = sizeof(daddr);
         int ret = 0;
         int buffsize = 64*1024*1024;

@@ -21,5 +21,8 @@ all: $(OUTPUTS)
 clean:
 	rm -f $(SRC_DIR)/*.o *.bin
 
-run-tests:
+run-tests_valgrind:
 	@for f in *.bin; do valgrind --leak-check=full --show-leak-kinds=all ./$$f; echo; done
+
+run-tests:
+	@for f in *.bin; do ./$$f; echo; done

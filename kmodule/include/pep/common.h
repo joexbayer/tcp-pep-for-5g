@@ -19,6 +19,7 @@
 #include <tlv.h>
 
 #define PEP_MAX_TCP_BUFFER_SIZE 1500
+#define PEP_DEFAULT_SOCKET_BUFFER_SIZE 64*1024*1024
 
 enum pep_tunnel_states {
         NEW,
