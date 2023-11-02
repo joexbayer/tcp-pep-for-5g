@@ -11,15 +11,15 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Split connection with bandwidth and delay.\relax }}{17}{figure.caption.16}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces The TCP handshake procedure across PEP\relax }}{18}{figure.caption.17}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{19}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Deployment of a PEP at a base station\relax }}{20}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Deployment of a PEP at a base station\relax }}{21}{figure.caption.22}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP\relax }}{30}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code\relax }}{31}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure\relax }}{32}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{33}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{38}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Work operation table\relax }}{41}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Callback function table\relax }}{42}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP\relax }}{31}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code\relax }}{32}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure\relax }}{33}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{34}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{39}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Work operation table\relax }}{42}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Callback function table\relax }}{43}{figure.4.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic\relax }}{45}{figure.caption.42}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Interactive UDP traffic\relax }}{46}{figure.caption.42}%
 \addvspace {10\p@ }

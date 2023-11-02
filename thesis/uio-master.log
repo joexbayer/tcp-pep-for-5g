@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  31 OCT 2023 15:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  2 NOV 2023 14:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1314,7 +1314,12 @@ Overfull \hbox (5.86597pt too wide) in paragraph at lines 361--362
  []
 
 [19 <../diagrams/drawio/tcphandshake_optimal.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 380--382
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--384
 
  []
 
@@ -1322,191 +1327,194 @@ Underfull \hbox (badness 10000) in paragraph at lines 380--382
 File: ../diagrams/drawio/deployment.png Graphic file (type png)
 <use ../diagrams/drawio/deployment.png>
 Package pdftex.def Info: ../diagrams/drawio/deployment.png  used on input line 
-386.
+390.
 (pdftex.def)             Requested size: 345.5922pt x 202.05548pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 392--393
+Underfull \hbox (badness 10000) in paragraph at lines 396--397
 
  []
 
-[20 <../diagrams/drawio/deployment.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 407--408
 
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+[21 <../diagrams/drawio/deployment.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
 
  []
 
 
-Overfull \hbox (7.12337pt too wide) in paragraph at lines 429--429
+Underfull \hbox (badness 10000) in paragraph at lines 417--418
+
+ []
+
+
+Overfull \hbox (7.12337pt too wide) in paragraph at lines 433--433
  []|\T1/cmr/m/n/10.95 Connection 
  []
 
 
-Overfull \hbox (10.81436pt too wide) in paragraph at lines 429--429
+Overfull \hbox (10.81436pt too wide) in paragraph at lines 433--433
  []|\T1/cmr/m/n/10.95 Transparent| 
  []
 
-[22]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[22] [23]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--443
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 448--449
 
  []
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [23
+(./uio-master.listing) [24
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 466--467
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
 
  []
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [24] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 550--552
+(./uio-master.listing) [25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 554--556
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 553--554
-
- []
-
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 555--580
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 583--584
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 585--586
+Underfull \hbox (badness 10000) in paragraph at lines 557--558
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 631--633
+Underfull \hbox (badness 10000) in paragraph at lines 559--584
 
  []
 
-[28] [29]
-<../diagrams/drawio/pep_architecture.png, id=869, 1063.975pt x 681.54625pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 587--588
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 589--590
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 635--637
+
+ []
+
+[29] [30]
+<../diagrams/drawio/pep_architecture.png, id=873, 1063.975pt x 681.54625pt>
 File: ../diagrams/drawio/pep_architecture.png Graphic file (type png)
 <use ../diagrams/drawio/pep_architecture.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_architecture.png  used on input
- line 687.
+ line 691.
 (pdftex.def)             Requested size: 372.39684pt x 238.54475pt.
 
-Overfull \hbox (12.39684pt too wide) in paragraph at lines 687--688
+Overfull \hbox (12.39684pt too wide) in paragraph at lines 691--692
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 693--694
+Underfull \hbox (badness 10000) in paragraph at lines 697--698
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 712.
+(caption)                particular \caption on input line 716.
 See the caption package documentation for explanation.
 
-[30 <../diagrams/drawio/pep_architecture.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 717--718
+[31 <../diagrams/drawio/pep_architecture.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 721--722
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--740
+Underfull \hbox (badness 10000) in paragraph at lines 743--744
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--743
+Underfull \hbox (badness 10000) in paragraph at lines 746--747
 
  []
 
-[31]
+[32]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 762.
+(caption)                particular \caption on input line 766.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (26.45332pt too wide) in paragraph at lines 769--770
+Overfull \hbox (26.45332pt too wide) in paragraph at lines 773--774
  []\T1/cmr/bx/n/10.95 Socket Call-backs[] \T1/cmr/m/n/10.95 Es-pe-cially of in-
 ter-est is the call-back func-tion [][]\T1/cmtt/m/n/10.95 sk_data_ready[]\T1/cm
 r/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 769--770
+Underfull \hbox (badness 10000) in paragraph at lines 773--774
 
  []
 
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 779--780
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 783--784
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 792.
+(caption)                particular \caption on input line 796.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 797--798
-
- []
-
-\openout4 = `uio-master.listing'.
-
-(./uio-master.listing) [33]
-Underfull \hbox (badness 10000) in paragraph at lines 813--814
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 815--816
+Underfull \hbox (badness 10000) in paragraph at lines 801--802
 
  []
 
 \openout4 = `uio-master.listing'.
 
 (./uio-master.listing) [34]
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
+Underfull \hbox (badness 10000) in paragraph at lines 817--818
 
  []
 
-\openout4 = `uio-master.listing'.
 
-(./uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 863--864
+Underfull \hbox (badness 10000) in paragraph at lines 819--820
 
  []
 
 \openout4 = `uio-master.listing'.
 
 (./uio-master.listing) [35]
-Overfull \hbox (1.21783pt too wide) in paragraph at lines 894--895
+Underfull \hbox (badness 10000) in paragraph at lines 844--845
+
+ []
+
+\openout4 = `uio-master.listing'.
+
+(./uio-master.listing)
+Underfull \hbox (badness 10000) in paragraph at lines 867--868
+
+ []
+
+\openout4 = `uio-master.listing'.
+
+(./uio-master.listing) [36]
+Overfull \hbox (1.21783pt too wide) in paragraph at lines 898--899
 []\T1/cmr/m/n/10.95 data call-back, set-ting [][]\T1/cmtt/m/n/10.95 sk_user_dat
 a []\T1/cmr/m/n/10.95 to the server it-self and us-ing [][]\T1/cmtt/m/n/10.95 s
 etsockopt
@@ -1514,158 +1522,158 @@ etsockopt
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [36]
-Overfull \hbox (10.784pt too wide) in paragraph at lines 937--938
+(./uio-master.listing) [37]
+Overfull \hbox (10.784pt too wide) in paragraph at lines 941--942
 \T1/cmr/m/n/10.95 fore men-tioned [][]\T1/cmtt/m/n/10.95 pep_listen_data_ready[
 ]\T1/cmr/m/n/10.95 , when over-writ-ing the [][]\T1/cmtt/m/n/10.95 sk_data_read
 y
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 937--938
+Underfull \hbox (badness 10000) in paragraph at lines 941--942
 
  []
 
-[37]
+[38]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 950.
+(caption)                particular \caption on input line 954.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 939--953
+Underfull \hbox (badness 10000) in paragraph at lines 943--957
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 954--955
+Underfull \hbox (badness 10000) in paragraph at lines 958--959
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 959--960
+Underfull \hbox (badness 10000) in paragraph at lines 963--964
 
  []
 
 \openout4 = `uio-master.listing'.
 
-(./uio-master.listing) [38]
-Underfull \hbox (badness 10000) in paragraph at lines 995--996
-
- []
-
-[39]
-\openout4 = `uio-master.listing'.
-
- (./uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 1033--1034
+(./uio-master.listing) [39]
+Underfull \hbox (badness 10000) in paragraph at lines 999--1000
 
  []
 
 [40]
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
+\openout4 = `uio-master.listing'.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1042
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1042
-
- []
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1051.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1043--1054
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1055--1056
+ (./uio-master.listing)
+Underfull \hbox (badness 10000) in paragraph at lines 1037--1038
 
  []
 
 [41]
+Underfull \hbox (badness 10000) in paragraph at lines 1042--1043
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1045--1046
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1045--1046
+
+ []
+
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1067.
+(caption)                particular \caption on input line 1055.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1059--1070
+Underfull \hbox (badness 10000) in paragraph at lines 1047--1058
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1072--1073
+Underfull \hbox (badness 10000) in paragraph at lines 1059--1060
+
+ []
+
+[42]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1071.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1074
 
  []
 
 
-Overfull \hbox (1.30888pt too wide) in paragraph at lines 1080--1081
+Underfull \hbox (badness 10000) in paragraph at lines 1076--1077
+
+ []
+
+
+Overfull \hbox (1.30888pt too wide) in paragraph at lines 1084--1085
 \T1/cmr/m/n/10.95 In-stead we can con-fig-ure the socket buffer sizes system-wi
 de. Un-der [][]\T1/cmtt/m/n/10.95 net.core
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1080--1081
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1085
 
  []
 
 
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1094--1094
+Overfull \hbox (19.11086pt too wide) in paragraph at lines 1098--1098
 []\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_rmem='<min size> <size> < ma
 x size>'; 
  []
 
 
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1095--1095
+Overfull \hbox (19.11086pt too wide) in paragraph at lines 1099--1099
 []\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_wmem='<min size> <size> < ma
 x size>';[] 
  []
 
 
-Overfull \hbox (13.45248pt too wide) in paragraph at lines 1096--1096
+Overfull \hbox (13.45248pt too wide) in paragraph at lines 1100--1100
 []\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max
  size>';[] 
  []
 
-[42] [43]
+[43] [44]
 Chapter 5.
-[44
+[45
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1141--1142
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=1107, 443.95862pt x 
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=1111, 443.95862pt x 
 319.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
 <use ../diagrams/graphs/initial_udp_latency_timeseries.pdf>
 Package pdftex.def Info: ../diagrams/graphs/initial_udp_latency_timeseries.pdf 
- used on input line 1146.
+ used on input line 1150.
 (pdftex.def)             Requested size: 221.97876pt x 159.6705pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1152--1154
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1158
 
  []
 
-[45 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [46]
+[46 <../diagrams/graphs/initial_udp_latency_timeseries.pdf>] [47]
 Chapter 6.
-(./uio-master.bbl [47
+(./uio-master.bbl [48
 
-] [48
+] [49
 
-]) [49] (./uio-master.aux)
+]) [50] (./uio-master.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1676,8 +1684,8 @@ Package rerunfilecheck Info: File `uio-master.out' has not changed.
 (rerunfilecheck)             Checksum: AC689D0111BC888CBE69A7D19ABB6AC6;10938.
  ) 
 Here is how much of TeX's memory you used:
- 31433 strings out of 478994
- 619866 string characters out of 5858185
+ 31434 strings out of 478994
+ 619873 string characters out of 5858185
  1248918 words of memory out of 5000000
  47870 multiletter control sequences out of 15000+600000
  434944 words of font info for 72 fonts, out of 8000000 for 9000
@@ -1700,10 +1708,10 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (57 pages, 1239084 bytes).
+Output written on uio-master.pdf (58 pages, 1239957 bytes).
 PDF statistics:
- 1319 PDF objects out of 1440 (max. 8388607)
- 1152 compressed objects within 12 object streams
- 455 named destinations out of 1000 (max. 500000)
+ 1323 PDF objects out of 1440 (max. 8388607)
+ 1155 compressed objects within 12 object streams
+ 456 named destinations out of 1000 (max. 500000)
  840 words of extra memory for PDF output out of 10000 (max. 10000000)
 
