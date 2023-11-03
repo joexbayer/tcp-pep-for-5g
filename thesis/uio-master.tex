@@ -382,7 +382,7 @@ Most transparent connection splitting PEPs spoof the IP address of the original 
 In contrast, with non-transparent PEP the deployment is more difficult. When a client needs to explicitly choose the PEP, it also needs to know that the PEP is on the path to the desired endpoint.
 Normally this would be a extremely difficult to achieve. But, because the PEP is designed to be deployed at the base stations of wireless networks, such as 5G, we can assure that all traffic will pass through it. This eliminates the deployment problem of non-transparent PEPs.\\
 
-Although non transparent PEP still may crash and buffered data may be lost. There is no assumptions by the client that the data was delivered to the endpoint. Clients are aware of the potential failures that may occur when using a PEP.\\
+Although non transparent PEP still may crash and buffered data may be lost. There is no assumptions by the client that the data was delivered to the endpoint. Clients are aware of the potential failures that may occur when using a PEP, similiar to using a VPN. Non transparent PEPs are more sustainable as they avoid the need to spoof IP addresses and include the clients which lets them adapt and avoid invalid assumptions.\\
 
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
@@ -395,7 +395,7 @@ Although non transparent PEP still may crash and buffered data may be lost. Ther
 
 Additionally, since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to additional performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them.\\
 
-This thesis will utilize a non-transparent PEP located at a base station. Mostly for the benefits of future adaptability and the client being aware of the PEP. Being located at the base station assures that the PEP will be on path...
+This thesis will utilize a non-transparent PEP located at a base station. Mostly for the benefits of future adaptability and the client being aware of the PEP. Being located at the base station assures that the PEP will be on path, which normally is a major challange for non transparent PEPs.
 
 \section{Buffering}
 Buffering is a core feature of the PEP. As mentioned before, the goal is to buffer non-interactive traffic packets at the PEP. Normally the context of buffers in the network, revolve around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. However, since the PEP is using sockets and splitting the connection, we can utilize a different buffer: the socket buffers.
