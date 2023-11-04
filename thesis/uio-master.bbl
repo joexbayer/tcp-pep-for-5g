@@ -62,6 +62,12 @@ Brian~W. Kernighan and Dennis~M. Ritchie.
 \newblock {\em The C Programming Language}.
 \newblock Prentice Hall Professional Technical Reference, 2nd edition, 1988.
 
+\bibitem{bandwidth_changes}
+Euiyul Ko, Donghyeok An, Ikjun Yeom, and Hyunsoo Yoon.
+\newblock Congestion control for sudden bandwidth changes in tcp.
+\newblock {\em International Journal of Communication Systems},
+  25(12):1550–1567, 2012.
+
 \bibitem{top_down}
 James~F. Kurose and Keith~W. Ross.
 \newblock {\em Computer networking: a top-down approach}.
