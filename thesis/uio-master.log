@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  4 NOV 2023 20:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  6 NOV 2023 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1455,12 +1455,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 415--416
 
  []
 
-
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
-[22]
+
 Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
@@ -1532,7 +1532,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 643--645
  []
 
 [29] [30]
-<../diagrams/drawio/pep_architecture.png, id=870, 1063.975pt x 681.54625pt>
+<../diagrams/drawio/pep_architecture.png, id=868, 1063.975pt x 681.54625pt>
 File: ../diagrams/drawio/pep_architecture.png Graphic file (type png)
 <use ../diagrams/drawio/pep_architecture.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_architecture.png  used on input
@@ -1770,7 +1770,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1153--1154
 
  []
 
-<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=1106, 443.95862pt x 
+<../diagrams/graphs/initial_udp_latency_timeseries.pdf, id=1104, 443.95862pt x 
 319.3418pt>
 File: ../diagrams/graphs/initial_udp_latency_timeseries.pdf Graphic file (type 
 pdf)
@@ -1797,9 +1797,9 @@ Package rerunfilecheck Info: File `uio-master.out' has not changed.
 (rerunfilecheck)             Checksum: AC689D0111BC888CBE69A7D19ABB6AC6;10938.
  ) 
 Here is how much of TeX's memory you used:
- 32781 strings out of 478338
- 670481 string characters out of 2834776
- 1254111 words of memory out of 3000000
+ 32780 strings out of 478338
+ 670469 string characters out of 2834776
+ 1253111 words of memory out of 3000000
  50168 multiletter control sequences out of 15000+600000
  500773 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1824,9 +1824,9 @@ e Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt0900.pfb>
 ftt1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/h
 elvetic/uhvb8a.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type
 1/urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (58 pages, 1420680 bytes).
+Output written on uio-master.pdf (58 pages, 1420337 bytes).
 PDF statistics:
- 1329 PDF objects out of 1440 (max. 8388607)
- 456 named destinations out of 1000 (max. 500000)
+ 1327 PDF objects out of 1440 (max. 8388607)
+ 455 named destinations out of 1000 (max. 500000)
  845 words of extra memory for PDF output out of 10000 (max. 10000000)
 
