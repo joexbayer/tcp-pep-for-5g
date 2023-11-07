@@ -1123,12 +1123,31 @@ Forwarding using Netfilters, why we dont want this.
 Memory Management in C, why its important, how we deal with it.
 
 \chapter{Evaluation}
-The evaluation of the PEP wil
-\section{Initial configuration}
+The evaluation of the PEP will focus on completion times of non-interactive traffic in combination with graphs showing the affect on interactive traffic. 
 
-Sender --> Receiver --> Receiver
-\\
-Data being pushed from Sender to receiver, file size, speed, delay.
+\section{Ultra Ping}
+Ultra ping is a tool for characterizing UDP packet latency in a network. The tool measures the time it takes for UDP packets to get across the network\cite{rahtz2023ultraping}. We will use Ultra Ping to simulate interactive traffic and have it compete with the PEP. Additionally, Utra Ping provides tools for plotting and creating graphs of the measured data.\\
+
+Ultra Ping lets you configure the amount of packets, packet size and sending rate in kBps. For our evaluation we will use... which mimics Skype.
+
+\begin{verbatim}
+./echo.py --server
+./echo.py --client <IP address of server>
+\end{verbatim}
+
+\section{Initial configuration}
+The initial test configuration will consist of a Sender, Receiver and the PEP. Where the Sender is connected to the PEP and the PEP connected to the Receiver. Each point is a Linux host running Debian, directly interconnected with Ethernet cables.\\
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.45]{../diagrams/drawio/simple_pep_design.png}
+  	\caption{PLACEHOLDER}
+  	\label{fig:inital_configuration}
+\end{figure}
+
+In this configuration data will be sent from the sender to the receiver, non-interactive traffic data will go through the PEP while the interactive Ultra Ping data will only be routed by the PEP. The connection between Sender and PEP will represent the stable network while the connection between the PEP and Receiver will represent a unstable wireless network.
+
+
 \subsection{Traffic Control Options}
 Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter etc. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments. 
 \\
