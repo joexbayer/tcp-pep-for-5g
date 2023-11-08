@@ -86,6 +86,12 @@ Michele Polese, Marco Mezzavilla, Menglei Zhang, Jing Zhu, Sundeep Rangan,
 \newblock In {\em 2017 51st Asilomar Conference on Signals, Systems, and
   Computers}, pages 951--957, 2017.
 
+\bibitem{rahtz2023ultraping}
+Matthew Rahtz.
+\newblock ultra\_ping: A high precision ping tool.
+\newblock \url{https://github.com/mrahtz/ultra_ping}, 2023.
+\newblock Accessed: 2023-11-07.
+
 \bibitem{mmwave_blocking}
 Cristian~García Ruiz, Antonio Pascual-Iserte, and Olga Muñoz.
 \newblock Analysis of blocking in mmwave cellular systems: Application to relay

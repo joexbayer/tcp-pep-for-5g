@@ -8,45 +8,45 @@ Database file #1: myBib.bib
 Warning--to sort, need author or key in ibm_doc
 Warning--there's a number but no series in fq_codel_rfc
 Warning--empty publisher in fq_codel_rfc
-You've used 20 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            625 strings with 7347 characters,
-and the built_in function-call counts, 7312 in all, are:
-= -- 705
-> -- 360
+            631 strings with 7484 characters,
+and the built_in function-call counts, 7529 in all, are:
+= -- 727
+> -- 367
 < -- 10
-+ -- 145
-- -- 122
-* -- 482
-:= -- 1144
-add.period$ -- 61
-call.type$ -- 20
-change.case$ -- 119
++ -- 148
+- -- 124
+* -- 488
+:= -- 1181
+add.period$ -- 65
+call.type$ -- 21
+change.case$ -- 123
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 312
-empty$ -- 554
-format.name$ -- 122
-if$ -- 1601
+cite$ -- 24
+duplicate$ -- 319
+empty$ -- 576
+format.name$ -- 124
+if$ -- 1649
 int.to.chr$ -- 0
-int.to.str$ -- 20
+int.to.str$ -- 21
 missing$ -- 18
-newline$ -- 101
-num.names$ -- 38
-pop$ -- 155
+newline$ -- 107
+num.names$ -- 40
+pop$ -- 163
 preamble$ -- 1
-purify$ -- 101
+purify$ -- 104
 quote$ -- 0
-skip$ -- 266
+skip$ -- 272
 stack$ -- 0
-substring$ -- 336
-swap$ -- 117
+substring$ -- 341
+swap$ -- 118
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 74
+type$ -- 78
 warning$ -- 3
-while$ -- 52
-width$ -- 22
-write$ -- 218
+while$ -- 54
+width$ -- 23
+write$ -- 230
 (There were 3 warnings)

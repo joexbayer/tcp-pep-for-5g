@@ -243,7 +243,7 @@ PEPDNA? 0RTT transport converter?\cite{bandwidth_changes}
 % Briefly outline the design goals of the PEP
 % High-Level Architecture
 \chapter{Design} %WHAT AND WHYs
-In this thesis we design a non-transparent connection splitting PEP at the boundary of an unstable network with fluctuating bandwidth, typically at 5G base-stations. By splitting the connection at this point we can buffer packets, usually closer to the user, and have them ready for high bandwidth phases. Where the overarching goal is to improve the completion times of non-interactive traffic while avoiding to disturb the interactive flows that are passing through. A good design for the PEP is crucial as it needs to be robust, fast and reliable. \\
+In this chapter we discuss the design of a non-transparent connection splitting PEP at the boundary of an unstable network with fluctuating bandwidth, typically at 5G base-stations. By splitting the connection at this point we can buffer packets, usually closer to the user, and have them ready for high bandwidth phases. Where the overarching goal is to improve the completion times of non-interactive traffic while avoiding to disturb the interactive flows that are passing through. A good design for the PEP is crucial as it needs to be robust, fast and reliable. \\
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -255,7 +255,7 @@ In this thesis we design a non-transparent connection splitting PEP at the bound
 Figure \ref{fig:simple_pep_design} is a simplification of the PEP within a network, highlighting its interaction with other components, such as the client and endpoint. 
 
 \section{Justification for designing a PEP}
-The ossification of networks and particularly TCP, have been long-standing issues~\cite{tcp_extendable}. Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle-boxes. A PEP is such a middle-box, as it can enhance the performance without introducing changes to TCP itself.\\
+The ossification of networks, particularly TCP, has been a long-standing issue~\cite{tcp_extendable}. Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Altering such a fundamental protocol could disrupt countless systems and applications. Which leaves us to explore new ideas using middle-boxes. A PEP is such a middle-box, as it can enhance the performance without introducing changes to TCP itself.\\
 
 Using a PEP in combination with 5G has additional benefits. Default TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by the base station illustrated by figure \ref{fig:5g_topology}. However, with a PEP we are able to split the domains and perform optimizations, such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\
 
@@ -269,13 +269,13 @@ Using a PEP in combination with 5G has additional benefits. Default TCP with 5G 
 
 \section{Performance}
 In this section, we discuss the core design decisions to optimize the PEPs performance.
- The speed at which a PEP can both process and forward packets is crucial. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. The design choices presented in this section focus on the performance of the PEP. Because of these high performance requirements the PEP is written in C as a Linux kernel module. 
+ The speed at which a PEP can both process and forward packets is crucial. Especially when wanting to utilize the rapidly fluctuating bandwidth of 5G, we need to react as fast as possible. The design choices presented in this section focus on the performance of the PEP. Because of these high performance requirements, the PEP is written in C as a Linux kernel module. 
 
 \subsection{Programming Language}
 The programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM with JIT and garbage collection, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems. The reason for choosing C is its bare metal approach and integration into the Linux kernel with kernel modules.
 
 \subsection{Kernel Module Vs. Userspace Application}
-When sending data over the network, all calls to receive and send data has to go through the kernels internal network stack. These calls are usually in the form of system calls when running as a userspace application. Making system calls (syscalls\footnote{Section about system calls?}) can introduce a lot performance overhead in the form of a context switch to kernel space and copying data back and fourth from user-space to kernel-space. A kernel module will be able to directly access the kernel functions, eliminating the overhead of system calls and the restricted access of userspace applications to the network stack.\\
+When sending data over the network, all calls to receive and send data has to go through the kernels internal network stack. These calls are usually in the form of system calls when running as a userspace application. Making system calls (syscalls\footnote{Section about system calls?}) can introduce a lot performance overhead in the form of a context switch to kernel-space and copying data back and forth from user-space to kernel-space. A kernel module will be able to directly access the kernel functions, eliminating the overhead of system calls and the restricted access of userspace applications to the network stack.\\
 
 Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. In contrast, kernel modules are tightly bound to the Linux environment, which might limit its usability to Linux hosts. This however is not a big problem as most servers are Linux hosts. [CITE]
 
@@ -324,7 +324,7 @@ CD & 100\% & 100\% \\
 
 
 \paragraph{Delay}
-Table \ref{tab:pep_bandwidth_table} gives an overview of the bandwidth improvements. However, even with the improvement of bandwidth utilization, we did not improve the end to end throughput from A to D as it is still limited by link CD. A important component is missing: Delay. Looking at the topology of Figure \ref{fig:pep_bandwidth_good}, we can assume an inherent lower delay between C and D, because of locality, than between A and D. If we now introduce a fluctuating bandwidth on the link CD the lower delay between C and D means the congestion controller can react faster.\\
+Table \ref{tab:pep_bandwidth_table} gives an overview of the bandwidth improvements. However, even with the improvement of bandwidth utilization, we did not improve the end to end throughput from A to D as it is still limited by link CD. An important component is missing: Delay. Looking at the topology of Figure \ref{fig:pep_bandwidth_good}, we can assume an inherent lower delay between C and D, because of locality, than between A and D. If we now introduce a fluctuating bandwidth on the link CD the lower delay between C and D means the congestion controller can react faster.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -333,7 +333,7 @@ Table \ref{tab:pep_bandwidth_table} gives an overview of the bandwidth improveme
   	\label{fig:pep_bandwidth_delay}
 \end{figure}
 
-Figure \ref{fig:pep_bandwidth_delay} introduces delay to the topology. Without the PEP we would have a end to end connection with 15 Mbps and 110 ms delay (220 ms RTT). Assuming the bandwidth on the link between C and D is highly fluctuating, the TCP congestion controller needs 220 ms for each round trip to react. If we however split the connection at C, the time would be reduced to 20 ms. This means the congestion controller, between C and D, can react 1000\% faster with a split connection. Thereby better utilizing the fluctuating bandwidth.
+Figure \ref{fig:pep_bandwidth_delay} introduces delay to the topology. Without the PEP we would have a end to end connection with 15 Mbps and 110 ms delay (220 ms RTT). Assuming the bandwidth on the link between C and D is highly fluctuating, the TCP congestion controller needs 220 ms for each round trip to react. Wowever, if we split the connection at C, the time would be reduced to 20 ms. This means the congestion controller, between C and D, can react 1000\% faster with a split connection. Thereby better utilizing the fluctuating bandwidth.
  
 \subsection{PEP Selection}
 The connection process to the PEP, and later on the endpoint, is established by informing the PEP of the desired endpoint of the client. This can be achieved by a variety of ways where the goal is to attach additional information to the default connection process of TCP. Preferably, we do not want the overhead of needing an entire additional round trip just to pass this information. Figure \ref{fig:tcphandshake_primitiv} visualizes the RTT overhead of sending this information (in red) to the PEP before application data can be sent.\\
@@ -384,13 +384,13 @@ The deployment of the PEP is an important design aspect. In this context, deploy
 \subsection{Transparent PEP}
 Transparent PEPs provide a deployment advantage since they can be integrated without altering the client or server. This means even older applications can utilize the PEP. Moreover, the PEP will inherently be on the same path as the original connection, which is a prerequisite for a PEP. But, if unknown middle boxes interfere with a connection, issues like lost TCP Options might occur. Additionally, if applications are not aware of the PEP, they can not adjust their behavior, restricting their future adaptability.\\
 
-Most transparent connection splitting PEPs spoof the IP address of the original endpoint. From the perspective of the client, it is talking to the actual endpoint. This may lead to issues, as several assumptions held by the client may no longer be valid. One assumption is that when I receive an ACK, the associated data segment was successfully received by the endpoint. But since the PEP is pretending to be the endpoint the ACKs only mean that the PEP received the data not the endpoint. If the PEP would crash any data which the PEP has buffered would be lost. This would mean that the client assumes that the endpoint received the data, even though it did not.
+Most transparent connection splitting PEPs spoof the IP address of the original endpoint. From the perspective of the client, it is talking to the actual endpoint. This may lead to issues, as several assumptions held by the client may no longer be valid. One assumption is that when I receive an ACK, the associated data segment was successfully received by the endpoint. But since the PEP is pretending to be the endpoint the ACKs only mean that the PEP received the data, not the endpoint. If the PEP would crash any data which the PEP has buffered would be lost. This would mean that the client assumes that the endpoint received the data, even though it did not.
 
 \subsection{Non Transparent PEP}
 In contrast, with non-transparent PEP the deployment is more difficult. When a client needs to explicitly choose the PEP, it also needs to know that the PEP is on the path to the desired endpoint.
 Normally this would be a extremely difficult to achieve. But, because the PEP is designed to be deployed at the base stations of wireless networks, such as 5G, we can assure that all traffic will pass through it. This eliminates the deployment problem of non-transparent PEPs.\\
 
-Although non transparent PEP still may crash and buffered data may be lost. There is no assumptions by the client that the data was delivered to the endpoint. Clients are aware of the potential failures that may occur when using a PEP, similiar to using a VPN. Non transparent PEPs are more sustainable as they avoid the need to spoof IP addresses and include the clients which lets them adapt and avoid invalid assumptions.\\
+Although non-transparent PEP still may crash and buffered data may be lost. There is no assumptions by the client that the data was delivered to the endpoint. Clients are aware of the potential failures that may occur when using a PEP, similiar to using a VPN. Non transparent PEPs are more sustainable as they avoid the need to spoof IP addresses and include the clients which lets them adapt and avoid invalid assumptions.\\
 
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
@@ -409,7 +409,7 @@ This thesis will utilize a non-transparent PEP located at a base station. Mostly
 Buffering is a core feature of the PEP. As mentioned before, the goal is to buffer non-interactive traffic packets at the PEP. Normally the context of buffers in the network, revolve around NIC buffers or routing buffers. Those buffers affect all traffic passing through and will cause Bufferbloat if the buffers are too large. That's why, normally, the goal is to keep these buffers low to avoid disturbing interactive traffic. However, since the PEP is using sockets and splitting the connection, we can utilize a different buffer: the socket buffers.
 
 \subsection{Socket buffers}
-A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each individual read and write buffer can configured for the best performance.
+A socket buffer is a buffer specific for a particular socket. There are usually two buffers, one for read on the socket and one for write. This offers a great opportunity for buffering only a certain type of traffic, as a socket buffer does not affect traffic which flows through the host machine. A connection splitting proxy inherently has two sockets, one for the client and one for the endpoint. Which means we get a total of 4 buffers per 'flow', each individual read and write buffer can be configured for the best performance.
 
 \section{AQM \& Scheduling}
 The ability to configure and utilize different scheduling algorithms is important for the success of the  PEP. When buffering a lot of packets at the PEP we might clog up the sending queues of the host machine. This would result in high delays for the interactive traffic who has to share these queues with our buffered non-interactive data. To avoid this we utilize FQ\_CoDEL, as it assures a fair bandwidth for each flow.\\
@@ -417,7 +417,7 @@ The ability to configure and utilize different scheduling algorithms is importan
 This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as Windows or MacOS, will be extremely difficult or even impossible. The impact of different scheduling algorithms will be shown and discussed in the Evaluation chapter.
 
 \section{Security}
-The PEP needs to assure that traffic flowing through the PEP not gets compromised. This, however, will not be a big concern as the PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP is not able to read encrypted that or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint. As only the PEPs connection will be seen by the endpoint.
+The PEP needs to assure that traffic flowing through the PEP not gets compromised. This, however, will not be a big concern as the PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP is not able to read encrypted data or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint. As only the PEPs connection will be seen by the endpoint.
 
 \section{Summary}
 In this chapter we have designed a high performance connection splitting PEP tailored for fluctuating bandwidth. We made choice to keep it non-transparent to assure future adaptability and client configuration. Using sockets and their buffers we avoid bufferbloat and to not disrupt the interactive traffic. Finally, we use AQM and scheduling to avoid unnecessary delays on the outgoing links.\\
