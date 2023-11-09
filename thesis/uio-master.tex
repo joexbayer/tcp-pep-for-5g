@@ -401,7 +401,7 @@ Although non-transparent PEP still may crash and buffered data may be lost. Ther
 \end{figure}
 
 
-Additionally, since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behavior, optimizing their operations based on the presence of the PEP, leading to additional performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them.\\
+Additionally, since applications are fully aware of the PEP when it is non-transparent, we can adjust the PEPs functionality based on the application using it. Applications can also adapt their behaviour, optimizing their operations based on the presence of the PEP, leading to additional performance improvements. Although side effect may still occur, applications are aware of them and can actively mitigate them.\\
 
 This thesis will utilize a non-transparent PEP located at a base station. Mostly for the benefits of future adaptability and the client being aware of the PEP. Being located at the base station assures that the PEP will be on path, which normally is a major challange for non transparent PEPs.
 
@@ -441,6 +441,8 @@ Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent \\
 \end{tabularx}
 \caption{Table of design decisions based on different PEP implementations compared to ours.}
 \end{table}
+
+Most PEPs are transparent, this makes our PEP special...
 
 % TRL TCP https://ieeexplore.ieee.org/abstract/document/4623710?casa_token=nB8IUC46VVQAAAAA:q9PoGtpzLJDUCfrjMzeAi9DG7VKQoSQVmogIdidf-ydVmt7e2ZtL5O1859WLVM6a_wXn_IZijFM
 
