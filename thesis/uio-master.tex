@@ -1125,7 +1125,13 @@ Forwarding using Netfilters, why we dont want this.
 Memory Management in C, why its important, how we deal with it.
 
 \chapter{Evaluation}
-The evaluation of the PEP will focus on completion times of non-interactive traffic in combination with graphs showing the affect on interactive traffic. 
+Our evaluation of the PEP centers on measuring the completion times for non-interactive traffic. We aim to demonstrate how the PEP can speed up this traffic compared to standard end-to-end methods. It's also important that this enhancement doesn't negatively affect interactive traffic. To illustrate this, we'll use graphs to show the impact on interactive traffic.
+
+We will begin with a basic test case to understand how well the PEP works in a simple scenario. After that we will look at how the PEP handles situations with changing bandwidth, which is more common in real-world settings.
+
+\section{Testbed}
+The testbed consists of multiple machines running Debian linux..
+A central controller is used to orchestrate the experiments.
 
 \section{Ultra Ping}
 Ultra ping is a tool for characterizing UDP packet latency in a network. The tool measures the time it takes for UDP packets to get across the network\cite{rahtz2023ultraping}. We will use Ultra Ping to simulate interactive traffic and have it compete with the PEP. Additionally, Utra Ping provides tools for plotting and creating graphs of the measured data.\\
@@ -1149,7 +1155,6 @@ The initial test configuration will consist of a Sender, Receiver and the PEP. W
 
 In this configuration data will be sent from the sender to the receiver, non-interactive traffic data will go through the PEP while the interactive Ultra Ping data will only be routed by the PEP. The connection between Sender and PEP will represent the stable network while the connection between the PEP and Receiver will represent a unstable wireless network.
 
-
 \subsection{Traffic Control Options}
 Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter etc. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments. 
 \\
@@ -1167,7 +1172,6 @@ In our test case FIFO will have the effect of creating up a queue at our PEP. Th
 FQ CoDel has a solution for this problem by providing a fair queuing mechanism. 
 \paragraph{PFIFO}
 Another alternative is Priority FIFO (PFIFO). As the name suggests it combines the concepts of a basic FIFO queue with priorities. This can reduce delay
-
 
 
 \subsection{Interactive vs PEP}
