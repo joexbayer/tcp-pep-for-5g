@@ -2,10 +2,13 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -147,7 +150,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Implications}{26}{subsection.4.1.3}\protected@file@percent }
 \newlabel{lst:pep_tcp_receive}{{4.1}{26}{kernel\_recvmsg wrapper for receiving for TCP msgs}{lstlisting.4.1}{}}
 \newlabel{lst:pep_tcp_receive@cref}{{[listing][1][4]4.1}{[1][26][]26}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}{\ignorespaces kernel\_recvmsg wrapper for receiving for TCP msgs}}{26}{lstlisting.4.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}kernel\_recvmsg wrapper for receiving for TCP msgs}{26}{lstlisting.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}TLV Library}{27}{section.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Important socket system calls}{28}{section*.25}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{28}{subsection.4.2.1}\protected@file@percent }
@@ -184,8 +187,8 @@
 \newlabel{lst:work_init}{{4.3.1}{35}{Works}{tcb@cnt@autonumlstlisting.4.3.1}{}}
 \newlabel{lst:work_init@cref}{{[tcb@cnt@autonumlstlisting][1][4,3]4.3.1}{[1][34][]35}}
 \@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.1}{\ignorespaces Listing 4.3.1: Work initialization example}}{35}{tcb@cnt@autonumlstlisting.4.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Work State problem}{35}{section*.36}\protected@file@percent }
-\newlabel{lst:work_containerof}{{4.3.2}{35}{Work State problem}{tcb@cnt@autonumlstlisting.4.3.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Work state problem}{35}{section*.36}\protected@file@percent }
+\newlabel{lst:work_containerof}{{4.3.2}{35}{Work state problem}{tcb@cnt@autonumlstlisting.4.3.2}{}}
 \newlabel{lst:work_containerof@cref}{{[tcb@cnt@autonumlstlisting][2][4,3]4.3.2}{[1][35][]35}}
 \@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.3.2}{\ignorespaces Listing 4.3.2: Work using containerof example}}{35}{tcb@cnt@autonumlstlisting.4.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Accept Work Queue}{36}{section*.37}\protected@file@percent }
