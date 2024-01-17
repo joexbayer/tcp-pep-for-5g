@@ -37,14 +37,12 @@
 typedef int socketfd_t;
 
 static FILE* log_file;
-FILE* thesis;
 socketfd_t sd, cd;
 
 void int_handlr(int dummy) {
     close(sd);
     close(cd);
     fclose(log_file);
-    fclose(thesis);
     exit(0);
 }
 
@@ -60,15 +58,12 @@ void *connection_handler(void *socket_desc)
     {
         ret = read(sock, buffer, BUFFER_SIZE);
         if(ret > 0){
-            //getsockopt(cd, SOL_TCP, TCP_INFO, &info, &tcp_info_length);
             total_recv += ret;
-            //printf("[FILE] Client: %d/%d (rtt: %f ms)\n", ret,total_recv, info.tcpi_rtt/1000);
         } else if (ret <= 0){
             break;
         }
     }
     gettimeofday(&tv2, NULL);
-    //printf("[FILE] Client Disconnected: %d bytes received.\n", total_recv);
     close(sock);
     
     double total_time = (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 + (double) (tv2.tv_sec - tv1.tv_sec);
@@ -91,13 +86,6 @@ int main(void)
     pthread_t thread_id;
 
     signal(SIGINT, int_handlr);
-
-    /* Open file to write */
-    thesis = fopen(OUTPUT_FILE, "w+");
-    if(thesis == NULL){
-        printf("[FILE] Unable to open output file\n");
-        return -1;
-    }
 
     /* Logging */
     log_file = fopen(LOG_FILE_NAME, "a");
@@ -135,7 +123,6 @@ int main(void)
     close(sd);
     close(cd);
     fclose(log_file);
-    fclose(thesis);
 
     return 0;
 }

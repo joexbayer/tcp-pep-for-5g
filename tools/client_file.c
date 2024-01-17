@@ -19,7 +19,6 @@
 #define IP "172.16.11.5"
 #define PORT 8183
 #define MAX_BUFFER_SIZE 1500
-#define TEST_FILE "32mb.bin"
 #define LOG_FILE_NAME "logs/client.log"
 #define MS "100ms"
 
@@ -39,7 +38,6 @@ static int PEP = 0;
 typedef int socketfd_t;
 
 static FILE* log_file;
-FILE* thesis;
 socketfd_t server;
 
 void parse_opts(int argc, char* argv[])
@@ -91,7 +89,6 @@ socketfd_t setup_socket(char* ip, unsigned short port)
 void int_handlr(int dummy) {
     close(server);
     fclose(log_file);
-    fclose(thesis);
     exit(0);
 }
 
@@ -107,13 +104,6 @@ int main(int argc, char * argv[])
 
     signal(SIGINT, int_handlr);
     
-    /* Open big file. */
-    thesis = fopen(TEST_FILE, "r");
-    if(thesis == NULL){
-        printf("Could not open file\n");
-        return -1;
-    }
-
     /* Logging */
     log_file = fopen(LOG_FILE_NAME, "a");
     if(log_file == NULL){
@@ -127,21 +117,15 @@ int main(int argc, char * argv[])
         return -1;
 
     /* File size */
-    fseek(thesis, 0L, SEEK_END);
-    //thesis_size = ftell(thesis);
     thesis_size = 32*1024*1024;
     to_send = thesis_size;
-    rewind(thesis);
 
     printf("Sending file of size %d bytes\n", thesis_size);
     
     gettimeofday(&tv1, NULL);
     while(thesis_size > 0)
     {
-        //ret = fread(buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 1, thesis);
-        //printf("reading %d bytes from file\n", MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE);
         ret = send(server, buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 0);
-        //printf("sending %d bytes to servers (%d left)\n", ret, thesis_size);
         thesis_size -= ret;
     }
     gettimeofday(&tv2, NULL);
@@ -150,7 +134,6 @@ int main(int argc, char * argv[])
     LOG("%.1fmb %fs (%s)\n", (double)(to_send/1024/1024), total_time, PEP ? "PEP" : "NOPEP");
 
     close(server);
-    fclose(thesis);
     fclose(log_file);
     return 0;
 }

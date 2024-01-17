@@ -8,6 +8,16 @@ Inital testing topology:
                100Mb htb rate                                   10Mb htb rate
                 1,25k bfifo                                      0,025k Bfifo
 
+
+Hylia:  10.10.10.3
+Midna:  10.10.10.6
+Majora: 10.10.10.7
+
+Ultra Ping:
+payload len: 100
+send rate kBps: 20
+
+
 Rate change from:
   1Mb -- 9s --> 10Mb -- 2s --> 50Mb
   
