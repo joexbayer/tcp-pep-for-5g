@@ -13,6 +13,8 @@ Hylia:  10.10.10.3
 Midna:  10.10.10.6
 Majora: 10.10.10.7
 
+Hylia 10.100.36.3 ---- 10.100.36.6 Midna 10.100.67.6 ------ 10.100.67.7 Majora
+
 Ultra Ping:
 payload len: 100
 send rate kBps: 20

@@ -28,6 +28,11 @@
 
 struct pep_state* server;
 
+/**
+ * @brief Initialize the core module.
+ * Creates a new server object and initializes it.
+ * @return int 
+ */
 static int __init init_core(void)
 {
         int ret;
@@ -46,7 +51,10 @@ static int __init init_core(void)
         return 0; /* Module loaded successfully. */
 }
 
-
+/**
+ * @brief Exit the core module.
+ * Cleans up the server object.
+ */
 static void __exit exit_core(void)
 {
         pep_server_clean(server);
@@ -58,5 +66,5 @@ module_exit(exit_core);
 * Get rid of taint message by declaring code as GPL.
 */
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR(DRIVER_AUTHOR); /* Who wrote this module? */
-MODULE_DESCRIPTION(DRIVER_DESC); /* What does this module do */
+MODULE_AUTHOR(DRIVER_AUTHOR);
+MODULE_DESCRIPTION(DRIVER_DESC); 

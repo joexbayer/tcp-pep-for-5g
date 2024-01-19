@@ -1203,17 +1203,30 @@ To further evaluate the PEP we conducted an experiment where we have 1-10 flows 
 \chapter{Conclusion}
 	
 \chapter{New Testing}
-To evaluate the initial performance of the PEP we use a simple topology. 
+To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and a sender. The router will act as our hypothetical base station at which the PEP resides. The connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}\\
 
-Sender -(100Mbit, 100ms)- Router -(15mbit, 20ms)- Receiver
+Sender -(100Mbit, 100ms)- Router -(15mbit, 20ms)- Receiver\\
 
-The goal is to confirm the two most important aspects of the PEP, a faster completion time and no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously have a interface UDP traffic (how fast and how much). The interactive data will simulate Skype traffic using a program called ULTRA\_PING which offer end to end latency measurements. 
+The goal is to confirm the two most important aspects of the PEP, a faster completion time and no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously have a interface UDP traffic (how fast and how much). The interactive data will simulate Skype traffic using a program called ULTRA\_PING which offer end to end latency measurements.\\
 
-Fluctuating bandwidth is simulated by a step function.
+Fluctuating bandwidth is simulated by a step function.\\
+
+<graph>\\
+
+The first graph shows 3 interactive flows each competing with a file transfer. The first is a normal end to end transfer using a FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ\_CODEL, and the last is the same transfer with the PEP.\\
+
+\section{Configuration}
+TC, TSO, scheduling, delay.
+
+
+\subsection{Experiment 1}
+
+
 
 \section{File transfer}
 The file transfer is simulated by a two custom C programs. Using a command line argument you specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.
 
+\section{Results}
 
 \section{Future Work}
 

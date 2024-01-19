@@ -4,7 +4,6 @@
 #include <pep/errors.h>
 #include <pep/tcp.h>
 
-
 typedef enum pep_states  {
 		PEP_SERVER_UNINITIALIZED = 0,
         PEP_SERVER_RUNNING =  1 << 0,
@@ -61,22 +60,26 @@ struct pep_state* pep_new_server(void)
  */
 int pep_config_server(struct pep_state* server, struct pep_state_work_ops* work_ops)
 {
-		if(!server || !work_ops)
-				return -EPEP_GENERIC;
+		if(!server || !work_ops){
+			return -EPEP_GENERIC;
+		}
 
-		if(work_ops->accept)
-				server->work_ops->accept = work_ops->accept;
-		if(work_ops->forward_c2e)
-				server->work_ops->forward_c2e = work_ops->forward_c2e;
-		if(work_ops->forward_e2c)
-				server->work_ops->forward_e2c = work_ops->forward_e2c;
+		if(work_ops->accept){
+			server->work_ops->accept = work_ops->accept;
+		}
+		if(work_ops->forward_c2e){
+			server->work_ops->forward_c2e = work_ops->forward_c2e;
+		}
+		if(work_ops->forward_e2c){
+			server->work_ops->forward_e2c = work_ops->forward_e2c;
+		}
 
 		return 0;
 }
 
 /**
  * @brief Accept new connections and create new tunnels.
- * 
+ * TBD
  * @param work 
  */
 void pep_server_accept_work(struct work_struct *work)
@@ -246,6 +249,13 @@ void pep_server_clean(struct pep_state* server)
 	kfree(server);
 }
 
+/**
+ * @brief Custom callback function to handle data on the server socket.
+ * This callback assumes that the server state is TCP_LISTEN. And will queue a new accept work.
+ * After that it will call the original data ready function to accept the connection.
+ * @param sk Server socket
+ * @return void
+ */
 void pep_listen_data_ready(struct sock* sk)
 {
 	struct pep_state* server;
@@ -262,6 +272,15 @@ void pep_listen_data_ready(struct sock* sk)
 	default_data_ready(sk);
 }
 
+/**
+ * @brief Initialize the server struct.
+ * Most importantly creates a socket, binds and listens on the specified port.
+ * Overwrites the default data ready function with our own.
+ * Enables TCP_FASTOPEN and TCP_NODELAY and creates work queues for the server.
+ * @param server pep_state struct
+ * @param port port to listen on
+ * @return int 
+ */
 int pep_server_init(struct pep_state* server, u16 port)
 {
 		struct socket* sock = NULL;

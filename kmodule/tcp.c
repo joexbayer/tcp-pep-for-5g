@@ -31,6 +31,15 @@ pep_tcp_receive_read_again:
 	return rc;
 }
 
+
+/**
+ * @brief Helper function to send data over a socket.
+ * 
+ * @param sock Socker to send data over.
+ * @param buffer Buffer of data
+ * @param size Size of buffer
+ * @return int 
+ */
 int pep_tcp_send(struct socket *sock, u8* buffer, u32 size)
 {
         struct msghdr msg = {
