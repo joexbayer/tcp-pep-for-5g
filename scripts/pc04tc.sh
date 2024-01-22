@@ -13,16 +13,16 @@ sudo tc qdisc add dev enp36s0 root fq maxrate 50mbit;
 # sudo ip link set dev enp36s0 gso_max_size 1500;
 
 # FIFO (bfifo) 100mbit with 25000 packet queue.
-sudo tc qdisc del dev enp36s0 root;
-sudo tc qdisc add dev enp36s0 root handle 2: htb default 10;
-sudo tc class add dev enp36s0 parent 2: classid 10 htb rate 100Mbit;
-sudo tc qdisc add dev enp36s0 parent 2:10 handle 11: bfifo limit 25000;
+sudo tc qdisc del dev 10Ge root;
+sudo tc qdisc add dev 10Ge root handle 2: htb default 10;
+sudo tc class add dev 10Ge parent 2: classid 10 htb rate 100Mbit;
+sudo tc qdisc add dev 10Ge parent 2:10 handle 11: bfifo limit 25000;
 
 # fq_codel 100mbit with 150ms interval
-sudo tc qdisc del dev enp36s0 root;
-sudo tc qdisc add dev enp36s0 root handle 1: htb default 11;
-sudo tc class add dev enp36s0 parent 1: classid 11 htb rate 100mbit;
-sudo tc qdisc add dev enp36s0 parent 1:11 fq_codel interval 150;
+sudo tc qdisc del dev 10Ge root;
+sudo tc qdisc add dev 10Ge root handle 1: htb default 11;
+sudo tc class add dev 10Ge parent 1: classid 11 htb rate 100mbit;
+sudo tc qdisc add dev 10Ge parent 1:11 fq_codel interval 150;
 
 
 # IPERF

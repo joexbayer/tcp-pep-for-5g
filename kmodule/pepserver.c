@@ -25,7 +25,7 @@ static struct pep_state_work_ops default_server_work_ops = {
 };
 
 static struct pep_socket_callbacks default_server_callbacks = {
-		.server_data_ready = &pep_client_data_ready,
+		.server_data_ready = &pep_listen_data_ready,
 		.client_data_ready = &pep_client_data_ready,
 		.endpoint_data_ready = &pep_endpoint_data_ready
 };

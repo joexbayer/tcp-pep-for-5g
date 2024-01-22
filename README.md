@@ -2,18 +2,18 @@
 
 Inital testing topology:
 ```
-  (Sender)                              (Router / PEP)                           (Receiver)
+  (Sender)                              (Router / PEP)                           (Receiver) 
 172.16.10.4                     172.16.10.254 - 172.16.11.254                    172.16.11.5
    enp36s0 <---( 100ms delay ) ---> enp36s0           enp24s0 <---( 20ms delay )---> enp36s0
-               100Mb htb rate                                   10Mb htb rate
-                1,25k bfifo                                      0,025k Bfifo
+               100Mb htb rate                                   10Mb htb rate               
+                1,25k bfifo                                      0,025k Bfifo               
 
 
 Hylia:  10.10.10.3
 Midna:  10.10.10.6
 Majora: 10.10.10.7
 
-Hylia 10.100.36.3 ---- 10.100.36.6 Midna 10.100.67.6 ------ 10.100.67.7 Majora
+Hylia 10.100.36.3 10Ge ---- 10Gc 10.100.36.6 Midna 10.100.67.6 10Gf ------ 10Ge 10.100.67.7 Majora
 
 Ultra Ping:
 payload len: 100

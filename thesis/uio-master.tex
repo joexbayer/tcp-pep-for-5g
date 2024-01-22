@@ -1215,16 +1215,57 @@ Fluctuating bandwidth is simulated by a step function.\\
 
 The first graph shows 3 interactive flows each competing with a file transfer. The first is a normal end to end transfer using a FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ\_CODEL, and the last is the same transfer with the PEP.\\
 
+\section{Testbed}
+
+<picture>\\
+\\
+The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last 3 represent the sender, router and receiver. 
+
+\section{Hardware}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{verbatim}
+         _,met$$$$$gg.           ocarina@hylia
+      ,g$$$$$$$$$$$$$$$P.        OS: Debian 11 bullseye
+    ,g$$P""       """Y$$.".      Kernel: x86_64 Linux 5.10.0-26-amd64
+   ,$$P'              `$$$.      Uptime: 76d 12h 21m
+  ',$$P       ,ggs.     `$$b:    Packages: 1586
+  `d$$'     ,$P"'   .    $$$     Shell: bash 5.1.4
+   $$P      d$'     ,    $$P     Disk: 78G / 496G (17%)
+   $$:      $$.   -    ,d$$'     CPU: Intel Xeon E5-2620 v4 @ 32x 3GHz [39.0°C]
+   $$\;      Y$b._   _,d$P'      GPU: Matrox Electronics Systems Ltd. G200eR2 (rev 01)
+   Y$$.    `.`"Y$$$$P"'          RAM: 1735MiB / 64303MiB
+   `$$b      "-.__
+    `Y$$
+     `Y$$.
+       `$$b.
+         `Y$$b.
+            `"Y$b._
+                `""""
+
+\end{verbatim}
+\captionof{figure}{Neofetch results}
+%\label{fig:work_struct}
+\end{minipage}\\
+
 \section{Configuration}
-TC, TSO, scheduling, delay.
+The testbed is configured to simulate a base case where the PEP would be beneficial.
 
+\subsubsection{Sender}
+100mbit sending rate.
 
-\subsection{Experiment 1}
+\subsubsection{Router (PEP)}
+Sender Interface, Receiver interface.
+sysctl 
 
+\subsubsection{Receiver}
+Delay
 
 
 \section{File transfer}
 The file transfer is simulated by a two custom C programs. Using a command line argument you specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.
+
+\subsection{Experiment 1}
 
 \section{Results}
 

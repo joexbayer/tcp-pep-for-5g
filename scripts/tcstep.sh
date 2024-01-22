@@ -5,16 +5,16 @@
 # Running a Step function test.
 #
 sudo echo "Starting";
-ssh router "sudo tc class change dev enp24s0 parent 2: classid 10 htb rate 15mbit;sudo tc qdisc change dev enp24s0 parent 2:10 handle 11: bfifo limit 37500;";
-ssh pc13 "cd uio-master-joeba; python2 ultra_ping/echo.py --client 172.16.11.5 --n_packets 600" > /dev/null & 
+ssh midna "sudo tc class change dev 10Gf parent 2: classid 10 htb rate 15mbit;sudo tc qdisc change dev 10Gf parent 2:10 handle 11: bfifo limit 37500;";
+ssh hylia "cd uio-master-joeba; python2 ultra_ping/echo.py --client 10.100.67.7 --n_packets 600" > /dev/null & 
 sudo echo "Ultra ping";
 sleep 5;
-ssh pc04 "cd uio-master-joeba; ./client_file" &
+ssh hylia "cd uio-master-joeba; ./client_file" &
 sudo echo "TCP started";
 sleep 13;
-ssh router "sudo tc qdisc change dev enp24s0 parent 2:10 handle 11: bfifo limit  175000;sudo tc class change dev enp24s0 parent 2: classid 10 htb rate 70mbit;";
+ssh midna "sudo tc qdisc change dev 10Gf parent 2:10 handle 11: bfifo limit  175000;sudo tc class change dev 10Gf parent 2: classid 10 htb rate 70mbit;";
 wait
-ssh pc13 "cd ~/uio-master-joeba;mv udp_packetn_latency_pairs results/udp_bifo_transfer" > /dev/null
+ssh hylia "cd ~/uio-master-joeba;mv udp_packetn_latency_pairs results/udp_bifo_transfer" > /dev/null
 
 
 
@@ -42,12 +42,12 @@ ssh pc05 "cd ~/uio-master-joeba;mv ./logs/server.log results/udp_${flows}_flow_p
 #done
 
 # FQ_CODEL
-ssh router "sudo tc class change dev enp24s0 parent 1: classid 11 htb rate 15mbit" > /dev/null;
-ssh pc04 "cd uio-master-joeba; python2 ultra_ping/echo.py --client 172.16.11.5 --n_packets 600" > /dev/null & 
+ssh midna "sudo tc class change dev 10Gf parent 1: classid 11 htb rate 15mbit" > /dev/null;
+ssh hylia "cd uio-master-joeba; python2 ultra_ping/echo.py --client 10.100.67.7 --n_packets 600" > /dev/null & 
 sleep 5;
-ssh pc04 "cd uio-master-joeba; ./client_file -p" > /dev/null &
+ssh hylia "cd uio-master-joeba; ./client_file -p" > /dev/null &
 sleep 13;
-ssh router "sudo tc class change dev enp24s0 parent 1: classid 11 htb rate 70mbit" > /dev/null;
+ssh midna "sudo tc class change dev 10Gf parent 1: classid 11 htb rate 70mbit" > /dev/null;
 wait
-ssh pc04 "cd ~/uio-master-joeba;mv udp_packetn_latency_pairs results/udp_pep_transfer" > /dev/null
+ssh hylia "cd ~/uio-master-joeba;mv udp_packetn_latency_pairs results/udp_transfer" > /dev/null
 

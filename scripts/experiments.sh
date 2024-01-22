@@ -20,3 +20,6 @@ for (( try=1; try <= $TRIES; try++ )); do
 done
 ssh pc05 "cd ~/uio-master-joeba;mv ./logs/server.log results/udp_${flows}_flow_pep.log" > /dev/null
 #done
+
+# BFIFO test
+ssh router "sudo tc class change dev enp24s0 parent 1: classid 11 htb rate 15mbit" > /dev/null;

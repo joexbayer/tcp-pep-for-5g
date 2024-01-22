@@ -1,0 +1,78 @@
+<mxfile host="Electron" modified="2024-01-22T14:33:39.037Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.21 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="IE0gUpWP4B5FvaxniHti" version="22.1.21" type="device">
+  <diagram name="Page-1" id="tdqR3H0pgQtAeDCwSgcF">
+    <mxGraphModel dx="1434" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-13" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="330" width="540" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-2" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="300" y="360" width="78.89" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-3" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="509" y="360" width="78.89" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-4" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="90" y="360" width="78.89" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-5" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;" vertex="1" parent="1">
+          <mxGeometry x="489" y="420" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" target="V7EBvmDltSiEiASLBAJ4-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="379" y="435" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-6" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;" vertex="1" parent="1">
+          <mxGeometry x="360" y="420" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-7" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;" vertex="1" parent="1">
+          <mxGeometry x="270" y="420" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="V7EBvmDltSiEiASLBAJ4-8" target="V7EBvmDltSiEiASLBAJ4-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-8" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;" vertex="1" parent="1">
+          <mxGeometry x="150" y="420" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-12" value="        (Sender)                                              (Router / PEP)                                          (Receiver) &#xa;     10.100.36.3                                  10.100.36.6  -  10.100.67.6                               10.100.67.7&#xa;          10Ge &lt;------ ( 100ms delay )------&gt; 10Gc            10Gf &lt;------( 20ms delay )------&gt; 10Ge&#xa;                              100mbit htb rate                                               15mbit htb rate               &#xa; " style="text;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="70" y="485" width="750" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-19" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;imageBackground=none;" vertex="1" parent="1">
+          <mxGeometry x="307.89" y="240" width="63.11" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-20" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="V7EBvmDltSiEiASLBAJ4-19" target="V7EBvmDltSiEiASLBAJ4-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="430" as="sourcePoint" />
+            <mxPoint x="400" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-21" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="V7EBvmDltSiEiASLBAJ4-19" target="V7EBvmDltSiEiASLBAJ4-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="308" as="sourcePoint" />
+            <mxPoint x="159" y="398" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-22" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="V7EBvmDltSiEiASLBAJ4-19" target="V7EBvmDltSiEiASLBAJ4-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="349.9999999999998" y="297.8354347826087" as="sourcePoint" />
+            <mxPoint x="329" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-23" value="Triforce" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="311" y="210" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-25" value="Hylia" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="100" y="455" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-26" value="Midna" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="307.89" y="455" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V7EBvmDltSiEiASLBAJ4-27" value="Majora" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="509" y="455" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
