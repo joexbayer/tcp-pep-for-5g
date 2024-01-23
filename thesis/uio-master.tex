@@ -1201,7 +1201,13 @@ To further evaluate the PEP we conducted an experiment where we have 1-10 flows 
 \subsection{Spike}
 
 \chapter{Conclusion}
-	
+
+% Objective
+% Testbed
+% Configuration
+% Procedure
+% Results & analysis
+
 \chapter{New Testing}
 To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and a sender. The router will act as our hypothetical base station at which the PEP resides. The connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}\\
 
@@ -1221,7 +1227,7 @@ The first graph shows 3 interactive flows each competing with a file transfer. T
 \\
 The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last 3 represent the sender, router and receiver. 
 
-\section{Hardware}
+\subsection{Hardware}
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
@@ -1262,12 +1268,35 @@ sysctl
 Delay
 
 
-\section{File transfer}
-The file transfer is simulated by a two custom C programs. Using a command line argument you specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.
+\section{Experiment Procedure}
+The file transfer is simulated by a two custom C programs. Using a command line argument you specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.\\
 
-\subsection{Experiment 1}
+The interactive traffic is simulated by ULTRA\_PING, it is configured to send 20 packets per second with 100bytes each. This is done to mimic Skype traffic.\\
 
-\section{Results}
+The experiment consists of 3 steps:\\
+
+\subsubsection{Step 1}
+In the first step we start ULTRA\_PING from the sender to the receiver and wait 5 seconds to get a baseline.
+\subsubsection{Step 2}
+The second step consists of starting the file transfer.
+\subsubsection{Step 3}
+After 13 seconds we change the bandwidth between the router and the receiver, simulating fluctuating bandwidth.
+
+\section{Results \& Analysis}
+
+\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/graphs/final.pdf}
+  	\caption{Graph showing ...}
+  	\label{fig:inital_test}
+\end{figure}
+
+\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/graphs/closeup.pdf}
+  	\caption{IClose up}
+  	\label{fig:inital_test}
+\end{figure}
 
 \section{Future Work}
 

@@ -1,5 +1,5 @@
-  sudo ethtool -K enp24s0 tso off;
-  sudo ethtool -K enp24s0 gso off;
-  sudo ethtool -K enp24s0 lro off;
-  sudo ethtool -K enp24s0 gro off;
-  sudo ethtool -K enp36s0 ufo off;
+  sudo ethtool -K 10Gf tso off;
+  sudo ethtool -K 10Gf gso off;
+  sudo ethtool -K 10Gf lro off;
+  sudo ethtool -K 10Gf gro off;
+  sudo ethtool -K 10Gf ufo off;
