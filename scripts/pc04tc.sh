@@ -28,3 +28,9 @@ sudo tc qdisc add dev 10Ge parent 1:11 fq_codel interval 150;
 # IPERF
 bash tcpss2.sh flow1.dat 3 172.16.10.4 33333 172.16.11.5 5001 &
 iperf -c pc05 -B 172.16.10.4:33333 & iperf -c pc05 -B 172.16.10.4:33334 & iperf -c pc05 -B 172.16.10.4:33335;
+
+
+sudo tc qdisc del dev 10Ge root;
+sudo tc qdisc add dev 10Ge root handle 2: htb default 10;
+sudo tc class add dev 10Ge parent 2: classid 10 htb rate 100Mbit;
+sudo tc qdisc add dev 10Ge parent 2:10 handle 11: bfifo limit 1250000;
