@@ -1209,17 +1209,15 @@ To further evaluate the PEP we conducted an experiment where we have 1-10 flows 
 % Results & analysis
 
 \chapter{New Testing}
-To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and a sender. The router will act as our hypothetical base station at which the PEP resides. The connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}\\
+To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and a receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}\\
 
-Sender -(100Mbit, 100ms)- Router -(15mbit, 20ms)- Receiver\\
 
-The goal is to confirm the two most important aspects of the PEP, a faster completion time and no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously have a interface UDP traffic (how fast and how much). The interactive data will simulate Skype traffic using a program called ULTRA\_PING which offer end to end latency measurements.\\
+\begin{center}
+Sender ------ Router ------ Receiver\\
+\end{center}
 
-Fluctuating bandwidth is simulated by a step function.\\
+The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having a interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING which offers end to end latency measurements.\\
 
-<graph>\\
-
-The first graph shows 3 interactive flows each competing with a file transfer. The first is a normal end to end transfer using a FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ\_CODEL, and the last is the same transfer with the PEP.\\
 
 \section{Testbed}
 
@@ -1257,6 +1255,8 @@ The Testbed consists of four hosts, the first is the controller from which we or
 \section{Configuration}
 The testbed is configured to simulate a base case where the PEP would be beneficial.
 
+Sender ---(100Mbit/s, 100ms)--- Router ---(15mbit/s - 70mbit/s, 20ms)--- Receiver\\
+
 \subsubsection{Sender}
 100mbit sending rate.
 
@@ -1284,16 +1284,18 @@ After 13 seconds we change the bandwidth between the router and the receiver, si
 
 \section{Results \& Analysis}
 
-\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.50]{../diagrams/graphs/final.pdf}
+	\includegraphics[scale=0.60]{../diagrams/graphs/final.pdf}
   	\caption{Graph showing ...}
   	\label{fig:inital_test}
 \end{figure}
 
+The first graph shows 3 interactive flows, each competing with a file transfer. The first is a normal end to end transfer using a FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ\_CODEL, and the last is the same transfer with the PEP.\\
+
 \begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.50]{../diagrams/graphs/closeup.pdf}
+	\includegraphics[scale=0.60]{../diagrams/graphs/closeup.pdf}
   	\caption{IClose up}
   	\label{fig:inital_test}
 \end{figure}
