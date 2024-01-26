@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  25 JAN 2024 14:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  26 JAN 2024 15:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1787,61 +1787,65 @@ Overfull \hbox (13.45248pt too wide) in paragraph at lines 1294--1294
  []
 
 
-Overfull \hbox (36.08597pt too wide) in paragraph at lines 1295--1295
+Overfull \hbox (41.74434pt too wide) in paragraph at lines 1295--1295
 []\T1/cmtt/m/n/10.95 $ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo 
-limit 37500;[] 
+limit 225000;[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1306--1307
+LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 1296.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1309--1310
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1308--1309
+Underfull \hbox (badness 10000) in paragraph at lines 1311--1312
 
  []
 
 [53]
-<../diagrams/graphs/final.pdf, id=1249, 462.52798pt x 346.89601pt>
-File: ../diagrams/graphs/final.pdf Graphic file (type pdf)
-<use ../diagrams/graphs/final.pdf>
-Package pdftex.def Info: ../diagrams/graphs/final.pdf  used on input line 1322.
+<../diagrams/graphs/final2.pdf, id=1249, 758.835pt x 521.78943pt>
+File: ../diagrams/graphs/final2.pdf Graphic file (type pdf)
+<use ../diagrams/graphs/final2.pdf>
+Package pdftex.def Info: ../diagrams/graphs/final2.pdf  used on input line 1325
+.
+(pdftex.def)             Requested size: 341.4726pt x 234.80307pt.
 
-(pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1327--1328
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1329--1330
+Underfull \hbox (badness 10000) in paragraph at lines 1330--1331
 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 1332--1333
 
-<../diagrams/graphs/closeup.pdf, id=1250, 462.52798pt x 346.89601pt>
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1334--1335
+
+ []
+
+[54 <../diagrams/graphs/final2.pdf>]
+<../diagrams/graphs/closeup.pdf, id=1296, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/closeup.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/closeup.pdf>
 Package pdftex.def Info: ../diagrams/graphs/closeup.pdf  used on input line 135
-0.
+5.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../diagrams/graphs/compare.pdf, id=1251, 462.52798pt x 346.89601pt>
+<../diagrams/graphs/compare.pdf, id=1297, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/compare.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/compare.pdf>
-Package pdftex.def Info: ../diagrams/graphs/compare.pdf  used on input line 135
-7.
+Package pdftex.def Info: ../diagrams/graphs/compare.pdf  used on input line 136
+2.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-(./uio-master.bbl [54 <../diagrams/graphs/final.pdf>] [55 <../diagrams/graphs/c
-loseup.pdf>] [56 <../diagrams/graphs/compare.pdf>] [57
+(./uio-master.bbl [55 <../diagrams/graphs/closeup.pdf>] [56 <../diagrams/graphs
+/compare.pdf>] [57
 
 ]) [58] (./uio-master.aux)
 
@@ -1852,7 +1856,7 @@ Package rerunfilecheck Info: File `uio-master.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  31529 strings out of 478994
- 622466 string characters out of 5858185
+ 622472 string characters out of 5858185
  1249688 words of memory out of 5000000
  47930 multiletter control sequences out of 15000+600000
  435242 words of font info for 73 fonts, out of 8000000 for 9000
@@ -1875,10 +1879,10 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (66 pages, 1385852 bytes).
+Output written on uio-master.pdf (66 pages, 1395186 bytes).
 PDF statistics:
- 1532 PDF objects out of 1728 (max. 8388607)
- 1264 compressed objects within 13 object streams
+ 1538 PDF objects out of 1728 (max. 8388607)
+ 1266 compressed objects within 13 object streams
  482 named destinations out of 1000 (max. 500000)
  929 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1292,8 +1292,11 @@ $ sudo tc qdisc add dev 10Gf parent 1:11 fq_codel interval 150;
 BFIFO configuration:
 $ sudo tc qdisc add dev 10Gf root handle 2: htb default 10;
 $ sudo tc class add dev 10Gf parent 2: classid 10 htb rate 15mbit;
-$ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo limit 37500;
-\end{verbatim}
+$ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo limit 225000;
+\end{verbatim}\\
+
+The BFIFO queue is set to have a limit of the end to end bandwidth delay product (BDP).
+In our case the BDP is 15Mbit/s with 120ms delay which equals 225 000 bytes. In the step function the bandwidth increases to 70Mbit/s and with it the BFIFO limit to 1 050 000 bytes.
 
 \subsubsection{Receiver}
 The only configuration for the receiver is the 20ms delay on its router facing interface.
@@ -1319,7 +1322,7 @@ The experiments will be run as shell scripts from the controller host. Using \ve
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.70]{../diagrams/graphs/final.pdf}
+	\includegraphics[scale=0.45]{../diagrams/graphs/final2.pdf}
   	\caption{Graph showing ...}
   	\label{fig:graph1}
 \end{figure}
@@ -1328,7 +1331,7 @@ Figure \ref{fig:graph1} shows 3 interactive flows, each competing with a file tr
 
 The lines represent important points in time for each flow, the green line is the start of the file transfer which starts after 5 seconds. The black line shows the the step function changes the bandwidth from 15Mbit/s to 70Mbit/s. The last red line represents the flow completion time.\\
 
-Important aspects of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up 140ms occur multiple times. This is the normal behavior with big network buffers and the reason normally buffers are kept small. While when using FQ CoDel the interactive flow is barely disrupted.\\
+Important aspects of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up 240m, which is the normal behavior with big network buffers and the reason normally buffers are kept small. While when using FQ CoDel the interactive flow is barely disrupted with and without PEP.\\
 
 <Discussion around the PEP graph>
 
