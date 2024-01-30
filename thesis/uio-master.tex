@@ -523,42 +523,10 @@ In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion contro
 
 
 \subsection{Linux Version and Distribution}
-The kernel module was developed using Linux Kernel 5.15, older version of Linux might encounter problems as the kernel functions change a lot.
+The kernel module was developed using Linux Kernel > 5.10, older version of Linux might encounter problems as the kernel functions change a lot.
 
 \subsection{Implications}
-
-\begin{lstlisting}[caption={kernel\_recvmsg wrapper for receiving for TCP msgs}, label={lst:pep_tcp_receive} ,language=C]
-int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size)
-{
-	struct msghdr msg = {
-		.msg_flags = MSG_DONTWAIT,
-	};
-
-	struct kvec vec;
-	int rc = 0;
-
-	vec.iov_base = buffer;
-	vec.iov_len  = size;
-
-	printk(KERN_INFO "[PEP] kernel_recvmsg: calling recvmsg \n");
-pep_tcp_receive_read_again:
-	rc = kernel_recvmsg(sock, &msg, &vec, 1, vec.iov_len, MSG_DONTWAIT);
-	if (rc > 0)
-	{
-		tlv_print(buffer);
-		printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
-		return rc;
-	}
-
-	if(rc == -EAGAIN || rc == -ERESTARTSYS)
-	{
-		goto pep_tcp_receive_read_again;
-	}
-
-	printk(KERN_INFO "[PEP] kernel_recvmsg: recvmsg returned %d\n", rc);
-	return rc;
-}
-\end{lstlisting}
+The choice of kernel version dictates what function are available to kernel modules. Usually helper functions are the most volatile, so avoiding those is a important goal for compatibility. 
 
 \section{TLV Library}
 Regarding the endpoint addressing and selection by the client, a custom shared library is a good choice.
@@ -1209,7 +1177,7 @@ To further evaluate the PEP we conducted an experiment where we have 1-10 flows 
 % Results & analysis
 
 \chapter{New Testing}
-To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and a receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}
+To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}
 
 \begin{center}
 Sender ------ Router ------ Receiver\\
@@ -1254,16 +1222,15 @@ All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon 
          `Y$$b.
             `"Y$b._
                 `""""
-
 \end{verbatim}
-\captionof{figure}{Neofetch results}
+\captionof{figure}{Screenfetch results}
 %\label{fig:work_struct}
 \end{minipage}\\
 
 \section{Configuration}
 The testbed is configured to simulate a base case where the PEP would be beneficial.
 The connection between the sender and router is configured to have a bandwidth of 100Mbit/s with 100ms delay. This simulates a stable wired connection and will not change throughout the experiments.\\\\
-The connection between the router and the receiver is initially configured with a bandwidth of 15Mbit/s and 20ms delay, this configuration simulates the unstable wireless domain. The 15Mbit/s represent the low bandwidth phase and will change to 70Mbit/s to simulate the high bandwidth phase.\\\\
+The connection between the router and the receiver is initially configured with a bandwidth of 15Mbit/s and 20ms delay, this configuration simulates the unstable wireless domain. The 15Mbit/s represents the low bandwidth phase and will change to 70Mbit/s to simulate the high bandwidth phase.\\\\
 Delay is configured on interfaces facing from Receiver to Sender, while bandwidth is configured from the Sender to Receiver facing interfaces. 
 
 \subsubsection{Sender}
@@ -1306,9 +1273,9 @@ $ sudo tc qdisc add dev 10Ge root handle 2: netem delay 20ms;
 
 
 \section{Experiment Procedure}
-The file transfer is simulated by a two custom C programs. Using a command line argument you specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.\\
+The file transfer is simulated by a two custom C programs. Using a command line argument to specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.\\
 
-The experiment consists of 3 steps:\\
+The experiment consists of 3 steps:
 
 \begin{itemize}
   \item \textbf{Step 1}: In the first step we start ULTRA\_PING from the sender to the receiver and wait 5 seconds to get a baseline of the interactive flow without any disruptions.
@@ -1327,13 +1294,14 @@ The experiments will be run as shell scripts from the controller host. Using \ve
   	\label{fig:graph1}
 \end{figure}
 
-Figure \ref{fig:graph1} shows 3 interactive flows, each competing with a file transfer. The first is a normal end to end transfer using the FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ\_CODEL, and the last is the same transfer with the PEP.\\
+Figure \ref{fig:graph1} shows three interactive flows, each competing with a file transfer. The first is a normal end to end transfer using the FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ\_CODEL, and the last is the same transfer with the PEP.\\
 
-The lines represent important points in time for each flow, the green line is the start of the file transfer which starts after 5 seconds. The black line shows the the step function changes the bandwidth from 15Mbit/s to 70Mbit/s. The last red line represents the flow completion time.\\
+The lines represent important points in time for each flow, the green line is the start of the file transfer which starts after 5 seconds. The black line shows the the step function which changes the bandwidth from 15Mbit/s to 70Mbit/s. The last red line represents the flow completion time.\\
 
-Important aspects of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up 240m, which is the normal behavior with big network buffers and the reason normally buffers are kept small. While when using FQ CoDel the interactive flow is barely disrupted with and without PEP.\\
+An important aspect of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up 240ms, which is the normal behavior with big network buffers and the reason normally buffers are kept small. While when using FQ CoDel the interactive flow is barely disrupted with and without PEP.\\
 
-<Discussion around the PEP graph>
+Based on the last two graphs of Figure \ref{fig:graph1}, we can see th
+at the PEP does not disrupt the interactive traffic more than then the default end to end transfer. Even though the PEP has large buffers which reduce the completion time by 38.54\%. See Table \ref{tab:pep_fcts} for all completion times.
 
 \begin{table}[h!]
 \centering
@@ -1350,19 +1318,45 @@ PEP FQ CoDel & 14.315299s\\
 \label{tab:pep_fcts}
 \end{table}
 
-\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+Another important aspect which is not visible on the graph is the completion time of the Sender to PEP transfer. Since we split the connection into two transfer, when we use a PEP, we get two completion times. The connection between the Sender and PEP has a much higher bandwidth of 100Mbit/s in comparison of the total end to end bandwidth of 15Mbit/s, which leads to a completion time of 1.5s. This leads to both a better bandwidth utilization as discussed in Chapter 3. and frees the potentially contested bandwidth faster.\\
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.60]{../diagrams/graphs/closeup.pdf}
   	\caption{Close up of End to End compared to PEP}
   	\label{fig:graph2}
 \end{figure}
 
-\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+Figure \ref{fig:graph2} shows a closeup of the end to end and PEP transfers using FQ CoDel. Although there are more fluctuations when using the PEP, the delay variation stays inside the same range of 120.0ms to approximately 121.5ms. Its important to note that the PEP transfer finishes earlier, which means it impacts the interactive traffic for a shorter amount of time than the end to end transfer.
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+ & Average &  Median & Max\\
+\midrule
+E2E & 120.292091ms & 120.142940ms & 121.748920ms\\
+PEP & 120.614622ms & 120.400910ms & 121.759180ms\\
+\bottomrule
+\end{tabularx}
+\caption{Delay statistics (Calculated based on longest completion time)}
+\label{tab:delay_variations}
+\end{table}
+
+Table \ref{tab:delay_variations} shows the average, median and max delay for both PEP and end to end transfer. The statistics are taken over the time period of the longest flow to include the benefit of finishing early for the PEP. This comes to a total of 0,322ms difference on the average and 0,257ms on median.\\
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.60]{../diagrams/graphs/compare.pdf}
   	\caption{Individual file transfers affect on the interactive traffic.}
   	\label{fig:graph3}
 \end{figure}
+
+To demonstrate where the delay happens, we can look at two individual flows. One from the Sender to the Router and one from the Router to the receiver. Each paired with the end to end (Sender to Receiver) UDP interactive traffic. Figure \ref{fig:graph3} shows the resulting graphs, as we can see there is almost no disruption on the Sender to Router transfer. Most delay comes from the bottleneck link between the Router and Receiver.
+
+
+
+
 
 
 \section{Future Work}
