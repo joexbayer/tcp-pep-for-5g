@@ -80,7 +80,7 @@
 
 \begin{document}
 
- \uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
+\uiomasterfp[program={Informatics: Programming and System Architecture}, supervisors={Michael Welzl\and Kristjon Ciko}]
 \tableofcontents
 
 
@@ -94,6 +94,11 @@
 \chapter{Intro}
 
 \section{Motivation}
+
+\section{Problem Statement}
+
+\section{Organization}
+
 
 \chapter{Background}
 
@@ -1183,7 +1188,7 @@ To evaluate the initial performance of the PEP we use a simple topology consisti
 Sender ------ Router ------ Receiver\\
 \end{center}
 
-The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having a interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING which offers end to end latency measurements.\\
+The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having a interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING [source?] which offers end to end latency measurements.\\
 
 Additionally we will compare BFIFO to FQ CoDel, BFIFO being the worst case scenario for the interactive traffic and FQ CoDel the optimal choice for our scenario.
 
@@ -1196,12 +1201,12 @@ Additionally we will compare BFIFO to FQ CoDel, BFIFO being the worst case scena
   	\label{fig:testbed}
 \end{figure}
 
-The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last 3 represent the sender, router and receiver. The controller is connected to the other hosts through a management network, while each of the other hosts are directly connected to each other using 10G Ethernet controllers.\\
+The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last 3 represent the sender, router and receiver. The controller is connected to the other hosts through a management network, while each of the other hosts are directly connected to each other using 10G Ethernet controllers. All tests are run using physical hosts to get the most realistic results and void unexpected side effects of virtual machines.\\
 
 Figure \ref{fig:testbed} shows a technical overview of the testbed configuration.
 
 \subsection{Hosts and Hardware}
-All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon E5-2620 v4 processor, which features 32 cores at 3.0 GHz. Additionally the hosts have 64 GB of RAM each.\\
+All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon E5-2620 v4 processor, which features 32 cores at 3.0 GHz. Additionally the hosts have 64 GB of RAM each. The choice of hardware should eliminate any potential host congestion [source] and assure that the tests are not affected by old or dated hardware.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
@@ -1290,7 +1295,7 @@ The experiments will be run as shell scripts from the controller host. Using \ve
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.45]{../diagrams/graphs/final2.pdf}
-  	\caption{Graph showing ...}
+  	\caption{File transfer impact on interactive traffic}
   	\label{fig:graph1}
 \end{figure}
 
@@ -1353,11 +1358,6 @@ Table \ref{tab:delay_variations} shows the average, median and max delay for bot
 \end{figure}
 
 To demonstrate where the delay happens, we can look at two individual flows. One from the Sender to the Router and one from the Router to the receiver. Each paired with the end to end (Sender to Receiver) UDP interactive traffic. Figure \ref{fig:graph3} shows the resulting graphs, as we can see there is almost no disruption on the Sender to Router transfer. Most delay comes from the bottleneck link between the Router and Receiver.
-
-
-
-
-
 
 \section{Future Work}
 
