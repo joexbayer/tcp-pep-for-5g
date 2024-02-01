@@ -528,10 +528,7 @@ In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion contro
 
 
 \subsection{Linux Version and Distribution}
-The kernel module was developed using Linux Kernel > 5.10, older version of Linux might encounter problems as the kernel functions change a lot.
-
-\subsection{Implications}
-The choice of kernel version dictates what function are available to kernel modules. Usually helper functions are the most volatile, so avoiding those is a important goal for compatibility. 
+The kernel module was developed using and for Linux Kernel > 5.10, more specifically using Debian 11 (Bullseye). Older version of Linux might encounter problems as some of the kernel functions change between kernel version. The choice of kernel version dictates what function are available to kernel modules. Usually helper functions are the most volatile, so avoiding those is a important goal for compatibility. 
 
 \section{TLV Library}
 Regarding the endpoint addressing and selection by the client, a custom shared library is a good choice.
@@ -751,16 +748,46 @@ struct sock {
 \end{minipage}
 
 \paragraph{Socket Operations}
+The kernel socket struct includes a \verb|struct proto_ops| member which holds usual socket operations such as accept, connect and bind.
+Figure \ref{fig:proto_ops} shows an overview over the most interesting socket operations. Most notably the \verb|setsockopt| operation is important as it allows the configuration of socket options such as \verb|TCP_FASTOPEN|. Additionally, it can configure the socket buffer sizes using \verb|SO_SNDBUFFORCE| and \verb|SO_RCVBUFFORCE| which is an important aspect of the PEP.
 
 \paragraph{Socket Callbacks}
 Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever a \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any new data on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function. All callbacks take the socket as a parameters, thereby giving access to the socket state. \\
 
 \paragraph{Socket User Data}
-Kernel sockets allow modules to add extra information to a specific socket. The pointer \verb|sk_user_data| can be used to point to any data defined by a module. This in combination with the callbacks is a powerful tool for customizing socket behavior. This allows us to add additional state information to the socket. In our case we will use \verb|sk_user_data| to store the server stat.
+Kernel sockets allow modules to add extra information to a specific socket. The pointer \verb|sk_user_data| can be used to point to any data defined by a module. This in combination with the callbacks is a powerful tool for customizing socket behavior. This allows us to add additional state information to the socket. In our case we will use \verb|sk_user_data| to store the server stat.\\
 
-Benefit of using kernel moduels -> direct access to socket struct instead of an fd.
-socket struct, user\_data, data\_ready callback
-Code snippets
+\noindent\begin{minipage}{\linewidth}
+\begin{verbatim}
+struct proto_ops {
+    int		family;
+    struct module	*owner;
+    int		(*release)(struct socket *sock);
+    int		(*bind)(struct socket *sock,
+    			      struct sockaddr *myaddr,
+    			      int sockaddr_len);
+    int		(*connect)   (struct socket *sock,
+    			      struct sockaddr *vaddr,
+    			      int sockaddr_len, int flags);
+    int		(*accept)    (struct socket *sock,
+    			      struct socket *newsock, int flags, bool kern);
+    ...
+    int		(*listen)    (struct socket *sock, int len);
+    int		(*shutdown)  (struct socket *sock, int flags);
+    int		(*setsockopt)(struct socket *sock, int level,
+    			      int optname, sockptr_t optval,
+    			      unsigned int optlen);
+    int		(*getsockopt)(struct socket *sock, int level,
+    			      int optname, char __user *optval, int __user *optlen);
+    int		(*sendmsg)(struct socket *sock, struct msghdr *m,
+    			      size_t total_len);
+    int		(*recvmsg)   (struct socket *sock, struct msghdr *m,
+    ...
+};
+\end{verbatim}
+\captionof{figure}{Socket Protocol Operations}
+\label{fig:proto_ops}
+\end{minipage}
 
 \subsection{Work Queues}
 To handle multiple concurrent events, the PEP uses \verb|work queues|. A work in the Linux kernel is a way of handling kernel threads. They allow for a more reactive approach to threads, as a work can be queued on demand and execute simple tasks. A work is usually queued into a \verb|work queue|. Each \verb|work queue| represents a task and works which are queued will wait in the queue till they can be run. A task is defined as a function, to which context can be added through a \verb|work| parameter.\\
@@ -1100,42 +1127,41 @@ Memory Management in C, why its important, how we deal with it.
 \chapter{Evaluation}
 Our evaluation of the PEP centers on measuring the completion times for non-interactive traffic. We aim to demonstrate how the PEP can speed up this traffic compared to standard end-to-end methods. It's also important that this enhancement doesn't negatively affect interactive traffic. To illustrate this, we'll use graphs to show the impact on interactive traffic.
 
-We will begin with a basic test case to understand how well the PEP works in a simple scenario. After that we will look at how the PEP handles situations with changing bandwidth, which is more common in real-world settings.
+%We will begin with a basic test case to understand how well the PEP works in a simple scenario. After that we will look at how the PEP handles situations with changing bandwidth, which is more common in real-world settings.
+%
+%\section{Testbed}
+%The testbed consists of multiple machines running Debian linux..
+%A central controller is used to orchestrate the experiments.
 
-\section{Testbed}
-The testbed consists of multiple machines running Debian linux..
-A central controller is used to orchestrate the experiments.
+%\section{Ultra Ping}
+%Ultra ping is a tool for characterizing UDP packet latency in a network. The tool measures the time it takes for UDP packets to get across the network\cite{rahtz2023ultraping}. We will use Ultra Ping to simulate interactive traffic and have it compete with the PEP. Additionally, Utra Ping provides tools for plotting and creating graphs of the measured data.\\
+%
+%Ultra Ping lets you configure the amount of packets, packet size and sending rate in kBps. For our evaluation we will use... which mimics Skype.
 
-\section{Ultra Ping}
-Ultra ping is a tool for characterizing UDP packet latency in a network. The tool measures the time it takes for UDP packets to get across the network\cite{rahtz2023ultraping}. We will use Ultra Ping to simulate interactive traffic and have it compete with the PEP. Additionally, Utra Ping provides tools for plotting and creating graphs of the measured data.\\
+%\begin{verbatim}
+%./echo.py --server
+%./echo.py --client <IP address of server>
+%\end{verbatim}
+%
+%\section{Initial configuration}
+%The initial test configuration will consist of a Sender, Receiver and the PEP. Where the Sender is connected to the PEP and the PEP connected to the Receiver. Each point is a Linux host running Debian, directly interconnected with Ethernet cables.\\
+%
+%\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+%	\centering
+%	\includegraphics[scale=0.45]{../diagrams/drawio/simple_pep_design.png}
+%  	\caption{PLACEHOLDER}
+%  	\label{fig:inital_configuration}
+%\end{figure}
+%
+%In this configuration data will be sent from the sender to the receiver, non-interactive traffic data will go through the PEP while the interactive Ultra Ping data will only be routed by the PEP. The connection between Sender and PEP will represent the stable network while the connection between the PEP and Receiver will represent a unstable wireless network.
 
-Ultra Ping lets you configure the amount of packets, packet size and sending rate in kBps. For our evaluation we will use... which mimics Skype.
+\section{Traffic Control Options}
+Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter etc. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments.\\
+%fq codel does not allow the configuration of delay, this means we have to configure the delay on the path of the ACKS?
+%We have to configure the delay on sender facing interface cards. 
+%\footnote{Picture of testbed setup} 
 
-\begin{verbatim}
-./echo.py --server
-./echo.py --client <IP address of server>
-\end{verbatim}
-
-\section{Initial configuration}
-The initial test configuration will consist of a Sender, Receiver and the PEP. Where the Sender is connected to the PEP and the PEP connected to the Receiver. Each point is a Linux host running Debian, directly interconnected with Ethernet cables.\\
-
-\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
-	\centering
-	\includegraphics[scale=0.45]{../diagrams/drawio/simple_pep_design.png}
-  	\caption{PLACEHOLDER}
-  	\label{fig:inital_configuration}
-\end{figure}
-
-In this configuration data will be sent from the sender to the receiver, non-interactive traffic data will go through the PEP while the interactive Ultra Ping data will only be routed by the PEP. The connection between Sender and PEP will represent the stable network while the connection between the PEP and Receiver will represent a unstable wireless network.
-
-\subsection{Traffic Control Options}
-Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter etc. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments. 
-\\
-fq codel does not allow the configuration of delay, this means we have to configure the delay on the path of the ACKS?
-We have to configure the delay on sender facing interface cards. 
-\footnote{Picture of testbed setup} 
-
-\subsection{Scheduling Algorithms}
+\section{Scheduling Algorithms}
 The choice of scheduling algorithm is very important for our test scenarios. As it will greatly affect the results of our tests, we will compare some against each other. The main goal is to highlight the effect and find the optimal algorithms for our PEP.
 
 \paragraph{FIFO}
@@ -1145,35 +1171,35 @@ In our test case FIFO will have the effect of creating up a queue at our PEP. Th
 FQ CoDel has a solution for this problem by providing a fair queuing mechanism. 
 \paragraph{PFIFO}
 Another alternative is Priority FIFO (PFIFO). As the name suggests it combines the concepts of a basic FIFO queue with priorities. This can reduce delay
-
-
-\subsection{Interactive vs PEP}
-Our first experiment consists of having a interactive flow (100 byte UDP packets at 2kBps) competing with a file transfer, one default end to end and one through our PEP. Highlighting some of the initial differences between an end to end connection and a PEP.\\
-
-
-\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
-	\centering
-	\includegraphics[scale=0.50]{../diagrams/graphs/initial_udp_latency_timeseries.pdf}
-  	\caption{Interactive UDP traffic}
-  	\label{fig:inital_test}
-\end{figure}
-
-\subsection{PEP vs E2E tests}
-The first test consists of evaluating our PEP against a default TCP end to end (E2E) connection, while also highlighting the difference a packet scheduler can make. Fig. \ref{fig:inital_test} shows the results, the red lines represent important events in the time-line.
-The first line represents the start of a file transfer, the second shows a bandwidth change from 10mbit to 75mbit, while the last line shows when the file transfer finished.\\ 
-
-The first time-line shows an end to end TCP transfer using a FIFO queue, in this case BFIFO.\\ 
-On the second timeline we see the behavior of an end to end connection using FQ CoDel. {MORE}
-The last timeline shows the PEP using FQ CoDel. Looking at the graph we can see two important differences between the default end to end TCP and the PEP. Firstly, the PEP has higher latency fluctuations than the E2E connection, shown by the blue liens on the graph. 
+%
+%
+%\subsection{Interactive vs PEP}
+%Our first experiment consists of having a interactive flow (100 byte UDP packets at 2kBps) competing with a file transfer, one default end to end and one through our PEP. Highlighting some of the initial differences between an end to end connection and a PEP.\\
+%
+%
+%\begin{figure}[h] % htbp stand for "here", "top", "bottom", "page"
+%	\centering
+%	\includegraphics[scale=0.50]{../diagrams/graphs/initial_udp_latency_timeseries.pdf}
+%  	\caption{Interactive UDP traffic}
+%  	\label{fig:inital_test}
+%\end{figure}
+%
+%\subsection{PEP vs E2E tests}
+%The first test consists of evaluating our PEP against a default TCP end to end (E2E) connection, while also highlighting the difference a packet scheduler can make. Fig. \ref{fig:inital_test} shows the results, the red lines represent important events in the time-line.
+%The first line represents the start of a file transfer, the second shows a bandwidth change from 10mbit to 75mbit, while the last line shows when the file transfer finished.\\ 
+%
+%The first time-line shows an end to end TCP transfer using a FIFO queue, in this case BFIFO.\\ 
+%On the second timeline we see the behavior of an end to end connection using FQ CoDel. {MORE}
+%The last timeline shows the PEP using FQ CoDel. Looking at the graph we can see two important differences between the default end to end TCP and the PEP. Firstly, the PEP has higher latency fluctuations than the E2E connection, shown by the blue liens on the graph. 
 
 % FIGURE OF THE TEST SETUP
 
-\subsection{10x10 tests}
-To further evaluate the PEP we conducted an experiment where we have 1-10 flows competing, once using the PEP and once end to end. The goal is to see how competing flows affect the behavior of or PEP
-
-\subsection{Spike}
-
-\chapter{Conclusion}
+%\subsection{10x10 tests}
+%To further evaluate the PEP we conducted an experiment where we have 1-10 flows competing, once using the PEP and once end to end. The goal is to see how competing flows affect the behavior of or PEP
+%
+%\subsection{Spike}
+%
+%\chapter{Conclusion}
 
 % Objective
 % Testbed
@@ -1181,7 +1207,7 @@ To further evaluate the PEP we conducted an experiment where we have 1-10 flows 
 % Procedure
 % Results & analysis
 
-\chapter{New Testing}
+\section{Initial test}
 To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}
 
 \begin{center}
@@ -1192,7 +1218,7 @@ The goal is to confirm the two most important aspects of the PEP, a faster compl
 
 Additionally we will compare BFIFO to FQ CoDel, BFIFO being the worst case scenario for the interactive traffic and FQ CoDel the optimal choice for our scenario.
 
-\section{Testbed}
+\subsection{Testbed}
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1232,7 +1258,7 @@ All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon 
 %\label{fig:work_struct}
 \end{minipage}\\
 
-\section{Configuration}
+\subsection{Configuration}
 The testbed is configured to simulate a base case where the PEP would be beneficial.
 The connection between the sender and router is configured to have a bandwidth of 100Mbit/s with 100ms delay. This simulates a stable wired connection and will not change throughout the experiments.\\\\
 The connection between the router and the receiver is initially configured with a bandwidth of 15Mbit/s and 20ms delay, this configuration simulates the unstable wireless domain. The 15Mbit/s represents the low bandwidth phase and will change to 70Mbit/s to simulate the high bandwidth phase.\\\\
@@ -1277,7 +1303,7 @@ $ sudo tc qdisc add dev 10Ge root handle 2: netem delay 20ms;
 \end{verbatim}
 
 
-\section{Experiment Procedure}
+\subsection{Experiment Procedure}
 The file transfer is simulated by a two custom C programs. Using a command line argument to specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.\\
 
 The experiment consists of 3 steps:
@@ -1290,7 +1316,7 @@ The experiment consists of 3 steps:
 
 The experiments will be run as shell scripts from the controller host. Using \verb|ssh| to execute commands on sender and router. The reason for using scripts it so to keep the experiments as consistent as possible.
 
-\section{Results \& Analysis}
+\subsection{Results \& Analysis}
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1359,7 +1385,7 @@ Table \ref{tab:delay_variations} shows the average, median and max delay for bot
 
 To demonstrate where the delay happens, we can look at two individual flows. One from the Sender to the Router and one from the Router to the receiver. Each paired with the end to end (Sender to Receiver) UDP interactive traffic. Figure \ref{fig:graph3} shows the resulting graphs, as we can see there is almost no disruption on the Sender to Router transfer. Most delay comes from the bottleneck link between the Router and Receiver.
 
-\section{Future Work}
+\chapter{Conclusion \& Future Work}
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}

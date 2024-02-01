@@ -1,33 +1,31 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{3}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans}}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans\relax }}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)}}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 5G network topology}}{14}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of poor bandwidth utilization.}}{16}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Example of good bandwidth utilization.}}{16}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Split connection with bandwidth and delay.}}{17}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces The TCP handshake procedure across PEP}}{18}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{20}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Deployment of a PEP at a base station}}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)\relax }}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 5G network topology\relax }}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of poor bandwidth utilization.\relax }}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Example of good bandwidth utilization.\relax }}{16}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Split connection with bandwidth and delay.\relax }}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The TCP handshake procedure across PEP\relax }}{18}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{20}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Deployment of a PEP at a base station\relax }}{21}{figure.caption.23}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP}}{31}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code}}{31}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure}}{33}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Work struct from Linux - workqueue.h}}{34}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html}}{39}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Work operation table}}{42}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Callback function table}}{43}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The architecture of the PEP\relax }}{31}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces PEP State Structure Code\relax }}{31}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Kernel Sock Structure\relax }}{33}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Socket Protocol Operations\relax }}{34}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{35}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{40}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Work operation table\relax }}{43}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Callback function table\relax }}{44}{figure.4.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces PLACEHOLDER}}{46}{figure.caption.40}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Interactive UDP traffic}}{47}{figure.caption.44}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Overview of the Ocarina testbed\relax }}{48}{figure.caption.43}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Screenfetch results\relax }}{49}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces File transfer impact on interactive traffic\relax }}{51}{figure.caption.47}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Close up of End to End compared to PEP\relax }}{52}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Individual file transfers affect on the interactive traffic.\relax }}{53}{figure.caption.51}%
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Overview of the Ocarina testbed}}{51}{figure.caption.45}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Screenfetch results}}{52}{figure.7.2}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces File transfer impact on interactive traffic}}{54}{figure.caption.49}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Close up of End to End compared to PEP}}{56}{figure.caption.51}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Individual file transfers affect on the interactive traffic.}}{56}{figure.caption.53}%
