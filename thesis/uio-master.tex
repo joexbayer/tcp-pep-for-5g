@@ -181,10 +181,19 @@ Active Queue Management (AQM) is about managing the length of queues in a networ
 \subsubsection{Packet Scheduling}
 Another method of reducing the effects off bufferbloat is packet scheduling. A system should not send more packets than the weakest link can handle; this idea is built into TCP in the form of congestion control. However, when buffers grow to the point of causing bufferbloat, TCP's congestion control algorithms are unable to confidently determine a sending rate. Packet scheduling can solve this problem as it also controls the size of the buffers. It makes sure queues can grow when needed, but keeps the overall state of the buffers low. Packet scheduling has a lot more to offer than simple queue management, this will be explored later.\\
 
+
+\begin{figure}[!h] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.30]{../diagrams/drawio/queueing.png}
+  	\caption{Linux packet queuing}
+  	\label{fig:blockage}
+\end{figure}
+
 Proposed algorithms:
 \begin{itemize}
   \item \textbf{FQ\_CoDel}: The Flow Queue Controlled Delay algorithm, FQ\_CoDel for short, was developed to deal with the bufferbloat problem. Its main goal is to reduce the impact of head-of-line blocking and give a fair share of bandwidth by mixing packets from multiple flows~\cite{fq_codel_rfc}. Internally FQ\_CoDel uses a FIFO queue, classifying packets into different flows to provide a fair share of bandwidth.
   \item \textbf{HTB}: Hierarchical Token Bucket is a queuing discipline based on assigning different classes a certain amount of bandwidth and sending rate. Because of its extensive bandwidth and delay management it's a good option for testing, especially in a virtual environment.
+  \item \textbf{BFIFO}: Byte First-In-First-Out (BFIFO) is a simple queuing mechanism where packets are processed on arrival, without differentiating between traffic types. This approach can lead to increased latency for time-sensitive packets, especially under heavy, non-interactive traffic.
 \end{itemize}
 
 \subsection{Non-Interactive Applications}
@@ -1125,18 +1134,13 @@ Forwarding using Netfilters, why we dont want this.
 Memory Management in C, why its important, how we deal with it.
 
 \chapter{Evaluation}
-Our evaluation of the PEP centers on measuring the completion times for non-interactive traffic. We aim to demonstrate how the PEP can speed up this traffic compared to standard end-to-end methods. It's also important that this enhancement doesn't negatively affect interactive traffic. To illustrate this, we'll use graphs to show the impact on interactive traffic.
+Our evaluation of the PEP centers on measuring the completion times for non-interactive traffic. We aim to demonstrate how the PEP can speed up this traffic compared to standard end-to-end methods. It's also important that this enhancement does not negatively affect interactive traffic. To illustrate this, we'll use graphs to show and compare the PEPs impact on interactive traffic.
 
 %We will begin with a basic test case to understand how well the PEP works in a simple scenario. After that we will look at how the PEP handles situations with changing bandwidth, which is more common in real-world settings.
 %
 %\section{Testbed}
 %The testbed consists of multiple machines running Debian linux..
 %A central controller is used to orchestrate the experiments.
-
-%\section{Ultra Ping}
-%Ultra ping is a tool for characterizing UDP packet latency in a network. The tool measures the time it takes for UDP packets to get across the network\cite{rahtz2023ultraping}. We will use Ultra Ping to simulate interactive traffic and have it compete with the PEP. Additionally, Utra Ping provides tools for plotting and creating graphs of the measured data.\\
-%
-%Ultra Ping lets you configure the amount of packets, packet size and sending rate in kBps. For our evaluation we will use... which mimics Skype.
 
 %\begin{verbatim}
 %./echo.py --server
@@ -1154,23 +1158,22 @@ Our evaluation of the PEP centers on measuring the completion times for non-inte
 %\end{figure}
 %
 %In this configuration data will be sent from the sender to the receiver, non-interactive traffic data will go through the PEP while the interactive Ultra Ping data will only be routed by the PEP. The connection between Sender and PEP will represent the stable network while the connection between the PEP and Receiver will represent a unstable wireless network.
-
+%
 \section{Traffic Control Options}
-Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter etc. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments.\\
-%fq codel does not allow the configuration of delay, this means we have to configure the delay on the path of the ACKS?
-%We have to configure the delay on sender facing interface cards. 
-%\footnote{Picture of testbed setup} 
+Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments.\\
+%%fq codel does not allow the configuration of delay, this means we have to configure the delay on the path of the ACKS?
+%%We have to configure the delay on sender facing interface cards. 
+%%\footnote{Picture of testbed setup} 
+%
+%\section{Scheduling Algorithms}
+%The choice of scheduling algorithm is very important for our test scenarios. As it will greatly affect the results of our tests, we will compare some against each other. The main goal is to highlight the effect and find the optimal algorithms for our PEP.
+%
+%\paragraph{BFIFO}
+%In our test case BFIFO will have the effect of creating up a queue at our PEP. This is detrimental for the interactive UDP flow as it will be stuck in the queue, building up delay. This behavior can be explained by the fact that the non-interactive flow has a much higher sending rate than the interactive flow, thereby quickly filling the finite queue with non-interactive packets.
+%
+%\paragraph{FQ CoDel}
+%In contrast to BFIFO, FQ CoDel can reduce the delay for interactive traffic by classifying 
 
-\section{Scheduling Algorithms}
-The choice of scheduling algorithm is very important for our test scenarios. As it will greatly affect the results of our tests, we will compare some against each other. The main goal is to highlight the effect and find the optimal algorithms for our PEP.
-
-\paragraph{FIFO}
-In our test case FIFO will have the effect of creating up a queue at our PEP. This is detrimental for the interactive UDP flow as it will be stuck in the queue, building up delay. This behavior can be explained by the fact that the non-interactive flow has a much higher sending rate than the interactive flow, thereby quickly filling the finite queue with non-interactive packets.
-
-\paragraph{FQ CoDel: IMPORTANT}
-FQ CoDel has a solution for this problem by providing a fair queuing mechanism. 
-\paragraph{PFIFO}
-Another alternative is Priority FIFO (PFIFO). As the name suggests it combines the concepts of a basic FIFO queue with priorities. This can reduce delay
 %
 %
 %\subsection{Interactive vs PEP}
@@ -1208,13 +1211,13 @@ Another alternative is Priority FIFO (PFIFO). As the name suggests it combines t
 % Results & analysis
 
 \section{Initial test}
-To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.\footnote{Rewrite this part}
+To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.
 
 \begin{center}
 Sender ------ Router ------ Receiver\\
 \end{center}
 
-The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having a interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING [source?] which offers end to end latency measurements.\\
+The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having an interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING\cite{rahtz2023ultraping} which offers end to end latency measurements.\\
 
 Additionally we will compare BFIFO to FQ CoDel, BFIFO being the worst case scenario for the interactive traffic and FQ CoDel the optimal choice for our scenario.
 
@@ -1232,7 +1235,7 @@ The Testbed consists of four hosts, the first is the controller from which we or
 Figure \ref{fig:testbed} shows a technical overview of the testbed configuration.
 
 \subsection{Hosts and Hardware}
-All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon E5-2620 v4 processor, which features 32 cores at 3.0 GHz. Additionally the hosts have 64 GB of RAM each. The choice of hardware should eliminate any potential host congestion [source] and assure that the tests are not affected by old or dated hardware.\\
+All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon E5-2620 v4 processor, which features 32 cores at 3.0 GHz. Additionally the hosts have 64 GB of RAM each. The choice of hardware should eliminate any potential host congestion\cite{Agarwal_Krishnamurthy_Agarwal_2023} and assure that the tests are not affected by old or dated hardware.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
@@ -1314,7 +1317,7 @@ The experiment consists of 3 steps:
   \item \textbf{Step 3}: After 13 seconds we change the bandwidth between the router and the receiver from 15Mbit/s to 70Mbit/s, simulating fluctuating bandwidth.
 \end{itemize}
 
-The experiments will be run as shell scripts from the controller host. Using \verb|ssh| to execute commands on sender and router. The reason for using scripts it so to keep the experiments as consistent as possible.
+The experiments will be run as shell scripts from the controller host. Using \verb|ssh| to execute commands on sender and router. The reason for using scripts is to keep the experiments as consistent as possible.
 
 \subsection{Results \& Analysis}
 
@@ -1329,10 +1332,9 @@ Figure \ref{fig:graph1} shows three interactive flows, each competing with a fil
 
 The lines represent important points in time for each flow, the green line is the start of the file transfer which starts after 5 seconds. The black line shows the the step function which changes the bandwidth from 15Mbit/s to 70Mbit/s. The last red line represents the flow completion time.\\
 
-An important aspect of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up 240ms, which is the normal behavior with big network buffers and the reason normally buffers are kept small. While when using FQ CoDel the interactive flow is barely disrupted with and without PEP.\\
+An important aspect of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up 240ms, which is the normal behavior with big network buffers and the reason buffers normally are kept small. While when using FQ CoDel the interactive flow is barely disrupted with and without PEP.\\
 
-Based on the last two graphs of Figure \ref{fig:graph1}, we can see th
-at the PEP does not disrupt the interactive traffic more than then the default end to end transfer. Even though the PEP has large buffers which reduce the completion time by 38.54\%. See Table \ref{tab:pep_fcts} for all completion times.
+Based on the last two graphs of Figure \ref{fig:graph1}, we can see that the PEP does not disrupt the interactive traffic more than the default end to end transfer. Even though the PEP has large buffers which reduce the completion time by 38.54\%. See Table \ref{tab:pep_fcts} for all completion times.
 
 \begin{table}[h!]
 \centering
@@ -1349,7 +1351,7 @@ PEP FQ CoDel & 14.315299s\\
 \label{tab:pep_fcts}
 \end{table}
 
-Another important aspect which is not visible on the graph is the completion time of the Sender to PEP transfer. Since we split the connection into two transfer, when we use a PEP, we get two completion times. The connection between the Sender and PEP has a much higher bandwidth of 100Mbit/s in comparison of the total end to end bandwidth of 15Mbit/s, which leads to a completion time of 1.5s. This leads to both a better bandwidth utilization as discussed in Chapter 3. and frees the potentially contested bandwidth faster.\\
+Another important aspect which is not visible on the graph is the completion time of the Sender to PEP transfer. Since we split the connection into two transfers, when we use a PEP, we get two completion times. The connection between the Sender and PEP has a much higher bandwidth of 100Mbit/s in comparison of the total end to end bandwidth of 15Mbit/s, which leads to a completion time of 1.5s. This leads to both a better bandwidth utilization as discussed in Chapter 3. and frees the potentially contested bandwidth faster.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering

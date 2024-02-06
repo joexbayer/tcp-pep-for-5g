@@ -13,14 +13,14 @@
 \contentsline {subsubsection}{Bufferbloat}{7}{section*.7}%
 \contentsline {subsubsection}{Active Queue Management}{7}{section*.8}%
 \contentsline {subsubsection}{Packet Scheduling}{8}{section*.9}%
-\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{8}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{9}{subsection.2.2.3}%
 \contentsline {section}{\numberline {2.3}Proxy}{9}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}PEP}{9}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}PEP for wireless communication}{9}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{10}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Linux}{10}{section.2.4}%
+\contentsline {subsection}{\numberline {2.3.1}PEP}{10}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}PEP for wireless communication}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{11}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Linux}{11}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Kernel Modules}{11}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}C Programming Language}{11}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.2}C Programming Language}{12}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Related Work}{12}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Design}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Justification for designing a PEP}{13}{section.3.1}%
@@ -29,12 +29,12 @@
 \contentsline {subsection}{\numberline {3.2.2}Kernel Module Vs. Userspace Application}{15}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Connection splitting using Sockets}{15}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Bandwidth utilization}{16}{subsection.3.2.4}%
-\contentsline {paragraph}{Delay}{17}{section*.16}%
+\contentsline {paragraph}{Delay}{17}{section*.17}%
 \contentsline {subsection}{\numberline {3.2.5}PEP Selection}{17}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Connection Establishment}{18}{subsection.3.2.6}%
-\contentsline {paragraph}{TCP Options}{18}{section*.19}%
-\contentsline {paragraph}{TCP Fast Open}{19}{section*.20}%
-\contentsline {paragraph}{Optimal Choice}{19}{section*.21}%
+\contentsline {paragraph}{TCP Options}{18}{section*.20}%
+\contentsline {paragraph}{TCP Fast Open}{19}{section*.21}%
+\contentsline {paragraph}{Optimal Choice}{19}{section*.22}%
 \contentsline {section}{\numberline {3.3}Deployment (Transparency)}{19}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Transparent PEP}{20}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Non Transparent PEP}{20}{subsection.3.3.2}%
@@ -48,28 +48,28 @@
 \contentsline {subsection}{\numberline {4.1.1}Kernel Hooks}{25}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Linux Version and Distribution}{26}{subsection.4.1.2}%
 \contentsline {section}{\numberline {4.2}TLV Library}{27}{section.4.2}%
-\contentsline {paragraph}{Important socket system calls}{27}{section*.25}%
+\contentsline {paragraph}{Important socket system calls}{27}{section*.26}%
 \contentsline {subsection}{\numberline {4.2.1}Custom connect function}{28}{subsection.4.2.1}%
-\contentsline {paragraph}{The custom connect function signature}{28}{section*.26}%
+\contentsline {paragraph}{The custom connect function signature}{28}{section*.27}%
 \contentsline {subsection}{\numberline {4.2.2}TLV}{28}{subsection.4.2.2}%
-\contentsline {paragraph}{TLV structures}{29}{section*.27}%
-\contentsline {paragraph}{TLV Implementation}{29}{section*.28}%
-\contentsline {paragraph}{Problems using TFO}{29}{section*.29}%
+\contentsline {paragraph}{TLV structures}{29}{section*.28}%
+\contentsline {paragraph}{TLV Implementation}{29}{section*.29}%
+\contentsline {paragraph}{Problems using TFO}{29}{section*.30}%
 \contentsline {subsection}{\numberline {4.2.3}TLV Options}{29}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Shared Library}{30}{subsection.4.2.4}%
 \contentsline {section}{\numberline {4.3}PEP - Internals}{30}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Architecture}{30}{subsection.4.3.1}%
-\contentsline {paragraph}{Tunnels}{31}{section*.31}%
-\contentsline {paragraph}{PEP Tunnel Structure}{32}{section*.32}%
+\contentsline {paragraph}{Tunnels}{31}{section*.32}%
+\contentsline {paragraph}{PEP Tunnel Structure}{32}{section*.33}%
 \contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{32}{subsection.4.3.2}%
-\contentsline {paragraph}{Socket Operations}{33}{section*.33}%
-\contentsline {paragraph}{Socket Callbacks}{33}{section*.34}%
-\contentsline {paragraph}{Socket User Data}{33}{section*.35}%
+\contentsline {paragraph}{Socket Operations}{33}{section*.34}%
+\contentsline {paragraph}{Socket Callbacks}{33}{section*.35}%
+\contentsline {paragraph}{Socket User Data}{33}{section*.36}%
 \contentsline {subsection}{\numberline {4.3.3}Work Queues}{34}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Works}{35}{subsection.4.3.4}%
-\contentsline {paragraph}{Work state problem}{35}{section*.36}%
-\contentsline {paragraph}{Accept Work Queue}{36}{section*.37}%
-\contentsline {paragraph}{Packet Forwarding Queues}{37}{section*.38}%
+\contentsline {paragraph}{Work state problem}{35}{section*.37}%
+\contentsline {paragraph}{Accept Work Queue}{36}{section*.38}%
+\contentsline {paragraph}{Packet Forwarding Queues}{37}{section*.39}%
 \contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{38}{subsection.4.3.5}%
 \contentsline {section}{\numberline {4.4}PEP - Server}{38}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Creation}{38}{subsection.4.4.1}%
@@ -81,24 +81,20 @@
 \contentsline {subsection}{\numberline {4.5.2}PEP Connections}{43}{subsection.4.5.2}%
 \contentsline {subsection}{\numberline {4.5.3}Module Customization}{43}{subsection.4.5.3}%
 \contentsline {subsection}{\numberline {4.5.4}System Configurations}{44}{subsection.4.5.4}%
-\contentsline {paragraph}{Buffer sizes}{44}{section*.39}%
+\contentsline {paragraph}{Buffer sizes}{44}{section*.40}%
 \contentsline {subsection}{\numberline {4.5.5}Userspace?}{45}{subsection.4.5.5}%
 \contentsline {subsection}{\numberline {4.5.6}Threads Vs. Callbacks}{45}{subsection.4.5.6}%
 \contentsline {subsection}{\numberline {4.5.7}Using Netfilter}{45}{subsection.4.5.7}%
 \contentsline {section}{\numberline {4.6}Memory}{45}{section.4.6}%
 \contentsline {chapter}{\numberline {5}Evaluation}{46}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Traffic Control Options}{46}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Scheduling Algorithms}{46}{section.5.2}%
-\contentsline {paragraph}{FIFO}{46}{section*.40}%
-\contentsline {paragraph}{FQ CoDel: IMPORTANT}{47}{section*.41}%
-\contentsline {paragraph}{PFIFO}{47}{section*.42}%
-\contentsline {section}{\numberline {5.3}Initial test}{47}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Testbed}{47}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Hosts and Hardware}{48}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Configuration}{49}{subsection.5.3.3}%
-\contentsline {subsubsection}{Sender}{49}{section*.44}%
-\contentsline {subsubsection}{Router (PEP)}{49}{section*.45}%
-\contentsline {subsubsection}{Receiver}{50}{section*.46}%
-\contentsline {subsection}{\numberline {5.3.4}Experiment Procedure}{50}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}Results \& Analysis}{51}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.2}Initial test}{46}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Testbed}{47}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Hosts and Hardware}{47}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Configuration}{48}{subsection.5.2.3}%
+\contentsline {subsubsection}{Sender}{48}{section*.42}%
+\contentsline {subsubsection}{Router (PEP)}{49}{section*.43}%
+\contentsline {subsubsection}{Receiver}{49}{section*.44}%
+\contentsline {subsection}{\numberline {5.2.4}Experiment Procedure}{49}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Results \& Analysis}{50}{subsection.5.2.5}%
 \contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{54}{chapter.6}%
