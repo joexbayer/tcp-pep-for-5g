@@ -1387,6 +1387,20 @@ Table \ref{tab:delay_variations} shows the average, median and max delay for bot
 
 To demonstrate where the delay happens, we can look at two individual flows. One from the Sender to the Router and one from the Router to the receiver. Each paired with the end to end (Sender to Receiver) UDP interactive traffic. Figure \ref{fig:graph3} shows the resulting graphs, as we can see there is almost no disruption on the Sender to Router transfer. Most delay comes from the bottleneck link between the Router and Receiver.
 
+\section{Using real 5G traces}
+
+The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces.
+
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.4]{../diagrams/witestlab/mmwave_cap.png}
+  	\caption{mmWave capacity fluctuation}
+  	\label{fig:graph3}
+\end{figure}
+text\cite{Srivastava_Fund_Panwar_2020}
+
+
 \chapter{Conclusion \& Future Work}
 
 \bibliography{myBib.bib}{}
