@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  8 FEB 2024 14:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  9 FEB 2024 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -976,14 +976,14 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.29996pt on input line 83.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 5.69998pt on input line 83.
-<uio-fp-navn-eng.pdf, id=352, 469.755pt x 123.46124pt>
+<uio-fp-navn-eng.pdf, id=364, 469.755pt x 123.46124pt>
 File: uio-fp-navn-eng.pdf Graphic file (type pdf)
 <use uio-fp-navn-eng.pdf>
 Package pdftex.def Info: uio-fp-navn-eng.pdf  used on input line 83.
 (pdftex.def)             Requested size: 138.56935pt x 36.41953pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.29996pt on input line 83.
-<uio-fp-segl.pdf, id=353, 232.87pt x 232.87pt>
+<uio-fp-segl.pdf, id=365, 232.87pt x 232.87pt>
 File: uio-fp-segl.pdf Graphic file (type pdf)
 <use uio-fp-segl.pdf>
 Package pdftex.def Info: uio-fp-segl.pdf  used on input line 83.
@@ -1057,7 +1057,7 @@ l.113   \item \textbf
 [2
 
 ]
-<../diagrams/drawio/domains.png, id=568, 605.26125pt x 355.3275pt>
+<../diagrams/drawio/domains.png, id=583, 605.26125pt x 355.3275pt>
 File: ../diagrams/drawio/domains.png Graphic file (type png)
 <use ../diagrams/drawio/domains.png>
 Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 118
@@ -1085,7 +1085,7 @@ ith the same identifier (name{page.4}) has been already used, duplicate ignored
                    \relax 
 l.140 
        [4]
-<../diagrams/drawio/tcphandshake.png, id=588, 489.32813pt x 309.155pt>
+<../diagrams/drawio/tcphandshake.png, id=603, 489.32813pt x 309.155pt>
 File: ../diagrams/drawio/tcphandshake.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake.png  used on input lin
@@ -1111,7 +1111,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
-<../diagrams/graphs/tcp_mmwave_blockage.png, id=600, 258.9675pt x 92.345pt>
+<../diagrams/graphs/tcp_mmwave_blockage.png, id=615, 258.9675pt x 92.345pt>
 File: ../diagrams/graphs/tcp_mmwave_blockage.png Graphic file (type png)
 <use ../diagrams/graphs/tcp_mmwave_blockage.png>
 Package pdftex.def Info: ../diagrams/graphs/tcp_mmwave_blockage.png  used on in
@@ -1137,7 +1137,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 182--183
 
  []
 
-<../diagrams/drawio/queueing.png, id=620, 655.44875pt x 1000.73875pt>
+<../diagrams/drawio/queueing.png, id=635, 655.44875pt x 1000.73875pt>
 File: ../diagrams/drawio/queueing.png Graphic file (type png)
 <use ../diagrams/drawio/queueing.png>
 Package pdftex.def Info: ../diagrams/drawio/queueing.png  used on input line 18
@@ -1164,7 +1164,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [9]
-<../diagrams/drawio/pep_satellite.png, id=639, 700.6175pt x 343.2825pt>
+<../diagrams/drawio/pep_satellite.png, id=654, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
@@ -1204,7 +1204,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
-<../diagrams/drawio/simple_pep_design.png, id=673, 749.80125pt x 240.9pt>
+<../diagrams/drawio/simple_pep_design.png, id=688, 749.80125pt x 240.9pt>
 File: ../diagrams/drawio/simple_pep_design.png Graphic file (type png)
 <use ../diagrams/drawio/simple_pep_design.png>
 Package pdftex.def Info: ../diagrams/drawio/simple_pep_design.png  used on inpu
@@ -1222,7 +1222,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
 
-<../diagrams/drawio/deployment_without_pep.png, id=683, 461.22313pt x 266.9975p
+<../diagrams/drawio/deployment_without_pep.png, id=698, 461.22313pt x 266.9975p
 t>
 File: ../diagrams/drawio/deployment_without_pep.png Graphic file (type png)
 <use ../diagrams/drawio/deployment_without_pep.png>
@@ -1249,13 +1249,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 305--306
 
  []
 
-<../diagrams/drawio/bandwidth_bad.png, id=699, 575.14874pt x 209.78375pt>
+<../diagrams/drawio/bandwidth_bad.png, id=714, 575.14874pt x 209.78375pt>
 File: ../diagrams/drawio/bandwidth_bad.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_bad.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_bad.png  used on input li
 ne 309.
 (pdftex.def)             Requested size: 258.81454pt x 94.4018pt.
-<../diagrams/drawio/bandwidth_good.png, id=702, 583.17876pt x 212.795pt>
+<../diagrams/drawio/bandwidth_good.png, id=717, 583.17876pt x 212.795pt>
 File: ../diagrams/drawio/bandwidth_good.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_good.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_good.png  used on input l
@@ -1271,7 +1271,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 341--342
 
 [16 <../diagrams/drawio/bandwidth_bad.png> <../diagrams/drawio/bandwidth_good.p
 ng>]
-<../diagrams/drawio/bandwidth_delay.png, id=712, 453.695pt x 163.61125pt>
+<../diagrams/drawio/bandwidth_delay.png, id=727, 453.695pt x 163.61125pt>
 File: ../diagrams/drawio/bandwidth_delay.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_delay.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_delay.png  used on input 
@@ -1287,7 +1287,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 358--359
 
  []
 
-<../diagrams/drawio/tcphandshake_primitiv.png, id=724, 503.8825pt x 298.11375pt
+<../diagrams/drawio/tcphandshake_primitiv.png, id=739, 503.8825pt x 298.11375pt
 >
 File: ../diagrams/drawio/tcphandshake_primitiv.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_primitiv.png>
@@ -1320,7 +1320,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 378--379
 
  []
 
-<../diagrams/drawio/tcphandshake_optimal.png, id=734, 487.8225pt x 191.71625pt>
+<../diagrams/drawio/tcphandshake_optimal.png, id=749, 487.8225pt x 191.71625pt>
 
 File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_optimal.png>
@@ -1347,7 +1347,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 405--406
 
  []
 
-<../diagrams/drawio/deployment.png, id=750, 628.3475pt x 367.3725pt>
+<../diagrams/drawio/deployment.png, id=765, 628.3475pt x 367.3725pt>
 File: ../diagrams/drawio/deployment.png Graphic file (type png)
 <use ../diagrams/drawio/deployment.png>
 Package pdftex.def Info: ../diagrams/drawio/deployment.png  used on input line 
@@ -1442,7 +1442,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 624--626
  []
 
 [28] [29]
-<../diagrams/drawio/pep_architecture.png, id=856, 1063.975pt x 681.54625pt>
+<../diagrams/drawio/pep_architecture.png, id=871, 1063.975pt x 681.54625pt>
 File: ../diagrams/drawio/pep_architecture.png Graphic file (type png)
 <use ../diagrams/drawio/pep_architecture.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_architecture.png  used on input
@@ -1708,7 +1708,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1220--1221
 [46
 
 ]
-<../diagrams/drawio/testbed.png, id=1103, 590.205pt x 359.3425pt>
+<../diagrams/drawio/testbed.png, id=1118, 590.205pt x 359.3425pt>
 File: ../diagrams/drawio/testbed.png Graphic file (type png)
 <use ../diagrams/drawio/testbed.png>
 Package pdftex.def Info: ../diagrams/drawio/testbed.png  used on input line 122
@@ -1799,7 +1799,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1310--1311
  []
 
 [49]
-<../diagrams/graphs/final2.pdf, id=1126, 758.835pt x 521.78943pt>
+<../diagrams/graphs/final2.pdf, id=1141, 758.835pt x 521.78943pt>
 File: ../diagrams/graphs/final2.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/final2.pdf>
 Package pdftex.def Info: ../diagrams/graphs/final2.pdf  used on input line 1326
@@ -1825,7 +1825,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1354--1355
 
  []
 
-<../diagrams/graphs/closeup.pdf, id=1175, 462.52798pt x 346.89601pt>
+<../diagrams/graphs/closeup.pdf, id=1190, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/closeup.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/closeup.pdf>
 Package pdftex.def Info: ../diagrams/graphs/closeup.pdf  used on input line 135
@@ -1840,23 +1840,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 1379--1380
  []
 
 [51]
-<../diagrams/graphs/compare.pdf, id=1184, 462.52798pt x 346.89601pt>
+<../diagrams/graphs/compare.pdf, id=1199, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/compare.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/compare.pdf>
 Package pdftex.def Info: ../diagrams/graphs/compare.pdf  used on input line 138
 3.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
  [52 <../diagrams/graphs/closeup.pdf> <../diagrams/graphs/compare.pdf>]
-<../diagrams/witestlab/mmwave_cap.png, id=1254, 893.2572pt x 203.8014pt>
+<../diagrams/witestlab/mmwave_cap.png, id=1269, 893.2572pt x 203.8014pt>
 File: ../diagrams/witestlab/mmwave_cap.png Graphic file (type png)
 <use ../diagrams/witestlab/mmwave_cap.png>
 Package pdftex.def Info: ../diagrams/witestlab/mmwave_cap.png  used on input li
-ne 1396.
+ne 1402.
 (pdftex.def)             Requested size: 357.29655pt x 81.5191pt.
 
 
 LaTeX Warning: Citation `Srivastava_Fund_Panwar_2020' on page 53 undefined on i
-nput line 1400.
+nput line 1406.
 
 [53 <../diagrams/witestlab/mmwave_cap.png>]
 Chapter 6.
@@ -1872,13 +1872,13 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `uio-master.out' has not changed.
-(rerunfilecheck)             Checksum: 83FE332A88BC0692C3E686B3E4139DD7;11177.
+(rerunfilecheck)             Checksum: 8A7B9A0F69EC90BD70C644070D246281;11478.
  ) 
 Here is how much of TeX's memory you used:
- 31451 strings out of 478994
- 621378 string characters out of 5858185
- 1248664 words of memory out of 5000000
- 47892 multiletter control sequences out of 15000+600000
+ 31457 strings out of 478994
+ 621480 string characters out of 5858185
+ 1248667 words of memory out of 5000000
+ 47895 multiletter control sequences out of 15000+600000
  435242 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,10n,117p,936b,1766s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1899,10 +1899,10 @@ fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fo
 nts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (64 pages, 1492095 bytes).
+Output written on uio-master.pdf (64 pages, 1493259 bytes).
 PDF statistics:
- 1424 PDF objects out of 1440 (max. 8388607)
- 1183 compressed objects within 12 object streams
- 440 named destinations out of 1000 (max. 500000)
- 878 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1439 PDF objects out of 1440 (max. 8388607)
+ 1198 compressed objects within 12 object streams
+ 443 named destinations out of 1000 (max. 500000)
+ 902 words of extra memory for PDF output out of 10000 (max. 10000000)
 

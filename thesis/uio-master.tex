@@ -1134,7 +1134,7 @@ Forwarding using Netfilters, why we dont want this.
 Memory Management in C, why its important, how we deal with it.
 
 \chapter{Evaluation}
-Our evaluation of the PEP centers on measuring the completion times for non-interactive traffic. We aim to demonstrate how the PEP can speed up this traffic compared to standard end-to-end methods. It's also important that this enhancement does not negatively affect interactive traffic. To illustrate this, we'll use graphs to show and compare the PEPs impact on interactive traffic.
+Our evaluation of the PEP centers on measuring the completion times for non-interactive traffic. We aim to demonstrate how the PEP can speed up this traffic compared to standard end-to-end methods. It's important that this enhancement does not negatively affect interactive traffic. To illustrate this, we'll use graphs to show and compare the PEPs impact on interactive traffic.
 
 %We will begin with a basic test case to understand how well the PEP works in a simple scenario. After that we will look at how the PEP handles situations with changing bandwidth, which is more common in real-world settings.
 %
@@ -1160,7 +1160,7 @@ Our evaluation of the PEP centers on measuring the completion times for non-inte
 %In this configuration data will be sent from the sender to the receiver, non-interactive traffic data will go through the PEP while the interactive Ultra Ping data will only be routed by the PEP. The connection between Sender and PEP will represent the stable network while the connection between the PEP and Receiver will represent a unstable wireless network.
 %
 \section{Traffic Control Options}
-Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter. These options combined with the fact that each network interface can have it's own configuration, allows for very precise testing environments.\\
+Linux has support for network interface configurations using the TC (traffic control) command. TC allows the configuration of packet scheduler, bandwidth, delay and jitter. These options combined with the fact that each network interface can have its own configuration, allows for very precise testing environments.\\
 %%fq codel does not allow the configuration of delay, this means we have to configure the delay on the path of the ACKS?
 %%We have to configure the delay on sender facing interface cards. 
 %%\footnote{Picture of testbed setup} 
@@ -1219,7 +1219,7 @@ Sender ------ Router ------ Receiver\\
 
 The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having an interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING\cite{rahtz2023ultraping} which offers end to end latency measurements.\\
 
-Additionally we will compare BFIFO to FQ CoDel, BFIFO being the worst case scenario for the interactive traffic and FQ CoDel the optimal choice for our scenario.
+Additionally we will compare BFIFO to FQ-CoDel, BFIFO being the worst case scenario for the interactive traffic and FQ CoDel the optimal choice for our scenario.
 
 \subsection{Testbed}
 
@@ -1230,7 +1230,7 @@ Additionally we will compare BFIFO to FQ CoDel, BFIFO being the worst case scena
   	\label{fig:testbed}
 \end{figure}
 
-The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last 3 represent the sender, router and receiver. The controller is connected to the other hosts through a management network, while each of the other hosts are directly connected to each other using 10G Ethernet controllers. All tests are run using physical hosts to get the most realistic results and void unexpected side effects of virtual machines.\\
+The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last 3 represent the sender, router and receiver. The controller is connected to the other hosts through a management network, while each of the other hosts are directly connected to each other using 10G Ethernet controllers. All tests are run using physical hosts to get the most realistic results and avoid unexpected side effects of virtual machines.\\
 
 Figure \ref{fig:testbed} shows a technical overview of the testbed configuration.
 
@@ -1307,7 +1307,7 @@ $ sudo tc qdisc add dev 10Ge root handle 2: netem delay 20ms;
 
 
 \subsection{Experiment Procedure}
-The file transfer is simulated by a two custom C programs. Using a command line argument to specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API sending 1500 bytes at a time. The receiver is responsible for receiving the data and keep track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.\\
+The file transfer is simulated by a two custom C programs. We use a command line argument to specify if the Sender uses the pep\_connect or connect function. The reason for creating custom C programs is that we need to use the TLV library for connecting to the PEP. The sender will use the default socket API, sending 1500 bytes at a time. The receiver is responsible for receiving the data and keeping track of the time it took. The receiving server can handle multiple file transfers at the same time using threads.\\
 
 The experiment consists of 3 steps:
 
@@ -1317,7 +1317,7 @@ The experiment consists of 3 steps:
   \item \textbf{Step 3}: After 13 seconds we change the bandwidth between the router and the receiver from 15Mbit/s to 70Mbit/s, simulating fluctuating bandwidth.
 \end{itemize}
 
-The experiments will be run as shell scripts from the controller host. Using \verb|ssh| to execute commands on sender and router. The reason for using scripts is to keep the experiments as consistent as possible.
+The experiments will be run as shell scripts from the controller host, using \verb|ssh| to execute commands on sender and router. The reason for using scripts is to keep the experiments as consistent as possible.
 
 \subsection{Results \& Analysis}
 
@@ -1328,13 +1328,13 @@ The experiments will be run as shell scripts from the controller host. Using \ve
   	\label{fig:graph1}
 \end{figure}
 
-Figure \ref{fig:graph1} shows three interactive flows, each competing with a file transfer. The first is a normal end to end transfer using the FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ\_CODEL, and the last is the same transfer with the PEP.\\
+Figure \ref{fig:graph1} shows three interactive flows, each competing with a file transfer. The first is a normal end to end transfer using the FIFO (bfifo) queue at the router. The second is an end to end transfer using FQ-CODEL, and the last is the same transfer with the PEP.\\
 
-The lines represent important points in time for each flow, the green line is the start of the file transfer which starts after 5 seconds. The black line shows the the step function which changes the bandwidth from 15Mbit/s to 70Mbit/s. The last red line represents the flow completion time.\\
+The lines represent important points in time for each flow, the green line is the start of the file transfer which starts after 5 seconds. The black line shows the the step function which changes the bandwidth from 15Mbit/s to 70Mbit/s. The last red line represents the file transfer completion time.\\
 
-An important aspect of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up 240ms, which is the normal behavior with big network buffers and the reason buffers normally are kept small. While when using FQ CoDel the interactive flow is barely disrupted with and without PEP.\\
+An important aspect of Figure \ref{fig:graph1} is the big impact that the BFIFO queue has on the interactive traffic. The interactive traffic spikes up to 240ms, which is the normal behavior with big network buffers and the reason buffers normally are kept small. When using FQ-CoDel the interactive flow is barely disrupted with and without PEP.\\
 
-Based on the last two graphs of Figure \ref{fig:graph1}, we can see that the PEP does not disrupt the interactive traffic more than the default end to end transfer. Even though the PEP has large buffers which reduce the completion time by 38.54\%. See Table \ref{tab:pep_fcts} for all completion times.
+Based on the last two graphs of Figure \ref{fig:graph1}, we can see that the PEP does not disrupt the interactive traffic more than the default end to end transfer, even though the PEP has large buffers which reduce the completion time by 38.54\%. See Table \ref{tab:pep_fcts} for all completion times.
 
 \begin{table}[h!]
 \centering
@@ -1342,16 +1342,16 @@ Based on the last two graphs of Figure \ref{fig:graph1}, we can see that the PEP
 \toprule
 Flow & FCT \\
 \midrule
-E2E BFIFO & 25.303798s\\
-E2E FQ CoDel & 23.290422s\\
-PEP FQ CoDel & 14.315299s\\
+E2E BFIFO & 25.30s\\
+E2E FQ CoDel & 23.29s\\
+PEP FQ CoDel & 14.31s\\
 \bottomrule
 \end{tabularx}
-\caption{Table showing the Flow Completion Times (FCT) for each flow.}
+\caption{Table showing the Flow Completion Times (FCT) for each file transfer.}
 \label{tab:pep_fcts}
 \end{table}
 
-Another important aspect which is not visible on the graph is the completion time of the Sender to PEP transfer. Since we split the connection into two transfers, when we use a PEP, we get two completion times. The connection between the Sender and PEP has a much higher bandwidth of 100Mbit/s in comparison of the total end to end bandwidth of 15Mbit/s, which leads to a completion time of 1.5s. This leads to both a better bandwidth utilization as discussed in Chapter 3. and frees the potentially contested bandwidth faster.\\
+Another important aspect which is not visible on the graph is the completion time of the Sender to PEP transfer. Since we split the connection into two transfers, when we use a PEP, we get two completion times. The connection between the Sender and PEP has a much higher bandwidth of 100Mbit/s in comparison with the total end to end bandwidth of 15Mbit/s, which leads to a completion time of 1.5s. This leads to both a better bandwidth utilization as discussed in Chapter 3, and frees the potentially contested bandwidth faster.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1368,15 +1368,15 @@ Figure \ref{fig:graph2} shows a closeup of the end to end and PEP transfers usin
 \toprule
  & Average &  Median & Max\\
 \midrule
-E2E & 120.292091ms & 120.142940ms & 121.748920ms\\
-PEP & 120.614622ms & 120.400910ms & 121.759180ms\\
+E2E & 120.29ms & 120.14ms & 121.74ms\\
+PEP & 120.61ms & 120.40ms & 121.75ms\\
 \bottomrule
 \end{tabularx}
 \caption{Delay statistics (Calculated based on longest completion time)}
 \label{tab:delay_variations}
 \end{table}
 
-Table \ref{tab:delay_variations} shows the average, median and max delay for both PEP and end to end transfer. The statistics are taken over the time period of the longest flow to include the benefit of finishing early for the PEP. This comes to a total of 0,322ms difference on the average and 0,257ms on median.\\
+Table \ref{tab:delay_variations} shows the average, median and max delay for both the PEP and end to end transfer. The statistics are taken over the time period of the longest flow to include the benefit of finishing early for the PEP. This comes to a total of 0,322ms difference on the average and 0,257ms on median.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1385,12 +1385,17 @@ Table \ref{tab:delay_variations} shows the average, median and max delay for bot
   	\label{fig:graph3}
 \end{figure}
 
-To demonstrate where the delay happens, we can look at two individual flows. One from the Sender to the Router and one from the Router to the receiver. Each paired with the end to end (Sender to Receiver) UDP interactive traffic. Figure \ref{fig:graph3} shows the resulting graphs, as we can see there is almost no disruption on the Sender to Router transfer. Most delay comes from the bottleneck link between the Router and Receiver.
+To demonstrate where the delay happens, we can look at two individual flows: one from the Sender to the Router and one from the Router to the receiver, each paired with the end to end (Sender to Receiver) UDP interactive traffic. Figure \ref{fig:graph3} shows the resulting graphs; as we can see, there is almost no disruption on the Sender to Router transfer. Most delay comes from the bottleneck link between the Router and Receiver.
 
 \section{Using real 5G traces}
 
 The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces.
 
+\subsection{Traces}
+
+\subsection{Topology}
+
+\subsection{Scenarios}
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1400,6 +1405,7 @@ The next experiment will focus on the PEPs behavior in the context of realistic 
 \end{figure}
 text\cite{Srivastava_Fund_Panwar_2020}
 
+For this experiment we will look at four different 5G scenarios: First a static link with little fluctuation in the bandwidth. The second scenario focuses on short blockages, the third on long blockages. And finally the last is the most realistic scenario featuring both mobility and blockages. 
 
 \chapter{Conclusion \& Future Work}
 
