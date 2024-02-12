@@ -17,6 +17,18 @@ fig, axs = plt.subplots(1, len(csv_files), figsize=(5 * len(csv_files), 5))  # A
 if len(csv_files) == 1:
     axs = [axs]
 
+# Initialize variables to find global min and max tput
+global_min_tput = float('inf')
+global_max_tput = float('-inf')
+
+# Read all files to find the global min and max tput
+for file in csv_files:
+    df = pd.read_csv(file, header=None, names=["tput", "tdiff"])
+    min_tput = df['tput'].min()
+    max_tput = df['tput'].max()
+    global_min_tput = min(global_min_tput, min_tput)
+    global_max_tput = max(global_max_tput, max_tput)
+
 # Process each file
 for idx, file in enumerate(csv_files):
     # Read the current file into a DataFrame
@@ -28,14 +40,21 @@ for idx, file in enumerate(csv_files):
     # Plotting the data as a line graph on the subplot
     sns.lineplot(data=df, x="time", y="tput", ax=axs[idx])
     
-    # Set the title, xlabel, and ylabel
-    axs[idx].set_title(names[index])  # Using the file name without extension as the title
+    # Set the title and xlabel for each subplot
+    axs[idx].set_title(names[index])
     axs[idx].set_xlabel('Time (s)')
-    axs[idx].set_ylabel('Capacity (Mbps)')
-    
-    # Optionally, set the x-axis and y-axis limits to be the same for all plots
+
+    # Set the y-axis label and ticks only for the first subplot
+    if idx == 0:
+        axs[idx].set_ylabel('Capacity (Mbps)')
+    else:
+        axs[idx].set_ylabel('')
+        axs[idx].tick_params(axis='y', which='both', length=0)
+        axs[idx].set_yticklabels([])
+
+    # Set the x-axis and y-axis limits to be the same for all plots
     axs[idx].set_xlim(0, 120)
-    axs[idx].set_ylim(0, 4000)
+    axs[idx].set_ylim(global_min_tput, global_max_tput)
 
     index += 1
 

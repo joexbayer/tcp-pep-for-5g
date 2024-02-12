@@ -98,8 +98,9 @@
 \section{Problem Statement}
 
 \section{Organization}
+The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as the Bufferbloat concept and performance enhancing proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
 
-
+In Chapter 5 we will look at the evaluation of the performance enhancing proxy. The evaluation will consists of multiple experiments to confirm the effectiveness of the performance enhancing proxy itself. 
 \chapter{Background}
 
 In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader.\\
@@ -1389,23 +1390,51 @@ To demonstrate where the delay happens, we can look at two individual flows: one
 
 \section{Using real 5G traces}
 
-The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces.
+The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces. About the witestlab experiments.~\cite{Srivastava_Fund_Panwar_2020}
 
 \subsection{Traces}
+The traces come from a ?
 
 \subsection{Topology}
+For this experiment we will use a topology similar to the previous experiment. We will continue our Sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth rates we will adjust the sender to router link to have 10Gbit/s bandwidth and 100ms delay.\\
+
+The link between the router and the sender will start with a 3Gbit/s bandwidth and no delay. Additionally it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled.
 
 \subsection{Scenarios}
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.4]{../diagrams/witestlab/mmwave_cap.png}
-  	\caption{mmWave capacity fluctuation}
-  	\label{fig:graph3}
+	\includegraphics[scale=0.33]{../diagrams/witestlab/mmwave_cap2.png}
+  	\caption{mmWave capacity fluctuation for four different 5G scenarios}
+  	\label{fig:witestlab_graph1}
 \end{figure}
-text\cite{Srivastava_Fund_Panwar_2020}
 
 For this experiment we will look at four different 5G scenarios: First a static link with little fluctuation in the bandwidth. The second scenario focuses on short blockages, the third on long blockages. And finally the last is the most realistic scenario featuring both mobility and blockages. 
+
+Looking at the effect on raw delay.
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.33]{../diagrams/witestlab/lb_mobb.png}
+  	\caption{mmWave capacity fluctuation for four different 5G scenarios}
+  	\label{fig:witestlab_graph1}
+\end{figure}
+
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.33]{../diagrams/witestlab/delay2.png}
+  	\caption{Delay caused by fluctuating bandwidth}
+  	\label{fig:witestlab_graph_delay}
+\end{figure}
+text~\cite{Srivastava_Fund_Panwar_2020}
+
+\subsection{Validation}
+Firstly we want to validate the experiments from the Witestlab.
+
+\subsection{Experiment procedure}
+
+\subsection{Results}
 
 \chapter{Conclusion \& Future Work}
 

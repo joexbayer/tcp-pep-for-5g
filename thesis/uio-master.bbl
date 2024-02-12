@@ -111,6 +111,14 @@ Seungwan Ryu, Christopher Rump, and Chunming Qiao.
   control.
 \newblock {\em Telecommunication Systems}, 25(3/4), March 2004.
 
+\bibitem{Srivastava_Fund_Panwar_2020}
+Ashutosh Srivastava, Fraida Fund, and Shivendra~S. Panwar.
+\newblock An experimental evaluation of low latency congestion control for
+  mmwave links.
+\newblock In {\em IEEE INFOCOM 2020 - IEEE Conference on Computer
+  Communications Workshops (INFOCOM WKSHPS)}, page 352–357, Toronto, ON,
+  Canada, July 2020. IEEE.
+
 \bibitem{nextgen_proxy_servers}
 W.~V. Wathsala, Buddhika Siddhisena, and Ajantha~S. Athukorale.
 \newblock Next generation proxy servers.

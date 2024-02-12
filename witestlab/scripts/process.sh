@@ -1,4 +1,4 @@
-for EXPID in sl-cubic
+for EXPID in mobb-cubic
 do
 
     cat $EXPID-ss.txt | sed -e ':a; /<->$/ { N; s/<->\n//; ba; }'  | grep "iperf3" > $EXPID-ss-processed.txt
