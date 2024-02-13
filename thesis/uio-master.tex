@@ -88,19 +88,20 @@
 \tcblistof[\section*]{lol}{List of Listings}
 
 \begin{abstract}
-   ...
+In this thesis we will design, implement and evaluate a novel performance enhancing proxy to support non-interactive traffic in a 5G environment. The idea is to utilize large buffers in the network without disturbing interactive traffic. To achieve this we will explore new and creative ways to utilize socket buffers and active queue management to reduce file transfer times.
 \end{abstract}
 
 \chapter{Intro}
 
 \section{Motivation}
+New 5G technology has come and introduced increasingly large bandwidth capacities. However, because of the mmWave technology the bandwidth experiences drastic fluctuating from any kind of line of sight blockage.
 
 \section{Problem Statement}
 
 \section{Organization}
 The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as the Bufferbloat concept and performance enhancing proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
 
-In Chapter 5 we will look at the evaluation of the performance enhancing proxy. The evaluation will consists of multiple experiments to confirm the effectiveness of the performance enhancing proxy itself. 
+In Chapter 5 we will look at the evaluation of the performance enhancing proxy. The evaluation will consists of multiple experiments to confirm the effectiveness of the performance enhancing proxy itself. The final Chapter 6 will conclude the thesis and look at potential future work.
 \chapter{Background}
 
 In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader.\\
@@ -158,10 +159,11 @@ Wireless communication has seen a lot of improvements such as highly increased b
 The emergence of 5G Millimeter wave communications has opened the doors for low latency networks with multiple gigabits bandwidth. This is achieved by using higher millimetre wave (mmWave) frequencies in the range of 30GHz to 300GHz, which has a lot of benefits~\cite{Agrawal_Sharma_2016}. A wider spectrum of frequencies to choose from and higher data transfer rates are just some of the many benefits mmWave provides. But alongside the benefits, mmWave has also introduced a lot of new challenges.\\
 
 A big problem with millimetre wave communication is signal path blocking, also called "Line of sight blocking"~\cite{mmwave_blocking}. It's caused by the use of Beam-forming to increase the bandwidth and range of milimeter wave signals. Beam-forming focuses the signal in a certain direction, making any blocking of the signal path devastating for the bandwidth. Even the human body can create enough blockage to drastically reduce the bandwidth. This causes huge fluctuations in the bandwidth whenever the signal is blocked.\\
-\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=1.25]{../diagrams/graphs/tcp_mmwave_blockage.png}
-  	\caption{5G bandwidth fluctuations from humans}
+	\includegraphics[scale=0.33]{../diagrams/witestlab/lb_mobb.png}
+  	\caption{Capacity fluctuations from mmwave, witestlab.}
   	\label{fig:blockage}
 \end{figure}
 
@@ -1361,7 +1363,7 @@ Another important aspect which is not visible on the graph is the completion tim
   	\label{fig:graph2}
 \end{figure}
 
-Figure \ref{fig:graph2} shows a closeup of the end to end and PEP transfers using FQ CoDel. Although there are more fluctuations when using the PEP, the delay variation stays inside the same range of 120.0ms to approximately 121.5ms. Its important to note that the PEP transfer finishes earlier, which means it impacts the interactive traffic for a shorter amount of time than the end to end transfer.
+Figure \ref{fig:graph2} shows a closeup of the end to end and PEP transfers using FQ-CoDel. Although there are more fluctuations when using the PEP, the delay variation stays inside the same range of 120.0ms to approximately 121.5ms. Its important to note that the PEP transfer finishes earlier, which means it impacts the interactive traffic for a shorter amount of time than the end to end transfer.
 
 \begin{table}[h!]
 \centering
@@ -1390,17 +1392,18 @@ To demonstrate where the delay happens, we can look at two individual flows: one
 
 \section{Using real 5G traces}
 
-The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces. About the witestlab experiments.~\cite{Srivastava_Fund_Panwar_2020}
+The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces. The focus will be on the completion times of file transfer over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces where collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
 
 \subsection{Traces}
-The traces come from a ?
+The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios.
 
-\subsection{Topology}
-For this experiment we will use a topology similar to the previous experiment. We will continue our Sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth rates we will adjust the sender to router link to have 10Gbit/s bandwidth and 100ms delay.\\
+\begin{itemize}
+  \item \textbf{Static Link}: In the first scenario, the laptops are stationary and nothing obstructs their path.
+  \item \textbf{Short Blockages}: Same as the static link scenario, however at a 15 second interval a human obstructs the path between laptops.
+  \item \textbf{Long Blockages}: This scenario is similar to the short blockages, however in this scenario the human stopped on the path for four seconds each interval.
+  \item \textbf{Mobility and Blockages}: In the last scenario, the client laptop moved in a circle around the room, while a human obstructed the signal path at a 15 second interval.
+\end{itemize}\footnote{This text comes almost word for word from Srivastava Fund Panwar 2020, how to cite that?}
 
-The link between the router and the sender will start with a 3Gbit/s bandwidth and no delay. Additionally it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled.
-
-\subsection{Scenarios}
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1409,9 +1412,7 @@ The link between the router and the sender will start with a 3Gbit/s bandwidth a
   	\label{fig:witestlab_graph1}
 \end{figure}
 
-For this experiment we will look at four different 5G scenarios: First a static link with little fluctuation in the bandwidth. The second scenario focuses on short blockages, the third on long blockages. And finally the last is the most realistic scenario featuring both mobility and blockages. 
-
-Looking at the effect on raw delay.
+Figure \ref{fig:witestlab_graph1} visualizes the fluctuating bandwidth. The traces have a bandwidth of approximately 1Gbit/s to 4Gbit/s based on the scenario, even reaching zero with the mobility and blockages scenario. The raw data of the traces are contained in .csv files which consist of a time difference and the capacity of the link in megabytes.
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1420,6 +1421,35 @@ Looking at the effect on raw delay.
   	\label{fig:witestlab_graph1}
 \end{figure}
 
+\subsection{Topology}
+For this experiment we will use a topology similar to the previous experiment. We will continue our Sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth rates we will adjust the sender to router link to have the maximum our testbed can offer, which is 10Gbit/s bandwidth.\\
+
+The link between the sender and the router will be configured based on the scenario, but the default will be a 3Gbit/s bandwidth.
+
+\subsection{Validation}
+
+First we will try to reproduce the results from the original Witestlab experiment to see how our testbed will affect the results.
+Following each step of the original experiment we configure the link between the router and the sender to have a 3Gbit/s bandwidth and no delay. Additionally it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled.\\
+
+\begin{verbatim}
+sudo tc qdisc del dev 10Gf root; 
+sudo tc qdisc replace dev 10Gf root handle 1: htb default 3;
+sudo tc class add dev 10Gf parent 1: classid 1:3 htb rate 3gbit;
+sudo tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7500000;
+\end{verbatim}\\
+
+To simulate the fluctuating bandwidth a shell script at the router will configure the tc htb rate at a given interval from a .csv file. The sender will use iperf3 to create ten TCP flows which will fully utilize the available bandwidth. To measure the latency impact of the 5G traces we will use the \verb|ss| command to gather the RTT's of each flow. In our validation we will only run our experiments using CUBIC as it is the system default.
+
+\begin{verbatim}
+while IFS=, read -r tput tdiff
+do 
+    tdiff=${tdiff::-1}	
+    sudo tc class change dev ... htb rate "$tput"mbit
+    sleep $tdiff
+done < "$1"-tput.csv
+\end{verbatim}\\
+
+The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. Reaching a maximum of approximately 50ms delay with short and long blockages. 
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1427,16 +1457,42 @@ Looking at the effect on raw delay.
   	\caption{Delay caused by fluctuating bandwidth}
   	\label{fig:witestlab_graph_delay}
 \end{figure}
-text~\cite{Srivastava_Fund_Panwar_2020}
 
-\subsection{Validation}
-Firstly we want to validate the experiments from the Witestlab.
+Figure \ref{fig:witestlab_graph_delay} shows the results of the latency measurements. Comparing our results to the Witestlab experiment we  can see that the shapes of the graphs are the same. However the magnitude of the latency spikes are quite different different between our and their experiments. This may be the result of our hardware or more modern Linux kernel. 
 
 \subsection{Experiment procedure}
+To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between sender and router. The link between router and receiver will remain with no delay. Instead of a BFIFO queue at the router we will use FQ-CoDel as to not impact interactive traffic. Figure \ref{fig:testbed2} shows the updated topology.\\
+
+\begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.60]{../diagrams/drawio/testbed2.png}
+  	\caption{Testbed configuration for 5G traces}
+  	\label{fig:testbed2}
+\end{figure}
+
+The experiment procedure will be to complete file transfers from sender to receiver both for normal end to end and with the PEP for each 5G scenario. We will have a total of ten concurrent file transfers with a file size of 2 gigabytes each to utilize the 5G bandwidth. Based on the file size each transfer should take about 60 seconds.
 
 \subsection{Results}
 
+\subsubsection{Static link}
+\subsubsection{Short blockages}
+\subsubsection{Long blockages}
+\subsubsection{Mobility and Blockages}
+
 \chapter{Conclusion \& Future Work}
+To conclude this these will have a look back on the original goal of the thesis and the results. At last we will look at potential future work and research regarding the PEP.
+
+\section{Results}
+
+\subsection{Impact on interactive traffic}
+
+\subsection{Flow completion times}
+
+\section{Future work}
+Real deployment using physical device.,
+Real transfers,
+
+
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}

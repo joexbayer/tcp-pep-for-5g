@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-01-25T09:38:26.941Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.21 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="DkG3eSdyEiDcg3-oXRut" version="22.1.21" type="device">
+<mxfile host="Electron" modified="2024-02-13T10:26:21.462Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="J5IrC-oRTFbAu2VTaGcE" version="23.0.2" type="device">
   <diagram name="Page-1" id="tdqR3H0pgQtAeDCwSgcF">
-    <mxGraphModel dx="1434" dy="879" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2074" dy="1239" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -71,6 +71,74 @@
         </mxCell>
         <mxCell id="V7EBvmDltSiEiASLBAJ4-27" value="Majora" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Times New Roman;fontSize=13.5;" parent="1" vertex="1">
           <mxGeometry x="511" y="456" width="58" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-19" value="" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="57" y="731" width="540" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-20" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="287" y="761" width="78.89" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-21" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="496" y="761" width="78.89" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-22" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="77" y="761" width="78.89" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-23" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="476" y="821" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;fontFamily=Times New Roman;fontSize=13.5;" edge="1" parent="1" target="GAOWvV596Atxpq5lM726-23">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="366" y="836" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-25" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="347" y="821" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-26" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="257" y="821" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;fontFamily=Times New Roman;fontSize=13.5;" edge="1" parent="1" source="GAOWvV596Atxpq5lM726-28" target="GAOWvV596Atxpq5lM726-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-28" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.nic;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="137" y="821" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-29" value="        (Sender)                                              (Router / PEP)                                          (Receiver) &#xa;     10.100.36.3                                  10.100.36.6  -  10.100.67.6                               10.100.67.7&#xa;          10Ge &lt;------ ( 100ms delay )------&gt; 10Gc            10Gf &lt;------( 0ms delay )------&gt; 10Ge&#xa;                               10Gbit/s htb rate                                                3Gbit/s htb rate               &#xa; " style="text;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="57" y="886" width="750" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-30" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;imageBackground=none;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="294.89" y="641" width="63.11" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-31" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Times New Roman;fontSize=13.5;" edge="1" parent="1" source="GAOWvV596Atxpq5lM726-30" target="GAOWvV596Atxpq5lM726-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="337" y="831" as="sourcePoint" />
+            <mxPoint x="387" y="781" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-32" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Times New Roman;fontSize=13.5;" edge="1" parent="1" source="GAOWvV596Atxpq5lM726-30" target="GAOWvV596Atxpq5lM726-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="307" y="709" as="sourcePoint" />
+            <mxPoint x="146" y="799" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-33" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Times New Roman;fontSize=13.5;" edge="1" parent="1" source="GAOWvV596Atxpq5lM726-30" target="GAOWvV596Atxpq5lM726-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="336.9999999999998" y="698.8354347826087" as="sourcePoint" />
+            <mxPoint x="316" y="771" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-34" value="Triforce" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="298" y="612" width="63" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-35" value="Hylia" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="88" y="857" width="49" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-36" value="Midna" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="298.89" y="857" width="55" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="GAOWvV596Atxpq5lM726-37" value="Majora" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Times New Roman;fontSize=13.5;" vertex="1" parent="1">
+          <mxGeometry x="498" y="857" width="58" height="29" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

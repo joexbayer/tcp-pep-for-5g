@@ -2,7 +2,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces 5G bandwidth fluctuations from humans\relax }}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave, witestlab.\relax }}{7}{figure.caption.6}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Linux packet queuing\relax }}{8}{figure.caption.10}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.11}%
 \addvspace {10\p@ }
@@ -29,7 +29,8 @@
 \contentsline {figure}{\numberline {5.3}{\ignorespaces File transfer impact on interactive traffic\relax }}{50}{figure.caption.45}%
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Close up of End to End compared to PEP\relax }}{52}{figure.caption.47}%
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Individual file transfers affect on the interactive traffic.\relax }}{52}{figure.caption.49}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios\relax }}{53}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios\relax }}{54}{figure.caption.50}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios\relax }}{54}{figure.caption.51}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{54}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{55}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Testbed configuration for 5G traces\relax }}{56}{figure.caption.53}%
 \addvspace {10\p@ }

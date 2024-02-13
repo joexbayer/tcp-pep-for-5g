@@ -99,9 +99,16 @@
 \contentsline {subsection}{\numberline {5.2.5}Results \& Analysis}{50}{subsection.5.2.5}%
 \contentsline {section}{\numberline {5.3}Using real 5G traces}{53}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Traces}{53}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Topology}{53}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Scenarios}{53}{subsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Validation}{54}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}Experiment procedure}{54}{subsection.5.3.5}%
-\contentsline {subsection}{\numberline {5.3.6}Results}{54}{subsection.5.3.6}%
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{55}{chapter.6}%
+\contentsline {subsection}{\numberline {5.3.2}Topology}{54}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Validation}{54}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Experiment procedure}{55}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Results}{56}{subsection.5.3.5}%
+\contentsline {subsubsection}{Static link}{56}{section*.54}%
+\contentsline {subsubsection}{Short blockages}{56}{section*.55}%
+\contentsline {subsubsection}{Long blockages}{56}{section*.56}%
+\contentsline {subsubsection}{Mobility and Blockages}{56}{section*.57}%
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{57}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Results}{57}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{57}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{57}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Future work}{57}{section.6.2}%
