@@ -163,7 +163,7 @@ A big problem with millimetre wave communication is signal path blocking, also c
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.33]{../diagrams/witestlab/lb_mobb.png}
-  	\caption{Capacity fluctuations from mmwave, witestlab.}
+  	\caption{Capacity fluctuations from mmwave from real 5G traces~\cite{Srivastava_Fund_Panwar_2020}}
   	\label{fig:blockage}
 \end{figure}
 
@@ -1431,6 +1431,15 @@ The link between the sender and the router will be configured based on the scena
 First we will try to reproduce the results from the original Witestlab experiment to see how our testbed will affect the results.
 Following each step of the original experiment we configure the link between the router and the sender to have a 3Gbit/s bandwidth and no delay. Additionally it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled.\\
 
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.25]{../diagrams/witestlab/witestlab_results.png}
+  	\caption{Results from the Witestlab experiment~\cite{Srivastava_Fund_Panwar_2020}}
+  	\label{fig:witestlab_results}
+\end{figure}
+
+Firgure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP CUBIC results as it is the congestion controller we use for our experiments. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.
+
 \begin{verbatim}
 sudo tc qdisc del dev 10Gf root; 
 sudo tc qdisc replace dev 10Gf root handle 1: htb default 3;
@@ -1449,7 +1458,7 @@ do
 done < "$1"-tput.csv
 \end{verbatim}\\
 
-The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. Reaching a maximum of approximately 50ms delay with short and long blockages. 
+The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. Reaching a maximum of approximately 50ms delay with short and long blockages.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1458,7 +1467,7 @@ The results from our latency measurement experiment show a clear impact on the l
   	\label{fig:witestlab_graph_delay}
 \end{figure}
 
-Figure \ref{fig:witestlab_graph_delay} shows the results of the latency measurements. Comparing our results to the Witestlab experiment we  can see that the shapes of the graphs are the same. However the magnitude of the latency spikes are quite different different between our and their experiments. This may be the result of our hardware or more modern Linux kernel. 
+Figure \ref{fig:witestlab_graph_delay} shows the results of the latency measurements. Comparing our results to the Witestlab experiment (Figure \ref{fig:witestlab_results}) we can see that the shapes of the graphs are the same. However the magnitude of the latency spikes are quite different different between our and their experiments. This may be the result of our hardware or more modern Linux kernel. 
 
 \subsection{Experiment procedure}
 To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between sender and router. The link between router and receiver will remain with no delay. Instead of a BFIFO queue at the router we will use FQ-CoDel as to not impact interactive traffic. Figure \ref{fig:testbed2} shows the updated topology.\\
@@ -1470,14 +1479,63 @@ To evaluate the PEP with the 5G traces we will change the topology to include a 
   	\label{fig:testbed2}
 \end{figure}
 
-The experiment procedure will be to complete file transfers from sender to receiver both for normal end to end and with the PEP for each 5G scenario. We will have a total of ten concurrent file transfers with a file size of 2 gigabytes each to utilize the 5G bandwidth. Based on the file size each transfer should take about 60 seconds.
+The experiment procedure will be to complete file transfers from sender to receiver both for normal end to end and with the PEP for each 5G scenario. We will have a total of ten concurrent file transfers with a file size of 1 gigabyte each to utilize the 5G bandwidth. Additionally, we will have an end to end ULTRA PING transfer to measure the latency disruptions for both the end to end and PEP file transfers.
 
 \subsection{Results}
 
+The results will focus on the ULTRA PING latency graphs and the completion times of the 10 file transfers. Additionally, we will do a statistical analysis of the completion times to highlight their differences.
+
 \subsubsection{Static link}
+Box plots for the flows and their completion times
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & 40.70s & 10.97s & 37.19s & 30.55s & 65.93s\\
+Without PEP & 99.92s & 11.63s & 102.75s & 79.27s & 114.67s\\
+
+\bottomrule
+\end{tabularx}
+\caption{Flow Completion Time Statistics}
+\label{tab:fct_statistics}
+\end{table}
+
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/witestlab/staticlink.pdf}
+  	\caption{Delay caused by fluctuating bandwidth}
+  	\label{fig:witestlab_graph_delay}
+\end{figure}
+
 \subsubsection{Short blockages}
+
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/witestlab/shortblockage.pdf}
+  	\caption{Impact on interactive traffic with short blockages}
+  	\label{fig:sb_ultra}
+\end{figure}
 \subsubsection{Long blockages}
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/witestlab/longblockage.pdf}
+  	\caption{Delay caused by fluctuating bandwidth}
+  	\label{fig:witestlab_graph_delay}
+\end{figure}
 \subsubsection{Mobility and Blockages}
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/witestlab/mobility.pdf}
+  	\caption{Delay caused by fluctuating bandwidth}
+  	\label{fig:witestlab_graph_delay}
+\end{figure}
 
 \chapter{Conclusion \& Future Work}
 To conclude this these will have a look back on the original goal of the thesis and the results. At last we will look at potential future work and research regarding the PEP.

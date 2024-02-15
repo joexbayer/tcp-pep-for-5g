@@ -123,8 +123,7 @@ int main(int argc, char * argv[])
     printf("Sending file of size %d bytes\n", thesis_size);
     
     gettimeofday(&tv1, NULL);
-    while(thesis_size > 0)
-    {
+    while(thesis_size > 0){
         ret = send(server, buffer, MAX_BUFFER_SIZE > thesis_size ? thesis_size : MAX_BUFFER_SIZE, 0);
         thesis_size -= ret;
     }

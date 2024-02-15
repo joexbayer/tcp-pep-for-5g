@@ -2,7 +2,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave, witestlab.\relax }}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave from real 5G traces\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{7}{figure.caption.6}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Linux packet queuing\relax }}{8}{figure.caption.10}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.11}%
 \addvspace {10\p@ }
@@ -31,6 +31,11 @@
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Individual file transfers affect on the interactive traffic.\relax }}{52}{figure.caption.49}%
 \contentsline {figure}{\numberline {5.6}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios\relax }}{54}{figure.caption.50}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios\relax }}{54}{figure.caption.51}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{55}{figure.caption.52}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Testbed configuration for 5G traces\relax }}{56}{figure.caption.53}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{55}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{56}{figure.caption.53}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Testbed configuration for 5G traces\relax }}{56}{figure.caption.54}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{57}{figure.caption.57}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{58}{figure.caption.59}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{58}{figure.caption.61}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{59}{figure.caption.63}%
 \addvspace {10\p@ }
