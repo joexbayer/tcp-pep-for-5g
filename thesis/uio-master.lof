@@ -34,8 +34,12 @@
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{55}{figure.caption.52}%
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{56}{figure.caption.53}%
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Testbed configuration for 5G traces\relax }}{56}{figure.caption.54}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{57}{figure.caption.57}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{58}{figure.caption.59}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{58}{figure.caption.61}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{59}{figure.caption.63}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Delay caused by fluctuating bandwidth with a static link\relax }}{57}{figure.caption.56}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Completion times with a static link\relax }}{58}{figure.caption.57}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{58}{figure.caption.59}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Completion times with short blockage\relax }}{59}{figure.caption.60}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{59}{figure.caption.62}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{60}{figure.caption.65}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Completion times with a mobility and blockages\relax }}{60}{figure.caption.66}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios\relax }}{62}{figure.caption.67}%

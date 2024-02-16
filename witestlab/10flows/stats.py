@@ -18,7 +18,7 @@ def read_data(file_name):
     return pd.DataFrame(data)
 
 # Reading data from the file
-file_name = 'sl_cubic.txt'  # Replace with your actual file name
+file_name = 'mobb_cubic.txt'  # Replace with your actual file name
 df = read_data(file_name)
 
 # Calculating statistical metrics for each group
