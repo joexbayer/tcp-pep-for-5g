@@ -1283,24 +1283,60 @@ For the Sender facing interface we simply apply 100ms delay:
 $ sudo tc qdisc add dev 10Gc root handle 2: netem delay 100ms;
 \end{verbatim}
 
-The sender has multiple configurations for the receiver facing interface based on if we intend to use FQ CoDel or BFIFO.
+The sender has multiple configurations for the receiver facing interface based on if we intend to use FQ-CoDel, shown in Figure \ref{fig:tc_base_fq}, or BFIFO, shown in Figure \ref{fig:tc_base_bfifo}.
 
-\begin{verbatim}
-FQ CoDel configuration:
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.60]{../diagrams/tc/tc_base_fq.png}
+  	\begin{verbatim}
 $ sudo tc qdisc add dev 10Gf root handle 1: htb default 11;
 $ sudo tc class add dev 10Gf parent 1: classid 11 htb rate 15mbit;
 $ sudo tc qdisc add dev 10Gf parent 1:11 fq_codel interval 150;
-\end{verbatim}
+	\end{verbatim}
+	\caption{FQ-CoDel traffic control visualization}
+  	\label{fig:tc_base_fq}
+\end{figure}
 
-\begin{verbatim}
-BFIFO configuration:
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.60]{../diagrams/tc/tc_base_bfifo.png}
+	\begin{verbatim}
 $ sudo tc qdisc add dev 10Gf root handle 2: htb default 10;
 $ sudo tc class add dev 10Gf parent 2: classid 10 htb rate 15mbit;
 $ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo limit 225000;
-\end{verbatim}\\
+\end{verbatim}
+  	\caption{BFIFO traffic control visualization}
+  	\label{fig:tc_base_bfifo}
+\end{figure}
 
-The BFIFO queue is set to have a limit of the end to end bandwidth delay product (BDP).
-In our case the BDP is 15Mbit/s with 120ms delay which equals 225 000 bytes. In the step function the bandwidth increases to 70Mbit/s and with it the BFIFO limit to 1 050 000 bytes.
+
+The BFIFO queue is set to have a limit of the end to end bandwidth delay product (BDP).\\
+Given:
+\begin{itemize}
+    \item Bandwidth (initial): \( B_1 = 15 \text{ Mbit/s} \)
+    \item Delay: \( D = 120 \text{ ms} \)
+    \item Bandwidth (after increase): \( B_2 = 70 \text{ Mbit/s} \)
+\end{itemize}
+
+The Bandwidth-Delay Product (BDP) is calculated as:
+\begin{equation}
+    BDP = Bandwidth \times Delay
+\end{equation}
+
+For the initial bandwidth:
+\begin{equation}
+    BDP_1 = B_1 \times D = 15 \times 10^6 \text{ bits/s} \times 120 \times 10^{-3} \text{ s} = 225 \times 10^6 \text{ bits} = 225 \times 10^3 \text{ bytes}
+\end{equation}
+
+Hence, the initial BFIFO limit is set to \( 225,000 \) bytes.
+
+After the increase in bandwidth:
+\begin{equation}
+    BDP_2 = B_2 \times D = 70 \times 10^6 \text{ bits/s} \times 120 \times 10^{-3} \text{ s} = 840 \times 10^6 \text{ bits} = 1,050 \times 10^3 \text{ bytes}
+\end{equation}
+
+Therefore, the new BFIFO limit becomes \( 1,050,000 \) bytes.
 
 \subsubsection{Receiver}
 The only configuration for the receiver is the 20ms delay on its router facing interface.
@@ -1429,25 +1465,23 @@ The link between the sender and the router will be configured based on the scena
 \subsection{Validation}
 
 First we will try to reproduce the results from the original Witestlab experiment to see how our testbed will affect the results.
-Following each step of the original experiment we configure the link between the router and the sender to have a 3Gbit/s bandwidth and no delay. Additionally it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled.\\
+Following each step of the original experiment we configure the link between the router and the sender to have a 3Gbit/s bandwidth and no delay. Additionally it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled. This configuration is visualized in Figure \ref{fig:tc_5g_bfifo} \\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.25]{../diagrams/witestlab/witestlab_results.png}
-  	\caption{Results from the Witestlab experiment~\cite{Srivastava_Fund_Panwar_2020}}
-  	\label{fig:witestlab_results}
+	\includegraphics[scale=0.60]{../diagrams/tc/tc_5g_bfifo.png}
+  	\begin{verbatim}
+$ tc qdisc del dev 10Gf root; 
+$ tc qdisc replace dev 10Gf root handle 1: htb default 3;
+$ tc class add dev 10Gf parent 1: classid 1:3 htb rate 3gbit;
+$ tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7500000;
+	\end{verbatim}
+	\caption{BFIFO traffic control visualization for 5G traces}
+  	\label{fig:tc_5g_bfifo}
 \end{figure}
 
-Firgure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP CUBIC results as it is the congestion controller we use for our experiments. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.
 
-\begin{verbatim}
-sudo tc qdisc del dev 10Gf root; 
-sudo tc qdisc replace dev 10Gf root handle 1: htb default 3;
-sudo tc class add dev 10Gf parent 1: classid 1:3 htb rate 3gbit;
-sudo tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7500000;
-\end{verbatim}\\
-
-To simulate the fluctuating bandwidth a shell script at the router will configure the tc htb rate at a given interval from a .csv file. The sender will use iperf3 to create ten TCP flows which will fully utilize the available bandwidth. To measure the latency impact of the 5G traces we will use the \verb|ss| command to gather the RTT's of each flow. In our validation we will only run our experiments using CUBIC as it is the system default.
+To simulate the fluctuating bandwidth a shell script at the router will configure the tc htb rate at a given interval from a .csv file. The sender will use iperf3 to create ten TCP flows which will fully utilize the available bandwidth. To measure the latency impact of the 5G traces we will use the \verb|ss| command to gather the RTT's of each flow. In our validation we will only run our experiments using CUBIC as it is the system default.\\
 
 \begin{verbatim}
 while IFS=, read -r tput tdiff
@@ -1457,6 +1491,15 @@ do
     sleep $tdiff
 done < "$1"-tput.csv
 \end{verbatim}\\
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.25]{../diagrams/witestlab/witestlab_results.png}
+  	\caption{Results from the Witestlab experiment~\cite{Srivastava_Fund_Panwar_2020}}
+  	\label{fig:witestlab_results}
+\end{figure}
+
+Firgure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP CUBIC results as it is the congestion controller we use for our experiments. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.\\
 
 The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. Reaching a maximum of approximately 50ms delay with short and long blockages.\\
 
@@ -1489,12 +1532,26 @@ The experiment consists of three steps:
 \end{itemize}
 These three steps are repeated once for each scenario and twice for each scenario, either being end to end or using the PEP.
 
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.40]{../diagrams/tc/tc_5g_3gbit.png}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.40]{../diagrams/tc/tc_delay_fq.png}
+    \end{minipage}
+    \caption{}
+    \label{fig:tc_5g_bfifo}
+\end{figure}
+
 \subsection{Results}
 
-The results will focus on the ULTRA PING latency graphs and the completion times of the 10 file transfers. Additionally, we will do a statistical analysis of the completion times to highlight their differences.
+The results in this experiment will focus on ULTRA PING latency graphs to measure impact on interactive traffic and the completion times of the 10 file transfers. To evaluate the PEPs efficiency, compared to a normal end to end transfer, we will look at the averages, standard deviation and means.
 
 \subsubsection{Static link}
-%The static link has a steady capacity with only a few fluctuations.
+We will start with evaluating the PEP under a static link as the base line to which we can compare the other three scenarios. 
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1503,7 +1560,27 @@ The results will focus on the ULTRA PING latency graphs and the completion times
   	\label{fig:witestlab_static_delay}
 \end{figure}
 
-Figure \ref{fig:witestlab_static_delay} shows the impact of the file transfers on the interactive traffic. Compared to our base case there seems to be a bigger impact with 10 files, however the delay difference stays within 0,25ms. Additionally, the PEP transfers seem to spike more.\\
+Figure \ref{fig:witestlab_static_delay} shows the impact of the file transfers on the interactive traffic. Compared to our base case there seems to be a bigger impact with 10 files, however the delay mean difference stays below 0,09ms at its worst: the first 1000 packets. Another observation is that the interactive traffic spikes more when the PEP is used.\\
+
+\begin{table}[h]
+\centering
+\label{tab:sl_latency_statistics}
+\begin{tabular}{lcc}
+\hline
+\textbf{Statistic}                & \textbf{Static Link E2E} & \textbf{Static Link PEP} \\ \hline
+Mean                              & 100.158ms                  & 100.242ms                  \\
+Median                            & 100.151ms                  & 100.207ms                  \\
+Standard Deviation                & 0.0234ms                   & 0.1067ms                   \\
+\multicolumn{3}{l}{\textbf{Differences}}                             \\ \hline
+Difference in Mean                & \multicolumn{2}{c}{-0.0844ms}         \\
+Difference in Median              & \multicolumn{2}{c}{-0.0556ms}         \\
+Difference in Standard Deviation  & \multicolumn{2}{c}{-0.0833ms}         \\
+\end{tabular}
+\caption{Comparison of first 1000 latency packets for Static Link E2E and Static Link PEP Statistics}
+\end{table}
+
+Table \ref{tab:sl_latency_statistics} highlights the differences between the end to end and PEP impact on interactive traffic. There is a difference of about 0.08ms between the means. Most importantly, we can see that the PEP causes a higher standard deviation than the end to end traffic. Which is reflected in the spikes of the ULTRA PING graph.
+
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1513,8 +1590,8 @@ Figure \ref{fig:witestlab_static_delay} shows the impact of the file transfers o
 	\begin{tabularx}{\linewidth}{lCCCCC}
 	Condition & Mean & Std Dev & Median & Min & Max \\
 	\midrule
-	With PEP & 40.70s & 10.97s & 37.19s & 30.55s & 65.93s\\
-	Without PEP & 99.92s & 11.63s & 102.75s & 79.27s & 114.67s\\
+	With PEP & 39.81s & 8.11s & 38.37s & 32.42s & 61.08s\\
+	Without PEP & 107.90s & 7.89s & 108.64s & 90.46s & 117.05s\\
 	\bottomrule
 	\end{tabularx}		
 		
@@ -1522,11 +1599,27 @@ Figure \ref{fig:witestlab_static_delay} shows the impact of the file transfers o
   	\label{fig:witestlab_static_fcts}
 \end{figure}
 
-Looking at the flow completion times in Figure \ref{fig:witestlab_static_fcts}, we can clearly see the benefit of the PEP. All, except the last flow, finish earlier than their end to end counterpart. The staggering of the completion times is most likely due to the transfers not starting at the exact same time.\\
+Looking at the flow completion times in Figure \ref{fig:witestlab_static_fcts}, we can clearly see the benefit of the PEP. All PEP transfers finish earlier than their end to end counterpart. The staggering of the completion times is most likely due to the transfers not starting at the exact same time.\\
 
-Table \ref{tab:static_fct_statistics} highlights the differences between the end to end and PEP transfers. Using a static link the PEP has a mean completion time of 40,70s, while the default end to end has a mean completion time of 99,92s. Based on this, the PEP mean completion time is approximately 59,27\% faster than the default end-to-end mean completion time.
+The table in Figure \ref{fig:witestlab_static_fcts} highlights the differences between the end to end and PEP transfers. Using a static link the PEP has a mean completion time of 39,81s, while the default end to end has a mean completion time of 107,90s. Based on this, the PEP mean completion time is approximately 63,10\% faster than the default end-to-end mean completion time.
 
 \subsubsection{Short blockages}
+
+Table \ref{tab:sb_fct_diff} shows the differences between the completion times for short blockages and a static link. Overall the completion times are slower, indicated by an increase in mean completion time. The end to end traffic suffers more from short blockages than the PEP as both the mean, min and max significantly increases.
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & +0.77s & +0.14s & +1.47s & -0.23s & +2.31s \\
+Without PEP & +7.84s & +0.44s & +7.52s & +6.47s & +10.59s \\
+\bottomrule
+\end{tabularx}
+\caption{Differences in Short Blockage compared to the original Static link}
+\label{tab:sb_fct_diff}
+\end{table}
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1537,20 +1630,6 @@ Table \ref{tab:static_fct_statistics} highlights the differences between the end
 
 Looking at the impact on interactive traffic using the short blockage scenario, visualized in Figure \ref{fig:sb_ultra}, we can see that the PEP case has more radical fluctuations. While the end to end transfer seems more stable. The spikes can be a result of the fluctating bandwidth, the PEP will be able to react faster than the end to end traffic, thereby pushing out more data in bursts and create spikes.
 
-%\begin{table}[h!]
-%\centering
-%\begin{tabularx}{\linewidth}{lCCCCC}
-%\toprule
-%Condition & Mean & Std Dev & Median & Min & Max \\
-%\midrule
-%With PEP & 41.09s & 10.60s & 36.30s & 33.52s & 66.86s\\
-%Without PEP & 98.53s & 8.63s & 100.72s & 85.85s & 107.93s\\
-%
-%\bottomrule
-%\end{tabularx}
-%\caption{Short blockage flow completion time statistics}
-%\label{tab:sb_fct_statistics}
-%\end{table}
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1576,41 +1655,74 @@ The difference between long and short blockages is most notable in the ULTRA PIN
 \toprule
 Condition & Mean & Std Dev & Median & Min & Max \\
 \midrule
-With PEP & 39.87s & 7.14s & 41.20s & 32.64s & 55.25s\\
-Without PEP & 93.29s & 20.08s & 98.77s & 56.22s & 114.65s\\
+With PEP & +0.44s & +1.50s & -0.88s & -1.24s & -0.78s \\
+Without PEP & -3.89s & -2.98s & -4.29s & +6.48s & -7.26s \\
 \bottomrule
 \end{tabularx}
-\caption{Long blockage flow completion time statistics}
-\label{tab:lb_fct_statistics}
+\caption{Differences in Short Blockage compared to the original Static link}
+\label{tab:lb_fct_diff}
 \end{table}
 
-Overall it does not seem like long blockages improve the flow completion times compared to the short blockages. 
+Looking at the differences in completion times, compared to the static link, in Figure \ref{tab:lb_fct_diff}, we can see a faster mean completion time for the end to end traffic. The end to end traffics minimum time increases while the maximum time decreases.
 
 \subsubsection{Mobility and Blockages}
 
-Finally, we will look at the last scenario, mobility and blockages. Similar to short and long blockages, the interactive traffic experiences some high spikes in the PEP case:
+Finally, we will look at the last scenario, mobility and blockages. Similar to short and long blockages, the interactive traffic experiences some high spikes in the PEP case. These spikes can be seen in Figure \ref{fig:witestlab_graph_delay_mobb}. \\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.50]{../diagrams/witestlab/mobility.pdf}
-  	\caption{Delay caused by fluctuating bandwidth}
-  	\label{fig:witestlab_graph_delay}
+  	\caption{Delay caused by fluctuating bandwidth with the mobility and blockages scenario.}
+  	\label{fig:witestlab_graph_delay_mobb}
 \end{figure}
 
-Overall the mobility and blockage scenario does not stand out compared to the previous scenarios. Both the impact on the interactive traffic and the completion times do not change drastically.
+The mobility and blockage scenario is a overall benefit for the end to end traffic, as the high bandwidth phases allow the transfers to complete earlier. Looking at Figure \ref{fig:witestlab_mobb_fcts}, we can see that the highest completion time is about 104s. Table \ref{tab:mobb_fct_diff} shows that the mean completion time for end to end traffic decreased by approximately 11s.\\
+
+This is most likely because the end to end traffic is able to utilize the high bandwidth phases longer than the PEP which finishes a lot earlier.
+
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.40]{../diagrams/witestlab/mobb_cubic_bar.pdf}
-  	\caption{Completion times with a mobility and blockages}
+	\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & 40.82s & 7.11s & 39.96s & 31.47s & 52.56s\\
+Without PEP & 96.74s & 7.49s & 97.79s & 80.13s & 104.57s\\
+\bottomrule
+\end{tabularx}
+  	\caption{Completion times with mobility and blockages}
   	\label{fig:witestlab_mobb_fcts}
 \end{figure}
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & +1.01s & -1.00s & +1.59s & -0.95s & -8.52s \\
+Without PEP & -11.16s & -0.40s & -10.85s & -10.33s & -12.48s \\
+\bottomrule
+\end{tabularx}
+\caption{Differences in Completion Times with mobility and blockages compared to a static link}
+\label{tab:mobb_fct_diff}
+\end{table}
+
 
 \subsection{Evaluation of 5G traces experiment}
 
 The interesting takeaway from these experiments is the drastic decrease in completion time when utilizing the PEP for both a static link and mobility with blockages. Showcasing the benefits of a split connection, combined with a 5G environment. The PEP is able to react faster than the end to end connection which has the added 100ms delay.\\
 
 This faster reaction time comes at the cost at small spikes in the interactive traffic.
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.40]{../diagrams/witestlab/all_bars.pdf}
+  	\caption{Delay caused by fluctuating bandwidth}
+  	\label{fig:witestlab_graph_delay}
+\end{figure}
 
 \chapter{Conclusion \& Future Work}
 To conclude this these will have a look back on the original goal of the thesis and the results. At last we will look at potential future work and research regarding the PEP.
@@ -1619,7 +1731,7 @@ To conclude this these will have a look back on the original goal of the thesis 
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.50]{../diagrams/witestlab/fcts.png}
+	\includegraphics[scale=0.40]{../diagrams/witestlab/fcts.png}
   	\caption{Completion times for different 5G scenarios}
   	\label{fig:sb_ultra}
 \end{figure}
@@ -1640,6 +1752,8 @@ Without PEP & 96.89s & 12.39s & 100.03s & 75.41s & 111.33s\\
 \end{table} 
 
 \subsection{Impact on interactive traffic}
+To avoid impact on interactive traffic was a core idea behind the usability of the PEP. In the initial evaluation we showed that we are able to reduce the impact of our buffers on the interactive traffic by configuring FQ-CoDel, while still having huge socket buffers. Compared to using a BFIFO queue which created large delay spikes in the interactive traffic.\\
+
 
 \subsection{Flow completion times}
 

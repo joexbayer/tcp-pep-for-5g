@@ -29,6 +29,10 @@ df4 = read_data('mobb_cubic.txt', 'Mobility and Blockage')
 # Combining all DataFrames
 df = pd.concat([df1, df2, df3, df4])
 
+# Determine global max and min completion times
+global_max_time = df['Completion Time (s)'].max()
+global_min_time = df['Completion Time (s)'].min()
+
 # Creating subplots without sharing y-axis
 fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(15, 10))
 plt.subplots_adjust(hspace=0.5, wspace=0.5)
@@ -45,6 +49,7 @@ for i, (ax, file_label) in enumerate(zip(axes.flatten(), ['Static Link', 'Short 
     ax.set_axisbelow(True)  # Grid lines behind the plot
     ax.set_xlabel('')
     ax.set_ylabel('Completion Time (s)')
+    ax.set_ylim(global_min_time, global_max_time)  # Set the same y-axis scale for all subplots
 
 # Overall title
 plt.suptitle('Comparison of Flow Completion Times')

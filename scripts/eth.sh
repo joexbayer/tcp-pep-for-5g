@@ -1,5 +1,5 @@
-  sudo ethtool -K 10Gf tso on;
-  sudo ethtool -K 10Gf gso on;
-  sudo ethtool -K 10Gf lro on;
-  sudo ethtool -K 10Gf gro on;
-  sudo ethtool -K 10Gf ufo on;
+  sudo ethtool -K 10Ge tso off;
+  sudo ethtool -K 10Ge gso off;
+  sudo ethtool -K 10Ge lro off;
+  sudo ethtool -K 10Ge gro off;
+  sudo ethtool -K 10Ge ufo off;

@@ -9,7 +9,7 @@ current_condition = None
 names = ['sl_cubic.txt', 'sb_cubic.txt', 'lb_cubic.txt', 'mobb_cubic.txt']
 titles = ['Static Link', 'Short Blockage', 'Long Blockage', 'Mobility and Blockage']
 
-selector = 2
+selector = 3
 
 # Read and process the file
 with open(names[selector], 'r') as file:
