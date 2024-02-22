@@ -107,9 +107,10 @@
 \contentsline {subsubsection}{Short blockages}{61}{section*.63}%
 \contentsline {subsubsection}{Long blockages}{62}{section*.67}%
 \contentsline {subsubsection}{Mobility and Blockages}{63}{section*.70}%
-\contentsline {subsection}{\numberline {5.3.6}Evaluation of 5G traces experiment}{63}{subsection.5.3.6}%
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{66}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Results}{66}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{67}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{67}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Future work}{67}{section.6.2}%
+\contentsline {subsection}{\numberline {5.3.6}Throughput Experiment}{64}{subsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.3.7}Evaluation of 5G traces experiment}{65}{subsection.5.3.7}%
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{67}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Results}{67}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{68}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{68}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Future work}{68}{section.6.2}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  20 FEB 2024 15:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  22 FEB 2024 14:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -893,24 +893,6 @@ LaTeX Warning: Label `fig:blockage' multiply defined.
 LaTeX Warning: Label `fig:blockage@cref' multiply defined.
 
 
-LaTeX Warning: Label `fig:witestlab_graph1' multiply defined.
-
-
-LaTeX Warning: Label `fig:witestlab_graph1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:tc_5g_bfifo' multiply defined.
-
-
-LaTeX Warning: Label `fig:tc_5g_bfifo@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:witestlab_graph_delay' multiply defined.
-
-
-LaTeX Warning: Label `fig:witestlab_graph_delay@cref' multiply defined.
-
-
 LaTeX Warning: Label `fig:witestlab_graph_delay' multiply defined.
 
 
@@ -1000,14 +982,14 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.29996pt on input line 83.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 5.69998pt on input line 83.
-<uio-fp-navn-eng.pdf, id=392, 469.755pt x 123.46124pt>
+<uio-fp-navn-eng.pdf, id=396, 469.755pt x 123.46124pt>
 File: uio-fp-navn-eng.pdf Graphic file (type pdf)
 <use uio-fp-navn-eng.pdf>
 Package pdftex.def Info: uio-fp-navn-eng.pdf  used on input line 83.
 (pdftex.def)             Requested size: 138.56935pt x 36.41953pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 13.29996pt on input line 83.
-<uio-fp-segl.pdf, id=393, 232.87pt x 232.87pt>
+<uio-fp-segl.pdf, id=397, 232.87pt x 232.87pt>
 File: uio-fp-segl.pdf Graphic file (type pdf)
 <use uio-fp-segl.pdf>
 Package pdftex.def Info: uio-fp-segl.pdf  used on input line 83.
@@ -1086,7 +1068,7 @@ l.115   \item \textbf
 [2
 
 ]
-<../diagrams/drawio/domains.png, id=656, 605.26125pt x 355.3275pt>
+<../diagrams/drawio/domains.png, id=664, 605.26125pt x 355.3275pt>
 File: ../diagrams/drawio/domains.png Graphic file (type png)
 <use ../diagrams/drawio/domains.png>
 Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 120
@@ -1114,7 +1096,7 @@ ith the same identifier (name{page.4}) has been already used, duplicate ignored
                    \relax 
 l.142 
        [4]
-<../diagrams/drawio/tcphandshake.png, id=676, 489.32813pt x 309.155pt>
+<../diagrams/drawio/tcphandshake.png, id=684, 489.32813pt x 309.155pt>
 File: ../diagrams/drawio/tcphandshake.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake.png  used on input lin
@@ -1145,7 +1127,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
  []
 
-<../diagrams/witestlab/lb_mobb.png, id=688, 722.7pt x 361.35pt>
+<../diagrams/witestlab/lb_mobb.png, id=697, 722.7pt x 361.35pt>
 File: ../diagrams/witestlab/lb_mobb.png Graphic file (type png)
 <use ../diagrams/witestlab/lb_mobb.png>
 Package pdftex.def Info: ../diagrams/witestlab/lb_mobb.png  used on input line 
@@ -1174,7 +1156,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
-<../diagrams/drawio/queueing.png, id=711, 655.44875pt x 1000.73875pt>
+<../diagrams/drawio/queueing.png, id=719, 655.44875pt x 1000.73875pt>
 File: ../diagrams/drawio/queueing.png Graphic file (type png)
 <use ../diagrams/drawio/queueing.png>
 Package pdftex.def Info: ../diagrams/drawio/queueing.png  used on input line 19
@@ -1201,7 +1183,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [9]
-<../diagrams/drawio/pep_satellite.png, id=730, 700.6175pt x 343.2825pt>
+<../diagrams/drawio/pep_satellite.png, id=738, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
@@ -1241,7 +1223,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 263--264
 
  []
 
-<../diagrams/drawio/simple_pep_design.png, id=763, 749.80125pt x 240.9pt>
+<../diagrams/drawio/simple_pep_design.png, id=771, 749.80125pt x 240.9pt>
 File: ../diagrams/drawio/simple_pep_design.png Graphic file (type png)
 <use ../diagrams/drawio/simple_pep_design.png>
 Package pdftex.def Info: ../diagrams/drawio/simple_pep_design.png  used on inpu
@@ -1259,7 +1241,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
-<../diagrams/drawio/deployment_without_pep.png, id=773, 461.22313pt x 266.9975p
+<../diagrams/drawio/deployment_without_pep.png, id=781, 461.22313pt x 266.9975p
 t>
 File: ../diagrams/drawio/deployment_without_pep.png Graphic file (type png)
 <use ../diagrams/drawio/deployment_without_pep.png>
@@ -1286,13 +1268,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 308--309
 
  []
 
-<../diagrams/drawio/bandwidth_bad.png, id=789, 575.14874pt x 209.78375pt>
+<../diagrams/drawio/bandwidth_bad.png, id=797, 575.14874pt x 209.78375pt>
 File: ../diagrams/drawio/bandwidth_bad.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_bad.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_bad.png  used on input li
 ne 312.
 (pdftex.def)             Requested size: 258.81454pt x 94.4018pt.
-<../diagrams/drawio/bandwidth_good.png, id=792, 583.17876pt x 212.795pt>
+<../diagrams/drawio/bandwidth_good.png, id=800, 583.17876pt x 212.795pt>
 File: ../diagrams/drawio/bandwidth_good.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_good.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_good.png  used on input l
@@ -1308,7 +1290,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 344--345
 
 [16 <../diagrams/drawio/bandwidth_bad.png> <../diagrams/drawio/bandwidth_good.p
 ng>]
-<../diagrams/drawio/bandwidth_delay.png, id=802, 453.695pt x 163.61125pt>
+<../diagrams/drawio/bandwidth_delay.png, id=810, 453.695pt x 163.61125pt>
 File: ../diagrams/drawio/bandwidth_delay.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_delay.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_delay.png  used on input 
@@ -1324,7 +1306,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 361--362
 
  []
 
-<../diagrams/drawio/tcphandshake_primitiv.png, id=815, 503.8825pt x 298.11375pt
+<../diagrams/drawio/tcphandshake_primitiv.png, id=823, 503.8825pt x 298.11375pt
 >
 File: ../diagrams/drawio/tcphandshake_primitiv.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_primitiv.png>
@@ -1357,7 +1339,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 381--382
 
  []
 
-<../diagrams/drawio/tcphandshake_optimal.png, id=825, 487.8225pt x 191.71625pt>
+<../diagrams/drawio/tcphandshake_optimal.png, id=833, 487.8225pt x 191.71625pt>
 
 File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_optimal.png>
@@ -1384,7 +1366,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 408--409
 
  []
 
-<../diagrams/drawio/deployment.png, id=841, 628.3475pt x 367.3725pt>
+<../diagrams/drawio/deployment.png, id=849, 628.3475pt x 367.3725pt>
 File: ../diagrams/drawio/deployment.png Graphic file (type png)
 <use ../diagrams/drawio/deployment.png>
 Package pdftex.def Info: ../diagrams/drawio/deployment.png  used on input line 
@@ -1479,7 +1461,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 627--629
  []
 
 [28] [29]
-<../diagrams/drawio/pep_architecture.png, id=947, 1063.975pt x 681.54625pt>
+<../diagrams/drawio/pep_architecture.png, id=955, 1063.975pt x 681.54625pt>
 File: ../diagrams/drawio/pep_architecture.png Graphic file (type png)
 <use ../diagrams/drawio/pep_architecture.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_architecture.png  used on input
@@ -1745,7 +1727,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1223--1224
 [46
 
 ]
-<../diagrams/drawio/testbed.png, id=1193, 590.205pt x 359.3425pt>
+<../diagrams/drawio/testbed.png, id=1202, 590.205pt x 359.3425pt>
 File: ../diagrams/drawio/testbed.png Graphic file (type png)
 <use ../diagrams/drawio/testbed.png>
 Package pdftex.def Info: ../diagrams/drawio/testbed.png  used on input line 123
@@ -1810,7 +1792,7 @@ Overfull \hbox (19.11086pt too wide) in paragraph at lines 1277--1277
  []
 
 [48]
-<../diagrams/tc/tc_base_fq.png, id=1213, 315.1775pt x 419.5675pt>
+<../diagrams/tc/tc_base_fq.png, id=1221, 315.1775pt x 419.5675pt>
 File: ../diagrams/tc/tc_base_fq.png Graphic file (type png)
 <use ../diagrams/tc/tc_base_fq.png>
 Package pdftex.def Info: ../diagrams/tc/tc_base_fq.png  used on input line 1290
@@ -1822,7 +1804,7 @@ Overfull \hbox (13.45248pt too wide) in paragraph at lines 1293--1293
  15mbit;[] 
  []
 
-<../diagrams/tc/tc_base_bfifo.png, id=1214, 315.1775pt x 379.4175pt>
+<../diagrams/tc/tc_base_bfifo.png, id=1222, 315.1775pt x 379.4175pt>
 File: ../diagrams/tc/tc_base_bfifo.png Graphic file (type png)
 <use ../diagrams/tc/tc_base_bfifo.png>
 Package pdftex.def Info: ../diagrams/tc/tc_base_bfifo.png  used on input line 1
@@ -1869,7 +1851,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1349--1350
  []
 
 [50 <../diagrams/tc/tc_base_bfifo.png>]
-<../diagrams/graphs/final2.pdf, id=1235, 758.835pt x 521.78943pt>
+<../diagrams/graphs/final2.pdf, id=1243, 758.835pt x 521.78943pt>
 File: ../diagrams/graphs/final2.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/final2.pdf>
 Package pdftex.def Info: ../diagrams/graphs/final2.pdf  used on input line 1365
@@ -1899,7 +1881,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1393--1394
 
  []
 
-<../diagrams/graphs/closeup.pdf, id=1244, 462.52798pt x 346.89601pt>
+<../diagrams/graphs/closeup.pdf, id=1252, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/closeup.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/closeup.pdf>
 Package pdftex.def Info: ../diagrams/graphs/closeup.pdf  used on input line 139
@@ -1913,7 +1895,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1418--1419
 
  []
 
-<../diagrams/graphs/compare.pdf, id=1292, 462.52798pt x 346.89601pt>
+<../diagrams/graphs/compare.pdf, id=1300, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/compare.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/compare.pdf>
 Package pdftex.def Info: ../diagrams/graphs/compare.pdf  used on input line 142
@@ -1927,7 +1909,7 @@ LaTeX Warning: Citation `hingane2020aqm' on page 53 undefined on input line 143
 1.
 
 [53 <../diagrams/graphs/closeup.pdf>] [54 <../diagrams/graphs/compare.pdf>]
-<../diagrams/witestlab/mmwave_cap2.png, id=1370, 1112.958pt x 224.037pt>
+<../diagrams/witestlab/mmwave_cap2.png, id=1378, 1112.958pt x 224.037pt>
 File: ../diagrams/witestlab/mmwave_cap2.png Graphic file (type png)
 <use ../diagrams/witestlab/mmwave_cap2.png>
 Package pdftex.def Info: ../diagrams/witestlab/mmwave_cap2.png  used on input l
@@ -1954,7 +1936,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1467--1469
  []
 
 [55 <../diagrams/witestlab/mmwave_cap2.png>]
-<../diagrams/tc/tc_5g_bfifo.png, id=1379, 287.0725pt x 379.4175pt>
+<../diagrams/tc/tc_5g_bfifo.png, id=1387, 287.0725pt x 379.4175pt>
 File: ../diagrams/tc/tc_5g_bfifo.png Graphic file (type png)
 <use ../diagrams/tc/tc_5g_bfifo.png>
 Package pdftex.def Info: ../diagrams/tc/tc_5g_bfifo.png  used on input line 147
@@ -1967,153 +1949,145 @@ Overfull \hbox (7.79411pt too wide) in paragraph at lines 1477--1477
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1484--1485
+Underfull \hbox (badness 10000) in paragraph at lines 1483--1484
 
  []
 
-[56 <../diagrams/tc/tc_5g_bfifo.png>]
-
-LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 1493.
-
-<../diagrams/witestlab/witestlab_results.png, id=1385, 1314.9125pt x 772.8875pt
+<../diagrams/witestlab/witestlab_results.png, id=1388, 1314.9125pt x 772.8875pt
 >
 File: ../diagrams/witestlab/witestlab_results.png Graphic file (type png)
 <use ../diagrams/witestlab/witestlab_results.png>
 Package pdftex.def Info: ../diagrams/witestlab/witestlab_results.png  used on i
-nput line 1497.
+nput line 1496.
 (pdftex.def)             Requested size: 328.72733pt x 193.22139pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1502--1503
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1501--1502
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1504--1505
+[56 <../diagrams/tc/tc_5g_bfifo.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1503--1504
 
  []
 
-<../diagrams/witestlab/delay2.png, id=1389, 1085.4954pt x 224.037pt>
+<../diagrams/witestlab/delay2.png, id=1397, 1085.4954pt x 224.037pt>
 File: ../diagrams/witestlab/delay2.png Graphic file (type png)
 <use ../diagrams/witestlab/delay2.png>
 Package pdftex.def Info: ../diagrams/witestlab/delay2.png  used on input line 1
-508.
+507.
 (pdftex.def)             Requested size: 358.2146pt x 73.93243pt.
-[57 <../diagrams/witestlab/witestlab_results.png> <../diagrams/witestlab/delay2
-.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1516--1517
+
+Underfull \hbox (badness 10000) in paragraph at lines 1512--1513
 
  []
 
-<../diagrams/drawio/testbed2.png, id=1399, 581.17125pt x 356.33125pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1517--1518
+
+ []
+
+[57 <../diagrams/witestlab/witestlab_results.png> <../diagrams/witestlab/delay2
+.png>]
+<../diagrams/drawio/testbed2.png, id=1408, 581.17125pt x 356.33125pt>
 File: ../diagrams/drawio/testbed2.png Graphic file (type png)
 <use ../diagrams/drawio/testbed2.png>
 Package pdftex.def Info: ../diagrams/drawio/testbed2.png  used on input line 15
-20.
+21.
 (pdftex.def)             Requested size: 348.70544pt x 213.80038pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1525--1526
+Underfull \hbox (badness 10000) in paragraph at lines 1526--1527
 
  []
 
-[58 <../diagrams/drawio/testbed2.png>]
-<../diagrams/tc/tc_5g_3gbit.png, id=1406, 287.0725pt x 419.5675pt>
+<../diagrams/tc/tc_5g_3gbit.png, id=1409, 287.0725pt x 419.5675pt>
 File: ../diagrams/tc/tc_5g_3gbit.png Graphic file (type png)
 <use ../diagrams/tc/tc_5g_3gbit.png>
-Package pdftex.def Info: ../diagrams/tc/tc_5g_3gbit.png  used on input line 153
-9.
+Package pdftex.def Info: ../diagrams/tc/tc_5g_3gbit.png  used on input line 154
+0.
 (pdftex.def)             Requested size: 114.82695pt x 167.82402pt.
-<../diagrams/tc/tc_delay_fq.png, id=1407, 404.51125pt x 235.88126pt>
+<../diagrams/tc/tc_delay_fq.png, id=1410, 404.51125pt x 235.88126pt>
 File: ../diagrams/tc/tc_delay_fq.png Graphic file (type png)
 <use ../diagrams/tc/tc_delay_fq.png>
 Package pdftex.def Info: ../diagrams/tc/tc_delay_fq.png  used on input line 154
-3.
+4.
 (pdftex.def)             Requested size: 161.80162pt x 94.35083pt.
-<../diagrams/witestlab/staticlink.pdf, id=1408, 462.52798pt x 346.89601pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[58 <../diagrams/drawio/testbed2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1555--1556
+
+ []
+
+<../diagrams/witestlab/staticlink.pdf, id=1417, 462.52798pt x 346.89601pt>
 File: ../diagrams/witestlab/staticlink.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/staticlink.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/staticlink.pdf  used on input li
-ne 1558.
+ne 1559.
 (pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 1564--1565
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+ []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1563--1564
+[59 <../diagrams/tc/tc_5g_3gbit.png> <../diagrams/tc/tc_delay_fq.png> <../diagr
+ams/witestlab/staticlink.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1583--1584
 
  []
 
 
-Overfull \hbox (10.30646pt too wide) in paragraph at lines 1568--1579
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 1585--1586
+
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Package caption Warning: \label without proper reference on input line 1569.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `tab:sl_latency_statistics' on page 59 undefined on in
-put line 1582.
-
-<../diagrams/witestlab/sl_cubic_bar.pdf, id=1411, 867.24pt x 289.08pt>
+<../diagrams/witestlab/sl_cubic_bar.pdf, id=1453, 867.24pt x 289.08pt>
 File: ../diagrams/witestlab/sl_cubic_bar.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/sl_cubic_bar.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/sl_cubic_bar.pdf  used on input 
-line 1587.
+line 1589.
 (pdftex.def)             Requested size: 346.88986pt x 115.62994pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1602--1603
-
- []
-
-[59 <../diagrams/tc/tc_5g_3gbit.png> <../diagrams/tc/tc_delay_fq.png>]
-
-LaTeX Warning: Text page 60 contains only floats.
-
-[60 <../diagrams/witestlab/staticlink.pdf> <../diagrams/witestlab/sl_cubic_bar.
-pdf>]
-<../diagrams/witestlab/shortblockage.pdf, id=1489, 462.52798pt x 346.89601pt>
+[60 <../diagrams/witestlab/sl_cubic_bar.pdf>]
+<../diagrams/witestlab/shortblockage.pdf, id=1497, 462.52798pt x 346.89601pt>
 File: ../diagrams/witestlab/shortblockage.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/shortblockage.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/shortblockage.pdf  used on input
  line 1626.
 (pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
-<../diagrams/witestlab/sb_cubic_bar.pdf, id=1491, 867.24pt x 289.08pt>
+<../diagrams/witestlab/sb_cubic_bar.pdf, id=1499, 867.24pt x 289.08pt>
 File: ../diagrams/witestlab/sb_cubic_bar.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/sb_cubic_bar.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/sb_cubic_bar.pdf  used on input 
 line 1636.
 (pdftex.def)             Requested size: 346.88986pt x 115.62994pt.
- [61 <../diagrams/witestlab/shortblockage.pdf>]
-<../diagrams/witestlab/longblockage.pdf, id=1526, 462.52798pt x 346.89601pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../diagrams/witestlab/longblockage.pdf, id=1500, 462.52798pt x 346.89601pt>
 File: ../diagrams/witestlab/longblockage.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/longblockage.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/longblockage.pdf  used on input 
 line 1645.
 (pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 1650--1651
 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
+[61 <../diagrams/witestlab/shortblockage.pdf>] [62 <../diagrams/witestlab/sb_cu
+bic_bar.pdf> <../diagrams/witestlab/longblockage.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 1670--1671
 
  []
 
-[62 <../diagrams/witestlab/sb_cubic_bar.pdf> <../diagrams/witestlab/longblockag
-e.pdf>]
-<../diagrams/witestlab/mobility.pdf, id=1597, 462.52798pt x 346.89601pt>
+<../diagrams/witestlab/mobility.pdf, id=1608, 462.52798pt x 346.89601pt>
 File: ../diagrams/witestlab/mobility.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/mobility.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/mobility.pdf  used on input line
@@ -2124,45 +2098,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 1679--1680
 
  []
 
-<../diagrams/witestlab/mobb_cubic_bar.pdf, id=1600, 867.24pt x 289.08pt>
+<../diagrams/witestlab/mobb_cubic_bar.pdf, id=1611, 867.24pt x 289.08pt>
 File: ../diagrams/witestlab/mobb_cubic_bar.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/mobb_cubic_bar.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/mobb_cubic_bar.pdf  used on inpu
-t line 1686.
+t line 1685.
 (pdftex.def)             Requested size: 346.88986pt x 115.62994pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1716--1717
+Underfull \hbox (badness 10000) in paragraph at lines 1713--1714
 
  []
 
 [63 <../diagrams/witestlab/mobility.pdf>]
-<../diagrams/witestlab/all_bars.pdf, id=1637, 722.7pt x 722.7pt>
+<../diagrams/witestlab/tput_bars.png, id=1649, 783.4068pt x 346.896pt>
+File: ../diagrams/witestlab/tput_bars.png Graphic file (type png)
+<use ../diagrams/witestlab/tput_bars.png>
+Package pdftex.def Info: ../diagrams/witestlab/tput_bars.png  used on input lin
+e 1717.
+(pdftex.def)             Requested size: 313.35716pt x 138.75594pt.
+<../diagrams/witestlab/tput_ping.pdf, id=1651, 462.52798pt x 346.89601pt>
+File: ../diagrams/witestlab/tput_ping.pdf Graphic file (type pdf)
+<use ../diagrams/witestlab/tput_ping.pdf>
+Package pdftex.def Info: ../diagrams/witestlab/tput_ping.pdf  used on input lin
+e 1726.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1734--1735
+
+ []
+
+[64 <../diagrams/witestlab/mobb_cubic_bar.pdf> <../diagrams/witestlab/tput_bars
+.png>]
+<../diagrams/witestlab/all_bars.pdf, id=1694, 722.7pt x 722.7pt>
 File: ../diagrams/witestlab/all_bars.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/all_bars.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/all_bars.pdf  used on input line
- 1722.
+ 1740.
 (pdftex.def)             Requested size: 289.07487pt x 289.07487pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[64 <../diagrams/witestlab/mobb_cubic_bar.pdf>] [65 <../diagrams/witestlab/all_
-bars.pdf>]
+[65 <../diagrams/witestlab/tput_ping.pdf>] [66 <../diagrams/witestlab/all_bars.
+pdf>]
 Chapter 6.
-<../diagrams/witestlab/fcts.png, id=1731, 1084.05pt x 722.7pt>
+<../diagrams/witestlab/fcts.png, id=1776, 1084.05pt x 722.7pt>
 File: ../diagrams/witestlab/fcts.png Graphic file (type png)
 <use ../diagrams/witestlab/fcts.png>
-Package pdftex.def Info: ../diagrams/witestlab/fcts.png  used on input line 173
-4.
+Package pdftex.def Info: ../diagrams/witestlab/fcts.png  used on input line 175
+2.
 (pdftex.def)             Requested size: 433.61232pt x 289.07487pt.
 
-Overfull \hbox (73.61232pt too wide) in paragraph at lines 1734--1735
+Overfull \hbox (73.61232pt too wide) in paragraph at lines 1752--1753
  [][] 
  []
 
@@ -2170,16 +2164,16 @@ Overfull \hbox (73.61232pt too wide) in paragraph at lines 1734--1735
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1755--1756
+Underfull \hbox (badness 10000) in paragraph at lines 1773--1774
 
  []
 
-[66
+[67
 
- <../diagrams/witestlab/fcts.png>] (./uio-master.bbl [67] [68
+ <../diagrams/witestlab/fcts.png>] (./uio-master.bbl [68] [69
 
-] [69])
-[70] (./uio-master.aux)
+] [70])
+[71] (./uio-master.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -2187,42 +2181,57 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `uio-master.out' has not changed.
-(rerunfilecheck)             Checksum: A9CF8F51F52D1AFB0CF43C039FD81865;12581.
+(rerunfilecheck)             Checksum: CB44967FCED53036C17CDDD65B615CAC;12751.
  ) 
 Here is how much of TeX's memory you used:
- 31656 strings out of 478994
- 626857 string characters out of 5858185
- 1250961 words of memory out of 5000000
- 48024 multiletter control sequences out of 15000+600000
+ 31688 strings out of 478994
+ 627720 string characters out of 5858185
+ 1251540 words of memory out of 5000000
+ 48045 multiletter control sequences out of 15000+600000
  435242 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,11n,117p,936b,1766s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{
-/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/
-texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2021/te
-xmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texm
-f-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-
-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2021/texmf-di
-st/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/texmf-dist/f
-onts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf-dist/fon
-ts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2021/texmf-dist/fonts
-/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
-ype1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/typ
-e1/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
-/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/u
-rw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helv
-etic/uhvr8a.pfb>
-Output written on uio-master.pdf (78 pages, 2404066 bytes).
+pdfTeX warning (dest): name{table.caption.72} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.68} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.73} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.70} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.67} has been referenced but does not
+ exist, replaced by a fixed one
+
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/
+usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/u
+sr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-di
+st/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/f
+onts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/texmf-dist/fon
+ts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf-dist/fonts
+/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
+/public/cm-super/sftt0900.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/p
+ublic/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw
+/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helvet
+ic/uhvr8a.pfb>
+Output written on uio-master.pdf (79 pages, 2463593 bytes).
 PDF statistics:
- 1933 PDF objects out of 2073 (max. 8388607)
- 1417 compressed objects within 15 object streams
- 495 named destinations out of 1000 (max. 500000)
- 1043 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1980 PDF objects out of 2073 (max. 8388607)
+ 1442 compressed objects within 15 object streams
+ 504 named destinations out of 1000 (max. 500000)
+ 1061 words of extra memory for PDF output out of 10000 (max. 10000000)
 
