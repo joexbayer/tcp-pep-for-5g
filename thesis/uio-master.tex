@@ -1480,7 +1480,7 @@ $ tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7500000;
   	\label{fig:tc_5g_bfifo}
 \end{figure}
 
-To simulate the fluctuating bandwidth a shell script at the router will configure the tc htb rate at a given interval from a .csv file. The sender will use iperf3 to create ten TCP flows which will fully utilize the available bandwidth. To measure the latency impact of the 5G traces we will use the \verb|ss| command to gather the RTT's of each flow. In our validation we will only run our experiments using CUBIC as it is the system default.\\
+To simulate the fluctuating bandwidth a shell script at the router will configure the tc htb rate at a given interval from a .csv file. The sender will use iperf3 to create ten TCP flows which will fully utilize the available bandwidth. To measure the latency impact of the 5G traces we will use the \verb|ss| command to gather the RTT's of each flow. In our validation we will only run our experiments using Cubic as it is the system default.\\
 
 %\begin{verbatim}
 %while IFS=, read -r tput tdiff
@@ -1523,7 +1523,7 @@ To evaluate the PEP with the 5G traces we will change the topology to include a 
   	\label{fig:testbed2}
 \end{figure}
 
-The experiment procedure will be to complete file transfers from sender to receiver, both for normal end-to-end and with the PEP for each 5G scenario. We will have a total of ten concurrent file transfers with a file size of 1 gigabyte each to utilize the 5G bandwidth. Additionally, we will have an end to end ULTRA PING transfer to measure the latency disruptions for both the end-to-end and PEP file transfers.\\
+The experiment procedure will be to complete file transfers from sender to receiver, both for normal end-to-end and with the PEP for each 5G scenario. We will have a total of ten concurrent file transfers with a file size of 1 gigabyte each to utilize the 5G bandwidth. Additionally, we will have an end to end Ultra ping transfer to measure the latency disruptions for both the end-to-end and PEP file transfers.\\
 
 The experiment consists of three steps:
 \begin{itemize}
@@ -1625,10 +1625,10 @@ Without PEP & +7.84s & +0.44s & +7.52s & +6.47s & +10.59s \\
 	\centering
 	\includegraphics[scale=0.50]{../diagrams/witestlab/shortblockage.pdf}
   	\caption{Impact on interactive traffic with short blockages}
-  	\label{fig:sb_ultra}
+  	\label{fig:sb_ultra_1}
 \end{figure}
 
-Looking at the impact on interactive traffic using the short blockage scenario, visualized in Figure \ref{fig:sb_ultra}, we can see that the PEP causes more radical fluctuations. While the end-to-end transfer seems more stable. The spikes can be a result of the fluctuating bandwidth, the PEP will be able to react faster than the end-to-end traffic, thereby pushing out more data in bursts and create spikes.
+Looking at the impact on interactive traffic using the short blockage scenario, visualized in Figure \ref{fig:sb_ultra_1}, we can see that the PEP causes more radical fluctuations. While the end-to-end transfer seems more stable. The spikes can be a result of the fluctuating bandwidth, the PEP will be able to react faster than the end-to-end traffic, thereby pushing out more data in bursts and create spikes.
 
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
@@ -1719,7 +1719,7 @@ To evaluate how effectively the PEP can utilize the fluctuating bandwidth, compa
   	\label{fig:witestlab_tput_bars}
 \end{figure}
 
-Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the ten flows for both the PEP and end to end transfers. As we can see the PEP has a much higher throughput for all flows except 5 and 6. If we sum up the throughput of all flows, then we can see that the PEP achieves a through put of 1984.88 Mbit/s, while the end to end transfers only manage 844.76 Mbit/s.
+Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the ten flows for both the PEP and end-to-end transfers. As we can see the PEP has a much higher throughput for all flows except 5 and 6. If we sum up the throughput of all flows, then we can see that the PEP achieves a through put of 1984.88 Mbit/s, while the end to end transfers only manage 844.76 Mbit/s.
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
