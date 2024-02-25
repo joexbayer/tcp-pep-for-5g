@@ -1464,8 +1464,8 @@ The link between the sender and the router will be configured based on the scena
 
 \subsection{Validation}
 
-First we will try to reproduce the results from the original Witestlab experiment to see how our testbed will affect the results.
-Following each step of the original experiment, we configure the link between the router and the sender to have a 3Gbit/s bandwidth and no delay. Additionally, it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled. This configuration is visualized in Figure \ref{fig:tc_5g_bfifo} \\
+First we will try to reproduce the results from the original Witestlab experiment, to see how our testbed will affect the results.
+Following each step of the original experiment, we configure the link between the router and the receiver to have a 3Gbit/s bandwidth and no delay. Additionally, it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled. This configuration is visualized in Figure \ref{fig:tc_5g_bfifo} \\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1500,7 +1500,7 @@ To simulate the fluctuating bandwidth a shell script at the router will configur
 
 Firgure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP Cubic results as it is the congestion controller we use for our experiments. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.\\
 
-The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. Reaching a maximum of approximately 50ms delay with short and long blockages.\\
+The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. The steady 20ms delay for the static link is the same result Witestlab observes. However, in our experiments we reach a maximum of approximately 50ms delay with short and long blockages, where Witestlab reaches 150ms.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1511,7 +1511,7 @@ The results from our latency measurement experiment show a clear impact on the l
 
 Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measurements. Comparing our results to the Witestlab experiment (Figure \ref{fig:witestlab_results}) we can see that the shapes of the graphs are the same. However the magnitude of the latency spikes are quite different between our and their experiments. The difference is most likely due to our hardware or more modern Linux kernel.\\
 
-Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer.
+Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same latency behaviour of the 5G traces.
 
 \subsection{Experiment procedure}
 To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between sender and router. The link between router and receiver will remain with no delay. Instead of a BFIFO queue at the router we will use FQ-CoDel as to not impact interactive traffic. Figure \ref{fig:testbed2} shows the updated topology.\\
@@ -1724,7 +1724,7 @@ Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the ten flo
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.50]{../diagrams/witestlab/tput_ping.pdf}
-  	\caption{..}
+  	\caption{ADD GRAPH OF BFIFO}
   	\label{fig:witestlab_tput_ping}
 \end{figure}
 
