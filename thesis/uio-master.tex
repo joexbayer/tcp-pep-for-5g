@@ -1549,7 +1549,7 @@ These three steps are repeated once for each scenario and twice for each scenari
 
 \subsection{Results}
 
-The results in this experiment will focus on Ultra ping latency graphs to measure impact on interactive traffic and the completion times of the ten file transfers. To evaluate the PEP's efficiency, compared to a normal end to end transfer, we will look at the averages, standard deviation and means.
+The results in this experiment will focus on Ultra ping latency graphs to measure impact on interactive traffic and the completion times of the ten file transfers. To evaluate the PEP's efficiency, compared to a normal end to end transfer, we will look at the average, standard deviation and mean of the completion times.
 
 \subsubsection{Static link}
 We will start with evaluating the PEP under a static link as the base line to which we can compare the other three scenarios. Figure \ref{fig:witestlab_static_delay} shows the impact of the file transfers on the interactive traffic.\\
@@ -1580,7 +1580,7 @@ Difference in Mean                & \multicolumn{2}{c}{-0.0844ms}         \\
 \label{tab:sl_latency_statistics}
 \end{table}
 
-Table \ref{tab:sl_latency_statistics} highlights the differences between the end-to-end and PEP impact on interactive traffic. There is a difference of about 0.08ms between the means. Most importantly, we can see that the PEP causes a higher standard deviation than the end to end traffic. Which is reflected in the spikes of the Ultra ping graph.\\
+Table \ref{tab:sl_latency_statistics} highlights the differences between the end-to-end and PEP impact on interactive traffic. Most importantly, we can see that the PEP causes a higher standard deviation than the end to end traffic. Which is reflected in the spikes of the Ultra ping graph.\\
 
 Looking at the flow completion times in Figure \ref{fig:witestlab_static_fcts}, we can clearly see the benefit of the PEP. All PEP transfers finish earlier than their end-to-end counterpart. The staggering of the completion times is most likely due to the transfers not starting at the exact same time.\\
 
