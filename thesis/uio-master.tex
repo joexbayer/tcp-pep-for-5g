@@ -1450,12 +1450,12 @@ The traces were collected by using two laptops with 60GHz wireless Qualcomm card
 
 Figure \ref{fig:witestlab_graph1} visualizes the fluctuating bandwidth. The traces have a bandwidth of approximately 1Gbit/s to 4Gbit/s based on the scenario, even reaching zero with the mobility and blockages scenario. The raw data of the traces are contained in .csv files which consist of a time difference and the capacity of the link in megabytes.
 
-\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
-	\centering
-	\includegraphics[scale=0.33]{../diagrams/witestlab/lb_mobb.png}
-  	\caption{Closeup of long blockage and mobility 5G scenarios}
-  	\label{fig:witestlab_graph2}
-\end{figure}
+%\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+%	\centering
+%	\includegraphics[scale=0.33]{../diagrams/witestlab/lb_mobb.png}
+%  	\caption{Closeup of long blockage and mobility 5G scenarios}
+%  	\label{fig:witestlab_graph2}
+%\end{figure}
 
 \subsection{Topology}
 For this experiment we will use a topology similar to the previous experiment. We will continue our sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth rates we will adjust the sender to router link to have the maximum our testbed can offer, which is 10Gbit/s bandwidth.\\
@@ -1505,7 +1505,7 @@ The results from our latency measurement experiment show a clear impact on the l
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.33]{../diagrams/witestlab/delay2.png}
-  	\caption{Delay caused by fluctuating bandwidth}
+  	\caption{Our results for the delay caused by fluctuating bandwidth}
   	\label{fig:witestlab_graph_delay_1}
 \end{figure}
 
@@ -1554,14 +1554,14 @@ The results in this experiment will focus on Ultra ping latency graphs to measur
 \subsubsection{Static link}
 We will start with evaluating the PEP under a static link as the base line to which we can compare the other three scenarios. Figure \ref{fig:witestlab_static_delay} shows the impact of the file transfers on the interactive traffic.\\
 
-\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+\begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.50]{../diagrams/witestlab/staticlink.pdf}
   	\caption{Delay caused by fluctuating bandwidth with a static link}
   	\label{fig:witestlab_static_delay}
 \end{figure}
 
-Compared to our initial base case there seems to be a bigger impact on the interactive traffic with ten concurrent file transfers, however the delay mean difference stays below 0,09ms at its worst: the first 1000 packets. Another observation is that the interactive traffic spikes more when the PEP is used.\\
+Compared to our initial base case there seems to be a bigger impact on the interactive traffic with ten concurrent file transfers, however the delay's mean difference stays below 0,09ms at its worst, particularly the first 1000 packets. Another observation is that the interactive traffic has more drastic spikes when the PEP is utilized.\\
 
 \begin{table}[h!]
 \centering
@@ -1580,7 +1580,7 @@ Difference in Mean                & \multicolumn{2}{c}{-0.0844ms}         \\
 \label{tab:sl_latency_statistics}
 \end{table}
 
-Table \ref{tab:sl_latency_statistics} highlights the differences between the end-to-end and PEP impact on interactive traffic. Most importantly, we can see that the PEP causes a higher standard deviation than the end to end traffic. Which is reflected in the spikes of the Ultra ping graph.\\
+Table \ref{tab:sl_latency_statistics} highlights the differences between the end-to-end and PEP impact on interactive traffic. Most importantly, we can see that the PEP causes a higher standard deviation than the end-to-end traffic. Which is reflected in the spikes of the Ultra ping graph in Figure \ref{fig:witestlab_static_delay}.\\
 
 Looking at the flow completion times in Figure \ref{fig:witestlab_static_fcts}, we can clearly see the benefit of the PEP. All PEP transfers finish earlier than their end-to-end counterpart. The staggering of the completion times is most likely due to the transfers not starting at the exact same time.\\
 
@@ -1667,7 +1667,7 @@ Looking at the differences in completion times, compared to the static link, in 
 
 \subsubsection{Mobility and Blockages}
 
-Finally, we will look at the last scenario, mobility and blockages. Similar to short and long blockages, the interactive traffic experiences some high spikes in the PEP case. These spikes can be seen in Figure \ref{fig:witestlab_graph_delay_mobb}. \\
+Finally, we will look at the last scenario: mobility and blockages. Similar to short and long blockages, the interactive traffic experiences some high spikes in the PEP case. These spikes can be seen in Figure \ref{fig:witestlab_graph_delay_mobb}. \\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1678,7 +1678,7 @@ Finally, we will look at the last scenario, mobility and blockages. Similar to s
 
 The mobility and blockage scenario is a overall benefit for the end-to-end traffic, as the high bandwidth phases allow the transfers to complete earlier. Looking at Figure \ref{fig:witestlab_mobb_fcts}, we can see that the highest completion time is about 104s. Table \ref{tab:mobb_fct_diff} shows that the mean completion time for end-to-end traffic decreased by approximately 11s.\\
 
-This is most likely because the end-to-end traffic is able to utilize the high bandwidth phases longer than the PEP which finishes a lot earlier.
+This is most likely because the end-to-end traffic is able to utilize the high bandwidth phases longer than the PEP, which finishes a lot earlier.
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1710,30 +1710,43 @@ Without PEP & -11.16s & -0.40s & -10.85s & -10.33s & -12.48s \\
 \end{table}
 
 \subsection{Throughput Experiment}
-To evaluate how effectively the PEP can utilize the fluctuating bandwidth, compared with end to end, we will look at the throughput using the mobility and blockage scenario. For this experiment we will continue with 10 parallel transfers from sender to receiver and the same traffic control configurations. The only difference is that the transfers will continue to send data for the entire 120 seconds duration.\\
+To evaluate how effectively the PEP can utilize the fluctuating bandwidth, compared with end-to-end FQ-CoDel and BFIFO, we will look at the throughput using the mobility and blockage scenario. For this experiment we will continue with 10 parallel transfers from sender to receiver and the same traffic control configurations. The only difference is that the transfers will continue to send data for the entire 120 seconds duration.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.40]{../diagrams/witestlab/tput_bars.png}
+	\includegraphics[scale=0.40]{../diagrams/witestlab/tput_bars_all.png}
+\centering
+\begin{tabularx}{\linewidth}{lCC}
+\toprule
+Scenario & Total MB/s & Total MBits/s\\
+\midrule
+PEP & 248.11 MB/s & 1984.88 Mbits/s \\
+FQ-CoDel & 105.59 MB/s & 844.76 Mbits/s \\
+BFIFO & 163.68 MB/s & 1309.44 Mbits/s \\
+\bottomrule
+\end{tabularx}
   	\caption{Throughput comparison of 10 flows for PEP and end to end transfers.}
   	\label{fig:witestlab_tput_bars}
 \end{figure}
 
-Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the ten flows for both the PEP and end-to-end transfers. As we can see the PEP has a much higher throughput for all flows except 5 and 6. If we sum up the throughput of all flows, then we can see that the PEP achieves a through put of 1984.88 Mbit/s, while the end to end transfers only manage 844.76 Mbit/s.
+Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the ten flows for both the PEP and end-to-end transfers. As we can see the PEP has a much higher throughput for all flows except 5 and 6. If we sum up the throughput of all flows, then we can see that the PEP achieves a through put of 1984.88 Mbit/s, while the end-to-end FQ-CoDel transfers only manage 844.76 Mbit/s. Interestingly, the end-to-end transfer with BFIFO got a higher throughput of 1309.44 Mbit/s compared to end-to-end which used FQ-CoDel, this highlights the benefits of larger buffers.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.50]{../diagrams/witestlab/tput_ping.pdf}
-  	\caption{ADD GRAPH OF BFIFO}
+	\includegraphics[scale=0.50]{../diagrams/witestlab/tput_latency_full.pdf}
+  	\caption{Latency impact from throughput experiment.}
   	\label{fig:witestlab_tput_ping}
 \end{figure}
 
+Looking at the latency impact we will compare our PEP, end-to-end using FQ-CoDel and end-to-end using BFIFO with Ultra ping. Figure \ref{fig:witestlab_tput_ping} shows the Ultra ping graphs for each scenario. At its worst the end-to-end BFIFO case reaches a latency of 200ms, while both the PEP and end-to-end scenario show no barely any impact at all. This highlights the major disadvantage of the larger buffers: the large impact on interactive traffic.\\
+
+Our PEP does both...
 
 \subsection{Evaluation of 5G traces experiment}
 
 The interesting takeaway from these experiments is the drastic decrease in completion time when utilizing the PEP for both a static link and mobility with blockages. Showcasing the benefits of a split connection, combined with a 5G environment. The PEP is able to react faster than the end to end connection which has the added 100ms delay.\\
 
-This faster reaction time comes at the cost at small spikes in the interactive traffic.
+The throughput experiment highlights the core ideas behind the PEP,
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering

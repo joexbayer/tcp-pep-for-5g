@@ -32,21 +32,20 @@
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Close up of End to End compared to PEP\relax }}{53}{figure.caption.49}%
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Individual file transfers affect on the interactive traffic.\relax }}{54}{figure.caption.51}%
 \contentsline {figure}{\numberline {5.8}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios\relax }}{55}{figure.caption.52}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Closeup of long blockage and mobility 5G scenarios\relax }}{55}{figure.caption.53}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces BFIFO traffic control visualization for 5G traces\relax }}{56}{figure.caption.54}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{57}{figure.caption.55}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{57}{figure.caption.56}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Testbed configuration for 5G traces\relax }}{58}{figure.caption.57}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Traffic control configuration for the experiments\relax }}{59}{figure.caption.58}%
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Delay caused by fluctuating bandwidth with a static link\relax }}{60}{figure.caption.60}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Completion times with a static link\relax }}{61}{figure.caption.62}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{61}{figure.caption.65}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Completion times with short blockage\relax }}{62}{figure.caption.66}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Impact on interactive traffic with long blockages\relax }}{62}{figure.caption.68}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Delay caused by fluctuating bandwidth with the mobility and blockages scenario.\relax }}{63}{figure.caption.71}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces Completion times with mobility and blockages\relax }}{64}{figure.caption.72}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Throughput comparison of 10 flows for PEP and end to end transfers.\relax }}{64}{figure.caption.74}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces ADD GRAPH OF BFIFO\relax }}{65}{figure.caption.75}%
-\contentsline {figure}{\numberline {5.24}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{66}{figure.caption.76}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces BFIFO traffic control visualization for 5G traces\relax }}{56}{figure.caption.53}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{57}{figure.caption.54}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Our results for the delay caused by fluctuating bandwidth\relax }}{57}{figure.caption.55}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Testbed configuration for 5G traces\relax }}{58}{figure.caption.56}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Traffic control configuration for the experiments\relax }}{59}{figure.caption.57}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Delay caused by fluctuating bandwidth with a static link\relax }}{59}{figure.caption.59}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Completion times with a static link\relax }}{60}{figure.caption.61}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{61}{figure.caption.64}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Completion times with short blockage\relax }}{62}{figure.caption.65}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Impact on interactive traffic with long blockages\relax }}{62}{figure.caption.67}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Delay caused by fluctuating bandwidth with the mobility and blockages scenario.\relax }}{63}{figure.caption.70}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Completion times with mobility and blockages\relax }}{63}{figure.caption.71}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Throughput comparison of 10 flows for PEP and end to end transfers.\relax }}{64}{figure.caption.73}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Latency impact from throughput experiment.\relax }}{65}{figure.caption.74}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{66}{figure.caption.75}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios\relax }}{67}{figure.caption.77}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios\relax }}{67}{figure.caption.76}%

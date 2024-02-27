@@ -2,98 +2,102 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 def read_data(file_name):
-    """Read data from the specified file."""
+    """ Read data from the specified file. """
     with open(file_name, 'r') as file:
         lines = file.readlines()
     return lines
 
 def parse_data(lines):
-    """Parse data into structured form."""
+    """ Parse data into structured form. """
     data_with_pep = []
-    data_without_pep = []
-    is_with_pep = False
+    data_fq_codel = []
+    data_bfifo = []
+
+    category = None
 
     for line in lines:
         if 'With PEP' in line:
-            is_with_pep = True
+            category = 'with_pep'
             continue
-        elif 'Without PEP' in line:
-            is_with_pep = False
+        elif 'End to End (FQ-CoDel)' in line:
+            category = 'fq_codel'
             continue
+        elif 'End to End (BFIFO)' in line:
+            category = 'bfifo'
+            continue
+        elif 'LOG' in line:
+            parts = line.split()
+            if len(parts) == 6:
+                memory = float(parts[3].replace('mb', ''))
+                time = float(parts[5].replace('s', ''))
+                throughput = memory / time * 8  # Converted to bits per second
 
-        parts = line.split()
-        if len(parts) == 6 and parts[0] == 'LOG':
-            memory = float(parts[3].replace('mb', ''))
-            time = float(parts[5].replace('s', ''))
-            throughput = memory / time
-            if is_with_pep:
-                data_with_pep.append(throughput*8)
-            else:
-                data_without_pep.append(throughput*8)
+                if category == 'with_pep':
+                    data_with_pep.append(throughput)
+                elif category == 'fq_codel':
+                    data_fq_codel.append(throughput)
+                elif category == 'bfifo':
+                    data_bfifo.append(throughput)
 
-    return data_with_pep, data_without_pep
+    return data_with_pep, data_fq_codel, data_bfifo
 
 def calculate_total_throughput(data):
-    """Calculate total throughput."""
+    """ Calculate total throughput. """
     return sum(data)
 
 def calculate_stats(data):
-    """Calculate statistical information."""
+    """ Calculate statistical information. """
     df = pd.DataFrame(data, columns=['Throughput'])
     return df.describe()
 
-def main():
-    file_name = '10flows'  # Replace with your file name
-    lines = read_data(file_name)
-    data_with_pep, data_without_pep = parse_data(lines)
+def plot_data(data_with_pep, data_fq_codel, data_bfifo):
+    """ Plot the throughput data for each category with a shared y-axis. """
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5), sharey=True)  # Share y-axis across all subplots
 
-    import matplotlib.pyplot as plt
+    titles = ['Throughput with PEP', 'Throughput FQ-CoDel', 'Throughput BFIFO']
+    data_sets = [data_with_pep, data_fq_codel, data_bfifo]
+    
+    # Determine the global maximum y-value for consistent scaling
+    global_max = max(max(data) for data in data_sets if data)
 
-    # Assuming data_with_pep and data_without_pep are already defined
-    num_bars_with_pep = len(data_with_pep)
-    num_bars_without_pep = len(data_without_pep)
+    for ax, data, title in zip(axes, data_sets, titles):
+        if not data:
+            print(f"No data available for {title}.")
+            continue
 
-    fig, (ax1, ax2) = plt.subplots(1, 2)  # Create two subplots
-
-    # Plot for 'With PEP'
-    ax1.bar(range(num_bars_with_pep), data_with_pep, zorder=2)
-    ax1.set_xticks(range(num_bars_with_pep))  # Set x-ticks for each bar
-    ax1.grid(axis='y')  # Horizontal grid lines
-    ax1.set_title('Throughput with PEP')
-    ax1.set_ylabel('Throughput (Mb/s)')
-    ax1.set_xlabel('Flows')
-
-    # Plot for 'Without PEP'
-    ax2.bar(range(num_bars_without_pep), data_without_pep, zorder=2)
-    ax2.set_xticks(range(num_bars_without_pep))  # Set x-ticks for each bar
-    ax2.grid(axis='y')  # Horizontal grid lines
-    ax2.set_title('Throughput without PEP')
-    ax2.set_ylabel('Throughput (Mb/s)')
-    ax2.set_xlabel('Flows')
-
-    # Determine the limits for the Y-axis
-    y_max = max(max(data_with_pep), max(data_without_pep))
-    ax1.set_ylim(0, y_max+10)
-    ax2.set_ylim(0, y_max+10)
+        ax.bar(range(len(data)), data, zorder=2)
+        ax.set_xticks(range(len(data)))
+        ax.grid(axis='y')
+        ax.set_title(title)
+        ax.set_ylabel('Throughput (Mb/s)')
+        ax.set_xlabel('Flows')
+        ax.set_ylim(0, global_max + 10)
 
     plt.tight_layout()
     plt.show()
 
+def calculate_total_throughput(data):
+    """ Calculate total throughput in both bytes per second (B/s) and bits per second (b/s). """
+    total_throughput_bits = sum(data)  # Assuming original data is in bits per second
+    total_throughput_bytes = total_throughput_bits / 8  # Convert to bytes per second
+    return total_throughput_bytes, total_throughput_bits
 
 
+def main():
+    file_name = '10flows'  # Replace with your file name
+    lines = read_data(file_name)
+    data_with_pep, data_fq_codel, data_bfifo = parse_data(lines)
 
-    total_throughput_with_pep = calculate_total_throughput(data_with_pep)
-    total_throughput_without_pep = calculate_total_throughput(data_without_pep)
+    print (data_with_pep)
+    print (data_fq_codel)
 
-    print("Total Throughput With PEP: {:.2f} MB/s, {:.2f} Mbit/s".format(total_throughput_with_pep/8, total_throughput_with_pep))
-    print("Total Throughput Without PEP: {:.2f} MB/s, {:.2f} Mbit/s".format(total_throughput_without_pep/8, total_throughput_without_pep))
+    # Plot the data
+    plot_data(data_with_pep, data_fq_codel, data_bfifo)
 
-    print("\nStatistics With PEP:")
-    print(calculate_stats(data_with_pep))
-    print("\nStatistics Without PEP:")
-    print(calculate_stats(data_without_pep))
-
-    #plot_data(total_throughput_with_pep, total_throughput_without_pep)
+    # Calculating and printing stats
+    for category, data in zip(['With PEP', 'FQ-CoDel', 'BFIFO'], [data_with_pep, data_fq_codel, data_bfifo]):
+        total_throughput_bytes, total_throughput_bits = calculate_total_throughput(data)
+        print(f"\nTotal throughput for {category}: {total_throughput_bytes} B/s, {total_throughput_bits} b/s")
 
 if __name__ == "__main__":
     main()
