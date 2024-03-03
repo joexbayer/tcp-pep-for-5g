@@ -240,7 +240,7 @@ Congestion controllers and packet schedulers are also usually implemented as ker
 However, using Linux kernel modules has the drawback that the program is bound to Linux. The modules will only work in the context of the Linux kernel as they depend on the internal functions, and that they are part of the kernel. Most other operating systems like MacOS will not allow user defined modules to run with kernel privileges. Additionally, any bugs or error in the kernel module with make the entire kernel fail ("panic"), which usually requires a complete system restart to fix.
 
 \subsection{C Programming Language}
-C has been the optimal language for high performance systems since its creation in 1972.~\cite{c_programming_language} It was originally created for UNIX when it needed a higher level language, and now is the main programming language behind most operating systems such as Linux, Mac and Windows. Being very close to its predecessor, assembly, and compiled to a binary, makes it one of the fastest languages we have to date. Heap memory management is explicitly done by the programmer with no support for garbage collection. The unsafe memory management is one of the main challenges when programming in C, which however can be a benefit because a runtime garbage collection usually results in performance loss.
+C has been the optimal language for high performance systems since its creation in 1972~\cite{c_programming_language}. It was originally created for UNIX when it needed a higher level language, and now is the main programming language behind most operating systems such as Linux, Mac and Windows. Being very close to its predecessor, assembly, and compiled to a binary, makes it one of the fastest languages we have to date. Heap memory management is explicitly done by the programmer with no support for garbage collection. The unsafe memory management is one of the main challenges when programming in C, which however can be a benefit because a runtime garbage collection usually results in performance loss.
 
 \begin{autonumlstlisting}[label=lst:hello_world]{Default C program.}
 #include <stdio.h>
@@ -1428,14 +1428,14 @@ To demonstrate where the delay happens, we can look at two individual flows: one
 
 \section{Using real 5G traces}
 
-The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces. The focus will be on the completion times of file transfer and throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces where collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
+The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces. The focus will be on the completion times of file transfers and throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces were collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
 
 \subsection{Traces}
 The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios.
 
 \begin{itemize}
   \item \textbf{Static Link}: In the first scenario, the laptops are stationary and nothing obstructs their path.
-  \item \textbf{Short Blockages}: Same as the static link scenario, however at a 15 second interval a human obstructs the path between laptops.
+  \item \textbf{Short Blockages}: Same as the static link scenario, however at a 15 second interval a human obstructs the path between the laptops.
   \item \textbf{Long Blockages}: This scenario is similar to the short blockages, however in this scenario the human stopped on the path for four seconds each interval.
   \item \textbf{Mobility and Blockages}: In the last scenario, the client laptop moved in a circle around the room, while a human obstructed the signal path at a 15 second interval.
 \end{itemize}\footnote{This text comes almost word for word from Srivastava Fund Panwar 2020, how to cite that?}
@@ -1448,7 +1448,7 @@ The traces were collected by using two laptops with 60GHz wireless Qualcomm card
   	\label{fig:witestlab_graph1}
 \end{figure}
 
-Figure \ref{fig:witestlab_graph1} visualizes the fluctuating bandwidth. The traces have a bandwidth of approximately 1Gbit/s to 4Gbit/s based on the scenario, even reaching zero with the mobility and blockages scenario. The raw data of the traces are contained in .csv files which consist of a time difference and the capacity of the link in megabytes.
+Figure \ref{fig:witestlab_graph1} visualizes the fluctuating bandwidth. The traces have a bandwidth of approximately 1Gbit/s to 4Gbit/s based on the scenario, even reaching zero with the mobility and blockages scenario. The raw data of the traces are contained in .csv files which consist of a time difference and the capacity of the link in megabits.
 
 %\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 %	\centering
@@ -1480,7 +1480,7 @@ $ tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7500000;
   	\label{fig:tc_5g_bfifo}
 \end{figure}
 
-To simulate the fluctuating bandwidth a shell script at the router will configure the tc htb rate at a given interval from a .csv file. The sender will use iperf3 to create ten TCP flows which will fully utilize the available bandwidth. To measure the latency impact of the 5G traces we will use the \verb|ss| command to gather the RTT's of each flow. In our validation we will only run our experiments using Cubic as it is the system default.\\
+To simulate the fluctuating bandwidth, a shell script at the router will configure the tc htb rate at a given interval from a .csv file. The sender will use iperf3 to create ten TCP flows which will fully utilize the available bandwidth. To measure the latency impact of the 5G traces we will use the \verb|ss| command to gather the RTT's of each flow. In our validation we will only run our experiments using Cubic as it is the system default.\\
 
 %\begin{verbatim}
 %while IFS=, read -r tput tdiff
@@ -1601,7 +1601,7 @@ Looking at the flow completion times in Figure \ref{fig:witestlab_static_fcts}, 
   	\label{fig:witestlab_static_fcts}
 \end{figure}
 
-The table in Figure \ref{fig:witestlab_static_fcts} highlights the differences between the end-to-end and PEP transfers. Using a static link the PEP has a mean completion time of 39,81s, while the default end-to-end has a mean completion time of 107,90s. Based on this, the PEP mean completion time is approximately 63,10\% faster than the end-to-end mean completion time.
+The table in Figure \ref{fig:witestlab_static_fcts} highlights the differences between the end-to-end and PEP transfers. Using a static link, the PEP has a mean completion time of 39,81s, while the default end-to-end has a mean completion time of 107,90s. Based on this, the PEP mean completion time is approximately 63,10\% faster than the end-to-end mean completion time.
 
 \subsubsection{Short blockages}
 
@@ -1676,7 +1676,7 @@ Finally, we will look at the last scenario: mobility and blockages. Similar to s
   	\label{fig:witestlab_graph_delay_mobb}
 \end{figure}
 
-The mobility and blockage scenario is a overall benefit for the end-to-end traffic, as the high bandwidth phases allow the transfers to complete earlier. Looking at Figure \ref{fig:witestlab_mobb_fcts}, we can see that the highest completion time is about 104s. Table \ref{tab:mobb_fct_diff} shows that the mean completion time for end-to-end traffic decreased by approximately 11s.\\
+The mobility and blockage scenario is an overall benefit for the end-to-end traffic, as the high bandwidth phases allow the transfers to complete earlier. Looking at Figure \ref{fig:witestlab_mobb_fcts}, we can see that the highest completion time is about 104s. Table \ref{tab:mobb_fct_diff} shows that the mean completion time for end-to-end traffic decreased by approximately 11s.\\
 
 This is most likely because the end-to-end traffic is able to utilize the high bandwidth phases longer than the PEP, which finishes a lot earlier.
 
@@ -1738,15 +1738,15 @@ Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the ten flo
   	\label{fig:witestlab_tput_ping}
 \end{figure}
 
-Looking at the latency impact we will compare our PEP, end-to-end using FQ-CoDel and end-to-end using BFIFO with Ultra ping. Figure \ref{fig:witestlab_tput_ping} shows the Ultra ping graphs for each scenario. At its worst the end-to-end BFIFO case reaches a latency of 200ms, while both the PEP and end-to-end scenario show no barely any impact at all. This highlights the major disadvantage of the larger buffers: the large impact on interactive traffic.\\
+Looking at the latency impact we will compare our PEP, end-to-end using FQ-CoDel and end-to-end using BFIFO with Ultra ping. Figure \ref{fig:witestlab_tput_ping} shows the Ultra ping graphs for each scenario. At its worst the end-to-end BFIFO case reaches a latency of 200ms, while both the PEP and end-to-end scenario show barely any impact at all. This highlights the major disadvantage of the larger buffers: the large impact on interactive traffic.\\
 
-Our PEP does both...
+From the experiment we can see that the PEP manages to both increase the throughput by buffering the packets at the PEP, in this case router, and keep the impact on interactive traffic at a minimal by using FQ-CoDel. This would not be possible with traditional approaches as you are forced to choose between buffer size and delay, while the PEP offers both.
 
 \subsection{Evaluation of 5G traces experiment}
 
-The interesting takeaway from these experiments is the drastic decrease in completion time when utilizing the PEP for both a static link and mobility with blockages. Showcasing the benefits of a split connection, combined with a 5G environment. The PEP is able to react faster than the end to end connection which has the added 100ms delay.\\
+The interesting takeaway from these experiments is the drastic decrease in completion time when utilizing the PEP for both a static link and mobility with blockages. Showcasing the benefits of a split connection, combined with a 5G environment. The PEP is able to react faster than the end-to-end connection which has the added 100ms delay.\\
 
-The throughput experiment highlights the core ideas behind the PEP,
+The throughput experiment highlights the core ideas behind the PEP. Large buffers increase throughput, shown by the higher throughout when using a BFIFO buffer versus FQ-CoDel. However, the BFIFO queue also causes huge delays for any interactive traffic passing through. The PEP is able to utilize big buffers, while simultaneously utilizing FQ-CoDel as to not impact interactive traffic. Thereby better utilizing the fluctuating 5G bandwidth.
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1788,11 +1788,13 @@ To avoid impact on interactive traffic was a core idea behind the usability of t
 
 \subsection{Flow completion times}
 
+\section{Limitations and Challenges}
+
 \section{Future work}
 Real deployment using physical device.,
 Real transfers,
 
-
+\section{Final Thoughts}
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
