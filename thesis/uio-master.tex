@@ -546,7 +546,9 @@ The kernel module was developed using and for Linux Kernel > 5.10, more specific
 Regarding the endpoint addressing and selection by the client, a custom shared library is a good choice.
 \footnote{Rewrite this.} The goal is to keep the client code as simple and close to its original form as possible, but still be able to communicate the desired endpoint, options and meta-data to the PEP. Additionally, we want to send this information by using TCP Fast Open which has a similar connection routine as default sockets do.\\
 
-Normally a socket would first \verb|create|, \verb|connect| and then \verb|send| data using the \verb|send| system call. The creation of a socket is the same for both with and without TCP Fast Open. Which leaves us with connection as the main problem. The way we connect to a host using TCP Fast Open is by skipping \verb|connect| and instantly jump to \verb|sendto|. As we can see from the socket system calls, both \verb|connect| and \verb|sendto| take a \verb|struct sockaddr| as a parameter. A \verb|struct sockaddr| defines the endpoint to which you want to connect. \verb|sendto| has a flag option which allows the configuration of how messages are sent, and if we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
+Normally a socket would first \verb|create|, \verb|connect| and then \verb|send| data using the \verb|send| system call. The creation of a socket is the same for both with and without TCP Fast Open. Which leaves us with connection as the main problem. The way we connect to a host using TCP Fast Open is by skipping \verb|connect| and instantly jump to \verb|sendto|. As we can see from the socket system calls, both \verb|connect| and \verb|sendto| take a \verb|struct sockaddr| as a parameter.\\
+
+A \verb|struct sockaddr| defines the endpoint to which you want to connect. \verb|sendto| has a flag option which allows the configuration of how messages are sent, and if we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{Important socket system calls}
@@ -647,6 +649,14 @@ struct tlv {
 
 \paragraph{TLV Implementation}
 In our design, TLVs are structured as a continuous buffer, consisting of a TLV header followed by subsequent options.  This header provides details on the version, the number of options, and a unique magic number for validation. The \verb|type| spans 1 byte, which means we limit ourselves to 255 possible types. The current implementation only uses 6, which means we have enough space for future extensions. The \verb|length| variable is mainly used to indicate an optional data segment called \verb|optional|. The size of the default value is 2 bytes with an additional option of size 4 bytes. All together the struct uses 8 bytes or 64 bits, which mostly comes from the fact we need atleast 6 bytes for the IP address and port alone. 
+
+
+\begin{figure} % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.35]{../diagrams/drawio/tlv.png}
+  	\caption{Example of TLV header and entries}
+  	\label{fig:tlv_example}
+\end{figure}
 
 \paragraph{Problems using TFO}
 When using TCP Fast Open, the \verb|senndto| function instantly returns when the message has been sent with no confirmation of a successful connection. This is in contrast to \verb|connect| which only returns when a connection was successfully established and an error has occurred.
@@ -797,7 +807,7 @@ struct proto_ops {
     ...
 };
 \end{verbatim}
-\captionof{figure}{Socket Protocol Operations}
+\captionof{figure}{Socket Protocol Operations from Linux - net.h~\cite{linuxkernel_neth} }
 \label{fig:proto_ops}
 \end{minipage}
 
@@ -1420,7 +1430,7 @@ Table \ref{tab:delay_variations} shows the average, median and max delay for bot
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.60]{../diagrams/graphs/compare.pdf}
-  	\caption{Individual file transfers affect on the interactive traffic.}
+  	\caption{The file transfer's effect on the interactive traffic.}
   	\label{fig:graph3}
 \end{figure}
 
@@ -1428,7 +1438,7 @@ To demonstrate where the delay happens, we can look at two individual flows: one
 
 \section{Using real 5G traces}
 
-The next experiment will focus on the PEPs behavior in the context of realistic 5G mmwave traces. The focus will be on the completion times of file transfers and throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces were collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
+The next experiment will focus on the PEPs behavior in the context of realistic 5G mmWave traces. The focus will be on the completion times of file transfers and throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces were collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
 
 \subsection{Traces}
 The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios.
@@ -1444,7 +1454,7 @@ The traces were collected by using two laptops with 60GHz wireless Qualcomm card
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.33]{../diagrams/witestlab/mmwave_cap2.png}
-  	\caption{mmWave capacity fluctuation for four different 5G scenarios}
+  	\caption{mmWave capacity fluctuation for four different 5G scenarios (Data from ~\cite{Srivastava_Fund_Panwar_2020})}
   	\label{fig:witestlab_graph1}
 \end{figure}
 
@@ -1458,14 +1468,14 @@ Figure \ref{fig:witestlab_graph1} visualizes the fluctuating bandwidth. The trac
 %\end{figure}
 
 \subsection{Topology}
-For this experiment we will use a topology similar to the previous experiment. We will continue our sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth rates we will adjust the sender to router link to have the maximum our testbed can offer, which is 10Gbit/s bandwidth.\\
+For this experiment we will use a topology similar to the previous experiment. We will continue with our sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth we will adjust the sender to router link to have the maximum our testbed can offer, which is 10Gbit/s bandwidth.\\
 
 The link between the sender and the router will be configured based on the scenario, but the default will be a 3Gbit/s bandwidth.
 
 \subsection{Validation}
 
 First we will try to reproduce the results from the original Witestlab experiment, to see how our testbed will affect the results.
-Following each step of the original experiment, we configure the link between the router and the receiver to have a 3Gbit/s bandwidth and no delay. Additionally, it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled. This configuration is visualized in Figure \ref{fig:tc_5g_bfifo} \\
+Following each step of the original experiment, we configure the link between the router and the receiver to have a 3Gbit/s bandwidth and no configured delay. Additionally, it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled. This configuration is visualized in Figure\ref{fig:tc_5g_bfifo} \\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1498,7 +1508,7 @@ To simulate the fluctuating bandwidth, a shell script at the router will configu
   	\label{fig:witestlab_results}
 \end{figure}
 
-Firgure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP Cubic results as it is the congestion controller we use for our experiments. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.\\
+Figure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP Cubic results as it is the congestion controller we use for our experiments \footnote{Linxu kernel version, many details as possible, hardware}. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.\\
 
 The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. The steady 20ms delay for the static link is the same result Witestlab observes. However, in our experiments we reach a maximum of approximately 50ms delay with short and long blockages, where Witestlab reaches 150ms.\\
 
@@ -1509,12 +1519,12 @@ The results from our latency measurement experiment show a clear impact on the l
   	\label{fig:witestlab_graph_delay_1}
 \end{figure}
 
-Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measurements. Comparing our results to the Witestlab experiment (Figure \ref{fig:witestlab_results}) we can see that the shapes of the graphs are the same. However the magnitude of the latency spikes are quite different between our and their experiments. The difference is most likely due to our hardware or more modern Linux kernel.\\
+Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measurements. Comparing our results to the Witestlab experiment (Figure \ref{fig:witestlab_results}) we can see that the shapes of the graphs are the same. However the magnitude of the latency spikes are quite different between our and their experiments. The difference is most likely due to our hardware or more the modern Linux kernel.\\
 
-Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same latency behaviour of the 5G traces.
+Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same general latency behaviour of the 5G traces.
 
 \subsection{Experiment procedure}
-To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between sender and router. The link between router and receiver will remain with no delay. Instead of a BFIFO queue at the router we will use FQ-CoDel as to not impact interactive traffic. Figure \ref{fig:testbed2} shows the updated topology.\\
+To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will remain with no configured delay. Instead of a BFIFO queue at the router we will use FQ-CoDel as to not impact interactive traffic. Figure \ref{fig:testbed2} shows the updated topology.\\
 
 \begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1571,8 +1581,8 @@ Compared to our initial base case there seems to be a bigger impact on the inter
 Mean                              & 100.158ms                  & 100.242ms                  \\
 Median                            & 100.151ms                  & 100.207ms                  \\
 Standard Deviation                & 0.0234ms                   & 0.1067ms                   \\
-\multicolumn{3}{l}{\textbf{Differences}}                             \\ \hline
-Difference in Mean                & \multicolumn{2}{c}{-0.0844ms}         \\
+%\multicolumn{3}{l}{\textbf{Differences}}                             \\ \hline
+%Difference in Mean                & \multicolumn{2}{c}{-0.0844ms}         \\
 %Difference in Median              & \multicolumn{2}{c}{-0.0556ms}         \\
 %Difference in Standard Deviation  & \multicolumn{2}{c}{-0.0833ms}         \\
 \end{tabular}
@@ -1580,7 +1590,7 @@ Difference in Mean                & \multicolumn{2}{c}{-0.0844ms}         \\
 \label{tab:sl_latency_statistics}
 \end{table}
 
-Table \ref{tab:sl_latency_statistics} highlights the differences between the end-to-end and PEP impact on interactive traffic. Most importantly, we can see that the PEP causes a higher standard deviation than the end-to-end traffic. Which is reflected in the spikes of the Ultra ping graph in Figure \ref{fig:witestlab_static_delay}.\\
+Table \ref{tab:sl_latency_statistics} highlights the differences between the end-to-end and PEP impact on interactive traffic. Most importantly, we can see that the PEP causes a higher standard deviation than the end-to-end traffic. This is reflected in the spikes of the Ultra ping graph in Figure \ref{fig:witestlab_static_delay}.\\
 
 Looking at the flow completion times in Figure \ref{fig:witestlab_static_fcts}, we can clearly see the benefit of the PEP. All PEP transfers finish earlier than their end-to-end counterpart. The staggering of the completion times is most likely due to the transfers not starting at the exact same time.\\
 

@@ -85,6 +85,10 @@ James~F. Kurose and Keith~W. Ross.
 \newblock {\em Computer networking: a top-down approach}.
 \newblock Pearson, Boston, seventh edition edition, 2017.
 
+\bibitem{linuxkernel_neth}
+{Linus Torvalds and The Linux Kernel Developers}.
+\newblock Linux kernel source code: include/linux/net.h.
+
 \bibitem{middlebox_interactions}
 Alberto Medina, Mark Allman, and Sally Floyd.
 \newblock Measuring interactions between transport protocols and middleboxes.

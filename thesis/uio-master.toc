@@ -54,22 +54,22 @@
 \contentsline {subsection}{\numberline {4.2.2}TLV}{28}{subsection.4.2.2}%
 \contentsline {paragraph}{TLV structures}{29}{section*.28}%
 \contentsline {paragraph}{TLV Implementation}{29}{section*.29}%
-\contentsline {paragraph}{Problems using TFO}{29}{section*.30}%
-\contentsline {subsection}{\numberline {4.2.3}TLV Options}{29}{subsection.4.2.3}%
+\contentsline {paragraph}{Problems using TFO}{30}{section*.31}%
+\contentsline {subsection}{\numberline {4.2.3}TLV Options}{30}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Shared Library}{30}{subsection.4.2.4}%
 \contentsline {section}{\numberline {4.3}PEP - Internals}{30}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Architecture}{30}{subsection.4.3.1}%
-\contentsline {paragraph}{Tunnels}{31}{section*.32}%
-\contentsline {paragraph}{PEP Tunnel Structure}{32}{section*.33}%
-\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{32}{subsection.4.3.2}%
-\contentsline {paragraph}{Socket Operations}{33}{section*.34}%
-\contentsline {paragraph}{Socket Callbacks}{33}{section*.35}%
-\contentsline {paragraph}{Socket User Data}{33}{section*.36}%
+\contentsline {subsection}{\numberline {4.3.1}Architecture}{31}{subsection.4.3.1}%
+\contentsline {paragraph}{Tunnels}{32}{section*.33}%
+\contentsline {paragraph}{PEP Tunnel Structure}{32}{section*.34}%
+\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{33}{subsection.4.3.2}%
+\contentsline {paragraph}{Socket Operations}{33}{section*.35}%
+\contentsline {paragraph}{Socket Callbacks}{33}{section*.36}%
+\contentsline {paragraph}{Socket User Data}{34}{section*.37}%
 \contentsline {subsection}{\numberline {4.3.3}Work Queues}{34}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Works}{35}{subsection.4.3.4}%
-\contentsline {paragraph}{Work state problem}{35}{section*.37}%
-\contentsline {paragraph}{Accept Work Queue}{36}{section*.38}%
-\contentsline {paragraph}{Packet Forwarding Queues}{37}{section*.39}%
+\contentsline {paragraph}{Work state problem}{35}{section*.38}%
+\contentsline {paragraph}{Accept Work Queue}{36}{section*.39}%
+\contentsline {paragraph}{Packet Forwarding Queues}{37}{section*.40}%
 \contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{38}{subsection.4.3.5}%
 \contentsline {section}{\numberline {4.4}PEP - Server}{38}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Creation}{38}{subsection.4.4.1}%
@@ -81,7 +81,7 @@
 \contentsline {subsection}{\numberline {4.5.2}PEP Connections}{43}{subsection.4.5.2}%
 \contentsline {subsection}{\numberline {4.5.3}Module Customization}{43}{subsection.4.5.3}%
 \contentsline {subsection}{\numberline {4.5.4}System Configurations}{44}{subsection.4.5.4}%
-\contentsline {paragraph}{Buffer sizes}{44}{section*.40}%
+\contentsline {paragraph}{Buffer sizes}{44}{section*.41}%
 \contentsline {subsection}{\numberline {4.5.5}Userspace?}{45}{subsection.4.5.5}%
 \contentsline {subsection}{\numberline {4.5.6}Threads Vs. Callbacks}{45}{subsection.4.5.6}%
 \contentsline {subsection}{\numberline {4.5.7}Using Netfilter}{45}{subsection.4.5.7}%
@@ -92,9 +92,9 @@
 \contentsline {subsection}{\numberline {5.2.1}Testbed}{47}{subsection.5.2.1}%
 \contentsline {subsection}{\numberline {5.2.2}Hosts and Hardware}{47}{subsection.5.2.2}%
 \contentsline {subsection}{\numberline {5.2.3}Configuration}{48}{subsection.5.2.3}%
-\contentsline {subsubsection}{Sender}{48}{section*.42}%
-\contentsline {subsubsection}{Router (PEP)}{49}{section*.43}%
-\contentsline {subsubsection}{Receiver}{50}{section*.46}%
+\contentsline {subsubsection}{Sender}{48}{section*.43}%
+\contentsline {subsubsection}{Router (PEP)}{49}{section*.44}%
+\contentsline {subsubsection}{Receiver}{50}{section*.47}%
 \contentsline {subsection}{\numberline {5.2.4}Experiment Procedure}{51}{subsection.5.2.4}%
 \contentsline {subsection}{\numberline {5.2.5}Results \& Analysis}{51}{subsection.5.2.5}%
 \contentsline {section}{\numberline {5.3}Using real 5G traces}{54}{section.5.3}%
@@ -103,14 +103,16 @@
 \contentsline {subsection}{\numberline {5.3.3}Validation}{55}{subsection.5.3.3}%
 \contentsline {subsection}{\numberline {5.3.4}Experiment procedure}{57}{subsection.5.3.4}%
 \contentsline {subsection}{\numberline {5.3.5}Results}{58}{subsection.5.3.5}%
-\contentsline {subsubsection}{Static link}{59}{section*.58}%
-\contentsline {subsubsection}{Short blockages}{61}{section*.62}%
-\contentsline {subsubsection}{Long blockages}{61}{section*.66}%
-\contentsline {subsubsection}{Mobility and Blockages}{62}{section*.69}%
+\contentsline {subsubsection}{Static link}{59}{section*.59}%
+\contentsline {subsubsection}{Short blockages}{61}{section*.63}%
+\contentsline {subsubsection}{Long blockages}{61}{section*.67}%
+\contentsline {subsubsection}{Mobility and Blockages}{62}{section*.70}%
 \contentsline {subsection}{\numberline {5.3.6}Throughput Experiment}{64}{subsection.5.3.6}%
 \contentsline {subsection}{\numberline {5.3.7}Evaluation of 5G traces experiment}{65}{subsection.5.3.7}%
 \contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{67}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Results}{67}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{68}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}Flow completion times}{68}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Future work}{68}{section.6.2}%
+\contentsline {section}{\numberline {6.2}Limitations and Challenges}{68}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Future work}{68}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Final Thoughts}{68}{section.6.4}%
