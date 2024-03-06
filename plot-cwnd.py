@@ -30,6 +30,8 @@ def plot_tcp_cwnd(pdf_dir=''):
         ax.spines['top'].set_visible(True)
         ax.yaxis.set_ticks_position('left')
         ax.xaxis.set_ticks_position('bottom')
+        ax.set_xlabel('Time (s)', fontsize=20)
+        ax.set_ylabel('TCP Congestion Window (cwnd)', fontsize=20)
 
         # Improve layout
         plt.tight_layout()

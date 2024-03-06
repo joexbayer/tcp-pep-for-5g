@@ -1720,30 +1720,32 @@ Without PEP & -11.16s & -0.40s & -10.85s & -10.33s & -12.48s \\
 \end{table}
 
 \subsection{Throughput Experiment}
-To evaluate how effectively the PEP can utilize the fluctuating bandwidth, compared with end-to-end FQ-CoDel and BFIFO, we will look at the throughput using the mobility and blockage scenario. For this experiment we will continue with 10 parallel transfers from sender to receiver and the same traffic control configurations. The only difference is that the transfers will continue to send data for the entire 120 seconds duration.\\
+To evaluate how effectively the PEP can utilize the fluctuating bandwidth, compared with end-to-end FQ-CoDel and BFIFO, we will look at the throughput using the mobility and blockage scenario. For this experiment we will continue with 19 parallel transfers from sender to receiver and the same traffic control configurations. The only difference is that the transfers will continue to send data for the entire 120 seconds duration.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.40]{../diagrams/witestlab/tput_bars_all.png}
+	\includegraphics[scale=0.33]{../diagrams/witestlab/tput_bars_bdp.png}
 \centering
 \begin{tabularx}{\linewidth}{lCC}
 \toprule
 Scenario & Total MB/s & Total MBits/s\\
 \midrule
-PEP & 248.11 MB/s & 1984.88 Mbits/s \\
-FQ-CoDel & 105.59 MB/s & 844.76 Mbits/s \\
-BFIFO & 163.68 MB/s & 1309.44 Mbits/s \\
+PEP & 367.71 MB/s & 2941.70 Mbits/s \\
+FQ-CoDel & 90.13 MB/s & 721.06 Mbits/s \\
+BFIFO & 262.76 MB/s & 2102.13 Mbits/s \\
 \bottomrule
 \end{tabularx}
-  	\caption{Throughput comparison of 10 flows for PEP and end to end transfers.}
+  	\caption{Throughput comparison of 19 flows for PEP and end to end transfers.}
   	\label{fig:witestlab_tput_bars}
 \end{figure}
 
-Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the ten flows for both the PEP and end-to-end transfers. As we can see the PEP has a much higher throughput for all flows except 5 and 6. If we sum up the throughput of all flows, then we can see that the PEP achieves a through put of 1984.88 Mbit/s, while the end-to-end FQ-CoDel transfers only manage 844.76 Mbit/s. Interestingly, the end-to-end transfer with BFIFO got a higher throughput of 1309.44 Mbit/s compared to end-to-end which used FQ-CoDel, this highlights the benefits of larger buffers.\\
+Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the 19 flows for both the PEP and end-to-end transfers. As we can see the PEP has a much higher throughput for all flows. If we sum up the throughput of all flows, then we can see that the PEP achieves a through put of 2941.70 Mbit/s, while the end-to-end FQ-CoDel transfers only manage 721.06 Mbit/s. Interestingly, the end-to-end transfer with BFIFO got a higher throughput of 2102.13 Mbit/s compared to end-to-end which used FQ-CoDel, this highlights the benefits of larger buffers.\\
+
+Looking at the bars themselves, unfairness with bfifo, fair but low throughput fqcodel
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.50]{../diagrams/witestlab/tput_latency_full.pdf}
+	\includegraphics[scale=0.50]{../diagrams/witestlab/tput_ping_bdp.pdf}
   	\caption{Latency impact from throughput experiment.}
   	\label{fig:witestlab_tput_ping}
 \end{figure}
