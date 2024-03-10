@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Define the buffer size variable
-#BUFFER_SIZE=67108864
+#BUFFER_SIZE=185000000
 BUFFER_SIZE=2147483647
+
 
 # Apply the buffer size settings using the variable
 sudo sysctl -w net.core.rmem_max=$BUFFER_SIZE;

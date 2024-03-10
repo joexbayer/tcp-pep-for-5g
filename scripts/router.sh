@@ -4,8 +4,8 @@
 # sysctl socket buffers
 
 # Delay from router to sender
-sudo tc qdisc del dev 10Gc root;
-sudo tc qdisc add dev 10Gc root handle 2: netem delay 100ms; #1ms variation
+sudo tc qdisc del dev 10Ge root;
+sudo tc qdisc add dev 10Ge root handle 2: netem delay 100ms; #1ms variation
 sudo tc qdisc add dev 10Gc parent 2:11 fq_codel;
 #sudo tc qdisc add dev enp36s0 parent 2: handle 3: htb default 10;
 #sudo tc class add dev enp36s0 parent 3: classid 10 htb rate 1Mbit;
