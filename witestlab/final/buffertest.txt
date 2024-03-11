@@ -1,0 +1,15 @@
+E2E 36124.0mb - 120.000004s - Throughput: 2525.29 Mbps, 315.66 MB/s
+PEP - 2Gb 39375.0mb - 120.000030s - Throughput: 2752.55 Mbps, 344.07 MB/s
+
+
+
+Step 2: default = 0.2GB (200MB)
+Step 3: default = 0.4GB (400MB)
+Step 4: default = 0.6GB (600MB)
+Step 5: default = 0.8GB (800MB)
+Step 6: default = 1.0GB (1000MB)
+Step 7: default = 1.2GB (1200MB)
+Step 8: default = 1.4GB (1400MB)
+Step 9: default = 1.6GB (1600MB)
+Step 10: default = 1.8GB (1800MB)
+Step 11: default = 2.0GB (2000MB)

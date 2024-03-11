@@ -2,10 +2,7 @@
 
 # Define the buffer size variable
 #BUFFER_SIZE=185000000
-BUFFER_SIZE=2147483647
-
-
-# Apply the buffer size settings using the variable
+BUFFER_SIZE=2073741824
 sudo sysctl -w net.core.rmem_max=$BUFFER_SIZE;
 sudo sysctl -w net.core.wmem_max=$BUFFER_SIZE;
 sudo sysctl -w net.core.rmem_default=$BUFFER_SIZE;

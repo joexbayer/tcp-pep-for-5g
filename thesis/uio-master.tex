@@ -1472,6 +1472,11 @@ For this experiment we will use a topology similar to the previous experiment. W
 
 The link between the sender and the router will be configured based on the scenario, but the default will be a 3Gbit/s bandwidth.
 
+\subsection{Configuration}
+Since we are now dealing with high gigabit bandwidths, we need to configure and tune the hosts to be able to fully utilize these bandwidths. Most importantly the default net read and write buffers need to be adjusted.\footnote{Show the behaviour if we do not?}\\
+
+The the core net buffers \verb|net.core.rmem_max| and \verb|net.core.wmem_max| will be adjusted to approximately 2 Gigabyte. Also \verb|net.ipv4.tcp_rmem| and \verb|net.ipv4.tcp_wmem| will be set to the same 2 Gigabyte size. This will assure that neither the sender or receiver is limited by the socket buffers. 
+
 \subsection{Validation}
 
 First we will try to reproduce the results from the original Witestlab experiment, to see how our testbed will affect the results.
