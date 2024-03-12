@@ -1,15 +1,25 @@
-E2E 36124.0mb - 120.000004s - Throughput: 2525.29 Mbps, 315.66 MB/s
-PEP - 2Gb 39375.0mb - 120.000030s - Throughput: 2752.55 Mbps, 344.07 MB/s
+Half of default
+LOG [2024-03-12 12:31:54] 341.0mb - 120.001299s - Throughput: 23.90 Mbps, 2.99 MB/s|
+
+Default
+LOG [2024-03-12 12:37:30] 3491.0mb - 120.000013s - Throughput: 244.07 Mbps, 30.51 MB/s
+
+1/8 MAX
+LOG [2024-03-12 12:44:04] 12042.0mb - 120.000016s - Throughput: 841.86 Mbps, 105.23 MB/s
+
+1/4 MAX
+LOG [2024-03-12 12:40:55] 28011.0mb - 120.000432s - Throughput: 1958.12 Mbps, 244.77 MB/s
+
+MAX
+LOG [2024-03-12 12:34:44] 36693.0mb - 120.000040s - Throughput: 2565.04 Mbps, 320.63 MB/s
 
 
 
-Step 2: default = 0.2GB (200MB)
-Step 3: default = 0.4GB (400MB)
-Step 4: default = 0.6GB (600MB)
-Step 5: default = 0.8GB (800MB)
-Step 6: default = 1.0GB (1000MB)
-Step 7: default = 1.2GB (1200MB)
-Step 8: default = 1.4GB (1400MB)
-Step 9: default = 1.6GB (1600MB)
-Step 10: default = 1.8GB (1800MB)
-Step 11: default = 2.0GB (2000MB)
+E2E - FQ-CoDel
+LOG [2024-03-12 13:07:30] 10787.0mb - 120.000003s - Throughput: 754.09 Mbps, 94.26 MB/s
+
+E2E - BDP Bfifo
+LOG [2024-03-12 13:15:44] 34137.0mb - 120.000041s - Throughput: 2386.42 Mbps, 298.30 MB/
+
+
+
