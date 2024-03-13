@@ -40,7 +40,7 @@ sudo sysctl -w net.ipv4.tcp_mem="32768 65536 207374182"
 ### Sender
 ```bash
 sudo tc qdisc del dev 10Ge root;
-sudo tc qdisc add dev 10Ge root handle 2: netem delay 10ms;
+sudo tc qdisc add dev 10Ge root handle 2: netem delay 100ms;
 ```
 
 ### Router

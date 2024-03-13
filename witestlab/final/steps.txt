@@ -10,6 +10,7 @@ net.ipv4.tcp_wmem = 4096 16384 4194304
 net.ipv4.tcp_mem = 32768 65536 1536996
 
 Step 2
+                        
 net.core.rmem_default = 23230902
 net.core.rmem_max = 24905710
 net.core.wmem_default = 23230902
@@ -40,6 +41,7 @@ net.ipv4.tcp_mem = 32768 65536 70149391
 Step 4 settings applied
 
 Step 5
+                        
 net.core.rmem_default = 92284632
 net.core.rmem_max = 93331387
 net.core.wmem_default = 92284632
@@ -50,6 +52,7 @@ net.ipv4.tcp_mem = 32768 65536 93020189
 Step 5 settings applied.
 
 Step 6
+                        1073741824
 net.core.rmem_default = 115302542
 net.core.rmem_max = 116139946
 net.core.wmem_default = 115302542
@@ -70,6 +73,7 @@ net.ipv4.tcp_mem = 32768 65536 138761786
 Step 7 settings applied.
 
 Step 8
+                        134217728
 net.core.rmem_default = 161338362
 net.core.rmem_max = 161757064
 net.core.wmem_default = 161338362
@@ -89,6 +93,7 @@ net.ipv4.tcp_wmem = 4096 16384 184798640
 net.ipv4.tcp_mem = 32768 65536 184503383
 
 Step 10
+                        268435456
 net.core.rmem_default = 207374182
 net.core.rmem_max = 207374182
 net.core.wmem_default = 207374182
