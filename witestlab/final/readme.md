@@ -40,7 +40,7 @@ sudo sysctl -w net.ipv4.tcp_mem="32768 65536 207374182"
 ### Sender
 ```bash
 sudo tc qdisc del dev 10Ge root;
-sudo tc qdisc add dev 10Ge root handle 2: netem delay 100ms;
+sudo tc qdisc add dev 10Ge root handle 2: netem delay 1ms;
 ```
 
 ### Router
@@ -68,7 +68,5 @@ sudo tc qdisc add dev $(ip route get $IP | grep -oP "(?<=dev )[^ ]+") parent 1:3
 ```bash
 ```
 
+< :Sender: 10gbit, fq-codel >--------< 100ms :Router: 3gbit, fq-codel >--------< 1ms :Receiver: >
 
-Interesting
-10ms (11 total)
-LOG [2024-03-12 14:52:33] 43169.0mb - 120.000072s - Throughput: 3017.79 Mbps, 377.22 MB/s
