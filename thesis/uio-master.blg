@@ -1,6 +1,8 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: uio-master.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: myBib.bib
 Warning--to sort, need author or key in ibm_doc

@@ -1,52 +1,52 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave from real 5G traces\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Linux packet queuing\relax }}{8}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{3}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{5}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave from real 5G traces\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}}}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Linux packet queuing}}{8}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{10}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)\relax }}{13}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 5G network topology\relax }}{14}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of poor bandwidth utilization.\relax }}{16}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Example of good bandwidth utilization.\relax }}{16}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Split connection with bandwidth and delay.\relax }}{17}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces The TCP handshake procedure across PEP\relax }}{18}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{20}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Deployment of a PEP at a base station\relax }}{21}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 5G network topology}}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of poor bandwidth utilization.}}{16}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Example of good bandwidth utilization.}}{16}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Split connection with bandwidth and delay.}}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The TCP handshake procedure across PEP}}{18}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{20}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Deployment of a PEP at a base station}}{21}{figure.caption.24}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of TLV header and entries\relax }}{29}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces The architecture of the PEP\relax }}{31}{figure.caption.32}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces PEP State Structure Code\relax }}{32}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Kernel Sock Structure\relax }}{33}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Socket Protocol Operations from Linux - net.h\nobreakspace {}\cite {linuxkernel_neth} \relax }}{34}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{35}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{40}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Work operation table\relax }}{43}{figure.4.8}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Callback function table\relax }}{44}{figure.4.9}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of TLV header and entries}}{29}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The architecture of the PEP}}{31}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces PEP State Structure Code}}{32}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Kernel Sock Structure}}{33}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Socket Protocol Operations from Linux - net.h\nobreakspace {}\cite {linuxkernel_neth} }}{34}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Work struct from Linux - workqueue.h}}{35}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html}}{40}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Work operation table}}{43}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Callback function table}}{44}{figure.4.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Overview of the Ocarina testbed\relax }}{47}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Screenfetch results\relax }}{48}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces FQ-CoDel traffic control visualization\relax }}{49}{figure.caption.45}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces BFIFO traffic control visualization\relax }}{50}{figure.caption.46}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces File transfer impact on interactive traffic\relax }}{52}{figure.caption.48}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Close up of End to End compared to PEP\relax }}{53}{figure.caption.50}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces The file transfer's effect on the interactive traffic.\relax }}{54}{figure.caption.52}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios (Data from \nobreakspace {}\cite {Srivastava_Fund_Panwar_2020})\relax }}{55}{figure.caption.53}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces BFIFO traffic control visualization for 5G traces\relax }}{56}{figure.caption.54}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{57}{figure.caption.55}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Our results for the delay caused by fluctuating bandwidth\relax }}{57}{figure.caption.56}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Testbed configuration for 5G traces\relax }}{58}{figure.caption.57}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Traffic control configuration for the experiments\relax }}{59}{figure.caption.58}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Delay caused by fluctuating bandwidth with a static link\relax }}{59}{figure.caption.60}%
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Completion times with a static link\relax }}{60}{figure.caption.62}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{61}{figure.caption.65}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Completion times with short blockage\relax }}{62}{figure.caption.66}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Impact on interactive traffic with long blockages\relax }}{62}{figure.caption.68}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Delay caused by fluctuating bandwidth with the mobility and blockages scenario.\relax }}{63}{figure.caption.71}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Completion times with mobility and blockages\relax }}{63}{figure.caption.72}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces Throughput comparison of 19 flows for PEP and end to end transfers.\relax }}{64}{figure.caption.74}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Latency impact from throughput experiment.\relax }}{65}{figure.caption.75}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{66}{figure.caption.76}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Overview of the Ocarina testbed}}{47}{figure.caption.42}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Screenfetch results}}{48}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces FQ-CoDel traffic control visualization}}{49}{figure.caption.45}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces BFIFO traffic control visualization}}{50}{figure.caption.46}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces File transfer impact on interactive traffic}}{52}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Close up of End to End compared to PEP}}{53}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces The file transfer's effect on the interactive traffic.}}{54}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios (Data from \nobreakspace {}\cite {Srivastava_Fund_Panwar_2020})}}{55}{figure.caption.53}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces BFIFO traffic control visualization for 5G traces}}{56}{figure.caption.54}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}}}{57}{figure.caption.55}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Our results for the delay caused by fluctuating bandwidth}}{57}{figure.caption.56}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Testbed configuration for 5G traces}}{58}{figure.caption.57}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Traffic control configuration for the experiments}}{59}{figure.caption.58}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Delay caused by fluctuating bandwidth with a static link}}{60}{figure.caption.60}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Completion times with a static link}}{61}{figure.caption.62}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Impact on interactive traffic with short blockages}}{62}{figure.caption.65}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Completion times with short blockage}}{62}{figure.caption.66}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Impact on interactive traffic with long blockages}}{63}{figure.caption.68}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Delay caused by fluctuating bandwidth with the mobility and blockages scenario.}}{64}{figure.caption.71}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Completion times with mobility and blockages}}{64}{figure.caption.72}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Throughput comparison of 19 flows for PEP and end to end transfers.}}{65}{figure.caption.74}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Latency impact from throughput experiment.}}{66}{figure.caption.75}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Delay caused by fluctuating bandwidth}}{67}{figure.caption.76}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios\relax }}{67}{figure.caption.77}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios}}{68}{figure.caption.77}%

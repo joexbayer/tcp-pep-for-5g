@@ -1438,7 +1438,7 @@ To demonstrate where the delay happens, we can look at two individual flows: one
 
 \section{Using real 5G traces}
 
-The next experiment will focus on the PEPs behavior in the context of realistic 5G mmWave traces. The focus will be on the completion times of file transfers and throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces were collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
+The next experiment will focus on the PEPs behavior in the context of realistic 5G mmWave traces. The focus will be on the throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces were collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
 
 \subsection{Traces}
 The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios.
@@ -1475,7 +1475,7 @@ The link between the sender and the router will be configured based on the scena
 \subsection{Configuration}
 Since we are now dealing with high gigabit bandwidths, we need to configure and tune the hosts to be able to fully utilize these bandwidths. Most importantly the default net read and write buffers need to be adjusted.\footnote{Show the behaviour if we do not?}\\
 
-The the core net buffers \verb|net.core.rmem_max| and \verb|net.core.wmem_max| will be adjusted to approximately 2 Gigabyte. Also \verb|net.ipv4.tcp_rmem| and \verb|net.ipv4.tcp_wmem| will be set to the same 2 Gigabyte size. This will assure that neither the sender or receiver is limited by the socket buffers. 
+The the core net buffers \verb|net.core.rmem_max| and \verb|net.core.wmem_max| will be adjusted to approximately 2 Gigabyte. Also \verb|net.ipv4.tcp_rmem| and \verb|net.ipv4.tcp_wmem| will be set to the same 2 Gigabyte size. This will assure that neither the sender or receiver is limited by the socket buffers.
 
 \subsection{Validation}
 
@@ -1529,7 +1529,7 @@ Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measur
 Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same general latency behaviour of the 5G traces.
 
 \subsection{Experiment procedure}
-To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will remain with no configured delay. Instead of a BFIFO queue at the router we will use FQ-CoDel as to not impact interactive traffic. Figure \ref{fig:testbed2} shows the updated topology.\\
+To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will get a 1ms delay for a more realistic scenario. 
 
 \begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1538,13 +1538,15 @@ To evaluate the PEP with the 5G traces we will change the topology to include a 
   	\label{fig:testbed2}
 \end{figure}
 
-The experiment procedure will be to complete file transfers from sender to receiver, both for normal end-to-end and with the PEP for each 5G scenario. We will have a total of ten concurrent file transfers with a file size of 1 gigabyte each to utilize the 5G bandwidth. Additionally, we will have an end to end Ultra ping transfer to measure the latency disruptions for both the end-to-end and PEP file transfers.\\
+The experiment procedure will be to send data from the sender to the receiver for 120 seconds. Measuring the throughput by seeing how much data was transferred in the 120 seconds. This procedure will be done three times, once for the PEP and twice for end-to-end. End-to-end will be evaluated with both FQ-CoDel and BFIFO, where the BFIFO queue will have a size of the BDP to show the effect how big queues in the network.\\
+
+There will be ten simultaneous transfers to reduce the risk of a lucky or unlucky result.(Ref. to the cubic being unstable?) Additionally, we will have an end to end Ultra ping transfer to measure the latency disruptions for both the end-to-end and PEP file transfers.\\
 
 The experiment consists of three steps:
 \begin{itemize}
   \item \textbf{Step 1}: The router starts the 5G fluctuations trace simulations.
   \item \textbf{Step 2}: Ultra ping starts sending interactive traffic from sender to router.
-  \item \textbf{Step 3}: Then ten file transfers are started.
+  \item \textbf{Step 3}: The ten senders start transferring data.
 \end{itemize}
 These three steps are repeated once for each scenario and twice for each scenario, either being end-to-end or using the PEP.
 
@@ -1561,6 +1563,23 @@ These three steps are repeated once for each scenario and twice for each scenari
     \caption{Traffic control configuration for the experiments}
     \label{fig:tc_5g_fq_codel}
 \end{figure}
+
+\subsection{Congestion Controller's affect on throughput}
+When running an Iperf3 transfer from sender to receiver with a BDP sized BFIFO queue at the router, we observe an seemingly random results of throughput. The throughput should, with our configuration, be about 3Gbit/s, fully utilizing the bandwidth. However the results hover around 2.4Gbit/s to 2.8Gbits/s.\\
+
+Looking at a congestion window graph of a cubic transfer we can see the reason:\\
+CWND plot\\
+
+The first interesting aspect of Figure ... is the slow cubic curve. It takes a long time to fully utilize the bandwidth. Additionally, looking at the relation to the BDP, we can see that the transfer was lucky the first time, and lucky the second. Resulting in a rather low throughput.\\
+
+Looking at the double back-off after 70s in Figure ... we can see...\\
+
+Which brings us to the conclusion that Cubic does not operate effectively in our scenarios with big bandwidths and huge buffers. Because of these results a single Cubic transfer is not representative of the achievable throughput as it will either be lucky and get a big throughput or unlucky with a low throughput.\\
+
+Having multiple flows will reduce the luck aspect and give a more realistic representation of the throughput. Using Reno is not better... Reno graph.
+
+% The experiments will consist of comparing, end to end fqcodel, bfifo and the PEP, with the hypohethis being that BFIFO will have good through put and fqcodel not. 
+
 
 \subsection{Results}
 
@@ -1758,6 +1777,8 @@ Looking at the bars themselves, unfairness with bfifo, fair but low throughput f
 Looking at the latency impact we will compare our PEP, end-to-end using FQ-CoDel and end-to-end using BFIFO with Ultra ping. Figure \ref{fig:witestlab_tput_ping} shows the Ultra ping graphs for each scenario. At its worst the end-to-end BFIFO case reaches a latency of 200ms, while both the PEP and end-to-end scenario show barely any impact at all. This highlights the major disadvantage of the larger buffers: the large impact on interactive traffic.\\
 
 From the experiment we can see that the PEP manages to both increase the throughput by buffering the packets at the PEP, in this case router, and keep the impact on interactive traffic at a minimal by using FQ-CoDel. This would not be possible with traditional approaches as you are forced to choose between buffer size and delay, while the PEP offers both.
+
+\subsection{Buffer size effect on throughput}
 
 \subsection{Evaluation of 5G traces experiment}
 
