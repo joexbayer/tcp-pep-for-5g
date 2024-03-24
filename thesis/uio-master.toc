@@ -102,20 +102,23 @@
 \contentsline {subsection}{\numberline {5.3.2}Topology}{55}{subsection.5.3.2}%
 \contentsline {subsection}{\numberline {5.3.3}Configuration}{55}{subsection.5.3.3}%
 \contentsline {subsection}{\numberline {5.3.4}Validation}{56}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}Experiment procedure}{57}{subsection.5.3.5}%
-\contentsline {subsection}{\numberline {5.3.6}Congestion Controller's affect on throughput}{59}{subsection.5.3.6}%
-\contentsline {subsection}{\numberline {5.3.7}Results}{60}{subsection.5.3.7}%
-\contentsline {subsubsection}{Static link}{60}{section*.59}%
-\contentsline {subsubsection}{Short blockages}{61}{section*.63}%
-\contentsline {subsubsection}{Long blockages}{62}{section*.67}%
-\contentsline {subsubsection}{Mobility and Blockages}{63}{section*.70}%
-\contentsline {subsection}{\numberline {5.3.8}Throughput Experiment}{63}{subsection.5.3.8}%
-\contentsline {subsection}{\numberline {5.3.9}Buffer size effect on throughput}{66}{subsection.5.3.9}%
-\contentsline {subsection}{\numberline {5.3.10}Evaluation of 5G traces experiment}{66}{subsection.5.3.10}%
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{68}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Results}{68}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{69}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{69}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Limitations and Challenges}{69}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Future work}{69}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Final Thoughts}{69}{section.6.4}%
+\contentsline {subsection}{\numberline {5.3.5}Experiment Configuration}{57}{subsection.5.3.5}%
+\contentsline {subsubsection}{End-to-end Configuration}{58}{section*.58}%
+\contentsline {subsubsection}{PEP Configuration}{59}{section*.60}%
+\contentsline {subsection}{\numberline {5.3.6}Experiments Steps}{59}{subsection.5.3.6}%
+\contentsline {subsubsection}{Congestion Controller's affect on throughput}{59}{section*.61}%
+\contentsline {subsection}{\numberline {5.3.7}Results}{61}{subsection.5.3.7}%
+\contentsline {subsubsection}{Static link}{61}{section*.64}%
+\contentsline {subsubsection}{Short blockages}{62}{section*.68}%
+\contentsline {subsubsection}{Long blockages}{63}{section*.72}%
+\contentsline {subsubsection}{Mobility and Blockages}{64}{section*.75}%
+\contentsline {subsection}{\numberline {5.3.8}Throughput Experiment}{64}{subsection.5.3.8}%
+\contentsline {subsection}{\numberline {5.3.9}Buffer size effect on throughput}{67}{subsection.5.3.9}%
+\contentsline {subsection}{\numberline {5.3.10}Evaluation of 5G traces experiment}{67}{subsection.5.3.10}%
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{69}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Results}{69}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{70}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{70}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Limitations and Challenges}{70}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Future work}{70}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Final Thoughts}{70}{section.6.4}%

@@ -1528,8 +1528,8 @@ Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measur
 
 Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same general latency behaviour of the 5G traces.
 
-\subsection{Experiment procedure}
-To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will get a 1ms delay for a more realistic scenario. 
+\subsection{Experiment Configuration}
+To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will get a 1ms delay for a more realistic scenario. The experiment procedure will be to send as much We will use throughput as the main measurement for the performance of each scenario. The interactive traffic will be represented by Ultra ping.
 
 \begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1538,57 +1538,89 @@ To evaluate the PEP with the 5G traces we will change the topology to include a 
   	\label{fig:testbed2}
 \end{figure}
 
-The experiment procedure will be to send data from the sender to the receiver for 120 seconds. Measuring the throughput by seeing how much data was transferred in the 120 seconds. This procedure will be done three times, once for the PEP and twice for end-to-end. End-to-end will be evaluated with both FQ-CoDel and BFIFO, where the BFIFO queue will have a size of the BDP to show the effect how big queues in the network.\\
+\subsubsection{End-to-end Configuration}
+The end-to-end scenario has two cases, once with FQ-CoDel and once with BFIFO. FQ-CoDel will reduce the amount of impact on the interactive, while BFIFO will allow the senders to buffer a lot of data at the router. The BFIFO buffer will be configured with a queue size of the BDP based on the static scenario. The total end to end RTT is 101ms and the bottleneck bandwidth is 3gbit/s. Based on the calculation from Figure \ref{fig:bdp_calculation} the BDP will is 37,875,000 bytes. This will allow for a lot of data to be buffered at the router, which will negatively impact the interactive traffic, but increase the throughput.\\
 
-There will be ten simultaneous transfers to reduce the risk of a lucky or unlucky result.(Ref. to the cubic being unstable?) Additionally, we will have an end to end Ultra ping transfer to measure the latency disruptions for both the end-to-end and PEP file transfers.\\
+\begin{figure}[ht]
+\centering
+\begin{equation}
+\begin{aligned}
+\text{BDP (in Bytes)} &= \frac{\text{Bandwidth (in bits/s)} \times \text{RTT (in s)}}{8} \\
+&= \frac{3 \times 10^9 \times 0.101}{8} \\
+&= 37,875,000 \, \text{Bytes}
+\end{aligned}
+\end{equation}
+\caption{Calculation of the Bandwidth-Delay Product (BDP) in Bytes}
+\label{eq:bdp_calculation}
+\end{figure}
+
+The 100ms delay will be configured on the Sender`s interface towards the router, while the 1ms delay will be configured on the receivers interface.
+
+\subsubsection{PEP Configuration}
+For the PEP case we will change the configuration to assert that no delay is added from the sender. We will achieve this by adding FQ-CoDel at the senders interface and configure the 100ms delay on the routers interface towards the sender. Because the PEP essentially will be a split connection at the router we must be sure that interactive traffic is not already delayed before it reaches the PEP.\\
+
+Mention PEP buffer sizes?
+
+
+\subsection{Experiments Steps}
+For this experiment we will have two parallel flows, one for the data and one for the interactive traffic.\\
 
 The experiment consists of three steps:
 \begin{itemize}
   \item \textbf{Step 1}: The router starts the 5G fluctuations trace simulations.
-  \item \textbf{Step 2}: Ultra ping starts sending interactive traffic from sender to router.
-  \item \textbf{Step 3}: The ten senders start transferring data.
+  \item \textbf{Step 2}: Ultra ping starts sending interactive traffic from sender to receiver.
+  \item \textbf{Step 3}: The sender will start transferring data to the receiver.
 \end{itemize}
-These three steps are repeated once for each scenario and twice for each scenario, either being end-to-end or using the PEP.
 
-\begin{figure}[h!]
-    \centering
-    \begin{minipage}{.5\textwidth}
-        \centering
-        \includegraphics[scale=0.40]{../diagrams/tc/tc_5g_3gbit.png}
-    \end{minipage}%
-    \begin{minipage}{.5\textwidth}
-        \centering
-        \includegraphics[scale=0.40]{../diagrams/tc/tc_delay_fq.png}
-    \end{minipage}
-    \caption{Traffic control configuration for the experiments}
-    \label{fig:tc_5g_fq_codel}
+%\begin{figure}[h!]
+%    \centering
+%    \begin{minipage}{.5\textwidth}
+%        \centering
+%        \includegraphics[scale=0.40]{../diagrams/tc/tc_5g_3gbit.png}
+%    \end{minipage}%
+%    \begin{minipage}{.5\textwidth}
+%        \centering
+%        \includegraphics[scale=0.40]{../diagrams/tc/tc_delay_fq.png}
+%    \end{minipage}
+%    \caption{Traffic control configuration for the experiments}
+%    \label{fig:tc_5g_fq_codel}
+%\end{figure}
+
+\subsubsection{Congestion Controller's affect on throughput}
+While running a throughput test from sender to receiver with a BDP sized BFIFO queue at the router, we observe seemingly random results of throughput. The throughput should theoretically, with our configuration, be about 3Gbit/s: fully utilizing the bandwidth. However the results hover around 2.1Gbit/s to 2.5Gbits/s. To understand this we can look at the congestion window of a cubic transfer.\\
+
+\begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.25]{../diagrams/witestlab/cubicwnd.png}
+  	\caption{Cubic's congestion window}
+  	\label{fig:cubiccwnd}
 \end{figure}
 
-\subsection{Congestion Controller's affect on throughput}
-When running an Iperf3 transfer from sender to receiver with a BDP sized BFIFO queue at the router, we observe an seemingly random results of throughput. The throughput should, with our configuration, be about 3Gbit/s, fully utilizing the bandwidth. However the results hover around 2.4Gbit/s to 2.8Gbits/s.\\
+The first interesting aspect of Figure \ref{fig:cubiccwnd} is the slow cubic curve. It takes a long time to fully utilize the bandwidth. Additionally, looking at the relation to the BDP, we can see that the transfer was lucky the first time starting just under the BDP, and unlucky the second were it starts way below the BDP. Resulting in a rather low throughput.\\
 
-Looking at a congestion window graph of a cubic transfer we can see the reason:\\
-CWND plot\\
+Looking at the double back-off after 70 seconds in Figure \ref{fig:cubiccwnd} we can see that the next congestion avoidance? phase starts low and does not reach full throughput again before the experiment ended.Which brings us to the conclusion that Cubic does not operate effectively in our scenarios with big bandwidths and huge buffers. Because of these results a single Cubic transfer is not representative of the achievable throughput as it will either be lucky and get a big throughput or unlucky with a low throughput.\\
 
-The first interesting aspect of Figure ... is the slow cubic curve. It takes a long time to fully utilize the bandwidth. Additionally, looking at the relation to the BDP, we can see that the transfer was lucky the first time, and lucky the second. Resulting in a rather low throughput.\\
+Looking at Reno we see the same kind of behavior, where the big BFIFO queue and high bandwidth results in low throughput because of the congestion avoidance phase. Looking at Figure \ref{fig:renocwnd} we can see an unlucky congestion avoidance start which leads to low throughput.
+ 
+\begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.25]{../diagrams/witestlab/renocwnd.png}
+  	\caption{Reno's congestion window}
+  	\label{fig:renocwnd}
+\end{figure}
 
-Looking at the double back-off after 70s in Figure ... we can see...\\
-
-Which brings us to the conclusion that Cubic does not operate effectively in our scenarios with big bandwidths and huge buffers. Because of these results a single Cubic transfer is not representative of the achievable throughput as it will either be lucky and get a big throughput or unlucky with a low throughput.\\
-
-Having multiple flows will reduce the luck aspect and give a more realistic representation of the throughput. Using Reno is not better... Reno graph.
+Because of the unstable nature of Cubic in our experiments we will run each experiment ten times to avoid a lucky or unlucky throughput result.
 
 % The experiments will consist of comparing, end to end fqcodel, bfifo and the PEP, with the hypohethis being that BFIFO will have good through put and fqcodel not. 
 
 
 \subsection{Results}
-
-The results in this experiment will focus on Ultra ping latency graphs to measure impact on interactive traffic and the completion times of the ten file transfers. To evaluate the PEP's efficiency, compared to a normal end to end transfer, we will look at the average, standard deviation and mean of the completion times.
+The results will focus on the differences in throughput based on the scenario. Importantly how the choice of buffer, scheduler and 5G scenario affect the fairness, impact on interactive traffic and achievable throughput. 
 
 \subsubsection{Static link}
-We will start with evaluating the PEP under a static link as the base line to which we can compare the other three scenarios. Figure \ref{fig:witestlab_static_delay} shows the impact of the file transfers on the interactive traffic.\\
+The static link scenario will represent a baseline of performance with little to no fluctuations. Based on this baseline we can compare the affect of the various types of fluctuations. 
 
-\begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
+\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.50]{../diagrams/witestlab/staticlink.pdf}
   	\caption{Delay caused by fluctuating bandwidth with a static link}
@@ -1605,10 +1637,6 @@ Compared to our initial base case there seems to be a bigger impact on the inter
 Mean                              & 100.158ms                  & 100.242ms                  \\
 Median                            & 100.151ms                  & 100.207ms                  \\
 Standard Deviation                & 0.0234ms                   & 0.1067ms                   \\
-%\multicolumn{3}{l}{\textbf{Differences}}                             \\ \hline
-%Difference in Mean                & \multicolumn{2}{c}{-0.0844ms}         \\
-%Difference in Median              & \multicolumn{2}{c}{-0.0556ms}         \\
-%Difference in Standard Deviation  & \multicolumn{2}{c}{-0.0833ms}         \\
 \end{tabular}
 \caption{Comparison of first 1000 latency packets for Static Link E2E and Static Link PEP Statistics}
 \label{tab:sl_latency_statistics}

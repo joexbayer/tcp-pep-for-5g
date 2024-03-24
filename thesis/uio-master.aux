@@ -2,10 +2,13 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -32,16 +35,16 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}TCP/IP}{2}{section.2.1}\protected@file@percent }
 \citation{rfc6077}
 \citation{welzl_congestion}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains}}{3}{figure.caption.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{3}{figure.caption.4}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:domains}{{2.1}{3}{Example of network domains}{figure.caption.4}{}}
+\newlabel{fig:domains}{{2.1}{3}{Example of network domains\relax }{figure.caption.4}{}}
 \newlabel{fig:domains@cref}{{[figure][1][2]2.1}{[1][3][]3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Congestion Control}{3}{subsection.2.1.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}3 Way handshake (0 RTT)}{4}{subsection.2.1.2}\protected@file@percent }
 \citation{tcp_options}
 \citation{rfc8803}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure}}{5}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:tcphandshake}{{2.2}{5}{The TCP handshake procedure}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{5}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:tcphandshake}{{2.2}{5}{The TCP handshake procedure\relax }{figure.caption.5}{}}
 \newlabel{fig:tcphandshake@cref}{{[figure][2][2]2.2}{[1][5][]5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}TCP Options and Fast Open}{5}{subsection.2.1.3}\protected@file@percent }
 \citation{Agrawal_Sharma_2016}
@@ -53,16 +56,16 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}5G Millimetre Wave}{6}{subsection.2.2.1}\protected@file@percent }
 \citation{aqm_survey}
 \citation{aqm}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave from real 5G traces\nobreakspace  {}\cite  {Srivastava_Fund_Panwar_2020}}}{7}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:blockage}{{2.3}{7}{Capacity fluctuations from mmwave from real 5G traces~\cite {Srivastava_Fund_Panwar_2020}}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave from real 5G traces\nobreakspace  {}\cite  {Srivastava_Fund_Panwar_2020}\relax }}{7}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:blockage}{{2.3}{7}{Capacity fluctuations from mmwave from real 5G traces~\cite {Srivastava_Fund_Panwar_2020}\relax }{figure.caption.6}{}}
 \newlabel{fig:blockage@cref}{{[figure][3][2]2.3}{[1][6][]7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Buffering}{7}{subsection.2.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Bufferbloat}{7}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Active Queue Management}{7}{section*.8}\protected@file@percent }
 \citation{fq_codel_rfc}
 \@writefile{toc}{\contentsline {subsubsection}{Packet Scheduling}{8}{section*.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Linux packet queuing}}{8}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:blockage}{{2.4}{8}{Linux packet queuing}{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Linux packet queuing\relax }}{8}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:blockage}{{2.4}{8}{Linux packet queuing\relax }{figure.caption.10}{}}
 \newlabel{fig:blockage@cref}{{[figure][4][2]2.4}{[1][8][]8}}
 \citation{nextgen_proxy_servers}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{9}{subsection.2.2.3}\protected@file@percent }
@@ -72,8 +75,8 @@
 \citation{pep_dna}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}PEP}{10}{subsection.2.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}PEP for wireless communication}{10}{subsection.2.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces PEP installed to support Wireless traffic over satellite.}}{10}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:blockage}{{2.5}{10}{PEP installed to support Wireless traffic over satellite}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{10}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:blockage}{{2.5}{10}{PEP installed to support Wireless traffic over satellite.\relax }{figure.caption.11}{}}
 \newlabel{fig:blockage@cref}{{[figure][5][2]2.5}{[1][10][]10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{11}{subsection.2.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Linux}{11}{section.2.4}\protected@file@percent }
@@ -90,11 +93,11 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{13}{section.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)}}{13}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:simple_pep_design}{{3.1}{13}{PEP within a network (Simplified)}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces PEP within a network (Simplified)\relax }}{13}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:simple_pep_design}{{3.1}{13}{PEP within a network (Simplified)\relax }{figure.caption.12}{}}
 \newlabel{fig:simple_pep_design@cref}{{[figure][1][3]3.1}{[1][13][]13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 5G network topology}}{14}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:5g_topology}{{3.2}{14}{Example 5G network topology}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 5G network topology\relax }}{14}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:5g_topology}{{3.2}{14}{Example 5G network topology\relax }{figure.caption.13}{}}
 \newlabel{fig:5g_topology@cref}{{[figure][2][3]3.2}{[1][14][]14}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Performance}{14}{section.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Programming Language}{14}{subsection.3.2.1}\protected@file@percent }
@@ -103,23 +106,23 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Connection splitting using Sockets}{15}{subsection.3.2.3}\protected@file@percent }
 \citation{top_down}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Bandwidth utilization}{16}{subsection.3.2.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of poor bandwidth utilization.}}{16}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:pep_bandwidth_bad}{{3.3}{16}{Example of poor bandwidth utilization}{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of poor bandwidth utilization.\relax }}{16}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:pep_bandwidth_bad}{{3.3}{16}{Example of poor bandwidth utilization.\relax }{figure.caption.14}{}}
 \newlabel{fig:pep_bandwidth_bad@cref}{{[figure][3][3]3.3}{[1][16][]16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Example of good bandwidth utilization.}}{16}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:pep_bandwidth_good}{{3.4}{16}{Example of good bandwidth utilization}{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Example of good bandwidth utilization.\relax }}{16}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:pep_bandwidth_good}{{3.4}{16}{Example of good bandwidth utilization.\relax }{figure.caption.15}{}}
 \newlabel{fig:pep_bandwidth_good@cref}{{[figure][4][3]3.4}{[1][16][]16}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Table showing bandwidth utilization with and without a PEP.}}{17}{table.caption.16}\protected@file@percent }
-\newlabel{tab:pep_bandwidth_table}{{3.1}{17}{Table showing bandwidth utilization with and without a PEP}{table.caption.16}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Table showing bandwidth utilization with and without a PEP.\relax }}{17}{table.caption.16}\protected@file@percent }
+\newlabel{tab:pep_bandwidth_table}{{3.1}{17}{Table showing bandwidth utilization with and without a PEP.\relax }{table.caption.16}{}}
 \newlabel{tab:pep_bandwidth_table@cref}{{[table][1][3]3.1}{[1][16][]17}}
 \@writefile{toc}{\contentsline {paragraph}{Delay}{17}{section*.17}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Split connection with bandwidth and delay.}}{17}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:pep_bandwidth_delay}{{3.5}{17}{Split connection with bandwidth and delay}{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Split connection with bandwidth and delay.\relax }}{17}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:pep_bandwidth_delay}{{3.5}{17}{Split connection with bandwidth and delay.\relax }{figure.caption.18}{}}
 \newlabel{fig:pep_bandwidth_delay@cref}{{[figure][5][3]3.5}{[1][17][]17}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}PEP Selection}{17}{subsection.3.2.5}\protected@file@percent }
 \citation{tcp_extendable}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces The TCP handshake procedure across PEP}}{18}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:tcphandshake_primitiv}{{3.6}{18}{The TCP handshake procedure across PEP}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces The TCP handshake procedure across PEP\relax }}{18}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:tcphandshake_primitiv}{{3.6}{18}{The TCP handshake procedure across PEP\relax }{figure.caption.19}{}}
 \newlabel{fig:tcphandshake_primitiv@cref}{{[figure][6][3]3.6}{[1][18][]18}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}Connection Establishment}{18}{subsection.3.2.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{TCP Options}{18}{section*.20}\protected@file@percent }
@@ -128,20 +131,20 @@
 \@writefile{toc}{\contentsline {paragraph}{TCP Fast Open}{19}{section*.21}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Optimal Choice}{19}{section*.22}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Deployment (Transparency)}{19}{section.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Optimal handshake across PEP (0 RTT)}}{20}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:tcphandshake_optimal}{{3.7}{20}{Optimal handshake across PEP (0 RTT)}{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Optimal handshake across PEP (0 RTT)\relax }}{20}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:tcphandshake_optimal}{{3.7}{20}{Optimal handshake across PEP (0 RTT)\relax }{figure.caption.23}{}}
 \newlabel{fig:tcphandshake_optimal@cref}{{[figure][7][3]3.7}{[1][19][]20}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Transparent PEP}{20}{subsection.3.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Non Transparent PEP}{20}{subsection.3.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Deployment of a PEP at a base station}}{21}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:pep_deployment}{{3.8}{21}{Deployment of a PEP at a base station}{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Deployment of a PEP at a base station\relax }}{21}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:pep_deployment}{{3.8}{21}{Deployment of a PEP at a base station\relax }{figure.caption.24}{}}
 \newlabel{fig:pep_deployment@cref}{{[figure][8][3]3.8}{[1][21][]21}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Buffering}{22}{section.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Socket buffers}{22}{subsection.3.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}AQM \& Scheduling}{22}{section.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.6}Security}{22}{section.3.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.7}Summary}{23}{section.3.7}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Table of design decisions based on different PEP implementations compared to ours.}}{23}{table.caption.25}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Table of design decisions based on different PEP implementations compared to ours.\relax }}{23}{table.caption.25}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation}{24}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -161,8 +164,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{28}{subsection.4.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{The custom connect function signature}{28}{section*.27}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}TLV}{28}{subsection.4.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of TLV header and entries}}{29}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:tlv_example}{{4.1}{29}{Example of TLV header and entries}{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of TLV header and entries\relax }}{29}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:tlv_example}{{4.1}{29}{Example of TLV header and entries\relax }{figure.caption.30}{}}
 \newlabel{fig:tlv_example@cref}{{[figure][1][4]4.1}{[1][29][]29}}
 \@writefile{toc}{\contentsline {paragraph}{TLV structures}{29}{section*.28}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{TLV Implementation}{29}{section*.29}\protected@file@percent }
@@ -170,30 +173,30 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}TLV Options}{30}{subsection.4.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Shared Library}{30}{subsection.4.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}PEP - Internals}{30}{section.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The architecture of the PEP}}{31}{figure.caption.32}\protected@file@percent }
-\newlabel{fig:pep_architecture}{{4.2}{31}{The architecture of the PEP}{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The architecture of the PEP\relax }}{31}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:pep_architecture}{{4.2}{31}{The architecture of the PEP\relax }{figure.caption.32}{}}
 \newlabel{fig:pep_architecture@cref}{{[figure][2][4]4.2}{[1][30][]31}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Architecture}{31}{subsection.4.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces PEP State Structure Code}}{32}{figure.4.3}\protected@file@percent }
-\newlabel{fig:pep_state_structure}{{4.3}{32}{PEP State Structure Code}{figure.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces PEP State Structure Code\relax }}{32}{figure.4.3}\protected@file@percent }
+\newlabel{fig:pep_state_structure}{{4.3}{32}{PEP State Structure Code\relax }{figure.4.3}{}}
 \newlabel{fig:pep_state_structure@cref}{{[figure][3][4]4.3}{[1][31][]32}}
 \@writefile{toc}{\contentsline {paragraph}{Tunnels}{32}{section*.33}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{PEP Tunnel Structure}{32}{section*.34}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{33}{subsection.4.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Kernel Sock Structure}}{33}{figure.4.4}\protected@file@percent }
-\newlabel{fig:kern_sock}{{4.4}{33}{Kernel Sock Structure}{figure.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Kernel Sock Structure\relax }}{33}{figure.4.4}\protected@file@percent }
+\newlabel{fig:kern_sock}{{4.4}{33}{Kernel Sock Structure\relax }{figure.4.4}{}}
 \newlabel{fig:kern_sock@cref}{{[figure][4][4]4.4}{[1][33][]33}}
 \@writefile{toc}{\contentsline {paragraph}{Socket Operations}{33}{section*.35}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Socket Callbacks}{33}{section*.36}\protected@file@percent }
 \citation{linuxkernel_neth}
 \citation{linuxkernel_neth}
 \@writefile{toc}{\contentsline {paragraph}{Socket User Data}{34}{section*.37}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Socket Protocol Operations from Linux - net.h\nobreakspace  {}\cite  {linuxkernel_neth} }}{34}{figure.4.5}\protected@file@percent }
-\newlabel{fig:proto_ops}{{4.5}{34}{Socket Protocol Operations from Linux - net.h~\cite {linuxkernel_neth}}{figure.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Socket Protocol Operations from Linux - net.h\nobreakspace  {}\cite  {linuxkernel_neth} \relax }}{34}{figure.4.5}\protected@file@percent }
+\newlabel{fig:proto_ops}{{4.5}{34}{Socket Protocol Operations from Linux - net.h~\cite {linuxkernel_neth} \relax }{figure.4.5}{}}
 \newlabel{fig:proto_ops@cref}{{[figure][5][4]4.5}{[1][34][]34}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Work Queues}{34}{subsection.4.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Work struct from Linux - workqueue.h}}{35}{figure.4.6}\protected@file@percent }
-\newlabel{fig:work_struct}{{4.6}{35}{Work struct from Linux - workqueue.h}{figure.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{35}{figure.4.6}\protected@file@percent }
+\newlabel{fig:work_struct}{{4.6}{35}{Work struct from Linux - workqueue.h\relax }{figure.4.6}{}}
 \newlabel{fig:work_struct@cref}{{[figure][6][4]4.6}{[1][35][]35}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Works}{35}{subsection.4.3.4}\protected@file@percent }
 \newlabel{lst:work_init}{{4.3.1}{35}{Works}{tcb@cnt@autonumlstlisting.4.3.1}{}}
@@ -220,7 +223,7 @@
 \newlabel{lst:pep_server_init}{{4.4.1}{39}{Server initialization}{tcb@cnt@autonumlstlisting.4.4.1}{}}
 \newlabel{lst:pep_server_init@cref}{{[tcb@cnt@autonumlstlisting][1][4,4]4.4.1}{[1][38][]39}}
 \@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.4.1}{\ignorespaces Listing 4.4.1: PEP server initialization (Simplified)}}{39}{tcb@cnt@autonumlstlisting.4.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html}}{40}{figure.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{40}{figure.4.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Accept and Endpoint connection}{40}{subsection.4.4.3}\protected@file@percent }
 \newlabel{lst:pep_server_accept}{{4.4.2}{41}{Accept and Endpoint connection}{tcb@cnt@autonumlstlisting.4.4.2}{}}
 \newlabel{lst:pep_server_accept@cref}{{[tcb@cnt@autonumlstlisting][2][4,4]4.4.2}{[1][40][]41}}
@@ -233,8 +236,8 @@
 \@writefile{lol}{\contentsline {tcolorbox}{\numberline {4.5.1}{\ignorespaces Listing 4.5.1: Client Forwarding Function (Simplified)}}{42}{tcb@cnt@autonumlstlisting.4.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}PEP Connections}{43}{subsection.4.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Module Customization}{43}{subsection.4.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Work operation table}}{43}{figure.4.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Callback function table}}{44}{figure.4.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Work operation table\relax }}{43}{figure.4.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Callback function table\relax }}{44}{figure.4.9}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}System Configurations}{44}{subsection.4.5.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Buffer sizes}{44}{section*.41}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.5}Userspace?}{45}{subsection.4.5.5}\protected@file@percent }
@@ -249,136 +252,145 @@
 \@writefile{toc}{\contentsline {section}{\numberline {5.2}Initial test}{46}{section.5.2}\protected@file@percent }
 \citation{Agarwal_Krishnamurthy_Agarwal_2023}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Testbed}{47}{subsection.5.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Overview of the Ocarina testbed}}{47}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:testbed}{{5.1}{47}{Overview of the Ocarina testbed}{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Overview of the Ocarina testbed\relax }}{47}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:testbed}{{5.1}{47}{Overview of the Ocarina testbed\relax }{figure.caption.42}{}}
 \newlabel{fig:testbed@cref}{{[figure][1][5]5.1}{[1][47][]47}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Hosts and Hardware}{47}{subsection.5.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Screenfetch results}}{48}{figure.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Screenfetch results\relax }}{48}{figure.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Configuration}{48}{subsection.5.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Sender}{48}{section*.43}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Router (PEP)}{49}{section*.44}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces FQ-CoDel traffic control visualization}}{49}{figure.caption.45}\protected@file@percent }
-\newlabel{fig:tc_base_fq}{{5.3}{49}{FQ-CoDel traffic control visualization}{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces FQ-CoDel traffic control visualization\relax }}{49}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:tc_base_fq}{{5.3}{49}{FQ-CoDel traffic control visualization\relax }{figure.caption.45}{}}
 \newlabel{fig:tc_base_fq@cref}{{[figure][3][5]5.3}{[1][49][]49}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces BFIFO traffic control visualization}}{50}{figure.caption.46}\protected@file@percent }
-\newlabel{fig:tc_base_bfifo}{{5.4}{50}{BFIFO traffic control visualization}{figure.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces BFIFO traffic control visualization\relax }}{50}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:tc_base_bfifo}{{5.4}{50}{BFIFO traffic control visualization\relax }{figure.caption.46}{}}
 \newlabel{fig:tc_base_bfifo@cref}{{[figure][4][5]5.4}{[1][49][]50}}
 \@writefile{toc}{\contentsline {subsubsection}{Receiver}{50}{section*.47}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.4}Experiment Procedure}{51}{subsection.5.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.5}Results \& Analysis}{51}{subsection.5.2.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces File transfer impact on interactive traffic}}{52}{figure.caption.48}\protected@file@percent }
-\newlabel{fig:graph1}{{5.5}{52}{File transfer impact on interactive traffic}{figure.caption.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces File transfer impact on interactive traffic\relax }}{52}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:graph1}{{5.5}{52}{File transfer impact on interactive traffic\relax }{figure.caption.48}{}}
 \newlabel{fig:graph1@cref}{{[figure][5][5]5.5}{[1][51][]52}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Table showing the Flow Completion Times (FCT) for each file transfer.}}{52}{table.caption.49}\protected@file@percent }
-\newlabel{tab:pep_fcts}{{5.1}{52}{Table showing the Flow Completion Times (FCT) for each file transfer}{table.caption.49}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Table showing the Flow Completion Times (FCT) for each file transfer.\relax }}{52}{table.caption.49}\protected@file@percent }
+\newlabel{tab:pep_fcts}{{5.1}{52}{Table showing the Flow Completion Times (FCT) for each file transfer.\relax }{table.caption.49}{}}
 \newlabel{tab:pep_fcts@cref}{{[table][1][5]5.1}{[1][52][]52}}
 \citation{Srivastava_Fund_Panwar_2020}
 \citation{hingane2020aqm}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Close up of End to End compared to PEP}}{53}{figure.caption.50}\protected@file@percent }
-\newlabel{fig:graph2}{{5.6}{53}{Close up of End to End compared to PEP}{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Close up of End to End compared to PEP\relax }}{53}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:graph2}{{5.6}{53}{Close up of End to End compared to PEP\relax }{figure.caption.50}{}}
 \newlabel{fig:graph2@cref}{{[figure][6][5]5.6}{[1][52][]53}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Delay statistics (Calculated based on longest completion time)}}{53}{table.caption.51}\protected@file@percent }
-\newlabel{tab:delay_variations}{{5.2}{53}{Delay statistics (Calculated based on longest completion time)}{table.caption.51}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Delay statistics (Calculated based on longest completion time)\relax }}{53}{table.caption.51}\protected@file@percent }
+\newlabel{tab:delay_variations}{{5.2}{53}{Delay statistics (Calculated based on longest completion time)\relax }{table.caption.51}{}}
 \newlabel{tab:delay_variations@cref}{{[table][2][5]5.2}{[1][53][]53}}
 \citation{Srivastava_Fund_Panwar_2020}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces The file transfer's effect on the interactive traffic.}}{54}{figure.caption.52}\protected@file@percent }
-\newlabel{fig:graph3}{{5.7}{54}{The file transfer's effect on the interactive traffic}{figure.caption.52}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces The file transfer's effect on the interactive traffic.\relax }}{54}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:graph3}{{5.7}{54}{The file transfer's effect on the interactive traffic.\relax }{figure.caption.52}{}}
 \newlabel{fig:graph3@cref}{{[figure][7][5]5.7}{[1][53][]54}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.3}Using real 5G traces}{54}{section.5.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Traces}{54}{subsection.5.3.1}\protected@file@percent }
 \citation{Srivastava_Fund_Panwar_2020}
 \citation{Srivastava_Fund_Panwar_2020}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios (Data from \nobreakspace  {}\cite  {Srivastava_Fund_Panwar_2020})}}{55}{figure.caption.53}\protected@file@percent }
-\newlabel{fig:witestlab_graph1}{{5.8}{55}{mmWave capacity fluctuation for four different 5G scenarios (Data from ~\cite {Srivastava_Fund_Panwar_2020})}{figure.caption.53}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios (Data from \nobreakspace  {}\cite  {Srivastava_Fund_Panwar_2020})\relax }}{55}{figure.caption.53}\protected@file@percent }
+\newlabel{fig:witestlab_graph1}{{5.8}{55}{mmWave capacity fluctuation for four different 5G scenarios (Data from ~\cite {Srivastava_Fund_Panwar_2020})\relax }{figure.caption.53}{}}
 \newlabel{fig:witestlab_graph1@cref}{{[figure][8][5]5.8}{[1][55][]55}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Topology}{55}{subsection.5.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Configuration}{55}{subsection.5.3.3}\protected@file@percent }
 \citation{Srivastava_Fund_Panwar_2020}
 \citation{Srivastava_Fund_Panwar_2020}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}Validation}{56}{subsection.5.3.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces BFIFO traffic control visualization for 5G traces}}{56}{figure.caption.54}\protected@file@percent }
-\newlabel{fig:tc_5g_bfifo}{{5.9}{56}{BFIFO traffic control visualization for 5G traces}{figure.caption.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces BFIFO traffic control visualization for 5G traces\relax }}{56}{figure.caption.54}\protected@file@percent }
+\newlabel{fig:tc_5g_bfifo}{{5.9}{56}{BFIFO traffic control visualization for 5G traces\relax }{figure.caption.54}{}}
 \newlabel{fig:tc_5g_bfifo@cref}{{[figure][9][5]5.9}{[1][56][]56}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Results from the Witestlab experiment\nobreakspace  {}\cite  {Srivastava_Fund_Panwar_2020}}}{57}{figure.caption.55}\protected@file@percent }
-\newlabel{fig:witestlab_results}{{5.10}{57}{Results from the Witestlab experiment~\cite {Srivastava_Fund_Panwar_2020}}{figure.caption.55}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Results from the Witestlab experiment\nobreakspace  {}\cite  {Srivastava_Fund_Panwar_2020}\relax }}{57}{figure.caption.55}\protected@file@percent }
+\newlabel{fig:witestlab_results}{{5.10}{57}{Results from the Witestlab experiment~\cite {Srivastava_Fund_Panwar_2020}\relax }{figure.caption.55}{}}
 \newlabel{fig:witestlab_results@cref}{{[figure][10][5]5.10}{[1][56][]57}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Our results for the delay caused by fluctuating bandwidth}}{57}{figure.caption.56}\protected@file@percent }
-\newlabel{fig:witestlab_graph_delay_1}{{5.11}{57}{Our results for the delay caused by fluctuating bandwidth}{figure.caption.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Our results for the delay caused by fluctuating bandwidth\relax }}{57}{figure.caption.56}\protected@file@percent }
+\newlabel{fig:witestlab_graph_delay_1}{{5.11}{57}{Our results for the delay caused by fluctuating bandwidth\relax }{figure.caption.56}{}}
 \newlabel{fig:witestlab_graph_delay_1@cref}{{[figure][11][5]5.11}{[1][57][]57}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Experiment procedure}{57}{subsection.5.3.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Testbed configuration for 5G traces}}{58}{figure.caption.57}\protected@file@percent }
-\newlabel{fig:testbed2}{{5.12}{58}{Testbed configuration for 5G traces}{figure.caption.57}{}}
-\newlabel{fig:testbed2@cref}{{[figure][12][5]5.12}{[1][57][]58}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Traffic control configuration for the experiments}}{59}{figure.caption.58}\protected@file@percent }
-\newlabel{fig:tc_5g_fq_codel}{{5.13}{59}{Traffic control configuration for the experiments}{figure.caption.58}{}}
-\newlabel{fig:tc_5g_fq_codel@cref}{{[figure][13][5]5.13}{[1][58][]59}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}Congestion Controller's affect on throughput}{59}{subsection.5.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}Results}{60}{subsection.5.3.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Static link}{60}{section*.59}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Delay caused by fluctuating bandwidth with a static link}}{60}{figure.caption.60}\protected@file@percent }
-\newlabel{fig:witestlab_static_delay}{{5.14}{60}{Delay caused by fluctuating bandwidth with a static link}{figure.caption.60}{}}
-\newlabel{fig:witestlab_static_delay@cref}{{[figure][14][5]5.14}{[1][60][]60}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Comparison of first 1000 latency packets for Static Link E2E and Static Link PEP Statistics}}{60}{table.caption.61}\protected@file@percent }
-\newlabel{tab:sl_latency_statistics}{{5.3}{60}{Comparison of first 1000 latency packets for Static Link E2E and Static Link PEP Statistics}{table.caption.61}{}}
-\newlabel{tab:sl_latency_statistics@cref}{{[table][3][5]5.3}{[1][60][]60}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Completion times with a static link}}{61}{figure.caption.62}\protected@file@percent }
-\newlabel{fig:witestlab_static_fcts}{{5.15}{61}{Completion times with a static link}{figure.caption.62}{}}
-\newlabel{fig:witestlab_static_fcts@cref}{{[figure][15][5]5.15}{[1][61][]61}}
-\@writefile{toc}{\contentsline {subsubsection}{Short blockages}{61}{section*.63}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Differences in Short Blockage compared to the original Static link}}{62}{table.caption.64}\protected@file@percent }
-\newlabel{tab:sb_fct_diff}{{5.4}{62}{Differences in Short Blockage compared to the original Static link}{table.caption.64}{}}
-\newlabel{tab:sb_fct_diff@cref}{{[table][4][5]5.4}{[1][61][]62}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Impact on interactive traffic with short blockages}}{62}{figure.caption.65}\protected@file@percent }
-\newlabel{fig:sb_ultra_1}{{5.16}{62}{Impact on interactive traffic with short blockages}{figure.caption.65}{}}
-\newlabel{fig:sb_ultra_1@cref}{{[figure][16][5]5.16}{[1][61][]62}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Completion times with short blockage}}{62}{figure.caption.66}\protected@file@percent }
-\newlabel{fig:witestlab_sb_fcts}{{5.17}{62}{Completion times with short blockage}{figure.caption.66}{}}
-\newlabel{fig:witestlab_sb_fcts@cref}{{[figure][17][5]5.17}{[1][61][]62}}
-\@writefile{toc}{\contentsline {subsubsection}{Long blockages}{62}{section*.67}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces Impact on interactive traffic with long blockages}}{63}{figure.caption.68}\protected@file@percent }
-\newlabel{fig:witestlab_graph_delay}{{5.18}{63}{Impact on interactive traffic with long blockages}{figure.caption.68}{}}
-\newlabel{fig:witestlab_graph_delay@cref}{{[figure][18][5]5.18}{[1][61][]63}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Differences in Short Blockage compared to the original Static link}}{63}{table.caption.69}\protected@file@percent }
-\newlabel{tab:lb_fct_diff}{{5.5}{63}{Differences in Short Blockage compared to the original Static link}{table.caption.69}{}}
-\newlabel{tab:lb_fct_diff@cref}{{[table][5][5]5.5}{[1][62][]63}}
-\@writefile{toc}{\contentsline {subsubsection}{Mobility and Blockages}{63}{section*.70}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}Throughput Experiment}{63}{subsection.5.3.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces Delay caused by fluctuating bandwidth with the mobility and blockages scenario.}}{64}{figure.caption.71}\protected@file@percent }
-\newlabel{fig:witestlab_graph_delay_mobb}{{5.19}{64}{Delay caused by fluctuating bandwidth with the mobility and blockages scenario}{figure.caption.71}{}}
-\newlabel{fig:witestlab_graph_delay_mobb@cref}{{[figure][19][5]5.19}{[1][63][]64}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces Completion times with mobility and blockages}}{64}{figure.caption.72}\protected@file@percent }
-\newlabel{fig:witestlab_mobb_fcts}{{5.20}{64}{Completion times with mobility and blockages}{figure.caption.72}{}}
-\newlabel{fig:witestlab_mobb_fcts@cref}{{[figure][20][5]5.20}{[1][63][]64}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Differences in Completion Times with mobility and blockages compared to a static link}}{64}{table.caption.73}\protected@file@percent }
-\newlabel{tab:mobb_fct_diff}{{5.6}{64}{Differences in Completion Times with mobility and blockages compared to a static link}{table.caption.73}{}}
-\newlabel{tab:mobb_fct_diff@cref}{{[table][6][5]5.6}{[1][63][]64}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.21}{\ignorespaces Throughput comparison of 19 flows for PEP and end to end transfers.}}{65}{figure.caption.74}\protected@file@percent }
-\newlabel{fig:witestlab_tput_bars}{{5.21}{65}{Throughput comparison of 19 flows for PEP and end to end transfers}{figure.caption.74}{}}
-\newlabel{fig:witestlab_tput_bars@cref}{{[figure][21][5]5.21}{[1][64][]65}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.22}{\ignorespaces Latency impact from throughput experiment.}}{66}{figure.caption.75}\protected@file@percent }
-\newlabel{fig:witestlab_tput_ping}{{5.22}{66}{Latency impact from throughput experiment}{figure.caption.75}{}}
-\newlabel{fig:witestlab_tput_ping@cref}{{[figure][22][5]5.22}{[1][65][]66}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.9}Buffer size effect on throughput}{66}{subsection.5.3.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.10}Evaluation of 5G traces experiment}{66}{subsection.5.3.10}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.23}{\ignorespaces Delay caused by fluctuating bandwidth}}{67}{figure.caption.76}\protected@file@percent }
-\newlabel{fig:witestlab_graph_delay}{{5.23}{67}{Delay caused by fluctuating bandwidth}{figure.caption.76}{}}
-\newlabel{fig:witestlab_graph_delay@cref}{{[figure][23][5]5.23}{[1][66][]67}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{68}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}Experiment Configuration}{57}{subsection.5.3.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Testbed configuration for 5G traces\relax }}{58}{figure.caption.57}\protected@file@percent }
+\newlabel{fig:testbed2}{{5.12}{58}{Testbed configuration for 5G traces\relax }{figure.caption.57}{}}
+\newlabel{fig:testbed2@cref}{{[figure][12][5]5.12}{[1][58][]58}}
+\@writefile{toc}{\contentsline {subsubsection}{End-to-end Configuration}{58}{section*.58}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Calculation of the Bandwidth-Delay Product (BDP) in Bytes\relax }}{58}{figure.caption.59}\protected@file@percent }
+\newlabel{eq:bdp_calculation}{{5.13}{58}{Calculation of the Bandwidth-Delay Product (BDP) in Bytes\relax }{figure.caption.59}{}}
+\newlabel{eq:bdp_calculation@cref}{{[figure][13][5]5.13}{[1][58][]58}}
+\@writefile{toc}{\contentsline {subsubsection}{PEP Configuration}{59}{section*.60}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}Experiments Steps}{59}{subsection.5.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Congestion Controller's affect on throughput}{59}{section*.61}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Cubic's congestion window\relax }}{60}{figure.caption.62}\protected@file@percent }
+\newlabel{fig:cubiccwnd}{{5.14}{60}{Cubic's congestion window\relax }{figure.caption.62}{}}
+\newlabel{fig:cubiccwnd@cref}{{[figure][14][5]5.14}{[1][59][]60}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Reno's congestion window\relax }}{60}{figure.caption.63}\protected@file@percent }
+\newlabel{fig:renocwnd}{{5.15}{60}{Reno's congestion window\relax }{figure.caption.63}{}}
+\newlabel{fig:renocwnd@cref}{{[figure][15][5]5.15}{[1][60][]60}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}Results}{61}{subsection.5.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Static link}{61}{section*.64}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Delay caused by fluctuating bandwidth with a static link\relax }}{61}{figure.caption.65}\protected@file@percent }
+\newlabel{fig:witestlab_static_delay}{{5.16}{61}{Delay caused by fluctuating bandwidth with a static link\relax }{figure.caption.65}{}}
+\newlabel{fig:witestlab_static_delay@cref}{{[figure][16][5]5.16}{[1][61][]61}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Comparison of first 1000 latency packets for Static Link E2E and Static Link PEP Statistics\relax }}{61}{table.caption.66}\protected@file@percent }
+\newlabel{tab:sl_latency_statistics}{{5.3}{61}{Comparison of first 1000 latency packets for Static Link E2E and Static Link PEP Statistics\relax }{table.caption.66}{}}
+\newlabel{tab:sl_latency_statistics@cref}{{[table][3][5]5.3}{[1][61][]61}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces Completion times with a static link\relax }}{62}{figure.caption.67}\protected@file@percent }
+\newlabel{fig:witestlab_static_fcts}{{5.17}{62}{Completion times with a static link\relax }{figure.caption.67}{}}
+\newlabel{fig:witestlab_static_fcts@cref}{{[figure][17][5]5.17}{[1][62][]62}}
+\@writefile{toc}{\contentsline {subsubsection}{Short blockages}{62}{section*.68}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Differences in Short Blockage compared to the original Static link\relax }}{62}{table.caption.69}\protected@file@percent }
+\newlabel{tab:sb_fct_diff}{{5.4}{62}{Differences in Short Blockage compared to the original Static link\relax }{table.caption.69}{}}
+\newlabel{tab:sb_fct_diff@cref}{{[table][4][5]5.4}{[1][62][]62}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{63}{figure.caption.70}\protected@file@percent }
+\newlabel{fig:sb_ultra_1}{{5.18}{63}{Impact on interactive traffic with short blockages\relax }{figure.caption.70}{}}
+\newlabel{fig:sb_ultra_1@cref}{{[figure][18][5]5.18}{[1][62][]63}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces Completion times with short blockage\relax }}{63}{figure.caption.71}\protected@file@percent }
+\newlabel{fig:witestlab_sb_fcts}{{5.19}{63}{Completion times with short blockage\relax }{figure.caption.71}{}}
+\newlabel{fig:witestlab_sb_fcts@cref}{{[figure][19][5]5.19}{[1][63][]63}}
+\@writefile{toc}{\contentsline {subsubsection}{Long blockages}{63}{section*.72}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces Impact on interactive traffic with long blockages\relax }}{64}{figure.caption.73}\protected@file@percent }
+\newlabel{fig:witestlab_graph_delay}{{5.20}{64}{Impact on interactive traffic with long blockages\relax }{figure.caption.73}{}}
+\newlabel{fig:witestlab_graph_delay@cref}{{[figure][20][5]5.20}{[1][63][]64}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Differences in Short Blockage compared to the original Static link\relax }}{64}{table.caption.74}\protected@file@percent }
+\newlabel{tab:lb_fct_diff}{{5.5}{64}{Differences in Short Blockage compared to the original Static link\relax }{table.caption.74}{}}
+\newlabel{tab:lb_fct_diff@cref}{{[table][5][5]5.5}{[1][63][]64}}
+\@writefile{toc}{\contentsline {subsubsection}{Mobility and Blockages}{64}{section*.75}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}Throughput Experiment}{64}{subsection.5.3.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.21}{\ignorespaces Delay caused by fluctuating bandwidth with the mobility and blockages scenario.\relax }}{65}{figure.caption.76}\protected@file@percent }
+\newlabel{fig:witestlab_graph_delay_mobb}{{5.21}{65}{Delay caused by fluctuating bandwidth with the mobility and blockages scenario.\relax }{figure.caption.76}{}}
+\newlabel{fig:witestlab_graph_delay_mobb@cref}{{[figure][21][5]5.21}{[1][64][]65}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.22}{\ignorespaces Completion times with mobility and blockages\relax }}{65}{figure.caption.77}\protected@file@percent }
+\newlabel{fig:witestlab_mobb_fcts}{{5.22}{65}{Completion times with mobility and blockages\relax }{figure.caption.77}{}}
+\newlabel{fig:witestlab_mobb_fcts@cref}{{[figure][22][5]5.22}{[1][64][]65}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Differences in Completion Times with mobility and blockages compared to a static link\relax }}{65}{table.caption.78}\protected@file@percent }
+\newlabel{tab:mobb_fct_diff}{{5.6}{65}{Differences in Completion Times with mobility and blockages compared to a static link\relax }{table.caption.78}{}}
+\newlabel{tab:mobb_fct_diff@cref}{{[table][6][5]5.6}{[1][64][]65}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.23}{\ignorespaces Throughput comparison of 19 flows for PEP and end to end transfers.\relax }}{66}{figure.caption.79}\protected@file@percent }
+\newlabel{fig:witestlab_tput_bars}{{5.23}{66}{Throughput comparison of 19 flows for PEP and end to end transfers.\relax }{figure.caption.79}{}}
+\newlabel{fig:witestlab_tput_bars@cref}{{[figure][23][5]5.23}{[1][65][]66}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.24}{\ignorespaces Latency impact from throughput experiment.\relax }}{67}{figure.caption.80}\protected@file@percent }
+\newlabel{fig:witestlab_tput_ping}{{5.24}{67}{Latency impact from throughput experiment.\relax }{figure.caption.80}{}}
+\newlabel{fig:witestlab_tput_ping@cref}{{[figure][24][5]5.24}{[1][66][]67}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.9}Buffer size effect on throughput}{67}{subsection.5.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.10}Evaluation of 5G traces experiment}{67}{subsection.5.3.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.25}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{68}{figure.caption.81}\protected@file@percent }
+\newlabel{fig:witestlab_graph_delay}{{5.25}{68}{Delay caused by fluctuating bandwidth\relax }{figure.caption.81}{}}
+\newlabel{fig:witestlab_graph_delay@cref}{{[figure][25][5]5.25}{[1][67][]68}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{69}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Results}{68}{section.6.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios}}{68}{figure.caption.77}\protected@file@percent }
-\newlabel{fig:sb_ultra}{{6.1}{68}{Completion times for different 5G scenarios}{figure.caption.77}{}}
-\newlabel{fig:sb_ultra@cref}{{[figure][1][6]6.1}{[1][68][]68}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Results}{69}{section.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios\relax }}{69}{figure.caption.82}\protected@file@percent }
+\newlabel{fig:sb_ultra}{{6.1}{69}{Completion times for different 5G scenarios\relax }{figure.caption.82}{}}
+\newlabel{fig:sb_ultra@cref}{{[figure][1][6]6.1}{[1][69][]69}}
 \bibdata{myBib.bib}
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Aggregated Flow Completion Time Statistics}}{69}{table.caption.78}\protected@file@percent }
-\newlabel{tab:aggregated_fct_statistics}{{6.1}{69}{Aggregated Flow Completion Time Statistics}{table.caption.78}{}}
-\newlabel{tab:aggregated_fct_statistics@cref}{{[table][1][6]6.1}{[1][68][]69}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{69}{subsection.6.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{69}{subsection.6.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Limitations and Challenges}{69}{section.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Future work}{69}{section.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Final Thoughts}{69}{section.6.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Aggregated Flow Completion Time Statistics\relax }}{70}{table.caption.83}\protected@file@percent }
+\newlabel{tab:aggregated_fct_statistics}{{6.1}{70}{Aggregated Flow Completion Time Statistics\relax }{table.caption.83}{}}
+\newlabel{tab:aggregated_fct_statistics@cref}{{[table][1][6]6.1}{[1][69][]70}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{70}{subsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{70}{subsection.6.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Limitations and Challenges}{70}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Future work}{70}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Final Thoughts}{70}{section.6.4}\protected@file@percent }
 \bibcite{ibm_doc}{1}
 \bibcite{Agarwal_Krishnamurthy_Agarwal_2023}{2}
 \bibcite{Agrawal_Sharma_2016}{3}
@@ -405,4 +417,4 @@
 \bibcite{welzl_congestion}{24}
 \bibcite{rfc6077}{25}
 \bibstyle{plain}
-\gdef \@abspage@last{80}
+\gdef \@abspage@last{81}
