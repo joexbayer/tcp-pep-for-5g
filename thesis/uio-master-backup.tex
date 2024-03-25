@@ -1618,191 +1618,193 @@ Because of the unstable nature of Cubic in our experiments we will run each expe
 The results will focus on the differences in throughput based on the scenario. Importantly how the choice of buffer, scheduler and 5G scenario affect the fairness, impact on interactive traffic and achievable throughput. 
 
 \subsubsection{Static link}
-The static link scenario will represent a baseline of performance with little to no fluctuations. Based on this baseline we can compare the affect of the various types of fluctuations. The static link configuration has a average throughput of 2905.61 Mbit/s and a standard deviation of 171.74 Mbit/s.\\
+The static link scenario will represent a baseline of performance with little to no fluctuations. Based on this baseline we can compare the affect of the various types of fluctuations. 
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_sl.pdf}
-  	\caption{Bar plot of throughout for each scenario with a static link configuration}
-  	\label{fig:throughput_sl}
+	\includegraphics[scale=0.50]{../diagrams/witestlab/staticlink.pdf}
+  	\caption{Delay caused by fluctuating bandwidth with a static link}
+  	\label{fig:witestlab_static_delay}
 \end{figure}
 
-Based on the small standard deviation and small fluctuations, cubic will not be expected to suffer under this configuration. Looking at the throughput in Figure \ref{fig:throughput_sl}, we can see that there is only a small difference in throughput for each configuration. FQ-CoDel has the lowest overall throughput which is the result of lower buffer sizes as to not disrupt the interactive traffic. In contrast the BFIFO configuration, with a BDP sized buffer, has higher throughput at the cost of disrupting the traffic.\\
-
-The PEP has the highest throughput of 2737.83 Mbit/s, almost reaching the average throughput of the scenario. The PEP throughput highlights the benefit of both large buffers and a split connection.\\
+Compared to our initial base case there seems to be a bigger impact on the interactive traffic with ten concurrent file transfers, however the delay's mean difference stays below 0,09ms at its worst, particularly the first 1000 packets. Another observation is that the interactive traffic has more drastic spikes when the PEP is utilized.\\
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l|c|c|c|c}
+\begin{tabular}{lcc}
 \hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\
-\hline
-FQ-CoDel & 1998.12 Mbit/s & 42.10 Mbit/s & 1907.12 Mbit/s & 2059.27 Mbit/s \\
-BFIFO    & 2382.00 Mbit/s & 63.76 Mbit/s & 2289.70 Mbit/s & 2453.32 Mbit/s \\
-PEP      & 2737.83 Mbit/s & 11.67 Mbit/s & 2704.81 Mbit/s & 2742.91 Mbit/s \\
-\hline
+\textbf{Statistic}                & \textbf{Static Link E2E} & \textbf{Static Link PEP} \\ \hline
+Mean                              & 100.158ms                  & 100.242ms                  \\
+Median                            & 100.151ms                  & 100.207ms                  \\
+Standard Deviation                & 0.0234ms                   & 0.1067ms                   \\
 \end{tabular}
-\caption{Statistical analysis of throughput data for a static link configuration}
-\label{tab:throughput_sl_table}
+\caption{Comparison of first 1000 latency packets for Static Link E2E and Static Link PEP Statistics}
+\label{tab:sl_latency_statistics}
 \end{table}
 
-Looking at the statics in Table \ref{tab:throughput_sl_table} we can see a rather low standard deviation of the throughput for each scenario. BFIFO has the largest deviation, most likely due to the aforementioned Cubic behavior with large buffers and high delay. The PEP has the lowest deviation of 11.67 Mbit/s, another benefit of a split connection.\\
+Table \ref{tab:sl_latency_statistics} highlights the differences between the end-to-end and PEP impact on interactive traffic. Most importantly, we can see that the PEP causes a higher standard deviation than the end-to-end traffic. This is reflected in the spikes of the Ultra ping graph in Figure \ref{fig:witestlab_static_delay}.\\
 
-\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
+Looking at the flow completion times in Figure \ref{fig:witestlab_static_fcts}, we can clearly see the benefit of the PEP. All PEP transfers finish earlier than their end-to-end counterpart. The staggering of the completion times is most likely due to the transfers not starting at the exact same time.\\
+
+\begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_latency_sl.pdf}
-  	\caption{Impact on interactive traffic for the static link scenario}
-  	\label{fig:throughput_latency_sl}
+	\includegraphics[scale=0.40]{../diagrams/witestlab/sl_cubic_bar.pdf}\\
+	
+	\centering
+	\begin{tabularx}{\linewidth}{lCCCCC}
+	Condition & Mean & Std Dev & Median & Min & Max \\
+	\midrule
+	With PEP & 39.81s & 8.11s & 38.37s & 32.42s & 61.08s\\
+	Without PEP & 107.90s & 7.89s & 108.64s & 90.46s & 117.05s\\
+	\bottomrule
+	\end{tabularx}		
+		
+  	\caption{Completion times with a static link}
+  	\label{fig:witestlab_static_fcts}
 \end{figure}
 
-Figure \ref{fig:throughput_latency_sl} shows the impact on the interactive each configuration has. 
-Looking at the BFIFO configuration we get a huge impact on the interactive traffic because of the large buffer. This shows the cost of the higher throughput that BFIFO achieves over FQ-CoDel. The base RTT of our configuration is 101ms, the BFIFO reaches peaks above 200ms and a average of 146.83ms with a 26.59ms standard deviation.\\
-
-The impact of the FQ-CoDel and PEP configuration is barely noticeable, compared to the BFIFO configuration. Figure \ref{fig:throughput_latency_closeup_sl} shows a close up of both FQ-CoDel and PEP, as we can see there is a tiny difference with the PEP having more spikes than FQ-CoDel.
-
-\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
-	\centering
-	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf}
-  	\caption{Closeup of the PEP and FQ-CoDel impact on interactive traffic for the static link configuration}
-  	\label{fig:throughput_latency_closeup_sl}
-\end{figure}
-
-Although the difference between FQ-CoDel and PEP seems large, there is only a difference of 0.078ms for the mean, and 0.047ms difference for standard deviation. Table \ref{tab:throughput_latency_stats_sl} shows the mean and standard deviation for all three configurations. This highlights one of the main benefits of the PEP, we achieve a higher throughput than BFIFO, while barely impacting the traffic more than FQ-CoDel would.\\
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l|c|c}
-\hline
- & \textbf{Mean Latency (ms)} & \textbf{Standard Deviation (ms)} \\
-\hline
-BFIFO    & 146.835 & 26.598 \\
-FQCoDEL  & 101.236 & 0.062 \\
-PEP      & 101.314 & 0.109 \\
-\hline
-\end{tabular}
-\caption{Impact on latency statistics}
-\label{tab:throughput_latency_stats_sl}
-\end{table}
+The table in Figure \ref{fig:witestlab_static_fcts} highlights the differences between the end-to-end and PEP transfers. Using a static link, the PEP has a mean completion time of 39,81s, while the default end-to-end has a mean completion time of 107,90s. Based on this, the PEP mean completion time is approximately 63,10\% faster than the end-to-end mean completion time.
 
 \subsubsection{Short blockages}
+
+Table \ref{tab:sb_fct_diff} shows the differences between the completion times for short blockages and a static link. Overall the completion times are slower, indicated by an increase in mean completion time. The end-to-end traffic suffers more from short blockages than the PEP as both the mean, minimum and maximum significantly increases.
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & +0.77s & +0.14s & +1.47s & -0.23s & +2.31s \\
+Without PEP & +7.84s & +0.44s & +7.52s & +6.47s & +10.59s \\
+\bottomrule
+\end{tabularx}
+\caption{Differences in Short Blockage compared to the original Static link}
+\label{tab:sb_fct_diff}
+\end{table}
+
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.60]{../diagrams/witestlab/sb.png}
-  	\caption{Bandwidth fluctuations with Short blockage scenario}
-  	\label{fig:sb_fluctuations}
+	\includegraphics[scale=0.50]{../diagrams/witestlab/shortblockage.pdf}
+  	\caption{Impact on interactive traffic with short blockages}
+  	\label{fig:sb_ultra_1}
 \end{figure}
 
-The short blockage is an important scenario to evaluate as it will show the impact only small and short fluctuations will have on the throughput, especially for FQ-CoDel. The average throughput of the short blockage configuration is 2726.27 Mbit/s with a 517.02 Mbit/s standard deviation.\\
+Looking at the impact on interactive traffic using the short blockage scenario, visualized in Figure \ref{fig:sb_ultra_1}, we can see that the PEP causes more radical fluctuations. While the end-to-end transfer seems more stable. The spikes can be a result of the fluctuating bandwidth, the PEP will be able to react faster than the end-to-end traffic, thereby pushing out more data in bursts and create spikes.
 
 
-\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_sb.pdf}
-  	\caption{Bar plot of throughout for each scenario with a short blockage configuration}
-  	\label{fig:throughput_sb}
+	\includegraphics[scale=0.40]{../diagrams/witestlab/sb_cubic_bar.pdf}
+  	\caption{Completion times with short blockage}
+  	\label{fig:witestlab_sb_fcts}
 \end{figure}
-
-From Figure \ref{fig:throughput_sb} we can see an overall decrease of throughput, which is expected based on the average throughput of the scenario. However, especially FQ-CoDel has a big decrease in throughput from a 1998.12 Mbit/s average throughput in static link down to 1017.17 Mbit/s in the short blockage scenario. In this scenario the benefit of big buffers becomes especially apparent, the low buffer sizes of FQ-CoDel with fluctuations forces FQ-CoDel to drop packets, which is devastating for the congestion controller.\\
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l|c|c|c|c}
-\hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\ 
-\hline
-FQ-CoDel & 1017.17 Mbit/s & 150.29 Mbit/s & 690.74 Mbit/s & 1105.09 Mbit/s\\
-BFIFO    & 2090.83 Mbit/s & 56.05 Mbit/s & 2006.43 Mbit/s & 2207.30 Mbit/s\\
-PEP      & 2530.90 Mbit/s & 1.33 Mbit/s & 2528.78 Mbit/s & 2533.52 Mbit/s \\
-\hline
-\end{tabular}
-\caption{Statistics of the throughout for the short blockage scenario.}
-\label{tab:throughput_sl_table}
-\end{table}
-
-Table \ref{tab:throughput_sl_table} compares the throughput of each configuration, and shows the drastic drop in throughput for FQ-CoDel. Additionally, FQ-CoDel has a higher standard deviation compared to the static link scenario. Both BFIFO and the PEP are able to buffer more packets, which makes them more tolerate to fluctuations.\\
-
-\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
-	\centering
-	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf}
-  	\caption{BFIFO impact on interactive traffic with short blockage and static link.}
-  	\label{fig:throughput_bfifo_sb_sl}
-\end{figure}
-
-The impact on interactive traffic does not change much for FQ-CoDel or PEP, however the BFIFO configuration creates big spikes with short blockages. Figure \ref{fig:throughput_bfifo_sb_sl} visualizes the impact of BFIFO on the interactive traffic compared to the static link results. With the short blockage scenario the latency of the interactive traffic reaches up to 400ms, this is approximately double the latency peak that the static link scenario reached.\\
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l|c|c}
-\hline
- & \textbf{Mean Latency (ms)} & \textbf{Standard Deviation (ms)} \\
-\hline
-Short blockage   & 152.79 & 54.99 \\
-Static Link  &  146.83 & 26.59 \\
-\end{tabular}
-\caption{Latency statistics for BFIFO with short blockage and static link.}
-\label{tab:throughput_latency_bfifo_sl_sb}
-\end{table}
-
-Table \ref{tab:throughput_latency_bfifo_sl_sb} shows that the overall impact is not as big as the graph may indicate. The average difference is only 5.96ms, with a 28.4ms difference for standard deviation. However, even if only rarely, a delay increase from 101ms to 400ms is still a disruption to any interactive experience.\\
 
 \subsubsection{Long blockages}
-Mean Throughput: 2519.732997481108
-Standard Deviation of Throughput: 621.1610416315078
 
-\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
-	\centering
-	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_lb.pdf}
-  	\caption{Bar plot of throughout for each scenario with a long blockage configuration}
-  	\label{fig:throughput_lb}
-\end{figure}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{l|c|c|c|c}
-\hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\ 
-\hline
-FQ-CoDel & 1176.97 Mbit/s      & 47.55 Mbit/s       & 1121.00 Mbit/s     & 1253.09 Mbit/s     \\
-BFIFO    & 1852.70 Mbit/s      & 58.61 Mbit/s       & 1751.37 Mbit/s     & 1956.78 Mbit/s     \\
-PEP      & 2368.77 Mbit/s      & 5.36  Mbit/s       & 2354.20 Mbit/s     & 2372.09 Mbit/s     \\
-\hline
-\end{tabular}
-\caption{Statistics of the throughout for the short blockage scenario.}
-\label{tab:throughput_lb_table}
-\end{table}
-
-\subsubsection{Mobility and Blockages}
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.60]{../diagrams/witestlab/mobb.png}
-  	\caption{Bandwidth fluctuations with mobility and blockage scenario}
-  	\label{fig:mobb_fluctuations}
+	\includegraphics[scale=0.50]{../diagrams/witestlab/longblockage.pdf}
+  	\caption{Impact on interactive traffic with long blockages}
+  	\label{fig:witestlab_graph_delay}
 \end{figure}
 
-Mean Throughput: 2962.619266055046
-Standard Deviation of Throughput: 826.4500858270861
+The difference between long and short blockages is most notable in the Ultra ping results, as the impact of the PEP causes way less radical fluctuations. The completion times for long blockages are also similar to the short blockage scenario, with the only difference being a higher standard deviation.\\
 
-\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & +0.44s & +1.50s & -0.88s & -1.24s & -0.78s \\
+Without PEP & -3.89s & -2.98s & -4.29s & +6.48s & -7.26s \\
+\bottomrule
+\end{tabularx}
+\caption{Differences in Short Blockage compared to the original Static link}
+\label{tab:lb_fct_diff}
+\end{table}
+
+Looking at the differences in completion times, compared to the static link, in Figure \ref{tab:lb_fct_diff}, we can see a faster mean completion time for the end-to-end traffic. The end-to-end traffics minimum time increases while the maximum time decreases.
+
+\subsubsection{Mobility and Blockages}
+
+Finally, we will look at the last scenario: mobility and blockages. Similar to short and long blockages, the interactive traffic experiences some high spikes in the PEP case. These spikes can be seen in Figure \ref{fig:witestlab_graph_delay_mobb}. \\
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_mobb.pdf}
-  	\caption{Bar plot of throughout for each scenario with a mobility and blockage configuration}
-  	\label{fig:throughput_mobb}
+	\includegraphics[scale=0.50]{../diagrams/witestlab/mobility.pdf}
+  	\caption{Delay caused by fluctuating bandwidth with the mobility and blockages scenario.}
+  	\label{fig:witestlab_graph_delay_mobb}
+\end{figure}
+
+The mobility and blockage scenario is an overall benefit for the end-to-end traffic, as the high bandwidth phases allow the transfers to complete earlier. Looking at Figure \ref{fig:witestlab_mobb_fcts}, we can see that the highest completion time is about 104s. Table \ref{tab:mobb_fct_diff} shows that the mean completion time for end-to-end traffic decreased by approximately 11s.\\
+
+This is most likely because the end-to-end traffic is able to utilize the high bandwidth phases longer than the PEP, which finishes a lot earlier.
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.40]{../diagrams/witestlab/mobb_cubic_bar.pdf}
+	\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & 40.82s & 7.11s & 39.96s & 31.47s & 52.56s\\
+Without PEP & 96.74s & 7.49s & 97.79s & 80.13s & 104.57s\\
+\bottomrule
+\end{tabularx}
+  	\caption{Completion times with mobility and blockages}
+  	\label{fig:witestlab_mobb_fcts}
 \end{figure}
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l|c|c|c|c}
-\hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\ 
-\hline
-FQ-CoDel & 1074.42 Mbit/s      & 96.78 Mbit/s       & 951.73 Mbit/s      & 1185.74 Mbit/s     \\
-BFIFO    & 2287.75 Mbit/s      & 283.13 Mbit/s      & 1653.52 Mbit/s     & 2694.71 Mbit/s     \\
-PEP      & 2992.35 Mbit/s      & 10.07 Mbit/s       & 2975.52 Mbit/s     & 3002.52 Mbit/s     \\
-\hline
-\end{tabular}
-\caption{Statistics of the throughout for the mobility and blockage scenario.}
-\label{tab:throughput_mobb_table}
+\begin{tabularx}{\linewidth}{lCCCCC}
+\toprule
+Condition & Mean & Std Dev & Median & Min & Max \\
+\midrule
+With PEP & +1.01s & -1.00s & +1.59s & -0.95s & -8.52s \\
+Without PEP & -11.16s & -0.40s & -10.85s & -10.33s & -12.48s \\
+\bottomrule
+\end{tabularx}
+\caption{Differences in Completion Times with mobility and blockages compared to a static link}
+\label{tab:mobb_fct_diff}
 \end{table}
+
+\subsection{Throughput Experiment}
+To evaluate how effectively the PEP can utilize the fluctuating bandwidth, compared with end-to-end FQ-CoDel and BFIFO, we will look at the throughput using the mobility and blockage scenario. For this experiment we will continue with 19 parallel transfers from sender to receiver and the same traffic control configurations. The only difference is that the transfers will continue to send data for the entire 120 seconds duration.\\
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.33]{../diagrams/witestlab/tput_bars_bdp.png}
+\centering
+\begin{tabularx}{\linewidth}{lCC}
+\toprule
+Scenario & Total MB/s & Total MBits/s\\
+\midrule
+PEP & 367.71 MB/s & 2941.70 Mbits/s \\
+FQ-CoDel & 90.13 MB/s & 721.06 Mbits/s \\
+BFIFO & 262.76 MB/s & 2102.13 Mbits/s \\
+\bottomrule
+\end{tabularx}
+  	\caption{Throughput comparison of 19 flows for PEP and end to end transfers.}
+  	\label{fig:witestlab_tput_bars}
+\end{figure}
+
+Figure \ref{fig:witestlab_tput_bars} shows the throughput of each of the 19 flows for both the PEP and end-to-end transfers. As we can see the PEP has a much higher throughput for all flows. If we sum up the throughput of all flows, then we can see that the PEP achieves a through put of 2941.70 Mbit/s, while the end-to-end FQ-CoDel transfers only manage 721.06 Mbit/s. Interestingly, the end-to-end transfer with BFIFO got a higher throughput of 2102.13 Mbit/s compared to end-to-end which used FQ-CoDel, this highlights the benefits of larger buffers.\\
+
+Looking at the bars themselves, unfairness with bfifo, fair but low throughput fqcodel
+
+\begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.50]{../diagrams/witestlab/tput_ping_bdp.pdf}
+  	\caption{Latency impact from throughput experiment.}
+  	\label{fig:witestlab_tput_ping}
+\end{figure}
+
+Looking at the latency impact we will compare our PEP, end-to-end using FQ-CoDel and end-to-end using BFIFO with Ultra ping. Figure \ref{fig:witestlab_tput_ping} shows the Ultra ping graphs for each scenario. At its worst the end-to-end BFIFO case reaches a latency of 200ms, while both the PEP and end-to-end scenario show barely any impact at all. This highlights the major disadvantage of the larger buffers: the large impact on interactive traffic.\\
+
+From the experiment we can see that the PEP manages to both increase the throughput by buffering the packets at the PEP, in this case router, and keep the impact on interactive traffic at a minimal by using FQ-CoDel. This would not be possible with traditional approaches as you are forced to choose between buffer size and delay, while the PEP offers both.
 
 \subsection{Buffer size effect on throughput}
 
@@ -1818,9 +1820,6 @@ The throughput experiment highlights the core ideas behind the PEP. Large buffer
   	\caption{Delay caused by fluctuating bandwidth}
   	\label{fig:witestlab_graph_delay}
 \end{figure}
-
-
-
 
 \chapter{Conclusion \& Future Work}
 To conclude this these will have a look back on the original goal of the thesis and the results. At last we will look at potential future work and research regarding the PEP.

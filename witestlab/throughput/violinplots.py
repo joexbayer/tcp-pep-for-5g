@@ -25,13 +25,26 @@ def print_stats(data):
     print("Statistical Information:\n", stats)
 
 # Main script
-file_name = 'mobb.txt'  # Replace with your file path
+file_name = 'lb.txt'  # Replace with your file path
 data = read_data(file_name)
 
 print_stats(data)  # Print statistical information
 
-# Create a violin plot
-sns.violinplot(x='Scenario', y='Throughput', data=data)
-plt.title('Throughput Violin Plot per Scenario')
+# Set the seaborn style with a white grid
+sns.set(style="whitegrid")
+
+# Create a bar plot for mean values with overlay of individual data points
+bar_plot = sns.barplot(x='Scenario', y='Throughput', data=data, ci=None)  # Default color used
+sns.stripplot(x='Scenario', y='Throughput', data=data, color='black', jitter=True, alpha=0.6)
+
+# Add horizontal grid lines only
+plt.grid(True, axis='y', color='gray', linestyle='--', linewidth=0.5)
+
+plt.title('Throughput of Long blockage scenario')
 plt.ylabel('Throughput (Mbps)')
+plt.xlabel('')
+
+# Save the plot as a PDF file
+plt.savefig('throughput_plot.pdf', bbox_inches='tight')
+
 plt.show()

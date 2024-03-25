@@ -40,15 +40,15 @@
 \contentsline {figure}{\numberline {5.13}{\ignorespaces Calculation of the Bandwidth-Delay Product (BDP) in Bytes\relax }}{58}{figure.caption.59}%
 \contentsline {figure}{\numberline {5.14}{\ignorespaces Cubic's congestion window\relax }}{60}{figure.caption.62}%
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Reno's congestion window\relax }}{60}{figure.caption.63}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Delay caused by fluctuating bandwidth with a static link\relax }}{61}{figure.caption.65}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Completion times with a static link\relax }}{62}{figure.caption.67}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Impact on interactive traffic with short blockages\relax }}{63}{figure.caption.70}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Completion times with short blockage\relax }}{63}{figure.caption.71}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Impact on interactive traffic with long blockages\relax }}{64}{figure.caption.73}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces Delay caused by fluctuating bandwidth with the mobility and blockages scenario.\relax }}{65}{figure.caption.76}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Completion times with mobility and blockages\relax }}{65}{figure.caption.77}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Throughput comparison of 19 flows for PEP and end to end transfers.\relax }}{66}{figure.caption.79}%
-\contentsline {figure}{\numberline {5.24}{\ignorespaces Latency impact from throughput experiment.\relax }}{67}{figure.caption.80}%
-\contentsline {figure}{\numberline {5.25}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{68}{figure.caption.81}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Bar plot of throughout for each scenario with a static link configuration\relax }}{61}{figure.caption.65}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Impact on interactive traffic for the static link scenario\relax }}{62}{figure.caption.67}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Closeup of the PEP and FQ-CoDel impact on interactive traffic for the static link configuration\relax }}{63}{figure.caption.68}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Bandwidth fluctuations with Short blockage scenario\relax }}{64}{figure.caption.71}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Bar plot of throughout for each scenario with a short blockage configuration\relax }}{64}{figure.caption.72}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces BFIFO impact on interactive traffic with short blockage and static link.\relax }}{65}{figure.caption.74}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Bar plot of throughout for each scenario with a long blockage configuration\relax }}{66}{figure.caption.77}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Bandwidth fluctuations with mobility and blockage scenario\relax }}{67}{figure.caption.80}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Bar plot of throughout for each scenario with a mobility and blockage configuration\relax }}{67}{figure.caption.81}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Delay caused by fluctuating bandwidth\relax }}{69}{figure.caption.83}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios\relax }}{69}{figure.caption.82}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Completion times for different 5G scenarios\relax }}{70}{figure.caption.84}%

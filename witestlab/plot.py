@@ -3,11 +3,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-csv_files = ['sl-tput.csv', 'sb-tput.csv', 'lb-tput.csv', 'mobb-tput.csv']
+csv_files = ['mobb-tput.csv']
 
 sns.set(style="whitegrid")
 
-names = ["Static Link", "Short Blockages", "Long Blockages", "Mobility & Blockages"]
+names = ["Mobility & Blockages"]
 index = 0
 
 fig, axs = plt.subplots(1, len(csv_files), figsize=(5 * len(csv_files), 5))  
@@ -50,7 +50,7 @@ for idx, file in enumerate(csv_files):
 
     
     axs[idx].set_xlim(0, 120)
-    axs[idx].set_ylim(global_min_tput, global_max_tput)
+    axs[idx].set_ylim(global_min_tput-10, global_max_tput+50)
 
     index += 1
 
