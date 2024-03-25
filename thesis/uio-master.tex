@@ -1746,8 +1746,7 @@ Static Link  &  146.83 & 26.59 \\
 Table \ref{tab:throughput_latency_bfifo_sl_sb} shows that the overall impact is not as big as the graph may indicate. The average difference is only 5.96ms, with a 28.4ms difference for standard deviation. However, even if only rarely, a delay increase from 101ms to 400ms is still a disruption to any interactive experience.\\
 
 \subsubsection{Long blockages}
-Mean Throughput: 2519.732997481108
-Standard Deviation of Throughput: 621.1610416315078
+The long blockage scenario is special as it has the lowest average throughput of 2519.73 Mbit/s and highest standard deviation of 621.16 Mbit/s. The blockage lasting for a longer time reduces how fast the bandwidth fluctuates.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1755,6 +1754,8 @@ Standard Deviation of Throughput: 621.1610416315078
   	\caption{Bar plot of throughout for each scenario with a long blockage configuration}
   	\label{fig:throughput_lb}
 \end{figure}
+
+Looking at Figure \ref{fig:throughput_lb} we can see a positive affect with the FQ-CoDel configuration. For FQ-CoDel the rapid fluctuations are the worst case scenarios, because it is unable to react fast enough or buffer enough packets to not drop packets. Table \ref{tab:throughput_lb_table} we can see that the FQ-Codel throughput increased by 159.80 Mbit/s while the standard deviation decreased by 102.74 Mbit/s compared to the short blockage scenario.
 
 \begin{table}[h!]
 \centering
@@ -1779,8 +1780,7 @@ PEP      & 2368.77 Mbit/s      & 5.36  Mbit/s       & 2354.20 Mbit/s     & 2372.
   	\label{fig:mobb_fluctuations}
 \end{figure}
 
-Mean Throughput: 2962.619266055046
-Standard Deviation of Throughput: 826.4500858270861
+The mobility and blockage scenario will be the most interesting scenario for our experiment, as it captures the volatile nature of 5G mmWave networks. The high fluctuations and both increase and decrease in bandwidth from the original static 3 Gbit/s. Because of these bandwidth peeks along side the drops we get an average throughput of 2962.61 Mbit/s which is the highest average throughput of all scenarios. This comes at the cost of the highest standard deviation of almost 1Gbit/s, more exactly 826.45 Mbit/s.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1788,6 +1788,9 @@ Standard Deviation of Throughput: 826.4500858270861
   	\caption{Bar plot of throughout for each scenario with a mobility and blockage configuration}
   	\label{fig:throughput_mobb}
 \end{figure}
+
+Throughput of PEP, high std for BFIFO, low throughput for FQ-CoDel, the essential esscence for the PEP.
+High reaction times to fluctuating bandwidth.
 
 \begin{table}[h!]
 \centering
@@ -1804,7 +1807,13 @@ PEP      & 2992.35 Mbit/s      & 10.07 Mbit/s       & 2975.52 Mbit/s     & 3002.
 \label{tab:throughput_mobb_table}
 \end{table}
 
+Just over average throughput for the scenario for the PEP, still low std for PEP.\\
+
+Latency, show still no impact of the PEP, while BFIFO creates huge queues. almost 3 times the throughput for FQ-CoDel.
+
 \subsection{Buffer size effect on throughput}
+
+How the buffer sizes at the PEP affect the potential throughput for the mobility and blockage scenario-
 
 \subsection{Evaluation of 5G traces experiment}
 
