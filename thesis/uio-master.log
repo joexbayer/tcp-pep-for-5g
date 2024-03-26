@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  25 MAR 2024 21:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  26 MAR 2024 21:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2309,40 +2309,41 @@ used on input line 1787.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (33.91464pt too wide) in paragraph at lines 1797--1806
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1810--1811
+Underfull \hbox (badness 10000) in paragraph at lines 1792--1793
 
  []
 
 [67 <../diagrams/witestlab/mobb.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1820--1821
+Overfull \hbox (33.91464pt too wide) in paragraph at lines 1801--1810
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1814--1815
 
  []
 
 [68 <../diagrams/witestlab/throughput/throughput_mobb.pdf>]
-<../diagrams/witestlab/all_bars.pdf, id=1810, 722.7pt x 722.7pt>
+Underfull \hbox (badness 10000) in paragraph at lines 1824--1825
+
+ []
+
+<../diagrams/witestlab/all_bars.pdf, id=1811, 722.7pt x 722.7pt>
 File: ../diagrams/witestlab/all_bars.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/all_bars.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/all_bars.pdf  used on input line
- 1826.
+ 1830.
 (pdftex.def)             Requested size: 289.07487pt x 289.07487pt.
- [69 <../diagrams/witestlab/all_bars.pdf>]
+[69 <../diagrams/witestlab/all_bars.pdf>]
 Chapter 6.
-<../diagrams/witestlab/fcts.png, id=1863, 1084.05pt x 722.7pt>
+<../diagrams/witestlab/fcts.png, id=1864, 1084.05pt x 722.7pt>
 File: ../diagrams/witestlab/fcts.png Graphic file (type png)
 <use ../diagrams/witestlab/fcts.png>
 Package pdftex.def Info: ../diagrams/witestlab/fcts.png  used on input line 184
-1.
+5.
 (pdftex.def)             Requested size: 433.61232pt x 289.07487pt.
 
-Overfull \hbox (73.61232pt too wide) in paragraph at lines 1841--1842
+Overfull \hbox (73.61232pt too wide) in paragraph at lines 1845--1846
  [][] 
  []
 
@@ -2350,7 +2351,7 @@ Overfull \hbox (73.61232pt too wide) in paragraph at lines 1841--1842
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1862--1863
+Underfull \hbox (badness 10000) in paragraph at lines 1866--1867
 
  []
 
@@ -2403,9 +2404,9 @@ r/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb><C:/Us
 ers/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb
 ><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhv
 r8a.pfb>
-Output written on uio-master.pdf (82 pages, 2981862 bytes).
+Output written on uio-master.pdf (82 pages, 2982814 bytes).
 PDF statistics:
- 2087 PDF objects out of 2487 (max. 8388607)
+ 2088 PDF objects out of 2487 (max. 8388607)
  518 named destinations out of 1000 (max. 500000)
  1098 words of extra memory for PDF output out of 10000 (max. 10000000)
 

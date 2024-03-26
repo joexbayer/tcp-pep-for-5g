@@ -1789,8 +1789,9 @@ The mobility and blockage scenario will be the most interesting scenario for our
   	\label{fig:throughput_mobb}
 \end{figure}
 
-Throughput of PEP, high std for BFIFO, low throughput for FQ-CoDel, the essential esscence for the PEP.
-High reaction times to fluctuating bandwidth.
+Figure \ref{fig:throughput_mobb} shows the throughput of each configuration, most notably the PEP has a big increase from the previous scenario. The PEP has a average throughput of 2992.35 Mbit/s which is over the average of the scenario. This result clearly shows the benefit of the PEP, especially in a highly fluctuating environment as in this scenario. The PEP is able to utilize the high bandwidth phases by buffering the most data and reacting faster than any other configuration.\\
+
+The BFIFO configuration also has a increase of 435.05 Mbit/s from the previous scenario, in contrast to FQ-CoDel which had an decrease in throughput compared to the previous scenario. This highlights the importance of larger buffers in highly fluctuating environments. However, the BFIFO configuration suffers from a much higher standard deviation of 283.13 Mbit/s and an approximately difference of 1Gbit/s between the Min and Max throughput results.
 
 \begin{table}[h!]
 \centering
@@ -1809,7 +1810,7 @@ PEP      & 2992.35 Mbit/s      & 10.07 Mbit/s       & 2975.52 Mbit/s     & 3002.
 
 Just over average throughput for the scenario for the PEP, still low std for PEP.\\
 
-Latency, show still no impact of the PEP, while BFIFO creates huge queues. almost 3 times the throughput for FQ-CoDel.
+Looking at the impact on latency we see a similar result to the static link and short blockage. BFIFO has a large impact on the interactive traffic, especially in fluctuating scenarios, while both the PEP and FQ-CoDel show little to no impact. 
 
 \subsection{Buffer size effect on throughput}
 
