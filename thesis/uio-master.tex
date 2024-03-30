@@ -1849,7 +1849,24 @@ The PEP achieves both high throughput and low impact on interactive traffic by c
 
 \section{Buffer size effect on throughput}
 
-Continuing on the Mobility and Blockage scenario from the last section, we will evaluate how the buffer sizes on the PEP affect the performances. For this experiment we will run PEP configuration with ten different buffer sizes. Ranging from the default Linux socket buffers (debian) up to 128 megabytes
+Continuing on the Mobility and Blockage scenario from the last section, we will evaluate how the buffer sizes on the PEP affect the performances. For this experiment we will run PEP configuration with ten different buffer sizes. Ranging from the default Linux (debian) socket buffers up to 128 megabytes.\\
+
+The goal is to evaluate and confirm the buffers effect on the PEP, compared to the FQ-CoDel and BFIFO configuration.\\
+
+\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.35]{../diagrams/witestlab/placeholder.png}
+  	\caption{PLACEHOLDER.}
+  	\label{fig:throughput_all}
+\end{figure}
+
+
+\section{Multiple flows}
+The last section of the Evaluation chapter will focus on the PEP performance with multiple flows. Especially throughput and fairness are important aspects to explore. The mobility and blockage scenario from the 5G mmWave section will be used to simulate our fluctuating bandwidth.\\
+
+Focus on fairness vs throughput, bfifo is expected to have bad fairness, fqcodel good, and pep best, however, the mobb scenario might influence these-\\
+
+Also talk about impact on interactive traffic, just to confirm its not much worse... 
 
 \chapter{Conclusion \& Future Work}
 To conclude this these will have a look back on the original goal of the thesis and the results. At last we will look at potential future work and research regarding the PEP.

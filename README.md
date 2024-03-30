@@ -1,5 +1,19 @@
 # uio-master-joeba
 
+TODO:
+Finish tests for buffer sizes and multiple flows
+Finish writing sections for beforementioned tests
+Finish design chapter
+Finish Implementation chapter
+
+Write conclusion and introduction
+
+Cleanup all chapters, ALOT!
+Cleanup code.
+
+Done!
+
+
 Inital testing topology:
 ```
   (Sender)                              (Router / PEP)                           (Receiver) 
