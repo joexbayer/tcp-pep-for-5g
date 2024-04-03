@@ -2,6 +2,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# Set global font properties for bold and larger text
+plt.rcParams.update({'font.size': 12, 'font.weight': 'bold'})
+
 def read_data(file_name, config_name):
     scenarios = []
     throughputs = []
@@ -41,9 +44,9 @@ sns.set(style="whitegrid")
 plt.figure(figsize=(10, 6))
 bar_plot = sns.barplot(x='Scenario', y='Throughput', hue='Configuration', data=all_data, ci=None)
 
-plt.title('Throughput Comparison Across Configurations and Scenarios')
-plt.ylabel('Throughput (Mbps)')
-plt.xlabel('')
+plt.title('Throughput Comparison Across Configurations and Scenarios', fontweight='bold', fontsize=14)
+plt.ylabel('Throughput (Mbps)', fontweight='bold')
+plt.xlabel('', fontweight='bold')
 
 # Add horizontal grid lines only
 plt.grid(True, axis='y', color='gray', linestyle='--', linewidth=0.5)

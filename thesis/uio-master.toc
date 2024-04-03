@@ -23,21 +23,21 @@
 \contentsline {subsection}{\numberline {2.4.2}C Programming Language}{12}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Related Work}{12}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Design}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{13}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Performance}{14}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Programming Language}{15}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Programming Language}{14}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Kernel Module Vs. Userspace Application}{15}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Connection splitting using Sockets}{15}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Bandwidth utilization}{16}{subsection.3.2.4}%
-\contentsline {paragraph}{Delay}{16}{section*.17}%
-\contentsline {subsection}{\numberline {3.2.5}PEP Selection}{18}{subsection.3.2.5}%
+\contentsline {paragraph}{Delay}{17}{section*.17}%
+\contentsline {subsection}{\numberline {3.2.5}PEP Selection}{17}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Connection Establishment}{18}{subsection.3.2.6}%
 \contentsline {paragraph}{TCP Options}{18}{section*.20}%
 \contentsline {paragraph}{TCP Fast Open}{19}{section*.21}%
 \contentsline {paragraph}{Optimal Choice}{19}{section*.22}%
-\contentsline {section}{\numberline {3.3}Deployment (Transparency)}{20}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Deployment (Transparency)}{19}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Transparent PEP}{20}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Non Transparent PEP}{21}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Non Transparent PEP}{20}{subsection.3.3.2}%
 \contentsline {section}{\numberline {3.4}Buffering}{22}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Socket buffers}{22}{subsection.3.4.1}%
 \contentsline {section}{\numberline {3.5}AQM \& Scheduling}{22}{section.3.5}%
@@ -114,11 +114,11 @@
 \contentsline {subsubsection}{Mobility and Blockages}{67}{section*.79}%
 \contentsline {subsection}{\numberline {5.3.8}Evaluation of 5G traces experiment}{69}{subsection.5.3.8}%
 \contentsline {section}{\numberline {5.4}Buffer size effect on throughput}{71}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Multiple flows}{71}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{73}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Results}{73}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{74}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{74}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Limitations and Challenges}{74}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Future work}{74}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Final Thoughts}{74}{section.6.4}%
+\contentsline {section}{\numberline {5.5}Multiple flows}{72}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{74}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Results}{74}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{75}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{75}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Limitations and Challenges}{75}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Future work}{75}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Final Thoughts}{75}{section.6.4}%

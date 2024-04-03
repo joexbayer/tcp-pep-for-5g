@@ -6,6 +6,8 @@ Finish writing sections for beforementioned tests
 Finish design chapter
 Finish Implementation chapter
 
+include https://ieeexplore.ieee.org/document/8335489 in background chapter
+
 Write conclusion and introduction
 
 Cleanup all chapters, ALOT!
