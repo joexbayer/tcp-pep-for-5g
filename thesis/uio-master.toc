@@ -88,37 +88,38 @@
 \contentsline {section}{\numberline {4.6}Memory}{45}{section.4.6}%
 \contentsline {chapter}{\numberline {5}Evaluation}{46}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Traffic Control Options}{46}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Initial test}{46}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Testbed}{47}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Hosts and Hardware}{47}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Configuration}{48}{subsection.5.2.3}%
-\contentsline {subsubsection}{Sender}{48}{section*.43}%
+\contentsline {section}{\numberline {5.2}Ocarina Testbed}{46}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Hosts and Hardware}{47}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}Initial test}{48}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Configuration}{49}{subsection.5.3.1}%
+\contentsline {subsubsection}{Sender}{49}{section*.43}%
 \contentsline {subsubsection}{Router (PEP)}{49}{section*.44}%
 \contentsline {subsubsection}{Receiver}{50}{section*.47}%
-\contentsline {subsection}{\numberline {5.2.4}Experiment Procedure}{51}{subsection.5.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}Results \& Analysis}{51}{subsection.5.2.5}%
-\contentsline {section}{\numberline {5.3}Using real 5G traces}{54}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Traces}{54}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Topology}{55}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Configuration}{55}{subsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Validation}{56}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}Experiment Configuration}{57}{subsection.5.3.5}%
+\contentsline {subsection}{\numberline {5.3.2}Experiment Procedure}{50}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Results \& Analysis}{52}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Using real 5G traces}{54}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Traces}{55}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Topology}{55}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Configuration}{56}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Validation}{56}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Experiment Configuration}{58}{subsection.5.4.5}%
 \contentsline {subsubsection}{End-to-end Configuration}{58}{section*.58}%
 \contentsline {subsubsection}{PEP Configuration}{59}{section*.60}%
-\contentsline {subsection}{\numberline {5.3.6}Experiments Steps}{59}{subsection.5.3.6}%
-\contentsline {subsubsection}{Congestion Controller's affect on throughput}{59}{section*.61}%
-\contentsline {subsection}{\numberline {5.3.7}Results}{61}{subsection.5.3.7}%
+\contentsline {subsection}{\numberline {5.4.6}Experiments Steps}{59}{subsection.5.4.6}%
+\contentsline {subsubsection}{Congestion Controller's affect on throughput}{60}{section*.61}%
+\contentsline {subsection}{\numberline {5.4.7}Results}{61}{subsection.5.4.7}%
 \contentsline {subsubsection}{Static link}{61}{section*.64}%
 \contentsline {subsubsection}{Short blockages}{64}{section*.70}%
 \contentsline {subsubsection}{Long blockages}{66}{section*.76}%
 \contentsline {subsubsection}{Mobility and Blockages}{67}{section*.79}%
-\contentsline {subsection}{\numberline {5.3.8}Evaluation of 5G traces experiment}{69}{subsection.5.3.8}%
-\contentsline {section}{\numberline {5.4}Buffer size effect on throughput}{71}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Multiple flows}{72}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{74}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Results}{74}{section.6.1}%
+\contentsline {subsection}{\numberline {5.4.8}Evaluation of 5G traces experiment}{70}{subsection.5.4.8}%
+\contentsline {section}{\numberline {5.5}Buffer size effect on throughput}{72}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Multiple flows}{73}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{75}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Performance}{75}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Impact on interactive traffic}{75}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Flow completion times}{75}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.2}Throughput}{75}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Transparency}{75}{subsection.6.1.3}%
 \contentsline {section}{\numberline {6.2}Limitations and Challenges}{75}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Future work}{75}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Final Thoughts}{75}{section.6.4}%

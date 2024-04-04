@@ -1224,19 +1224,8 @@ Linux has support for network interface configurations using the TC (traffic con
 % Procedure
 % Results & analysis
 
-\section{Initial test}
-To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.
 
-\begin{center}
-Sender ------ Router ------ Receiver\\
-\end{center}
-
-The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having an interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING\cite{rahtz2023ultraping} which offers end to end latency measurements.\\
-
-Additionally we will compare BFIFO to FQ-CoDel, BFIFO being the worst case scenario for the interactive traffic and FQ CoDel the optimal choice for our scenario.
-
-\subsection{Testbed}
-
+\section{Ocarina Testbed}
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.60]{../diagrams/drawio/testbed.png}
@@ -1274,6 +1263,17 @@ All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon 
 \captionof{figure}{Screenfetch results}
 %\label{fig:work_struct}
 \end{minipage}\\
+
+\section{Initial test}
+To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.
+
+\begin{center}
+Sender ------ Router ------ Receiver\\
+\end{center}
+
+The goal is to confirm the two most important aspects of the PEP, a faster completion time and little to no interference with the interactive traffic. To achieve this we will send a 32 megabyte file from the sender to the receiver, while simultaneously having an interactive UDP traffic sending 100 byte packets at 20 packets per second. The interactive data will simulate Skype traffic using a program called ULTRA\_PING\cite{rahtz2023ultraping} which offers end to end latency measurements.\\
+
+Additionally we will compare BFIFO to FQ-CoDel, BFIFO being the worst case scenario for the interactive traffic and FQ CoDel the optimal choice for our scenario.
 
 \subsection{Configuration}
 The testbed is configured to simulate a base case where the PEP would be beneficial.
@@ -1469,14 +1469,14 @@ Figure \ref{fig:witestlab_graph1} visualizes the fluctuating bandwidth. The trac
 %\end{figure}
 
 \subsection{Topology}
-For this experiment we will use a topology similar to the previous experiment. We will continue with our sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth we will adjust the sender to router link to have the maximum our testbed can offer, which is 10Gbit/s bandwidth.\\
+For this experiment we will use a topology similar to the previous experiment. We will continue with our sender, router and receiver topology, however, the traffic control configuration will change. Because of the high 5G bandwidth we will adjust the sender to router link to have the maximum our testbed can offer, which is a 10Gbit/s bandwidth.\\
 
 The link between the sender and the router will be configured based on the scenario, but the default will be a 3Gbit/s bandwidth.
 
 \subsection{Configuration}
 Since we are now dealing with high gigabit bandwidths, we need to configure and tune the hosts to be able to fully utilize these bandwidths. Most importantly the default net read and write buffers need to be adjusted.\footnote{Show the behaviour if we do not?}\\
 
-The the core net buffers \verb|net.core.rmem_max| and \verb|net.core.wmem_max| will be adjusted to approximately 2 Gigabyte. Also \verb|net.ipv4.tcp_rmem| and \verb|net.ipv4.tcp_wmem| will be set to the same 2 Gigabyte size. This will assure that neither the sender or receiver is limited by the socket buffers.
+The the core net buffers \verb|net.core.rmem_max| and \verb|net.core.wmem_max| will be adjusted to approximately 256 megabytes. Also \verb|net.ipv4.tcp_rmem| and \verb|net.ipv4.tcp_wmem| will be set to the same 256 megabytes size. This will assure that neither the sender or receiver is limited by the socket buffers.
 
 \subsection{Validation}
 
@@ -1514,7 +1514,7 @@ To simulate the fluctuating bandwidth, a shell script at the router will configu
   	\label{fig:witestlab_results}
 \end{figure}
 
-Figure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP Cubic results as it is the congestion controller we use for our experiments \footnote{Linxu kernel version, many details as possible, hardware}. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.\\
+Figure \ref{fig:witestlab_results} shows the latency results from the Witestlab. We will focus on their TCP Cubic results as it is the congestion controller we use for our experiments. When using Cubic, Witestlab experience delays up to 150ms in the worst cases for long blockage.\\
 
 The results from our latency measurement experiment show a clear impact on the latency when the bandwidth fluctuates. With a static link the delay reaches approximately 20ms, which is the result of the 7,5Mb BFIFO queue at the router. The steady 20ms delay for the static link is the same result Witestlab observes. However, in our experiments we reach a maximum of approximately 50ms delay with short and long blockages, where Witestlab reaches 150ms.\\
 
@@ -1560,8 +1560,7 @@ The 100ms delay will be configured on the Sender`s interface towards the router,
 \subsubsection{PEP Configuration}
 For the PEP case we will change the configuration to assert that no delay is added from the sender. We will achieve this by adding FQ-CoDel at the senders interface and configure the 100ms delay on the routers interface towards the sender. Because the PEP essentially will be a split connection at the router we must be sure that interactive traffic is not already delayed before it reaches the PEP.\\
 
-Mention PEP buffer sizes?
-
+Especially important for the PEP are the socket buffers at the router, the buffers the PEP will use. These buffers would normally be ignored by packets simply passing through the router. Therefor they will not affect any interactive traffic, as NIC or scheduler buffers would. The socket buffers on the router will be configured to be 128 megabytes, which will be enough to temporary buffer packets for low bandwidth phases. Noteworthy is that a socket has two buffers, one for reading and one for writing, and a connection has two sockets on the pep. Which gives us a total of four buffers.\\
 
 \subsection{Experiments Steps}
 For this experiment we will have two parallel flows, one for the data and one for the interactive traffic.\\
@@ -1630,7 +1629,7 @@ The static link scenario will represent a baseline of performance with little to
 
 Based on the small standard deviation and small fluctuations, cubic will not be expected to suffer under this configuration. Looking at the throughput in Figure \ref{fig:throughput_sl}, we can see that there is only a small difference in throughput for each configuration. FQ-CoDel has the lowest overall throughput which is the result of lower buffer sizes as to not disrupt the interactive traffic. In contrast the BFIFO configuration, with a BDP sized buffer, has higher throughput at the cost of disrupting the traffic.\\
 
-The PEP has the highest throughput of 2737.83 Mbit/s, almost reaching the average throughput of the scenario. The PEP throughput highlights the benefit of both large buffers and a split connection.\\
+The PEP has the highest throughput of 2737.83 Mbit/s, almost reaching the average throughput of the scenario. The PEPs throughput highlights the benefits of both large buffers and a split connection.\\
 
 \begin{table}[h!]
 \centering
@@ -1656,10 +1655,10 @@ Looking at the statics in Table \ref{tab:throughput_sl_table} we can see a rathe
   	\label{fig:throughput_latency_sl}
 \end{figure}
 
-Figure \ref{fig:throughput_latency_sl} shows the impact on the interactive each configuration has. 
-Looking at the BFIFO configuration we get a huge impact on the interactive traffic because of the large buffer. This shows the cost of the higher throughput that BFIFO achieves over FQ-CoDel. The base RTT of our configuration is 101ms, the BFIFO reaches peaks above 200ms and a average of 146.83ms with a 26.59ms standard deviation.\\
+Figure \ref{fig:throughput_latency_sl} shows the impact on the interactive traffic for each configuration. 
+Looking at the BFIFO configuration we get a huge impact on the interactive traffic because of the large buffers. This shows the cost of the higher throughput that BFIFO achieves over FQ-CoDel. While the base RTT of our configuration is 101ms, the BFIFO reaches peaks above 200ms and a average of 146.83ms with a 26.59ms standard deviation.\\
 
-The impact of the FQ-CoDel and PEP configuration is barely noticeable, compared to the BFIFO configuration. Figure \ref{fig:throughput_latency_closeup_sl} shows a close up of both FQ-CoDel and PEP, as we can see there is a tiny difference with the PEP having more spikes than FQ-CoDel.
+The impact of the FQ-CoDel and PEP configuration is barely noticeable, compared to the BFIFO configuration. Figure \ref{fig:throughput_latency_closeup_sl} shows a close up of both FQ-CoDel and PEP, as we can see there is a tiny difference with the PEP having more spikes than FQ-CoDel.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1703,7 +1702,7 @@ The short blockage is an important scenario to evaluate as it will show the impa
   	\label{fig:throughput_sb}
 \end{figure}
 
-From Figure \ref{fig:throughput_sb} we can see an overall decrease of throughput, which is expected based on the average throughput of the scenario. However, especially FQ-CoDel has a big decrease in throughput from a 1998.12 Mbit/s average throughput in static link down to 1017.17 Mbit/s in the short blockage scenario. In this scenario the benefit of big buffers becomes especially apparent, the low buffer sizes of FQ-CoDel with fluctuations forces FQ-CoDel to drop packets, which is devastating for the congestion controller.\\
+From Figure \ref{fig:throughput_sb} we can see an overall decrease of throughput, which is expected based on the average throughput of the scenario. However, especially FQ-CoDel has a big decrease in throughput from a 1998.12 Mbit/s average throughput in static link down to 1017.17 Mbit/s in the short blockage scenario. In this scenario the benefit of big buffers becomes especially apparent, the small buffer sizes of FQ-CoDel with fluctuations forces FQ-CoDel to drop packets, which is devastating for the congestion controller.\\
 
 \begin{table}[h!]
 \centering
@@ -1717,10 +1716,10 @@ PEP      & 2530.90 Mbit/s & 1.33 Mbit/s & 2528.78 Mbit/s & 2533.52 Mbit/s \\
 \hline
 \end{tabular}
 \caption{Statistics of the throughout for the short blockage scenario.}
-\label{tab:throughput_sl_table}
+\label{tab:throughput_sb_table}
 \end{table}
 
-Table \ref{tab:throughput_sl_table} compares the throughput of each configuration, and shows the drastic drop in throughput for FQ-CoDel. Additionally, FQ-CoDel has a higher standard deviation compared to the static link scenario. Both BFIFO and the PEP are able to buffer more packets, which makes them more tolerate to fluctuations.\\
+Table \ref{tab:throughput_sb_table} compares the throughput of each configuration, and shows the drastic drop in throughput for FQ-CoDel. Additionally, FQ-CoDel has a higher standard deviation compared to the static link scenario. Both BFIFO and the PEP are able to buffer more packets, which makes them more tolerate to fluctuations.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1781,7 +1780,7 @@ PEP      & 2368.77 Mbit/s      & 5.36  Mbit/s       & 2354.20 Mbit/s     & 2372.
   	\label{fig:mobb_fluctuations}
 \end{figure}
 
-The mobility and blockage scenario will be the most interesting scenario for our experiment, as it captures the volatile nature of 5G mmWave networks. The high fluctuations and both increase and decrease in bandwidth from the original static 3 Gbit/s. Because of these bandwidth peeks along side the drops we get an average throughput of 2962.61 Mbit/s which is the highest average throughput of all scenarios. This comes at the cost of the highest standard deviation of almost 1Gbit/s, more exactly 826.45 Mbit/s.\\
+The mobility and blockage scenario will be the most interesting scenario for our experiment, as it captures the volatile nature of 5G mmWave networks. Because of high fluctuations we get an average throughput of 2962.61 Mbit/s which is the highest average throughput of all scenarios. This comes at the cost of the highest standard deviation of almost 1Gbit/s, more exactly 826.45 Mbit/s.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1790,7 +1789,7 @@ The mobility and blockage scenario will be the most interesting scenario for our
   	\label{fig:throughput_mobb}
 \end{figure}
 
-Figure \ref{fig:throughput_mobb} shows the throughput of each configuration, most notably the PEP has a big increase from the previous scenario. The PEP has a average throughput of 2992.35 Mbit/s which is over the average of the scenario. This result clearly shows the benefit of the PEP, especially in a highly fluctuating environment as in this scenario. The PEP is able to utilize the high bandwidth phases by buffering the most data and reacting faster than any other configuration.\\
+Figure \ref{fig:throughput_mobb} shows the throughput of each configuration, most notably the PEP has a big increase from the previous scenario. The PEP has an average throughput of 2992.35 Mbit/s which is over the average of the scenario. This result clearly shows the benefit of the PEP, especially in a highly fluctuating environment as in this scenario. The PEP is able to utilize the high bandwidth phases by buffering the most data and reacting faster than any other configuration.\\
 
 The BFIFO configuration also has a increase of 435.05 Mbit/s from the previous scenario, in contrast to FQ-CoDel which had an decrease in throughput compared to the previous scenario. This highlights the importance of larger buffers in highly fluctuating environments. However, the BFIFO configuration suffers from a much higher standard deviation of 283.13 Mbit/s and an approximately difference of 1Gbit/s between the Min and Max throughput results.\\
 
@@ -1818,7 +1817,7 @@ Looking at the impact on latency we see a similar result to the static link and 
   	\label{fig:latency_mobb}
 \end{figure}
 
-Figure \ref{fig:throughput_latency_closeup_mobb} shows a closeup of the impact FQ-CoDel has in comparison to the PEP. Interestingly both have a big spike at the start, most likely due to slow start, but manage to keep the impact minimal for the rest of the experiment. The PEP seems to be more volatile than the FQ-CoDel, which most likely is due to the PEP reacting to the fluctuations and thereby achieving the high bandwidth. Considering the PEP almost has two times the throughput FQ-CoDel has the latency impact is negligible.\\
+Figure \ref{fig:throughput_latency_closeup_mobb} shows a closeup of the impact FQ-CoDel has in comparison to the PEP. Interestingly both have a big spike at the start, most likely due to slow start, but manage to keep the impact minimal for the rest of the experiment. The PEP seems to be more volatile than the FQ-CoDel, which most likely is due to the PEP reacting to the fluctuations and thereby achieving the high bandwidth. Considering the PEP almost has double the throughput FQ-CoDel has, the latency impact is negligible.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1885,13 +1884,13 @@ The last section of the Evaluation chapter will focus on the PEP performance wit
   		../diagrams/witestlab/throughput/10flows/PEP.pdf
   	}
   	\label{fig:subfig3}}
-  \caption{Overall caption for the set of subfigures}
+  \caption{The throughput of ten parallel flows for each configuration.}
   \label{fig:completefig}
 \end{figure}
 
 Figure \ref{fig:completefig} shows the ten flows for each of the three configurations. The main takeaways are the loss in total throughput for BFIFO and FQ-CoDel, having multiple flows compete with the heavy fluctuations lead to less bandwidth utilization. The PEP only has minimal throughput loss, even with multiple flows.\\
 
-Another interesting is the aspect of fairness. Using BFIFO we can see a clear unfairness between the 10 flows. One of the beneficial side effects of FQ-CoDel is its inherent fairness, as we can see in Figure \ref{fig:completefig} (b). Because the PEP also uses FQ-CoDel, we get the same fairness, but without the loss in throughput.\\
+Another interesting aspect is the flow fairness, as we can see that with BFIFO there is a clear unfairness between the 10 flows. One of the beneficial side effects of FQ-CoDel is its inherent fairness, as we can see in Figure \ref{fig:completefig} (b). Because the PEP also uses FQ-CoDel, we get the same fairness, but without the loss in throughput.\\
 
 \chapter{Conclusion \& Future Work}
 To conclude this these will have a look back on the original goal of the thesis and the results. At last we will look at potential future work and research regarding the PEP.
