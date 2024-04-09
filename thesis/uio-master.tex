@@ -255,7 +255,20 @@ int main(void)
 \end{autonumlstlisting}
 
 \section{Related Work}
-PEPDNA? 0RTT transport converter?\cite{bandwidth_changes}
+The 0-RTT TCP Convert Protocol is a protocol which aims to improve the performance for the fluctuating bandwidth and volatile nature of 5G networks by utilizing multipath TCP~\cite{rfc8803}. This is in contrast to our approach, which is to increase buffer sizes for the non-interactive traffic. The protocol is non-transparent\footnote{Is this actually correct? It uses TLVs?} and uses TLVs to communicate with the proxy.\\
+
+
+Other protocols, such as SOCKSv5, have bottlenecks when communicating with the proxy, because of the additional information that needs to be sent, such as authentication. Transport converter aims to reduce this overhead by utilizing the 0-RTT, adding any metadata to the SYN packet. ...\\
+
+
+
+0RTT transport converter?\cite{bandwidth_changes}\\
+
+SnoopTCP is a similar proxy to our PEP, as it usually acts on the base station and aims to improve the control loops between the sender and the receiver. SnoopTCP does not directly split the connection, but instead keeps a soft state of each TCP connection and re-transmits based on local timers. Additionally it suppresses duplicate ACKs on their way from the receiver to the sender~\cite{snooptcp}. SnoopTCP is transparent, which means it will split all connections and the sender will not be aware of any modifications SnoopTCP performs on the connection.\\
+
+The main benefit from SnoopTCP is its ability to react faster to packet loss with the local timers. However, because the congestion control is still end-to-end, the sender will not be able to send more data on demand if the bandwidth fluctuates.\\
+
+Another similar proxy to our PEP is milliProxy, which also focuses on 5G mmWave networks and aims to boost their performances. MilliProxy operates with a split connection, and keeps track of each flows state, having dynamic buffers per flow~\cite{milliproxy}. Similar to SnoopTCP, milliProxy is transparent, which means... \\
 
 % This chapter explores the design desgins that later will be implemented by chapter 4.
 % Briefly outline the design goals of the PEP
@@ -272,7 +285,7 @@ In this chapter we discuss the design of a non-transparent connection splitting 
 
 Figure \ref{fig:simple_pep_design} is a simplification of the PEP within a network, highlighting its interaction with other components, such as the client and endpoint. Importantly there is a fluctuating bandwidth between the client and the PEP.
 
-\section{Justification for designing a PEP}
+\section{Justification for designing a PEP}\footnote{More about PEPs}
 The ossification of networks, particularly TCP, has been a long-standing issue~\cite{tcp_extendable}. Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Altering such a fundamental protocol could disrupt countless systems and applications. This leaves us to explore new ideas using middle-boxes. A PEP is such a middle-box, as it can enhance the performance without introducing changes to TCP itself.\\
 
 Using a PEP in combination with 5G has additional benefits. TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by the base station illustrated by figure \ref{fig:5g_topology}. However, with a PEP we are able to split the domains and perform optimizations such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\
@@ -430,7 +443,7 @@ A socket buffer is a buffer specific for a particular socket. There are usually 
 \section{AQM \& Scheduling}
 The ability to configure and utilize different scheduling algorithms is important for the success of the  PEP. When buffering a lot of packets at the PEP we might clog up the sending queues of the host machine. This would result in high delays for the interactive traffic that has to share these queues with our buffered non-interactive data. To avoid this we utilize FQ\_CoDEL, as it assures a fair bandwidth for each flow.\\
 
-This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as Windows or MacOS, will be extremely difficult or even impossible. The impact of different scheduling algorithms will be shown and discussed in the Evaluation chapter.
+This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as Windows or MacOS, will be extremely difficult or even impossible. The impact of different scheduling algorithms will be shown and discussed in the Evaluation chapter.\footnote{Talk more about FQ_CoDEl, BFIFO, Maybe TFO? etc}
 
 \section{Security}
 The PEP needs to assure that traffic flowing through the PEP not gets compromised. This, however, will not be a big concern as the PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP is not able to read encrypted data or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint, as only the PEPs connection will be seen by the endpoint.
@@ -438,27 +451,26 @@ The PEP needs to assure that traffic flowing through the PEP not gets compromise
 \section{Summary}
 In this chapter we have designed a high performance connection splitting PEP tailored for fluctuating bandwidth. We made the choice to keep it non-transparent to assure future adaptability and client configuration. Using sockets and their buffers we avoid bufferbloat and to not disrupt the interactive traffic. Finally, we use AQM and scheduling to avoid unnecessary delays on the outgoing links.\\
 
-The table below compares our PEP to existing solutions. ...\\
-
 \begin{table}[h!]
 \centering
-\begin{tabularx}{\linewidth}{lCCCC}
+\begin{tabularx}{\linewidth}{lCCCCC}
 \toprule
-Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent \\
+Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent & Large Buffers \\
 \midrule
-\textbf{milliProxy} & AF & AFG & 004 & x \\
-\textbf{PEPDNA} & AX & ALA & 248 & x \\
-\textbf{SnoopTCP} & AL & ALB & 008 & x \\
-\textbf{Our PEP} & DZ & DZA & 012 & x \\
-\textbf{Transport Converter} & AS & ASM & 016 & x \\
-... & AD & AND & 020 & x \\
-... & AO & AGO & 024 & x \\
+\textbf{milliProxy} &  & x? & x & x &  \\
+\textbf{PEPDNA} &  & x &  & x &  \\
+\textbf{SnoopTCP} &  &  & x & x &  \\
+\textbf{Our PEP} & x & x &  &  & x \\
+\textbf{TCP Convert} & x & x &  & x? &  \\
+... & ... & ... & ... & ...  & ... \\
 \bottomrule
 \end{tabularx}
 \caption{Table of design decisions based on different PEP implementations compared to ours.}
+\label{tab:summary}
 \end{table}
 
-Most PEPs are transparent, this makes our PEP special...
+Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent, this is a important distinction as ...,
+The most important difference is the large buffers on our PEP, although other PEPs also have larger than default buffers, our PEP has the largest buffers. ...
 
 % TRL TCP https://ieeexplore.ieee.org/abstract/document/4623710?casa_token=nB8IUC46VVQAAAAA:q9PoGtpzLJDUCfrjMzeAi9DG7VKQoSQVmogIdidf-ydVmt7e2ZtL5O1859WLVM6a_wXn_IZijFM
 
@@ -1633,13 +1645,13 @@ The PEP has the highest throughput of 2737.83 Mbit/s, almost reaching the averag
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l|c|c|c|c}
+\begin{tabular}{l|c|c}
 \hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\
+ & \textbf{mean} & \textbf{std} \\
 \hline
-FQ-CoDel & 1998.12 Mbit/s & 42.10 Mbit/s & 1907.12 Mbit/s & 2059.27 Mbit/s \\
-BFIFO    & 2382.00 Mbit/s & 63.76 Mbit/s & 2289.70 Mbit/s & 2453.32 Mbit/s \\
-PEP      & 2737.83 Mbit/s & 11.67 Mbit/s & 2704.81 Mbit/s & 2742.91 Mbit/s \\
+FQ-CoDel & 1998.12 Mbit/s & 42.10 Mbit/s  \\
+BFIFO    & 2382.00 Mbit/s & 63.76 Mbit/s  \\
+PEP      & 2737.83 Mbit/s & 11.67 Mbit/s  \\
 \hline
 \end{tabular}
 \caption{Statistical analysis of throughput data for a static link configuration}
@@ -1706,13 +1718,13 @@ From Figure \ref{fig:throughput_sb} we can see an overall decrease of throughput
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l|c|c|c|c}
+\begin{tabular}{l|c|c}
 \hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\ 
+ & \textbf{mean} & \textbf{std}  \\ 
 \hline
-FQ-CoDel & 1017.17 Mbit/s & 150.29 Mbit/s & 690.74 Mbit/s & 1105.09 Mbit/s\\
-BFIFO    & 2090.83 Mbit/s & 56.05 Mbit/s & 2006.43 Mbit/s & 2207.30 Mbit/s\\
-PEP      & 2530.90 Mbit/s & 1.33 Mbit/s & 2528.78 Mbit/s & 2533.52 Mbit/s \\
+FQ-CoDel & 1017.17 Mbit/s & 150.29 Mbit/s \\
+BFIFO    & 2090.83 Mbit/s & 56.05 Mbit/s \\
+PEP      & 2530.90 Mbit/s & 1.33 Mbit/s \\
 \hline
 \end{tabular}
 \caption{Statistics of the throughout for the short blockage scenario.}
@@ -1759,13 +1771,13 @@ Looking at Figure \ref{fig:throughput_lb} we can see a positive affect with the 
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l|c|c|c|c}
+\begin{tabular}{l|c|c}
 \hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\ 
+ & \textbf{mean} & \textbf{std} \\ 
 \hline
-FQ-CoDel & 1176.97 Mbit/s      & 47.55 Mbit/s       & 1121.00 Mbit/s     & 1253.09 Mbit/s     \\
-BFIFO    & 1852.70 Mbit/s      & 58.61 Mbit/s       & 1751.37 Mbit/s     & 1956.78 Mbit/s     \\
-PEP      & 2368.77 Mbit/s      & 5.36  Mbit/s       & 2354.20 Mbit/s     & 2372.09 Mbit/s     \\
+FQ-CoDel & 1176.97 Mbit/s      & 47.55 Mbit/s \\
+BFIFO    & 1852.70 Mbit/s      & 58.61 Mbit/s  \\
+PEP      & 2368.77 Mbit/s      & 5.36  Mbit/s   \\
 \hline
 \end{tabular}
 \caption{Statistics of the throughout for the short blockage scenario.}
@@ -1795,13 +1807,13 @@ The BFIFO configuration also has a increase of 435.05 Mbit/s from the previous s
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{l|c|c|c|c}
+\begin{tabular}{l|c|c}
 \hline
- & \textbf{mean} & \textbf{std} & \textbf{min} & \textbf{max} \\ 
+ & \textbf{mean} & \textbf{std}  \\ 
 \hline
-FQ-CoDel & 1074.42 Mbit/s      & 96.78 Mbit/s       & 951.73 Mbit/s      & 1185.74 Mbit/s     \\
-BFIFO    & 2287.75 Mbit/s      & 283.13 Mbit/s      & 1653.52 Mbit/s     & 2694.71 Mbit/s     \\
-PEP      & 2992.35 Mbit/s      & 10.07 Mbit/s       & 2975.52 Mbit/s     & 3002.52 Mbit/s     \\
+FQ-CoDel & 1074.42 Mbit/s      & 96.78 Mbit/s     \\
+BFIFO    & 2287.75 Mbit/s      & 283.13 Mbit/s   \\
+PEP      & 2992.35 Mbit/s      & 10.07 Mbit/s    \\
 \hline
 \end{tabular}
 \caption{Statistics of the throughout for the mobility and blockage scenario.}
