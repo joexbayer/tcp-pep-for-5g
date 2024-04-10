@@ -443,7 +443,7 @@ A socket buffer is a buffer specific for a particular socket. There are usually 
 \section{AQM \& Scheduling}
 The ability to configure and utilize different scheduling algorithms is important for the success of the  PEP. When buffering a lot of packets at the PEP we might clog up the sending queues of the host machine. This would result in high delays for the interactive traffic that has to share these queues with our buffered non-interactive data. To avoid this we utilize FQ\_CoDEL, as it assures a fair bandwidth for each flow.\\
 
-This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as Windows or MacOS, will be extremely difficult or even impossible. The impact of different scheduling algorithms will be shown and discussed in the Evaluation chapter.\footnote{Talk more about FQ_CoDEl, BFIFO, Maybe TFO? etc}
+This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as Windows or MacOS, will be extremely difficult or even impossible. The impact of different scheduling algorithms will be shown and discussed in the Evaluation chapter.\footnote{Talk more about FQ\_CoDEl, BFIFO, Maybe TFO? etc}
 
 \section{Security}
 The PEP needs to assure that traffic flowing through the PEP not gets compromised. This, however, will not be a big concern as the PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP is not able to read encrypted data or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint, as only the PEPs connection will be seen by the endpoint.
@@ -469,8 +469,9 @@ Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent & Larg
 \label{tab:summary}
 \end{table}
 
-Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent, this is a important distinction as ...,
-The most important difference is the large buffers on our PEP, although other PEPs also have larger than default buffers, our PEP has the largest buffers. ...
+Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent, this is a important distinction as non-transparent PEPs do not break important semantics, such as the end to end semantics.\\
+
+The most important difference is the large buffers on our PEP, although other PEPs also have larger than default buffers, our PEP has the largest configurable buffers, up to 2GB.
 
 % TRL TCP https://ieeexplore.ieee.org/abstract/document/4623710?casa_token=nB8IUC46VVQAAAAA:q9PoGtpzLJDUCfrjMzeAi9DG7VKQoSQVmogIdidf-ydVmt7e2ZtL5O1859WLVM6a_wXn_IZijFM
 
@@ -1905,7 +1906,7 @@ Figure \ref{fig:completefig} shows the ten flows for each of the three configura
 Another interesting aspect is the flow fairness, as we can see that with BFIFO there is a clear unfairness between the 10 flows. One of the beneficial side effects of FQ-CoDel is its inherent fairness, as we can see in Figure \ref{fig:completefig} (b). Because the PEP also uses FQ-CoDel, we get the same fairness, but without the loss in throughput.\\
 
 \chapter{Conclusion \& Future Work}
-To conclude this these will have a look back on the original goal of the thesis and the results. At last we will look at potential future work and research regarding the PEP.
+In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally potential future work is discussed.
 
 \section{Performance}
 

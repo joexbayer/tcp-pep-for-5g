@@ -49,6 +49,14 @@ Wesley Eddy.
 \newblock Request for Comments RFC 9293, Internet Engineering Task Force, Aug
   2022.
 
+\bibitem{snooptcp}
+M.~Garcia, J.~Choque, L.~Sanchez, and L.~Munoz.
+\newblock An experimental study of snoop tcp performance over the ieee 802.11b
+  wlan.
+\newblock In {\em The 5th International Symposium on Wireless Personal
+  Multimedia Communications}, volume~3, page 1068–1072, Honolulu, HI, USA,
+  2002. IEEE.
+
 \bibitem{hingane2020aqm}
 S.~Hingane.
 \newblock Using aqm to manage "temporary bufferbloat" on mmwave links.
@@ -101,6 +109,14 @@ Michele Polese, Marco Mezzavilla, Menglei Zhang, Jing Zhu, Sundeep Rangan,
 \newblock milliproxy: A tcp proxy architecture for 5g mmwave cellular systems.
 \newblock In {\em 2017 51st Asilomar Conference on Signals, Systems, and
   Computers}, pages 951--957, 2017.
+
+\bibitem{milliproxy}
+Michele Polese, Marco Mezzavilla, Menglei Zhang, Jing Zhu, Sundeep Rangan,
+  Shivendra Panwar, and Michele Zorzi.
+\newblock milliproxy: a tcp proxy architecture for 5g mmwave cellular systems.
+\newblock In {\em 2017 51st Asilomar Conference on Signals, Systems, and
+  Computers}, page 951–957, October 2017.
+\newblock arXiv:1712.02700 [cs, math].
 
 \bibitem{rahtz2023ultraping}
 Matthew Rahtz.
