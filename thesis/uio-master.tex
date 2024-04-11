@@ -1522,7 +1522,7 @@ To simulate the fluctuating bandwidth, a shell script at the router will configu
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.25]{../diagrams/witestlab/witestlab_results.png}
+	\includegraphics[scale=0.3]{../diagrams/witestlab/witestlab_results.png}
   	\caption{Results from the Witestlab experiment~\cite{Srivastava_Fund_Panwar_2020}}
   	\label{fig:witestlab_results}
 \end{figure}
@@ -1533,7 +1533,7 @@ The results from our latency measurement experiment show a clear impact on the l
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
-	\includegraphics[scale=0.33]{../diagrams/witestlab/delay2.png}
+	\includegraphics[scale=0.25]{../diagrams/witestlab/combined_plots.pdf}
   	\caption{Our results for the delay caused by fluctuating bandwidth}
   	\label{fig:witestlab_graph_delay_1}
 \end{figure}
@@ -1689,7 +1689,7 @@ Although the difference between FQ-CoDel and PEP seems large, there is only a di
  & \textbf{Mean Latency (ms)} & \textbf{Standard Deviation (ms)} \\
 \hline
 BFIFO    & 146.835 & 26.598 \\
-FQCoDEL  & 101.236 & 0.062 \\
+FQ-CoDEL  & 101.236 & 0.062 \\
 PEP      & 101.314 & 0.109 \\
 \hline
 \end{tabular}
@@ -1758,6 +1758,20 @@ Static Link  &  146.83 & 26.59 \\
 
 Table \ref{tab:throughput_latency_bfifo_sl_sb} shows that the overall impact is not as big as the graph may indicate. The average difference is only 5.96ms, with a 28.4ms difference for standard deviation. However, even if only rarely, a delay increase from 101ms to 400ms is still a disruption to any interactive experience.\\
 
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|c|c}
+\hline
+ & \textbf{Mean Latency (ms)} & \textbf{Standard Deviation (ms)} \\
+\hline
+PEP   & 101.30 & 0.09 \\
+Static Link  &  101.18 & 0.06 \\
+\end{tabular}
+\caption{Latency statistics for FQ-CoDel and PEP with short blockage}
+\label{tab:throughput_latency_fqcodel_pep_sb}
+\end{table}
+
+
 \subsubsection{Long blockages}
 The long blockage scenario is special as it has the lowest average throughput of 2519.73 Mbit/s and highest standard deviation of 621.16 Mbit/s. The blockage lasting for a longer time reduces how fast the bandwidth fluctuates.\\
 
@@ -1783,6 +1797,22 @@ PEP      & 2368.77 Mbit/s      & 5.36  Mbit/s   \\
 \end{tabular}
 \caption{Statistics of the throughout for the short blockage scenario.}
 \label{tab:throughput_lb_table}
+\end{table}
+
+Table \ref{tab:throughput_latency_lb} shows the latency...
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|c|c|c}
+\hline
+ & \textbf{Mean Latency (ms)} & \textbf{Standard Deviation (ms)} \\
+\hline
+PEP   & 101.33 & 0.11 \\
+FQ-CoDel  &  101.21 & 0.08 \\
+BFIFO & 144.56 & 60.55\\
+\end{tabular}
+\caption{Latency statistics for long blockage scenario.}
+\label{tab:throughput_latency_lb}
 \end{table}
 
 \subsubsection{Mobility and Blockages}
@@ -1860,8 +1890,8 @@ Although BFIFO achieves higher throughput than FQ-CoDel, the interactive latency
 
 The PEP achieves both high throughput and low impact on interactive traffic by combining large buffers with FQ-CoDel and a split connection. The socket buffers do not disrupt traffic which passes through and FQ-CoDel assures a fair and low impact delay. Especially in the mobility and blockage scenario, the PEP is able to almost fully utilize the available bandwidth.\\
 
-\section{Buffer size effect on throughput}
-Continuing on the Mobility and Blockage scenario from the last section, we will evaluate how the buffer sizes on the PEP affect the performances. For this experiment we will run PEP configuration with ten different buffer sizes. The evaluation will consist of ten steps, ranging from the default Linux (debian) socket buffers up to 128 megabytes.\\
+\section{Socker buffer size effect on throughput}
+Continuing on the Mobility and Blockage scenario from the last section, we will evaluate how the socket buffer sizes on the PEP affect the performances. For this experiment we will run PEP configuration with ten different socket buffer sizes. The evaluation will consist of ten steps, ranging from the default Linux (debian) socket buffers up to 128 megabytes.\\
 
 The Linux default socket buffers sizes start at 2 megabyte for net core read and write buffers. The TCP read buffers are at 6 megabyte, and the write buffers at 4 megabyte. The default buffers will be increased at a 1/10 interval untill they reach 128 megabyte. Each step, we will run one flow using the PEP for the entire 120 seconds. For a consistent result we will run each step ten times and take the average as the final result. The goal is to evaluate and confirm the buffers effect on the PEP, compared to the FQ-CoDel and BFIFO configuration. \\
 
@@ -1881,19 +1911,19 @@ The last section of the Evaluation chapter will focus on the PEP performance wit
 \begin{figure}[ht]
   \centering
   \subfloat[Throughput for 10 flows with BFIFO]{
-  	\includegraphics[width=0.45\textwidth]{
+  	\includegraphics[width=0.40\textwidth]{
   		../diagrams/witestlab/throughput/10flows/BFIFO.pdf
   	}
   	\label{fig:subfig1}}
   \hfill
   \subfloat[Throughput for 10 flows with FQ-CoDel]{
-  	\includegraphics[width=0.45\textwidth]{
+  	\includegraphics[width=0.40\textwidth]{
   		../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf
   	}
   	\label{fig:subfig2}}
   \hfill
   \subfloat[Throughput for 10 flows with PEP]{
-  	\includegraphics[width=0.45\textwidth]{
+  	\includegraphics[width=0.40\textwidth]{
   		../diagrams/witestlab/throughput/10flows/PEP.pdf
   	}
   	\label{fig:subfig3}}
@@ -1903,7 +1933,22 @@ The last section of the Evaluation chapter will focus on the PEP performance wit
 
 Figure \ref{fig:completefig} shows the ten flows for each of the three configurations. The main takeaways are the loss in total throughput for BFIFO and FQ-CoDel, having multiple flows compete with the heavy fluctuations lead to less bandwidth utilization. The PEP only has minimal throughput loss, even with multiple flows.\\
 
-Another interesting aspect is the flow fairness, as we can see that with BFIFO there is a clear unfairness between the 10 flows. One of the beneficial side effects of FQ-CoDel is its inherent fairness, as we can see in Figure \ref{fig:completefig} (b). Because the PEP also uses FQ-CoDel, we get the same fairness, but without the loss in throughput.\\
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|c|c}
+\hline
+ & \textbf{mean} & \textbf{std} \\ 
+\hline
+FQ-CoDel & 44.12 Mbit/s      & 7.84 Mbit/s \\
+BFIFO    & 90.89 Mbit/s      & 33.13 Mbit/s  \\
+PEP      & 289.10 Mbit/s      & 1.89 Mbit/s   \\
+\hline
+\end{tabular}
+\caption{Average throughout of a single flow}
+\label{tab:throughput_10flows_table}
+\end{table}
+
+Another interesting aspect is the flow fairness\footnote{Talk about jains fairness}, as we can see that with BFIFO there is a clear unfairness between the 10 flows. One of the beneficial side effects of FQ-CoDel is its inherent fairness, as we can see in Figure \ref{fig:completefig} (b). Because the PEP also uses FQ-CoDel, we get the same fairness, but without the loss in throughput.\\
 
 \chapter{Conclusion \& Future Work}
 In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally potential future work is discussed.

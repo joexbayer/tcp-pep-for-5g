@@ -25,9 +25,9 @@ def read_data(file_name, config_name):
 
 # Mapping of file names to custom configuration names
 file_config_map = {
-    'sl.txt': 'Short Link',
-    'sb.txt': 'Short Blockage',
-    'lb.txt': 'Long Blockage',
+    'sl.txt': 'Static Link',
+    'sb.txt': 'Short Blockages',
+    'lb.txt': 'Long Blockages',
     'mobb.txt': 'Mobility & Blockages'
 }
 

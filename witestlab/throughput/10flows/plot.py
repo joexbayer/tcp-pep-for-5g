@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import os
 import re
+import numpy as np
 
 name_table = {
     './bfifo_10flows.log': 'BFIFO',
@@ -26,6 +27,14 @@ def parse_log_file(file_path):
                 throughput_values.append(throughput)
     return throughput_values
 
+# Function to calculate Jain's fairness index
+def jains_fairness_index(throughput_values):
+    sum_of_throughputs = sum(throughput_values)
+    square_of_sums = sum_of_throughputs ** 2
+    sum_of_squares = sum([x ** 2 for x in throughput_values])
+    fairness_index = square_of_sums / (len(throughput_values) * sum_of_squares)
+    return fairness_index
+
 # Function to plot throughput for each file in a separate subplot and save as PDF
 def plot_throughput_for_files(file_paths):
     num_files = len(file_paths)
@@ -36,7 +45,6 @@ def plot_throughput_for_files(file_paths):
         throughput_values = parse_log_file(file_path)
         max_throughput = max(max_throughput, max(throughput_values, default=0))
 
-    # Plot each file's throughput in a separate subplot
     for i, file_path in enumerate(file_paths):
         plt.figure(figsize=(5, 5))
         throughput_values = parse_log_file(file_path)
@@ -47,6 +55,15 @@ def plot_throughput_for_files(file_paths):
         plt.ylabel('Mbps', fontweight='bold', fontsize=12)
         plt.grid(True, which='both', linestyle='--', linewidth=0.5, zorder=2)
         plt.xticks(range(len(throughput_values)), [str(i+1) for i in range(len(throughput_values))], fontweight='bold', fontsize=10)
+
+        # Calculate Jain's fairness index for the current subplot
+        fairness_index = jains_fairness_index(throughput_values)
+        
+        # Annotate Jain's fairness index on the plot
+        plt.annotate(f"Jain's Fairness Index: {fairness_index:.4f}",
+                     xy=(0.5, -0.15), xycoords='axes fraction',
+                     ha='center', va='center', fontsize=10, fontweight='bold',
+                     bbox=dict(boxstyle='round,pad=0.5', facecolor='yellow', edgecolor='black', alpha=0.5))
 
         # Save each subplot as a PDF
         pdf_filename = f'{name_table.get(file_path, "subplot")}.pdf'
