@@ -1455,14 +1455,15 @@ To demonstrate where the delay happens, we can look at two individual flows: one
 The next experiment will focus on the PEPs behavior in the context of realistic 5G mmWave traces. The focus will be on the throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces were collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
 
 \subsection{Traces}
-The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios.
+The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios. In ~\cite{Srivastava_Fund_Panwar_2020}, they are described as follows:
 
 \begin{itemize}
-  \item \textbf{Static Link}: In the first scenario, the laptops are stationary and nothing obstructs their path.
-  \item \textbf{Short Blockages}: Same as the static link scenario, however at a 15 second interval a human obstructs the path between the laptops.
-  \item \textbf{Long Blockages}: This scenario is similar to the short blockages, however in this scenario the human stopped on the path for four seconds each interval.
-  \item \textbf{Mobility and Blockages}: In the last scenario, the client laptop moved in a circle around the room, while a human obstructed the signal path at a 15 second interval.
-\end{itemize}\footnote{This text comes almost word for word from Srivastava Fund Panwar 2020, how to cite that?}
+  \item \textit{\textbf{Static Link}: In the first scenario, the laptops are stationary and nothing obstructs their path.}
+  \item \textit{\textbf{Short Blockages}: Same as the static link scenario, however at a 15 second interval a human obstructs the path between the laptops.}
+  \item \textit{\textbf{Long Blockages}: This scenario is similar to the short blockages, however in this scenario the human stopped on the path for four seconds each interval.}
+  \item \textit{\textbf{Mobility and Blockages}: In the last scenario, the client laptop moved in a circle around the room, while a human obstructed the signal path at a 15 second interval.}
+\end{itemize}
+
 
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
@@ -1487,14 +1488,14 @@ For this experiment we will use a topology similar to the previous experiment. W
 The link between the sender and the router will be configured based on the scenario, but the default will be a 3Gbit/s bandwidth.
 
 \subsection{Configuration}
-Since we are now dealing with high gigabit bandwidths, we need to configure and tune the hosts to be able to fully utilize these bandwidths. Most importantly the default net read and write buffers need to be adjusted.\footnote{Show the behaviour if we do not?}\\
+Since we are now dealing with high gigabit bandwidths, we need to configure and tune the hosts to be able to fully utilize these bandwidths. Most importantly, the default network read and write buffers need to be adjusted.\\
 
 The core net buffers \verb|net.core.rmem_max| and \verb|net.core.wmem_max| will be adjusted to approximately 256 megabytes. Also \verb|net.ipv4.tcp_rmem| and \verb|net.ipv4.tcp_wmem| will be set to the same 256 megabytes size. This will assure that neither the sender or receiver is limited by the socket buffers.
 
 \subsection{Validation}
 
 First we will try to reproduce the results from the original Witestlab experiment, to see how our testbed will affect the results.
-Following each step of the original experiment, we configure the link between the router and the receiver to have a 3Gbit/s bandwidth and no configured delay. Additionally, it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled. This configuration is visualized in Figure \ref{fig:tc_5g_bfifo}. \\
+Following each step of the original experiment, we configure the link between the router and the receiver to initially have a 3Gbit/s bandwidth and no configured delay. Additionally, it will have a BFIFO queue with a max capacity of 7,5Mb which will create a delay of 20ms if the queue is fully filled. This configuration is visualized in Figure \ref{fig:tc_5g_bfifo}. \\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1538,12 +1539,12 @@ The results from our latency measurement experiment show a clear impact on the l
   	\label{fig:witestlab_graph_delay_1}
 \end{figure}
 
-Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measurements. Comparing our results to the Witestlab experiment (Figure \ref{fig:witestlab_results}) we can see that the shapes of the graphs are the same. However the magnitude of the latency spikes are quite different between our and their experiments. The difference is most likely due to our hardware or a more modern Linux kernel.\\
+Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measurements. Comparing our results to the Witestlab experiment (Figure \ref{fig:witestlab_results}) we can see that the shapes of the graphs are similar. However the magnitude of the latency spikes are quite different between our and their experiments. The difference is most likely due to our hardware or a more modern Linux kernel.\\
 
 Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same general latency behaviour of the 5G traces.
 
 \subsection{Experiment Configuration}
-To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will get a 1ms delay for a more realistic scenario. The experiment procedure will be to send as much data as possible from the sender to the receiver. We will use throughput as the main measurement for the performance of each scenario. The interactive traffic will be represented by Ultra ping.
+To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will get a 1ms delay for a more realistic scenario. The experiment procedure will be to send as much data as possible from the sender to the receiver. We will use throughput as the main measurement for the performance of each scenario. The interactive traffic should not, or hardly be, impacted by the other transfer(s). It will be represented by Ultra ping.
 
 \begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1553,7 +1554,7 @@ To evaluate the PEP with the 5G traces we will change the topology to include a 
 \end{figure}
 
 \subsubsection{End-to-end Configuration}
-The end-to-end scenario has two cases, once with FQ-CoDel and once with BFIFO. FQ-CoDel will reduce the amount of impact on the interactive, while BFIFO will allow the sender to buffer a lot of data at the router. The BFIFO buffer will be configured with a queue size of the BDP based on the static scenario. The total end to end RTT is 101ms and the bottleneck bandwidth is 3gbit/s. Based on the calculation from Figure \ref{eq:bdp_calculation} the BDP will is 37,875,000 bytes. This will allow for a lot of data to be buffered at the router, which will negatively impact the interactive traffic, but increase the throughput.\\
+The end-to-end scenario has two cases, once with FQ-CoDel and once with BFIFO. FQ-CoDel will reduce the amount of impact on the interactive traffic, while BFIFO will allow the sender to buffer a lot of data at the router. The BFIFO buffer will be configured with a queue size of the BDP based on the static scenario. The total end to end RTT is 101ms and the bottleneck bandwidth is 3gbit/s. Based on the calculation from Figure \ref{eq:bdp_calculation} the BDP is 37,875,000 bytes. This will allow for a lot of data to be buffered at the router, which will negatively impact the interactive traffic, but increase the throughput.\\
 
 \begin{figure}[ht]
 \centering
@@ -1571,11 +1572,11 @@ The end-to-end scenario has two cases, once with FQ-CoDel and once with BFIFO. F
 The 100ms delay will be configured on the Sender`s interface towards the router, while the 1ms delay will be configured on the receivers interface.
 
 \subsubsection{PEP Configuration}
-For the PEP case we will change the configuration to assert that no delay is added from the sender. We will achieve this by adding FQ-CoDel at the senders interface and configure the 100ms delay on the routers interface towards the sender. Because the PEP essentially will be a split connection at the router we must be sure that interactive traffic is not already delayed before it reaches the PEP.\\
+For the PEP case we will change the configuration to assert that no unwanted delay is added for the interactive traffic from the sender. We will achieve this by adding FQ-CoDel at the sender's interface and configuring the 100ms delay on the router's ingress interface for traffic from the sender (in the BFIFO case we configured the 100ms on the sender's outgoing interfaces). Because the PEP essentially will be a split connection at the router we must be sure that interactive traffic is not already delayed before it reaches the PEP.\\
 
-Especially important for the PEP are the socket buffers at the router, which are the buffers that the PEP will use. These buffers would normally be ignored by packets simply passing through the router. Therefor they will not affect any interactive traffic, as NIC or scheduler buffers would. The socket buffers on the router will be configured to be 128 megabytes, which will be enough to temporary buffer packets for low bandwidth phases. Noteworthy is that a socket has two buffers, one for reading and one for writing. Additionally a connection has two sockets on the PEP, which gives us a total of four buffers.\\
+Especially important for the PEP are the socket buffers at the router, which are the buffers that the PEP will use. These buffers would normally be ignored by packets simply passing through the router. Therefore they will not affect any interactive traffic, as NIC or scheduler buffers would. The socket buffers on the router will be configured to be 128 megabytes, which will be enough to temporary buffer packets for low bandwidth phases. It is noteworthy that a socket has two buffers, one for reading and one for writing. Additionally a connection has two sockets on the PEP, which gives us a total of four buffers.\\
 
-\subsection{Experiments Steps}
+\subsection{Experiment Steps}
 For this experiment we will have two parallel flows, one for the data and one for the interactive traffic.\\
 
 The experiment consists of three steps:
@@ -1600,7 +1601,7 @@ The experiment consists of three steps:
 %\end{figure}
 
 \subsubsection{Congestion Controller's affect on throughput}
-While running a throughput test from sender to receiver with a BDP sized BFIFO queue at the router, we observe seemingly random results of throughput. The throughput should theoretically, with our configuration, be about 3Gbit/s: fully utilizing the bandwidth. However the results hover around 2.1Gbit/s to 2.5Gbits/s. To understand this we can look at the congestion window of a cubic transfer.\\
+While running a throughput test from sender to receiver with a BDP sized BFIFO queue at the router, we observe surprising results of throughput. We excepted the throughput, with our configuration, to be about 3Gbit/s: fully utilizing the bandwidth. However the results hover around 2.1Gbit/s to 2.5Gbits/s. To understand this we can look at the congestion window of a cubic transfer.\\
 
 \begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1609,11 +1610,11 @@ While running a throughput test from sender to receiver with a BDP sized BFIFO q
   	\label{fig:cubiccwnd}
 \end{figure}
 
-The first interesting aspect of Figure \ref{fig:cubiccwnd} is the slow cubic curve. It takes a long time to fully utilize the bandwidth. Additionally, looking at the relation to the BDP, we can see that the transfer was lucky the first time starting just under the BDP, and unlucky the second were it starts way below the BDP. Resulting in a rather low throughput.\\
+The first interesting aspect of Figure \ref{fig:cubiccwnd} is the slow cubic curve. It takes a long time to fully utilize the bandwidth. Additionally, looking at the relation to the BDP, we can see that the transfer was lucky in the first increase phase, starting just under the BDP, and unlucky the second where it starts way below the BDP, resulting in a rather low throughput.\\
 
-Looking at the double back-off after 70 seconds in Figure \ref{fig:cubiccwnd} we can see that the next congestion avoidance phase starts low and does not reach full throughput again before the experiment ended. Which brings us to the conclusion that Cubic does not operate effectively in our scenarios with big bandwidths and huge buffers. Because of these results a single Cubic transfer is not representative of the achievable throughput as it will either be lucky and get a big throughput or unlucky with a low throughput.\\
+Looking at the double back-off after 70 seconds in Figure \ref{fig:cubiccwnd} we can see that the next congestion avoidance phase starts low and does not reach full throughput again before the experiment ended. This brings us to the conclusion that Cubic does not operate effectively in our scenarios with big bandwidths and huge buffers. Because of these results a single Cubic transfer is not representative of the achievable throughput as it will either be lucky and get a big throughput or unlucky with a low throughput.\\
 
-Looking at Reno we see the same kind of behavior, where the big BFIFO queue and high bandwidth results in low throughput because of the congestion avoidance phase. Looking at Figure \ref{fig:renocwnd} we can see an unlucky congestion avoidance start which leads to low throughput.
+Looking at Reno, we see the same kind of behavior, where the big BFIFO queue and high bandwidth results in low throughput because of the congestion avoidance phase. In Figure \ref{fig:renocwnd} we can see an unlucky congestion avoidance start which leads to low throughput.
  
 \begin{figure}[!h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1628,10 +1629,10 @@ Because of the unstable nature of Cubic in our experiments we will run each expe
 
 
 \subsection{Results}
-The results will focus on the differences in throughput based on the scenario. Importantly how the choice of buffer, scheduler and 5G scenario affect the fairness, impact on interactive traffic and achievable throughput. 
+The results will focus on the differences in throughput based on the scenario. Importantly, how the choice of buffer, scheduler and 5G scenario affect the fairness, impact on interactive traffic and achievable throughput. 
 
 \subsubsection{Static link}
-The static link scenario will represent a baseline of performance with little to no fluctuations. Based on this baseline we can compare the affect of the various types of fluctuations. The static link configuration has a average throughput of 2905.61 Mbit/s and a standard deviation of 171.74 Mbit/s.\\
+The static link scenario will represent a baseline of performance with little to no fluctuations. Based on this baseline we can compare the effect of the various types of fluctuations. The static link configuration has an average throughput of 2905.61 Mbit/s and a standard deviation of 171.74 Mbit/s.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1671,7 +1672,7 @@ Looking at the statics in Table \ref{tab:throughput_sl_table} we can see a rathe
 Figure \ref{fig:throughput_latency_sl} shows the impact on the interactive traffic for each configuration. 
 Looking at the BFIFO configuration we get a huge impact on the interactive traffic because of the large buffers. This shows the cost of the higher throughput that BFIFO achieves over FQ-CoDel. While the base RTT of our configuration is 101ms, the BFIFO reaches peaks above 200ms and a average of 146.83ms with a 26.59ms standard deviation.\\
 
-The impact of the FQ-CoDel and PEP configuration is barely noticeable, compared to the BFIFO configuration. Figure \ref{fig:throughput_latency_closeup_sl} shows a close up of both FQ-CoDel and PEP, as we can see there is a tiny difference with the PEP having more spikes than FQ-CoDel.\\
+The impact of the FQ-CoDel and PEP configuration is barely noticeable, compared to the BFIFO configuration. Figure \ref{fig:throughput_latency_closeup_sl} shows a close up of both FQ-CoDel and PEP; as we can see, there is a tiny difference with the PEP having more spikes than FQ-CoDel.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1680,7 +1681,7 @@ The impact of the FQ-CoDel and PEP configuration is barely noticeable, compared 
   	\label{fig:throughput_latency_closeup_sl}
 \end{figure}
 
-Although the difference between FQ-CoDel and PEP seems large, there is only a difference of 0.078ms for the mean, and 0.047ms difference for standard deviation. Table \ref{tab:throughput_latency_stats_sl} shows the mean and standard deviation for all three configurations. This highlights one of the main benefits of the PEP. We achieve a higher throughput than BFIFO, while barely impacting the traffic more than FQ-CoDel would.\\
+Although the difference between FQ-CoDel and PEP my visually appear large, it is insignificant: there is only a difference of 0.078ms for the mean, and 0.047ms difference for standard deviation. Table \ref{tab:throughput_latency_stats_sl} shows the mean and standard deviation for all three configurations. This highlights one of the main benefits of the PEP. We achieve a higher throughput than BFIFO while barely impacting the traffic more than FQ-CoDel would.\\
 
 \begin{table}[h!]
 \centering
@@ -1705,7 +1706,7 @@ PEP      & 101.314 & 0.109 \\
   	\label{fig:sb_fluctuations}
 \end{figure}
 
-The short blockage is an important scenario to evaluate as it will show the impact only small and short fluctuations will have on the throughput, especially for FQ-CoDel. The average throughput of the short blockage configuration is 2726.27 Mbit/s with a 517.02 Mbit/s standard deviation.\\
+The short blockage is an important scenario to evaluate as it will show the impact that small and short fluctuations will have on the throughput, especially for FQ-CoDel. The average throughput of the short blockage configuration is 2726.27 Mbit/s with a 517.02 Mbit/s standard deviation.\\
 
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
@@ -1715,7 +1716,7 @@ The short blockage is an important scenario to evaluate as it will show the impa
   	\label{fig:throughput_sb}
 \end{figure}
 
-From Figure \ref{fig:throughput_sb} we can see an overall decrease of throughput, which is expected based on the average throughput of the scenario. However, FQ-CoDel has an especially big decrease in throughput from a 1998.12 Mbit/s average throughput in static link down to 1017.17 Mbit/s in the short blockage scenario. In this scenario the benefit of big buffers becomes especially apparent, the small buffer sizes of FQ-CoDel with fluctuations forces FQ-CoDel to drop packets, which is devastating for the congestion controller.\\
+From Figure \ref{fig:throughput_sb} we can see an overall decrease of throughput, which is expected based on the average throughput of the scenario. However, FQ-CoDel has an especially big decrease in throughput from a 1998.12 Mbit/s average throughput in static link down to 1017.17 Mbit/s in the short blockage scenario. In this scenario the benefit of big buffers becomes especially apparent, the small buffer sizes of FQ-CoDel with fluctuations forces FQ-CoDel to more frequently drop packets, which is devastating for the congestion controller.\\
 
 \begin{table}[h!]
 \centering
@@ -1782,7 +1783,7 @@ The long blockage scenario is special as it has the lowest average throughput of
   	\label{fig:throughput_lb}
 \end{figure}
 
-Looking at Figure \ref{fig:throughput_lb} we can see a positive affect with the FQ-CoDel configuration. For FQ-CoDel the rapid fluctuations are the worst case scenarios, because it is unable to react fast enough or buffer enough packets as to not drop them. Table \ref{tab:throughput_lb_table} we can see that the FQ-Codel throughput increased by 159.80 Mbit/s while the standard deviation decreased by 102.74 Mbit/s compared to the short blockage scenario.
+Looking at Figure \ref{fig:throughput_lb} we can see a positive effect with the FQ-CoDel configuration compared to Figure \ref{fig:throughput_sb}. For FQ-CoDel the rapid fluctuations are the worst case scenarios, because it is unable to react fast enough or buffer enough packets as to not drop them. In table \ref{tab:throughput_lb_table} we can see that the FQ-Codel throughput increased by 159.80 Mbit/s while the standard deviation decreased by 102.74 Mbit/s compared to the short blockage scenario.
 
 \begin{table}[h!]
 \centering
@@ -1828,13 +1829,13 @@ The mobility and blockage scenario will be the most interesting scenario for our
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.70]{../diagrams/witestlab/throughput/throughput_mobb.pdf}
-  	\caption{Bar plot of throughout for each scenario with a mobility and blockage scenario}
+  	\caption{Bar plot of throughout for each scenario with the mobility and blockage scenario}
   	\label{fig:throughput_mobb}
 \end{figure}
 
 Figure \ref{fig:throughput_mobb} shows the throughput of each configuration, most notably the PEP has a big increase from the previous scenario. The PEP has an average throughput of 2992.35 Mbit/s which is over the average of the scenario. This result clearly shows the benefit of the PEP, especially in a highly fluctuating environment as in this scenario. The PEP is able to utilize the high bandwidth phases by buffering the most data and reacting faster than any other configuration.\\
 
-The BFIFO configuration also has a increase of 435.05 Mbit/s from the previous scenario, in contrast to FQ-CoDel which had an decrease in throughput compared to the previous scenario. This highlights the importance of larger buffers in highly fluctuating environments. However, the BFIFO configuration suffers from a much higher standard deviation of 283.13 Mbit/s and an approximately difference of 1Gbit/s between the Min and Max throughput results.\\
+The BFIFO configuration also has an increase of 435.05 Mbit/s from the previous scenario, in contrast to FQ-CoDel which had a decrease in throughput compared to the previous scenario. This highlights the importance of larger buffers in highly fluctuating environments. However, the BFIFO configuration suffers from a much higher standard deviation of 283.13 Mbit/s and an approximate difference of 1Gbit/s between the Min and Max throughput results.\\
 
 \begin{table}[h!]
 \centering
@@ -1890,20 +1891,19 @@ Although BFIFO achieves higher throughput than FQ-CoDel, the interactive latency
 
 The PEP achieves both high throughput and low impact on interactive traffic by combining large buffers with FQ-CoDel and a split connection. The socket buffers do not disrupt traffic which passes through and FQ-CoDel assures a fair and low impact delay. Especially in the mobility and blockage scenario, the PEP is able to almost fully utilize the available bandwidth.\\
 
-\section{Socker buffer size effect on throughput}
+\section{Socket buffer size effect on throughput}
 Continuing on the Mobility and Blockage scenario from the last section, we will evaluate how the socket buffer sizes on the PEP affect the performances. For this experiment we will run PEP configuration with ten different socket buffer sizes. The evaluation will consist of ten steps, ranging from the default Linux (debian) socket buffers up to 128 megabytes.\\
 
-The Linux default socket buffers sizes start at 2 megabyte for net core read and write buffers. The TCP read buffers are at 6 megabyte, and the write buffers at 4 megabyte. The default buffers will be increased at a 1/10 interval untill they reach 128 megabyte. Each step, we will run one flow using the PEP for the entire 120 seconds. For a consistent result we will run each step ten times and take the average as the final result. The goal is to evaluate and confirm the buffers effect on the PEP, compared to the FQ-CoDel and BFIFO configuration. \\
+The Linux default socket buffer sizes start at 2 megabyte for net core read and write buffers. The TCP read buffers are at 6 megabyte, and the write buffers at 4 megabyte. The default buffers will be increased at a 1/10 interval until they reach 128 megabyte. Each step, we will run one flow using the PEP for the entire 120 seconds. For a consistent result we will run each step ten times and take the average as the final result. The goal is to evaluate and confirm the buffers effect on the PEP, compared to the FQ-CoDel and BFIFO configuration. \\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.55]{../diagrams/witestlab/throughput/buffersizes.pdf}
-  	\caption{Throughput for the PEP based on buffer sizes in ten steps.}
+  	\caption{Throughput for the PEP based on socket buffer sizes in ten steps.}
   	\label{fig:throughput_all}
 \end{figure}
 
-As we can see from Figure \ref{fig:throughput_all}, the default buffer sizes preform the worst, improving with each step. From the default to step 7 the throughput increases with bigger buffer sizes. This highlights the importance of the buffer sizes for the PEP. After step 7, approximately 85.40 MB buffer size, the throughput reaches its limit based on the scenario.
-
+As we can see from Figure \ref{fig:throughput_all}, the default socket buffer sizes perform the worst, improving with each step. From the default to step 7 the throughput increases with bigger socket buffer sizes. This highlights the importance of the buffer sizes for the PEP. After step 7, approximately 85.40 MB buffer size, the throughput reaches its limit based on the scenario.\footnote{What happens... The PEP slows down in the sender rwnd?}
 
 \section{Multiple flows}
 The last section of the Evaluation chapter will focus on the PEP performance with multiple flows. Especially throughput and fairness are important aspects to explore. The mobility and blockage scenario from the 5G mmWave section will be used to simulate our fluctuating bandwidth.\\
@@ -1931,7 +1931,7 @@ The last section of the Evaluation chapter will focus on the PEP performance wit
   \label{fig:completefig}
 \end{figure}
 
-Figure \ref{fig:completefig} shows the ten flows for each of the three configurations. The main takeaways are the loss in total throughput for BFIFO and FQ-CoDel, having multiple flows compete with the heavy fluctuations lead to less bandwidth utilization. The PEP only has minimal throughput loss, even with multiple flows.\\
+Figure \ref{fig:completefig} shows the ten flows for each of the three configurations. The main takeaways are the loss in total throughput for BFIFO and FQ-CoDel, where having multiple flows compete with the heavy fluctuations leads to less bandwidth utilization. per flow. The PEP only has minimal throughput loss, even with multiple flows.\\
 
 \begin{table}[h!]
 \centering
@@ -1948,7 +1948,31 @@ PEP      & 289.10 Mbit/s      & 1.89 Mbit/s   \\
 \label{tab:throughput_10flows_table}
 \end{table}
 
-Another interesting aspect is the flow fairness\footnote{Talk about jains fairness}, as we can see that with BFIFO there is a clear unfairness between the 10 flows. One of the beneficial side effects of FQ-CoDel is its inherent fairness, as we can see in Figure \ref{fig:completefig} (b). Because the PEP also uses FQ-CoDel, we get the same fairness, but without the loss in throughput.\\
+\begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
+	\centering
+	\includegraphics[scale=0.65]{../diagrams/witestlab/throughput/10flows/latency.pdf}
+  	\caption{Impact on interactive traffic for ten flows with mobility and blockage scenario.}
+  	\label{fig:latency_10_flows}
+\end{figure}
+
+Another interesting aspect is the flow fairness: as we can see in Figure \ref{fig:completefig}, with BFIFO there is a clear unfairness between the ten flows. The Jain's fairness index under each graph indicates the fairness, an index of 1 is considered very fair, while the number diminishes as fairness degrades. One of the beneficial side-effects of FQ-CoDel is its inherent fairness, as we can see in Figure \ref{fig:completefig} (b). Because the PEP also uses FQ-CoDel, we get the same fairness, but without the loss in throughput.\\
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{l|c|c}
+\hline
+ & \textbf{Mean Latency (ms)} & \textbf{Standard Deviation (ms)} \\
+\hline
+BFIFO   & 102.37 & 6.35 \\
+FQ-CoDel  &  101.18 & 0.04 \\
+PEP  &  101.18 & 0.05 \\
+\end{tabular}
+\caption{Latency statistics for ten flows with the mobility and blockage scenario.}
+\label{tab:latency_10_flows}
+\end{table}
+
+Table \ref{tab:latency_10_flows} and Figure \ref{fig:latency_10_flows} show the impact on the interactive traffic with 10 flows. Interestingly, the competition between the ten flows create an overall less destructive impact on the interactive traffic than a single flow. With BFIFO there are still high spikes up to 175ms. While both PEP and FQ-CoDel have the same average latency of 101.18ms, which is only an increase of 0.18 from the set end to end delay of 101ms.
+
 
 \chapter{Conclusion \& Future Work}
 In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally potential future work is discussed.
