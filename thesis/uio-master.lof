@@ -21,42 +21,42 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Kernel Sock Structure\relax }}{34}{figure.4.4}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Socket Protocol Operations from Linux - net.h\nobreakspace {}\cite {linuxkernel_neth} \relax }}{35}{figure.4.5}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Work struct from Linux - workqueue.h\relax }}{36}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{41}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Work operation table\relax }}{44}{figure.4.8}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Callback function table\relax }}{45}{figure.4.9}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces https://docs.kernel.org/core-api/workqueue.html\relax }}{42}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Work operation table\relax }}{45}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Callback function table\relax }}{46}{figure.4.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Overview of the Ocarina testbed\relax }}{48}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Screenfetch results\relax }}{49}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces FQ-CoDel traffic control visualization\relax }}{51}{figure.caption.45}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces BFIFO traffic control visualization\relax }}{52}{figure.caption.46}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces File transfer impact on interactive traffic\relax }}{53}{figure.caption.48}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Close up of End to End compared to PEP\relax }}{54}{figure.caption.50}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces The file transfer's effect on the interactive traffic.\relax }}{55}{figure.caption.52}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios (Data from \nobreakspace {}\cite {Srivastava_Fund_Panwar_2020})\relax }}{56}{figure.caption.53}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces BFIFO traffic control visualization for 5G traces\relax }}{58}{figure.caption.54}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{58}{figure.caption.55}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Our results for the delay caused by fluctuating bandwidth\relax }}{58}{figure.caption.56}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Testbed configuration for 5G traces\relax }}{59}{figure.caption.57}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Calculation of the Bandwidth-Delay Product (BDP) in Bytes\relax }}{60}{figure.caption.59}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Cubic's congestion window\relax }}{61}{figure.caption.62}%
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Reno's congestion window\relax }}{62}{figure.caption.63}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Bar plot of throughout for each scenario with a static link configuration\relax }}{63}{figure.caption.65}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Impact on interactive traffic for the static link scenario\relax }}{64}{figure.caption.67}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Closeup of the PEP and FQ-CoDel impact on interactive traffic for the static link scenario\relax }}{65}{figure.caption.68}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Bandwidth fluctuations with Short blockage scenario\relax }}{65}{figure.caption.71}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Bar plot of throughout for each scenario with a short blockage configuration\relax }}{66}{figure.caption.72}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces BFIFO impact on interactive traffic with short blockage and static link.\relax }}{67}{figure.caption.74}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Bar plot of throughout for each scenario with a long blockage configuration\relax }}{68}{figure.caption.78}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Bandwidth fluctuations with mobility and blockage scenario\relax }}{69}{figure.caption.82}%
-\contentsline {figure}{\numberline {5.24}{\ignorespaces Bar plot of throughout for each scenario with the mobility and blockage scenario\relax }}{70}{figure.caption.83}%
-\contentsline {figure}{\numberline {5.25}{\ignorespaces Impact on interactive traffic for each configuration in the mobility and blockage scenario.\relax }}{71}{figure.caption.85}%
-\contentsline {figure}{\numberline {5.26}{\ignorespaces Closeup of the PEP and FQ-CoDel impact on interactive traffic for the mobility and blockage scenario\relax }}{71}{figure.caption.86}%
-\contentsline {figure}{\numberline {5.27}{\ignorespaces BFIFO impact on latency.\relax }}{72}{figure.caption.87}%
-\contentsline {figure}{\numberline {5.28}{\ignorespaces Average throughput for each scenario by configuration.\relax }}{73}{figure.caption.88}%
-\contentsline {figure}{\numberline {5.29}{\ignorespaces Throughput for the PEP based on socket buffer sizes in ten steps.\relax }}{74}{figure.caption.89}%
-\contentsline {figure}{\numberline {5.30}{\ignorespaces The throughput of ten parallel flows for each configuration.\relax }}{75}{figure.caption.90}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Throughput for 10 flows with BFIFO}}}{75}{subfigure.30.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Throughput for 10 flows with FQ-CoDel}}}{75}{subfigure.30.2}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Throughput for 10 flows with PEP}}}{75}{subfigure.30.3}%
-\contentsline {figure}{\numberline {5.31}{\ignorespaces Impact on interactive traffic for ten flows with mobility and blockage scenario.\relax }}{76}{figure.caption.92}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Overview of the Ocarina testbed\relax }}{49}{figure.caption.42}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Screenfetch results\relax }}{50}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces FQ-CoDel traffic control visualization\relax }}{52}{figure.caption.45}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces BFIFO traffic control visualization\relax }}{53}{figure.caption.46}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces File transfer impact on interactive traffic\relax }}{54}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Close up of End to End compared to PEP\relax }}{55}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces The file transfer's effect on the interactive traffic.\relax }}{56}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces mmWave capacity fluctuation for four different 5G scenarios (Data from \nobreakspace {}\cite {Srivastava_Fund_Panwar_2020})\relax }}{57}{figure.caption.53}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces BFIFO traffic control visualization for 5G traces\relax }}{59}{figure.caption.54}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Results from the Witestlab experiment\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{59}{figure.caption.55}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Our results for the delay caused by fluctuating bandwidth\relax }}{59}{figure.caption.56}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Testbed configuration for 5G traces\relax }}{60}{figure.caption.57}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Calculation of the Bandwidth-Delay Product (BDP) in Bytes\relax }}{61}{figure.caption.59}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Cubic's congestion window\relax }}{62}{figure.caption.62}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Reno's congestion window\relax }}{63}{figure.caption.63}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Bar plot of throughout for each scenario with a static link configuration\relax }}{64}{figure.caption.65}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Impact on interactive traffic for the static link scenario\relax }}{65}{figure.caption.67}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Closeup of the PEP and FQ-CoDel impact on interactive traffic for the static link scenario\relax }}{66}{figure.caption.68}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Bandwidth fluctuations with Short blockage scenario\relax }}{66}{figure.caption.71}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Bar plot of throughout for each scenario with a short blockage configuration\relax }}{67}{figure.caption.72}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces BFIFO impact on interactive traffic with short blockage and static link.\relax }}{68}{figure.caption.74}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Bar plot of throughout for each scenario with a long blockage configuration\relax }}{69}{figure.caption.78}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Bandwidth fluctuations with mobility and blockage scenario\relax }}{70}{figure.caption.82}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Bar plot of throughout for each scenario with the mobility and blockage scenario\relax }}{71}{figure.caption.83}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Impact on interactive traffic for each configuration in the mobility and blockage scenario.\relax }}{72}{figure.caption.85}%
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Closeup of the PEP and FQ-CoDel impact on interactive traffic for the mobility and blockage scenario\relax }}{72}{figure.caption.86}%
+\contentsline {figure}{\numberline {5.27}{\ignorespaces BFIFO impact on latency.\relax }}{73}{figure.caption.87}%
+\contentsline {figure}{\numberline {5.28}{\ignorespaces Average throughput for each scenario by configuration.\relax }}{74}{figure.caption.88}%
+\contentsline {figure}{\numberline {5.29}{\ignorespaces Throughput for the PEP based on socket buffer sizes in ten steps.\relax }}{75}{figure.caption.89}%
+\contentsline {figure}{\numberline {5.30}{\ignorespaces The throughput of ten parallel flows for each configuration.\relax }}{76}{figure.caption.90}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Throughput for 10 flows with BFIFO}}}{76}{subfigure.30.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Throughput for 10 flows with FQ-CoDel}}}{76}{subfigure.30.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Throughput for 10 flows with PEP}}}{76}{subfigure.30.3}%
+\contentsline {figure}{\numberline {5.31}{\ignorespaces Impact on interactive traffic for ten flows with mobility and blockage scenario.\relax }}{77}{figure.caption.92}%
 \addvspace {10\p@ }

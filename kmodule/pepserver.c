@@ -227,7 +227,7 @@ void pep_server_clean(struct pep_state* server)
 	atomic_set(&server->state, PEP_SERVER_STOPPED);
 	cancel_work_sync(&server->accept_work);
 
-	/*struct pep_tunnel* iter, temp;
+	struct pep_tunnel* iter, temp;
 	list_for_each_entry_safe(iter, temp, &server->tunnels, list) {
         list_del(&iter->list);
 
@@ -238,7 +238,7 @@ void pep_server_clean(struct pep_state* server)
 		sock_release(iter->endpoint.sock);
 
 		kfree(iter);
-    }*/
+    }
 
 	destroy_workqueue(server->accept_wq);
 	destroy_workqueue(server->forward_c2e_wq);
