@@ -257,18 +257,15 @@ int main(void)
 \section{Related Work}
 The 0-RTT TCP Convert Protocol is a protocol which aims to improve the performance for the fluctuating bandwidth and volatile nature of 5G networks by utilizing multipath TCP~\cite{rfc8803}. This is in contrast to our approach, which is to increase buffer sizes for the non-interactive traffic. The protocol is non-transparent\footnote{Is this actually correct? It uses TLVs?} and uses TLVs to communicate with the proxy.\\
 
+Other protocols, such as SOCKSv5, have bottlenecks when communicating with the proxy, because of the additional information that needs to be sent, such as authentication. Transport converter aims to reduce this overhead by utilizing the 0-RTT, adding any meta-data to the SYN packet.\\
 
-Other protocols, such as SOCKSv5, have bottlenecks when communicating with the proxy, because of the additional information that needs to be sent, such as authentication. Transport converter aims to reduce this overhead by utilizing the 0-RTT, adding any metadata to the SYN packet. ...\\
+SnoopTCP is a similar proxy to our PEP, as it usually acts on the base station and aims to improve the control loops between the sender and the receiver. SnoopTCP does not directly split the connection, but instead keeps a soft state of each TCP connection and re-transmits based on local timers. Additionally it suppresses duplicate ACKs on their way from the receiver to the sender~\cite{snooptcp}.\\
 
+SnoopTCP is transparent, which means it will split all connections and the sender will not be aware of any modifications SnoopTCP performs on the connection.The main benefit from SnoopTCP is its ability to react faster to packet loss with the local timers. However, because the congestion control is still end-to-end, the sender will not be able to send more data on demand if the bandwidth fluctuates.\\
 
+Another similar proxy to our PEP is milliProxy, which also focuses on 5G mmWave networks and aims to boost their performances. MilliProxy operates with a split connection, and keeps track of each flows state, having dynamic buffers per flow~\cite{milliproxy}. Similar to SnoopTCP, MilliProxy is transparent, which means...\\
 
-0RTT transport converter?\cite{bandwidth_changes}\\
-
-SnoopTCP is a similar proxy to our PEP, as it usually acts on the base station and aims to improve the control loops between the sender and the receiver. SnoopTCP does not directly split the connection, but instead keeps a soft state of each TCP connection and re-transmits based on local timers. Additionally it suppresses duplicate ACKs on their way from the receiver to the sender~\cite{snooptcp}. SnoopTCP is transparent, which means it will split all connections and the sender will not be aware of any modifications SnoopTCP performs on the connection.\\
-
-The main benefit from SnoopTCP is its ability to react faster to packet loss with the local timers. However, because the congestion control is still end-to-end, the sender will not be able to send more data on demand if the bandwidth fluctuates.\\
-
-Another similar proxy to our PEP is milliProxy, which also focuses on 5G mmWave networks and aims to boost their performances. MilliProxy operates with a split connection, and keeps track of each flows state, having dynamic buffers per flow~\cite{milliproxy}. Similar to SnoopTCP, milliProxy is transparent, which means... \\
+PEP-DNA is a kernel module based PEP designed to aid deployments of new network architectures \cite{pep_dna}. Similar to both SnoopTCP and MilliProxy, PEP-DNA is transparent. The most interesting feature of PEP-DNA for our PEP is the kernel module architecture, especially the split connection based on sockets and work handling. PEP-DNA uses a Netfilter to intercept SYN packets and then split the connection. This is a major difference to our approach which focuses on a non-transparent connection establishment.
 
 % This chapter explores the design desgins that later will be implemented by chapter 4.
 % Briefly outline the design goals of the PEP
@@ -457,8 +454,8 @@ In this chapter we have designed a high performance connection splitting PEP tai
 \toprule
 Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent & Large Buffers \\
 \midrule
-\textbf{milliProxy} &  & x? & x & x &  \\
-\textbf{PEPDNA} &  & x &  & x &  \\
+\textbf{MilliProxy} &  & x? & x & x &  \\
+\textbf{PEP-DNA} &  & x &  & x &  \\
 \textbf{SnoopTCP} &  &  & x & x &  \\
 \textbf{Our PEP} & x & x &  &  & x \\
 \textbf{TCP Convert} & x & x &  & x? &  \\
@@ -471,7 +468,7 @@ Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent & Larg
 
 Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent, this is a important distinction as non-transparent PEPs do not break important semantics, such as the end to end semantics.\\
 
-The most important difference is the large buffers on our PEP, although other PEPs also have larger than default buffers, our PEP has the largest configurable buffers, up to 2GB.
+The most important difference is the large buffers on our PEP, although other PEPs also have larger than default buffers, our PEP has the largest configurable buffers, up to 2GB. Additionally, the size of the buffers in our PEP will not affect the interactive traffic, as normal network buffers would.
 
 % TRL TCP https://ieeexplore.ieee.org/abstract/document/4623710?casa_token=nB8IUC46VVQAAAAA:q9PoGtpzLJDUCfrjMzeAi9DG7VKQoSQVmogIdidf-ydVmt7e2ZtL5O1859WLVM6a_wXn_IZijFM
 
@@ -550,7 +547,7 @@ static void __exit onunload(void) {
 module_init(onload);
 module_exit(onunload);
 \end{autonumlstlisting}
-In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is implemented, in the context of a kernel module. This allows run-time modification of kernel behaviour, and is a programming paradigm\footnote{Is it a paradigm?} which will be useful to use when implementing the PEP.
+In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is implemented, in the context of a kernel module. This allows run-time modification of kernel behaviour, and is a programming paradigm which will be useful to use when implementing the PEP.
 
 
 \subsection{Linux Version and Distribution}
@@ -640,7 +637,7 @@ int pep_connect(
 
 \subsection{TLV}
 A good choice for sending options and meta-data is in the form of TLVs, formally known as Type–length–value options.
-The idea is that all options can be defined by a Type, Length and Value. The type defines the type of an option, which types exist and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification. The TLV is practically implemented as its own message, but can also be appended at the start of a transmission like a header ~\cite{rfc8803}\footnote{Reference this more directly as we adapt the idea of TLVs from this paper.}.\\
+The idea is that all options can be defined by a Type, Length and Value. The type defines the type of an option, which types exist and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification. The TLV is practically implemented as its own message, but can also be appended at the start of a transmission like a header.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{TLV structures}
@@ -691,8 +688,6 @@ enum __tlv_types {
 \subsection{Shared Library}
 The PEP TLVs are implemented as a shared library which is both used by the PEP itself and applications. The applications will use the library to create TLVs for connecting to the PEP, while the PEP uses the library to validate and read the TLV options. 
 A shared library can be created by passing the \verb|-shared| flag to the linker.
-
-\footnote{More about how to create shared libraries, include files etc. How to bind lib to application.}
 
 \begin{verbatim}
 $ gcc file.c <path>/<lib>.so -o file.o
@@ -1256,7 +1251,7 @@ The Testbed consists of four hosts, the first is the controller from which we or
 Figure \ref{fig:testbed} shows a technical overview of the testbed configuration.
 
 \subsection{Hosts and Hardware}
-All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon E5-2620 v4 processor, which features 32 cores at 3.0 GHz. Additionally the hosts have 64 GB of RAM each. The choice of hardware should eliminate any potential host congestion\cite{Agarwal_Krishnamurthy_Agarwal_2023} and assure that the tests are not affected by old or dated hardware.\\
+All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon E5-2620 v4 processor, which features 32 cores at 3.0 GHz. Additionally the hosts have 64 GB of RAM each. The choice of hardware should eliminate any potential host congestion \cite{Agarwal_Krishnamurthy_Agarwal_2023} and assure that the tests are not affected by old or dated hardware.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
@@ -1281,6 +1276,8 @@ All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon 
 \captionof{figure}{Screenfetch results}
 %\label{fig:work_struct}
 \end{minipage}\\
+
+It is important to note that the PEP will run on a normal Linux host which acts as a router, and not on an actual router. Using a normal Linux host may introduce small overheads as the system will support user interactions and a lot more sub systems which usually are not present on a pure router.
 
 \section{Initial test}
 To evaluate the initial performance of the PEP we use a simple topology consisting of a sender, router and receiver. The router will act as our hypothetical base station at which the PEP resides. And the connection between the router and the receiver will act as the unstable fluctuating bandwidth domain.
@@ -1355,14 +1352,14 @@ The Bandwidth-Delay Product (BDP) is calculated as:
 
 For the initial bandwidth:
 \begin{equation}
-    BDP_1 = B_1 \times D = 15 \times 10^6 \text{ bits/s} \times 120 \times 10^{-3} \text{ s} = 225 \times 10^6 \text{ bits} = 225 \times 10^3 \text{ bytes}
+    BDP_1 = 15 \times 10^6 \text{ bits/s} \times 120 \times 10^{-3} \text{ s} = 225 \times 10^3 \text{ bytes}
 \end{equation}
 
 Hence, the initial BFIFO limit is set to \( 225,000 \) bytes.
 
 After the increase in bandwidth:
 \begin{equation}
-    BDP_2 = B_2 \times D = 70 \times 10^6 \text{ bits/s} \times 120 \times 10^{-3} \text{ s} = 840 \times 10^6 \text{ bits} = 1,050 \times 10^3 \text{ bytes}
+    BDP_2 = 70 \times 10^6 \text{ bits/s} \times 120 \times 10^{-3} \text{ s} = 1,050 \times 10^3 \text{ bytes}
 \end{equation}
 
 Therefore, the new BFIFO limit becomes \( 1,050,000 \) bytes.
@@ -1822,6 +1819,8 @@ BFIFO & 144.56 & 60.55\\
 \end{table}
 
 \subsubsection{Mobility and Blockages}
+\label{sec:mobb}
+
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.60]{../diagrams/witestlab/mobb.png}
@@ -1976,18 +1975,20 @@ PEP  &  101.18 & 0.05 \\
 \label{tab:latency_10_flows}
 \end{table}
 
-Table \ref{tab:latency_10_flows} and Figure \ref{fig:latency_10_flows} show the impact on the interactive traffic with 10 flows. Interestingly, the competition between the ten flows create an overall less destructive impact on the interactive traffic than a single flow. With BFIFO there are still high spikes up to 175ms. While both PEP and FQ-CoDel have the same average latency of 101.18ms, which is only an increase of 0.18 from the set end to end delay of 101ms.
-
+Table \ref{tab:latency_10_flows} and Figure \ref{fig:latency_10_flows} show the impact on the interactive traffic with ten flows. Interestingly, the competition between the ten flows create an overall less destructive impact on the interactive traffic than a single flow. With BFIFO there are still high spikes up to 175ms. While both PEP and FQ-CoDel have the same average latency of 101.18ms, which is only an increase of 0.18 from the set end to end delay of 101ms.
 
 \chapter{Conclusion \& Future Work}
 In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally potential future work is discussed.
 
 \section{Performance}
+To conclude on the PEP lets look back at the original goal: The most important aspect of the PEP is its performance. The goal of the PEP is to increase the throughput of non-interactive transfers by better utilizing the fluctuating 5G bandwidth. Our PEP achieves this by introducing huge buffers at the base station, this of course only is viable if we introduce no additional unwanted delay on interactive traffic.
+
+\subsection{Throughput}
+The conclusion on throughput will be mainly based on Section~\ref{sec:mobb}: Throughput for a 5G mobility and blockage scenario. Based on the evaluation with real 5G mmWave traces we achieve a very high throughput and bandwidth utilization, especially compared to configurations with BFIFO and FQ-CoDel. We are able to show the immense benefit huge buffers have in these kind of scenarions
 
 \subsection{Impact on interactive traffic}
 To avoid impact on interactive traffic was a core idea behind the usability of the PEP. In the initial evaluation we showed that we are able to reduce the impact of our buffers on the interactive traffic by configuring FQ-CoDel, while still having huge socket buffers. Compared to using a BFIFO queue which created large delay spikes in the interactive traffic.\\
 
-\subsection{Throughput}
 
 \subsection{Transparency}
 
