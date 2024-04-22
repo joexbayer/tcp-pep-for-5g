@@ -1,123 +1,123 @@
-\contentsline {chapter}{\numberline {1}Intro}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Problem Statement}{1}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Organization}{1}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Background}{2}{chapter.2}%
-\contentsline {section}{\numberline {2.1}TCP/IP}{2}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Congestion Control}{3}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}3 Way handshake (0 RTT)}{4}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}TCP Options and Fast Open}{5}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}The future of wireless communication.}{6}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}5G Millimetre Wave}{6}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Buffering}{7}{subsection.2.2.2}%
-\contentsline {subsubsection}{Bufferbloat}{7}{section*.7}%
-\contentsline {subsubsection}{Active Queue Management}{7}{section*.8}%
-\contentsline {subsubsection}{Packet Scheduling}{8}{section*.9}%
-\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{9}{subsection.2.2.3}%
-\contentsline {section}{\numberline {2.3}Proxy}{9}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}PEP}{10}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}PEP for wireless communication}{10}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{11}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Linux}{11}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Kernel Modules}{11}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}C Programming Language}{12}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Related Work}{12}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Design}{14}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{14}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Performance}{15}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Programming Language}{15}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Kernel Module Vs. Userspace Application}{16}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Connection splitting using Sockets}{16}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Bandwidth utilization}{17}{subsection.3.2.4}%
-\contentsline {paragraph}{Delay}{18}{section*.17}%
-\contentsline {subsection}{\numberline {3.2.5}PEP Selection}{18}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Connection Establishment}{19}{subsection.3.2.6}%
-\contentsline {paragraph}{TCP Options}{19}{section*.20}%
-\contentsline {paragraph}{TCP Fast Open}{20}{section*.21}%
-\contentsline {paragraph}{Optimal Choice}{20}{section*.22}%
-\contentsline {section}{\numberline {3.3}Deployment (Transparency)}{20}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Transparent PEP}{21}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Non Transparent PEP}{21}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Buffering}{23}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Socket buffers}{23}{subsection.3.4.1}%
-\contentsline {section}{\numberline {3.5}AQM \& Scheduling}{23}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Security}{23}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Summary}{24}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Implementation}{25}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Kernel Module}{25}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Kernel Hooks}{26}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Linux Version and Distribution}{27}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}TLV Library}{28}{section.4.2}%
-\contentsline {paragraph}{Important socket system calls}{28}{section*.26}%
-\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{29}{subsection.4.2.1}%
-\contentsline {paragraph}{The custom connect function signature}{29}{section*.27}%
-\contentsline {subsection}{\numberline {4.2.2}TLV}{29}{subsection.4.2.2}%
-\contentsline {paragraph}{TLV structures}{30}{section*.28}%
-\contentsline {paragraph}{TLV Implementation}{30}{section*.29}%
-\contentsline {paragraph}{Problems using TFO}{31}{section*.31}%
-\contentsline {subsection}{\numberline {4.2.3}TLV Options}{31}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Shared Library}{31}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}PEP - Internals}{31}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Architecture}{32}{subsection.4.3.1}%
-\contentsline {paragraph}{Tunnels}{33}{section*.33}%
-\contentsline {paragraph}{PEP Tunnel Structure}{33}{section*.34}%
-\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{33}{subsection.4.3.2}%
-\contentsline {paragraph}{Socket Operations}{34}{section*.35}%
-\contentsline {paragraph}{Socket Callbacks}{34}{section*.36}%
-\contentsline {paragraph}{Socket User Data}{35}{section*.37}%
-\contentsline {subsection}{\numberline {4.3.3}Work Queues}{35}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Works}{36}{subsection.4.3.4}%
-\contentsline {paragraph}{Work state problem}{36}{section*.38}%
-\contentsline {paragraph}{Accept Work Queue}{37}{section*.39}%
-\contentsline {paragraph}{Packet Forwarding Queues}{38}{section*.40}%
-\contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{39}{subsection.4.3.5}%
-\contentsline {section}{\numberline {4.4}PEP - Server}{39}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Creation}{39}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Server initialization}{40}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Accept and Endpoint connection}{42}{subsection.4.4.3}%
-\contentsline {subsection}{\numberline {4.4.4}Multiple Servers}{43}{subsection.4.4.4}%
-\contentsline {section}{\numberline {4.5}PEP - Clients}{44}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Client Sockets - Endpoint Sockets}{44}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}PEP Connections}{45}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Module Customization}{45}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}System Configurations}{46}{subsection.4.5.4}%
-\contentsline {paragraph}{Buffer sizes}{46}{section*.41}%
-\contentsline {subsection}{\numberline {4.5.5}Userspace}{47}{subsection.4.5.5}%
-\contentsline {section}{\numberline {4.6}Memory}{47}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Evaluation}{48}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Traffic Control Options}{48}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Ocarina Testbed}{48}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Hosts and Hardware}{49}{subsection.5.2.1}%
-\contentsline {section}{\numberline {5.3}Initial test}{50}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Configuration}{51}{subsection.5.3.1}%
-\contentsline {subsubsection}{Sender}{51}{section*.43}%
-\contentsline {subsubsection}{Router (PEP)}{51}{section*.44}%
-\contentsline {subsubsection}{Receiver}{52}{section*.47}%
-\contentsline {subsection}{\numberline {5.3.2}Experiment Procedure}{53}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Results \& Analysis}{54}{subsection.5.3.3}%
-\contentsline {section}{\numberline {5.4}Using real 5G traces}{57}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Traces}{57}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Topology}{58}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Configuration}{58}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Validation}{58}{subsection.5.4.4}%
-\contentsline {subsection}{\numberline {5.4.5}Experiment Configuration}{60}{subsection.5.4.5}%
-\contentsline {subsubsection}{End-to-end Configuration}{60}{section*.58}%
-\contentsline {subsubsection}{PEP Configuration}{61}{section*.60}%
-\contentsline {subsection}{\numberline {5.4.6}Experiment Steps}{62}{subsection.5.4.6}%
-\contentsline {subsubsection}{Congestion Controller's affect on throughput}{62}{section*.61}%
-\contentsline {subsection}{\numberline {5.4.7}Results}{63}{subsection.5.4.7}%
-\contentsline {subsubsection}{Static link}{64}{section*.64}%
-\contentsline {subsubsection}{Short blockages}{66}{section*.70}%
-\contentsline {subsubsection}{Long blockages}{69}{section*.77}%
-\contentsline {subsubsection}{Mobility and Blockages}{70}{section*.81}%
-\contentsline {subsection}{\numberline {5.4.8}Evaluation of 5G traces experiment}{72}{subsection.5.4.8}%
-\contentsline {section}{\numberline {5.5}Socket buffer size effect on throughput}{74}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Multiple flows}{75}{section.5.6}%
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{78}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Performance}{78}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Throughput}{78}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Impact on interactive traffic}{78}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Transparency}{79}{subsection.6.1.3}%
-\contentsline {section}{\numberline {6.2}Limitations and Challenges}{79}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Future work}{79}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Final Thoughts}{79}{section.6.4}%
+\contentsline {chapter}{\numberline {1}Intro}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Problem Statement}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Organization}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}TCP/IP}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Congestion Control}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}3 Way handshake (0 RTT)}{5}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}TCP Options and Fast Open}{6}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}The future of wireless communication.}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}5G Millimetre Wave}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Buffering}{8}{subsection.2.2.2}%
+\contentsline {subsubsection}{Bufferbloat}{8}{section*.8}%
+\contentsline {subsubsection}{Active Queue Management}{8}{section*.9}%
+\contentsline {subsubsection}{Packet Scheduling}{9}{section*.10}%
+\contentsline {subsection}{\numberline {2.2.3}Non-Interactive Applications}{10}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Proxy}{10}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}PEP}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}PEP for wireless communication}{11}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Transparent vs Non-Transparent}{12}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Linux}{12}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Kernel Modules}{12}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}C Programming Language}{13}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Related Work}{13}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Design}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Justification for designing a PEP}{15}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Performance}{16}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Programming Language}{16}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Kernel Module Vs. Userspace Application}{17}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Connection splitting using Sockets}{17}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Bandwidth utilization}{18}{subsection.3.2.4}%
+\contentsline {paragraph}{Delay}{19}{section*.18}%
+\contentsline {subsection}{\numberline {3.2.5}PEP Selection}{19}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Connection Establishment}{20}{subsection.3.2.6}%
+\contentsline {paragraph}{TCP Options}{20}{section*.21}%
+\contentsline {paragraph}{TCP Fast Open}{21}{section*.22}%
+\contentsline {paragraph}{Optimal Choice}{21}{section*.23}%
+\contentsline {section}{\numberline {3.3}Deployment (Transparency)}{21}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Transparent PEP}{22}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Non Transparent PEP}{22}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Buffering}{24}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Socket buffers}{24}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}AQM \& Scheduling}{24}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Security}{24}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Summary}{25}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Implementation}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kernel Module}{26}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Kernel Hooks}{27}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Linux Version and Distribution}{28}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}TLV Library}{29}{section.4.2}%
+\contentsline {paragraph}{Important socket system calls}{29}{section*.27}%
+\contentsline {subsection}{\numberline {4.2.1}Custom connect function}{30}{subsection.4.2.1}%
+\contentsline {paragraph}{The custom connect function signature}{30}{section*.28}%
+\contentsline {subsection}{\numberline {4.2.2}TLV}{30}{subsection.4.2.2}%
+\contentsline {paragraph}{TLV structures}{31}{section*.29}%
+\contentsline {paragraph}{TLV Implementation}{31}{section*.30}%
+\contentsline {paragraph}{Problems using TFO}{32}{section*.32}%
+\contentsline {subsection}{\numberline {4.2.3}TLV Options}{32}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Shared Library}{32}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}PEP - Internals}{32}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Architecture}{33}{subsection.4.3.1}%
+\contentsline {paragraph}{Tunnels}{34}{section*.34}%
+\contentsline {paragraph}{PEP Tunnel Structure}{34}{section*.35}%
+\contentsline {subsection}{\numberline {4.3.2}Kernel Sockets}{34}{subsection.4.3.2}%
+\contentsline {paragraph}{Socket Operations}{35}{section*.36}%
+\contentsline {paragraph}{Socket Callbacks}{35}{section*.37}%
+\contentsline {paragraph}{Socket User Data}{36}{section*.38}%
+\contentsline {subsection}{\numberline {4.3.3}Work Queues}{36}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Works}{37}{subsection.4.3.4}%
+\contentsline {paragraph}{Work state problem}{37}{section*.39}%
+\contentsline {paragraph}{Accept Work Queue}{38}{section*.40}%
+\contentsline {paragraph}{Packet Forwarding Queues}{39}{section*.41}%
+\contentsline {subsection}{\numberline {4.3.5}Kernel TCP receive and send}{40}{subsection.4.3.5}%
+\contentsline {section}{\numberline {4.4}PEP - Server}{40}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Creation}{40}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Server initialization}{41}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Accept and Endpoint connection}{43}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Multiple Servers}{44}{subsection.4.4.4}%
+\contentsline {section}{\numberline {4.5}PEP - Clients}{45}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Client Sockets - Endpoint Sockets}{45}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}PEP Connections}{46}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Module Customization}{46}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}System Configurations}{47}{subsection.4.5.4}%
+\contentsline {paragraph}{Buffer sizes}{47}{section*.42}%
+\contentsline {subsection}{\numberline {4.5.5}Userspace}{48}{subsection.4.5.5}%
+\contentsline {section}{\numberline {4.6}Memory}{48}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Evaluation}{49}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Traffic Control Options}{49}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ocarina Testbed}{49}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Hosts and Hardware}{50}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}Initial test}{51}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Configuration}{52}{subsection.5.3.1}%
+\contentsline {subsubsection}{Sender}{52}{section*.44}%
+\contentsline {subsubsection}{Router (PEP)}{52}{section*.45}%
+\contentsline {subsubsection}{Receiver}{53}{section*.48}%
+\contentsline {subsection}{\numberline {5.3.2}Experiment Procedure}{54}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Results \& Analysis}{55}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Using real 5G traces}{58}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Traces}{58}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Topology}{59}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Configuration}{59}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Validation}{59}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Experiment Configuration}{61}{subsection.5.4.5}%
+\contentsline {subsubsection}{End-to-end Configuration}{61}{section*.59}%
+\contentsline {subsubsection}{PEP Configuration}{62}{section*.61}%
+\contentsline {subsection}{\numberline {5.4.6}Experiment Steps}{63}{subsection.5.4.6}%
+\contentsline {subsubsection}{Congestion Controller's affect on throughput}{63}{section*.62}%
+\contentsline {subsection}{\numberline {5.4.7}Results}{64}{subsection.5.4.7}%
+\contentsline {subsubsection}{Static link}{65}{section*.65}%
+\contentsline {subsubsection}{Short blockages}{67}{section*.71}%
+\contentsline {subsubsection}{Long blockages}{70}{section*.78}%
+\contentsline {subsubsection}{Mobility and Blockages}{71}{section*.82}%
+\contentsline {subsection}{\numberline {5.4.8}Evaluation of 5G traces experiment}{73}{subsection.5.4.8}%
+\contentsline {section}{\numberline {5.5}Socket buffer size effect on throughput}{75}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Multiple flows}{76}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{79}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Performance}{79}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Throughput}{79}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Impact on interactive traffic}{80}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Transparency}{80}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}Limitations and Challenges}{80}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Future work}{80}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Final Thoughts}{80}{section.6.4}%

@@ -15,8 +15,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{subfig}
-
-
+\usepackage{lipsum}
 
 % Regarding writing style:
 % Be concise, no fluff (especially absolute facts with no sources.)
@@ -91,6 +90,9 @@
 \begin{abstract}
 In this thesis we will design, implement and evaluate a novel performance enhancing proxy to support non-interactive traffic in a 5G environment. The idea is to utilize large buffers in the network without disturbing interactive traffic. To achieve this we will explore new and creative ways to utilize socket buffers and active queue management to reduce file transfer times.
 \end{abstract}
+
+\chapter*{Acknowledgments}
+\lipsum[1-2]  /* Sample text for Acknowledgments */
 
 \chapter{Intro}
 
@@ -479,7 +481,7 @@ The most important difference is the large buffers on our PEP, although other PE
 This chapter will explore the implementation of the TCP PEP, following up on the design choices made in the previous chapter. The development of the PEP will give a deeper understanding of the underlying mechanisms and how they aim to better utilize the 5G bandwidth. All aspects from kernel modules, PEP architectures and additional libraries will be covered.
 
 \section{Kernel Module}
-As mentioned in the design chapter, the PEP will be written as a kernel module instead of a normal user-space program. Running and creating a kernel module requires more initial preparation, firstly, the biggest difference is that our PEP will run as a module inside the Linux kernel instead of as an application in its own virtual environment. Injecting a module into the Linux kernel is very different from simply running a binary.\\
+As mentioned in the design chapter, the PEP will be written as a kernel module instead of a normal user-space program. Running and creating a kernel module requires more initial preparation. Firstly, the biggest difference is that our PEP will run as a module inside the Linux kernel instead of as an application in its own virtual environment. Injecting a module into the Linux kernel is very different from simply running a binary.\\
 
 A Linux kernel module is loaded and unloaded with the help of two functions that need to be defined:\\
 
@@ -503,16 +505,16 @@ module_init(onload);
 module_exit(onunload);
 \end{autonumlstlisting}
 
-Listing \ref{lst:module_example} shows a basic kernel module, defining and exporting the functions onload() and onunload(). The name of the functions bear no meaning, the important parts are the macros \verb|__init|, \verb|module_init| and exit macros\cite{lkm}. When a kernel module is loaded the function declared with \verb|__init| is called.\\
+Listing \ref{lst:module_example} shows a basic kernel module, defining and exporting the functions onload() and onunload(). The name of the functions bear no meaning, the important parts are the macros \verb|__init|, \verb|module_init| and exit macros\cite{lkm}. When a kernel module is loaded, the function declared with \verb|__init| is called.\\
 
-Normally an application would terminate when it returns from its \verb|main| function. Kernel modules however remain "loaded" when returning from the initialization function. This brings us to a new paradigm when programming, instead of having a running program, we install hooks and callbacks which change the default behavior of the kernel. A callback architecture can be less resource intensive as we do not need threads polling for data.\\
+Normally an application would terminate when it returns from its \verb|main| function. Kernel modules however remain "loaded" when returning from the initialization function. This brings us to a new paradigm when programming: instead of having a running program, we install hooks and callbacks which change the default behavior of the kernel. A callback architecture can be less resource intensive as we do not need threads polling for data.\\
 
 A kernel module is loaded by first compiling it into a .ko file and then loading with the \verb|insmod| shell command:
 \begin{verbatim}
 $ insmod <module_name>.ko
 $ rmmod <module_name>.ko
 \end{verbatim}
-The \verb|rmmod| is used to unload a kernel. 
+The \verb|rmmod| is used to unload a kernel module. 
 
 \subsection{Kernel Hooks}
 The Linux kernel exposes many function tables and callbacks which designate what functions to call at certain events. Most drivers and congestion controllers are implemented in this manner. A predefined struct is allocated and populated with custom functions, and installed with an existing kernel function.
@@ -547,18 +549,18 @@ static void __exit onunload(void) {
 module_init(onload);
 module_exit(onunload);
 \end{autonumlstlisting}
-In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is implemented, in the context of a kernel module. This allows run-time modification of kernel behaviour, and is a programming paradigm which will be useful to use when implementing the PEP.
+In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is implemented, in the context of a kernel module. This allows run-time modification of kernel behaviour, and is a programming paradigm which will be useful when implementing the PEP.
 
 
 \subsection{Linux Version and Distribution}
-The kernel module was developed using and for Linux Kernel > 5.10, more specifically using Debian 11 (Bullseye). Older version of Linux might encounter problems as some of the kernel functions change between kernel versions. The choice of kernel version dictates what functions are available to kernel modules. Usually helper functions are the most volatile, so avoiding those is a important goal for compatibility.
+The kernel module was developed using and for Linux Kernel > 5.10, more specifically using Debian 11 (Bullseye). Older versions of Linux might encounter problems as some of the kernel functions change between kernel versions. The choice of kernel version dictates what functions are available to kernel modules. Usually helper functions are the most volatile, so avoiding those is an important goal for compatibility.
 
 \section{TLV Library}
 Regarding the endpoint addressing and selection by the client, a custom shared library will be implemented. The goal is to keep the client code as simple and close to its original form as possible, but still be able to communicate the desired endpoint, options and meta-data to the PEP. Additionally, we want to send this information by using TCP Fast Open which has a similar connection routine as default sockets do.\\
 
 Normally a socket would first \verb|create|, \verb|connect| and then \verb|send| data using the \verb|send| system call. The creation of a socket is the same for both with and without TCP Fast Open. Which leaves us with connection as the main problem. The way we connect to a host using TCP Fast Open is by skipping \verb|connect| and instantly jump to \verb|sendto|. As we can see from the socket system calls, both \verb|connect| and \verb|sendto| take a \verb|struct sockaddr| as a parameter.\\
 
-A \verb|struct sockaddr| defines the endpoint to which you want to connect. \verb|sendto| has a flag option which allows the configuration of how messages are sent, and if we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
+A \verb|struct sockaddr| defines the endpoint to which you want to connect. \verb|sendto| has a flag option which allows the configuration of how messages are sent. If we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{Important socket system calls}
@@ -590,7 +592,7 @@ ssize_t sendto(
 \subsection{Custom connect function}
 The library will replace the original connect with a custom implementation \verb|pep_connect|. The original \verb|connect| and \verb|sendto| have a lot of parameters in common, specifically the \verb|const struct sockaddr| which is used to identify an endpoint. In the context of the PEP, this would identify the final endpoint to which the client wants to connect. The goal of the PEP connect function is to replace the \verb|sockaddr| given by the client with one that identifies the PEP instead, but still forwards the original \verb|sockaddr| to the PEP to establish the proxy connection.\\
 
-The signature of our custom implementation mimics the original connect. The main difference is the addition of a flags parameters for easier customization. Inside our custom function we allocate space for a new \verb|struct sockaddr| which we will fill with the IP address and port of the PEP, while at the same time we create a message with original IP address and port of the endpoint. Finally we call \verb|sendto| with our message and the new \verb|struct sockaddr|, using \verb|MSG_FASTOPEN| to both connect and deliver the message.\\
+The signature of our custom implementation mimics the original connect. The main difference is the addition of a \verb|flags| parameter for easier customization. Inside our custom function we allocate space for a new \verb|struct sockaddr| which we will fill with the IP address and port of the PEP, while at the same time we create a message with original IP address and port of the endpoint. Finally we call \verb|sendto| with our message and the new \verb|struct sockaddr|, using \verb|MSG_FASTOPEN| to both connect and deliver the message.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{The custom connect function signature}
@@ -637,7 +639,7 @@ int pep_connect(
 
 \subsection{TLV}
 A good choice for sending options and meta-data is in the form of TLVs, formally known as Type–length–value options.
-The idea is that all options can be defined by a Type, Length and Value. The type defines the type of an option, which types exist and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification. The TLV is practically implemented as its own message, but can also be appended at the start of a transmission like a header.\\
+The idea is that all options can be defined by a Type, Length and Value. The \verb|type| defines the type of an option, which types exist and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification. The TLV is practically implemented as its own message, but can also be appended at the start of a transmission like a header.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{TLV structures}
@@ -658,7 +660,7 @@ struct tlv {
 \end{minipage}
 
 \paragraph{TLV Implementation}
-In our design, TLVs are structured as a continuous buffer, consisting of a TLV header followed by subsequent options.  This header provides details on the version, the number of options, and a unique magic number for validation. The \verb|type| spans one byte, which means we limit ourselves to 255 possible types. The current implementation only uses six, which means we have enough space for future extensions. The \verb|length| variable is mainly used to indicate an optional data segment called \verb|optional|. The size of the default value is two bytes with an additional option of size four bytes. All together the struct uses eight bytes or 64 bits, which mostly comes from the fact we need atleast six bytes for the IP address and port alone. 
+In our design, TLVs are structured as a continuous buffer, consisting of a TLV header followed by subsequent options.  This header provides details on the version, the number of options, and a unique magic number for validation. The \verb|type| spans one byte, which means we limit ourselves to 255 possible types. The current implementation only uses six, which means we have enough space for future extensions. The \verb|length| variable is mainly used to indicate an optional data segment called \verb|optional|. The size of the default value is two bytes with an additional option of size four bytes. All together the struct uses eight bytes or 64 bits, which mostly comes from the fact that we need atleast six bytes for the IP address and port alone. 
 
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
@@ -694,7 +696,7 @@ $ gcc file.c <path>/<lib>.so -o file.o
 \end{verbatim}
 
 \section{PEP - Internals}
-The internals of the PEP will consists of many important components. Importantly, we have the main server socket, socket pairs (tunnels) and deferred works. The PEP itself will need to keep track of the PEP state and the state of all the tunnels, additionally we need to keep track of all running tasks. Since our code will be a kernel module and running 'inside' the kernel, we will have access to a lot of existing infrastructure which normally is only accessible by the kernel. 
+The internals of the PEP will consist of many important components. Importantly, we have the main server socket, socket pairs (tunnels) and deferred works. The PEP itself will need to keep track of the PEP state and the state of all the tunnels, additionally we need to keep track of all running tasks. Since our code will be a kernel module and running 'inside' the kernel, we will have access to a lot of existing infrastructure which normally is only accessible by the kernel. 
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -780,7 +782,7 @@ The kernel socket struct includes a \verb|struct proto_ops| member which holds u
 Figure \ref{fig:proto_ops} shows an overview over the most interesting socket operations. Most notably the \verb|setsockopt| operation is important as it allows the configuration of socket options such as \verb|TCP_FASTOPEN|. Additionally, it can configure the socket buffer sizes using \verb|SO_SNDBUFFORCE| and \verb|SO_RCVBUFFORCE| which is an important aspect of the PEP.
 
 \paragraph{Socket Callbacks}
-Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever a \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any new data on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function. All callbacks take the socket as a parameters, thereby giving access to the socket state. \\
+Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever a \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any new data on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function. All callbacks take the socket as a parameter, thereby giving access to the socket state. \\
 
 \paragraph{Socket User Data}
 Kernel sockets allow modules to add extra information to a specific socket. The pointer \verb|sk_user_data| can be used to point to any data defined by a module. This in combination with the callbacks is a powerful tool for customizing socket behavior. This allows us to add additional state information to the socket. In our case we will use \verb|sk_user_data| to store the server stat.\\
@@ -879,7 +881,7 @@ struct workqueue_struct* forward_e2c_wq;
 \end{verbatim}
 
 \paragraph{Accept Work Queue}
-The main work queue for the server is the accept work queue. When a client attempts to establish a connection to the PEP server we want to receive that notification and queue an accept work. This is an alternative to a thread blocking on accept. The notification can be achieved by replacing the \verb|sk_data_ready| with a custom function which checks the TCP state and queues an accept work.\\
+The main work queue for the server is the accept work queue. When a client attempts to establish a connection to the PEP, we want to receive that notification and queue an accept work. This is an alternative to a thread blocking on accept. The notification can be achieved by replacing the \verb|sk_data_ready| with a custom function which checks the TCP state and queues an accept work.\\
 
 \begin{autonumlstlisting}[label=lst:pep_accept_callback]{Accept callback function}
 void pep_listen_data_ready(struct sock* sk)
@@ -1050,7 +1052,7 @@ int pep_server_accept_work(struct work_struct *work)
 \end{autonumlstlisting}
 
 
-After successfully accepting the client we immediately allocate a buffer and read from the client. We expect it to send a TLV with TCP Fast Open, so we use the TLV library to validate and read the TLV options. Note that even if TCP Fast Open should fail the connection can still be established at the cost of the additional round trip times. Specifically, we look for the \verb|TLV_CONNECT| option, which will be used to connect to the endpoint.\\
+After successfully accepting the client we immediately allocate a buffer and read from the client. We expect it to send a TLV with TCP Fast Open, so we use the TLV library to validate and read the TLV options. Note that even if TCP Fast Open should fail, the connection can still be established at the cost of the additional round trip times. Specifically, we look for the \verb|TLV_CONNECT| option, which will be used to connect to the endpoint.\\
 
 \subsection{Multiple Servers}
 Because of the callback nature of the PEP we can create multiple servers on the same host machine. By not having a 'global' server in the kernel module, we are able to potentially create as many servers as are desirable. The user only has to keep track of the server pointers, while the implementation of the server keeps track of the states and correct callback handling through the works. This means that each server may use the same callback function, but the state will vary.
@@ -1153,7 +1155,7 @@ $ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max size>';
 \end{verbatim}
 
 \subsection{Userspace}
-The PEP is designed as a kernel module, however the functionality is not dependent on any kernel functionality. Userspace alternatives to work queues and callbacks exists, such as threads and the PEP can be rewritten with these alternatives. Theoretically the PEP can run as userspace program for higher compatibility at the cost of the performance loss.
+The PEP is designed as a kernel module, however the functionality is not dependent on any kernel functionality. Userspace alternatives to work queues and callbacks exists, such as threads and the PEP can be rewritten with these alternatives. Theoretically the PEP can run as a userspace program for higher compatibility at the cost of the performance loss.
 
 \section{Memory}
 Because we chose C as our programming language of choice, we are responsible for any memory allocated on the heap. The main places where dynamic memory is allocated is the server itself, tunnels and buffers for data forwarding. Both the tunnels and buffers are managed by the PEP server, so the memory will be freed when the server is terminated. This leaves the server to be freed, which is left up to the user. Easiest solution is to use the \verb|pep_server_clean| function in the \verb|__exit| module function.\\
@@ -1975,30 +1977,37 @@ PEP  &  101.18 & 0.05 \\
 \label{tab:latency_10_flows}
 \end{table}
 
-Table \ref{tab:latency_10_flows} and Figure \ref{fig:latency_10_flows} show the impact on the interactive traffic with ten flows. Interestingly, the competition between the ten flows create an overall less destructive impact on the interactive traffic than a single flow. With BFIFO there are still high spikes up to 175ms. While both PEP and FQ-CoDel have the same average latency of 101.18ms, which is only an increase of 0.18 from the set end to end delay of 101ms.
+Table \ref{tab:latency_10_flows} and Figure \ref{fig:latency_10_flows} show the impact on the interactive traffic with ten flows. Interestingly, the competition between the ten flows create an overall less destructive impact on the interactive traffic than a single flow. With BFIFO there are still high spikes up to 175ms. While both PEP and FQ-CoDel have the same average latency of 101.18ms, which is only an increase of 0.18 from the set end to end delay of 101ms.\\
 
 \chapter{Conclusion \& Future Work}
-In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally potential future work is discussed.
+In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally potential future work is discussed.\\
 
 \section{Performance}
-To conclude on the PEP lets look back at the original goal: The most important aspect of the PEP is its performance. The goal of the PEP is to increase the throughput of non-interactive transfers by better utilizing the fluctuating 5G bandwidth. Our PEP achieves this by introducing huge buffers at the base station, this of course only is viable if we introduce no additional unwanted delay on interactive traffic.
+To conclude on the PEP lets look back at the original goal: The most important aspect of the PEP is its performance. The goal of the PEP is to increase the throughput of non-interactive transfers by better utilizing the fluctuating 5G bandwidth. Our PEP achieves this by introducing huge buffers at the base station, this of course only is viable if we introduce no additional unwanted delay on interactive traffic.\\
 
 \subsection{Throughput}
-The conclusion on throughput will be mainly based on Section~\ref{sec:mobb}: Throughput for a 5G mobility and blockage scenario. Based on the evaluation with real 5G mmWave traces we achieve a very high throughput and bandwidth utilization, especially compared to configurations with BFIFO and FQ-CoDel. We are able to show the immense benefit huge buffers have in these kind of scenarions
+The conclusion on throughput will be mainly based on Section~\ref{sec:mobb}: Throughput for a 5G mobility and blockage scenario. Based on the evaluation with real 5G mmWave traces we achieve a very high throughput and bandwidth utilization, especially compared to configurations with BFIFO and FQ-CoDel. We are able to show the immense benefit huge buffers have in these kind of scenarios.\\
+
+In Section~\ref{sec:mobb} we can see that the PEP is able to almost fully utilize the average bandwidth of approximately 3Gbit/s, even with the high fluctuations. While FQ-CoDel struggles to even utilize half of the theoretically available bandwidth.\\
 
 \subsection{Impact on interactive traffic}
-To avoid impact on interactive traffic was a core idea behind the usability of the PEP. In the initial evaluation we showed that we are able to reduce the impact of our buffers on the interactive traffic by configuring FQ-CoDel, while still having huge socket buffers. Compared to using a BFIFO queue which created large delay spikes in the interactive traffic.\\
-
+To avoid impact on interactive traffic was a core idea behind the usability of the PEP. In the initial evaluation we showed that we are able to reduce the impact of our buffers on the interactive traffic by configuring FQ-CoDel, while still having huge socket buffers. We compared our PEP with FQ-CoDel with a BPD sized BFIFO queue, which had higher throughput than only FQ-CODel, but also created large delay spikes in the interactive traffic.\\
 
 \subsection{Transparency}
+An important aspect that distinguishes our PEP from most other approaches is the choice of a non-transparent PEP. By allowing the user to actively choose the PEP, we don't break important end to end assumptions. Additionally, its a more ethical choice as we don`t split a connection without a users consent. \\
 
 \section{Limitations and Challenges}
+A non-transparent PEP has a lot of benefits, however it also comes with its own set of challenges. The processing of choosing and addressing the PEP requires modification on the sender. PEP selection also becomes a problem, in this implementation it is a hard coded value in the TLV library. Needing to adjust the sender code to utilize the PEP also reduces the adaptability of the PEP. 
 
 \section{Future work}
-Real deployment using physical device.,
-Real transfers, 
+For future work we propose a real deployment evaluation, especially using the PEP with a real router and a mobile device as the router. Why ...\\
+
+Real transfers, websites, file downloads. ....\\
 
 \section{Final Thoughts}
+From the throughput evaluation we thoroughly investigated the effect of buffer sizes with fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high standard deviation and big impact on the interactive traffic. The PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
+
+Make buffers large again!
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
