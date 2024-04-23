@@ -77,6 +77,11 @@ Toke Høiland-Jørgensen, Paul McKenney, dave.taht@gmail.com, Jim Gettys, and
   Management Algorithm}.
 \newblock Number RFC 8290. Jan 2018.
 
+\bibitem{4623710}
+Milosh Ivanovich, Philip~W. Bickerdike, and Jonathan~C. Li.
+\newblock On tcp performance enhancing proxies in a wireless environment.
+\newblock {\em IEEE Communications Magazine}, 46(9):76--83, 2008.
+
 \bibitem{c_programming_language}
 Brian~W. Kernighan and Dennis~M. Ritchie.
 \newblock {\em The C Programming Language}.
