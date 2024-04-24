@@ -479,10 +479,10 @@ The most important difference is the large buffers on our PEP, although other PE
 
 
 \chapter{Implementation}
-This chapter will explore the implementation of the TCP PEP, following up on the design choices made in the previous chapter. The development of the PEP will give a deeper understanding of the underlying mechanisms and how they aim to better utilize the 5G bandwidth. All aspects from kernel modules, PEP architectures and additional libraries will be covered.
+This chapter will explore the implementation of the TCP PEP, following up on the design choices made in the previous chapter. The development of the PEP will give a deeper understanding of the underlying mechanisms and how they aim to better utilize the 5G bandwidth. All aspects of kernel modules, PEP architectures and additional libraries will be covered.
 
 \section{Kernel Module}
-As mentioned in the design chapter, the PEP will be written as a kernel module instead of a normal user-space program. Running and creating a kernel module requires more initial preparation. Firstly, the biggest difference is that our PEP will run as a module inside the Linux kernel instead of as an application in its own virtual environment. Injecting a module into the Linux kernel is very different from simply running a binary.\\
+As mentioned in the design chapter, the PEP will be written as a kernel module instead of a user-space program. Running and creating a kernel module requires more initial preparation. Firstly, the biggest difference is that our PEP will run as a module inside the Linux kernel instead of as an application in its own virtual environment. Injecting a module into the Linux kernel is very different from simply running a binary.\\
 
 A Linux kernel module is loaded and unloaded with the help of two functions that need to be defined:\\
 
@@ -515,7 +515,7 @@ A kernel module is loaded by first compiling it into a .ko file and then loading
 $ insmod <module_name>.ko
 $ rmmod <module_name>.ko
 \end{verbatim}
-The \verb|rmmod| is used to unload a kernel module. 
+The \verb|rmmod| command is used to unload a kernel module. 
 
 \subsection{Kernel Hooks}
 The Linux kernel exposes many function tables and callbacks which designate what functions to call at certain events. Most drivers and congestion controllers are implemented in this manner. A predefined struct is allocated and populated with custom functions, and installed with an existing kernel function.
@@ -550,18 +550,18 @@ static void __exit onunload(void) {
 module_init(onload);
 module_exit(onunload);
 \end{autonumlstlisting}
-In the Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is implemented, in the context of a kernel module. This allows run-time modification of kernel behaviour, and is a programming paradigm which will be useful when implementing the PEP.
+In Listing \ref{lst:hook_example} we demonstrate how a TCP congestion controller is implemented, in the context of a kernel module. This allows run-time modification of kernel behaviour, and is a programming paradigm that will be useful when implementing the PEP.
 
 
 \subsection{Linux Version and Distribution}
-The kernel module was developed using and for Linux Kernel > 5.10, more specifically using Debian 11 (Bullseye). Older versions of Linux might encounter problems as some of the kernel functions change between kernel versions. The choice of kernel version dictates what functions are available to kernel modules. Usually helper functions are the most volatile, so avoiding those is an important goal for compatibility.
+The kernel module was developed for Linux Kernel > 5.10, more specifically Debian 11 (Bullseye). Older versions of Linux might encounter problems as some of the kernel functions change between kernel versions. The choice of kernel version dictates what functions are available to kernel modules. Usually helper functions are the most volatile, so avoiding those is an important goal for compatibility.
 
 \section{TLV Library}
-Regarding the endpoint addressing and selection by the client, a custom shared library will be implemented. The goal is to keep the client code as simple and close to its original form as possible, but still be able to communicate the desired endpoint, options and meta-data to the PEP. Additionally, we want to send this information by using TCP Fast Open which has a similar connection routine as default sockets do.\\
+Regarding the endpoint addressing and selection by the client, a custom shared library has been implemented. The goal is to keep the client code as simple and close to its original form as possible, but still be able to communicate the desired endpoint, options and meta-data to the PEP. Additionally, we want to send this information by using TCP Fast Open which has a similar connection routine as default sockets do.\\
 
-Normally a socket would first \verb|create|, \verb|connect| and then \verb|send| data using the \verb|send| system call. The creation of a socket is the same for both with and without TCP Fast Open. Which leaves us with connection as the main problem. The way we connect to a host using TCP Fast Open is by skipping \verb|connect| and instantly jump to \verb|sendto|. As we can see from the socket system calls, both \verb|connect| and \verb|sendto| take a \verb|struct sockaddr| as a parameter.\\
+Normally a socket would first \verb|create|, \verb|connect| and then \verb|send| data using the \verb|send| system call. The creation of a socket is the same for both with and without TCP Fast Open. This leaves us with connection as the main problem. The way we connect to a host using TCP Fast Open is by skipping \verb|connect| and instantly jump to \verb|sendto|. As we can see from the socket system calls, both \verb|connect| and \verb|sendto| take a \verb|struct sockaddr| as a parameter.\\
 
-A \verb|struct sockaddr| defines the endpoint to which you want to connect. \verb|sendto| has a flag option which allows the configuration of how messages are sent. If we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
+A \verb|struct sockaddr| defines the endpoint to which one wants to connect. \verb|sendto| has a flag option which allows to configure how messages are sent. If we supply the \verb|MSG_FASTOPEN| flag, \verb|sendto| will automatically connect and deliver the given message within the handshake. Subsequent uses of \verb|send| will function as if the \verb|connect| function was used.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{Important socket system calls}
@@ -593,7 +593,7 @@ ssize_t sendto(
 \subsection{Custom connect function}
 The library will replace the original connect with a custom implementation \verb|pep_connect|. The original \verb|connect| and \verb|sendto| have a lot of parameters in common, specifically the \verb|const struct sockaddr| which is used to identify an endpoint. In the context of the PEP, this would identify the final endpoint to which the client wants to connect. The goal of the PEP connect function is to replace the \verb|sockaddr| given by the client with one that identifies the PEP instead, but still forwards the original \verb|sockaddr| to the PEP to establish the proxy connection.\\
 
-The signature of our custom implementation mimics the original connect. The main difference is the addition of a \verb|flags| parameter for easier customization. Inside our custom function we allocate space for a new \verb|struct sockaddr| which we will fill with the IP address and port of the PEP, while at the same time we create a message with original IP address and port of the endpoint. Finally we call \verb|sendto| with our message and the new \verb|struct sockaddr|, using \verb|MSG_FASTOPEN| to both connect and deliver the message.\\
+The signature of our custom implementation mimics the original connect. The main difference is the addition of a \verb|flags| parameter for easier customization. Inside our custom function we allocate space for a new \verb|struct sockaddr| which we will fill with the IP address and port of the PEP, while at the same time creating a message with original IP address and port of the endpoint. Finally we call \verb|sendto| with our message and the new \verb|struct sockaddr|, using \verb|MSG_FASTOPEN| to both connect and deliver the message.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{The custom connect function signature}
@@ -639,8 +639,8 @@ int pep_connect(
 %\end{autonumlstlisting}
 
 \subsection{TLV}
-A good choice for sending options and meta-data is in the form of TLVs, formally known as Type–length–value options.
-The idea is that all options can be defined by a Type, Length and Value. The \verb|type| defines the type of an option, which types exist and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc, adding new types is very easy and requires little modification. The TLV is practically implemented as its own message, but can also be appended at the start of a transmission like a header.\\
+A good choice for sending options and meta-data is in the form of TLVs, formally known as Type–Length–Value options.
+The idea is that all options can be defined by a Type, Length and Value. The \verb|type| defines the type of an option, which types exist and what they mean are up to the users of the library to decide. Common types are "Version", "Error", etc. Adding new types is very easy and requires little modification. The TLV is practically implemented as its own message, but can also be appended at the start of a transmission like a header.\\
 
 \noindent\begin{minipage}{\linewidth}
 \paragraph{TLV structures}
@@ -661,7 +661,7 @@ struct tlv {
 \end{minipage}
 
 \paragraph{TLV Implementation}
-In our design, TLVs are structured as a continuous buffer, consisting of a TLV header followed by subsequent options.  This header provides details on the version, the number of options, and a unique magic number for validation. The \verb|type| spans one byte, which means we limit ourselves to 255 possible types. The current implementation only uses six, which means we have enough space for future extensions. The \verb|length| variable is mainly used to indicate an optional data segment called \verb|optional|. The size of the default value is two bytes with an additional option of size four bytes. All together the struct uses eight bytes or 64 bits, which mostly comes from the fact that we need atleast six bytes for the IP address and port alone. 
+In our design, TLVs are structured as a continuous buffer, consisting of a TLV header followed by subsequent options.  This header provides details on the version, the number of options, and a unique magic number for validation. The \verb|type| spans one byte, which means we limit ourselves to 255 possible types. The current implementation only uses six, which means we have enough space for future extensions. The \verb|length| variable is mainly used to indicate an optional data segment called \verb|optional|. The size of the default value is two bytes with an additional option of size four bytes. All together the struct uses eight bytes or 64 bits, which mostly comes from the fact that we need at least six bytes for the IP address and port alone. 
 
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
@@ -672,7 +672,7 @@ In our design, TLVs are structured as a continuous buffer, consisting of a TLV h
 \end{figure}
 
 \paragraph{Problems using TFO}
-When using TCP Fast Open, the \verb|sendto| function instantly returns when the message has been sent with no confirmation of a successful connection. This is in contrast to \verb|connect| which only returns when a connection was successfully established and an error has occurred.
+When using TCP Fast Open, the \verb|sendto| function instantly returns when the message has been sent with no confirmation of a successful connection. This is in contrast to \verb|connect| which only returns when a connection was successfully established and an error has occurred. In practice its not a big problem as any calls to \verb|send| will either wait for the connection to be established or return an error if the connection was unsuccessful. Only applications which assume a connection is successful by the \verb|connect| function alone and use no subsequent \verb|send| or \verb|recv| might encounter problems. Those applications might need further adjustment to be able to utilize the PEP.
 
 \subsection{TLV Options}
 The options of the TLVs define the functionalities a PEP can provide, for our PEP we only need six options. The basic \verb|info| and \verb|error| options are included alongside some information about the TCP connection such as extended headers. The most important type is \verb|connect|, it specifies a port and IP address and is used to communicate the endpoint to the PEP. A TLV message can include as many options as a client desires.
@@ -697,7 +697,7 @@ $ gcc file.c <path>/<lib>.so -o file.o
 \end{verbatim}
 
 \section{PEP - Internals}
-The internals of the PEP will consist of many important components. Importantly, we have the main server socket, socket pairs (tunnels) and deferred works. The PEP itself will need to keep track of the PEP state and the state of all the tunnels, additionally we need to keep track of all running tasks. Since our code will be a kernel module and running 'inside' the kernel, we will have access to a lot of existing infrastructure which normally is only accessible by the kernel. 
+The internals of the PEP will consist of many important components. Importantly, we have the main server socket, socket pairs (tunnels) and deferred works. The PEP itself will need to keep track of the PEP state and the state of all the tunnels, additionally we need to keep track of all running tasks. Since our code will be a kernel module and run 'inside' the kernel, we will have access to a lot of existing infrastructure which normally is only accessible by the kernel. 
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -707,7 +707,7 @@ The internals of the PEP will consist of many important components. Importantly,
 \end{figure}
 
 \subsection{Architecture}
-The PEP architecture is mainly based on a server and multiple socket tunnels. The server acts as the entry point of the PEP, clients will connect to the server which will in turn connect to the endpoint. The server consists of a \verb|pep_state| which holds the server socket, work queues and a list of tunnels. The server socket accepts new clients and reads their TLV header, if no header is present the connection will be closed. After successfully reading the TLV, a new socket is created and a connection is attempted to the endpoint specified by the TLVs.\\
+The PEP architecture is mainly based on a server socket and multiple socket tunnels. The server socket acts as the entry point of the PEP, clients will connect to the server socket which will in turn create a new socket and connect to the endpoint. The server consists of a \verb|pep_state| which holds the server socket, work queues and a list of tunnels. The server socket accepts new clients and reads their TLV header, if no header is present the connection will be closed. After successfully reading the TLV, a new socket is created and a connection is attempted to the endpoint specified by the TLVs.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
@@ -780,10 +780,10 @@ struct sock {
 
 \paragraph{Socket Operations}
 The kernel socket struct includes a \verb|struct proto_ops| member which holds usual socket operations such as accept, connect and bind.
-Figure \ref{fig:proto_ops} shows an overview over the most interesting socket operations. Most notably the \verb|setsockopt| operation is important as it allows the configuration of socket options such as \verb|TCP_FASTOPEN|. Additionally, it can configure the socket buffer sizes using \verb|SO_SNDBUFFORCE| and \verb|SO_RCVBUFFORCE| which is an important aspect of the PEP.
+Figure \ref{fig:proto_ops} shows an overview over the most interesting socket operations. Most notably, the \verb|setsockopt| operation is important as it allows the configuration of socket options such as \verb|TCP_FASTOPEN|. Additionally, it can configure the socket buffer sizes using \verb|SO_SNDBUFFORCE| and \verb|SO_RCVBUFFORCE| which is an important aspect of the PEP.
 
 \paragraph{Socket Callbacks}
-Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever a \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any new data on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function. All callbacks take the socket as a parameter, thereby giving access to the socket state. \\
+Especially of interest is the callback function \verb|sk_data_ready|. It is called whenever an \verb|sk_buff| is received by a socket. That is the case for any kind of packet, not only user data but also includes the TCP handshake packets. This callback can be overwritten by a custom implementation, which is useful to detect any new data on the socket. For example one could inspect or manipulate headers before calling the original \verb|sk_data_ready| function. All callbacks take the socket as a parameter, thereby giving access to the socket state. \\
 
 \paragraph{Socket User Data}
 Kernel sockets allow modules to add extra information to a specific socket. The pointer \verb|sk_user_data| can be used to point to any data defined by a module. This in combination with the callbacks is a powerful tool for customizing socket behavior. This allows us to add additional state information to the socket. In our case we will use \verb|sk_user_data| to store the server stat.\\
@@ -857,7 +857,7 @@ queue_work(my_workqueue, &my_work);
 \paragraph{Work state problem}
 Initiating a Work poses a challenge: how to effectively track the state. In this context, 'state' refers to the status of a PEP tunnel, which includes the sockets and a reference to the server. A simple approach is to store the PEP server in a global variable. However, not only is this poor coding practice, but it also doesn't solve how to get the sockets. A function that transfers between two sockets must be aware of the specific sockets to use. The work alone doesn't provide this context.\\
 
-To solve this issue we can make use of a macro which Linux provides. \verb|containerof| is a macro that retrieves a reference to the parent structure of any given struct. This in combination with the fact that we get the original work struct as a parameter, allows us to access the tunnel state if we attach the work to the tunnel struct.\\
+To solve this issue we can make use of a macro which Linux provides. \verb|containerof| is a macro that retrieves a reference to the parent structure of any given struct. This, in combination with the fact that we get the original work struct as a parameter, allows us to access the tunnel state if we attach the work to the tunnel struct.\\
 
 \begin{autonumlstlisting}[label=lst:work_containerof]{Work using containerof example}
 struct parent {
@@ -952,7 +952,7 @@ struct pep_state* pep_new_server(void)
 \end{autonumlstlisting}
 
 \subsection{Server initialization}
-Server state initialization consist of creating and configuring the main server socket and work queues. The server is responsible for accepting clients and creating pep tunnels. Additionally, it holds the work queues for all the PEPs functionality. Socket configuration consists of replacing the \verb|sk_data_ready| data callback, setting \verb|sk_user_data| to the server itself and using \verb|setsockopt| to set both \verb|TCP_FASTOPEN| and \verb|TCP_NODELAY|. \verb|TCP_NODELAY| is set to avoid socket latency by 'waiting' for larger frames.
+Server state initialization consists of creating and configuring the main server socket and work queues. The server is responsible for accepting clients and creating pep tunnels. Additionally, it holds the work queues for all the PEPs functionality. Socket configuration consists of replacing the \verb|sk_data_ready| data callback, setting \verb|sk_user_data| to the server itself and using \verb|setsockopt| to set both \verb|TCP_FASTOPEN| and \verb|TCP_NODELAY|. \verb|TCP_NODELAY| is set to avoid socket latency by 'waiting' for larger frames.
 
 \begin{autonumlstlisting}[label=lst:pep_server_init]{PEP server initialization (Simplified)}
 int pep_server_init(struct pep_state* server, u16 port)
@@ -995,7 +995,7 @@ int pep_server_init(struct pep_state* server, u16 port)
 }
 \end{autonumlstlisting}
 
-Line 20 in Listing \ref{lst:pep_server_init} configures the \verb|sk_data_ready| callback to the before mentioned \verb|pep_listen_data_ready|, when overwriting the \verb|sk_data_ready| we need to make sure we hold the socket \verb|sk_callback_lock| to avoid any race conditions which is done in line 17 and 21. The accept and forward work queues are allocated and created with \verb|WQ_HIGHPRI| and \verb|WQ_UNBOUND|.\\
+Line 20 in Listing \ref{lst:pep_server_init} configures the \verb|sk_data_ready| callback to the aforementioned \verb|pep_listen_data_ready|. When overwriting the \verb|sk_data_ready| we need to make sure we hold the socket \verb|sk_callback_lock| to avoid any race conditions, this is done in line 17 and 21. The accept and forward work queues are allocated and created with \verb|WQ_HIGHPRI| and \verb|WQ_UNBOUND|.\\
 
 \noindent\begin{minipage}{\linewidth}
 \begin{verbatim}
@@ -1053,7 +1053,7 @@ int pep_server_accept_work(struct work_struct *work)
 \end{autonumlstlisting}
 
 
-After successfully accepting the client we immediately allocate a buffer and read from the client. We expect it to send a TLV with TCP Fast Open, so we use the TLV library to validate and read the TLV options. Note that even if TCP Fast Open should fail, the connection can still be established at the cost of the additional round trip times. Specifically, we look for the \verb|TLV_CONNECT| option, which will be used to connect to the endpoint.\\
+After successfully accepting the client we immediately allocate a buffer and read from the client. We expect it to send a TLV with TCP Fast Open, so we use the TLV library to validate and read the TLV options. Note that even if TCP Fast Open should fail, the connection can still be established at the cost of an additional round trip time. Specifically, we look for the \verb|TLV_CONNECT| option, which will be used to connect to the endpoint.\\
 
 \subsection{Multiple Servers}
 Because of the callback nature of the PEP we can create multiple servers on the same host machine. By not having a 'global' server in the kernel module, we are able to potentially create as many servers as are desirable. The user only has to keep track of the server pointers, while the implementation of the server keeps track of the states and correct callback handling through the works. This means that each server may use the same callback function, but the state will vary.
@@ -1091,9 +1091,9 @@ void pep_client_receive_work(struct work_struct *work)
 }
 \end{autonumlstlisting}
 
-Listing \ref{lst:pep_forward} shows the function that forwards data from the client to an endpoint. Firstly, we retrieve the tunnel state by using \verb|container_of|, this gives us the socket which triggered the original callback. After that, a buffer is allocated and data is read from the client and forwarded to the endpoint. This function will run while there is data to send, the reason is that it is more effect to read all the data that is available than to wait for a callback and work queue to trigger.\\
+Listing \ref{lst:pep_forward} shows the function that forwards data from the client to an endpoint. Firstly, we retrieve the tunnel state by using \verb|container_of|, this gives us the socket which triggered the original callback. After that, a buffer is allocated and data is read from the client and forwarded to the endpoint. This function will also run while there is data to send, the reason is that it is more effective to read all the data that is available than to wait for a callback and work queue to trigger.\\
 
-If a socket returns 0 or less we check if the connection is closed, that is because the closing of a connection will trigger the same \verb|sk_data_ready| callback. However, when a socket is closed it will return 0 or an appropriate error code.\footnote{Explain shutdown of sockets?}
+If a socket returns 0 or less we check if the connection is closed, that is because the closing of a connection will trigger the same \verb|sk_data_ready| callback. However, when a socket is closed it will return 0 or an appropriate error code.\footnote{Explain shutdown of sockets!}
 
 \subsection{PEP Connections}
 By design the PEP is able to handle multiple connections at once. Each socket pair has its own work structure for client - endpoint and endpoint - client communication. This means each work structure can run in parallel, in both directions. Each tunnel (socket pair) is added to a linked list in the server state. This allows the PEP to have access to them in case we need to prematurely terminate the connections. This will avoid any memory leaks since we manage the memory for the tunnels.\\
@@ -1128,7 +1128,7 @@ struct pep_socket_callbacks {
 \end{minipage}\\
 
 \subsection{System Configurations}
-The PEP will require some configuration outside of the kernel module itself. Linux uses \verb|sysctl| for system configuration. Most importantly we want to enable TCP Fast Open and IP forwarding, IP forwarding will allow the Linux machine to act as a router and forward packets. Both these options are under \verb|net.ipv4|:\\
+The PEP will require some configuration outside of the kernel module itself. Linux uses \verb|sysctl| for system configuration. Most importantly we want to enable TCP Fast Open and IP forwarding: IP forwarding will allow the Linux machine to act as a router and forward packets. Both these options are under \verb|net.ipv4|:\\
 
 \begin{verbatim}
 $ sysctl -w net.ipv4.tcp_fastopen=3
@@ -1136,7 +1136,7 @@ $ sysctl -w net.ipv4.ip_forward=1
 \end{verbatim}
 
 \paragraph{Buffer sizes}
-The PEP works by buffering as much data as possible on the sockets themselves. This way we avoid buffering interactive traffic that simply passes by. The size of a socket's buffer can be configured with \verb|setsockopt|, however this is not reliable and has to be done for each socket. Instead we can configure the socket buffer sizes system-wide. Under \verb|net.core| there exists configurations for overall receive buffer sizes: \verb|rmem_max| and \verb|wmem_max|. There also exists the same for the default variables \verb|rmem_default| and \verb|wmem_default|.\\
+The PEP works by buffering as much data as possible on the sockets themselves. This way we avoid buffering interactive traffic that simply passes by. The size of a socket's buffer can be configured with \verb|setsockopt|, however this is not reliable and has to be done for each socket. Instead we can configure the socket buffer sizes system-wide. Under \verb|net.core| there exist configurations for overall receive buffer sizes: \verb|rmem_max| and \verb|wmem_max|. There also exists the same for the default variables \verb|rmem_default| and \verb|wmem_default|.\\
 
 \begin{verbatim}
 $ sudo sysctl -w net.core.rmem_max=<size>;
@@ -1156,10 +1156,10 @@ $ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max size>';
 \end{verbatim}
 
 \subsection{Userspace}
-The PEP is designed as a kernel module, however the functionality is not dependent on any kernel functionality. Userspace alternatives to work queues and callbacks exists, such as threads and the PEP can be rewritten with these alternatives. Theoretically the PEP can run as a userspace program for higher compatibility at the cost of the performance loss.
+The PEP is designed as a kernel module, however the functionality is not dependent on any kernel functionality. Userspace alternatives to work queues and callbacks exist, such as threads. The PEP can be rewritten with these alternatives. Theoretically the PEP can run as a userspace program for higher compatibility at the cost of performance loss.
 
 \section{Memory}
-Because we chose C as our programming language of choice, we are responsible for any memory allocated on the heap. The main places where dynamic memory is allocated is the server itself, tunnels and buffers for data forwarding. Both the tunnels and buffers are managed by the PEP server, so the memory will be freed when the server is terminated. This leaves the server to be freed, which is left up to the user. Easiest solution is to use the \verb|pep_server_clean| function in the \verb|__exit| module function.\\
+Because we chose C as our programming language of choice, we are responsible for any memory allocated on the heap. The main places where dynamic memory is allocated is the server itself, tunnels and buffers for data forwarding. Both the tunnels and buffers are managed by the PEP server, so the memory will be freed when the server is terminated. This leaves the server to be freed, which is left up to the user. The easiest solution is to use the \verb|pep_server_clean| function in the \verb|__exit| module function.\\
 
 Beside direct memory allocations, the PEP also needs to close and free sockets, works and work queues. These are all handled by the \verb|pep_server_clean| function. Memory management is especially important as the PEP is a kernel module, which means any memory that is not freed will affect the entire system. Additionally, any improper handling of the memory, such as double free`s or using freed memory will result in a kernel panic.\\
 
