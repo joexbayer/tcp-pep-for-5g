@@ -2011,9 +2011,9 @@ A non-transparent PEP has a lot of benefits, however it also comes with its own 
 Experimenting with and simulating high bandwidth 5G networks is a challenge. Configuring Linux with these bandwidths causes weird behavior with Cubic as discussed in the Evaluation chapter. Additionally. when trying to setup certain scenarios, unexpected behaviors occur based on where delay is configured. These problems make the PEP hard to evaluate under simulated scenarios.
 
 \section{Future work}
-For future work we propose a real deployment evaluation, especially using the PEP with a real router and a mobile device as the router. Why ...\\
+For future work we propose a real deployment evaluation, especially using the PEP with a real router and a mobile device as the router. As all experiments in this thesis were conducted using a testbed with simulated bandwidth fluctuations, the results may change in a real environment. This would open up to evaluations with real transfers from website alongside interactive traffic from either video games or video conferencing.\\
 
-Real transfers, websites, file downloads. ....\\
+Additionally, a better understanding and evaluation of Cubic`s behavior in high gigabit bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or PFIFO could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel. Where the large buffers of our PEP not only increase the throughput, but also reduces latency impact.
 
 \section{Final Thoughts}
 From the throughput evaluation we thoroughly investigated the effect of buffer sizes with fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high standard deviation and big impact on the interactive traffic. The PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
