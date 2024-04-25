@@ -96,10 +96,17 @@ In this thesis we will design, implement and evaluate a novel performance enhanc
 
 \chapter{Intro}
 
-\section{Motivation}
-New 5G technology has come and introduced increasingly large bandwidth capacities. However, because of the mmWave technology the bandwidth experiences drastic fluctuating from any kind of line of sight blockage.
+\section{Motivation and Problem Statement}
+New 5G technology has come and introduced increasingly large bandwidth capacities\cite{Agrawal_Sharma_2016}. However, because of the mmWave technology the bandwidth experiences drastic fluctuations from any kind of line of sight blockage\cite{mmwave_blocking}. These fluctuations result in underutilization of available bandwidth during peak phases, significantly affecting throughput and overall network performance. Addressing this issue requires a nuanced approach to managing large buffers and split connections, ensuring high performance without degrading the quality of interactive traffic.\\
 
-\section{Problem Statement}
+Current network strategies struggle with the optimal use of fluctuating bandwidth capacities of 5G mmWave technology. Specifically, packet schedulers and buffer configurations are not equipped to maximize the utilization of high bandwidth periods, leading to considerable performance losses. The challenge is to devise a Performance Enhancing Proxy (PEP) that can implement larger buffers and split connections effectively. This solution must overcome the traditional pitfalls of bufferbloat, which particularly impacts interactive traffic, and address the ethical concerns associated with the use of transparent PEPs that modify connections without user consent.
+
+\section{Research Question}
+The main research question that this thesis will attempt to answer is:\\
+Can we get better performance without a negative influence on latency by adding large buffers inside the network?
+
+\section{Contribution}
+\lipsum[1-1]
 
 \section{Organization}
 The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as the Bufferbloat concept and performance enhancing proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
@@ -1093,7 +1100,10 @@ void pep_client_receive_work(struct work_struct *work)
 
 Listing \ref{lst:pep_forward} shows the function that forwards data from the client to an endpoint. Firstly, we retrieve the tunnel state by using \verb|container_of|, this gives us the socket which triggered the original callback. After that, a buffer is allocated and data is read from the client and forwarded to the endpoint. This function will also run while there is data to send, the reason is that it is more effective to read all the data that is available than to wait for a callback and work queue to trigger.\\
 
-If a socket returns 0 or less we check if the connection is closed, that is because the closing of a connection will trigger the same \verb|sk_data_ready| callback. However, when a socket is closed it will return 0 or an appropriate error code.\footnote{Explain shutdown of sockets!}
+If a socket returns 0 or less we check if the connection is closed, that is because the closing of a connection will trigger the same \verb|sk_data_ready| callback. However, when a socket is closed it will return 0 or an appropriate error code.\\
+
+\paragraph{Socket Shutdown}
+It is important to properly handle the shutdown procedures of sockets because the PEP will manage two sockets per tunnel. An incorrect shutdown of a socket will result in loss of data or even worse a kernel panic. When the PEP detects that either the client or endpoint has closed their socket, we will track that event. But we cannot fully close and shutdown the sockets before we have read all the data from it. When all data has been transferred, and the sockets are in the \verb|TCP_CLOSE| or \verb|TCP_CLOSE_WAIT| state, we will shutdown the sockets using \verb|kernel_sock_shutdown| with \verb|SHUT_RDWR| to shutdown both read and write.\\
 
 \subsection{PEP Connections}
 By design the PEP is able to handle multiple connections at once. Each socket pair has its own work structure for client - endpoint and endpoint - client communication. This means each work structure can run in parallel, in both directions. Each tunnel (socket pair) is added to a linked list in the server state. This allows the PEP to have access to them in case we need to prematurely terminate the connections. This will avoid any memory leaks since we manage the memory for the tunnels.\\
@@ -2016,7 +2026,7 @@ For future work we propose a real deployment evaluation, especially using the PE
 Additionally, a better understanding and evaluation of Cubic`s behavior in high gigabit bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or PFIFO could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel. Where the large buffers of our PEP not only increase the throughput, but also reduces latency impact.
 
 \section{Final Thoughts}
-From the throughput evaluation we thoroughly investigated the effect of buffer sizes with fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high standard deviation and big impact on the interactive traffic. The PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
+From the throughput evaluation we thoroughly investigated the benefit of large buffer sizes with 5G mmWave fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high throughput standard deviation and a large impact on the interactive traffic. Our PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
 
 Make buffers large again!
 
