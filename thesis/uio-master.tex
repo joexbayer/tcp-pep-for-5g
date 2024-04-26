@@ -96,22 +96,22 @@ In this thesis we will design, implement and evaluate a novel performance enhanc
 
 \chapter{Intro}
 
-\section{Motivation and Problem Statement}
-New 5G technology has come and introduced increasingly large bandwidth capacities\cite{Agrawal_Sharma_2016}. However, because of the mmWave technology the bandwidth experiences drastic fluctuations from any kind of line of sight blockage\cite{mmwave_blocking}. These fluctuations result in underutilization of available bandwidth during peak phases, significantly affecting throughput and overall network performance. Addressing this issue requires a nuanced approach to managing large buffers and split connections, ensuring high performance without degrading the quality of interactive traffic.\\
+\section{Motivation}
+New 5G technology has come and introduced increasingly large bandwidth capacities\cite{Agrawal_Sharma_2016}. However, because of the mmWave technology the bandwidth experiences drastic fluctuations from any kind of line of sight blockage\cite{mmwave_blocking}. These fluctuations result in underutilization of available bandwidth during peak phases, significantly affecting throughput and overall network performance. Addressing this issue requires a innovative approach to large buffers and split connections, ensuring high performance without degrading the interactive traffic.\\
 
 Current network strategies struggle with the optimal use of fluctuating bandwidth capacities of 5G mmWave technology. Specifically, packet schedulers and buffer configurations are not equipped to maximize the utilization of high bandwidth periods, leading to considerable performance losses. The challenge is to devise a Performance Enhancing Proxy (PEP) that can implement larger buffers and split connections effectively. This solution must overcome the traditional pitfalls of bufferbloat, which particularly impacts interactive traffic, and address the ethical concerns associated with the use of transparent PEPs that modify connections without user consent.
 
 \section{Research Question}
 The main research question that this thesis will attempt to answer is:\\
-Can we get better performance without a negative influence on latency by adding large buffers inside the network?
+\textit{Can we get better performance without a negative influence on latency by adding large buffers inside the network?}
 
-\section{Contribution}
-\lipsum[1-1]
+\section{Contributions}
+In this master thesis we aim to better understand and utilize larger buffers in the network and present evidence that large buffers do not inherently cause buffer bloat or negatively impact interactive traffic. Additionally, because of the challenges with extending TCP\cite{tcp_extendable}, further research the field of performance enhancing proxies with focus on transparency. The aim is to remove some of the stigma associated with performance enhancing proxies which are used today.
 
 \section{Organization}
 The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as the Bufferbloat concept and performance enhancing proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
 
-In Chapter 5 we will look at the evaluation of the performance enhancing proxy. The evaluation will consists of multiple experiments to confirm the effectiveness of the performance enhancing proxy itself. The final Chapter 6 will conclude the thesis and look at potential future work.
+In Chapter 5 we will look at the evaluation of the performance enhancing proxy. The evaluation will consists of multiple experiments to confirm the effectiveness of the performance enhancing proxy itself. The final Chapter 6 will conclude the thesis based on the evaluation and look at potential future work.
 \chapter{Background}
 
 In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader.\\
@@ -2027,8 +2027,6 @@ Additionally, a better understanding and evaluation of Cubic`s behavior in high 
 
 \section{Final Thoughts}
 From the throughput evaluation we thoroughly investigated the benefit of large buffer sizes with 5G mmWave fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high throughput standard deviation and a large impact on the interactive traffic. Our PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
-
-Make buffers large again!
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
