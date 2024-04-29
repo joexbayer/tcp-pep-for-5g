@@ -1322,7 +1322,7 @@ For the Sender facing interface we simply apply 100ms delay:
 $ sudo tc qdisc add dev 10Gc root handle 2: netem delay 100ms;
 \end{verbatim}
 
-The sender has multiple configurations for the receiver facing interface based on if we intend to use FQ-CoDel, shown in Figure \ref{fig:tc_base_fq}, or BFIFO, shown in Figure \ref{fig:tc_base_bfifo}.
+The sender has multiple configurations for the receiver facing interface based on if we intend to use FQ-CoDel, shown in Figure \ref{fig:tc_base_fq}, or BFIFO, shown in Figure \ref{fig:tc_base_bfifo}.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1351,7 +1351,6 @@ $ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo limit 225000;
 
 
 The BFIFO queue is set to have a limit of the end to end bandwidth delay product (BDP).\\
-Given:
 \begin{itemize}
     \item Bandwidth (initial): \( B_1 = 15 \text{ Mbit/s} \)
     \item Delay: \( D = 120 \text{ ms} \)
@@ -1375,7 +1374,7 @@ After the increase in bandwidth:
     BDP_2 = 70 \times 10^6 \text{ bits/s} \times 120 \times 10^{-3} \text{ s} = 1,050 \times 10^3 \text{ bytes}
 \end{equation}
 
-Therefore, the new BFIFO limit becomes \( 1,050,000 \) bytes.
+Therefore, the new step BFIFO limit becomes \( 1,050,000 \) bytes.
 
 \subsubsection{Receiver}
 The only configuration for the receiver is the 20ms delay on its router facing interface.
