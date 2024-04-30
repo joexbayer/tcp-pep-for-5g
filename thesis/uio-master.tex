@@ -103,13 +103,13 @@ Current network strategies struggle with the optimal use of fluctuating bandwidt
 
 \section{Research Question}
 The main research question that this thesis will attempt to answer is:\\
-\textit{Can we get better performance without a negative influence on latency by adding large buffers inside the network?}
+\textit{Can we get better performance without a negative influence on latency by adding large buffers inside highly fluctuating networks?}
 
 \section{Contributions}
 In this master thesis we aim to better understand and utilize larger buffers in the network and present evidence that large buffers do not inherently cause buffer bloat or negatively impact interactive traffic. Additionally, because of the challenges with extending TCP\cite{tcp_extendable}, further research the field of performance enhancing proxies with focus on transparency. The aim is to remove some of the stigma associated with performance enhancing proxies which are used today.
 
 \section{Organization}
-The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as the Bufferbloat concept and performance enhancing proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
+The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as 5G mmWave, the Bufferbloat concept and performance enhancing proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
 
 In Chapter 5 we will look at the evaluation of the performance enhancing proxy. The evaluation will consists of multiple experiments to confirm the effectiveness of the performance enhancing proxy itself. The final Chapter 6 will conclude the thesis based on the evaluation and look at potential future work.
 \chapter{Background}
@@ -312,13 +312,13 @@ The speed at which a PEP can both process and forward packets is crucial. Especi
 The programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM with JIT and garbage collection, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems. The reason for choosing C is its bare metal approach and integration into the Linux kernel with kernel modules.
 
 \subsection{Kernel Module Vs. Userspace Application}
-When sending data over the network, all calls to receive and send data have to go through the kernels internal network stack. These calls are usually in the form of system calls when running as a user-space application. Making system calls (syscalls\footnote{Section about system calls?}) can introduce a lot of performance overhead in the form of a context switch to kernel-space and copying data back and forth from user-space to kernel-space. A kernel module will be able to directly access the kernel functions, eliminating the overhead of system calls and the restricted access of userspace applications to the network stack.\\
+When sending data over the network, all calls to receive and send data have to go through the kernels internal network stack. These calls are usually in the form of system calls when running as a user-space application. Making system calls (syscalls) can introduce a lot of performance overhead in the form of a context switch to kernel-space and copying data back and forth from user-space to kernel-space. A kernel module will be able to directly access the kernel functions, eliminating the overhead of system calls and the restricted access of userspace applications to the network stack.\\
 
-Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. In contrast, kernel modules are tightly bound to the Linux environment, which limits their usability to Linux hosts. This however is not a big problem as most servers are Linux hosts. [CITE]
+Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. In contrast, kernel modules are tightly bound to the Linux environment, which limits their usability to Linux hosts. This however is not a big problem as most servers are Linux hosts~\cite{w3techs_operating_system_statistics}.
 
 \subsection{Connection splitting using Sockets}% WHAT AND WHY
 % Talks about splitting domains 
-The PEP uses sockets to establish and split the connection between the client and the endpoint. Sockets provide a standardized way for programs to send and receive data over a network. They act as communication points, allowing for data exchange between them. For the PEPs purpose, sockets are ideal because they are configurable and come with dedicated buffers. This makes it easier to split and manage connections efficiently. Additionally, sockets are widely supported, ensuring compatibility and ease of integration~\cite{ibm_doc}.\\
+The PEP uses sockets to establish and split the connection between the client and the endpoint. Sockets provide a standardized way for programs to send and receive data over a network. They act as communication points, allowing for data exchange between them. For the PEPs purpose, sockets are ideal because they are configurable and come with dedicated buffers. This makes it easier to split and manage connections efficiently. Additionally, sockets are widely supported, ensuring compatibility and ease of integration~\cite{8999401}.\\
 
 A connection splitting proxy has the benefit of additionally splitting the connection into different domains. As discussed in Chapter 2, the internet consist of different domains with their own characteristics. Being able to split the connection into different domains enables the PEP to adapt and select an appropriate congestion controllers based on the technology and topology of each domain.\\
 
@@ -1259,7 +1259,7 @@ Linux has support for network interface configurations using the TC (traffic con
   	\label{fig:testbed}
 \end{figure}
 
-The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last 3 represent the sender, router and receiver. The controller is connected to the other hosts through a management network, while each of the other hosts are directly connected to each other using 10G Ethernet controllers. All tests are run using physical hosts to get the most realistic results and avoid unexpected side effects of virtual machines.\\
+The Testbed consists of four hosts, the first is the controller from which we orchestrate the experiment. The last three represent the sender, router and receiver. The controller is connected to the other hosts through a management network, while each of the other hosts are directly connected to each other using 10G Ethernet controllers. All tests are run using physical hosts to get the most realistic results and avoid unexpected side effects of virtual machines.\\
 
 Figure \ref{fig:testbed} shows a technical overview of the testbed configuration.
 
@@ -1910,7 +1910,7 @@ The PEP achieves both high throughput and low impact on interactive traffic by c
 \section{Socket buffer size effect on throughput}
 Continuing on the Mobility and Blockage scenario from the last section, we will evaluate how the socket buffer sizes on the PEP affect the performances. For this experiment we will run PEP configuration with ten different socket buffer sizes. The evaluation will consist of ten steps, ranging from the default Linux (debian) socket buffers up to 128 megabytes.\\
 
-The Linux default socket buffer sizes start at 2 megabyte for net core read and write buffers. The TCP read buffers are at 6 megabyte, and the write buffers at 4 megabyte. The default buffers will be increased at a 1/10 interval until they reach 128 megabyte. Each step, we will run one flow using the PEP for the entire 120 seconds. For a consistent result we will run each step ten times and take the average as the final result. The goal is to evaluate and confirm the buffers effect on the PEP, compared to the FQ-CoDel and BFIFO configuration. \\
+The Linux default socket buffer sizes start at 2 megabyte for net core read and write buffers. The TCP read buffers are at 6 megabyte, and the write buffers at 4 megabyte. The default buffers will be increased at a 1/10 interval until they reach 128 megabyte. Each step, we will run one flow using the PEP for the entire 120 seconds. For a consistent result we will run each step ten times and take the average as the final result. The goal is to evaluate and confirm the buffers effect on the PEP, compared to the FQ-CoDel and BFIFO configuration.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1919,7 +1919,7 @@ The Linux default socket buffer sizes start at 2 megabyte for net core read and 
   	\label{fig:throughput_all}
 \end{figure}
 
-As we can see from Figure \ref{fig:throughput_all}, the default socket buffer sizes perform the worst, improving with each step. From the default to step 7 the throughput increases with bigger socket buffer sizes. This highlights the importance of the buffer sizes for the PEP. After step 7, approximately 85.40 MB buffer size, the throughput reaches its limit based on the scenario.\footnote{What happens... The PEP slows down in the sender rwnd?}
+As we can see from Figure \ref{fig:throughput_all}, the default socket buffer sizes perform the worst, improving with each step. From the default to step 7 the throughput increases with bigger socket buffer sizes. This highlights the importance of the buffer sizes for the PEP. After step 7, approximately 85.40 MB buffer size, the throughput reaches its limit based on the scenario. The limit is reached by having enough data buffered to compensate for drop and rise in bandwidth.\\
 
 \section{Multiple flows}
 The last section of the Evaluation chapter will focus on the PEP performance with multiple flows. Especially throughput and fairness are important aspects to explore. The mobility and blockage scenario from the 5G mmWave section will be used to simulate our fluctuating bandwidth.\\
@@ -1993,7 +1993,7 @@ Table \ref{tab:latency_10_flows} and Figure \ref{fig:latency_10_flows} show the 
 In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally potential future work is discussed.\\
 
 \section{Performance}
-To conclude on the PEP lets look back at the original goal: The most important aspect of the PEP is its performance. The goal of the PEP is to increase the throughput of non-interactive transfers by better utilizing the fluctuating 5G bandwidth. Our PEP achieves this by introducing huge buffers at the base station, this of course only is viable if we introduce no additional unwanted delay on interactive traffic.\\
+To conclude on the PEP lets look back at the original research question: \textit{Can we get better performance without a negative influence on latency by adding large buffers inside highly fluctuating networks?} The goal of the PEP is to increase the throughput of non-interactive transfers by better utilizing the fluctuating bandwidth, in this thesis we used 5G mmWave as example. Our PEP achieves this by introducing huge buffers at the base station, this of course only is viable if we introduce no additional unwanted delay on interactive traffic.\\
 
 \subsection{Throughput}
 The conclusion on throughput will be mainly based on Section~\ref{sec:mobb}: Throughput for a 5G mobility and blockage scenario. Based on the evaluation with real 5G mmWave traces we achieve a very high throughput and bandwidth utilization with the PEP, especially compared to configurations with BFIFO and FQ-CoDel. We are able to show the immense benefit huge buffers have in these kind of scenarios.\\
@@ -2022,10 +2022,12 @@ Experimenting with and simulating high bandwidth 5G networks is a challenge. Con
 \section{Future work}
 For future work we propose a real deployment evaluation, especially using the PEP with a real router and a mobile device as the router. As all experiments in this thesis were conducted using a testbed with simulated bandwidth fluctuations, the results may change in a real environment. This would open up to evaluations with real transfers from website alongside interactive traffic from either video games or video conferencing.\\
 
-Additionally, a better understanding and evaluation of Cubic`s behavior in high gigabit bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or PFIFO could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel. Where the large buffers of our PEP not only increase the throughput, but also reduces latency impact.
+Additionally, a better understanding and evaluation of Cubic`s behavior in high gigabit bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or PFIFO could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel. Where the large buffers of our PEP not only increase the throughput, but also reduces latency impact.\\ 
 
 \section{Final Thoughts}
 From the throughput evaluation we thoroughly investigated the benefit of large buffer sizes with 5G mmWave fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high throughput standard deviation and a large impact on the interactive traffic. Our PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
+
+This thesis focused on fluctuating bandwidths in the context of 5G mmWave networks. Other types of fluctuating bandwidth can be beneficial to further research to measure the PEPs performance.
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
