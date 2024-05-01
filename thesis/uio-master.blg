@@ -1,50 +1,52 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: uio-master.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: myBib.bib
 Warning--to sort, need author or key in w3techs_operating_system_statistics
 Warning--there's a number but no series in fq_codel_rfc
 Warning--empty publisher in fq_codel_rfc
-You've used 28 entries,
+You've used 29 entries,
             2118 wiz_defined-function locations,
-            675 strings with 8946 characters,
-and the built_in function-call counts, 10572 in all, are:
-= -- 1052
-> -- 496
-< -- 15
-+ -- 201
-- -- 168
-* -- 644
-:= -- 1611
-add.period$ -- 92
-call.type$ -- 28
-change.case$ -- 167
+            681 strings with 9116 characters,
+and the built_in function-call counts, 10937 in all, are:
+= -- 1086
+> -- 509
+< -- 16
++ -- 206
+- -- 172
+* -- 663
+:= -- 1665
+add.period$ -- 95
+call.type$ -- 29
+change.case$ -- 172
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 480
-empty$ -- 793
-format.name$ -- 168
-if$ -- 2363
+cite$ -- 32
+duplicate$ -- 499
+empty$ -- 828
+format.name$ -- 172
+if$ -- 2449
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 23
-newline$ -- 145
-num.names$ -- 54
-pop$ -- 223
+int.to.str$ -- 29
+missing$ -- 24
+newline$ -- 150
+num.names$ -- 56
+pop$ -- 231
 preamble$ -- 1
-purify$ -- 140
+purify$ -- 144
 quote$ -- 0
-skip$ -- 429
+skip$ -- 444
 stack$ -- 0
-substring$ -- 469
-swap$ -- 207
-text.length$ -- 15
+substring$ -- 486
+swap$ -- 214
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 106
+type$ -- 110
 warning$ -- 3
-while$ -- 73
-width$ -- 30
-write$ -- 317
+while$ -- 77
+width$ -- 31
+write$ -- 328
 (There were 3 warnings)
