@@ -97,12 +97,16 @@ In this thesis we will design, implement and evaluate a novel performance enhanc
 \chapter{Intro}
 
 \section{Motivation}
+At an Internet bottleneck, the capacity that is available to a transport protocol can fluctuate for various reasons - traffic fluctuations, user mobility, or new wireless technology where the underlying capacity changes. Move over to 5G...\\
+
 New 5G technology has come and introduced increasingly large bandwidth capacities\cite{Agrawal_Sharma_2016}. However, because of the mmWave technology, the bandwidth experiences drastic fluctuations from any kind of line of sight blockage\cite{mmwave_blocking}. These fluctuations result in underutilization of available bandwidth during peak phases, significantly affecting throughput and overall network performance. Addressing this issue requires an innovative approach to large buffers and split connections, ensuring high performance without degrading the interactive traffic.\\
 
 Current network strategies struggle with the optimal use of fluctuating bandwidth nature of 5G mmWave technology\cite{Srivastava_Fund_Panwar_2020}. Specifically, packet schedulers and buffer configurations struggle to fully utilize the high bandwidth periods, leading to considerable performance losses. The challenge is to devise a Performance Enhancing Proxy (PEP) that can implement larger buffers and split connections effectively. Importantly, this solution must overcome the pitfalls of bufferbloat\cite{hingane2020aqm}, which particularly impacts interactive traffic, and address the ethical concerns associated with the use of transparent PEPs that modify connections without user consent.
 
 \section{Research Question}
-The main research question that this thesis will attempt to answer is:\\
+When the capacity at a bottleneck degrades, senders can react as soon as a signal reaches them, i.e. in the order of a round-trip time; in the meantime, packets are lost. When capacity suddenly becomes available, however, it can take much longer for a sender to be able to transmit enough data to the bottleneck -- and capacity may only be available for a short period of time. It is therefore necessary to buffer data near the bottleneck. However, large buffers have been known to create latency problems (commonly known as "bufferbloat").\\
+
+Accordingly, the main research question is:\\
 \textit{Can we get better performance without a negative influence on latency by adding large buffers inside highly fluctuating networks?}
 
 \section{Contributions}
@@ -264,16 +268,17 @@ int main(void)
 \end{autonumlstlisting}
 
 \section{Related Work}
-The 0-RTT TCP Convert Protocol is a protocol which aims to improve the performance for the fluctuating bandwidth and volatile nature of 5G networks by utilizing multipath TCP~\cite{rfc8803}. This is in contrast to our approach, which is to increase buffer sizes for the non-interactive traffic. The protocol is non-transparent\footnote{Is this actually correct? It uses TLVs?} and uses TLVs to communicate with the proxy.\\
+The 0-RTT TCP Convert Protocol is a protocol which aims to improve the performance for the fluctuating bandwidth and volatile nature of 5G networks by utilizing multipath TCP~\cite{rfc8803}. This is in contrast to our approach, which is to increase buffer sizes for the non-interactive traffic, although Multipath TCP is only one out of many possivle use cases of the 0-RTT TCP Convert Protocol design. The protocol is non-transparent and uses TLVs to communicate with the proxy.\\
 
-Other protocols, such as SOCKSv5, have bottlenecks when communicating with the proxy, because of the additional information that needs to be sent, such as authentication. Transport converter aims to reduce this overhead by utilizing the 0-RTT, adding any meta-data to the SYN packet.\\
+Other protocols, such as SOCKSv5, have bottlenecks when communicating with the proxy, because of the additional information that needs to be sent, such as authentication. The 0-RTT Transport Convert Protocol aims to reduce this overhead by utilizing "0-RTT", adding any meta-data to the SYN packet.\\
 
-SnoopTCP is a similar proxy to our PEP, as it usually acts on the base station and aims to improve the control loops between the sender and the receiver. SnoopTCP does not directly split the connection, but instead keeps a soft state of each TCP connection and re-transmits based on local timers. Additionally it suppresses duplicate ACKs on their way from the receiver to the sender~\cite{snooptcp}.\\
+SnoopTCP is a similar proxy to our PEP, as it usually acts on the base station and aims to improve the control loops between the sender and the receiver. Different from out design SnoopTCP does not directly split the connection, but instead keeps a soft state of each TCP connection and re-transmits based on local timers. Additionally it suppresses duplicate ACKs on their way from the receiver to the sender~\cite{snooptcp}.\\
 
 SnoopTCP is transparent, which means it will split all connections and the sender will not be aware of any modifications SnoopTCP performs on the connection.The main benefit from SnoopTCP is its ability to react faster to packet loss with the local timers. However, because the congestion control is still end-to-end, the sender will not be able to send more data on demand if the bandwidth fluctuates.\\
 
 Another similar proxy to our PEP is MilliProxy, which also focuses on 5G mmWave networks and aims to boost their performances. MilliProxy operates with a split connection, and keeps track of each flows state, having dynamic buffers per flow~\cite{milliproxy}. Similar to SnoopTCP, MilliProxy is transparent, which means it splits the connection without the knowledge of the sender or receiver.\\
 
+HOW IS IT DIFFERENT\\
 PEP-DNA is a kernel module based PEP designed to aid deployments of new network architectures \cite{pep_dna}. Similar to both SnoopTCP and MilliProxy, PEP-DNA is transparent. The most interesting feature of PEP-DNA for our PEP is the kernel module architecture, especially the split connection based on sockets and work handling. PEP-DNA uses a Netfilter to intercept SYN packets and then split the connection. This is a major difference to our approach which focuses on a non-transparent connection establishment.
 
 % This chapter explores the design desgins that later will be implemented by chapter 4.
@@ -454,7 +459,7 @@ FQ-CoDel usually preforms worse when looking at throughput compared to AQMs with
 This is another choice which will bind us to Linux, as achieving the same control and configuration on other operating system, such as Windows or MacOS, will be extremely difficult or even impossible. The impact of different scheduling algorithms will be shown and discussed in the Evaluation chapter.
 
 \section{Security}
-The PEP needs to assure that traffic flowing through the PEP not gets compromised. This, however, will not be a big concern as the PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP is not able to read encrypted data or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint, as only the PEPs connection will be seen by the endpoint.
+The PEP needs to assure that traffic flowing through the PEP does not get compromised. This, however, will not be a big concern as the PEP will only forward application data, meaning higher level security protocols such as TLS will still be end to end. This assures that the PEP can not read encrypted data or be used for malicious intents. The PEP can have the additional benefit of hiding the identity of the user from the endpoint, as only the PEPs connection will be seen by the endpoint.
 
 \section{Summary}
 In this chapter we have designed a high performance connection splitting PEP tailored for fluctuating bandwidth. We made the choice to keep it non-transparent to assure future adaptability and client configuration. Using sockets and their buffers, we avoid bufferbloat to not disrupt the interactive traffic. Finally, we use AQM and scheduling to avoid unnecessary delays on the outgoing links.\\
@@ -465,7 +470,7 @@ In this chapter we have designed a high performance connection splitting PEP tai
 \toprule
 Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent & Large Buffers \\
 \midrule
-\textbf{MilliProxy} &  & x? & x & x &  \\
+\textbf{MilliProxy} &  & x & x & x &  \\
 \textbf{PEP-DNA} &  & x &  & x &  \\
 \textbf{SnoopTCP} &  &  & x & x &  \\
 \textbf{Our PEP} & x & x &  &  & x \\
@@ -476,7 +481,7 @@ Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent & Larg
 \label{tab:summary}
 \end{table}
 
-Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent, this is a important distinction as non-transparent PEPs do not break important semantics, such as the end to end semantics.\\
+Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent. This is an important distinction as non-transparent PEPs do not break the end to end semantics.\\
 
 The most important difference is the large buffers on our PEP, although other PEPs also have larger than default buffers, our PEP has the largest configurable buffers, up to 2GB. Additionally, the size of the buffers in our PEP will not affect the interactive traffic, as normal network buffers would.
 
@@ -2022,8 +2027,8 @@ Experimenting with and simulating high bandwidth 5G networks is a challenge. Con
 \section{Future work}
 For future work we propose a real deployment evaluation, especially using the PEP with a real router and a mobile device. As all experiments in this thesis were conducted using a testbed with simulated bandwidth fluctuations, the results may change in a real environment. This would open up to evaluations with real transfers from website alongside interactive traffic from either video games or video conferencing.\\
 
-Additionally, a better understanding and evaluation of Cubic`s behavior in high gigabit bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. PEP with FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or Priority First in First Out(PFIFO) could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel. Where the large buffers of our PEP not only increase the throughput, but also reduces latency impact.
-This thesis focused on fluctuating bandwidths in the context of 5G mmWave networks. Regarding the PEPs, other types of fluctuating bandwidth can be beneficial to further research.\\
+Additionally, a better understanding and evaluation of Cubic`s behavior in high gigabit bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. PEP with FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or Priority First in First Out (PFIFO) could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel. Where the large buffers of our PEP not only increase the throughput, but also reduces latency impact.
+This thesis focused on fluctuating bandwidths in the context of 5G mmWave networks. Regarding the PEP, other types of fluctuating bandwidth can be beneficial to further research.\\
 
 \section{Final Thoughts}
 From the throughput evaluation we thoroughly investigated the benefit of large buffer sizes with 5G mmWave fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high throughput standard deviation and a large impact on the interactive traffic. Our PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
