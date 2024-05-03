@@ -88,7 +88,7 @@
 \tcblistof[\section*]{lol}{List of Listings}
 
 \begin{abstract}
-In this thesis we will design, implement and evaluate a novel performance enhancing proxy to support non-interactive traffic in a 5G environment. The idea is to utilize large buffers in the network without disturbing interactive traffic. To achieve this we will explore new and creative ways to utilize socket buffers and active queue management to reduce file transfer times.
+This thesis proposes a novel solution to optimize network performance in fluctuating bandwidth environments, with a particular focus on 5G mmWave technology. The primary objective is to develop a Performance Enhancing Proxy (PEP) optimized for non-interactive traffic, aiming to maximize bandwidth utilization without disrupting interactive traffic. Using large buffers within the network infrastructure, our approach uses socket buffers and active queue management to improve performance. Through an evaluation with real life 5G traces, we demonstrate the effectiveness of the PEP both in performance and impact on interactive traffic. Ethical considerations regarding the deployment of transparent PEPs are also addressed, ensuring user consent and privacy are upheld.
 \end{abstract}
 
 \chapter*{Acknowledgments}
@@ -97,25 +97,23 @@ In this thesis we will design, implement and evaluate a novel performance enhanc
 \chapter{Intro}
 
 \section{Motivation}
-At an Internet bottleneck, the capacity that is available to a transport protocol can fluctuate for various reasons - traffic fluctuations, user mobility, or new wireless technology where the underlying capacity changes. Move over to 5G...\\
-
-New 5G technology has come and introduced increasingly large bandwidth capacities\cite{Agrawal_Sharma_2016}. However, because of the mmWave technology, the bandwidth experiences drastic fluctuations from any kind of line of sight blockage\cite{mmwave_blocking}. These fluctuations result in underutilization of available bandwidth during peak phases, significantly affecting throughput and overall network performance. Addressing this issue requires an innovative approach to large buffers and split connections, ensuring high performance without degrading the interactive traffic.\\
+At an Internet bottleneck, the capacity that is available to a transport protocol can fluctuate for various reasons - traffic fluctuations, user mobility, or new wireless technology where the underlying capacity changes. 5G technology has come and introduced increasingly large bandwidth capacities\cite{Agrawal_Sharma_2016}. However, because of the mmWave technology, the bandwidth experiences drastic fluctuations from any kind of line of sight blockage\cite{mmwave_blocking}.\\ These fluctuations result in underutilization of available bandwidth during peak phases, significantly affecting throughput and overall network performance. Addressing this issue requires an innovative approach to large buffers and split connections, ensuring high performance without degrading the interactive traffic.\\
 
 Current network strategies struggle with the optimal use of fluctuating bandwidth nature of 5G mmWave technology\cite{Srivastava_Fund_Panwar_2020}. Specifically, packet schedulers and buffer configurations struggle to fully utilize the high bandwidth periods, leading to considerable performance losses. The challenge is to devise a Performance Enhancing Proxy (PEP) that can implement larger buffers and split connections effectively. Importantly, this solution must overcome the pitfalls of bufferbloat\cite{hingane2020aqm}, which particularly impacts interactive traffic, and address the ethical concerns associated with the use of transparent PEPs that modify connections without user consent.
 
 \section{Research Question}
-When the capacity at a bottleneck degrades, senders can react as soon as a signal reaches them, i.e. in the order of a round-trip time; in the meantime, packets are lost. When capacity suddenly becomes available, however, it can take much longer for a sender to be able to transmit enough data to the bottleneck -- and capacity may only be available for a short period of time. It is therefore necessary to buffer data near the bottleneck. However, large buffers have been known to create latency problems (commonly known as "bufferbloat").\\
+When the capacity at a bottleneck fluctuates, senders can react as soon as a signal reaches them, i.e. in the order of a round-trip time; in the meantime, packets are lost. When capacity suddenly becomes available, however, it can take much longer for a sender to be able to transmit enough data to the bottleneck and capacity may only be available for a short period of time. It is therefore necessary to buffer data near the bottleneck. However, large buffers have been known to create latency problems (commonly known as "bufferbloat").\\
 
 Accordingly, the main research question is:\\
 \textit{Can we get better performance without a negative influence on latency by adding large buffers inside highly fluctuating networks?}
 
 \section{Contributions}
-In this master thesis we aim to better understand and utilize larger buffers in the network and present evidence that large buffers do not inherently cause bufferbloat or negatively impact interactive traffic. Additionally, because of the challenges with extending TCP\cite{tcp_extendable}, research the field of performance enhancing proxies with focus on transparency. The aim is to remove some of the stigma associated with performance enhancing proxies which are used today.
+In this master thesis we aim to better understand and utilize larger buffers in the network and present evidence that large buffers do not inherently cause bufferbloat or negatively impact interactive traffic. Additionally, because of the challenges with extending TCP\cite{tcp_extendable}, this thesis investigates the field of Performance Enhancing Proxies with focus on transparency. The aim is to remove some of the stigma associated with Performance Enhancing Proxies which are used today.
 
 \section{Organization}
-The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as 5G mmWave, the Bufferbloat concept and performance enhancing proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
+The thesis is organized in the following manner: Chapter 2 introduces required background knowledge for the thesis such as 5G mmWave, the Bufferbloat concept and Performance Enhancing Proxies. Chapter 3 will explore the design decisions made regarding the programming language, environment, platform and deployment. Chapter 4 details the implementation and configuration.\\
 
-In Chapter 5 we will look at the evaluation of the performance enhancing proxy. The evaluation will consist of multiple experiments to confirm the effectiveness of the performance enhancing proxy itself. The final Chapter 6 will conclude the thesis based on the evaluation and look at potential future work.
+In Chapter 5 we will look at the evaluation of the Performance Enhancing Proxy. The evaluation will consist of multiple experiments to confirm the effectiveness of the Performance Enhancing Proxy itself. The final Chapter 6 will conclude the thesis based on the evaluation and look at potential future work.
 \chapter{Background}
 
 In this chapter we will present some of the required background knowledge to understand the concepts presented in this paper. Focusing on topics that are outside the common understanding of network programming, especially details of certain congestion controllers and network protocols will be discussed. The rest of the thesis will assume the following topics are known to the reader.\\
@@ -172,7 +170,7 @@ Wireless communication has seen a lot of improvements such as highly increased b
 \subsection{5G Millimetre Wave}
 The emergence of 5G Millimeter wave communications has opened the doors for low latency networks with multiple gigabits bandwidth. This is achieved by using higher millimetre wave (mmWave) frequencies in the range of 30GHz to 300GHz, which has a lot of benefits~\cite{Agrawal_Sharma_2016}. A wider spectrum of frequencies to choose from and higher data transfer rates are just some of the many benefits mmWave provides. But alongside the benefits, mmWave has also introduced a lot of new challenges.\\
 
-A big problem with millimetre wave communication is signal path blocking, also called "Line of sight blocking"~\cite{mmwave_blocking}. It's caused by the use of Beam-forming to increase the bandwidth and range of milimeter wave signals. Beam-forming focuses the signal in a certain direction, making any blocking of the signal path devastating for the bandwidth. Even the human body can create enough blockage to drastically reduce the bandwidth. This causes huge fluctuations in the bandwidth whenever the signal is blocked.\\
+A big problem with millimetre wave communication is signal path blocking, also called "Line of sight blocking"~\cite{mmwave_blocking}. It's caused by the use of Beam-forming to increase the bandwidth and range of milimeter wave signals. Beam-forming focuses the signal in a certain direction, making any blocking of the signal path devastating for the bandwidth. Even the human body can create enough blockage to drastically reduce the bandwidth. This causes immense fluctuations in the bandwidth whenever the signal is blocked.\\
 
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -474,16 +472,14 @@ Implementation & 0RTT & Connection Splitting & Special ACKs & Transparent & Larg
 \textbf{PEP-DNA} &  & x &  & x &  \\
 \textbf{SnoopTCP} &  &  & x & x &  \\
 \textbf{Our PEP} & x & x &  &  & x \\
-\textbf{TCP Convert} & x & x &  & x? &  \\
+\textbf{TCP Convert} & x & x &  &  &  \\
 \bottomrule
 \end{tabularx}
 \caption{Table of design decisions based on different PEP implementations compared to ours.}
 \label{tab:summary}
 \end{table}
 
-Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent. This is an important distinction as non-transparent PEPs do not break the end to end semantics.\\
-
-The most important difference is the large buffers on our PEP, although other PEPs also have larger than default buffers, our PEP has the largest configurable buffers, up to 2GB. Additionally, the size of the buffers in our PEP will not affect the interactive traffic, as normal network buffers would.
+Table \ref{tab:summary} shows how our PEP compares with other PEPs based on features. We can see that only our PEP and 0-RTT TCP Convert support the 0-RTT TLV approach for metadata. Compared to most others our PEP is not transparent. This is an important distinction as non-transparent PEPs do not break the end to end semantics. The most important difference is the large buffers on our PEP, used only for non-interactive traffic. Although other PEPs also have larger than default buffers, our PEP has the largest configurable buffers, up to 2GB.\\
 
 % TRL TCP https://ieeexplore.ieee.org/abstract/document/4623710?casa_token=nB8IUC46VVQAAAAA:q9PoGtpzLJDUCfrjMzeAi9DG7VKQoSQVmogIdidf-ydVmt7e2ZtL5O1859WLVM6a_wXn_IZijFM
 
@@ -1560,7 +1556,7 @@ The results from our latency measurement experiment show a clear impact on the l
 
 Figure \ref{fig:witestlab_graph_delay_1} shows the results of the latency measurements. Comparing our results to the Witestlab experiment (Figure \ref{fig:witestlab_results}) we can see that the shapes of the graphs are similar. However the magnitude of the latency spikes are quite different between our and their experiments. The difference is most likely due to our hardware or a more modern Linux kernel.\\
 
-Based on these results we can conclude that the 5G traces reflect the expected behavior: creating huge delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same general latency behaviour of the 5G traces.
+Based on these results we can conclude that the 5G traces reflect the expected behavior: creating immense delays in the case of a big BFIFO buffer. Although we do not observe the same amount of delay, we still observe the same general latency behaviour of the 5G traces.
 
 \subsection{Experiment Configuration}
 To evaluate the PEP with the 5G traces we will change the topology to include a 100ms delay between the sender and the router. The link between the router and the receiver will get a 1ms delay for a more realistic scenario. The experiment procedure will be to send as much data as possible from the sender to the receiver. We will use throughput as the main measurement for the performance of each scenario. The interactive traffic should not, or hardly be, impacted by the other transfer(s). It will be represented by Ultra ping.
@@ -1631,7 +1627,7 @@ While running a throughput test from sender to receiver with a BDP sized BFIFO q
 
 The first interesting aspect of Figure \ref{fig:cubiccwnd} is the slow cubic curve. It takes a long time to fully utilize the bandwidth. Additionally, looking at the relation to the BDP, we can see that the transfer was lucky in the first increase phase, starting just under the BDP, and unlucky the second where it starts way below the BDP, resulting in a rather low throughput.\\
 
-Looking at the double back-off after 70 seconds in Figure \ref{fig:cubiccwnd} we can see that the next congestion avoidance phase starts low and does not reach full throughput again before the experiment ended. This brings us to the conclusion that Cubic does not operate effectively in our scenarios with big bandwidths and huge buffers. Because of these results a single Cubic transfer is not representative of the achievable throughput as it will either be lucky and get a big throughput or unlucky with a low throughput.\\
+Looking at the double back-off after 70 seconds in Figure \ref{fig:cubiccwnd} we can see that the next congestion avoidance phase starts low and does not reach full throughput again before the experiment ended. This brings us to the conclusion that Cubic does not operate effectively in our scenarios with big bandwidths and large buffers. Because of these results a single Cubic transfer is not representative of the achievable throughput as it will either be lucky and get a big throughput or unlucky with a low throughput.\\
 
 Looking at Reno, we see the same kind of behavior, where the big BFIFO queue and high bandwidth results in low throughput because of the congestion avoidance phase. In Figure \ref{fig:renocwnd} we can see an unlucky congestion avoidance start which leads to low throughput.
  
@@ -1689,7 +1685,7 @@ Looking at the statics in Table \ref{tab:throughput_sl_table} we can see a rathe
 \end{figure}
 
 Figure \ref{fig:throughput_latency_sl} shows the impact on the interactive traffic for each configuration. 
-Looking at the BFIFO configuration we get a huge impact on the interactive traffic because of the large buffers. This shows the cost of the higher throughput that BFIFO achieves over FQ-CoDel. While the base RTT of our configuration is 101ms, the BFIFO reaches peaks above 200ms and a average of 146.83ms with a 26.59ms standard deviation.\\
+Looking at the BFIFO configuration we get a big impact on the interactive traffic because of the large buffers. This shows the cost of the higher throughput that BFIFO achieves over FQ-CoDel. While the base RTT of our configuration is 101ms, the BFIFO reaches peaks above 200ms and a average of 146.83ms with a 26.59ms standard deviation.\\
 
 The impact of the FQ-CoDel and PEP configuration is barely noticeable, compared to the BFIFO configuration. Figure \ref{fig:throughput_latency_closeup_sl} shows a close up of both FQ-CoDel and PEP; as we can see, there is a tiny difference with the PEP having more spikes than FQ-CoDel.\\
 
@@ -1901,7 +1897,7 @@ After evaluating the PEP with realistic 5G mmWave traces we can clearly see the 
   	\label{fig:throughput_all_latency_bfifo}
 \end{figure}
 
-Although BFIFO achieves higher throughput than FQ-CoDel, the interactive latency traffic suffers greatly under the large buffers. As we can see in Figure \ref{fig:throughput_all_latency_bfifo}, BFIFO creates huge amounts of delay, reaching peaks of 400ms, for all scenarios.\\
+Although BFIFO achieves higher throughput than FQ-CoDel, the interactive latency traffic suffers greatly under the large buffers. As we can see in Figure \ref{fig:throughput_all_latency_bfifo}, BFIFO creates immense amounts of delay, reaching peaks of 400ms, for all scenarios.\\
 
 \begin{figure}[!h!] % htbp stand f	or "here", "top", "bottom", "page"
 	\centering
@@ -1995,43 +1991,44 @@ PEP  &  101.18 & 0.05 \\
 Table \ref{tab:latency_10_flows} and Figure \ref{fig:latency_10_flows} show the impact on the interactive traffic with ten flows. Interestingly, the competition between the ten flows create an overall less destructive impact on the interactive traffic than a single flow. With BFIFO there are still high spikes up to 175ms. While both PEP and FQ-CoDel have the same average latency of 101.18ms, which is only an increase of 0.18 from the set end to end delay of 101ms.\\
 
 \chapter{Conclusion \& Future Work}
-In the final chapter we will discuss the PEPs performance, limitations and challenges. Especially important is to what degree we achieved the PEPs goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally, potential future work is discussed.\\
+In the final chapter we will discuss the PEPs performance, limitations and challenges. It is especially important to what degree we achieved the PEP's goal of increasing throughput without disrupting interactive traffic. After concluding on performance, we will look at the potential challenges and limitations which could reduce the PEPs usability. Finally, potential future work is discussed.\\
 
 \section{Performance}
-To conclude on the PEP, lets look back at the original research question: \textit{Can we get better performance without a negative influence on latency by adding large buffers inside highly fluctuating networks?} The goal of the PEP is to increase the throughput of non-interactive transfers by better utilizing the fluctuating bandwidth, in this thesis we used 5G mmWave as an example. Our PEP achieves this by introducing large buffers at the base station, this of course is only viable if we introduce no additional unwanted delay on interactive traffic.\\
+To conclude on the PEP, let us look back at the original research question: \textit{Can we get better performance without a negative influence on latency by adding large buffers inside highly fluctuating networks?}\\
+
+The goal of the PEP is to increase the throughput of non-interactive transfers by better utilizing the fluctuating bandwidth; in this thesis we used 5G mmWave as an example. Our PEP achieves this by introducing large buffers at the base station, which of course is only viable if we introduce no additional unwanted delay on interactive traffic.\\
 
 \subsection{Throughput}
-The conclusion on throughput will be mainly based on Section~\ref{sec:mobb}: Throughput for a 5G mobility and blockage scenario. Based on the evaluation with real 5G mmWave traces we achieve a very high throughput and bandwidth utilization with the PEP, especially compared to configurations with BFIFO and FQ-CoDel. We are able to show the immense benefit huge buffers have in these kind of scenarios.\\
+In Section~\ref{sec:mobb}: Throughput for a 5G mobility and blockage scenario, based on the evaluation with real 5G mmWave traces, we achieve a very high throughput and bandwidth utilization with the PEP. Especially compared to configurations with BFIFO and FQ-CoDel. We are able to show the immense benefit large buffers have in these kind of scenarios.\\
 
-In Section~\ref{sec:mobb} we can see that the PEP is able to almost fully utilize the average bandwidth of approximately 3Gbit/s, even with the high fluctuations. While FQ-CoDel struggles to even utilize half of the theoretically available bandwidth. Configuring BFIFO with a BDP sized queue we are able to better utilize the bandwidth, almost doubling the throughput of FQ-CoDel. However, introducing these larger buffers in the network cause a lot of unwanted delay on the interactive traffic.
+In Section~\ref{sec:mobb} we can see that the PEP is able to almost fully utilize the average bandwidth of approximately 3Gbit/s, even with the high fluctuations, while FQ-CoDel struggles to even utilize half of the theoretically available bandwidth. Configuring BFIFO with a BDP sized queue, we are able to better utilize the bandwidth, almost doubling the throughput of FQ-CoDel. However, introducing these larger buffers in the network causes a lot of unwanted delay on the interactive traffic.
 
 \subsection{Impact on interactive traffic}
-To avoid impact on interactive traffic is a core idea behind the usability of the PEP. Although we achieve high throughput, large buffers in the network cause huge amount of unwanted delay, as we have shown in the BFIFO case. In the initial evaluation we showed that we are able to reduce the impact of BFIFO buffers on the interactive traffic by configuring FQ-CoDel instead, which reduces the impact by giving each flow its own small queue. Although FQ-CoDel reduces the impact, it also drastically lowers the throughput, as discusses in the throughput section.\\
+To avoid impact on interactive traffic is a core idea behind the usability of the PEP. Although we achieve high throughput, large buffers in the network cause a large amount of unwanted delay, as we have shown in the BFIFO case. In the initial evaluation we showed that we are able to reduce the impact of BFIFO buffers on the interactive traffic by configuring FQ-CoDel instead, which reduces the impact by giving each flow its own small queue. Although FQ-CoDel solves this problem, it also drastically lowers the throughput.\\
 
-We were able to show that with our PEP we can utilize both FQ-CoDel and achieve high throughput by using a split connection with large socket buffers. This combination assures that any traffic that utilizes the PEP will have the large buffers, while other traffic only adhere to FQ-CoDel. All traffic from the PEP will also eventually be managed by FQ-CoDel which assures that it will not impact any traffic passing through.\\
+We were able to show that with our PEP we can utilize both FQ-CoDel and achieve high throughput by using a split connection with large socket buffers. This combination assures that any traffic that willingly utilizes the PEP will have the large buffers, while other traffic only adhere to FQ-CoDel. All traffic from the PEP will also eventually be managed by FQ-CoDel which assures that it will not impact any traffic passing through.\\
 
-Looking at the impact graphs in Section~\ref{sec:mobb}, especially Figure \ref{fig:throughput_latency_closeup_mobb} shows the small amount of delay the PEP adds compared to only FQ-CoDel.
+Looking at the impact graphs in Section~\ref{sec:mobb}, especially Figure \ref{fig:throughput_latency_closeup_mobb} shows the small amount of delay the PEP adds compared to the case with FQ-CoDel only.
 
 \subsection{Transparency}
-An important aspect that distinguishes our PEP from most other approaches is the choice of a non-transparent PEP. By allowing the user to actively choose the PEP, we don't break important end to end assumptions. Additionally, it's a more ethical choice as we don`t split a connection without a users consent. The main benefit of the transparent PEP is the ease of deployment and needing no modifications on the sender or receiver side.\\
+An important aspect that distinguishes our PEP from most other approaches is the choice of a non-transparent PEP. By allowing the user to actively choose the PEP, we don't break end to end assumptions. In this way, an application can make a conscious decision to use the PEP for a suitable type of traffic only. The main benefit of the transparent PEP is the ease of deployment and needing no modifications on the sender or receiver side.\\
 
 \section{Limitations and Challenges}
 % Deployment
 % PEP selection
 % Sender modifications
 
-A non-transparent PEP has a lot of benefits, however it also comes with its own set of challenges. The process of choosing and addressing the PEP requires modification on the sender. PEP selection also becomes a problem, in this implementation it is a hard coded value in the TLV library. Needing to adjust the sender code to utilize the PEP also reduces the adaptability of the PEP.\\
+A non-transparent PEP has a lot of benefits, however it also comes with its own set of challenges. The process of choosing and addressing the PEP requires a modification on the sender. PEP selection also becomes a problem, in this implementation it is a hard coded value in the TLV library. Needing to adjust the sender code to utilize the PEP also reduces the adaptability of the PEP.\\
 
-Experimenting with and simulating high bandwidth 5G networks is a challenge. Configuring Linux with these bandwidths causes weird behavior with Cubic as discussed in the Evaluation chapter. Additionally. when trying to setup certain scenarios, unexpected behaviors occur based on where delay is configured. These problems make the PEP hard to evaluate under simulated scenarios.
+Experimenting with and simulating high bandwidth 5G networks is a challenge. Configuring Linux with these bandwidths causes weird behavior with Cubic, as discussed in the Evaluation chapter. Additionally, when trying to setup certain scenarios, unexpected behaviors occur based on where delay is configured. These problems make the PEP hard to evaluate under emulated scenarios.
 
 \section{Future work}
 For future work we propose a real deployment evaluation, especially using the PEP with a real router and a mobile device. As all experiments in this thesis were conducted using a testbed with simulated bandwidth fluctuations, the results may change in a real environment. This would open up to evaluations with real transfers from website alongside interactive traffic from either video games or video conferencing.\\
 
-Additionally, a better understanding and evaluation of Cubic`s behavior in high gigabit bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. PEP with FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or Priority First in First Out (PFIFO) could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel. Where the large buffers of our PEP not only increase the throughput, but also reduces latency impact.
-This thesis focused on fluctuating bandwidths in the context of 5G mmWave networks. Regarding the PEP, other types of fluctuating bandwidth can be beneficial to further research.\\
+Additionally, a better understanding and evaluation of Cubic`s behavior in high bandwidth networks with big buffers would aid to further improve the PEP. Usually networks avoid these large buffers, so more research has to go into evaluating congestion controllers in these scenarios. PEP with FQ-CoDel yielded good results in our evaluations, but alternatives such as Cake or Priority First in First Out (PFIFO) could enhance the PEP in ways we have not discovered yet. A future goal would be to have even less impact on interactive traffic with our PEP than normal FQ-CoDel: the large buffers of our PEP should not only increase the throughput, but could also reduces latency impact further. This thesis focused on fluctuating bandwidths in the context of 5G mmWave networks. Regarding the PEP, other types of fluctuating bandwidth can be beneficial to further research.\\
 
 \section{Final Thoughts}
-From the throughput evaluation we thoroughly investigated the benefit of large buffer sizes with 5G mmWave fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high throughput standard deviation and a large impact on the interactive traffic. Our PEP is able to combine large buffers with FQ-CoDel to achieve both high throughput and low impact on interactive traffic.\\
+From the throughput evaluation we thoroughly investigated the benefit of large buffer sizes with 5G mmWave fluctuating bandwidth. Configuring BFIFO with a BDP sized queue yielded double the throughput of FQ-CoDel, although at the cost of a high throughput standard deviation and a large impact on the interactive traffic. Our PEP is able to combine large buffers with FQ-CoDel to achieve both high and stable throughput and low impact on interactive traffic.\\
 
 \bibliography{myBib.bib}{}
 \bibliographystyle{plain}
