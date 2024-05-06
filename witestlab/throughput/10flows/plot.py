@@ -60,10 +60,10 @@ def plot_throughput_for_files(file_paths):
         fairness_index = jains_fairness_index(throughput_values)
         
         # Annotate Jain's fairness index on the plot
-        plt.annotate(f"Jain's Fairness Index: {fairness_index:.4f}",
-                     xy=(0.5, -0.15), xycoords='axes fraction',
-                     ha='center', va='center', fontsize=10, fontweight='bold',
-                     bbox=dict(boxstyle='round,pad=0.5', facecolor='yellow', edgecolor='black', alpha=0.5))
+        #plt.annotate(f"Jain's Fairness Index: {fairness_index:.4f}",
+        #             xy=(0.5, -0.15), xycoords='axes fraction',
+        #             ha='center', va='center', fontsize=10, fontweight='bold',
+        #             bbox=dict(boxstyle='round,pad=0.5', facecolor='yellow', edgecolor='black', alpha=0.5))
 
         # Save each subplot as a PDF
         pdf_filename = f'{name_table.get(file_path, "subplot")}.pdf'

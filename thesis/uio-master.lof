@@ -2,7 +2,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Example of network domains\relax }}{5}{figure.caption.5}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces The TCP handshake procedure\relax }}{7}{figure.caption.6}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmwave from real 5G traces\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{9}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Capacity fluctuations from mmMave from real 5G traces\nobreakspace {}\cite {Srivastava_Fund_Panwar_2020}\relax }}{9}{figure.caption.7}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Linux packet queuing\relax }}{10}{figure.caption.11}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces PEP installed to support Wireless traffic over satellite.\relax }}{12}{figure.caption.12}%
 \addvspace {10\p@ }
@@ -55,8 +55,8 @@
 \contentsline {figure}{\numberline {5.28}{\ignorespaces Average throughput for each scenario by configuration.\relax }}{76}{figure.caption.90}%
 \contentsline {figure}{\numberline {5.29}{\ignorespaces Throughput for the PEP based on socket buffer sizes in ten steps.\relax }}{77}{figure.caption.91}%
 \contentsline {figure}{\numberline {5.30}{\ignorespaces The throughput of ten parallel flows for each configuration.\relax }}{78}{figure.caption.92}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Throughput for 10 flows with BFIFO}}}{78}{subfigure.30.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Throughput for 10 flows with FQ-CoDel}}}{78}{subfigure.30.2}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Throughput for 10 flows with PEP}}}{78}{subfigure.30.3}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Throughput for 10 flows with BFIFO (Jain's fairness index 0.8827)}}}{78}{subfigure.30.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Throughput for 10 flows with FQ-CoDel (Jain's fairness index 0.9694)}}}{78}{subfigure.30.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Throughput for 10 flows with PEP (Jain's fairness index 1.0000)}}}{78}{subfigure.30.3}%
 \contentsline {figure}{\numberline {5.31}{\ignorespaces Impact on interactive traffic for ten flows with mobility and blockage scenario.\relax }}{79}{figure.caption.94}%
 \addvspace {10\p@ }

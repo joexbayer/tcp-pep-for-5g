@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  3 MAY 2024 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  6 MAY 2024 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1202,12 +1202,6 @@ File: ../diagrams/drawio/queueing.png Graphic file (type png)
 Package pdftex.def Info: ../diagrams/drawio/queueing.png  used on input line 20
 2.
 (pdftex.def)             Requested size: 196.63614pt x 300.22394pt.
-
-Overfull \hbox (1.43318pt too wide) in paragraph at lines 209--210
-[]\T1/cmr/bx/n/10.95 FQ_CoDel\T1/cmr/m/n/10.95 : The Flow Queue Con-trolled De-
-lay al-go-rithm, FQ_CoDel
- []
-
 [10 <../diagrams/drawio/queueing.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
@@ -1223,7 +1217,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [11]
-<../diagrams/drawio/pep_satellite.png, id=816, 700.6175pt x 343.2825pt>
+<../diagrams/drawio/pep_satellite.png, id=814, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
@@ -1266,12 +1260,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 271--272
 
  []
 
-[14]
+
 Underfull \hbox (badness 10000) in paragraph at lines 273--274
 
  []
 
-
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
@@ -1281,206 +1275,211 @@ Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
-[15]
-Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
 
  []
 
-<../diagrams/drawio/simple_pep_design.png, id=858, 676.5275pt x 196.735pt>
+[15]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--288
+
+ []
+
+<../diagrams/drawio/simple_pep_design.png, id=854, 676.5275pt x 196.735pt>
 File: ../diagrams/drawio/simple_pep_design.png Graphic file (type png)
 <use ../diagrams/drawio/simple_pep_design.png>
 Package pdftex.def Info: ../diagrams/drawio/simple_pep_design.png  used on inpu
-t line 290.
+t line 291.
 (pdftex.def)             Requested size: 304.43456pt x 88.52992pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--299
+Underfull \hbox (badness 10000) in paragraph at lines 298--300
 
  []
 
 [16
 
  <../diagrams/drawio/simple_pep_design.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 300--301
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
-<../diagrams/drawio/deployment_without_pep.png, id=870, 461.22313pt x 266.9975p
+<../diagrams/drawio/deployment_without_pep.png, id=866, 461.22313pt x 266.9975p
 t>
 File: ../diagrams/drawio/deployment_without_pep.png Graphic file (type png)
 <use ../diagrams/drawio/deployment_without_pep.png>
 Package pdftex.def Info: ../diagrams/drawio/deployment_without_pep.png  used on
- input line 304.
+ input line 305.
 (pdftex.def)             Requested size: 276.73601pt x 160.19972pt.
 [17 <../diagrams/drawio/deployment_without_pep.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 319--320
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-<../diagrams/drawio/bandwidth_bad.png, id=886, 575.14874pt x 209.78375pt>
+<../diagrams/drawio/bandwidth_bad.png, id=882, 575.14874pt x 209.78375pt>
 File: ../diagrams/drawio/bandwidth_bad.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_bad.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_bad.png  used on input li
-ne 335.
+ne 336.
 (pdftex.def)             Requested size: 258.81454pt x 94.4018pt.
-<../diagrams/drawio/bandwidth_good.png, id=889, 583.17876pt x 212.795pt>
+<../diagrams/drawio/bandwidth_good.png, id=885, 583.17876pt x 212.795pt>
 File: ../diagrams/drawio/bandwidth_good.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_good.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_good.png  used on input l
-ine 344.
+ine 345.
 (pdftex.def)             Requested size: 262.42801pt x 95.75685pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
 
  []
 
 [19 <../diagrams/drawio/bandwidth_bad.png> <../diagrams/drawio/bandwidth_good.p
 ng>]
-<../diagrams/drawio/bandwidth_delay.png, id=899, 453.695pt x 163.61125pt>
+<../diagrams/drawio/bandwidth_delay.png, id=895, 453.695pt x 163.61125pt>
 File: ../diagrams/drawio/bandwidth_delay.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_delay.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_delay.png  used on input 
-line 371.
+line 372.
 (pdftex.def)             Requested size: 272.2191pt x 98.1675pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--380
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
 
  []
 
 [20 <../diagrams/drawio/bandwidth_delay.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
-<../diagrams/drawio/tcphandshake_primitiv.png, id=910, 503.8825pt x 298.11375pt
+<../diagrams/drawio/tcphandshake_primitiv.png, id=906, 503.8825pt x 298.11375pt
 >
 File: ../diagrams/drawio/tcphandshake_primitiv.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_primitiv.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake_primitiv.png  used on 
-input line 388.
+input line 389.
 (pdftex.def)             Requested size: 377.91095pt x 223.58476pt.
 
-Overfull \hbox (17.91095pt too wide) in paragraph at lines 388--389
+Overfull \hbox (17.91095pt too wide) in paragraph at lines 389--390
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
 
  []
 
 [21 <../diagrams/drawio/tcphandshake_primitiv.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 396--397
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
  []
 
 
-Overfull \hbox (1.79659pt too wide) in paragraph at lines 404--405
+Overfull \hbox (1.79659pt too wide) in paragraph at lines 405--406
  []\T1/cmr/bx/n/10.95 Optimal Choice[] \T1/cmr/m/n/10.95 The most sus-tain-able
  choice is TCP Fast Open, as adding
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--405
+Underfull \hbox (badness 10000) in paragraph at lines 405--406
 
  []
 
-<../diagrams/drawio/tcphandshake_optimal.png, id=920, 487.8225pt x 191.71625pt>
+<../diagrams/drawio/tcphandshake_optimal.png, id=916, 487.8225pt x 191.71625pt>
 
 File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_optimal.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake_optimal.png  used on i
-nput line 408.
+nput line 409.
 (pdftex.def)             Requested size: 365.86597pt x 143.78682pt.
 
-Overfull \hbox (5.86597pt too wide) in paragraph at lines 408--409
+Overfull \hbox (5.86597pt too wide) in paragraph at lines 409--410
  [][] 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 424--425
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
 [23 <../diagrams/drawio/tcphandshake_optimal.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 431--432
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
 
  []
 
-<../diagrams/drawio/deployment.png, id=937, 628.3475pt x 367.3725pt>
+<../diagrams/drawio/deployment.png, id=933, 628.3475pt x 367.3725pt>
 File: ../diagrams/drawio/deployment.png Graphic file (type png)
 <use ../diagrams/drawio/deployment.png>
 Package pdftex.def Info: ../diagrams/drawio/deployment.png  used on input line 
-436.
+437.
 (pdftex.def)             Requested size: 345.5922pt x 202.05548pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--443
+Underfull \hbox (badness 10000) in paragraph at lines 443--444
 
  []
 
 [24 <../diagrams/drawio/deployment.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 453--454
+Underfull \hbox (badness 10000) in paragraph at lines 454--455
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--456
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 463--464
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
 
  []
 
 
-Overfull \hbox (11.23552pt too wide) in paragraph at lines 477--477
+Overfull \hbox (11.23552pt too wide) in paragraph at lines 478--478
  []|\T1/cmr/m/n/10.95 Connection 
  []
 
 
-Overfull \hbox (14.92651pt too wide) in paragraph at lines 477--477
+Overfull \hbox (14.92651pt too wide) in paragraph at lines 478--478
  []|\T1/cmr/m/n/10.95 Transparent| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--483
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
 
  []
 
 [26]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--494
+Underfull \hbox (badness 10000) in paragraph at lines 494--495
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 495--496
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
 
  []
 
@@ -1489,155 +1488,155 @@ Underfull \hbox (badness 10000) in paragraph at lines 495--496
 (./uio-master.listing) [27
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+Underfull \hbox (badness 10000) in paragraph at lines 518--519
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 519--520
+Underfull \hbox (badness 10000) in paragraph at lines 520--521
 
  []
 
 \openout4 = `uio-master.listing'.
 
 (./uio-master.listing) [28]
-Underfull \hbox (badness 10000) in paragraph at lines 568--569
+Underfull \hbox (badness 10000) in paragraph at lines 569--570
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 570--571
+Underfull \hbox (badness 10000) in paragraph at lines 571--572
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 572--573
+Underfull \hbox (badness 10000) in paragraph at lines 573--574
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 574--599
+Underfull \hbox (badness 10000) in paragraph at lines 575--600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 602--603
+Underfull \hbox (badness 10000) in paragraph at lines 603--604
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Underfull \hbox (badness 10000) in paragraph at lines 605--606
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 650--652
+Underfull \hbox (badness 10000) in paragraph at lines 651--653
 
  []
 
 [31]
-<../diagrams/drawio/tlv.png, id=1028, 1029.8475pt x 564.1075pt>
+<../diagrams/drawio/tlv.png, id=1024, 1029.8475pt x 564.1075pt>
 File: ../diagrams/drawio/tlv.png Graphic file (type png)
 <use ../diagrams/drawio/tlv.png>
-Package pdftex.def Info: ../diagrams/drawio/tlv.png  used on input line 677.
+Package pdftex.def Info: ../diagrams/drawio/tlv.png  used on input line 678.
 (pdftex.def)             Requested size: 360.45203pt x 197.44057pt.
  [32 <../diagrams/drawio/tlv.png>] [33]
-<../diagrams/drawio/pep_architecture.png, id=1041, 1063.975pt x 681.54625pt>
+<../diagrams/drawio/pep_architecture.png, id=1037, 1063.975pt x 681.54625pt>
 File: ../diagrams/drawio/pep_architecture.png Graphic file (type png)
 <use ../diagrams/drawio/pep_architecture.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_architecture.png  used on input
- line 712.
+ line 713.
 (pdftex.def)             Requested size: 372.39684pt x 238.54475pt.
 
-Overfull \hbox (12.39684pt too wide) in paragraph at lines 712--713
+Overfull \hbox (12.39684pt too wide) in paragraph at lines 713--714
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 718--719
+Underfull \hbox (badness 10000) in paragraph at lines 719--720
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 737.
+(caption)                particular \caption on input line 738.
 See the caption package documentation for explanation.
 
 [34 <../diagrams/drawio/pep_architecture.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 742--743
+Underfull \hbox (badness 10000) in paragraph at lines 743--744
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 765--766
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
 [35]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 785.
+(caption)                particular \caption on input line 786.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (2.21454pt too wide) in paragraph at lines 790--792
+Overfull \hbox (2.21454pt too wide) in paragraph at lines 791--793
  []\T1/cmr/bx/n/10.95 Socket Op-er-a-tions[] \T1/cmr/m/n/10.95 The ker-nel sock
 et struct in-cludes a [][]\T1/cmtt/m/n/10.95 struct proto_ops
  []
 
 
-Overfull \hbox (26.45332pt too wide) in paragraph at lines 794--795
+Overfull \hbox (26.45332pt too wide) in paragraph at lines 795--796
  []\T1/cmr/bx/n/10.95 Socket Call-backs[] \T1/cmr/m/n/10.95 Es-pe-cially of in-
 ter-est is the call-back func-tion [][]\T1/cmtt/m/n/10.95 sk_data_ready[]\T1/cm
 r/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 794--795
+Underfull \hbox (badness 10000) in paragraph at lines 795--796
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 797--798
+Underfull \hbox (badness 10000) in paragraph at lines 798--799
 
  []
 
 [36]
-Overfull \hbox (7.79411pt too wide) in paragraph at lines 820--820
+Overfull \hbox (7.79411pt too wide) in paragraph at lines 821--821
 []           \T1/cmtt/m/n/10.95 int optname, char __user *optval, int __user *o
 ptlen);[] 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 827.
+(caption)                particular \caption on input line 828.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 832--833
+Underfull \hbox (badness 10000) in paragraph at lines 833--834
 
  []
 
 [37]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 845.
+(caption)                particular \caption on input line 846.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 850--851
+Underfull \hbox (badness 10000) in paragraph at lines 851--852
 
  []
 
 \openout4 = `uio-master.listing'.
 
 (./uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 866--867
+Underfull \hbox (badness 10000) in paragraph at lines 867--868
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 868--869
+Underfull \hbox (badness 10000) in paragraph at lines 869--870
 
  []
 
@@ -1645,14 +1644,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 868--869
 \openout4 = `uio-master.listing'.
 
  (./uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 893--894
+Underfull \hbox (badness 10000) in paragraph at lines 894--895
 
  []
 
 \openout4 = `uio-master.listing'.
 
 (./uio-master.listing) [39]
-Underfull \hbox (badness 10000) in paragraph at lines 916--917
+Underfull \hbox (badness 10000) in paragraph at lines 917--918
 
  []
 
@@ -1662,7 +1661,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 916--917
 \openout4 = `uio-master.listing'.
 
  (./uio-master.listing)
-Overfull \hbox (1.21783pt too wide) in paragraph at lines 963--964
+Overfull \hbox (1.21783pt too wide) in paragraph at lines 964--965
 []\T1/cmr/m/n/10.95 data call-back, set-ting [][]\T1/cmtt/m/n/10.95 sk_user_dat
 a []\T1/cmr/m/n/10.95 to the server it-self and us-ing [][]\T1/cmtt/m/n/10.95 s
 etsockopt
@@ -1672,42 +1671,42 @@ etsockopt
 \openout4 = `uio-master.listing'.
 
  (./uio-master.listing) [42]
-Overfull \hbox (18.90097pt too wide) in paragraph at lines 1006--1007
+Overfull \hbox (18.90097pt too wide) in paragraph at lines 1007--1008
 \T1/cmr/m/n/10.95 afore-men-tioned [][]\T1/cmtt/m/n/10.95 pep_listen_data_ready
 []\T1/cmr/m/n/10.95 . When over-writ-ing the [][]\T1/cmtt/m/n/10.95 sk_data_rea
 dy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1006--1007
+Underfull \hbox (badness 10000) in paragraph at lines 1007--1008
 
  []
 
 [43]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1019.
+(caption)                particular \caption on input line 1020.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1008--1022
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1023
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1023--1024
+Underfull \hbox (badness 10000) in paragraph at lines 1024--1025
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1028--1029
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1030
 
  []
 
 \openout4 = `uio-master.listing'.
 
 (./uio-master.listing) [44]
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1065
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1066
 
  []
 
@@ -1715,204 +1714,204 @@ Underfull \hbox (badness 10000) in paragraph at lines 1064--1065
 \openout4 = `uio-master.listing'.
 
  (./uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 1102--1103
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1104
 
  []
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1105
+Underfull \hbox (badness 10000) in paragraph at lines 1105--1106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1107--1108
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1110--1111
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1114
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1114
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1115
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1123.
+(caption)                particular \caption on input line 1124.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1115--1126
+Underfull \hbox (badness 10000) in paragraph at lines 1116--1127
 
  []
 
 [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1127--1128
+Underfull \hbox (badness 10000) in paragraph at lines 1128--1129
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1137.
+(caption)                particular \caption on input line 1138.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1129--1140
+Underfull \hbox (badness 10000) in paragraph at lines 1130--1141
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1142--1143
+Underfull \hbox (badness 10000) in paragraph at lines 1143--1144
 
  []
 
 
-Overfull \hbox (1.30888pt too wide) in paragraph at lines 1150--1151
+Overfull \hbox (1.30888pt too wide) in paragraph at lines 1151--1152
 \T1/cmr/m/n/10.95 In-stead we can con-fig-ure the socket buffer sizes system-wi
 de. Un-der [][]\T1/cmtt/m/n/10.95 net.core
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1151
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1152
 
  []
 
 [48]
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1164--1164
+Overfull \hbox (19.11086pt too wide) in paragraph at lines 1165--1165
 []\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_rmem='<min size> <size> < ma
 x size>'; 
  []
 
 
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1165--1165
+Overfull \hbox (19.11086pt too wide) in paragraph at lines 1166--1166
 []\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_wmem='<min size> <size> < ma
 x size>';[] 
  []
 
 
-Overfull \hbox (13.45248pt too wide) in paragraph at lines 1166--1166
+Overfull \hbox (13.45248pt too wide) in paragraph at lines 1167--1167
 []\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max
  size>';[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1174--1175
 
  []
 
 
-Overfull \hbox (16.51355pt too wide) in paragraph at lines 1175--1176
+Overfull \hbox (16.51355pt too wide) in paragraph at lines 1176--1177
 \T1/cmr/m/n/10.95 sock-ets, works and work queues. These are all han-dled by th
 e [][]\T1/cmtt/m/n/10.95 pep_server_clean
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1175--1176
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1177
 
  []
 
 [49]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1204--1217
+Underfull \hbox (badness 10000) in paragraph at lines 1205--1218
 
  []
 
-<../diagrams/drawio/testbed.png, id=1296, 590.205pt x 359.3425pt>
+<../diagrams/drawio/testbed.png, id=1292, 590.205pt x 359.3425pt>
 File: ../diagrams/drawio/testbed.png Graphic file (type png)
 <use ../diagrams/drawio/testbed.png>
 Package pdftex.def Info: ../diagrams/drawio/testbed.png  used on input line 125
-8.
+9.
 (pdftex.def)             Requested size: 354.12573pt x 215.60715pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1263--1264
+Underfull \hbox (badness 10000) in paragraph at lines 1264--1265
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1268--1269
+Underfull \hbox (badness 10000) in paragraph at lines 1269--1270
 
  []
 
 [50
 
 ]
-Overfull \hbox (30.4276pt too wide) in paragraph at lines 1274--1274
+Overfull \hbox (30.4276pt too wide) in paragraph at lines 1275--1275
 []    \T1/cmtt/m/n/10.95 ,g$$P""       """Y$$.".      Kernel: x86_64 Linux 5.10
 .0-26-amd64[] 
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-1279.
+1280.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-Overfull \hbox (87.0113pt too wide) in paragraph at lines 1279--1279
+Overfull \hbox (87.0113pt too wide) in paragraph at lines 1280--1280
 []   \T1/cmtt/m/n/10.95 $$:      $$.   -    ,d$$'     CPU: Intel Xeon E5-2620 v
 4 @ 32x 3GHz [39.0\TS1/cmtt/m/n/10.95 °\T1/cmtt/m/n/10.95 C][] 
  []
 
 
-Overfull \hbox (75.69456pt too wide) in paragraph at lines 1280--1280
+Overfull \hbox (75.69456pt too wide) in paragraph at lines 1281--1281
 []   \T1/cmtt/m/n/10.95 $$\;      Y$b._   _,d$P'      GPU: Matrox Electronics S
 ystems Ltd. G200eR2[] 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1290.
+(caption)                particular \caption on input line 1291.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1270--1293
+Underfull \hbox (badness 10000) in paragraph at lines 1271--1294
 
  []
 
 [51 <../diagrams/drawio/testbed.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1303--1304
+Underfull \hbox (badness 10000) in paragraph at lines 1304--1305
 
  []
 
 [52]
-Underfull \hbox (badness 10000) in paragraph at lines 1308--1312
+Underfull \hbox (badness 10000) in paragraph at lines 1309--1313
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1308--1312
+Underfull \hbox (badness 10000) in paragraph at lines 1309--1313
 
  []
 
 
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1317--1317
+Overfull \hbox (19.11086pt too wide) in paragraph at lines 1318--1318
 []\T1/cmtt/m/n/10.95 $ sudo tc class add dev 10Ge parent 1: classid 11 htb rate
  100mbit;[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1326--1327
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1328
 
  []
 
-<../diagrams/tc/tc_base_fq.png, id=1319, 315.1775pt x 419.5675pt>
+<../diagrams/tc/tc_base_fq.png, id=1315, 315.1775pt x 419.5675pt>
 File: ../diagrams/tc/tc_base_fq.png Graphic file (type png)
 <use ../diagrams/tc/tc_base_fq.png>
-Package pdftex.def Info: ../diagrams/tc/tc_base_fq.png  used on input line 1330
+Package pdftex.def Info: ../diagrams/tc/tc_base_fq.png  used on input line 1331
 .
 (pdftex.def)             Requested size: 189.10796pt x 251.74243pt.
 
-Overfull \hbox (13.45248pt too wide) in paragraph at lines 1333--1333
+Overfull \hbox (13.45248pt too wide) in paragraph at lines 1334--1334
 []\T1/cmtt/m/n/10.95 $ sudo tc class add dev 10Gf parent 1: classid 11 htb rate
  15mbit;[] 
  []
@@ -1920,20 +1919,20 @@ Overfull \hbox (13.45248pt too wide) in paragraph at lines 1333--1333
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../diagrams/tc/tc_base_bfifo.png, id=1320, 315.1775pt x 379.4175pt>
+<../diagrams/tc/tc_base_bfifo.png, id=1316, 315.1775pt x 379.4175pt>
 File: ../diagrams/tc/tc_base_bfifo.png Graphic file (type png)
 <use ../diagrams/tc/tc_base_bfifo.png>
 Package pdftex.def Info: ../diagrams/tc/tc_base_bfifo.png  used on input line 1
-343.
+344.
 (pdftex.def)             Requested size: 189.10796pt x 227.65225pt.
 
-Overfull \hbox (13.45248pt too wide) in paragraph at lines 1346--1346
+Overfull \hbox (13.45248pt too wide) in paragraph at lines 1347--1347
 []\T1/cmtt/m/n/10.95 $ sudo tc class add dev 10Gf parent 2: classid 10 htb rate
  15mbit;[] 
  []
 
 
-Overfull \hbox (41.74434pt too wide) in paragraph at lines 1347--1347
+Overfull \hbox (41.74434pt too wide) in paragraph at lines 1348--1348
 []\T1/cmtt/m/n/10.95 $ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo 
 limit 225000;[] 
  []
@@ -1942,94 +1941,94 @@ limit 225000;[]
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1354--1355
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1356
 
  []
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 1388--1389
+Underfull \hbox (badness 10000) in paragraph at lines 1389--1390
 
  []
 
 [54 <../diagrams/tc/tc_base_fq.png>] [55 <../diagrams/tc/tc_base_bfifo.png>]
-<../diagrams/graphs/final2.pdf, id=1347, 758.835pt x 521.78943pt>
+<../diagrams/graphs/final2.pdf, id=1342, 758.835pt x 521.78943pt>
 File: ../diagrams/graphs/final2.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/final2.pdf>
-Package pdftex.def Info: ../diagrams/graphs/final2.pdf  used on input line 1404
+Package pdftex.def Info: ../diagrams/graphs/final2.pdf  used on input line 1405
 .
 (pdftex.def)             Requested size: 341.4726pt x 234.80307pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1409--1410
+Underfull \hbox (badness 10000) in paragraph at lines 1410--1411
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1411--1412
+Underfull \hbox (badness 10000) in paragraph at lines 1412--1413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1413--1414
+Underfull \hbox (badness 10000) in paragraph at lines 1414--1415
 
  []
 
 [56 <../diagrams/graphs/final2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1432--1433
+Underfull \hbox (badness 10000) in paragraph at lines 1433--1434
 
  []
 
-<../diagrams/graphs/closeup.pdf, id=1396, 462.52798pt x 346.89601pt>
+<../diagrams/graphs/closeup.pdf, id=1392, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/closeup.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/closeup.pdf>
 Package pdftex.def Info: ../diagrams/graphs/closeup.pdf  used on input line 143
-6.
+7.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 [57 <../diagrams/graphs/closeup.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1457--1458
+Underfull \hbox (badness 10000) in paragraph at lines 1458--1459
 
  []
 
-<../diagrams/graphs/compare.pdf, id=1436, 462.52798pt x 346.89601pt>
+<../diagrams/graphs/compare.pdf, id=1432, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/compare.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/compare.pdf>
 Package pdftex.def Info: ../diagrams/graphs/compare.pdf  used on input line 146
-1.
+2.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 [58 <../diagrams/graphs/compare.pdf>]
-<../diagrams/witestlab/mmwave_cap2.png, id=1479, 1112.958pt x 224.037pt>
+<../diagrams/witestlab/mmwave_cap2.png, id=1475, 1112.958pt x 224.037pt>
 File: ../diagrams/witestlab/mmwave_cap2.png Graphic file (type png)
 <use ../diagrams/witestlab/mmwave_cap2.png>
 Package pdftex.def Info: ../diagrams/witestlab/mmwave_cap2.png  used on input l
-ine 1486.
+ine 1487.
 (pdftex.def)             Requested size: 367.27728pt x 73.93243pt.
 
-Overfull \hbox (7.27728pt too wide) in paragraph at lines 1486--1487
+Overfull \hbox (7.27728pt too wide) in paragraph at lines 1487--1488
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1501--1502
+Underfull \hbox (badness 10000) in paragraph at lines 1502--1503
 
  []
 
 [59 <../diagrams/witestlab/mmwave_cap2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1506--1507
+Underfull \hbox (badness 10000) in paragraph at lines 1507--1508
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1512--1514
+Underfull \hbox (badness 10000) in paragraph at lines 1513--1515
 
  []
 
-<../diagrams/tc/tc_5g_bfifo.png, id=1490, 287.0725pt x 379.4175pt>
+<../diagrams/tc/tc_5g_bfifo.png, id=1486, 287.0725pt x 379.4175pt>
 File: ../diagrams/tc/tc_5g_bfifo.png Graphic file (type png)
 <use ../diagrams/tc/tc_5g_bfifo.png>
 Package pdftex.def Info: ../diagrams/tc/tc_5g_bfifo.png  used on input line 151
-7.
+8.
 (pdftex.def)             Requested size: 172.24483pt x 227.65225pt.
 
-Overfull \hbox (7.79411pt too wide) in paragraph at lines 1522--1522
+Overfull \hbox (7.79411pt too wide) in paragraph at lines 1523--1523
 []\T1/cmtt/m/n/10.95 $ tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7
 500000;[] 
  []
@@ -2038,19 +2037,19 @@ Overfull \hbox (7.79411pt too wide) in paragraph at lines 1522--1522
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1528--1529
+Underfull \hbox (badness 10000) in paragraph at lines 1529--1530
 
  []
 
-<../diagrams/witestlab/witestlab_results.png, id=1491, 1301.86375pt x 243.91125
+<../diagrams/witestlab/witestlab_results.png, id=1487, 1301.86375pt x 243.91125
 pt>
 File: ../diagrams/witestlab/witestlab_results.png Graphic file (type png)
 <use ../diagrams/witestlab/witestlab_results.png>
 Package pdftex.def Info: ../diagrams/witestlab/witestlab_results.png  used on i
-nput line 1541.
+nput line 1542.
 (pdftex.def)             Requested size: 390.56213pt x 73.17393pt.
 
-Overfull \hbox (30.56213pt too wide) in paragraph at lines 1541--1542
+Overfull \hbox (30.56213pt too wide) in paragraph at lines 1542--1543
  [][] 
  []
 
@@ -2058,112 +2057,112 @@ Overfull \hbox (30.56213pt too wide) in paragraph at lines 1541--1542
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1546--1547
+Underfull \hbox (badness 10000) in paragraph at lines 1547--1548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1548--1549
+Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
 
  []
 
 [60]
-<../diagrams/witestlab/combined_plots.pdf, id=1499, 1433.83997pt x 349.67387pt>
+<../diagrams/witestlab/combined_plots.pdf, id=1495, 1433.83997pt x 349.67387pt>
 
 File: ../diagrams/witestlab/combined_plots.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/combined_plots.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/combined_plots.pdf  used on inpu
-t line 1552.
+t line 1553.
 (pdftex.def)             Requested size: 358.45912pt x 87.41824pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1557--1558
+Underfull \hbox (badness 10000) in paragraph at lines 1558--1559
 
  []
 
 [61 <../diagrams/tc/tc_5g_bfifo.png> <../diagrams/witestlab/witestlab_results.p
 ng>]
-<../diagrams/drawio/testbed2.png, id=1508, 586.19pt x 346.29375pt>
+<../diagrams/drawio/testbed2.png, id=1504, 586.19pt x 346.29375pt>
 File: ../diagrams/drawio/testbed2.png Graphic file (type png)
 <use ../diagrams/drawio/testbed2.png>
 Package pdftex.def Info: ../diagrams/drawio/testbed2.png  used on input line 15
-66.
+67.
 (pdftex.def)             Requested size: 351.7167pt x 207.77785pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1572--1573
+Underfull \hbox (badness 10000) in paragraph at lines 1573--1574
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1590--1591
+Underfull \hbox (badness 10000) in paragraph at lines 1591--1592
 
  []
 
 [62 <../diagrams/witestlab/combined_plots.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1592--1593
+Underfull \hbox (badness 10000) in paragraph at lines 1593--1594
 
  []
 
 [63 <../diagrams/drawio/testbed2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1595--1596
+Underfull \hbox (badness 10000) in paragraph at lines 1596--1597
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1619--1620
+Underfull \hbox (badness 10000) in paragraph at lines 1620--1621
 
  []
 
-<../diagrams/witestlab/cubicwnd.png, id=1566, 1039.885pt x 736.7525pt>
+<../diagrams/witestlab/cubicwnd.png, id=1562, 1039.885pt x 736.7525pt>
 File: ../diagrams/witestlab/cubicwnd.png Graphic file (type png)
 <use ../diagrams/witestlab/cubicwnd.png>
 Package pdftex.def Info: ../diagrams/witestlab/cubicwnd.png  used on input line
- 1623.
+ 1624.
 (pdftex.def)             Requested size: 259.97061pt x 184.18767pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1628--1629
+Underfull \hbox (badness 10000) in paragraph at lines 1629--1630
 
  []
 
 [64 <../diagrams/witestlab/cubicwnd.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1630--1631
+Underfull \hbox (badness 10000) in paragraph at lines 1631--1632
 
  []
 
-<../diagrams/witestlab/renocwnd.png, id=1577, 894.34125pt x 658.46pt>
+<../diagrams/witestlab/renocwnd.png, id=1573, 894.34125pt x 658.46pt>
 File: ../diagrams/witestlab/renocwnd.png Graphic file (type png)
 <use ../diagrams/witestlab/renocwnd.png>
 Package pdftex.def Info: ../diagrams/witestlab/renocwnd.png  used on input line
- 1636.
+ 1637.
 (pdftex.def)             Requested size: 223.58476pt x 164.6146pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1650--1651
+Underfull \hbox (badness 10000) in paragraph at lines 1651--1652
 
  []
 
 [65 <../diagrams/witestlab/renocwnd.png>]
-<../diagrams/witestlab/throughput/throughput_sl.pdf, id=1584, 422.36356pt x 315
+<../diagrams/witestlab/throughput/throughput_sl.pdf, id=1580, 422.36356pt x 315
 .9894pt>
 File: ../diagrams/witestlab/throughput/throughput_sl.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/throughput_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_sl.pdf  us
-ed on input line 1654.
+ed on input line 1655.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1659--1660
+Underfull \hbox (badness 10000) in paragraph at lines 1660--1661
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1661--1662
+Underfull \hbox (badness 10000) in paragraph at lines 1662--1663
 
  []
 
@@ -2171,49 +2170,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 1661--1662
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1678--1679
+Underfull \hbox (badness 10000) in paragraph at lines 1679--1680
 
  []
 
-<../diagrams/witestlab/throughput/throughput_latency_sl.pdf, id=1587, 462.52798
+<../diagrams/witestlab/throughput/throughput_latency_sl.pdf, id=1583, 462.52798
 pt x 346.89601pt>
 File: ../diagrams/witestlab/throughput/throughput_latency_sl.pdf Graphic file (
 type pdf)
 <use ../diagrams/witestlab/throughput/throughput_latency_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_latency_sl
-.pdf  used on input line 1682.
+.pdf  used on input line 1683.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 [66 <../diagrams/witestlab/throughput/throughput_sl.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1687--1689
+Underfull \hbox (badness 10000) in paragraph at lines 1688--1690
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1690--1691
+Underfull \hbox (badness 10000) in paragraph at lines 1691--1692
 
  []
 
-<../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf, id=1641, 4
+<../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf, id=1637, 4
 62.52798pt x 346.89601pt>
 File: ../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf Graphi
 c file (type pdf)
 <use ../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_latency_cl
-oseup_sl.pdf  used on input line 1694.
+oseup_sl.pdf  used on input line 1695.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1699--1700
+Underfull \hbox (badness 10000) in paragraph at lines 1700--1701
 
  []
 
 [67 <../diagrams/witestlab/throughput/throughput_latency_sl.pdf>]
-<../diagrams/witestlab/sb.png, id=1678, 518.1759pt x 231.264pt>
+<../diagrams/witestlab/sb.png, id=1674, 518.1759pt x 231.264pt>
 File: ../diagrams/witestlab/sb.png Graphic file (type png)
 <use ../diagrams/witestlab/sb.png>
-Package pdftex.def Info: ../diagrams/witestlab/sb.png  used on input line 1719.
+Package pdftex.def Info: ../diagrams/witestlab/sb.png  used on input line 1720.
 
 (pdftex.def)             Requested size: 310.90793pt x 138.75946pt.
 
@@ -2221,23 +2220,23 @@ Package pdftex.def Info: ../diagrams/witestlab/sb.png  used on input line 1719.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1724--1725
+Underfull \hbox (badness 10000) in paragraph at lines 1725--1726
 
  []
 
-<../diagrams/witestlab/throughput/throughput_sb.pdf, id=1679, 422.36356pt x 315
+<../diagrams/witestlab/throughput/throughput_sb.pdf, id=1675, 422.36356pt x 315
 .9894pt>
 File: ../diagrams/witestlab/throughput/throughput_sb.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/throughput_sb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_sb.pdf  us
-ed on input line 1729.
+ed on input line 1730.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1734--1735
+Underfull \hbox (badness 10000) in paragraph at lines 1735--1736
 
  []
 
@@ -2246,22 +2245,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 1734--1735
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1751--1752
+Underfull \hbox (badness 10000) in paragraph at lines 1752--1753
 
  []
 
 [69 <../diagrams/witestlab/sb.png> <../diagrams/witestlab/throughput/throughput
 _sb.pdf>]
-<../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf, id=1767, 462.5279
+<../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf, id=1763, 462.5279
 8pt x 346.89601pt>
 File: ../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf Graphic file 
 (type pdf)
 <use ../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_bfifo_sb_s
-l.pdf  used on input line 1755.
+l.pdf  used on input line 1756.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1760--1761
+Underfull \hbox (badness 10000) in paragraph at lines 1761--1762
 
  []
 
@@ -2269,53 +2268,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 1760--1761
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1775--1776
+Underfull \hbox (badness 10000) in paragraph at lines 1776--1777
 
  []
 
 [70 <../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1792--1793
+Underfull \hbox (badness 10000) in paragraph at lines 1793--1794
 
  []
 
-<../diagrams/witestlab/throughput/throughput_lb.pdf, id=1811, 422.36356pt x 315
+<../diagrams/witestlab/throughput/throughput_lb.pdf, id=1807, 422.36356pt x 315
 .9894pt>
 File: ../diagrams/witestlab/throughput/throughput_lb.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/throughput_lb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_lb.pdf  us
-ed on input line 1796.
+ed on input line 1797.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
 [71 <../diagrams/witestlab/throughput/throughput_lb.pdf>]
-<../diagrams/witestlab/mobb.png, id=1867, 473.3685pt x 214.6419pt>
+<../diagrams/witestlab/mobb.png, id=1863, 473.3685pt x 214.6419pt>
 File: ../diagrams/witestlab/mobb.png Graphic file (type png)
 <use ../diagrams/witestlab/mobb.png>
-Package pdftex.def Info: ../diagrams/witestlab/mobb.png  used on input line 183
-9.
+Package pdftex.def Info: ../diagrams/witestlab/mobb.png  used on input line 184
+0.
 (pdftex.def)             Requested size: 284.02328pt x 128.78613pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1844--1845
+Underfull \hbox (badness 10000) in paragraph at lines 1845--1846
 
  []
 
-<../diagrams/witestlab/throughput/throughput_mobb.pdf, id=1868, 422.36356pt x 3
+<../diagrams/witestlab/throughput/throughput_mobb.pdf, id=1864, 422.36356pt x 3
 15.9894pt>
 File: ../diagrams/witestlab/throughput/throughput_mobb.pdf Graphic file (type p
 df)
 <use ../diagrams/witestlab/throughput/throughput_mobb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_mobb.pdf  
-used on input line 1848.
+used on input line 1849.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1853--1854
+Underfull \hbox (badness 10000) in paragraph at lines 1854--1855
 
  []
 
 [72 <../diagrams/witestlab/mobb.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1855--1856
+Underfull \hbox (badness 10000) in paragraph at lines 1856--1857
 
  []
 
@@ -2323,217 +2322,217 @@ Underfull \hbox (badness 10000) in paragraph at lines 1855--1856
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1872--1873
+Underfull \hbox (badness 10000) in paragraph at lines 1873--1874
 
  []
 
-<../diagrams/witestlab/throughput/latency_mobb.pdf, id=1878, 462.52798pt x 346.
+<../diagrams/witestlab/throughput/latency_mobb.pdf, id=1874, 462.52798pt x 346.
 89601pt>
 File: ../diagrams/witestlab/throughput/latency_mobb.pdf Graphic file (type pdf)
 
 <use ../diagrams/witestlab/throughput/latency_mobb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/latency_mobb.pdf  use
-d on input line 1876.
+d on input line 1877.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1881--1882
+Underfull \hbox (badness 10000) in paragraph at lines 1882--1883
 
  []
 
 [73 <../diagrams/witestlab/throughput/throughput_mobb.pdf>]
-<../diagrams/witestlab/throughput/latency_mobb_closeup.pdf, id=1932, 462.52798p
+<../diagrams/witestlab/throughput/latency_mobb_closeup.pdf, id=1928, 462.52798p
 t x 346.89601pt>
 File: ../diagrams/witestlab/throughput/latency_mobb_closeup.pdf Graphic file (t
 ype pdf)
 <use ../diagrams/witestlab/throughput/latency_mobb_closeup.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/latency_mobb_closeup.
-pdf  used on input line 1885.
+pdf  used on input line 1886.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1891--1892
+Underfull \hbox (badness 10000) in paragraph at lines 1892--1893
 
  []
 
-<../diagrams/witestlab/throughput/latency_bfifo_all.png, id=1933, 810.8694pt x 
+<../diagrams/witestlab/throughput/latency_bfifo_all.png, id=1929, 810.8694pt x 
 531.1845pt>
 File: ../diagrams/witestlab/throughput/latency_bfifo_all.png Graphic file (type
  png)
 <use ../diagrams/witestlab/throughput/latency_bfifo_all.png>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/latency_bfifo_all.png
-  used on input line 1895.
+  used on input line 1896.
 (pdftex.def)             Requested size: 364.88785pt x 239.0308pt.
 
-Overfull \hbox (4.88785pt too wide) in paragraph at lines 1895--1896
+Overfull \hbox (4.88785pt too wide) in paragraph at lines 1896--1897
  [][] 
  []
 
 [74 <../diagrams/witestlab/throughput/latency_mobb.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1900--1901
+Underfull \hbox (badness 10000) in paragraph at lines 1901--1902
 
  []
 
 [75 <../diagrams/witestlab/throughput/latency_mobb_closeup.pdf> <../diagrams/wi
 testlab/throughput/latency_bfifo_all.png>]
-<../diagrams/witestlab/throughput/all.pdf, id=2019, 623.9969pt x 384.2098pt>
+<../diagrams/witestlab/throughput/all.pdf, id=2015, 623.9969pt x 384.2098pt>
 File: ../diagrams/witestlab/throughput/all.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/throughput/all.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/all.pdf  used on inpu
-t line 1904.
+t line 1905.
 (pdftex.def)             Requested size: 343.19936pt x 211.31602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1909--1910
+Underfull \hbox (badness 10000) in paragraph at lines 1910--1911
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1912--1913
+Underfull \hbox (badness 10000) in paragraph at lines 1913--1914
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1914--1915
+Underfull \hbox (badness 10000) in paragraph at lines 1915--1916
 
  []
 
 [76 <../diagrams/witestlab/throughput/all.pdf>]
-<../diagrams/witestlab/throughput/buffersizes.pdf, id=2074, 630.85063pt x 383.7
+<../diagrams/witestlab/throughput/buffersizes.pdf, id=2070, 630.85063pt x 383.7
 3927pt>
 File: ../diagrams/witestlab/throughput/buffersizes.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/throughput/buffersizes.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/buffersizes.pdf  used
- on input line 1918.
+ on input line 1919.
 (pdftex.def)             Requested size: 346.96892pt x 211.05724pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1923--1924
+Underfull \hbox (badness 10000) in paragraph at lines 1924--1925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1926--1927
+Underfull \hbox (badness 10000) in paragraph at lines 1927--1928
 
  []
 
-<../diagrams/witestlab/throughput/10flows/BFIFO.pdf, id=2076, 342.3352pt x 355.
-98651pt>
+<../diagrams/witestlab/throughput/10flows/BFIFO.pdf, id=2072, 342.3352pt x 341.
+81451pt>
 File: ../diagrams/witestlab/throughput/10flows/BFIFO.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/10flows/BFIFO.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/BFIFO.pdf  us
-ed on input line 1934.
-(pdftex.def)             Requested size: 143.9978pt x 149.74146pt.
+ed on input line 1935.
+(pdftex.def)             Requested size: 143.9978pt x 143.78017pt.
 
-Underfull \hbox (badness 1087) in paragraph at lines 1934--1934
+Underfull \hbox (badness 1087) in paragraph at lines 1935--1935
 []\T1/cmr/m/n/9 (a) |Through-put for 10 flows with
  []
 
-<../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf, id=2077, 342.3352pt x 3
-55.98651pt>
+<../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf, id=2073, 342.3352pt x 3
+41.81451pt>
 File: ../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf Graphic file (type 
 pdf)
 <use ../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf 
- used on input line 1940.
-(pdftex.def)             Requested size: 143.9978pt x 149.74146pt.
-<../diagrams/witestlab/throughput/10flows/PEP.pdf, id=2078, 342.3352pt x 355.98
-651pt>
+ used on input line 1941.
+(pdftex.def)             Requested size: 143.9978pt x 143.78017pt.
+<../diagrams/witestlab/throughput/10flows/PEP.pdf, id=2074, 342.3352pt x 341.81
+451pt>
 File: ../diagrams/witestlab/throughput/10flows/PEP.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/throughput/10flows/PEP.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/PEP.pdf  used
- on input line 1946.
-(pdftex.def)             Requested size: 143.9978pt x 149.74146pt.
+ on input line 1947.
+(pdftex.def)             Requested size: 143.9978pt x 143.78017pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1951--1952
+Underfull \hbox (badness 10000) in paragraph at lines 1952--1953
 
  []
 
 [77 <../diagrams/witestlab/throughput/buffersizes.pdf>]
-<../diagrams/witestlab/throughput/10flows/latency.pdf, id=2140, 462.52798pt x 3
+<../diagrams/witestlab/throughput/10flows/latency.pdf, id=2136, 462.52798pt x 3
 46.89601pt>
 File: ../diagrams/witestlab/throughput/10flows/latency.pdf Graphic file (type p
 df)
 <use ../diagrams/witestlab/throughput/10flows/latency.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/latency.pdf  
-used on input line 1970.
+used on input line 1971.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1975--1976
+Underfull \hbox (badness 10000) in paragraph at lines 1976--1977
 
  []
 
 [78 <../diagrams/witestlab/throughput/10flows/BFIFO.pdf> <../diagrams/witestlab
 /throughput/10flows/FQ-CoDel.pdf> <../diagrams/witestlab/throughput/10flows/PEP
 .pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1991--1992
+Underfull \hbox (badness 10000) in paragraph at lines 1992--1993
 
  []
 
 [79 <../diagrams/witestlab/throughput/10flows/latency.pdf>]
 Chapter 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1994--1995
+Underfull \hbox (badness 10000) in paragraph at lines 1995--1996
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1997--1998
+Underfull \hbox (badness 10000) in paragraph at lines 1998--1999
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1999--2000
+Underfull \hbox (badness 10000) in paragraph at lines 2000--2001
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2002--2003
+Underfull \hbox (badness 10000) in paragraph at lines 2003--2004
 
  []
 
 [80
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 2007--2008
+Underfull \hbox (badness 10000) in paragraph at lines 2008--2009
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2009--2010
+Underfull \hbox (badness 10000) in paragraph at lines 2010--2011
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2014--2015
+Underfull \hbox (badness 10000) in paragraph at lines 2015--2016
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2021--2022
+Underfull \hbox (badness 10000) in paragraph at lines 2022--2023
 
  []
 
 [81]
-Underfull \hbox (badness 10000) in paragraph at lines 2026--2027
+Underfull \hbox (badness 10000) in paragraph at lines 2027--2028
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2028--2029
+Underfull \hbox (badness 10000) in paragraph at lines 2029--2030
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2031--2032
+Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
 
  []
 
@@ -2553,9 +2552,9 @@ Package rerunfilecheck Info: File `uio-master.out' has not changed.
 (rerunfilecheck)             Checksum: A273EA4495B189549F3D285785A00C00;13504.
  ) 
 Here is how much of TeX's memory you used:
- 32170 strings out of 478994
- 639899 string characters out of 5858185
- 1353517 words of memory out of 5000000
+ 32168 strings out of 478994
+ 639877 string characters out of 5858185
+ 1353209 words of memory out of 5000000
  48454 multiletter control sequences out of 15000+600000
  435943 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2583,10 +2582,10 @@ e1/public/cm-super/sfti1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 ublic/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw
 /helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helvet
 ic/uhvr8a.pfb>
-Output written on uio-master.pdf (94 pages, 2987175 bytes).
+Output written on uio-master.pdf (94 pages, 2979391 bytes).
 PDF statistics:
- 2530 PDF objects out of 2984 (max. 8388607)
- 1643 compressed objects within 17 object streams
- 553 named destinations out of 1000 (max. 500000)
+ 2488 PDF objects out of 2984 (max. 8388607)
+ 1638 compressed objects within 17 object streams
+ 551 named destinations out of 1000 (max. 500000)
  1141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
