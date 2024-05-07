@@ -278,7 +278,9 @@ Another similar proxy to our PEP is MilliProxy, which also focuses on 5G mmWave 
 
 PEP-DNA is a kernel module based PEP designed to aid deployments of new network architectures \cite{pep_dna}. Similar to both SnoopTCP and MilliProxy, PEP-DNA is transparent. The most interesting feature of PEP-DNA for our PEP is the kernel module architecture, especially the split connection based on sockets and work handling. PEP-DNA uses a Netfilter to intercept SYN packets and then split the connection. This is a major difference to our approach which focuses on a non-transparent connection establishment.\\
 
-Additionally, PEP-DNA does not distinguish between interactive or non-interactive traffic as all traffic is intercepted and the connections split. This essentially means PEP-DNA would not be able to perform the same optimizations with buffers and scheduling as our PEP can.
+Additionally, PEP-DNA does not distinguish between interactive or non-interactive traffic as all traffic is intercepted and the connections split. This essentially means PEP-DNA would not be able to perform the same optimizations with buffers and scheduling as our PEP can.\\
+
+The Sidekick protocol, is a relatively new approach to PEPs which leaves leaves underlying protocols opaque and unmodified~\cite{295691}. Using a mathematical technique, named quACK, the Sidekick protocol is able to refer to packets without the access to cleartext sequence numbers. This approach comes as a response to new transport layer encrypted protocols such as Google's QUIC. Similar to our design the Sidekick protocol uses a  split connection approach to increase performance of connection which span multiple network domains. The main difference to our approach is our focus on supporting TCP, and the use of large buffers. 
 
 % This chapter explores the design desgins that later will be implemented by chapter 4.
 % Briefly outline the design goals of the PEP
