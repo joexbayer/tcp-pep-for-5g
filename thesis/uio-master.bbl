@@ -176,4 +176,13 @@ Michael Welzl, Dimitri Papadimitriou, Bob Briscoe, Michael Scharf, and Michael
 \newblock {Open Research Issues in Internet Congestion Control}.
 \newblock RFC 6077, February 2011.
 
+\bibitem{295691}
+Gina Yuan, Matthew Sotoudeh, David~K. Zhang, Michael Welzl, David Mazi{\`e}res,
+  and Keith Winstein.
+\newblock Sidekick: {In-Network} assistance for secure {End-to-End} transport
+  protocols.
+\newblock In {\em 21st USENIX Symposium on Networked Systems Design and
+  Implementation (NSDI 24)}, pages 1813--1830, Santa Clara, CA, April 2024.
+  USENIX Association.
+
 \end{thebibliography}

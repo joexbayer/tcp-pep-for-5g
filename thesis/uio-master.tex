@@ -92,7 +92,9 @@ This thesis proposes a novel solution to optimize network performance in fluctua
 \end{abstract}
 
 \chapter*{Acknowledgments}
-\lipsum[1-2]  /* Sample text for Acknowledgments */
+I would like to acknowledge and thank my supervisor Micheal Welzl for motivating me throughout my thesis and being always available for feedback and discussions. And my co supervisor Kristjon Ciko for helping me navigate the enormous Linux kernel and restart the testbed machines when I inevitably would crash them.\\
+
+I would also like to thank my friends, co-workers and family for keeping my spirits high. Additionally, I would like to thank my work place for being understanding and giving me the time and resources for my thesis. At last I want to my thank my wonderful girlfriend for motivating me and helping me proofread hundreds of pages.
 
 \chapter{Intro}
 
@@ -121,7 +123,7 @@ In this chapter we will present some of the required background knowledge to und
 \section{TCP/IP}
 Perhaps the most well known internet transport protocol is the Transmission Control Protocol (TCP). It is known for providing reliable and in-order delivery of packets using acknowledgments and re-transmissions~\cite{Eddy_2022}. It was first introduced in 1974, but is still one of the most used internet protocols. However, as the demands of the internet have changed, TCP has not. Though TCP has been updated with minor extensions over the years, such as an increased initial window or new options, the core ideas have stayed the same~\cite{rfc8803}.\\
 
-Concepts as the end-to-end argument still play a vital role in how TCP is used in the modern internet. TCP is suffering under the illusion that all logic should be placed on the endpoints as the end to end argument denotes.\footnote{Biased, TCP doenst feel} TCP often spans multiple different domains with varying topologies and demands, especially between wired and wireless domains:
+TCP often spans multiple different domains with varying topologies and demands, especially between wired and wireless domains:
 \begin{itemize}
   \item \textbf{Wireless Domain}: A wireless communication domain refers to the transmission of data over a wireless medium without the use of physical connections such as wires or cables between devices. This domain covers a variety of technologies, including 3G, 4G, and 5G for mobile communication, Bluetooth and Wi-Fi for close-range communication, and satellite communication for worldwide communication.
   \item \textbf{Wired Domain}: Unlike a wireless domain, a wired domain provides a steady and reliable bandwidth with low error rates and high throughput. The use of Ethernet and Fiber are typical for wired networks, they enable the transmission of a large amount of data over long distances with low signal noise. 
@@ -142,9 +144,9 @@ Congestion occurs in the internet when a network's resources, such as routers, a
 Over time different variations of congestion controllers have emerged. Although their goal is the same: reduce congestion in the network, their approaches vary. Here are three examples:
 
 \begin{itemize}
-  \item \textbf{TCP Reno}: Reno embodies the traditional approach to congestion control: slowly increasing the sending rate while the network is stable and drastically reducing it on packet loss. TCP Reno was designed for unstable and dynamic networks, where the rapid response rate is crucial to prevent network overloading. However, the slow start rate and aggressive reduction of the sending rate make it sub optimal for more stable networks\footnote{This is not true, its bad with high BDP}, where packet loss is less frequent and predictable. Consequently, TCP Reno's reliance on packet loss may lead to unnecessary rate reductions and decreased network throughput.
+  \item \textbf{TCP Reno}: Reno embodies the traditional approach to congestion control: slowly increasing the sending rate while the network is stable and drastically reducing it on packet loss. TCP Reno was designed for unstable and dynamic networks, where the rapid response rate is crucial to prevent network overloading. However, the slow start rate and aggressive reduction of the sending rate make it sub optimal for high bandwidth networks, as TCP Reno is not able to recover fast enough to utilize the high bandwidth after packet loss.
   \item \textbf{Vegas}: Vegas is similar to TCP Reno in most aspects, the main difference is the use of delay to detect congestion instead of packet loss. This makes New Vegas able to react faster to congestion, however it also introduces some problems. If Vegas competes with TCP Reno flows, it will start reducing its sender rate before TCP Reno does, this leads to Vegas losing out on possible bandwidth. 
-  \item \textbf{Cubic}: Cubic improves on the idea of TCP Reno by using a cubic function to adjust its sending rate in order to achieve higher throughput in a fast manner. Cubic is very efficient in highspeed networks and known for handling large data transfer over long distances. However, Cubic is not as reliable and robust as more traditional congestion controllers like TCP Reno.\footnote{Find source, reason for this sentence is that the window changes  more radically?}
+  \item \textbf{Cubic}: Cubic improves on the idea of TCP Reno by using a cubic function to adjust its sending rate in order to achieve higher throughput in a fast manner. Cubic is very efficient in highspeed networks and known for handling large data transfer over long distances. However, Cubic is not as reliable and robust as more traditional congestion controllers like TCP Reno, as the congestion window changes more rapidly.
 \end{itemize}
 
 In summary, the main differences between TCP Reno, Vegas and Cubic are their approach to congestion control, their performance in different types of networks, and their trade-off between efficiency and reliability.
@@ -280,7 +282,7 @@ PEP-DNA is a kernel module based PEP designed to aid deployments of new network 
 
 Additionally, PEP-DNA does not distinguish between interactive or non-interactive traffic as all traffic is intercepted and the connections split. This essentially means PEP-DNA would not be able to perform the same optimizations with buffers and scheduling as our PEP can.\\
 
-The Sidekick protocol, is a relatively new approach to PEPs which leaves leaves underlying protocols opaque and unmodified~\cite{295691}. Using a mathematical technique, named quACK, the Sidekick protocol is able to refer to packets without the access to cleartext sequence numbers. This approach comes as a response to new transport layer encrypted protocols such as Google's QUIC. Similar to our design the Sidekick protocol uses a  split connection approach to increase performance of connection which span multiple network domains. The main difference to our approach is our focus on supporting TCP, and the use of large buffers. 
+The Sidekick protocol, is a relatively new approach to PEPs which leaves leaves underlying protocols opaque and unmodified~\cite{295691}. Using a mathematical technique, named quACK, the Sidekick protocol is able to refer to packets without the access to cleartext sequence numbers. This approach comes as a response to new transport layer encrypted protocols such as Google's QUIC. Similar to our design the Sidekick protocol uses a  split connection approach to increase performance of transfers which span multiple network domains. The main difference to our approach is our focus on supporting TCP, and the use of large buffers. 
 
 % This chapter explores the design desgins that later will be implemented by chapter 4.
 % Briefly outline the design goals of the PEP
@@ -297,7 +299,7 @@ In this chapter we discuss the design of a non-transparent connection splitting 
 
 Figure \ref{fig:simple_pep_design} is a simplification of the PEP within a network, highlighting its interaction with other components, such as the client and endpoint. Importantly there is a fluctuating bandwidth between the client and the PEP.
 
-\section{Justification for designing a PEP}\footnote{More about PEPs}
+\section{Justification for designing a PEP}
 The ossification of networks, particularly TCP, has been a long-standing issue~\cite{tcp_extendable}. Over the years, the internet has evolved, but the core protocols, like TCP, have remained relatively unchanged. This leads to challenges when attempting to introduce extensions or modifications. Altering such a fundamental protocol could disrupt countless systems and applications. This leaves us to explore new ideas using middle-boxes. A PEP is such a middle-box, as it can enhance the performance without introducing changes to TCP itself.\\
 
 Using a PEP in combination with 5G has additional benefits. TCP with 5G needs to cover both the stable network and the fluctuating wireless domain split by the base station illustrated by figure \ref{fig:5g_topology}. However, with a PEP we are able to split the domains and perform optimizations such as congestion control and buffering, tailored to each specific domain. Achieving the same optimization by modifying TCP would need a change to the tight integration of end to end congestion control.\\
@@ -318,7 +320,7 @@ The speed at which a PEP can both process and forward packets is crucial. Especi
 The programming language chosen for a PEP has a direct impact on its efficiency. Interpreted languages like Python might not offer the speed necessary for high-performance tasks. Even Java, while running within the JVM with JIT and garbage collection, can potentially introduce delays. The languages best suited for high performance are C, C++ and Rust. Both C and C++ are very similar and well suited for high performance systems. The reason for choosing C is its bare metal approach and integration into the Linux kernel with kernel modules.
 
 \subsection{Kernel Module Vs. Userspace Application}
-When sending data over the network, all calls to receive and send data have to go through the kernels internal network stack. These calls are usually in the form of system calls when running as a user-space application. Making system calls (syscalls) can introduce a lot of performance overhead in the form of a context switch to kernel-space and copying data back and forth from user-space to kernel-space. A kernel module will be able to directly access the kernel functions, eliminating the overhead of system calls and the restricted access of userspace applications to the network stack.\\
+When sending data over the network, all calls to receive and send data have to go through the kernels internal network stack. These calls are usually in the form of system calls when running as a user-space application. Performing system calls (syscalls) can introduce a lot of performance overhead in the form of a context switch to kernel-space and copying data back and forth from user-space to kernel-space. A kernel module will be able to directly access the kernel functions, eliminating the overhead of system calls and the restricted access of userspace applications to the network stack.\\
 
 Opting for a user-space application has the advantage of being cross-platform, meaning it can run on multiple operating systems without major modifications. In contrast, kernel modules are tightly bound to the Linux environment, which limits their usability to Linux hosts. This however is not a big problem as most servers are Linux hosts~\cite{w3techs_operating_system_statistics}.
 
@@ -404,7 +406,7 @@ Finally, another significant problem is that unknown TCP Options are often seen 
 Another possibility is using the existing TCP Fast Open option which can attach data to the initial TCP handshake. As discussed in the Chapter 2, using TCP Fast Open can reduce the amount of RTTs needed to establish a connection with both the PEP and endpoint. This requires the socket to be configured and enabled system-wide on the server machine. TCP Fast Open is also fault tolerant. Should either the PEP or the client not support TCP Fast Open, the meta-data will still be sent with the cost of an additional RTT. 
 
 \paragraph{Optimal Choice}
-The most sustainable choice is TCP Fast Open, as adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, which adds to the adaptability of the PEP to be extended in the future.\footnote{Rephrase last sentence.}\\
+The most sustainable choice is TCP Fast Open, as adding new TCP Options is simply too unstable. Also, the goal of our PEP is not to change or extend TCP itself. Using TCP Fast Open also has the advantage of being able to add meta data in the size of an MTU, this enhances the future extensibility of the PEP.\\
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -1473,7 +1475,7 @@ To demonstrate where the delay happens, we can look at two individual flows: one
 The next experiment will focus on the PEPs behavior in the context of realistic 5G mmWave traces. The focus will be on the throughput over a simulated 5G network with and without the PEP. Our experiments will follow up on earlier experiments by Witestlab, where real 5G 60GHz WLAN traces were collected from a testbed~\cite{Srivastava_Fund_Panwar_2020}~\cite{hingane2020aqm}. The Witestlab experiments include four different 5G scenarios which we will first validate and then use to evaluate the performance of the PEP.
 
 \subsection{Traces}
-The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios. In ~\cite{Srivastava_Fund_Panwar_2020}, they are described as follows:
+The traces were collected by using two laptops with 60GHz wireless Qualcomm cards, using iperf3 to have a loaded link~\cite{Srivastava_Fund_Panwar_2020}. The traces were captured over 120 seconds under four different scenarios. In \cite{Srivastava_Fund_Panwar_2020}, they are described as follows:
 
 \begin{itemize}
   \item \textit{\textbf{Static Link}: In the first scenario, the laptops are stationary and nothing obstructs their path.}
@@ -1814,11 +1816,9 @@ BFIFO    & 1852.70 Mbit/s      & 58.61 Mbit/s  \\
 PEP      & 2368.77 Mbit/s      & 5.36  Mbit/s   \\
 \hline
 \end{tabular}
-\caption{Statistics of the throughout for the short blockage scenario.}
+\caption{Statistics of the throughout for the long blockage scenario.}
 \label{tab:throughput_lb_table}
 \end{table}
-
-Table \ref{tab:throughput_latency_lb} shows the latency...
 
 \begin{table}[h!]
 \centering
