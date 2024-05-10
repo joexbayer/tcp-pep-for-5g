@@ -1,4 +1,4 @@
-\documentclass[a4paper,english, 11pt]{report}
+\documentclass[a4paper,english, 12pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{uiomasterfp}
@@ -16,6 +16,8 @@
 \usepackage{tabularx}
 \usepackage{subfig}
 \usepackage{lipsum}
+
+
 
 % Regarding writing style:
 % Be concise, no fluff (especially absolute facts with no sources.)
@@ -74,9 +76,8 @@
 
 
 \author{Joe Bayer}
-\title{TCP PEP}
-\subtitle{TCP Performance Enhancing Proxy to Support Non-interactive Applications}
-\title{TCP PEP}
+\title{TCP Performance Enhancing Proxy Support For Non-interactive Applications}
+\title{TCP Performance Enhancing Proxy Support For Non-interactive Applications}
 
 \begin{document}
 
@@ -92,7 +93,7 @@ This thesis proposes a novel solution to optimize network performance in fluctua
 \end{abstract}
 
 \chapter*{Acknowledgments}
-I would like to acknowledge and thank my supervisor Micheal Welzl for motivating me throughout my thesis and being always available for feedback and discussions. And my co supervisor Kristjon Ciko for helping me navigate the enormous Linux kernel and restart the testbed machines when I inevitably would crash them.\\
+I would like to acknowledge and thank my supervisor Micheal Welzl for motivating me throughout my thesis and being always available for feedback and discussions. And my co-supervisor Kristjon Ciko for helping me navigate the enormous Linux kernel and restart the testbed machines when I inevitably would crash them.\\
 
 I would also like to thank my friends, co-workers and family for keeping my spirits high. Additionally, I would like to thank my work place for being understanding and giving me the time and resources for my thesis. At last I want to my thank my wonderful girlfriend for motivating me and helping me proofread hundreds of pages.
 
@@ -152,7 +153,7 @@ Over time different variations of congestion controllers have emerged. Although 
 In summary, the main differences between TCP Reno, Vegas and Cubic are their approach to congestion control, their performance in different types of networks, and their trade-off between efficiency and reliability.
 
 \subsection{3 Way handshake (0 RTT)}
-For TCP to establish a connection it uses a three-way handshake. Initially, it transmits a synchronization (SYN) packet to the desired endpoint. The endpoint responds with an acknowledgement and a synchronization packet of its own (SYN/ACK). Finally, the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. For short flows that terminate in just a few round trips the initial TCP handshake can be a bottleneck, which is made worse if the connection is using a proxy\footnote{Proxies have not been introduced, can I assume people know what a proxy is?} and has to exchange additional information. 
+For TCP to establish a connection it uses a three-way handshake. Initially, it transmits a synchronization (SYN) packet to the desired endpoint. The endpoint responds with an acknowledgement and a synchronization packet of its own (SYN/ACK). Finally, the client responds with a acknowledgment (ACK). At this point both endpoints have confirmed that they are ready for further communication. For any connection to be established this handshake has to be done. For short flows that terminate in just a few round trips the initial TCP handshake can be a bottleneck, which is made worse if the connection is using a proxy and has to exchange additional information. The concept of proxies will be explored later in this chapter.
 
 \begin{figure} % htbp stand for "here", "top", "bottom", "page"
 	\centering
@@ -282,7 +283,7 @@ PEP-DNA is a kernel module based PEP designed to aid deployments of new network 
 
 Additionally, PEP-DNA does not distinguish between interactive or non-interactive traffic as all traffic is intercepted and the connections split. This essentially means PEP-DNA would not be able to perform the same optimizations with buffers and scheduling as our PEP can.\\
 
-The Sidekick protocol, is a relatively new approach to PEPs which leaves leaves underlying protocols opaque and unmodified~\cite{295691}. Using a mathematical technique, named quACK, the Sidekick protocol is able to refer to packets without the access to cleartext sequence numbers. This approach comes as a response to new transport layer encrypted protocols such as Google's QUIC. Similar to our design the Sidekick protocol uses a  split connection approach to increase performance of transfers which span multiple network domains. The main difference to our approach is our focus on supporting TCP, and the use of large buffers. 
+The Sidekick protocol is a new approach to PEPs which leaves leaves underlying protocols opaque and unmodified~\cite{295691}. Using a mathematical technique, named quACK, the Sidekick protocol is able to refer to packets without the access to cleartext sequence numbers. This approach comes as a response to new transport layer encrypted protocols such as Google's QUIC. Similar to our design, the Sidekick protocol could be used to implement a split connection approach to increase performance of transfers which span multiple network domains. While our scheme is specifically designed for TCP, the Sidekick is generic; it offers an alternative way to implement the large-buffer scheme presented in this thesis, also supporting protocols such as QUIC.\\
 
 % This chapter explores the design desgins that later will be implemented by chapter 4.
 % Briefly outline the design goals of the PEP
@@ -933,7 +934,7 @@ void pep_client_data_ready(struct sock* sk)
 \end{autonumlstlisting}
 
 \subsection{Kernel TCP receive and send}
-In the kernel, the message functions \verb|recvmsg| and \verb|sendmsg| are used for reading from and sending data to sockets. However, these functions bring some overhead that can lead to code clutter. To reduce this, two helper functions will be utilized instead, \verb|pep_tcp_receive| and \verb|pep_tcp_send|. These functions mimic the usage of the \verb|send| and \verb|recv| system calls, while abstracting away the complexity of the message functions.\footnote{Add these functions as apendix code?}
+In the kernel, the message functions \verb|recvmsg| and \verb|sendmsg| are used for reading from and sending data to sockets. However, these functions bring some overhead that can lead to code clutter. To reduce this, two helper functions will be utilized instead, \verb|pep_tcp_receive| and \verb|pep_tcp_send|. These functions mimic the usage of the \verb|send| and \verb|recv| system calls, while abstracting away the complexity of the message functions.\\
 
 \begin{verbatim}
 int pep_tcp_receive(struct socket *sock, u8* buffer, u32 size);
@@ -1273,6 +1274,7 @@ Figure \ref{fig:testbed} shows a technical overview of the testbed configuration
 All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon E5-2620 v4 processor, which features 32 cores at 3.0 GHz. Additionally the hosts have 64 GB of RAM each. The choice of hardware should eliminate any potential host congestion \cite{Agarwal_Krishnamurthy_Agarwal_2023} and assure that the tests are not affected by old or dated hardware.\\
 
 \noindent\begin{minipage}{\linewidth}
+\small
 \begin{verbatim}
          _,met$$$$$gg.           ocarina@hylia
       ,g$$$$$$$$$$$$$$$P.        OS: Debian 11 bullseye
@@ -1281,8 +1283,8 @@ All three hosts used in the testbed run Debian 11 (bullseye) with an Intel Xeon 
   ',$$P       ,ggs.     `$$b:    Packages: 1586
   `d$$'     ,$P"'   .    $$$     Shell: bash 5.1.4
    $$P      d$'     ,    $$P     Disk: 78G / 496G (17%)
-   $$:      $$.   -    ,d$$'     CPU: Intel Xeon E5-2620 v4 @ 32x 3GHz [39.0°C]
-   $$\;      Y$b._   _,d$P'      GPU: Matrox Electronics Systems Ltd. G200eR2
+   $$:      $$.   -    ,d$$'     CPU: Intel Xeon E5-2620 v4 @ 32x 3GHz 
+   $$\;      Y$b._   _,d$P'      GPU: Matrox Electronics Systems Ltd.
    Y$$.    `.`"Y$$$$P"'          RAM: 1735MiB / 64303MiB
    `$$b      "-.__
     `Y$$
@@ -1461,10 +1463,11 @@ PEP & 120.61ms & 120.40ms & 121.75ms\\
 
 Table \ref{tab:delay_variations} shows the average, median and max delay for both the PEP and end to end transfer. The statistics are taken over the time period of the longest flow to include the benefit of finishing early for the PEP. This comes to a total of 0,322ms difference on the average and 0,257ms on median.\\
 
+\clearpage
 \begin{figure}[h!] % htbp stand for "here", "top", "bottom", "page"
 	\centering
 	\includegraphics[scale=0.60]{../diagrams/graphs/compare.pdf}
-  	\caption{The file transfer's effect on the interactive traffic.}
+  	\caption{Sender to Router and Router to Receiver effect on the interactive traffic.}
   	\label{fig:graph3}
 \end{figure}
 

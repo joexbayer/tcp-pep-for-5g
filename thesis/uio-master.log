@@ -1,207 +1,188 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.11)  9 MAY 2024 21:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.2)  10 MAY 2024 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./uio-master.tex
-(uio-master.tex
-LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-07-04>
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
-Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
-File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+**uio-master.tex
+(./uio-master.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
-\c@part=\count185
-\c@chapter=\count186
-\c@section=\count187
-\c@subsection=\count188
-\c@subsubsection=\count189
-\c@paragraph=\count190
-\c@subparagraph=\count191
-\c@figure=\count192
-\c@table=\count193
+\c@part=\count179
+\c@chapter=\count180
+\c@section=\count181
+\c@subsection=\count182
+\c@subsubsection=\count183
+\c@paragraph=\count184
+\c@subparagraph=\count185
+\c@figure=\count186
+\c@table=\count187
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks16
-\inpenc@posthook=\toks17
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2020/08/01 v1.3d Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 )
-(uiomasterfp.sty
+(./uiomasterfp.sty
 Package: uiomasterfp 2022/07/27 v1.4 UiO master's thesis front page class
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
-Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.
-cfg
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: pdftex.def on input line 149.
+Package color Info: Driver file: pdftex.def on input line 147.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex
-.def
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex-dev/graphics\mathco
-lor.ltx))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \ESO@tempdima=\dimen139
 \ESO@tempdimb=\dimen140
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks18
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.s
-ty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.s
-ty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphi
-cs.cfg
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 )
 \Gin@req@height=\dimen141
 \Gin@req@width=\dimen142
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/xifthen\xifthen.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xifthen/xifthen.sty
 Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count194
-\calc@Bcount=\count195
+\calc@Acount=\count188
+\calc@Bcount=\count189
 \calc@Adimen=\dimen143
 \calc@Bdimen=\dimen144
 \calc@Askip=\skip49
 \calc@Bskip=\skip50
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count196
+\calc@Ccount=\count190
 \calc@Cskip=\skip51
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/ifmtarg\ifmtarg.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
 Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/type1cm\type1cm.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/type1cm/type1cm.sty
 Package: type1cm 2002/09/05 v0.04 BlueSky/Y&Y Type1 CM font definitions (DPC, p
 atched RF)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/cm-super\type1ec.st
-y
+(/usr/local/texlive/2021/texmf-dist/tex/latex/cm-super/type1ec.sty
 Package: type1ec 2002/09/07 v1.1 Type1 EC font definitions (for CM-Super fonts)
 
- (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmr.fd
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmr.fd
 File: t1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-\c@uiomfp@cur@year=\count197
-\c@uiomfp@cur@month=\count198
-\c@uiomfp@bind@w=\count199
+\c@uiomfp@cur@year=\count191
+\c@uiomfp@cur@month=\count192
+\c@uiomfp@bind@w=\count193
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.s
-ty
-\lst@mode=\count266
-\lst@gtempboxa=\box51
-\lst@token=\toks19
-\lst@length=\count267
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count194
+\lst@gtempboxa=\box47
+\lst@token=\toks18
+\lst@length=\count195
 \lst@currlwidth=\dimen145
-\lst@column=\count268
-\lst@pos=\count269
+\lst@column=\count196
+\lst@pos=\count197
 \lst@lostspace=\dimen146
 \lst@width=\dimen147
-\lst@newlines=\count270
-\lst@lineno=\count271
+\lst@newlines=\count198
+\lst@lineno=\count199
 \lst@maxwidth=\dimen148
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.st
-y
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count272
-\lst@skipnumbers=\count273
-\lst@framebox=\box52
+\c@lstnumber=\count266
+\lst@skipnumbers=\count267
+\lst@framebox=\box48
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.c
-fg
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
-Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.
-cfg
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 227.
-LaTeX Info: Redefining \color on input line 711.
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex-dev/graphics\mathco
-lor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
-Package xcolor Info: Model `RGB' extended on input line 1369.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox
-.sty
-Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
-Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.t
-ex
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.
-tex
-\XKV@toks=\toks20
-\XKV@tempa@toks=\toks21
+(/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks19
+\XKV@tempa@toks=\toks20
 )
-\XKV@depth=\count274
+\XKV@depth=\count268
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.s
-ty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/adjustbox/adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
 -ends (calc, etex, pgfmath)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.
-sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/adjustbox/trimclip.sty
 Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectb
-ox.sty
-Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
-\collectedbox=\box53
+(/usr/local/texlive/2021/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box49
 )
 \tc@llx=\dimen149
 \tc@lly=\dimen150
@@ -209,8 +190,7 @@ Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \tc@ury=\dimen152
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex
-.def
+(/usr/local/texlive/2021/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
 \adjbox@Width=\dimen153
@@ -222,63 +202,49 @@ File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 \adjbox@pdepth=\dimen159
 \adjbox@ptotalheight=\dimen160
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage
-.sty
-Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count275
+(/usr/local/texlive/2021/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count269
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.s
-ty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box54
-\sift@deathcycles=\count276
+\@vwid@box=\box50
+\sift@deathcycles=\count270
 \@vwid@loff=\dimen161
 \@vwid@roff=\dimen162
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox
-.sty
-Package: tcolorbox 2022/06/24 version 5.1.1 text color boxes
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2020/10/09 version 4.42 text color boxes
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.
-sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrc
-s.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-util-common.tex
-\pgfutil@everybye=\toks22
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks21
 \pgfutil@tempdima=\dimen163
 \pgfutil@tempdimb=\dimen164
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-util-common-lists.tex))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-util-latex.def
-\pgfutil@abb=\box55
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-rcs.code.tex
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.
-tex)
-Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box51
+) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2020/12/27 v3.1.8b (3.1.8b)
 ))
-Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+Package: pgf 2020/12/27 v3.1.8b (3.1.8b)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfc
-ore.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgf
-sys.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\p
-gfsys.code.tex
-Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-keys.code.tex
-\pgfkeys@pathtoks=\toks23
-\pgfkeys@temptoks=\toks24
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-keysfiltered.code.tex
-\pgfkeys@tmptoks=\toks25
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks24
 ))
 \pgf@x=\dimen165
 \pgf@y=\dimen166
@@ -292,85 +258,75 @@ keysfiltered.code.tex
 \pgf@yd=\dimen174
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count277
-\c@pgf@countb=\count278
-\c@pgf@countc=\count279
-\c@pgf@countd=\count280
-\t@pgf@toka=\toks26
-\t@pgf@tokb=\toks27
-\t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count281
+\c@pgf@counta=\count271
+\c@pgf@countb=\count272
+\c@pgf@countc=\count273
+\c@pgf@countd=\count274
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+\pgf@sys@id@count=\count275
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\p
-gf.cfg
-File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2020/12/27 v3.1.8b (3.1.8b)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\p
-gfsys-pdftex.def
-File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+File: pgfsys-pdftex.def 2020/12/27 v3.1.8b (3.1.8b)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\p
-gfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
+File: pgfsys-common-pdf.def 2020/12/27 v3.1.8b (3.1.8b)
 )))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\p
-gfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count282
-\pgfsyssoftpath@bigbuffer@items=\count283
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\p
-gfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcore.code.tex
-Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathc
-alc.code.tex
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathu
-til.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathp
-arser.code.tex
-\pgfmath@dimen=\dimen175
-\pgfmath@count=\count284
-\pgfmath@box=\box56
-\pgfmath@toks=\toks29
-\pgfmath@stack@operand=\toks30
-\pgfmath@stack@operation=\toks31
+File: pgfsyssoftpath.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfsyssoftpath@smallbuffer@items=\count276
+\pgfsyssoftpath@bigbuffer@items=\count277
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.code.tex
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.basic.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.trigonometric.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.random.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.comparison.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.base.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.round.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.misc.code.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-unctions.integerarithmetics.code.tex)))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathf
-loat.code.tex
-\c@pgfmathroundto@lastzeros=\count285
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
+File: pgfsysprotocol.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.c
-ode.tex)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorepoints.code.tex
-File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2020/12/27 v3.1.8b (3.1.8b)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen175
+\pgfmath@count=\count278
+\pgfmath@box=\box52
+\pgfmath@toks=\toks28
+\pgfmath@stack@operand=\toks29
+\pgfmath@stack@operation=\toks30
+)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count279
+)) (/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
+File: pgfcorepoints.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@picminx=\dimen176
 \pgf@picmaxx=\dimen177
 \pgf@picminy=\dimen178
@@ -386,181 +342,167 @@ File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@zx=\dimen188
 \pgf@zy=\dimen189
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@path@lastx=\dimen190
 \pgf@path@lasty=\dimen191
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
+File: pgfcorepathusage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@shorten@end@additional=\dimen192
 \pgf@shorten@start@additional=\dimen193
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorescopes.code.tex
-File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfpic=\box57
-\pgf@hbox=\box58
-\pgf@layerbox@main=\box59
-\pgf@picture@serial@count=\count286
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
+File: pgfcorescopes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfpic=\box53
+\pgf@hbox=\box54
+\pgf@layerbox@main=\box55
+\pgf@picture@serial@count=\count280
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgflinewidth=\dimen194
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcoretransformations.code.tex
-File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
+File: pgfcoretransformations.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@pt@x=\dimen195
 \pgf@pt@y=\dimen196
 \pgf@pt@temp=\dimen197
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorequick.code.tex
-File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
+File: pgfcorequick.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
+File: pgfcoreobjects.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorepathprocessing.code.tex
-File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorearrows.code.tex
-File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
+File: pgfcorearrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgfarrowsep=\dimen198
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcoreshade.code.tex
-File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
+File: pgfcoreshade.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@max=\dimen199
-\pgf@sys@shading@range@num=\count287
-\pgf@shadingcount=\count288
+\pgf@sys@shading@range@num=\count281
+\pgf@shadingcount=\count282
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcoreimage.code.tex
-File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
+File: pgfcoreimage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfexternal@startupbox=\box60
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
+File: pgfcoreexternal.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfexternal@startupbox=\box56
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorelayers.code.tex
-File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
+File: pgfcorelayers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
+File: pgfcoretransparency.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
+File: pgfcorepatterns.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pg
-fcorerdf.code.tex
-File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex
+File: pgfcorerdf.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmo
-duleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodeparttextbox=\box61
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfnodeparttextbox=\box57
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmo
-duleplot.code.tex
-File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\p
-gfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@nodesepstart=\dimen256
 \pgf@nodesepend=\dimen257
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\p
-gfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
-))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/local/texlive/2021/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks32
-\verbatim@line=\toks33
+\every@verbatim=\toks31
+\verbatim@line=\toks32
 \verbatim@in@stream=\read3
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspac
-es.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
-\@envbody=\toks34
+\@envbody=\toks33
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.s
-ty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count289
+\etb@tempcnta=\count283
 )
-\tcb@titlebox=\box62
-\tcb@upperbox=\box63
-\tcb@lowerbox=\box64
-\tcb@phantombox=\box65
-\c@tcbbreakpart=\count290
-\c@tcblayer=\count291
-\c@tcolorbox@number=\count292
-\tcb@temp=\box66
-\tcb@temp=\box67
-\tcb@temp=\box68
-\tcb@temp=\box69
+\tcb@titlebox=\box58
+\tcb@upperbox=\box59
+\tcb@lowerbox=\box60
+\tcb@phantombox=\box61
+\c@tcbbreakpart=\count284
+\c@tcblayer=\count285
+\c@tcolorbox@number=\count286
+\tcb@temp=\box62
+\tcb@temp=\box63
+\tcb@temp=\box64
+\tcb@temp=\box65
+\tcb@out=\write4
+\tcb@record@out=\write5
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbraster
-.code.tex
-Library (tcolorbox): 'tcbraster.code.tex' version '5.1.1'
-\c@tcbrastercolumn=\count293
-\c@tcbrasterrow=\count294
-\c@tcbrasternum=\count295
-\c@tcbraster=\count296
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskins.
-code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '5.1.1'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '4.42'
+\c@tcbrastercolumn=\count287
+\c@tcbrasterrow=\count288
+\c@tcbraster=\count289
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '4.42'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2020/12/27 v3.1.8b (3.1.8b)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\t
-ikz.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffo
-r.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfke
-ys.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-keys.code.tex))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.st
-y
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.
-code.tex))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgf
-for.code.tex
-Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.
-code.tex)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen258
 \pgffor@skip=\dimen259
-\pgffor@stack=\toks35
-\pgffor@toks=\toks36
+\pgffor@stack=\toks34
+\pgffor@toks=\toks35
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer
-/tikz\tikz.code.tex
-Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2020/12/27 v3.1.8b (3.1.8b)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgf
-libraryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count297
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@plot@mark@count=\count290
 \pgfplotmarksize=\dimen260
 )
 \tikz@lastx=\dimen261
@@ -571,341 +513,296 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@lastmovetoy=\dimen266
 \tikzleveldistance=\dimen267
 \tikzsiblingdistance=\dimen268
-\tikz@figbox=\box70
-\tikz@figbox@bg=\box71
-\tikz@tempbox=\box72
-\tikz@tempbox@bg=\box73
-\tikztreelevel=\count298
-\tikznumberofchildren=\count299
-\tikznumberofcurrentchild=\count300
-\tikz@fig@count=\count301
+\tikz@figbox=\box66
+\tikz@figbox@bg=\box67
+\tikz@tempbox=\box68
+\tikz@tempbox@bg=\box69
+\tikztreelevel=\count291
+\tikznumberofchildren=\count292
+\tikznumberofcurrentchild=\count293
+\tikz@fig@count=\count294
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmo
-dulematrix.code.tex
-File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count302
-\pgfmatrixcurrentcolumn=\count303
-\pgf@matrix@numberofcolumns=\count304
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfmatrixcurrentrow=\count295
+\pgfmatrixcurrentcolumn=\count296
+\pgf@matrix@numberofcolumns=\count297
 )
-\tikz@expandcount=\count305
+\tikz@expandcount=\count298
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer
-/tikz/libraries\tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 )))
-\tcb@waterbox=\box74
+\tcb@waterbox=\box70
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskinsj
-igsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '5.1.1'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.42'
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbbreaka
-ble.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '5.1.1'
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/oberdiek\pdfcol.s
-ty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '4.42'
+(/usr/local/texlive/2021/texmf-dist/tex/generic/oberdiek/pdfcol.sty
 Package: pdfcol 2019/12/29 v1.6 Handle new color stacks for pdfTeX (HO)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.s
-ty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infware
-rr.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box75
-\tcb@totalupperbox=\box76
-\tcb@totallowerbox=\box77
+\tcb@testbox=\box71
+\tcb@totalupperbox=\box72
+\tcb@totallowerbox=\box73
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbhooks.
-code.tex
-Library (tcolorbox): 'tcbhooks.code.tex' version '5.1.1'
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbtheore
-ms.code.tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '5.1.1'
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
-Package: amsmath 2022/04/08 v2.17n AMS math features
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '4.42'
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '4.42'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip52
-For additional information on amsmath, use the `?' option.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
-Package: amstext 2021/08/26 v2.01 AMS text
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks37
+\@emptytoks=\toks36
 \ex@=\dimen269
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen270
-) (C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.st
-y
-Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count306
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count299
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count307
-\leftroot@=\count308
+\uproot@=\count300
+\leftroot@=\count301
 LaTeX Info: Redefining \overline on input line 399.
-LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count309
-\DOTSCASE@=\count310
+\classnum@=\count302
+\DOTSCASE@=\count303
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box78
-\strutbox@=\box79
-LaTeX Info: Redefining \big on input line 722.
-LaTeX Info: Redefining \Big on input line 723.
-LaTeX Info: Redefining \bigg on input line 724.
-LaTeX Info: Redefining \Bigg on input line 725.
+\Mathstrutbox@=\box74
+\strutbox@=\box75
 \big@size=\dimen271
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count311
-LaTeX Info: Redefining \bmod on input line 905.
-LaTeX Info: Redefining \pmod on input line 910.
-LaTeX Info: Redefining \smash on input line 940.
-LaTeX Info: Redefining \relbar on input line 970.
-LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count312
+\macc@depth=\count304
+\c@MaxMatrixCols=\count305
 \dotsspace@=\muskip17
-\c@parentequation=\count313
-\dspbrk@lvl=\count314
-\tag@help=\toks38
-\row@=\count315
-\column@=\count316
-\maxfields@=\count317
-\andhelp@=\toks39
+\c@parentequation=\count306
+\dspbrk@lvl=\count307
+\tag@help=\toks37
+\row@=\count308
+\column@=\count309
+\maxfields@=\count310
+\andhelp@=\toks38
 \eqnshift@=\dimen272
 \alignsep@=\dimen273
 \tagshift@=\dimen274
 \tagwidth@=\dimen275
 \totwidth@=\dimen276
 \lineht@=\dimen277
-\@envbody=\toks40
+\@envbody=\toks39
 \multlinegap=\skip53
 \multlinetaggap=\skip54
-\mathdisplay@stack=\toks41
-LaTeX Info: Redefining \[ on input line 2953.
-LaTeX Info: Redefining \] on input line 2954.
+\mathdisplay@stack=\toks40
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbfittin
-g.code.tex
-Library (tcolorbox): 'tcbfitting.code.tex' version '5.1.1'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '4.42'
 \tcbfitdim=\dimen278
 \tcb@lowerfitdim=\dimen279
 \tcb@upperfitdim=\dimen280
-\tcb@cur@hbadness=\count318
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistin
-gsutf8.code.tex
-Library (tcolorbox): 'tcblistingsutf8.code.tex' version '5.1.1'
+\tcb@cur@hbadness=\count311
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbxparse.code.tex
+Library (tcolorbox): 'tcbxparse.code.tex' version '4.42'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2021-02-18 L3 programming layer (loader) 
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistin
-gs.code.tex
-Library (tcolorbox): 'tcblistings.code.tex' version '5.1.1'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count312
+\l__pdf_internal_box=\box76
+))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-
+01.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.
+tex))))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.te
+x
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '4.42'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '4.42'
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistin
-gscore.code.tex
-Library (tcolorbox): 'tcblistingscore.code.tex' version '5.1.1'
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbproces
-sing.code.tex
-Library (tcolorbox): 'tcbprocessing.code.tex' version '5.1.1'
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftex
-cmds.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.te
+x
+Library (tcolorbox): 'tcblistingscore.code.tex' version '4.42'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '4.42'
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tools\shellesc.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 77.
 ))
-\c@tcblisting=\count319
+\c@tcblisting=\count313
 ))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listingsutf8\listin
-gsutf8.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringe
-nc.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfesca
-pe.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 ))))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbextern
-al.code.tex
-Library (tcolorbox): 'tcbexternal.code.tex' version '5.1.1'
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbmagazi
-ne.code.tex
-Library (tcolorbox): 'tcbmagazine.code.tex' version '5.1.1'
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbvignet
-te.code.tex
-Library (tcolorbox): 'tcbvignette.code.tex' version '5.1.1'
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '4.42'
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '4.42'
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '4.42'
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer
-/tikz/libraries\tikzlibraryfadings.code.tex
-File: tikzlibraryfadings.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgf
-libraryfadings.code.tex
-File: pgflibraryfadings.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbposter
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings
 .code.tex
-Library (tcolorbox): 'tcbposter.code.tex' version '5.1.1'
-))
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.s
-ty
-Package: hyperref 2022-06-20 v7.00s Hypertext links for LaTeX
+File: pgflibraryfadings.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '4.42'
+)) (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys
-.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvde
-finekeys.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxm
-acro.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.st
-y
-Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.s
-ty
-Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\ge
-ttitlestring.sty
-Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions
-.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-))
-\c@section@level=\count320
+(/usr/local/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen281
-\Hy@linkcounter=\count321
-\Hy@pagecounter=\count322
+\Hy@linkcounter=\count314
+\Hy@pagecounter=\count315
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2022-06-20 v7.00s Hyperref: PDFDocEncoding definition (HO)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.s
-ty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel la
+nguages
+) (/usr/local/texlive/2021/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds
-.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count323
+\Hy@SavedSpaceFactor=\count316
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2022-06-20 v7.00s Hyperref: PDF Unicode definition (HO)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4162.
-Package hyperref Info: Link nesting OFF on input line 4167.
-Package hyperref Info: Hyper index ON on input line 4170.
-Package hyperref Info: Plain pages OFF on input line 4177.
-Package hyperref Info: Backreferencing OFF on input line 4182.
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4408.
-\c@Hy@tempcnt=\count324
-LaTeX Info: Redefining \url on input line 4746.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count317
+LaTeX Info: Redefining \url on input line 4804.
 \XeTeXLinkMargin=\dimen282
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigint
-calc.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count325
+\Fld@menulength=\count318
 \Field@Width=\dimen283
 \Fld@charsize=\dimen284
-Package hyperref Info: Hyper figures OFF on input line 6024.
-Package hyperref Info: Link nesting OFF on input line 6029.
-Package hyperref Info: Hyper index ON on input line 6032.
-Package hyperref Info: backreferencing OFF on input line 6039.
-Package hyperref Info: Link coloring OFF on input line 6044.
-Package hyperref Info: Link coloring with OCG OFF on input line 6049.
-Package hyperref Info: PDF/A mode OFF on input line 6054.
+Package hyperref Info: Hyper figures OFF on input line 6075.
+Package hyperref Info: Link nesting OFF on input line 6080.
+Package hyperref Info: Hyper index ON on input line 6083.
+Package hyperref Info: backreferencing OFF on input line 6090.
+Package hyperref Info: Link coloring OFF on input line 6095.
+Package hyperref Info: Link coloring with OCG OFF on input line 6100.
+Package hyperref Info: PDF/A mode OFF on input line 6105.
+LaTeX Info: Redefining \ref on input line 6145.
+LaTeX Info: Redefining \pageref on input line 6149.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.s
-ty
-Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
-package with kernel methods
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
 )
-\Hy@abspage=\count326
-\c@Item=\count327
-\c@Hfootnote=\count328
+\Hy@abspage=\count319
+\c@Item=\count320
+\c@Hfootnote=\count321
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.de
-f
-File: hpdftex.def 2022-06-20 v7.00s Hyperref driver for pdfTeX
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2021-02-27 v7.00k Hyperref driver for pdfTeX
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.
-sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
-kage
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
 with kernel methods
 )
-\Fld@listcount=\count329
-\c@bookmark@seq@number=\count330
+\Fld@listcount=\count322
+\c@bookmark@seq@number=\count323
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\reru
-nfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uni
-quecounter.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-85.
+86.
 )
 \Hy@SectionHShift=\skip55
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/cleveref\cleveref.s
-ty
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
 LaTeX Info: Redefining \cref on input line 2370.
@@ -920,108 +817,91 @@ LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
 Package cleveref Info: `listings' support loaded on input line 3131.
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
-Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.st
-y
-Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen285
-\captionmargin=\dimen286
-\caption@leftmargin=\dimen287
-\caption@rightmargin=\dimen288
-\caption@width=\dimen289
-\caption@indent=\dimen290
-\caption@parindent=\dimen291
-\caption@hangindent=\dimen292
+(/usr/local/texlive/2021/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen285
+\captionmargin@=\dimen286
+\captionwidth=\dimen287
+\caption@tempdima=\dimen288
+\caption@indent=\dimen289
+\caption@parindent=\dimen290
+\caption@hangindent=\dimen291
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count331
-\c@continuedfloat=\count332
+\c@caption@flags=\count324
+\c@continuedfloat=\count325
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.s
-ty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen293
-\lightrulewidth=\dimen294
-\cmidrulewidth=\dimen295
-\belowrulesep=\dimen296
-\belowbottomsep=\dimen297
-\aboverulesep=\dimen298
-\abovetopsep=\dimen299
-\cmidrulesep=\dimen300
-\cmidrulekern=\dimen301
-\defaultaddspace=\dimen302
-\@cmidla=\count333
-\@cmidlb=\count334
-\@aboverulesep=\dimen303
-\@belowrulesep=\dimen304
-\@thisruleclass=\count335
-\@lastruleclass=\count336
-\@thisrulewidth=\dimen305
+\heavyrulewidth=\dimen292
+\lightrulewidth=\dimen293
+\cmidrulewidth=\dimen294
+\belowrulesep=\dimen295
+\belowbottomsep=\dimen296
+\aboverulesep=\dimen297
+\abovetopsep=\dimen298
+\cmidrulesep=\dimen299
+\cmidrulekern=\dimen300
+\defaultaddspace=\dimen301
+\@cmidla=\count326
+\@cmidlb=\count327
+\@aboverulesep=\dimen302
+\@belowrulesep=\dimen303
+\@thisruleclass=\count328
+\@lastruleclass=\count329
+\@thisrulewidth=\dimen304
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
-Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
-\col@sep=\dimen306
-\ar@mcellbox=\box80
-\extrarowheight=\dimen307
-\NC@list=\toks42
+(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/array.sty
+Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
+\col@sep=\dimen305
+\ar@mcellbox=\box77
+\extrarowheight=\dimen306
+\NC@list=\toks41
 \extratabsurround=\skip56
 \backup@length=\skip57
-\ar@cellbox=\box81
+\ar@cellbox=\box78
 )
-\TX@col@width=\dimen308
-\TX@old@table=\dimen309
-\TX@old@col=\dimen310
-\TX@target=\dimen311
-\TX@delta=\dimen312
-\TX@cols=\count337
-\TX@ftn=\toks43
+\TX@col@width=\dimen307
+\TX@old@table=\dimen308
+\TX@old@col=\dimen309
+\TX@target=\dimen310
+\TX@delta=\dimen311
+\TX@cols=\count330
+\TX@ftn=\toks42
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
-\c@KVtest=\count338
+\c@KVtest=\count331
 \sf@farskip=\skip58
-\sf@captopadj=\dimen313
+\sf@captopadj=\dimen312
 \sf@capskip=\skip59
 \sf@nearskip=\skip60
-\c@subfigure=\count339
-\c@subfigure@save=\count340
-\c@lofdepth=\count341
-\c@subtable=\count342
-\c@subtable@save=\count343
-\c@lotdepth=\count344
+\c@subfigure=\count332
+\c@subfigure@save=\count333
+\c@lofdepth=\count334
+\c@subtable=\count335
+\c@subtable@save=\count336
+\c@lotdepth=\count337
 \sf@top=\skip61
 \sf@bottom=\skip62
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e
-\l3keys2e.sty
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2022-07-04 L3 programming layer (loader) 
+(/usr/local/texlive/2021/texmf-dist/tex/latex/lipsum/lipsum.sty
+Package: lipsum 2021-03-03 v2.3 150 paragraphs of Lorem Ipsum dummy text
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend
--pdftex.def
-File: l3backend-pdftex.def 2022-07-01 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count345
-\l__pdf_internal_box=\box82
+(/usr/local/texlive/2021/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
+File: lipsum.ltd.tex 2021-03-03 v2.3 The Lorem ipsum dummy text
 ))
-Package: l3keys2e 2022-06-22 LaTeX2e option processing using LaTeX3 keys
-)
-Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count346
-\l__lipsum_a_int=\count347
-\l__lipsum_b_int=\count348
+\c@tcb@cnt@autonumlstlisting=\count338
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.t
-ex))
-\c@tcb@cnt@autonumlstlisting=\count349
- (uio-master.aux
+(./uio-master.aux
 
 LaTeX Warning: Label `fig:blockage' multiply defined.
 
@@ -1043,246 +923,246 @@ LaTeX Warning: Label `fig:throughput_all@cref' multiply defined.
 )
 \openout1 = `uio-master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pd
-f.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+ (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count350
-\scratchdimen=\dimen314
-\scratchbox=\box83
-\nofMPsegments=\count351
-\nofMParguments=\count352
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count353
-\MPscratchDim=\dimen315
-\MPnumerator=\count354
-\makeMPintoPDFobject=\count355
-\everyMPtoPDFconversion=\toks45
-)
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstop
-df-base.sty
+\scratchcounter=\count339
+\scratchdimen=\dimen313
+\scratchbox=\box79
+\nofMPsegments=\count340
+\nofMParguments=\count341
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count342
+\MPscratchDim=\dimen314
+\MPnumerator=\count343
+\makeMPintoPDFobject=\count344
+\everyMPtoPDFconversion=\toks44
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-s
-ys.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+(/usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
-\c@lstlisting=\count356
-Package hyperref Info: Link coloring OFF on input line 81.
- (uio-master.out) (uio-master.out)
-\@outlinefile=\write4
-\openout4 = `uio-master.out'.
+\c@lstlisting=\count345
+Package hyperref Info: Link coloring OFF on input line 82.
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count346
+)
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
+LaTeX Info: Redefining \nameref on input line 82.
+ (./uio-master.out) (./uio-master.out)
+\@outlinefile=\write6
+\openout6 = `uio-master.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Option `pageanchor' set `false' on input line 83.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 83
+Package hyperref Info: Option `pageanchor' set `false' on input line 84.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 84
 .
 
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
+(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 13.29996pt on input line 83.
+(Font)              scaled to size 13.29996pt on input line 84.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 5.69998pt on input line 83.
-<uio-fp-navn-eng.pdf, id=414, 469.755pt x 123.46124pt>
+(Font)              scaled to size 5.69998pt on input line 84.
+<uio-fp-navn-eng.pdf, id=416, 469.755pt x 123.46124pt>
 File: uio-fp-navn-eng.pdf Graphic file (type pdf)
 <use uio-fp-navn-eng.pdf>
-Package pdftex.def Info: uio-fp-navn-eng.pdf  used on input line 83.
+Package pdftex.def Info: uio-fp-navn-eng.pdf  used on input line 84.
 (pdftex.def)             Requested size: 138.56935pt x 36.41953pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 13.29996pt on input line 83.
-<uio-fp-segl.pdf, id=415, 232.87pt x 232.87pt>
+(Font)              scaled to size 13.29996pt on input line 84.
+<uio-fp-segl.pdf, id=417, 232.87pt x 232.87pt>
 File: uio-fp-segl.pdf Graphic file (type pdf)
 <use uio-fp-segl.pdf>
-Package pdftex.def Info: uio-fp-segl.pdf  used on input line 83.
+Package pdftex.def Info: uio-fp-segl.pdf  used on input line 84.
 (pdftex.def)             Requested size: 67.43301pt x 67.43106pt.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 30.3999pt on input line 83.
+(Font)              scaled to size 30.3999pt on input line 84.
 
 
-Package xcolor Warning: Incompatible color definition on input line 83.
+Package xcolor Warning: Incompatible color definition on input line 84.
 
 
-Package xcolor Warning: Incompatible color definition on input line 83.
+Package xcolor Warning: Incompatible color definition on input line 84.
 
 [1
 
-{C:/Users/Joe Bayer/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./uio-fp
--navn-eng.pdf> <./uio-fp-segl.pdf>]
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./uio-f
+p-navn-eng.pdf> <./uio-fp-segl.pdf>]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 18.99994pt on input line 83.
+(Font)              scaled to size 18.99994pt on input line 84.
  [1]
-Package hyperref Info: Option `pageanchor' set `true' on input line 83.
- (uio-master.toc [1
+Package hyperref Info: Option `pageanchor' set `true' on input line 84.
+ (./uio-master.toc [1
 
 ] [2])
-\tf@toc=\write5
-\openout5 = `uio-master.toc'.
+\tf@toc=\write7
+\openout7 = `uio-master.toc'.
 
  [3]
-(uio-master.lof [4
+(./uio-master.lof [4
 
 ])
-\tf@lof=\write6
-\openout6 = `uio-master.lof'.
+\tf@lof=\write8
+\openout8 = `uio-master.lof'.
 
- (uio-master.lol [5])
-\tf@lol=\write7
-\openout7 = `uio-master.lol'.
+ (./uio-master.lol [5])
+\tf@lol=\write9
+\openout9 = `uio-master.lol'.
 
- [6]
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+ [6]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) 
+has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.92 \end{abstract}
+l.93 \end{abstract}
                     [1]
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.99 \chapter
-             {Intro} [1
+l.100 \chapter
+              {Intro} [1
 
 ]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
  []
-
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.108 
+l.109 
        [2
 
 ]
-Overfull \hbox (14.85425pt too wide) in paragraph at lines 116--117
-\T1/cmr/m/n/10.95 quired back-ground knowl-edge for the the-sis such as 5G mmWa
-ve, the Bufferbloat
+Overfull \hbox (14.40277pt too wide) in paragraph at lines 117--118
+\T1/cmr/m/n/12 quired back-ground knowl-edge for the the-sis such as 5G mmWave,
+ the Bufferbloat
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
-
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.119 \chapter
+l.120 \chapter
               {Background} [3]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
-
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.130 \end{itemize}
+l.131 \end{itemize}
                     [4
 
 ]
-<../diagrams/drawio/domains.png, id=732, 605.26125pt x 355.3275pt>
+<../diagrams/drawio/domains.png, id=737, 605.26125pt x 355.3275pt>
 File: ../diagrams/drawio/domains.png Graphic file (type png)
 <use ../diagrams/drawio/domains.png>
-Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 134
+Package pdftex.def Info: ../diagrams/drawio/domains.png  used on input line 135
 .
 (pdftex.def)             Requested size: 393.41513pt x 230.96013pt.
 
-Overfull \hbox (33.41513pt too wide) in paragraph at lines 134--135
+Overfull \hbox (3.41513pt too wide) in paragraph at lines 135--136
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
-
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.144 O
-       ver time different variations of congestion controllers have emerged....
-[5 <../diagrams/drawio/domains.png>]
-<../diagrams/drawio/tcphandshake.png, id=745, 489.32813pt x 309.155pt>
+l.144 
+       [5 <../diagrams/drawio/domains.png>]pdfTeX warning (ext4): destination w
+ith the same identifier (name{page.6}) has been already used, duplicate ignored
+
+<to be read again> 
+                   \relax 
+l.157 
+       [6]
+<../diagrams/drawio/tcphandshake.png, id=752, 489.32813pt x 309.155pt>
 File: ../diagrams/drawio/tcphandshake.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake.png  used on input lin
-e 159.
+e 160.
 (pdftex.def)             Requested size: 366.99518pt x 231.86568pt.
 
-Overfull \hbox (6.99518pt too wide) in paragraph at lines 159--160
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.166 
-       [6] [7 <../diagrams/drawio/tcphandshake.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 173--174
+[7 <../diagrams/drawio/tcphandshake.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
@@ -1290,804 +1170,792 @@ Underfull \hbox (badness 10000) in paragraph at lines 175--176
 File: ../diagrams/witestlab/lb_mobb.png Graphic file (type png)
 <use ../diagrams/witestlab/lb_mobb.png>
 Package pdftex.def Info: ../diagrams/witestlab/lb_mobb.png  used on input line 
-179.
+180.
 (pdftex.def)             Requested size: 238.49173pt x 119.24586pt.
-[8 <../diagrams/witestlab/lb_mobb.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--194
+Underfull \hbox (badness 10000) in paragraph at lines 192--195
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--194
+Underfull \hbox (badness 10000) in paragraph at lines 192--195
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
+[9 <../diagrams/witestlab/lb_mobb.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
 
  []
 
-[9]
-<../diagrams/drawio/queueing.png, id=785, 655.44875pt x 1000.73875pt>
+<../diagrams/drawio/queueing.png, id=782, 655.44875pt x 1000.73875pt>
 File: ../diagrams/drawio/queueing.png Graphic file (type png)
 <use ../diagrams/drawio/queueing.png>
 Package pdftex.def Info: ../diagrams/drawio/queueing.png  used on input line 20
-4.
+5.
 (pdftex.def)             Requested size: 196.63614pt x 300.22394pt.
- [10 <../diagrams/drawio/queueing.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
+[11 <../diagrams/drawio/queueing.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-24.
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
+25.
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-[11]
-<../diagrams/drawio/pep_satellite.png, id=804, 700.6175pt x 343.2825pt>
+<../diagrams/drawio/pep_satellite.png, id=803, 700.6175pt x 343.2825pt>
 File: ../diagrams/drawio/pep_satellite.png Graphic file (type png)
 <use ../diagrams/drawio/pep_satellite.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_satellite.png  used on input li
-ne 237.
+ne 238.
 (pdftex.def)             Requested size: 350.30789pt x 171.64082pt.
- [12 <../diagrams/drawio/pep_satellite.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
-
-Overfull \hbox (1.87946pt too wide) in paragraph at lines 252--253
-[]\T1/cmr/m/n/10.95 Congestion con-trollers and packet sched-ulers are also usu
--ally im-ple-mented
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 252--253
+[13 <../diagrams/drawio/pep_satellite.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 
  []
 
-[13]
-\tcb@out=\write8
-\openout8 = `uio-master.listing'.
+\openout4 = `uio-master.listing'.
 
 Package hyperref Info: bookmark level for unknown tcolorbox defaults to 0 on in
-put line 268.
-
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.s
-ty
+put line 269.
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.st
-y
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) (uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 271--272
+)
+(./uio-master.listing) [14]
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--276
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 277--278
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--282
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
 [15]
-Chapter 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 291--292
+Underfull \hbox (badness 10000) in paragraph at lines 282--283
 
  []
 
-<../diagrams/drawio/simple_pep_design.png, id=844, 676.5275pt x 196.735pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
+
+ []
+
+[16]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
+
+ []
+
+<../diagrams/drawio/simple_pep_design.png, id=851, 676.5275pt x 196.735pt>
 File: ../diagrams/drawio/simple_pep_design.png Graphic file (type png)
 <use ../diagrams/drawio/simple_pep_design.png>
 Package pdftex.def Info: ../diagrams/drawio/simple_pep_design.png  used on inpu
-t line 295.
+t line 296.
 (pdftex.def)             Requested size: 304.43456pt x 88.52992pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--304
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
 
  []
 
-[16
+[17
 
  <../diagrams/drawio/simple_pep_design.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
-<../diagrams/drawio/deployment_without_pep.png, id=854, 461.22313pt x 266.9975p
+<../diagrams/drawio/deployment_without_pep.png, id=860, 461.22313pt x 266.9975p
 t>
 File: ../diagrams/drawio/deployment_without_pep.png Graphic file (type png)
 <use ../diagrams/drawio/deployment_without_pep.png>
 Package pdftex.def Info: ../diagrams/drawio/deployment_without_pep.png  used on
- input line 309.
+ input line 310.
 (pdftex.def)             Requested size: 276.73601pt x 160.19972pt.
-[17 <../diagrams/drawio/deployment_without_pep.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+[18 <../diagrams/drawio/deployment_without_pep.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
 
  []
 
-<../diagrams/drawio/bandwidth_bad.png, id=870, 575.14874pt x 209.78375pt>
+<../diagrams/drawio/bandwidth_bad.png, id=876, 575.14874pt x 209.78375pt>
 File: ../diagrams/drawio/bandwidth_bad.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_bad.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_bad.png  used on input li
-ne 340.
+ne 341.
 (pdftex.def)             Requested size: 258.81454pt x 94.4018pt.
-<../diagrams/drawio/bandwidth_good.png, id=873, 583.17876pt x 212.795pt>
+<../diagrams/drawio/bandwidth_good.png, id=879, 583.17876pt x 212.795pt>
 File: ../diagrams/drawio/bandwidth_good.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_good.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_good.png  used on input l
-ine 349.
+ine 350.
 (pdftex.def)             Requested size: 262.42801pt x 95.75685pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
  []
 
-[19 <../diagrams/drawio/bandwidth_bad.png> <../diagrams/drawio/bandwidth_good.p
-ng>]
-<../diagrams/drawio/bandwidth_delay.png, id=883, 453.695pt x 163.61125pt>
+[20 <../diagrams/drawio/bandwidth_bad.png>]
+<../diagrams/drawio/bandwidth_delay.png, id=888, 453.695pt x 163.61125pt>
 File: ../diagrams/drawio/bandwidth_delay.png Graphic file (type png)
 <use ../diagrams/drawio/bandwidth_delay.png>
 Package pdftex.def Info: ../diagrams/drawio/bandwidth_delay.png  used on input 
-line 376.
+line 377.
 (pdftex.def)             Requested size: 272.2191pt x 98.1675pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
-
- []
-
-[20 <../diagrams/drawio/bandwidth_delay.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 389--390
+ [21 <../diagrams/drawio/bandwidth_good.png> <../diagrams/drawio/bandwidth_dela
+y.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
-<../diagrams/drawio/tcphandshake_primitiv.png, id=894, 503.8825pt x 298.11375pt
+
+Underfull \hbox (badness 10000) in paragraph at lines 390--391
+
+ []
+
+<../diagrams/drawio/tcphandshake_primitiv.png, id=900, 503.8825pt x 298.11375pt
 >
 File: ../diagrams/drawio/tcphandshake_primitiv.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_primitiv.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake_primitiv.png  used on 
-input line 393.
+input line 394.
 (pdftex.def)             Requested size: 377.91095pt x 223.58476pt.
 
-Overfull \hbox (17.91095pt too wide) in paragraph at lines 393--394
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--400
-
- []
-
-[21 <../diagrams/drawio/tcphandshake_primitiv.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 401--402
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
 
-Overfull \hbox (1.79659pt too wide) in paragraph at lines 409--410
- []\T1/cmr/bx/n/10.95 Optimal Choice[] \T1/cmr/m/n/10.95 The most sus-tain-able
- choice is TCP Fast Open, as adding
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
 
  []
 
-<../diagrams/drawio/tcphandshake_optimal.png, id=903, 487.8225pt x 191.71625pt>
+[22]
+Overfull \hbox (0.30885pt too wide) in paragraph at lines 410--411
+ []\T1/cmr/bx/n/12 Optimal Choice[] \T1/cmr/m/n/12 The most sus-tain-able choic
+e is TCP Fast Open, as adding
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
+
+ []
+
+[23 <../diagrams/drawio/tcphandshake_primitiv.png>]
+<../diagrams/drawio/tcphandshake_optimal.png, id=917, 487.8225pt x 191.71625pt>
 
 File: ../diagrams/drawio/tcphandshake_optimal.png Graphic file (type png)
 <use ../diagrams/drawio/tcphandshake_optimal.png>
 Package pdftex.def Info: ../diagrams/drawio/tcphandshake_optimal.png  used on i
-nput line 413.
+nput line 414.
 (pdftex.def)             Requested size: 365.86597pt x 143.78682pt.
 
-Overfull \hbox (5.86597pt too wide) in paragraph at lines 413--414
- [][] 
- []
-
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 434--435
-
- []
-
-[23 <../diagrams/drawio/tcphandshake_optimal.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
+[24 <../diagrams/drawio/tcphandshake_optimal.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
-<../diagrams/drawio/deployment.png, id=919, 628.3475pt x 367.3725pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 437--438
+
+ []
+
+<../diagrams/drawio/deployment.png, id=925, 628.3475pt x 367.3725pt>
 File: ../diagrams/drawio/deployment.png Graphic file (type png)
 <use ../diagrams/drawio/deployment.png>
 Package pdftex.def Info: ../diagrams/drawio/deployment.png  used on input line 
-441.
+442.
 (pdftex.def)             Requested size: 345.5922pt x 202.05548pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--448
-
- []
-
-[24 <../diagrams/drawio/deployment.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 458--459
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 460--461
+Underfull \hbox (badness 10000) in paragraph at lines 448--449
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 468--469
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
+ []
+
+[26 <../diagrams/drawio/deployment.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
 
  []
 
 
-Overfull \hbox (11.23552pt too wide) in paragraph at lines 482--482
- []|\T1/cmr/m/n/10.95 Connection 
- []
-
-
-Overfull \hbox (14.92651pt too wide) in paragraph at lines 482--482
- []|\T1/cmr/m/n/10.95 Transparent| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+Underfull \hbox (badness 10000) in paragraph at lines 469--470
 
  []
 
-[26]
+
+Overfull \hbox (10.66711pt too wide) in paragraph at lines 483--483
+ []|\T1/cmr/m/n/12 Connection 
+ []
+
+
+Overfull \hbox (14.6481pt too wide) in paragraph at lines 483--483
+ []|\T1/cmr/m/n/12 Transparent| 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--489
+
+ []
+
+[27] [28]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 498--499
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 500--501
+Underfull \hbox (badness 10000) in paragraph at lines 501--502
 
  []
 
-\openout8 = `uio-master.listing'.
+\openout4 = `uio-master.listing'.
 
-(uio-master.listing) [27
+(./uio-master.listing) [29
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 522--523
+Underfull \hbox (badness 10000) in paragraph at lines 523--524
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--525
-
- []
-
-\openout8 = `uio-master.listing'.
-
-(uio-master.listing) [28]
-Underfull \hbox (badness 10000) in paragraph at lines 573--574
-
- []
-
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 575--576
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 577--578
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 579--604
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 607--608
+Underfull \hbox (badness 10000) in paragraph at lines 525--526
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 609--610
+\openout4 = `uio-master.listing'.
+
+ (./uio-master.listing) [31]
+Underfull \hbox (badness 10000) in paragraph at lines 574--575
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 655--657
+Underfull \hbox (badness 10000) in paragraph at lines 576--577
 
  []
 
-[31]
-<../diagrams/drawio/tlv.png, id=1009, 1029.8475pt x 564.1075pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 578--579
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 580--605
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 608--609
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 610--611
+
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 656--658
+
+ []
+
+[34]
+<../diagrams/drawio/tlv.png, id=1027, 1029.8475pt x 564.1075pt>
 File: ../diagrams/drawio/tlv.png Graphic file (type png)
 <use ../diagrams/drawio/tlv.png>
-Package pdftex.def Info: ../diagrams/drawio/tlv.png  used on input line 682.
+Package pdftex.def Info: ../diagrams/drawio/tlv.png  used on input line 683.
 (pdftex.def)             Requested size: 360.45203pt x 197.44057pt.
- [32 <../diagrams/drawio/tlv.png>] [33]
-<../diagrams/drawio/pep_architecture.png, id=1022, 1063.975pt x 681.54625pt>
+ [35 <../diagrams/drawio/tlv.png>]
+<../diagrams/drawio/pep_architecture.png, id=1034, 1063.975pt x 681.54625pt>
 File: ../diagrams/drawio/pep_architecture.png Graphic file (type png)
 <use ../diagrams/drawio/pep_architecture.png>
 Package pdftex.def Info: ../diagrams/drawio/pep_architecture.png  used on input
- line 717.
+ line 718.
 (pdftex.def)             Requested size: 372.39684pt x 238.54475pt.
 
-Overfull \hbox (12.39684pt too wide) in paragraph at lines 717--718
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--724
+Underfull \hbox (badness 10000) in paragraph at lines 724--725
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 742.
+(caption)                particular \caption on input line 743.
 See the caption package documentation for explanation.
-
-[34 <../diagrams/drawio/pep_architecture.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 747--748
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 770--771
-
- []
-
-[35]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 790.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (2.21454pt too wide) in paragraph at lines 795--797
- []\T1/cmr/bx/n/10.95 Socket Op-er-a-tions[] \T1/cmr/m/n/10.95 The ker-nel sock
-et struct in-cludes a [][]\T1/cmtt/m/n/10.95 struct proto_ops
- []
-
-
-Overfull \hbox (26.45332pt too wide) in paragraph at lines 799--800
- []\T1/cmr/bx/n/10.95 Socket Call-backs[] \T1/cmr/m/n/10.95 Es-pe-cially of in-
-ter-est is the call-back func-tion [][]\T1/cmtt/m/n/10.95 sk_data_ready[]\T1/cm
-r/m/n/10.95 .
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 799--800
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 802--803
-
- []
 
 [36]
-Overfull \hbox (7.79411pt too wide) in paragraph at lines 825--825
-[]           \T1/cmtt/m/n/10.95 int optname, char __user *optval, int __user *o
-ptlen);[] 
+Underfull \hbox (badness 10000) in paragraph at lines 748--749
+
+ []
+
+[37 <../diagrams/drawio/pep_architecture.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 771--772
+
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 832.
+(caption)                particular \caption on input line 791.
 See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 837--838
-
- []
-
-[37]
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 850.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 855--856
-
- []
-
-\openout8 = `uio-master.listing'.
-
-(uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 871--872
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 873--874
-
- []
 
 [38]
-\openout8 = `uio-master.listing'.
+Overfull \hbox (1.82924pt too wide) in paragraph at lines 796--798
+ []\T1/cmr/bx/n/12 Socket Op-er-a-tions[] \T1/cmr/m/n/12 The ker-nel socket str
+uct in-cludes a [][]\T1/cmtt/m/n/12 struct proto_ops
+ []
 
- (uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 898--899
+
+Overfull \hbox (27.78534pt too wide) in paragraph at lines 800--801
+ []\T1/cmr/bx/n/12 Socket Call-backs[] \T1/cmr/m/n/12 Es-pe-cially of in-ter-es
+t is the call-back func-tion [][]\T1/cmtt/m/n/12 sk_data_ready[]\T1/cmr/m/n/12 
+.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 800--801
 
  []
 
-\openout8 = `uio-master.listing'.
 
-(uio-master.listing) [39]
-Underfull \hbox (badness 10000) in paragraph at lines 921--922
+Underfull \hbox (badness 10000) in paragraph at lines 803--804
 
  []
 
-\openout8 = `uio-master.listing'.
+[39]
+Overfull \hbox (11.27701pt too wide) in paragraph at lines 826--826
+[]           \T1/cmtt/m/n/12 int optname, char __user *optval, int __user *optl
+en);[] 
+ []
 
-(uio-master.listing) [40]
-\openout8 = `uio-master.listing'.
 
- (uio-master.listing)
-Overfull \hbox (1.21783pt too wide) in paragraph at lines 968--969
-[]\T1/cmr/m/n/10.95 data call-back, set-ting [][]\T1/cmtt/m/n/10.95 sk_user_dat
-a []\T1/cmr/m/n/10.95 to the server it-self and us-ing [][]\T1/cmtt/m/n/10.95 s
-etsockopt
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 833.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 838--839
+
+ []
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 851.
+See the caption package documentation for explanation.
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 856--857
+
+ []
+
+\openout4 = `uio-master.listing'.
+
+(./uio-master.listing)
+Underfull \hbox (badness 10000) in paragraph at lines 872--873
+
  []
 
 [41]
-\openout8 = `uio-master.listing'.
-
- (uio-master.listing) [42]
-Overfull \hbox (18.90097pt too wide) in paragraph at lines 1011--1012
-\T1/cmr/m/n/10.95 afore-men-tioned [][]\T1/cmtt/m/n/10.95 pep_listen_data_ready
-[]\T1/cmr/m/n/10.95 . When over-writ-ing the [][]\T1/cmtt/m/n/10.95 sk_data_rea
-dy
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1011--1012
+Underfull \hbox (badness 10000) in paragraph at lines 874--875
 
  []
 
-[43]
+\openout4 = `uio-master.listing'.
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1024.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1013--1027
+(./uio-master.listing)
+Underfull \hbox (badness 10000) in paragraph at lines 899--900
 
  []
 
+\openout4 = `uio-master.listing'.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1028--1029
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1033--1034
+(./uio-master.listing) [42]
+Underfull \hbox (badness 10000) in paragraph at lines 922--923
 
  []
 
-\openout8 = `uio-master.listing'.
+\openout4 = `uio-master.listing'.
 
-(uio-master.listing) [44]
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1070
+(./uio-master.listing) [43]
+Underfull \hbox (badness 10000) in paragraph at lines 937--938
 
  []
 
-[45]
-\openout8 = `uio-master.listing'.
+\openout4 = `uio-master.listing'.
 
- (uio-master.listing)
-Underfull \hbox (badness 10000) in paragraph at lines 1107--1108
+(./uio-master.listing) [44]
+Overfull \hbox (1.18642pt too wide) in paragraph at lines 969--970
+[]\T1/cmr/m/n/12 data call-back, set-ting [][]\T1/cmtt/m/n/12 sk_user_data []\T
+1/cmr/m/n/12 to the server it-self and us-ing [][]\T1/cmtt/m/n/12 setsockopt
+ []
+
+\openout4 = `uio-master.listing'.
+
+(./uio-master.listing) [45]
+Overfull \hbox (21.11864pt too wide) in paragraph at lines 1012--1013
+\T1/cmr/m/n/12 afore-men-tioned [][]\T1/cmtt/m/n/12 pep_listen_data_ready[]\T1/
+cmr/m/n/12 . When over-writ-ing the [][]\T1/cmtt/m/n/12 sk_data_ready
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1012--1013
 
  []
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 1109--1110
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1112--1113
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1115--1116
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1118--1119
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1118--1119
-
- []
-
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1128.
+(caption)                particular \caption on input line 1025.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1120--1131
-
- []
-
-[47]
-Underfull \hbox (badness 10000) in paragraph at lines 1132--1133
+Underfull \hbox (badness 10000) in paragraph at lines 1014--1028
 
  []
 
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1142.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1145
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1030
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
+Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
 
  []
 
+\openout4 = `uio-master.listing'.
 
-Overfull \hbox (1.30888pt too wide) in paragraph at lines 1155--1156
-\T1/cmr/m/n/10.95 In-stead we can con-fig-ure the socket buffer sizes system-wi
-de. Un-der [][]\T1/cmtt/m/n/10.95 net.core
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
+(./uio-master.listing) [47]
+Underfull \hbox (badness 10000) in paragraph at lines 1070--1071
 
  []
 
 [48]
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1169--1169
-[]\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_rmem='<min size> <size> < ma
-x size>'; 
- []
+\openout4 = `uio-master.listing'.
 
-
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1170--1170
-[]\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_wmem='<min size> <size> < ma
-x size>';[] 
- []
-
-
-Overfull \hbox (13.45248pt too wide) in paragraph at lines 1171--1171
-[]\T1/cmtt/m/n/10.95 $ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max
- size>';[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1178--1179
+ (./uio-master.listing) [49]
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1109
 
  []
 
 
-Overfull \hbox (16.51355pt too wide) in paragraph at lines 1180--1181
-\T1/cmr/m/n/10.95 sock-ets, works and work queues. These are all han-dled by th
-e [][]\T1/cmtt/m/n/10.95 pep_server_clean
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1180--1181
+Underfull \hbox (badness 10000) in paragraph at lines 1110--1111
 
  []
 
-[49]
+
+Underfull \hbox (badness 10000) in paragraph at lines 1113--1114
+
+ []
+
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 1116--1117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1120
+
+ []
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1129.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1121--1132
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1134
+
+ []
+
+[51]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1143.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1135--1146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1148--1149
+
+ []
+
+
+Overfull \hbox (0.32924pt too wide) in paragraph at lines 1156--1157
+\T1/cmr/m/n/12 In-stead we can con-fig-ure the socket buffer sizes system-wide.
+ Un-der [][]\T1/cmtt/m/n/12 net.core
+ []
+
+
+Overfull \hbox (19.03067pt too wide) in paragraph at lines 1156--1157
+[]\T1/cmr/m/n/12 there ex-ist con-fig-u-ra-tions for over-all re-ceive buffer s
+izes: [][]\T1/cmtt/m/n/12 rmem_max []\T1/cmr/m/n/12 and [][]\T1/cmtt/m/n/12 wme
+m_max[]\T1/cmr/m/n/12 .
+ []
+
+
+Overfull \hbox (39.76874pt too wide) in paragraph at lines 1156--1157
+\T1/cmr/m/n/12 There also ex-ists the same for the de-fault vari-ables [][]\T1/
+cmtt/m/n/12 rmem_default []\T1/cmr/m/n/12 and [][]\T1/cmtt/m/n/12 wmem_default[
+]\T1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1157
+
+ []
+
+[52]
+Overfull \hbox (23.624pt too wide) in paragraph at lines 1170--1170
+[]\T1/cmtt/m/n/12 $ sudo sysctl -w net.ipv4.tcp_rmem='<min size> <size> < max s
+ize>'; 
+ []
+
+
+Overfull \hbox (23.624pt too wide) in paragraph at lines 1171--1171
+[]\T1/cmtt/m/n/12 $ sudo sysctl -w net.ipv4.tcp_wmem='<min size> <size> < max s
+ize>';[] 
+ []
+
+
+Overfull \hbox (17.4505pt too wide) in paragraph at lines 1172--1172
+[]\T1/cmtt/m/n/12 $ sudo sysctl -w net.ipv4.tcp_mem='<min size> <size> < max si
+ze>';[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1179--1180
+
+ []
+
+
+Overfull \hbox (17.29036pt too wide) in paragraph at lines 1181--1182
+\T1/cmr/m/n/12 sock-ets, works and work queues. These are all han-dled by the [
+][]\T1/cmtt/m/n/12 pep_server_clean
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
+
+ []
+
+[53]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1209--1222
+Underfull \hbox (badness 10000) in paragraph at lines 1210--1223
 
  []
 
-<../diagrams/drawio/testbed.png, id=1274, 590.205pt x 359.3425pt>
+<../diagrams/drawio/testbed.png, id=1295, 590.205pt x 359.3425pt>
 File: ../diagrams/drawio/testbed.png Graphic file (type png)
 <use ../diagrams/drawio/testbed.png>
 Package pdftex.def Info: ../diagrams/drawio/testbed.png  used on input line 126
-3.
+4.
 (pdftex.def)             Requested size: 354.12573pt x 215.60715pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1268--1269
+Underfull \hbox (badness 10000) in paragraph at lines 1269--1270
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1273--1274
+Underfull \hbox (badness 10000) in paragraph at lines 1274--1275
 
  []
 
-[50
+[54
 
 ]
-Overfull \hbox (30.4276pt too wide) in paragraph at lines 1279--1279
-[]    \T1/cmtt/m/n/10.95 ,g$$P""       """Y$$.".      Kernel: x86_64 Linux 5.10
-.0-26-amd64[] 
- []
-
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-1284.
-(C:\Users\Joe Bayer\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
-File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-Overfull \hbox (87.0113pt too wide) in paragraph at lines 1284--1284
+Overfull \hbox (6.08597pt too wide) in paragraph at lines 1286--1286
 []   \T1/cmtt/m/n/10.95 $$:      $$.   -    ,d$$'     CPU: Intel Xeon E5-2620 v
-4 @ 32x 3GHz [39.0\TS1/cmtt/m/n/10.95 °\T1/cmtt/m/n/10.95 C][] 
- []
-
-
-Overfull \hbox (75.69456pt too wide) in paragraph at lines 1285--1285
-[]   \T1/cmtt/m/n/10.95 $$\;      Y$b._   _,d$P'      GPU: Matrox Electronics S
-ystems Ltd. G200eR2[] 
+4 @ 32x 3GHz[] 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1295.
+(caption)                particular \caption on input line 1297.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1275--1298
+Underfull \hbox (badness 10000) in paragraph at lines 1276--1300
 
  []
 
-[51 <../diagrams/drawio/testbed.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1308--1309
+[55 <../diagrams/drawio/testbed.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1310--1311
 
  []
 
-[52]
-Underfull \hbox (badness 10000) in paragraph at lines 1313--1317
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1313--1317
+[56]
+Underfull \hbox (badness 10000) in paragraph at lines 1315--1319
 
  []
 
 
-Overfull \hbox (19.11086pt too wide) in paragraph at lines 1322--1322
-[]\T1/cmtt/m/n/10.95 $ sudo tc class add dev 10Ge parent 1: classid 11 htb rate
- 100mbit;[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1331--1332
+Underfull \hbox (badness 10000) in paragraph at lines 1315--1319
 
  []
 
-<../diagrams/tc/tc_base_fq.png, id=1297, 315.1775pt x 419.5675pt>
+
+Overfull \hbox (23.624pt too wide) in paragraph at lines 1324--1324
+[]\T1/cmtt/m/n/12 $ sudo tc class add dev 10Ge parent 1: classid 11 htb rate 10
+0mbit;[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1333--1334
+
+ []
+
+<../diagrams/tc/tc_base_fq.png, id=1317, 315.1775pt x 419.5675pt>
 File: ../diagrams/tc/tc_base_fq.png Graphic file (type png)
 <use ../diagrams/tc/tc_base_fq.png>
-Package pdftex.def Info: ../diagrams/tc/tc_base_fq.png  used on input line 1335
+Package pdftex.def Info: ../diagrams/tc/tc_base_fq.png  used on input line 1337
 .
 (pdftex.def)             Requested size: 189.10796pt x 251.74243pt.
 
-Overfull \hbox (13.45248pt too wide) in paragraph at lines 1338--1338
-[]\T1/cmtt/m/n/10.95 $ sudo tc class add dev 10Gf parent 1: classid 11 htb rate
- 15mbit;[] 
+Overfull \hbox (17.4505pt too wide) in paragraph at lines 1340--1340
+[]\T1/cmtt/m/n/12 $ sudo tc class add dev 10Gf parent 1: classid 11 htb rate 15
+mbit;[] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../diagrams/tc/tc_base_bfifo.png, id=1298, 315.1775pt x 379.4175pt>
+<../diagrams/tc/tc_base_bfifo.png, id=1318, 315.1775pt x 379.4175pt>
 File: ../diagrams/tc/tc_base_bfifo.png Graphic file (type png)
 <use ../diagrams/tc/tc_base_bfifo.png>
 Package pdftex.def Info: ../diagrams/tc/tc_base_bfifo.png  used on input line 1
-348.
+350.
 (pdftex.def)             Requested size: 189.10796pt x 227.65225pt.
 
-Overfull \hbox (13.45248pt too wide) in paragraph at lines 1351--1351
-[]\T1/cmtt/m/n/10.95 $ sudo tc class add dev 10Gf parent 2: classid 10 htb rate
- 15mbit;[] 
+Overfull \hbox (17.4505pt too wide) in paragraph at lines 1353--1353
+[]\T1/cmtt/m/n/12 $ sudo tc class add dev 10Gf parent 2: classid 10 htb rate 15
+mbit;[] 
  []
 
 
-Overfull \hbox (41.74434pt too wide) in paragraph at lines 1352--1352
-[]\T1/cmtt/m/n/10.95 $ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo 
-limit 225000;[] 
+Overfull \hbox (48.31796pt too wide) in paragraph at lines 1354--1354
+[]\T1/cmtt/m/n/12 $ sudo tc qdisc add dev 10Gf parent 2:10 handle 11: bfifo lim
+it 225000;[] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1359--1360
+Underfull \hbox (badness 10000) in paragraph at lines 1361--1362
 
  []
 
-[53]
-Underfull \hbox (badness 10000) in paragraph at lines 1393--1394
+[57] [58 <../diagrams/tc/tc_base_fq.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1395--1396
 
  []
 
-[54 <../diagrams/tc/tc_base_fq.png>] [55 <../diagrams/tc/tc_base_bfifo.png>]
-<../diagrams/graphs/final2.pdf, id=1324, 758.835pt x 521.78943pt>
+[59 <../diagrams/tc/tc_base_bfifo.png>]
+<../diagrams/graphs/final2.pdf, id=1345, 758.835pt x 521.78943pt>
 File: ../diagrams/graphs/final2.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/final2.pdf>
-Package pdftex.def Info: ../diagrams/graphs/final2.pdf  used on input line 1409
+Package pdftex.def Info: ../diagrams/graphs/final2.pdf  used on input line 1411
 .
 (pdftex.def)             Requested size: 341.4726pt x 234.80307pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1414--1415
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 1416--1417
 
@@ -2098,84 +1966,93 @@ Underfull \hbox (badness 10000) in paragraph at lines 1418--1419
 
  []
 
-[56 <../diagrams/graphs/final2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1437--1438
+[60 <../diagrams/graphs/final2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1420--1421
 
  []
 
-<../diagrams/graphs/closeup.pdf, id=1373, 462.52798pt x 346.89601pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1439--1440
+
+ []
+
+<../diagrams/graphs/closeup.pdf, id=1395, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/closeup.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/closeup.pdf>
 Package pdftex.def Info: ../diagrams/graphs/closeup.pdf  used on input line 144
-1.
+3.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
-[57 <../diagrams/graphs/closeup.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1462--1463
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1464--1465
 
  []
 
-<../diagrams/graphs/compare.pdf, id=1413, 462.52798pt x 346.89601pt>
+[61] [62 <../diagrams/graphs/closeup.pdf>]
+<../diagrams/graphs/compare.pdf, id=1440, 462.52798pt x 346.89601pt>
 File: ../diagrams/graphs/compare.pdf Graphic file (type pdf)
 <use ../diagrams/graphs/compare.pdf>
 Package pdftex.def Info: ../diagrams/graphs/compare.pdf  used on input line 146
-6.
+9.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
-[58 <../diagrams/graphs/compare.pdf>]
-<../diagrams/witestlab/mmwave_cap2.png, id=1456, 1112.958pt x 224.037pt>
+ [63
+
+ <../diagrams/graphs/compare.pdf>]
+<../diagrams/witestlab/mmwave_cap2.png, id=1481, 1112.958pt x 224.037pt>
 File: ../diagrams/witestlab/mmwave_cap2.png Graphic file (type png)
 <use ../diagrams/witestlab/mmwave_cap2.png>
 Package pdftex.def Info: ../diagrams/witestlab/mmwave_cap2.png  used on input l
-ine 1491.
+ine 1494.
 (pdftex.def)             Requested size: 367.27728pt x 73.93243pt.
 
-Overfull \hbox (7.27728pt too wide) in paragraph at lines 1491--1492
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1506--1507
-
- []
-
-[59 <../diagrams/witestlab/mmwave_cap2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1511--1512
+Underfull \hbox (badness 10000) in paragraph at lines 1509--1510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1517--1519
+Underfull \hbox (badness 10000) in paragraph at lines 1514--1515
 
  []
 
-<../diagrams/tc/tc_5g_bfifo.png, id=1467, 287.0725pt x 379.4175pt>
+[64 <../diagrams/witestlab/mmwave_cap2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1520--1522
+
+ []
+
+<../diagrams/tc/tc_5g_bfifo.png, id=1493, 287.0725pt x 379.4175pt>
 File: ../diagrams/tc/tc_5g_bfifo.png Graphic file (type png)
 <use ../diagrams/tc/tc_5g_bfifo.png>
 Package pdftex.def Info: ../diagrams/tc/tc_5g_bfifo.png  used on input line 152
-2.
+5.
 (pdftex.def)             Requested size: 172.24483pt x 227.65225pt.
 
-Overfull \hbox (7.79411pt too wide) in paragraph at lines 1527--1527
-[]\T1/cmtt/m/n/10.95 $ tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7
-500000;[] 
+Overfull \hbox (11.27701pt too wide) in paragraph at lines 1530--1530
+[]\T1/cmtt/m/n/12 $ tc qdisc add dev 10Gf parent 1:3 handle 3: bfifo limit 7500
+000;[] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1533--1534
+Underfull \hbox (badness 10000) in paragraph at lines 1536--1537
 
  []
 
-<../diagrams/witestlab/witestlab_results.png, id=1468, 1301.86375pt x 243.91125
+<../diagrams/witestlab/witestlab_results.png, id=1494, 1301.86375pt x 243.91125
 pt>
 File: ../diagrams/witestlab/witestlab_results.png Graphic file (type png)
 <use ../diagrams/witestlab/witestlab_results.png>
 Package pdftex.def Info: ../diagrams/witestlab/witestlab_results.png  used on i
-nput line 1546.
+nput line 1549.
 (pdftex.def)             Requested size: 390.56213pt x 73.17393pt.
 
-Overfull \hbox (30.56213pt too wide) in paragraph at lines 1546--1547
+Overfull \hbox (0.56213pt too wide) in paragraph at lines 1549--1550
  [][] 
  []
 
@@ -2183,336 +2060,332 @@ Overfull \hbox (30.56213pt too wide) in paragraph at lines 1546--1547
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1551--1552
+Underfull \hbox (badness 10000) in paragraph at lines 1554--1555
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1553--1554
+Underfull \hbox (badness 10000) in paragraph at lines 1556--1557
 
  []
 
-[60]
-<../diagrams/witestlab/combined_plots.pdf, id=1476, 1433.83997pt x 349.67387pt>
+<../diagrams/witestlab/combined_plots.pdf, id=1498, 1433.83997pt x 349.67387pt>
 
 File: ../diagrams/witestlab/combined_plots.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/combined_plots.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/combined_plots.pdf  used on inpu
-t line 1557.
+t line 1560.
 (pdftex.def)             Requested size: 358.45912pt x 87.41824pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1562--1563
+Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
 
  []
 
-[61 <../diagrams/tc/tc_5g_bfifo.png> <../diagrams/witestlab/witestlab_results.p
-ng>]
-<../diagrams/drawio/testbed2.png, id=1485, 586.19pt x 346.29375pt>
+[65]
+
+LaTeX Warning: Text page 66 contains only floats.
+
+[66 <../diagrams/tc/tc_5g_bfifo.png> <../diagrams/witestlab/witestlab_results.p
+ng> <../diagrams/witestlab/combined_plots.pdf>]
+<../diagrams/drawio/testbed2.png, id=1555, 586.19pt x 346.29375pt>
 File: ../diagrams/drawio/testbed2.png Graphic file (type png)
 <use ../diagrams/drawio/testbed2.png>
 Package pdftex.def Info: ../diagrams/drawio/testbed2.png  used on input line 15
-71.
+74.
 (pdftex.def)             Requested size: 351.7167pt x 207.77785pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 1580--1581
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+ []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1577--1578
+[67 <../diagrams/drawio/testbed2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1598--1599
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1595--1596
-
- []
-
-[62 <../diagrams/witestlab/combined_plots.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1597--1598
-
- []
-
-[63 <../diagrams/drawio/testbed2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1600--1601
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1624--1625
+[68]
+Underfull \hbox (badness 10000) in paragraph at lines 1603--1604
 
  []
 
-<../diagrams/witestlab/cubicwnd.png, id=1543, 1039.885pt x 736.7525pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1627--1628
+
+ []
+
+<../diagrams/witestlab/cubicwnd.png, id=1569, 1039.885pt x 736.7525pt>
 File: ../diagrams/witestlab/cubicwnd.png Graphic file (type png)
 <use ../diagrams/witestlab/cubicwnd.png>
 Package pdftex.def Info: ../diagrams/witestlab/cubicwnd.png  used on input line
- 1628.
+ 1631.
 (pdftex.def)             Requested size: 259.97061pt x 184.18767pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1633--1634
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1636--1637
 
  []
 
-[64 <../diagrams/witestlab/cubicwnd.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1635--1636
+
+Underfull \hbox (badness 10000) in paragraph at lines 1638--1639
 
  []
 
-<../diagrams/witestlab/renocwnd.png, id=1554, 894.34125pt x 658.46pt>
+[69]
+<../diagrams/witestlab/renocwnd.png, id=1578, 894.34125pt x 658.46pt>
 File: ../diagrams/witestlab/renocwnd.png Graphic file (type png)
 <use ../diagrams/witestlab/renocwnd.png>
 Package pdftex.def Info: ../diagrams/witestlab/renocwnd.png  used on input line
- 1641.
+ 1644.
 (pdftex.def)             Requested size: 223.58476pt x 164.6146pt.
+ [70 <../diagrams/witestlab/cubicwnd.png> <../diagrams/witestlab/renocwnd.png>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 1655--1656
+Underfull \hbox (badness 10000) in paragraph at lines 1658--1659
 
  []
 
-[65 <../diagrams/witestlab/renocwnd.png>]
-<../diagrams/witestlab/throughput/throughput_sl.pdf, id=1560, 422.36356pt x 315
+<../diagrams/witestlab/throughput/throughput_sl.pdf, id=1587, 422.36356pt x 315
 .9894pt>
 File: ../diagrams/witestlab/throughput/throughput_sl.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/throughput_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_sl.pdf  us
-ed on input line 1659.
+ed on input line 1662.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1664--1665
+Underfull \hbox (badness 10000) in paragraph at lines 1667--1668
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1666--1667
+Underfull \hbox (badness 10000) in paragraph at lines 1669--1670
 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1683--1684
+[71 <../diagrams/witestlab/throughput/throughput_sl.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1686--1687
 
  []
 
-<../diagrams/witestlab/throughput/throughput_latency_sl.pdf, id=1563, 462.52798
+<../diagrams/witestlab/throughput/throughput_latency_sl.pdf, id=1640, 462.52798
 pt x 346.89601pt>
 File: ../diagrams/witestlab/throughput/throughput_latency_sl.pdf Graphic file (
 type pdf)
 <use ../diagrams/witestlab/throughput/throughput_latency_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_latency_sl
-.pdf  used on input line 1687.
+.pdf  used on input line 1690.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
-[66 <../diagrams/witestlab/throughput/throughput_sl.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1692--1694
+
+Underfull \hbox (badness 10000) in paragraph at lines 1695--1697
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1695--1696
+[72 <../diagrams/witestlab/throughput/throughput_latency_sl.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1698--1699
 
  []
 
-<../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf, id=1617, 4
+<../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf, id=1679, 4
 62.52798pt x 346.89601pt>
 File: ../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf Graphi
 c file (type pdf)
 <use ../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_latency_cl
-oseup_sl.pdf  used on input line 1699.
+oseup_sl.pdf  used on input line 1702.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1704--1705
+Underfull \hbox (badness 10000) in paragraph at lines 1707--1708
 
  []
 
-[67 <../diagrams/witestlab/throughput/throughput_latency_sl.pdf>]
-<../diagrams/witestlab/sb.png, id=1654, 518.1759pt x 231.264pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../diagrams/witestlab/sb.png, id=1681, 518.1759pt x 231.264pt>
 File: ../diagrams/witestlab/sb.png Graphic file (type png)
 <use ../diagrams/witestlab/sb.png>
-Package pdftex.def Info: ../diagrams/witestlab/sb.png  used on input line 1724.
+Package pdftex.def Info: ../diagrams/witestlab/sb.png  used on input line 1727.
 
 (pdftex.def)             Requested size: 310.90793pt x 138.75946pt.
 
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1729--1730
+Underfull \hbox (badness 10000) in paragraph at lines 1732--1733
 
  []
 
-<../diagrams/witestlab/throughput/throughput_sb.pdf, id=1655, 422.36356pt x 315
+[73 <../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf>]
+<../diagrams/witestlab/throughput/throughput_sb.pdf, id=1715, 422.36356pt x 315
 .9894pt>
 File: ../diagrams/witestlab/throughput/throughput_sb.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/throughput_sb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_sb.pdf  us
-ed on input line 1734.
+ed on input line 1737.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1739--1740
-
- []
-
-[68 <../diagrams/witestlab/throughput/throughput_latency_closeup_sl.pdf>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1756--1757
+Underfull \hbox (badness 10000) in paragraph at lines 1742--1743
 
  []
 
-[69 <../diagrams/witestlab/sb.png> <../diagrams/witestlab/throughput/throughput
-_sb.pdf>]
-<../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf, id=1743, 462.5279
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1759--1760
+
+ []
+
+<../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf, id=1718, 462.5279
 8pt x 346.89601pt>
 File: ../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf Graphic file 
 (type pdf)
 <use ../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_bfifo_sb_s
-l.pdf  used on input line 1760.
+l.pdf  used on input line 1763.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1765--1766
-
- []
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1780--1781
+Underfull \hbox (badness 10000) in paragraph at lines 1768--1769
 
  []
 
-[70 <../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1797--1798
+[74 <../diagrams/witestlab/sb.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1783--1784
 
  []
 
-<../diagrams/witestlab/throughput/throughput_lb.pdf, id=1787, 422.36356pt x 315
+[75 <../diagrams/witestlab/throughput/throughput_sb.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1800--1801
+
+ []
+
+<../diagrams/witestlab/throughput/throughput_lb.pdf, id=1778, 422.36356pt x 315
 .9894pt>
 File: ../diagrams/witestlab/throughput/throughput_lb.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/throughput_lb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_lb.pdf  us
-ed on input line 1801.
+ed on input line 1804.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
-[71 <../diagrams/witestlab/throughput/throughput_lb.pdf>]
-<../diagrams/witestlab/mobb.png, id=1842, 473.3685pt x 214.6419pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[76 <../diagrams/witestlab/throughput/throughput_bfifo_sb_sl.pdf>]
+<../diagrams/witestlab/mobb.png, id=1824, 473.3685pt x 214.6419pt>
 File: ../diagrams/witestlab/mobb.png Graphic file (type png)
 <use ../diagrams/witestlab/mobb.png>
 Package pdftex.def Info: ../diagrams/witestlab/mobb.png  used on input line 184
-2.
+5.
 (pdftex.def)             Requested size: 284.02328pt x 128.78613pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1847--1848
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1850--1851
 
  []
 
-<../diagrams/witestlab/throughput/throughput_mobb.pdf, id=1843, 422.36356pt x 3
+[77 <../diagrams/witestlab/throughput/throughput_lb.pdf>]
+<../diagrams/witestlab/throughput/throughput_mobb.pdf, id=1876, 422.36356pt x 3
 15.9894pt>
 File: ../diagrams/witestlab/throughput/throughput_mobb.pdf Graphic file (type p
 df)
 <use ../diagrams/witestlab/throughput/throughput_mobb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/throughput_mobb.pdf  
-used on input line 1851.
+used on input line 1854.
 (pdftex.def)             Requested size: 295.65247pt x 221.19106pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1856--1857
+Underfull \hbox (badness 10000) in paragraph at lines 1859--1860
 
  []
 
-[72 <../diagrams/witestlab/mobb.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1858--1859
+[78 <../diagrams/witestlab/mobb.png> <../diagrams/witestlab/throughput/throughp
+ut_mobb.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1861--1862
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1875--1876
+Underfull \hbox (badness 10000) in paragraph at lines 1878--1879
 
  []
 
-[73 <../diagrams/witestlab/throughput/throughput_mobb.pdf>]
-<../diagrams/witestlab/throughput/latency_mobb.pdf, id=1906, 462.52798pt x 346.
+<../diagrams/witestlab/throughput/latency_mobb.pdf, id=1932, 462.52798pt x 346.
 89601pt>
 File: ../diagrams/witestlab/throughput/latency_mobb.pdf Graphic file (type pdf)
 
 <use ../diagrams/witestlab/throughput/latency_mobb.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/latency_mobb.pdf  use
-d on input line 1879.
+d on input line 1882.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1884--1885
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1887--1888
 
  []
 
-<../diagrams/witestlab/throughput/latency_mobb_closeup.pdf, id=1908, 462.52798p
+<../diagrams/witestlab/throughput/latency_mobb_closeup.pdf, id=1934, 462.52798p
 t x 346.89601pt>
 File: ../diagrams/witestlab/throughput/latency_mobb_closeup.pdf Graphic file (t
 ype pdf)
 <use ../diagrams/witestlab/throughput/latency_mobb_closeup.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/latency_mobb_closeup.
-pdf  used on input line 1888.
+pdf  used on input line 1891.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1894--1895
+Underfull \hbox (badness 10000) in paragraph at lines 1897--1898
 
  []
 
-<../diagrams/witestlab/throughput/latency_bfifo_all.png, id=1909, 810.8694pt x 
+[79]
+<../diagrams/witestlab/throughput/latency_bfifo_all.png, id=1941, 810.8694pt x 
 531.1845pt>
 File: ../diagrams/witestlab/throughput/latency_bfifo_all.png Graphic file (type
  png)
 <use ../diagrams/witestlab/throughput/latency_bfifo_all.png>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/latency_bfifo_all.png
-  used on input line 1898.
+  used on input line 1901.
 (pdftex.def)             Requested size: 364.88785pt x 239.0308pt.
-
-Overfull \hbox (4.88785pt too wide) in paragraph at lines 1898--1899
- [][] 
- []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1903--1904
+Underfull \hbox (badness 10000) in paragraph at lines 1906--1907
 
  []
 
-[74 <../diagrams/witestlab/throughput/latency_mobb.pdf>] [75 <../diagrams/wites
-tlab/throughput/latency_mobb_closeup.pdf> <../diagrams/witestlab/throughput/lat
-ency_bfifo_all.png>]
-<../diagrams/witestlab/throughput/all.pdf, id=1993, 623.9969pt x 384.2098pt>
+<../diagrams/witestlab/throughput/all.pdf, id=1943, 623.9969pt x 384.2098pt>
 File: ../diagrams/witestlab/throughput/all.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/throughput/all.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/all.pdf  used on inpu
-t line 1907.
+t line 1910.
 (pdftex.def)             Requested size: 343.19936pt x 211.31602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1912--1913
-
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1915--1916
@@ -2520,100 +2393,112 @@ Underfull \hbox (badness 10000) in paragraph at lines 1915--1916
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1917--1918
+Underfull \hbox (badness 10000) in paragraph at lines 1918--1919
 
  []
 
-[76 <../diagrams/witestlab/throughput/all.pdf>]
-<../diagrams/witestlab/throughput/buffersizes.pdf, id=2048, 630.85063pt x 383.7
+[80 <../diagrams/witestlab/throughput/latency_mobb.pdf>]
+
+LaTeX Warning: Text page 81 contains only floats.
+
+[81 <../diagrams/witestlab/throughput/latency_mobb_closeup.pdf> <../diagrams/wi
+testlab/throughput/latency_bfifo_all.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1920--1921
+
+ []
+
+<../diagrams/witestlab/throughput/buffersizes.pdf, id=2026, 630.85063pt x 383.7
 3927pt>
 File: ../diagrams/witestlab/throughput/buffersizes.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/throughput/buffersizes.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/buffersizes.pdf  used
- on input line 1921.
+ on input line 1924.
 (pdftex.def)             Requested size: 346.96892pt x 211.05724pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1926--1927
-
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1929--1930
 
  []
 
-<../diagrams/witestlab/throughput/10flows/BFIFO.pdf, id=2050, 342.3352pt x 341.
+[82 <../diagrams/witestlab/throughput/all.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1932--1933
+
+ []
+
+<../diagrams/witestlab/throughput/10flows/BFIFO.pdf, id=2082, 342.3352pt x 341.
 81451pt>
 File: ../diagrams/witestlab/throughput/10flows/BFIFO.pdf Graphic file (type pdf
 )
 <use ../diagrams/witestlab/throughput/10flows/BFIFO.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/BFIFO.pdf  us
-ed on input line 1937.
-(pdftex.def)             Requested size: 143.9978pt x 143.78017pt.
+ed on input line 1940.
+(pdftex.def)             Requested size: 155.99762pt x 155.76054pt.
 
-Underfull \hbox (badness 1087) in paragraph at lines 1937--1937
-[]\T1/cmr/m/n/9 (a) |Through-put for 10 flows with
+Underfull \hbox (badness 1137) in paragraph at lines 1940--1940
+[]\T1/cmr/m/n/10 (a) |Through-put for 10 flows with
  []
 
-<../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf, id=2051, 342.3352pt x 3
+<../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf, id=2083, 342.3352pt x 3
 41.81451pt>
 File: ../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf Graphic file (type 
 pdf)
 <use ../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/FQ-CoDel.pdf 
- used on input line 1943.
-(pdftex.def)             Requested size: 143.9978pt x 143.78017pt.
-<../diagrams/witestlab/throughput/10flows/PEP.pdf, id=2052, 342.3352pt x 341.81
+ used on input line 1946.
+(pdftex.def)             Requested size: 155.99762pt x 155.76054pt.
+<../diagrams/witestlab/throughput/10flows/PEP.pdf, id=2084, 342.3352pt x 341.81
 451pt>
 File: ../diagrams/witestlab/throughput/10flows/PEP.pdf Graphic file (type pdf)
 <use ../diagrams/witestlab/throughput/10flows/PEP.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/PEP.pdf  used
- on input line 1949.
-(pdftex.def)             Requested size: 143.9978pt x 143.78017pt.
+ on input line 1952.
+(pdftex.def)             Requested size: 155.99762pt x 155.76054pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1954--1955
+Underfull \hbox (badness 10000) in paragraph at lines 1957--1958
 
  []
 
-[77 <../diagrams/witestlab/throughput/buffersizes.pdf>]
-<../diagrams/witestlab/throughput/10flows/latency.pdf, id=2114, 462.52798pt x 3
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../diagrams/witestlab/throughput/10flows/latency.pdf, id=2086, 462.52798pt x 3
 46.89601pt>
 File: ../diagrams/witestlab/throughput/10flows/latency.pdf Graphic file (type p
 df)
 <use ../diagrams/witestlab/throughput/10flows/latency.pdf>
 Package pdftex.def Info: ../diagrams/witestlab/throughput/10flows/latency.pdf  
-used on input line 1973.
+used on input line 1976.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1978--1979
+Underfull \hbox (badness 10000) in paragraph at lines 1981--1982
 
  []
 
-[78 <../diagrams/witestlab/throughput/10flows/BFIFO.pdf> <../diagrams/witestlab
-/throughput/10flows/FQ-CoDel.pdf> <../diagrams/witestlab/throughput/10flows/PEP
-.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1994--1995
+[83 <../diagrams/witestlab/throughput/buffersizes.pdf>]
 
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[79 <../diagrams/witestlab/throughput/10flows/latency.pdf>]
-Chapter 6.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1997--1998
 
  []
 
+[84 <../diagrams/witestlab/throughput/10flows/BFIFO.pdf> <../diagrams/witestlab
+/throughput/10flows/FQ-CoDel.pdf> <../diagrams/witestlab/throughput/10flows/PEP
+.pdf>] [85 <../diagrams/witestlab/throughput/10flows/latency.pdf>]
+Chapter 6.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2000--2001
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2002--2003
+Underfull \hbox (badness 10000) in paragraph at lines 2003--2004
 
  []
 
@@ -2622,35 +2507,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 2005--2006
 
  []
 
-[80
+
+Underfull \hbox (badness 10000) in paragraph at lines 2008--2009
+
+ []
+
+[86
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 2010--2011
+Underfull \hbox (badness 10000) in paragraph at lines 2013--2014
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2012--2013
+Underfull \hbox (badness 10000) in paragraph at lines 2015--2016
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2017--2018
+Underfull \hbox (badness 10000) in paragraph at lines 2020--2021
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2024--2025
+Underfull \hbox (badness 10000) in paragraph at lines 2027--2028
 
  []
 
-[81]
-Underfull \hbox (badness 10000) in paragraph at lines 2029--2030
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2031--2032
+[87]
+Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
 
  []
 
@@ -2659,15 +2544,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
 
  []
 
-(uio-master.bbl [82]
-Underfull \hbox (badness 1210) in paragraph at lines 4--7
-[]\T1/cmr/m/n/10.95 Operating Sys-tem Statis-tics - W3Techs.  []$\T1/cmtt/m/n/1
-0.95 https : / / w3techs . com /
+
+Underfull \hbox (badness 10000) in paragraph at lines 2037--2038
+
  []
 
-[83
+[88] (./uio-master.bbl [89]
+Underfull \hbox (badness 1242) in paragraph at lines 4--7
+[]\T1/cmr/m/n/12 Operating Sys-tem Statis-tics - W3Techs.  []$\T1/cmtt/m/n/12 h
+ttps : / / w3techs . com /
+ []
 
-] [84]) [85] (uio-master.aux)
+[90
+
+] [91]) [92] [93] (./uio-master.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -2675,43 +2565,39 @@ Package rerunfilecheck Info: File `uio-master.out' has not changed.
 (rerunfilecheck)             Checksum: A273EA4495B189549F3D285785A00C00;13504.
  ) 
 Here is how much of TeX's memory you used:
- 33834 strings out of 478338
- 699460 string characters out of 2834776
- 1358796 words of memory out of 3000000
- 51070 multiletter control sequences out of 15000+600000
- 501772 words of font info for 75 fonts, out of 8000000 for 9000
+ 32146 strings out of 478994
+ 638886 string characters out of 5858185
+ 1354901 words of memory out of 5000000
+ 48436 multiletter control sequences out of 15000+600000
+ 433790 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,117p,911b,1776s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm
--super-t1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
-/cm-super/cm-super-ts1.enc}{C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fo
-nts/enc/dvips/base/8r.enc}<C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Joe Bayer/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Joe Bayer/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Joe Bay
-er/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm
--super/sfbi1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/cm-super/sfbx1095.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/Joe Bayer/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/Joe Bayer/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2074.pfb><C:/Users/J
-oe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2488.pfb
-><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/
-sfrm0600.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/cm-super/sfrm0800.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/font
-s/type1/public/cm-super/sfrm0900.pfb><C:/Users/Joe Bayer/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Users/Joe Bayer/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/Joe Baye
-r/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt0900.pfb><C:/Us
-ers/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt109
-5.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helveti
-c/uhvb8a.pfb><C:/Users/Joe Bayer/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
-helvetic/uhvr8a.pfb>
-Output written on uio-master.pdf (94 pages, 3213088 bytes).
+ 101i,12n,117p,890b,1766s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{
+/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texli
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-di
+st/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/texmf-dist/f
+onts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/fon
+ts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts
+/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
+ype1/public/cm-super/sftt1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sftt1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
+/public/cm-super/sftt1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/u
+rw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helv
+etic/uhvr8a.pfb>
+Output written on uio-master.pdf (102 pages, 2971718 bytes).
 PDF statistics:
- 2483 PDF objects out of 2487 (max. 8388607)
- 547 named destinations out of 1000 (max. 500000)
+ 2504 PDF objects out of 2984 (max. 8388607)
+ 1647 compressed objects within 17 object streams
+ 553 named destinations out of 1000 (max. 500000)
  1141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
